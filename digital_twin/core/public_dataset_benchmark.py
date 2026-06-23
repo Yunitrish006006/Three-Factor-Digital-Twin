@@ -14,10 +14,11 @@ def run_public_dataset_benchmark(
     dataset: str,
     input_dir: Path,
     horizons: Sequence[int] = (15,),
+    zone_ids: Optional[Sequence[str]] = None,
 ) -> Dict[str, object]:
     dataset_key = dataset.strip().lower()
     if dataset_key == "cu-bems":
-        return _run_cu_bems_benchmark(input_dir=input_dir, horizons=horizons)
+        return _run_cu_bems_benchmark(input_dir=input_dir, horizons=horizons, zone_ids=zone_ids)
     if dataset_key == "sml2010":
         return _run_sml2010_benchmark(input_dir=input_dir, horizons=horizons)
     raise ValueError(f"Unsupported dataset: {dataset}")
@@ -29,7 +30,7 @@ def write_public_dataset_benchmark_summary(summary: Dict[str, object], output_pa
     return output_path
 
 
-def _run_cu_bems_benchmark(input_dir: Path, horizons: Sequence[int]) -> Dict[str, object]:
+def _run_cu_bems_benchmark(input_dir: Path, horizons: Sequence[int], zone_ids: Optional[Sequence[str]] = None) -> Dict[str, object]:
     metadata = _read_optional_json(input_dir / "scenario_metadata.json")
 
     source_files = [Path(path) for path in metadata.get("source_files", []) if Path(path).exists()]
@@ -39,13 +40,14 @@ def _run_cu_bems_benchmark(input_dir: Path, horizons: Sequence[int]) -> Dict[str
             horizons=horizons,
             metadata=metadata,
             source_files=source_files,
+            zone_ids=zone_ids,
         )
 
     sensor_rows = _read_csv_rows(input_dir / "corner_sensor_timeseries.csv")
     device_rows = _read_csv_rows(input_dir / "device_event_log.csv")
     auxiliary_rows = _read_csv_rows(input_dir / "auxiliary_features.csv")
 
-    records_by_zone = _load_cu_bems_records(sensor_rows, device_rows, auxiliary_rows)
+    records_by_zone = _load_cu_bems_records(sensor_rows, device_rows, auxiliary_rows, zone_ids=zone_ids)
     tasks: List[Dict[str, object]] = []
     for horizon in horizons:
         c1_samples = _build_cu_bems_response_samples(records_by_zone, horizon, task_id="C1")
@@ -99,6 +101,7 @@ def _run_cu_bems_benchmark(input_dir: Path, horizons: Sequence[int]) -> Dict[str
         "input_dir": str(input_dir),
         "created_at": datetime.now(timezone.utc).isoformat(),
         "horizons": list(horizons),
+        "zone_ids": list(zone_ids) if zone_ids is not None else [],
         "counts": {
             "zones": len(records_by_zone),
             "sensor_rows": len(sensor_rows),
@@ -115,6 +118,7 @@ def _run_cu_bems_benchmark_from_source_files(
     horizons: Sequence[int],
     metadata: Dict[str, object],
     source_files: Sequence[Path],
+    zone_ids: Optional[Sequence[str]] = None,
 ) -> Dict[str, object]:
     task_specs = {
         "C1": {
@@ -143,7 +147,7 @@ def _run_cu_bems_benchmark_from_source_files(
             "min_samples": 10,
         },
     }
-    sample_counts = _count_cu_bems_samples_from_source_files(source_files=source_files, horizons=horizons)
+    sample_counts = _count_cu_bems_samples_from_source_files(source_files=source_files, horizons=horizons, zone_ids=zone_ids)
     evaluators: Dict[Tuple[str, int], _StreamingTaskEvaluator] = {}
     for horizon in horizons:
         for task_id, spec in task_specs.items():
@@ -168,6 +172,7 @@ def _run_cu_bems_benchmark_from_source_files(
             source_files=source_files,
             horizons=horizons,
             on_sample=consume,
+            zone_ids=set(zone_ids) if zone_ids is not None else None,
         )
 
     tasks: List[Dict[str, object]] = []
@@ -199,6 +204,7 @@ def _run_cu_bems_benchmark_from_source_files(
         "input_dir": str(input_dir),
         "created_at": datetime.now(timezone.utc).isoformat(),
         "horizons": list(horizons),
+        "zone_ids": list(zone_ids) if zone_ids is not None else [],
         "counts": {
             "zones": int(counts.get("zones", len(zones))),
             "sensor_rows": int(counts.get("sensor_rows", 0)),
@@ -317,11 +323,15 @@ def _load_cu_bems_records(
     sensor_rows: Sequence[Dict[str, str]],
     device_rows: Sequence[Dict[str, str]],
     auxiliary_rows: Sequence[Dict[str, str]],
+    zone_ids: Optional[Sequence[str]] = None,
 ) -> Dict[str, List[Dict[str, float]]]:
+    selected_zone_ids = set(zone_ids) if zone_ids is not None else None
     records: Dict[str, Dict[datetime, Dict[str, float]]] = {}
     for row in sensor_rows:
         timestamp = _parse_timestamp(row["timestamp"])
         zone_id = _extract_zone_id_from_sensor(row["sensor_name"])
+        if selected_zone_ids is not None and zone_id not in selected_zone_ids:
+            continue
         record = records.setdefault(zone_id, {}).setdefault(timestamp, _base_cu_bems_record(timestamp))
         record["temperature"] = _to_float(row.get("temperature_c"))
         record["humidity"] = _to_float(row.get("humidity_pct"))
@@ -330,6 +340,8 @@ def _load_cu_bems_records(
     for row in device_rows:
         timestamp = _parse_timestamp(row["timestamp"])
         zone_id, device_kind = _extract_zone_and_kind_from_device_name(row["device_name"])
+        if selected_zone_ids is not None and zone_id not in selected_zone_ids:
+            continue
         record = records.setdefault(zone_id, {}).setdefault(timestamp, _base_cu_bems_record(timestamp))
         power = _to_float(row.get("power")) or 0.0
         if device_kind == "ac":
@@ -340,7 +352,7 @@ def _load_cu_bems_records(
     for row in auxiliary_rows:
         timestamp = _parse_timestamp(row["timestamp"])
         zone_id = row.get("entity_id", "")
-        if not zone_id:
+        if not zone_id or (selected_zone_ids is not None and zone_id not in selected_zone_ids):
             continue
         record = records.setdefault(zone_id, {}).setdefault(timestamp, _base_cu_bems_record(timestamp))
         record["plug_load"] = _to_float(row.get("plug_load_kw")) or 0.0
@@ -521,7 +533,9 @@ def _build_cu_bems_event_delta_samples(
 def _count_cu_bems_samples_from_source_files(
     source_files: Sequence[Path],
     horizons: Sequence[int],
+    zone_ids: Optional[Sequence[str]] = None,
 ) -> Dict[Tuple[str, int], int]:
+    selected_zone_ids = set(zone_ids) if zone_ids is not None else None
     counts: Dict[Tuple[str, int], int] = defaultdict(int)
 
     def count_sample(task_id: str, horizon: int, sample: Dict[str, object]) -> None:
@@ -532,6 +546,7 @@ def _count_cu_bems_samples_from_source_files(
         source_files=source_files,
         horizons=horizons,
         on_sample=count_sample,
+        zone_ids=selected_zone_ids,
     )
     return counts
 
@@ -540,6 +555,7 @@ def _stream_cu_bems_samples_from_source_files(
     source_files: Sequence[Path],
     horizons: Sequence[int],
     on_sample: Callable[[str, int, Dict[str, object]], None],
+    zone_ids: Optional[set[str]] = None,
 ) -> None:
     ordered_horizons = sorted({int(value) for value in horizons if int(value) > 0})
     if not ordered_horizons:
@@ -570,6 +586,8 @@ def _stream_cu_bems_samples_from_source_files(
 
                 for zone_number, mapping in zone_mapping.items():
                     zone_id = f"floor{floor}_zone{zone_number}"
+                    if zone_ids is not None and zone_id not in zone_ids:
+                        continue
                     record = {
                         "timestamp_dt": timestamp_dt,
                         "temperature": _first_float(row, mapping["temperature"]),

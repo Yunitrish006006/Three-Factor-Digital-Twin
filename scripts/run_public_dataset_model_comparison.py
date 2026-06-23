@@ -25,6 +25,11 @@ def main() -> None:
         default="15",
         help="Comma-separated forecast horizons in minutes, for example 15 or 15,60.",
     )
+    parser.add_argument(
+        "--zone-ids",
+        default="",
+        help="Optional comma-separated CU-BEMS zone identifiers, for example floor6_zone1.",
+    )
     args = parser.parse_args()
 
     input_root = Path(args.input_root)
@@ -32,6 +37,7 @@ def main() -> None:
     baseline_root = Path(args.baseline_root)
     checkpoint_path = Path(args.checkpoint) if args.checkpoint else None
     horizons = [int(value.strip()) for value in args.horizons.split(",") if value.strip()]
+    zone_ids = [value.strip() for value in args.zone_ids.split(",") if value.strip()] or None
 
     datasets = ["cu-bems", "sml2010"] if args.dataset == "all" else [args.dataset]
     for dataset in datasets:
@@ -43,6 +49,7 @@ def main() -> None:
             horizons=horizons,
             baseline_summary_path=baseline_summary_path,
             checkpoint_path=checkpoint_path,
+            zone_ids=zone_ids,
         )
         output_path = output_root / f"{dataset.replace('-', '_')}_hybrid_twin_comparison.json"
         write_public_dataset_model_comparison(summary, output_path)

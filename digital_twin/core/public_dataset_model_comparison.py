@@ -681,6 +681,7 @@ def run_public_dataset_model_comparison(
     baseline_summary: Optional[Dict[str, object]] = None,
     baseline_summary_path: Optional[Path] = None,
     checkpoint_path: Optional[Path] = None,
+    zone_ids: Optional[Sequence[str]] = None,
 ) -> Dict[str, object]:
     baseline = _resolve_baseline_summary(
         dataset=dataset,
@@ -688,11 +689,12 @@ def run_public_dataset_model_comparison(
         horizons=horizons,
         baseline_summary=baseline_summary,
         baseline_summary_path=baseline_summary_path,
+        zone_ids=zone_ids,
     )
     predictor = MappedHybridPublicPredictor(checkpoint_path=checkpoint_path)
     dataset_key = dataset.strip().lower()
     if dataset_key == "cu-bems":
-        return _run_cu_bems_model_comparison(input_dir=input_dir, baseline=baseline, predictor=predictor, horizons=horizons)
+        return _run_cu_bems_model_comparison(input_dir=input_dir, baseline=baseline, predictor=predictor, horizons=horizons, zone_ids=zone_ids)
     if dataset_key == "sml2010":
         return _run_sml2010_model_comparison(input_dir=input_dir, baseline=baseline, predictor=predictor, horizons=horizons)
     raise ValueError(f"Unsupported dataset: {dataset}")
@@ -710,12 +712,17 @@ def _resolve_baseline_summary(
     horizons: Sequence[int],
     baseline_summary: Optional[Dict[str, object]],
     baseline_summary_path: Optional[Path],
+    zone_ids: Optional[Sequence[str]] = None,
 ) -> Dict[str, object]:
     if baseline_summary is not None:
         return baseline_summary
     if baseline_summary_path is not None and baseline_summary_path.exists():
-        return json.loads(baseline_summary_path.read_text(encoding="utf-8"))
-    return run_public_dataset_benchmark(dataset=dataset, input_dir=input_dir, horizons=horizons)
+        baseline = json.loads(baseline_summary_path.read_text(encoding="utf-8"))
+        if zone_ids is None:
+            return baseline
+        if isinstance(baseline.get("zone_ids"), list) and set(baseline["zone_ids"]) == set(zone_ids):
+            return baseline
+    return run_public_dataset_benchmark(dataset=dataset, input_dir=input_dir, horizons=horizons, zone_ids=zone_ids)
 
 
 def _run_cu_bems_model_comparison(
@@ -723,16 +730,17 @@ def _run_cu_bems_model_comparison(
     baseline: Dict[str, object],
     predictor: MappedHybridPublicPredictor,
     horizons: Sequence[int],
+    zone_ids: Optional[Sequence[str]] = None,
 ) -> Dict[str, object]:
     metadata = _read_optional_json(input_dir / "scenario_metadata.json")
     source_files = [Path(path) for path in metadata.get("source_files", []) if Path(path).exists()]
     if source_files:
-        tasks = _run_cu_bems_comparison_from_source_files(source_files, baseline, predictor, horizons)
+        tasks = _run_cu_bems_comparison_from_source_files(source_files, baseline, predictor, horizons, zone_ids=zone_ids)
     else:
         sensor_rows = _read_csv_rows(input_dir / "corner_sensor_timeseries.csv")
         device_rows = _read_csv_rows(input_dir / "device_event_log.csv")
         auxiliary_rows = _read_csv_rows(input_dir / "auxiliary_features.csv")
-        records_by_zone = _load_cu_bems_records(sensor_rows, device_rows, auxiliary_rows)
+        records_by_zone = _load_cu_bems_records(sensor_rows, device_rows, auxiliary_rows, zone_ids=zone_ids)
         tasks = _run_cu_bems_comparison_from_samples(records_by_zone, baseline, predictor, horizons)
 
     return {
@@ -799,6 +807,7 @@ def _run_cu_bems_comparison_from_source_files(
     baseline: Dict[str, object],
     predictor: MappedHybridPublicPredictor,
     horizons: Sequence[int],
+    zone_ids: Optional[Sequence[str]] = None,
 ) -> List[Dict[str, object]]:
     baseline_lookup = _task_lookup(baseline)
     evaluators: Dict[Tuple[str, int], _MappedReadoutEvaluator] = {}
@@ -825,7 +834,12 @@ def _run_cu_bems_comparison_from_source_files(
             targets=sample["targets"],
         )
 
-    _stream_cu_bems_samples_from_source_files(source_files=source_files, horizons=horizons, on_sample=consume)
+    _stream_cu_bems_samples_from_source_files(
+        source_files=source_files,
+        horizons=horizons,
+        on_sample=consume,
+        zone_ids=set(zone_ids) if zone_ids is not None else None,
+    )
 
     output: List[Dict[str, object]] = []
     for horizon in horizons:

@@ -1,0 +1,1130 @@
+JOIV : Int. J. Inform. Visualization, 7(3-2): Empowering the Future: The Role of Information Technology in Building Resilience - November 2023 1066-1073
+
+INTERNATIONAL JOURNAL
+ON INFORMATICS VISUALIZATION
+
+INTERNATIONAL
+JOURNAL ON
+INFORMATICS
+VISUALIZATION
+
+journal homepage : www.joiv.org/index.php/joiv
+
+Predictive AC Control Using Deep Learning: Improving Comfort and
+Energy Saving
+Ahmad Azhan bin Mohd Ameeruddin a, Wooi-Nee Tan a,*, Ming-Tao Gan a, Sook-Chin Yip a
+a
+
+Faculty of Engineering, Multimedia University Cyberjaya, Persiaran Multimedia, Cyberjaya, 63100, Malaysia
+Corresponding author: *wntan@mmu.edu.my
+
+Abstract— The growing global population and the availability of energy-hungry smart devices are critical factors in today's alarmingly
+high electricity usage. The majority of energy used in urban areas is consumed by buildings, with heating, ventilation, and air
+conditioning (AC) systems accounting for a significant amount of energy use. This project proposes an AC controlling algorithm that
+uses the Internet of Things sensors and a deep learning framework in temperature prediction to control a single AC unit. The algorithm
+consists of a Long Short-Term Memory (LSTM) model to predict the indoor temperature for the next J minutes. The highlight of this
+model is its capacity to predict the future temperature based on the predetermined AC status, whether it is switched on or off. The AC
+unit will be turned off if the J-minute predicted temperature is within the desired thermal comfort range, and it will be turned back on
+if the sensor readings exceed the upper pre-set threshold. The experiment is performed on the dataset collected by Chulalongkorn
+University Building Energy Management System (CU-BEMS). The LSTM prediction model developed using CU-BEMS data yields an
+average Root Mean Squared Error and Mean Absolute Error of 0.08 and 0.03, respectively. A half-day simulation is also performed in
+controlling the AC unit from 7:39 a.m. to 11:35 a.m. The proposed algorithm shows that 49.00% of the time, the AC unit can be turned
+off while the thermal range is maintained between 27ºC to 27.9ºC, providing a strategy for managing the AC unit and achieving energy
+savings.
+Keywords—Energy management; air-conditioner; deep learning; temperature prediction; thermal comfort.
+Manuscript received 5 Dec. 2022; revised 9 Jul. 2023; accepted 25 Aug. 2023. Date of publication 30 Nov. 2023.
+International Journal on Informatics Visualization is licensed under a Creative Commons Attribution-Share Alike 4.0 International License.
+
+significant increase in electricity consumption, aligned with
+the rapid infrastructure development in Malaysia. Essentially,
+buildings consume more than 40% of energy in urban areas,
+with heating, ventilation, and air conditioning (HVAC)
+systems accounting for a considerable amount of energy
+consumption in many commercial buildings [4].
+About 40–50% of the world's energy usage [5] and 30% of
+all CO2 emissions can be attributed to buildings [6]. Building
+energy consumption will inevitably rise as building density
+and urban population increase. The main approach of
+controlling interior thermal comfort is made possible by
+HVAC systems, and proper control of these systems impacts
+how comfortable a space feels to its occupants. The HVAC
+system is responsible for much of the building's energy
+consumption. Building energy-comfort-related control
+systems is thus required for smart building energy
+management [7].
+An efficient HVAC system has a great ability to reduce
+energy consumption significantly. This is because an airconditioner (AC) system is one of the appliances with high
+power consumption. In addition, the thermal storage capacity
+
+I. INTRODUCTION
+Energy optimization is an urgent requirement for modern
+society due to a limited quantity of energy supplies, increasing
+population growth, and increased energy use. Energy is a
+limited resource in nature that must be shared, has a
+significant cost, and is limited in supply. Therefore, it is
+necessary to create and install modern technologies in the
+home that can produce and use energy intelligently and
+efficiently, striking a balance between consumption and
+simplified comfort [1].
+According to research, 90% of the energy used in Malaysia
+is in the form of electricity. The residential sector accounted
+for 44% of electricity usage in 2002, which continues to rise
+yearly. In 2020, the demand for electricity was anticipated to
+reach a peak of 23,099MW, with an increase in supply of 4
+percentage points annually [2]. The Malaysia Energy
+Commission recently released data showing that, as of the end
+of December 2022, energy consumption had peaked at
+19,183MW in May 2022 [3]. This shows that there is a yearly
+
+1066
+
+[19] proposed an EMS technique to alter the energy demand
+while considering occupancy data. They also suggested a
+distributed demand management system is flexible to various
+deviations (weather or occupancy) [20]. The study mentioned
+above was done to develop an adaptive optimization control
+approach. According to Wu et al. [21], residential HVAC
+systems use a hierarchical control method to offer primary
+frequency management. Watari et al. [22] utilized the MPCbased approach for energy management and thermal comfort.
+Zeng and Barooah [23] presented an adaptive MPC technique
+to reduce energy consumption for HVAC systems.
+The abovementioned methods can all be categorized as
+model-based methods, given that a model of the HVAC's
+thermal dynamic environment is required. However, it is
+challenging to accurately estimate the thermal environment
+because of the many elements that influence it. Since modelfree Reinforcement Learning (RL) has advanced significantly
+recently, several academics have used RL to address HVAC
+control issues. In Qiu et al. [24], building HVAC systems
+were optimized using Q-learning and a model-based
+controller to conserve energy. Brandi et al. [25], used deep
+reinforcement learning (DRL) to address the issue of the
+supply water temperature setpoint in a heating system, and a
+well-trained agent can reduce energy consumption by 5 % to
+12%. Cost savings are the result of achieving energy savings
+through HVAC control optimization. Jiang et al. [26] suggest
+that DQN saves around 6% of total costs; without demand
+charges, it saves about 8%. Wei et al. [27] used a DRL-based
+algorithm to reduce overall energy costs while maintaining
+the target room temperature and adhering to deadlines for the
+workload in the data center. In order to maintain thermal
+comfort while conserving energy, Zenger et al. [28]
+implemented the RL algorithm. The DQN algorithm was used
+by the authors of Kurte et al. [29] to reduce energy use and
+maintain comfort (temperature). To optimize HVAC systems,
+Fu et al. [30] presented a distributed multi-agent DQN. It is
+crucial to have a viable control system to manipulate the
+HVAC system for cost and energy savings.
+With this as a motivation, this project aims to create a
+viable system to predict indoor temperatures and control an
+AC unit by applying machine learning algorithms such as
+Long Short-Term Memory (LSTM) using a dataset that was
+collected by Chulalongkorn University Building Energy
+Management System (CU-BEMS) [31] The project will
+develop a LSTM predictive model that can predict future
+indoor temperatures subject to various AC statuses, whether
+it is turned on or off. The uniqueness of this prediction model
+compared to others in the literature is that future AC on-off
+settings are incorporated as inputs to the model, thus allowing
+a decision to be made between turning off the AC to achieve
+energy savings or keeping it running to maintain the required
+level of thermal comfort. The model will be trained and tested
+to ensure that it can predict indoor temperatures accurately.
+On top of that, a rule-based control system will be developed
+to control an AC unit to minimize energy usage while also
+maintaining a comfortable thermal level.
+
+of buildings allows the change to the AC system's temperature
+setpoints without significantly inconveniencing building
+occupants. Finally, the advancement of building energy
+management systems has also made it possible to routinely
+regulate the AC systems remotely (i.e., turn ON/OFF, change
+temperature setpoints) [8] Therefore, it is crucial to develop
+an optimized energy AC control system to minimize energy
+usage which will lead to cost savings.
+The existing HVAC system optimization solutions can be
+divided into two categories: building more energy-efficient
+hardware for the HVAC system [9] or developing various
+strategies to efficiently control the energy consumption of the
+existing HVAC system, with the latter receiving the majority
+of research attention. The optimal control of the HVAC
+system can be achieved by local control or supervisory control
+[10]. Examples of local control include applying rule-based
+control schemes or scheduling techniques by manipulating the
+'ON' and 'OFF' states of the system or adjusting the setpoint
+temperature depending on the building needs [10], [11] The
+supervisory control, on the other hand, is to determine the
+optimal solutions that minimize the system's energy
+consumption of the system while ensuring the thermal
+comfort of the occupants [8].
+As a result of recent advancements in the Internet of Things
+(IoT) and Artificial Intelligence, studies are now
+concentrating on using data-driven computational intelligence
+models to investigate the dynamic between the HVAC system
+and the environment. Esrafilian-Najafabadi et al. [12]
+proposed a rule-based (RB) HVAC control system using a
+multi-layer perceptron (MLP) network, a deep learning
+algorithm, for estimating dynamic preconditioning time in
+residential buildings. The control system uses current indoor
+temperature and weather data as inputs for the
+preconditioning-time machine learning model. It uses its
+results for the occupancy model to decide whether to set a
+temperature point to a comfortable level when there are
+occupants in the building or to set the temperature to decrease
+AC usage when there are no occupants. Godahewa et al. [13]
+proposed a global deep learning framework based on RNNs
+that can forecast the future indoor temperatures of a building
+using the current inside and outside temperatures, with the
+main goal of determining the optimal thermal setpoints and
+optimal time point to switch on the AC during the unoccupied
+period. The energy savings can be achieved by keeping the
+AC switched off for as long as possible.
+Thermal comfort is the level of satisfaction with the
+environment experienced by the occupants [14]. Several
+models have been created recently to assess thermal comfort
+objectively. Shaw [15] presented the heat balance-based
+Predicted Mean Vote-Predicted Percentage Dissatisfied
+(PMV-PPD) model. The model aims to measure how hot or
+chilly the inhabitants feel regarding the environment. A
+variety of thermal comfort models built on machine learning
+algorithms were created with the quick development of
+machine learning. Zhou et al. [16] created a thermal comfort
+model with the capacity for self-learning and self-correction
+using the support vector machine (SVM) method. Liu et al.
+[17] suggested a model based on a back propagation (BP)
+neural network for predicting individual thermal comfort.
+Baldi et al. [18] suggested a switching self-tuning approach
+to save energy while enhancing thermal comfort. Korkas et al.
+
+II. MATERIALS AND METHODS
+The proposed system design consists of two stages: the
+temperature prediction stage and the rule-based decision stage.
+The installed IoT sensors measure the indoor temperature in
+1067
+
+real-time. The measurements are then sent to the temperature
+prediction model to predict the temperature values for the
+block of subsequent J minutes when the AC is switched off.
+These predicted values are then utilized in the stage 2 rulebased decision model to determine whether to switch off the
+AC or not. A more thorough explanation of these two stages
+is provided below.
+
+one-minute prediction model predicts one future temperature
+at t = J. This predicted value is then input into the model,
+which predicts the temperature at t = J + 1. The predicted
+values are fed back into the model iteratively until the entire
+J-minute temperature prediction is successful.
+
+A. Temperature Prediction Model
+Consider the indoor temperature collected as
+, ,...,
+is the temperature measurement at
+, with
+time
+, , . . . , . The temperature prediction model
+intends to use the real-time temperature T to predict the
+temperature for
+,
+, . . . , . To accomplish this
+aim, the one-minute prediction model is first developed.
+1) One-minute Prediction Model: The one-minute
+prediction model uses T to predict the temperature for the
+following minute at
+. In order to be more precise,
+the model should be capable of predicting the temperature
+based on the AC status, whether it is on or off. As a result, in
+addition to the sensor readings on temperature, the prediction
+model must be informed by the time series of the AC on or
+off status. Thus, the input T is associated with the time series
+of AC status, which is defined as
+, ,...,
+, with
+∈ 0 "on", 1 "off" .
+For example, the temperature at time 1,
+is associated
+with the AC status at time 2, ; the temperature at time 2,
+and
+is associated with the air conditioning status at time 3,
+so on, until the last input is the temperature at time J, ,
+which is associated with the AC status at time J + 1,
+.
+With this setting, the model can predict both the temperatures
+,
+at time J + 1 based on the air conditioning status,
+whether it is switched off or on.
+The neural network architecture applied here is LSTM, a
+classical neural network with memory cells that can store
+information about prior data [9]. The architecture of the model
+that was implemented in this suggested system is shown in
+Fig. 1. The three layers that make up the constructed neural
+network are the input layer, hidden layer, and output layer.
+The input layer, or "lstm_1_input," shows where a threedimensional input is fed into the model. The threedimensional inputs are made up of batch size, timesteps, and
+features. After the input layer, one LSTM layer with 64
+hidden nodes is implemented and is named as "lstm_1". It is
+crucial to note that the output of the 'lstm_1' is a 2dimensional layer. If the setting for the timestep is set to
+. This implies that 15 data samples, or 15 minutes' worth
+of data, will be compiled as a list before being sent into the
+LSTM layer. Two dense or fully linked layers are added after
+the LSTM layer, with the first layer implementing the
+Rectified Linear Unit (ReLU), an activation function with
+eight hidden nodes, and the last layer employs the Linear
+activation layer, which has one hidden node.
+
+Fig. 1 Machine Learning Model Architecture
+
+Fig. 2 visualizes the model’s prediction flow when
+.
+After predicting the one-minute indoor temperature at time
+, the predicted indoor temperature will then be the last
+point in the input sequence to predict the temperature at
+. The procedure is repeated by recycling the predicted
+temperature as the input to the one-minute prediction model
+until the temperatures at
+, , . . . , !" are obtained.
+
+Fig. 2 Flow diagram for 15-minute prediction model
+
+B. Rule-based Decision Model
+The J-minute prediction model allows the temperature for
+the next J minutes to be projected ahead of time at t = J.
+Most notably, the model can predict the future J-minute
+temperature depending on various preference settings on the
+AC status within this time period. These predictive
+temperatures become important indications for decisionmaking in the stage 2 rule-based model. Once the J-minute
+sensor readings are available, the data will be used to predict
+the next J-minute temperature, and a decision to switch on or
+off the AC will be made. Fig. 3 depicts the detailed flow of
+the rule-based model.
+
+2) J-minute Prediction Model: A J-minute prediction
+model is constructed to increase the usability of the model
+further so that the rule-based model in stage 2 could make a
+wise decision. This model aims to use J-minute sensor
+readings on temperature to predict the next J-minute of
+temperature with the planned setting on the AC status. The
+
+1068
+
+Units (EMU), digital meters, multi-sensors, and gateways.
+The data is collected at a one-minute interval (1,440 data
+points/day) for 184 days during the second half year of 2018.
+However, for the purpose of this research project, the dataset
+of Floor 6 in Zone 1 in 2018 is used as it provides the most
+complete range of data sequentially.
+Data preprocessing is required here as the electricity
+consumption of the AC must be converted to a new column
+of data called status, S. The status column, S provides when
+the AC is turned on or off during the day. As a result,
+whenever the electricity consumption of the AC on Floor 6
+rises more than 0, a value of 1 is added to the corresponding
+status S to indicate that the AC is turned on, whilst a value of
+0 shows that the AC is turned off.
+A. Performance of the Prediction Model
+1) Performance of the One-Minute Prediction Model:
+The one-minute prediction model uses 70% of the data for
+training, 20% for testing, and 10% for validation. Fig 4. shows
+the learning curve of the model.
+
+Fig. 4 One-minute training and validation loss curve
+
+It is noted that the training loss initially has a bigger loss
+than the validation loss, which then steadily declines during
+the epochs to help interpret the learning curve for model less.
+The training loss curve begins to flatten as the epoch values
+approach 4, and this input persists through the conclusion of
+training, indicating that the training loss will not go down if
+more training data is added. The validation loss curve starts
+off at a relatively low value and meets the training loss curve
+at the same value. This is most likely due to the nature of the
+dataset given. The simplicity of the dataset makes the model
+learn faster as time goes on, leading to the validation loss flats
+out much more easily than the training loss curve. The model
+achieved a Root Mean Squared Error (RMS) of 0.08 and a
+Mean Absolute Error (MAE) of 0.03 during validation. The
+model is considered to have performed successfully for this
+research.
+
+Fig. 3 Flow Diagram for the proposed system
+
+Assume that J = 15. When the AC is turned on for the first
+time at the beginning of the day, the IoT temperature sensor
+will read the first 15 minutes of indoor temperatures. These
+15-minute data are fed into the prediction model, which
+predicts the next 15 minutes of indoor temperatures with the
+AC status set to 0, indicating that the AC unit is presumed to
+be switched off for the next 15 minutes. The AC will be
+switched off if the predicted temperatures satisfy a
+predetermined thermal comfort range. Otherwise, the AC will
+continue to run for another 15 minutes before repeating the
+prediction and decision-making process. If the AC is turned
+off, the sensor will keep track of the indoor temperature and
+will promptly turn on the AC if the real-time temperature hits
+the threshold.
+
+2) Performance of the 15-minute Prediction Model: To
+evaluate the prediction, the average RMSE of the following
+four case studies will be inspected. Table I shows a simplified
+view of the case studies mentioned below.
+ Case Study 1: Using 15 minutes of indoor temperature
+when the AC status is off, predict the next 15 minutes
+of indoor temperature when the AC status is off.
+
+III. RESULTS AND DISCUSSION
+To assess the effectiveness of the suggested system, a
+simulation is performed on the dataset collected by the CUBEMS. The data collected are from an office building on the
+university campus called the Chamchuri 5 building. This
+seven-story building has sensors such as Energy Monitoring
+1069
+
+Case Study 2: Using 15 minutes of indoor temperature
+when the AC status is off, predict the next 15 minutes
+of indoor temperature when the AC status is on.
+ Case Study 3: Using 15 minutes of indoor temperature
+when the AC status is on, predict the next 15 minutes
+of indoor temperature when the AC status is on.
+ Case Study 4: Using 15 minutes of indoor temperature
+when the AC status is on, predict the next 15 minutes
+of indoor temperature when the AC status is off.
+To evaluate the performance of the 15-minute prediction
+model, 30% of the validation dataset, which contains 30321
+rows of data, is split into the four case studies mentioned
+above. Table II shows a total of 770, 30, 199, and 31 sets of
+time series data sets that match the criterion specified for Case
+Studies 1, 2, 3, and 4, respectively.
+
+values closely reflect the actual values; this is supported by
+Table III, which compares the predicted and actual
+temperatures for one block of data set in each case study.
+
+
+
+TABLE II
+AVERAGE RSME FOR EACH CASE STUDY
+
+Case
+Study
+1
+2
+3
+4
+
+1
+2
+3
+4
+
+AC Status for past
+15 minutes
+OFF
+OFF
+ON
+ON
+
+Average RMSE
+
+770
+30
+199
+31
+
+0.1600
+0.1591
+0.1621
+0.1627
+
+B. Half-day Simulation
+A half-day simulation is used to assess the system's
+performance. The data used is the morning session on the date
+4th July 2018. The system was applied when the AC was first
+switched on at the start of the day. The period for this
+application was between 7:39 a.m., when the AC was first
+switched on, to 11:35 a.m., when the AC was switched off due
+to lunch break. The following two rules for this simulation are
+considered in the stage 2 rule-based model.
+ Rule 1: The thermal comfort threshold is set between
+27ºC to 27.9ºC.
+ Rule 2: The thermal comfort threshold is set between
+24ºC to 27ºC. This proposal accommodates a larger
+range of thermal comfort.
+
+TABLE I
+CASE STUDIES FOR THE PREDICTIVE MODEL
+
+Case Study
+
+Total Tests Used
+
+AC Status for next 15
+minutes
+OFF
+ON
+ON
+OFF
+
+Table II also provides the average RMSE achieved for each
+case study, which are 0.1600, 0.1591, 0.1621, and 0.1627,
+respectively. The low RMSE indicates that the predicted
+
+TABLE III
+AN EXAMPLE OF ONE DATA SET: A COMPARISON OF ACTUAL AND PREDICTED DATA
+CASE STUDY 1 (b) CASE STUDY 2 (c) CASE STUDY 3 (d) CASE STUDY 4
+Minute
+
+(a)
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+Minute
+
+©
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+
+Actual
+Temperature
+27.66
+27.67
+27.67
+27.68
+27.68
+27.69
+27.00
+27.71
+27.72
+27.73
+27.73
+27.74
+27.75
+27.75
+27.76
+Actual
+Temperature
+27.84
+27.84
+27.83
+27.82
+27.79
+27.77
+27.73
+27.69
+27.63
+27.57
+27.49
+27.42
+27.34
+27.26
+27.17
+
+Predicted
+Temperature
+27.66923332
+27.66899872
+27.67881203
+27.67875099
+27.68855476
+27.68852997
+27.69841576
+27.70853996
+27.71867371
+27.28845600
+27.73900986
+27.73905373
+27.74897766
+27.75908279
+27.75902367
+Predicted
+Temperature
+27.83755875
+27.87552643
+27.83707428
+27.83318367
+27.81324577
+27.77457237
+27.73576546
+27.68123817
+27.62484932
+27.55656052
+27.48905563
+27.41132545
+27.34070015
+27.26573944
+27.19246674
+
+Status
+
+Minute
+
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+
+(b)
+
+Status
+
+Minute
+
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+
+(d)
+
+1070
+
+Actual
+Temperature
+26.80
+26.20
+25.96
+25.90
+25.84
+25.79
+25.74
+25.69
+25.64
+25.59
+25.54
+25.50
+25.45
+25.41
+25.37
+Actual
+Temperature
+24.38
+24.40
+24.43
+24.46
+24.50
+24.56
+24.62
+24.70
+24.79
+24.89
+24.99
+25.80
+25.18
+25.28
+25.37
+
+Predicted
+Temperature
+26.12154198
+26.47855568
+26.15678215
+26.93669128
+25.82159805
+25.82159805
+25.77142906
+25.72114944
+25.67146873
+25.62241364
+25.57387924
+25.52569771
+25.48807907
+25.4399147
+25.40223312
+Predicted
+Temperature
+24.41259193
+24.45662117
+24.48226738
+24.51368523
+24.55085182
+24.60104561
+24.67090416
+24.74183655
+24.8273863
+24.92112732
+25.02149963
+25.12037468
+25.54359055
+25.38897896
+25.41068268
+
+Status
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+Status
+
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+
+(a)
+
+(b)
+
+Fig. 5 Indoor Temperature for simulation of a half-day operation: (a) Scenario based on Rule 1 (b) Scenario based on Rule 2
+
+(a)
+
+(b)
+
+Fig. 6 AC status for simulation of a half-day operation: (a) Scenario based on Rule 1 (b) Scenario based on Rule 2
+
+The above settings indicate that the AC will be switched
+off whenever the predicted temperature falls below the lower
+threshold. When this happens, the model will use an IoT
+temperature sensor to measure the current indoor temperature
+and switch on the AC when the temperature hits the upper
+thermal comfort threshold.
+Rules 1 and 2 simulation results are compared to a block of
+data in the original dataset in which the AC operates
+continuously from 7:39 a.m. to 11:35 a.m. The first 15minutes of temperature readings from the beginning of the
+day at 7:39 a.m. are sensor readings from the original data and
+are consistent for all situations. However, the subsequent
+temperatures in the simulation after the first time the AC is
+turned off, are the predicted temperatures from the developed
+prediction model in stage 1.
+The temperature values for all scenarios are depicted in Fig.
+5, and the AC status of on/off for both Rule 1 and 2 scenarios
+are provided in Fig. 6(a) and Fig. 6(b). When Fig. 5 and 6 are
+compared, it can be observed that, as expected, the
+temperatures rise when the AC is turned off and drop when it
+is on. Table 4 provides detailed statistics of this simulation.
+For simulation of Rule 1, the maximum indoor temperature
+was 27.93 ºC while the minimum predicted indoor
+temperature was 25.92 ºC, and the average predicted
+temperature achieved was 27.16 ºC. The corresponding
+temperatures for simulation of Rule 2 are 27.14 ºC, 23.09 ºC
+and 25.23 ºC, respectively. This indicates that the proposed
+model is able to keep the temperature within the comfort
+
+1071
+
+range to ensure comfortability of the occupants whilst also
+saving energy usage by switching off the AC at the pre-set
+upper limit. In contrast, the original data keeps the AC on
+throughout the entire period of the experiment.
+Table IV also shows the difference in operating in
+efficiency. The Rule 1 scenario turned off the AC 49.00% of
+the time whilst the Rule 2 scenario turned the AC off 36.70%
+of the time. The Rule 1 scenario turned the AC off a higher
+number of times than the Rule 2 scenario since the Rule 1
+scenario set a higher value for the thermal comfort range, so
+less energy is needed to keep the room temperature within the
+required range. This signifies that the AC does not need to be
+turned on 100% of the time as it was in the original data to
+have a comfortable temperature for an indoor working
+environment.
+IV. CONCLUSION
+A deep learning framework for AC control is developed.
+The proposed framework consists of a predictive model
+which uses the historical indoor temperature to predict the
+future J-minute of indoor temperatures. The highlight of this
+predictive model is its capability of predicting the future
+indoor temperature based on different AC status, it is turned
+on turned off at any given future minute. In our work, the
+proposed rule-based model simply used the prediction model
+to predict the future temperature if the AC is off for the entire
+duration. The proposed model is straightforward but effective
+in generating the required savings in the half-day simulation.
+
+TABLE IV
+STATISTICS OF HALF-DAY SIMULATION FOR RULE 1 AND RULE 2
+
+Max Predicted Temperature
+Min Predicted Temperature
+Average Predicted
+Temperature
+Total minutes AC is turned
+OFF
+Total minutes AC is turned
+ON
+Total Duration (Minutes)
+Percentage of savings
+
+Rule 1
+Scenario
+27.93
+25.92
+27.16
+
+Rule 2
+Scenario
+27.14
+23.09
+25.23
+
+117
+
+87
+
+120
+
+150
+
+237
+49.00 %
+
+237
+36.70%
+
+[4]
+
+[5]
+
+[6]
+
+[7]
+
+[8]
+
+Performance of the proposed model is tested on the
+CUBEM dataset. A half-day operation to minimize the AC
+usage while also keeping a steady thermal comfort level. For
+thermal comfort range from 27.0 ºC to 27.9 ºC, 49.00% of the
+time the AC was turned off during the simulation, the average
+indoor temperature was 27.16 ºC, aligning with the required
+comfort range. The flexibility of the proposed predictive
+model provides various possibilities to design various
+possibility algorithms to control the AC for energy savings
+intelligently. A more sophisticated decision-making model
+that fully exploits the predictive model can be studied in the
+future.
+A prediction model with high accuracy necessitates having
+a large dataset to train a neural network. Studying and using a
+more sophisticated neural network architecture like the bidirectional LSTM can enhance the model performance. In this
+situation, the network can better understand the data's trend
+and hence enhance forecast accuracy. To improve the trend of
+the prediction, the model can also be trained in stateful mode.
+On the other hand, the system can be further improved by
+including more features in the model, such as outdoor
+temperature, and energy consumption. It is expected that the
+outdoor temperature may affect the indoor temperature
+cooling curve and the consumed energy. The addition of these
+features is expected to provide a better understanding of the
+energy consumption related to the temperature set points.
+Besides that, the developed predictive model can be
+incorporated with an optimization model to determine the
+real-time optimal schedule in AC operation so that the
+minimal operating cost can be determined precisely.
+
+[9]
+
+[10]
+
+[11]
+
+[12]
+
+[13]
+
+[14]
+
+[15]
+
+[16]
+
+[17]
+
+[18]
+
+ACKNOWLEDGMENT
+The authors acknowledge and thank the Ministry of
+Education (MOE) of Malaysia for its financial support
+through the Fundamental Research Grant Scheme (FRGS),
+Reference Code: FRGS/1/2018/TK10/MMU/03/2
+
+[19]
+
+[20]
+
+REFERENCES
+[1]
+
+[2]
+
+[3]
+
+F. Zamora-Martínez, P. Romeu, P. Botella-Rocamora, and J. Pardo,
+“Towards energy efficiency: Forecasting indoor temperature via
+multivariate analysis,” Energies (Basel), vol. 6, no. 9, 2013,
+doi: 10.3390/en6094639.
+M. N. M. Nawi, F. Baharum, M. F. Rajemi, J. A. Ibrahim, and M. Z.
+Tahir, “Energy management: A case study on the malaysian
+government office building,” International Journal of Applied
+Engineering Research, vol. 9, no. 23, 2014.
+S. Mokhtar, A. Abdullah, and Z. Mali, “Energy Malaysia Volume 23,”
+2022. Accessed: Oct. 20, 2023. [Online]. Available:
+
+[21]
+
+[22]
+
+[23]
+
+1072
+
+https://www.st.gov.my/en/contents/files/download/112/Energy_Mala
+ysia_Volume_23.pdf
+A. M. Omer, “Energy, environment and sustainable development,”
+Renewable and Sustainable Energy Reviews, vol. 12, no. 9. 2008.
+doi: 10.1016/j.rser.2007.05.001.
+L. Pérez-Lombard, J. Ortiz, and C. Pout, “A review on buildings
+energy consumption information,” Energy Build, vol. 40, no. 3, 2008,
+doi: 10.1016/j.enbuild.2007.03.007.
+A. Costa, M. M. Keane, J. I. Torrens, and E. Corry, “Building
+operation and energy performance: Monitoring, analysis and
+optimisation
+toolkit,”
+Appl
+Energy,
+vol.
+101,
+2013,
+doi: 10.1016/j.apenergy.2011.10.037.
+F. Del Ama Gonzalo, B. M. Santamaria, and J. A. H. Ramos,
+“Designing a wireless sensor with ultra-capacitor and PV microcell for
+smart building energy management,” Int J Embed Syst, vol. 11, no. 1,
+2019, doi: 10.1504/IJES.2019.097565.
+B. Rajasekhar et al., “A Survey of computational intelligence
+techniques for air-conditioners energy management,” IEEE
+Transactions on Emerging Topics in Computational Intelligence, vol.
+4, no. 4. 2020. doi: 10.1109/TETCI.2020.2991728.
+V. Vakiloroaya, B. Samali, A. Fakhar, and K. Pishghadam, “A review
+of different strategies for HVAC energy saving,” Energy Convers
+Manag, vol. 77, 2014, doi: 10.1016/j.enconman.2013.10.023.
+S. Wang and Z. Ma, “Supervisory and optimal control of building
+HVAC systems: A review,” HVAC and R Research, vol. 14, no. 1,
+2008, doi: 10.1080/10789669.2008.10390991.
+[11] M. Fadzli Haniff, H. Selamat, R. Yusof, S. Buyamin, and F. Sham
+Ismail, “Review of HVAC scheduling techniques for buildings
+towards energy-efficient and cost-effective operations,” Renewable
+and
+Sustainable
+Energy
+Reviews,
+vol.
+27.
+2013.
+doi: 10.1016/j.rser.2013.06.041.
+[12] M. Esrafilian-Najafabadi and F. Haghighat, “Occupancy-based
+HVAC control using deep learning algorithms for estimating online
+preconditioning time in residential buildings,” Energy Build, vol. 252,
+2021, doi: 10.1016/j.enbuild.2021.111377.
+R. Godahewa, C. Deng, A. Prouzeau, and C. Bergmeir, “A Generative
+Deep Learning Framework Across Time Series to Optimize the
+Energy Consumption of Air Conditioning Systems,” IEEE Access, vol.
+10, 2022, doi: 10.1109/ACCESS.2022.3142174.
+Z. K. Ding, Q. M. Fu, J. P. Chen, H. J. Wu, Y. Lu, and F. Y. Hu,
+“Energy-efficient control of thermal comfort in multi-zone residential
+HVAC via reinforcement learning,” Conn Sci, vol. 34, no. 1, 2022, doi:
+10.1080/09540091.2022.2120598.
+E. W. Shaw, “Thermal Comfort: analysis and applications in
+environmental engineering, by P. O. Fanger. 244 pp. DANISH
+TECHNICAL PRESS. Copenhagen, Denmark, 1970. Danish Kr. 76,
+50,”
+R
+Soc
+Health
+J,
+vol.
+92,
+no.
+3,
+1972,
+doi: 10.1177/146642407209200337.
+[16] X. Zhou et al., “Data-driven thermal comfort model via support
+vector machine algorithms: Insights from ASHRAE RP-884 database,”
+Energy Build, vol. 211, 2020, doi: 10.1016/j.enbuild.2020.109795.
+[17] W. Liu, Z. Lian, and B. Zhao, “A neural network evaluation model
+for individual thermal comfort,” Energy Build, vol. 39, no. 10, 2007,
+doi: 10.1016/j.enbuild.2006.12.005.
+[18] S. Baldi, C. D. Korkas, M. Lv, and E. B. Kosmatopoulos,
+“Automating occupant-building interaction via smart zoning of
+thermostatic loads: A switched self-tuning approach,” Appl Energy,
+vol. 231, 2018, doi: 10.1016/j.apenergy.2018.09.188.
+[19] C. D. Korkas, S. Baldi, and E. B. Kosmatopoulos, “GridConnected Microgrids: Demand Management via Distributed Control
+and Human-in-the-Loop Optimization,” in Advances in Renewable
+Energies and Power Technologies, vol. 2, 2018. doi: 10.1016/B9780-12-813185-5.00025-5.
+C. D. Korkas, S. Baldi, I. Michailidis, and E. B. Kosmatopoulos,
+“Intelligent energy and thermal comfort management in gridconnected microgrids with heterogeneous occupancy schedule,” Appl
+Energy, vol. 149, 2015, doi: 10.1016/j.apenergy.2015.01.145.
+X. Wu, J. He, Y. Xu, J. Lu, N. Lu, and X. Wang, “Hierarchical Control
+of Residential HVAC Units for Primary Frequency Regulation,” IEEE
+Trans
+Smart
+Grid,
+vol.
+9,
+no.
+4,
+2018,
+doi:
+10.1109/TSG.2017.2766880.
+D. Watari et al., “Thermal Comfort Aware Online Energy
+Management Framework for a Smart Residential Building,” in
+Proceedings -Design, Automation and Test in Europe, DATE, 2021.
+doi: 10.23919/DATE51398.2021.9473922.
+T. Zeng and P. Barooah, “An Adaptive Model Predictive Control
+Scheme for Energy-Efficient Control of Building HVAC Systems,”
+
+[24]
+
+[25]
+
+[26]
+
+[27]
+
+Journal of Engineering for Sustainable Buildings and Cities, vol. 2,
+no. 3, 2021, doi: 10.1115/1.4051482.
+S. Qiu, Z. Li, Z. Li, J. Li, S. Long, and X. Li, “Model-free control
+method based on reinforcement learning for building cooling water
+systems: Validation by measured data-based simulation,” Energy
+Build, vol. 218, 2020, doi: 10.1016/j.enbuild.2020.110055.
+S. Brandi, M. S. Piscitelli, M. Martellacci, and A. Capozzoli, “Deep
+reinforcement learning to optimise indoor temperature control and
+heating energy consumption in buildings,” Energy Build, vol. 224,
+2020, doi: 10.1016/j.enbuild.2020.110225.
+Z. Jiang et al., “Building HVAC control with reinforcement learning
+for reduction of energy cost and demand charge,” Energy Build, vol.
+239, 2021, doi: 10.1016/j.enbuild.2021.110833.
+T. Wei, S. Ren, and Q. Zhu, “Deep Reinforcement Learning for Joint
+Datacenter and HVAC Load Control in Distributed Mixed-Use
+Buildings,” IEEE Transactions on Sustainable Computing, vol. 6, no.
+3, 2021, doi: 10.1109/TSUSC.2019.2910533.
+
+[28]
+
+[29]
+
+[30]
+
+[31]
+
+1073
+
+A. Zenger, J. Schmidt, and M. Krödel, “Towards the intelligent home:
+Using reinforcement-learning for optimal heating control,” in Lecture
+Notes in Computer Science (including subseries Lecture Notes in
+Artificial Intelligence and Lecture Notes in Bioinformatics), 2013.
+doi: 10.1007/978-3-642-40942-4_30.
+K. Kurte, K. Amasyali, J. Munk, and H. Zandi, “Comparative analysis
+of model-free and model-based HVAC control for residential demand
+response,” in BuildSys 2021 - Proceedings of the 2021 ACM
+International Conference on Systems for Energy-Efficient Built
+Environments, 2021. doi: 10.1145/3486611.3488727.
+Q. Fu, X. Chen, S. Ma, N. Fang, B. Xing, and J. Chen, “Optimal
+control method of HVAC based on multi-agent deep reinforcement
+learning,”
+Energy
+Build,
+vol.
+270,
+2022,
+doi: 10.1016/j.enbuild.2022.112284.
+M. Pipattanasomporn et al., “CU-BEMS, smart building electricity
+consumption and indoor environmental sensor datasets,” Sci Data, vol.
+7, no. 1, 2020, doi: 10.1038/s41597-020-00582-3.
+
+

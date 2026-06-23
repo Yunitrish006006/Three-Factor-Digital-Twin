@@ -106,6 +106,23 @@ class PublicDatasetBenchmarkTests(unittest.TestCase):
                 c2["targets"]["illuminance"]["persistence"]["mae"],
             )
 
+    def test_run_cu_bems_benchmark_with_zone_ids_filters_single_zone(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            dataset_dir = root / "cu_bems"
+            dataset_dir.mkdir(parents=True, exist_ok=True)
+            self._write_cu_bems_normalized_fixture(dataset_dir)
+
+            summary = run_public_dataset_benchmark("cu-bems", dataset_dir, horizons=[1], zone_ids=["floor2_zone1"])
+
+            self.assertEqual(summary["zone_ids"], ["floor2_zone1"])
+            self.assertEqual(summary["counts"]["zones"], 1)
+            self.assertEqual(summary["counts"]["sensor_rows"], 12)
+            self.assertEqual(summary["counts"]["device_rows"], 24)
+            self.assertEqual(summary["counts"]["auxiliary_rows"], 12)
+            c1 = next(task for task in summary["tasks"] if task["task_id"] == "C1")
+            self.assertEqual(c1["status"], "ok")
+
     def test_run_cu_bems_benchmark_from_source_files_skips_invalid_timestamp_rows(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:
             root = Path(tmp_dir)

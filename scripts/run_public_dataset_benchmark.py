@@ -19,16 +19,22 @@ def main() -> None:
         default="15",
         help="Comma-separated forecast horizons in minutes, for example 15 or 15,60.",
     )
+    parser.add_argument(
+        "--zone-ids",
+        default="",
+        help="Optional comma-separated CU-BEMS zone identifiers, for example floor6_zone1.",
+    )
     args = parser.parse_args()
 
     input_root = Path(args.input_root)
     output_root = Path(args.output_root)
     horizons = [int(value.strip()) for value in args.horizons.split(",") if value.strip()]
+    zone_ids = [value.strip() for value in args.zone_ids.split(",") if value.strip()] or None
 
     datasets = ["cu-bems", "sml2010"] if args.dataset == "all" else [args.dataset]
     for dataset in datasets:
         input_dir = input_root / dataset.replace("-", "_")
-        summary = run_public_dataset_benchmark(dataset=dataset, input_dir=input_dir, horizons=horizons)
+        summary = run_public_dataset_benchmark(dataset=dataset, input_dir=input_dir, horizons=horizons, zone_ids=zone_ids)
         output_path = output_root / f"{dataset.replace('-', '_')}_benchmark_summary.json"
         write_public_dataset_benchmark_summary(summary, output_path)
         print(output_path.relative_to(ROOT))

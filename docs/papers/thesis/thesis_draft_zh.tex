@@ -2175,6 +2175,8 @@ top-1 regret & 實測最佳動作與推薦第一名的改善差距 & 衡量排�
 
 因此，本節的「本研究」數字不是 physics model zero-shot 直接輸出，也不是另行切分資料後得到的不可比結果，而是同一 train/test split、同一 target、同一 horizon 下的正式 head-to-head comparison。Web demo 的 Public Dataset Comparison 區塊則讀取同一批 JSON 輸出，將這些流程、限制與 MAE 結果整理成展示表格。
 
+值得注意的是，候選對照文獻中已確認的 CU-BEMS / AC predictive control 結果僅報告溫度預測指標：validation RMSE 0.08、MAE 0.03，case-study RMSE 0.1600、0.1591、0.1621、0.1627。該文獻未提供濕度或照度指標，因此本研究目前僅將其作為溫度比較的參考，濕度與照度比較仍需另尋資料來源。
+
 
 表 5-8 列出公開資料集比較的執行流程與可宣稱範圍。
 

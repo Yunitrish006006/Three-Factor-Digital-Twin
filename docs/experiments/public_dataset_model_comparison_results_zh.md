@@ -87,6 +87,8 @@
 
 ## CU-BEMS 總結
 
+本研究在 CU-BEMS 上的映射結果與 SML2010 不同。公開對照文獻中已確認的 CU-BEMS / AC predictive control 結果僅提供溫度預測指標：validation RMSE 0.08、MAE 0.03，case-study RMSE 0.1600、0.1591、0.1621、0.1627。該文獻未提供濕度或照度指標，因此本研究目前僅將其作為溫度比較的外部參考，濕度與照度比較仍須另尋資料來源。
+
 CU-BEMS 的一對一比較結果和 SML2010 很不一樣。這份資料上，本研究模型映射後雖然經常能勝過 `linear regression`，但仍然無法超越 `persistence`。換句話說，在這種大規模 zone-level building operation forecasting 任務裡，最強 baseline 仍然是「直接延用最近一次觀測值」。
 
 ## 任務別結果
