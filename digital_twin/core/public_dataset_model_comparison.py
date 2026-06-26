@@ -80,6 +80,21 @@ class _OnlineMetricAccumulator:
         }
 
 
+def _fit_regularized_linear_readout(features: Sequence[Sequence[float]], targets: Sequence[float], ridge: float = 1e-6) -> List[float]:
+    width = len(features[0]) + 1
+    normal_matrix = [[0.0 for _ in range(width)] for _ in range(width)]
+    normal_vector = [0.0 for _ in range(width)]
+    for feature_row, target in zip(features, targets):
+        row = [1.0] + [float(value) for value in feature_row]
+        for row_index in range(width):
+            normal_vector[row_index] += row[row_index] * float(target)
+            for column_index in range(width):
+                normal_matrix[row_index][column_index] += row[row_index] * row[column_index]
+    for index in range(width):
+        normal_matrix[index][index] += ridge
+    return solve_linear_system(normal_matrix, normal_vector)
+
+
 class _MappedReadoutEvaluator:
     def __init__(
         self,
@@ -100,38 +115,60 @@ class _MappedReadoutEvaluator:
         self.test_samples = self.sample_count - self.train_samples
         self._processed_samples = 0
         self._width = len(self.feature_names) + 1
-        self._normal_matrix = [[0.0 for _ in range(self._width)] for _ in range(self._width)]
-        self._target_vectors = {target_name: [0.0 for _ in range(self._width)] for target_name in self.target_names}
+        self._train_rows: List[List[float]] = []
+        self._train_targets: Dict[str, List[float]] = {target_name: [] for target_name in self.target_names}
+        self._feature_means: List[float] = [0.0 for _ in self.feature_names]
+        self._feature_scales: List[float] = [1.0 for _ in self.feature_names]
         self._coefficients: Optional[Dict[str, List[float]]] = None
         self._metrics = {target_name: _OnlineMetricAccumulator() for target_name in self.target_names}
 
     def consume(self, features: Sequence[float], targets: Dict[str, float]) -> None:
         self._processed_samples += 1
-        row = [1.0] + [float(value) for value in features]
         if self._processed_samples <= self.train_samples:
-            for row_index in range(self._width):
-                for column_index in range(self._width):
-                    self._normal_matrix[row_index][column_index] += row[row_index] * row[column_index]
+            feature_vector = [float(value) for value in features]
+            self._train_rows.append(feature_vector)
             for target_name in self.target_names:
-                target_value = float(targets[target_name])
-                for row_index in range(self._width):
-                    self._target_vectors[target_name][row_index] += row[row_index] * target_value
+                self._train_targets[target_name].append(float(targets[target_name]))
             if self._processed_samples == self.train_samples:
+                self._feature_means = [
+                    sum(row[index] for row in self._train_rows) / float(len(self._train_rows)) if self._train_rows else 0.0
+                    for index in range(len(self.feature_names))
+                ]
+                self._feature_scales = [
+                    max(math.sqrt(sum((row[index] - self._feature_means[index]) ** 2 for row in self._train_rows) / float(len(self._train_rows))), 1e-6)
+                    if self._train_rows else 1.0
+                    for index in range(len(self.feature_names))
+                ]
                 self._coefficients = {
-                    target_name: solve_linear_system(self._normal_matrix, self._target_vectors[target_name])
+                    target_name: _fit_regularized_linear_readout(
+                        [self._standardize_row(row) for row in self._train_rows],
+                        self._train_targets[target_name],
+                        ridge=1e-3,
+                    )
                     for target_name in self.target_names
                 }
             return
 
         if self._coefficients is None:
             self._coefficients = {
-                target_name: solve_linear_system(self._normal_matrix, self._target_vectors[target_name])
+                target_name: _fit_regularized_linear_readout(
+                    [self._standardize_row(row) for row in self._train_rows],
+                    self._train_targets[target_name],
+                    ridge=1e-3,
+                )
                 for target_name in self.target_names
             }
 
+        standardized = self._standardize_row([float(value) for value in features])
         for target_name in self.target_names:
-            prediction = float(sum(weight * value for weight, value in zip(self._coefficients[target_name], row)))
+            prediction = float(self._coefficients[target_name][0] + sum(weight * value for weight, value in zip(self._coefficients[target_name][1:], standardized)))
             self._metrics[target_name].add(float(targets[target_name]), prediction)
+
+    def _standardize_row(self, row: Sequence[float]) -> List[float]:
+        return [
+            (float(value) - self._feature_means[index]) / self._feature_scales[index]
+            for index, value in enumerate(row)
+        ]
 
     def summary(self, baseline_task: Dict[str, object], model_name: str) -> Dict[str, object]:
         if baseline_task.get("status") != "ok":
