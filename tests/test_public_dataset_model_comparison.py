@@ -1,4 +1,5 @@
 import json
+import math
 import tempfile
 import unittest
 from pathlib import Path
@@ -10,12 +11,22 @@ if root_str not in sys.path:
     sys.path.insert(0, root_str)
 
 from digital_twin.core.public_dataset_benchmark import run_public_dataset_benchmark
-from digital_twin.core.public_dataset_model_comparison import run_public_dataset_model_comparison
+from digital_twin.core.public_dataset_model_comparison import _fit_regularized_linear_readout, run_public_dataset_model_comparison
 from digital_twin.neural.hybrid_residual import HybridResidualModel, ScalarResidualNetwork, build_feature_names
 from tests.test_public_dataset_benchmark import PublicDatasetBenchmarkTests
 
 
 class PublicDatasetModelComparisonTests(unittest.TestCase):
+    def test_fit_regularized_linear_readout_handles_collinear_features(self) -> None:
+        features = [[1.0, 1.0], [2.0, 2.0], [3.0, 3.0], [4.0, 4.0]]
+        targets = [1.0, 2.0, 3.0, 4.0]
+
+        coefficients = _fit_regularized_linear_readout(features, targets, ridge=1e-3)
+
+        self.assertEqual(len(coefficients), 3)
+        self.assertTrue(all(math.isfinite(value) for value in coefficients))
+        self.assertLess(abs(coefficients[1]), 5.0)
+
     def test_run_cu_bems_model_comparison_from_source_files(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:
             root = Path(tmp_dir)
