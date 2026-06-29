@@ -1,10 +1,10 @@
-# OPEN_SPEC for Three-Factor Digital Twin
+# Three-Factor Digital Twin 開放規格（OPEN_SPEC）
 
 ## 目的
 
-本檔案為專案的開放式規格說明，供每次 agent 啟動時快速掌握整體架構、資料來源、處理鏈、執行方式與知識關係。
+本檔案為專案的開放式規格說明，供每次代理程式啟動時快速掌握整體架構、資料來源、處理鏈、執行方式與知識關係。
 
-目標是讓 agent 和開發者能快速理解：
+目標是讓代理程式與開發者能快速理解：
 - 這個專案的研究目標與系統邊界
 - 主要資料集與資料流
 - 主要程式模組與服務層次
@@ -23,10 +23,11 @@
 - 照度 `illuminance`
 
 系統主張：
-- 先用可解釋的 physics-based model 作為主估計
-- 再利用稀疏 sensor 進行校正
-- 最後以 hybrid residual neural network 做結構性殘差修正
-- 並提供多種存取介面：CLI / script / web demo / MCP / Gemma bridge
+
+- 先用可解釋的物理模型作為主估計
+- 再利用稀疏感測器進行校正
+- 最後以混合式殘差神經網路做結構性殘差修正
+- 並提供多種存取介面：命令列 / 腳本 / Web 展示 / MCP / Gemma 橋接
 
 ---
 
@@ -38,77 +39,103 @@
   - `entities.py`：場景、房間、感測器、設備、家具、區域資料結構
   - `scenarios.py`：標準情境、窗戶矩陣、真實房間情境建立
   - `service.py`：情境建構、模型執行、輸出整合
-  - `demo.py`：demo orchestration、例程呼叫
+  - `demo.py`：示範流程編排與例程呼叫
   - `public_dataset_alignment.py`：公開資料集正規化
-  - `public_dataset_benchmark.py`：公開資料基線 benchmark
+  - `public_dataset_benchmark.py`：公開資料基線評測
   - `public_dataset_model_comparison.py`：公開資料集模型比較
 
 - `digital_twin/physics/`
-  - `model.py`：bulk + local field model、裝置影響、校正流程
-  - `learning.py`：impact learning、power calibration、trilinear residual
-  - `baselines.py`：IDW baseline、persistence / linear regression baseline
+  - `model.py`：背景場 + 局部影響場模型、裝置影響、校正流程
+  - `learning.py`：影響學習、功率校正、三線性殘差修正
+  - `baselines.py`：IDW 基線、持續值與線性回歸基線
   - `recommendations.py`：反事實動作排序與建議
 
 - `digital_twin/neural/`
-  - `hybrid_residual.py`：hybrid residual dataset、MLP 殘差修正模型、訓練與推論
+  - `hybrid_residual.py`：混合式殘差資料集、MLP 殘差修正模型、訓練與推論
 
 - `digital_twin/mcp/`
-  - `mcp_server.py`：MCP server 主流程、tool 定義、schema
+  - `mcp_server.py`：MCP 伺服器主流程、工具定義、資料結構
   - `gemma_bridge.py`：Gemma/Ollama 與本專案橋接
 
 - `digital_twin/web/`
-  - `web_demo.py`：本地 Web demo 伺服器與 API
+  - `web_demo.py`：本地 Web 展示伺服器與 API
   - `render.py`：SVG / JSON / CSV 圖表渲染、前端資料格式
 
 - `scripts/`
   - `run_demo.py`：完整示範流程
   - `run_window_matrix.py`：48 組窗戶時段/天氣/季節矩陣
-  - `run_hybrid_residual_experiment.py`：hybrid residual 訓練與評估
-  - `run_public_dataset_benchmark.py`：公開資料集 shared-task baseline
-  - `run_public_dataset_model_comparison.py`：公開資料集 head-to-head 比較
+  - `run_hybrid_residual_experiment.py`：混合式殘差模型訓練與評估
+  - `run_public_dataset_benchmark.py`：公開資料集任務對齊基線評測
+  - `run_public_dataset_model_comparison.py`：公開資料集一對一模型比較
   - `normalize_public_benchmark_data.py`：公開資料正規化
   - `build_architecture_diagrams.py`：產生架構圖 SVG
   - `build_thesis_docx.py` / `build_thesis_pdf.py`：中文論文輸出
   - `build_thesis_pptx.py`：簡報投影片產生
   - `run_mcp_server.py`：啟動本地 MCP 伺服器
-  - `run_web_demo.py`：啟動 web demo
+  - `run_web_demo.py`：啟動 Web 展示
   - `verify_thesis_results.py`：論文結果驗證流程
 
 - `docs/`
   - `thesis/`：中文論文草稿、系統架構、訓練路線、實驗結果
-  - `models/`：模型說明、參考模型、hybrid residual 說明
+  - `models/`：模型說明、參考模型、混合式殘差模型說明
   - `mcp/`：MCP 與 Gemma bridge 文件
-  - `web/`：Web demo 使用說明
-  - `experiments/`：實驗計劃、benchmark、結果說明
+  - `web/`：Web 展示使用說明
+  - `experiments/`：實驗計劃、評測與結果說明
   - `templates/`：房間設計與訓練資料模板
+
+### 2.2 檔案分類規則（A-H）
+
+為了讓 agent 與開發者能快速定位檔案，本專案採用以下分類規則：
+
+- A 類：專案根目錄與設定檔（規範、說明、建置設定）。
+- B 類：核心程式碼（`digital_twin/`）。
+- C 類：研究文件（`docs/`）。
+- D 類：執行輸出與資料產物（`outputs/`）。
+- E 類：自動化腳本（`scripts/`）。
+- F 類：測試程式（`tests/`）。
+- G 類：隱藏目錄與開發工具設定（`.github/`、`.vscode/`、`.roo/` 等）。
+- H 類：快取與中繼檔（`__pycache__/`、`.pytest_cache/`、`.DS_Store`、`*.pyc`、`*.aux`、`*.log` 等）。
+
+補充分類原則（處理原先未細分或容易重疊項）：
+
+- C-文件中繼檔：位於 `docs/` 下的編譯中繼與暫存（如 `docs/papers/ieee/*.aux`、`*.log`、`*.bbl`、`*.blg`，以及 `.ql_tmp`）邏輯上視為 H 類。
+- D-交付輸出：`outputs/papers/` 為可交付成品（`docx`、`pdf`、`pptx`），與 `outputs/data/` 的資料輸出分開管理。
+- D-圖像輸出：`outputs/figures/` 為視覺化輸出，與資料表格或 JSON 報告分開追蹤。
+- G/H 重疊處理：`.pytest_cache/` 優先歸 H 類；G 類保留為開發工具設定。
+- B/H 重疊處理：`digital_twin/**/__pycache__/` 與 `*.pyc` 優先歸 H 類，不算核心程式碼。
+
+完整檔案清單與分類結果請參考：
+
+- `docs/thesis/project_file_classification_zh.md`
 
 ---
 
 ## 3. 主要資料集與來源
 
-### 3.1 自製 synthetic benchmark
+### 3.1 自製模擬評測資料
 
 - 位置：`outputs/data/`
 - 內容：包含受控標準情境、48 組窗戶矩陣、完整 dense field 重建結果
-- 用途：主要用於 full-field reconstruction、模型元件驗證、可解釋物理結構測試
+- 用途：主要用於全場域重建、模型元件驗證、可解釋物理結構測試
 
-### 3.2 真實房間 sparse calibration
+### 3.2 真實房間稀疏校正
 
 - 位置：`outputs/data/bedroom_01_weekly/`
 - 來源：`bedroom_01` 真實快照資料
-- 內容：8 顆角落感測器、裝置狀態、外部環境、pillow 參考點
+- 內容：8 顆角落感測器、裝置狀態、外部環境、枕頭位置參考點
 - 用途：驗證稀疏校正流程能否改善未參與校正位置的預測
 
-### 3.3 公開資料集 task-aligned benchmark
+### 3.3 公開資料集任務對齊評測
 
 - 主要資料集：SML2010、CU-BEMS
 - raw 資料存放：`outputs/data/raw_public/`
 - 正規化中介格式：`outputs/data/normalized_public/`
-- benchmark 輸出：`outputs/data/public_benchmarks/`
+- 評測輸出：`outputs/data/public_benchmarks/`
 
 用途說明：
-- 只做「task-aligned benchmark」，不當作完整 3D dense-field 真值
-- 主要比較 persistence、linear regression 與 hybrid twin readout
+
+- 只做「任務對齊評測」，不當作完整 3D 稠密場真值
+- 主要比較持續值、線性回歸與 hybrid twin readout
 - 強調資料支援任務層級，而非本研究完整情境層級
 
 ### 3.4 模板與房間設計格式
@@ -125,38 +152,38 @@
 
 ```mermaid
 flowchart TB
-  Input["輸入: room scenario / devices / furniture / outdoor / time"]
-  Scenario["Scenario 建構
+  Input["輸入: 情境 / 裝置 / 家具 / 外部條件 / 時間"]
+  Scenario["情境建構
   (core/scenarios.py, core/service.py)"]
-  Nominal["Physics nominal estimate
+  Nominal["物理名目估測
   (physics/model.py)"]
-  Calibration["Sparse sensor校正
+  Calibration["稀疏感測器校正
   (physics/learning.py)"]
-  Corrected["Corrected field output
+  Corrected["校正後場域輸出
   (temperature/humidity/illuminance)"]
-  Residual["Optional hybrid residual
+  Residual["可選混合式殘差修正
   (neural/hybrid_residual.py)"]
-  Inference["Point/zone/mode inference"]
-  Recommendation["Counterfactual action ranking
+  Inference["點位/區域/模式推論"]
+  Recommendation["反事實動作排序
   (physics/recommendations.py)"]
-  Output["Dashboard / JSON / Web / MCP / figures"]
+  Output["儀表板 / JSON / Web / MCP / 圖表"]
 
   Input --> Scenario --> Nominal --> Calibration --> Corrected --> Residual --> Inference --> Recommendation --> Output
 ```
 
-### 4.2 訓練與 benchmark 流程
+### 4.2 訓練與評測流程
 
-- 原始資料：角落 sensor 時序、裝置事件、外部環境、情境描述
+- 原始資料：角落感測器時序、裝置事件、外部環境、情境描述
 - 時間對齊與情境整併
-- physics nominal 模擬
-- sparse 校正：power calibration + trilinear residual correction
-- impact learning：before/after delta least squares
-- hybrid residual training：residual features + MLP
-- 公開資料集：normalize → benchmark → model comparison
+- 物理名目模型模擬
+- 稀疏校正：功率校正 + 三線性殘差修正
+- 影響學習：前後差值最小平方學習
+- 混合式殘差訓練：殘差特徵 + MLP
+- 公開資料集：正規化 → 評測 → 模型比較
 
 ### 4.3 服務與介面層
 
-- CLI / script：`scripts/run_demo.py`、`scripts/run_window_matrix.py`、`scripts/run_hybrid_residual_experiment.py`
+- 命令列 / 腳本：`scripts/run_demo.py`、`scripts/run_window_matrix.py`、`scripts/run_hybrid_residual_experiment.py`
 - Web UI：`digital_twin/web/web_demo.py`
 - MCP：`digital_twin/mcp/mcp_server.py` + `scripts/run_mcp_server.py`
 - Gemma/Ollama：`digital_twin/mcp/gemma_bridge.py`
@@ -165,10 +192,10 @@ flowchart TB
 
 ## 5. 程式執行與建置方式
 
-### 5.1 Python 環境
+### 5.1 Python 執行環境
 
 - Python 3.9+
-- 該 repo 採用 `pyproject.toml` 描述專案 metadata
+- 本專案採用 `pyproject.toml` 描述專案中繼資訊
 - 無獨立 C/C++ 編譯步驟，主要依賴 Python 腳本執行
 
 ### 5.2 常用執行命令
@@ -211,29 +238,29 @@ cd docs/papers/ieee && tectonic --keep-logs --keep-intermediates paper.tex
 
 ```mermaid
 flowchart LR
-  Room["Room / Geometry / Zones / Furniture"]
-  Sensors["8-corner Sensors
-  (temperature/humidity/illuminance)"]
-  Devices["Non-networked Devices
-  (AC / Window / Light)"]
-  Outdoor["Outdoor Boundary
-  (temp/humidity/sunlight)"]
-  Baseline["Indoor Baseline State"]
-  Scenario["Scenario State
-  (room + devices + outdoor + time)"]
-  Physics["Physics Model
-  (bulk + local field)"]
-  Calibration["Sensor Calibration
-  (power + trilinear)"]
-  Residual["Hybrid Residual Model
-  (MLP correction)"]
-  Inference["Point/Zone Prediction"]
-  Recommendation["Action Ranking
-  (recommended device settings)"]
-  PublicData["Public Datasets
+  Room["房間 / 幾何 / 區域 / 家具"]
+  Sensors["8 顆角落感測器
+  (溫度/濕度/照度)"]
+  Devices["非連網裝置
+  (冷氣 / 窗戶 / 照明)"]
+  Outdoor["外部邊界條件
+  (外溫/外濕/日照)"]
+  Baseline["室內基準狀態"]
+  Scenario["情境狀態
+  (房間 + 裝置 + 外部 + 時間)"]
+  Physics["物理模型
+  (背景場 + 局部影響場)"]
+  Calibration["感測器校正
+  (功率 + 三線性)"]
+  Residual["混合式殘差模型
+  (MLP 修正)"]
+  Inference["點位/區域預測"]
+  Recommendation["動作排序
+  (建議裝置設定)"]
+  PublicData["公開資料集
   (SML2010 / CU-BEMS)"]
-  Benchmark["Task-Aligned Benchmark
-  (persistence / linear regression)"]
+  Benchmark["任務對齊評測
+  (持續值 / 線性回歸)"]
 
   Room --> Scenario
   Sensors --> Calibration
@@ -252,7 +279,7 @@ flowchart LR
 ### 6.1 核心實體解釋
 
 - `Room`：房間幾何、標準感測拓樸、家具阻隔
-- `Sensors`：8 顆角落 sensor 觀測
+- `Sensors`：8 顆角落感測器觀測
 - `Devices`：冷氣、窗戶、照明等非連網裝置狀態
 - `Outdoor`：外氣溫、外氣濕、日照強度
 - `Baseline`：未加裝置前的室內基準狀態
@@ -260,7 +287,7 @@ flowchart LR
 - `Physics`：物理結構場估計
 - `Calibration`：透過真實 sensor 修正模型參數
 - `Residual`：學習物理模型殘差的資料驅動補正
-- `Benchmark`：公開資料上 task-aligned 的比較分析
+- `Benchmark`：公開資料上的任務對齊比較分析
 
 ---
 
@@ -276,9 +303,9 @@ flowchart LR
 
 ---
 
-## 8. Agent 啟動建議流程
+## 8. 代理程式啟動建議流程
 
-1. 先讀取本 OPEN_SPEC.md，快速建立專案全局知識。 
+1. 先讀取本 OPEN_SPEC.md，快速建立專案全局知識。
 2. 再根據需求定位目標模組：
    - 若要理解模型：查看 `digital_twin/physics/` 與 `digital_twin/neural/`
    - 若要理解資料：查看 `outputs/data/`、`docs/thesis/chatgpt_project_data_summary.md`
@@ -290,9 +317,10 @@ flowchart LR
 ## 9. 版本與同步策略提醒
 
 本 repo 的論文與實驗產物應保持同步，任何方法或架構變更後，應同時考慮：
+
 - `docs/thesis/thesis_draft_zh.md`
 - `docs/papers/ieee/paper.tex`
 - `scripts/build_thesis_pptx.py`
 - 相關 `outputs/` 檔案
 
-此提醒與 `AGENTS.md` 中的 thesis synchronization rule 一致。
+此提醒與 `AGENTS.md` 中的論文同步規則一致。
