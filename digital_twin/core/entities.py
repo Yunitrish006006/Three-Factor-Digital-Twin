@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional
+from typing import Dict, Iterable, List, Optional, Sequence, Tuple
 
 
 @dataclass(frozen=True)
@@ -122,8 +122,8 @@ class Action:
     effects: List[ActionEffect]
 
 
-def create_corner_sensors(room: Room) -> List[Sensor]:
-    corners = [
+def _corner_sensor_specs(room: Room) -> List[Tuple[str, Vector3]]:
+    return [
         ("floor_sw", Vector3(0.0, 0.0, 0.0)),
         ("floor_se", Vector3(room.width, 0.0, 0.0)),
         ("floor_nw", Vector3(0.0, room.length, 0.0)),
@@ -133,4 +133,129 @@ def create_corner_sensors(room: Room) -> List[Sensor]:
         ("ceiling_nw", Vector3(0.0, room.length, room.height)),
         ("ceiling_ne", Vector3(room.width, room.length, room.height)),
     ]
-    return [Sensor(name=name, position=position) for name, position in corners]
+
+
+def _is_point_in_box(point: Vector3, item: Furniture, eps: float = 1e-9) -> bool:
+    return (
+        item.min_corner.x - eps <= point.x <= item.max_corner.x + eps
+        and item.min_corner.y - eps <= point.y <= item.max_corner.y + eps
+        and item.min_corner.z - eps <= point.z <= item.max_corner.z + eps
+    )
+
+
+def _is_blocked(point: Vector3, furniture: Optional[Sequence[Furniture]]) -> bool:
+    if not furniture:
+        return False
+    return any(_is_point_in_box(point, item) for item in furniture)
+
+
+def _clamp_point(point: Vector3, room: Room) -> Vector3:
+    return Vector3(
+        x=min(max(point.x, 0.0), room.width),
+        y=min(max(point.y, 0.0), room.length),
+        z=min(max(point.z, 0.0), room.height),
+    )
+
+
+def _sensor_position_key(position: Vector3) -> Tuple[float, float, float]:
+    return (round(position.x, 6), round(position.y, 6), round(position.z, 6))
+
+
+def _compensation_candidates(sensor: Sensor, room: Room, step: float) -> List[Vector3]:
+    sx = 1.0 if sensor.position.x <= room.width / 2.0 else -1.0
+    sy = 1.0 if sensor.position.y <= room.length / 2.0 else -1.0
+    sz = 1.0 if sensor.position.z <= room.height / 2.0 else -1.0
+    p = sensor.position
+    return [
+        _clamp_point(Vector3(p.x + sx * step, p.y, p.z), room),
+        _clamp_point(Vector3(p.x, p.y + sy * step, p.z), room),
+        _clamp_point(Vector3(p.x, p.y, p.z + sz * step), room),
+        _clamp_point(Vector3(p.x + sx * step, p.y + sy * step, p.z + sz * step * 0.5), room),
+    ]
+
+
+def create_adaptive_sensor_layout(
+    room: Room,
+    base_sensors: Sequence[Sensor],
+    furniture: Optional[Sequence[Furniture]] = None,
+    target_sensors: Optional[Sequence[Sensor]] = None,
+    compensation_per_blocked_sensor: int = 4,
+    compensation_step: float = 0.35,
+) -> List[Sensor]:
+    sensors: List[Sensor] = []
+    blocked: List[Sensor] = []
+    used_names = set()
+    used_positions = set()
+
+    for sensor in base_sensors:
+        if _is_blocked(sensor.position, furniture):
+            blocked.append(sensor)
+            continue
+        key = _sensor_position_key(sensor.position)
+        if key in used_positions or sensor.name in used_names:
+            continue
+        sensors.append(sensor)
+        used_names.add(sensor.name)
+        used_positions.add(key)
+
+    compensation_target = max(0, int(compensation_per_blocked_sensor))
+    for sensor in blocked:
+        added = 0
+        for scale in (1.0, 1.6, 2.2, 2.8):
+            for index, candidate in enumerate(_compensation_candidates(sensor, room, compensation_step * scale), start=1):
+                if added >= compensation_target:
+                    break
+                if _is_blocked(candidate, furniture):
+                    continue
+                key = _sensor_position_key(candidate)
+                if key in used_positions:
+                    continue
+                name = f"{sensor.name}_comp_{added + 1}"
+                while name in used_names:
+                    name = f"{sensor.name}_comp_{added + 1}_{index}"
+                sensors.append(Sensor(name=name, position=candidate))
+                used_names.add(name)
+                used_positions.add(key)
+                added += 1
+            if added >= compensation_target:
+                break
+
+    for target in target_sensors or []:
+        position = _clamp_point(target.position, room)
+        key = _sensor_position_key(position)
+        if key in used_positions:
+            continue
+        name = target.name
+        if name in used_names:
+            suffix = 1
+            while f"{name}_{suffix}" in used_names:
+                suffix += 1
+            name = f"{name}_{suffix}"
+        sensors.append(Sensor(name=name, position=position))
+        used_names.add(name)
+        used_positions.add(key)
+
+    return sensors
+
+
+def create_adaptive_corner_sensors(
+    room: Room,
+    furniture: Optional[Sequence[Furniture]] = None,
+    target_points: Optional[Iterable[Tuple[str, Vector3]]] = None,
+    compensation_per_blocked_corner: int = 4,
+    compensation_step: float = 0.35,
+) -> List[Sensor]:
+    base = [Sensor(name=name, position=position) for name, position in _corner_sensor_specs(room)]
+    targets = [Sensor(name=name, position=position) for name, position in (target_points or [])]
+    return create_adaptive_sensor_layout(
+        room=room,
+        base_sensors=base,
+        furniture=furniture,
+        target_sensors=targets,
+        compensation_per_blocked_sensor=compensation_per_blocked_corner,
+        compensation_step=compensation_step,
+    )
+
+
+def create_corner_sensors(room: Room) -> List[Sensor]:
+    return [Sensor(name=name, position=position) for name, position in _corner_sensor_specs(room)]

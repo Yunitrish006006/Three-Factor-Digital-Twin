@@ -13,7 +13,7 @@ from digital_twin.core.entities import (
     Sensor,
     Vector3,
     Zone,
-    create_corner_sensors,
+    create_adaptive_corner_sensors,
 )
 from digital_twin.physics.recommendations import apply_action
 
@@ -398,7 +398,7 @@ def build_candidate_actions() -> List[Action]:
 
 def build_validation_scenarios() -> List[Scenario]:
     room = build_standard_room()
-    sensors = create_corner_sensors(room)
+    sensors = create_adaptive_corner_sensors(room=room, furniture=build_standard_furniture())
     zones = build_standard_zones(room)
     environment = build_standard_environment()
     comfort_target = build_comfort_target()
@@ -458,7 +458,7 @@ def build_window_matrix_scenarios() -> List[Scenario]:
     scenarios: List[Scenario] = []
     for season in WINDOW_SEASON_ORDER:
         room = build_window_matrix_room(season)
-        sensors = create_corner_sensors(room)
+        sensors = create_adaptive_corner_sensors(room=room, furniture=build_standard_furniture())
         zones = build_standard_zones(room)
         for weather in WINDOW_WEATHER_ORDER:
             for time_of_day in WINDOW_TIME_ORDER:
@@ -521,7 +521,7 @@ def build_direct_window_scenario(
         base_humidity=room.base_humidity if indoor_humidity is None else max(0.0, min(100.0, float(indoor_humidity))),
         base_illuminance=max(0.0, float(base_illuminance)),
     )
-    sensors = create_corner_sensors(room)
+    sensors = create_adaptive_corner_sensors(room=room, furniture=build_standard_furniture())
     zones = build_standard_zones(room)
     devices = build_standard_devices()
     furniture = build_standard_furniture()

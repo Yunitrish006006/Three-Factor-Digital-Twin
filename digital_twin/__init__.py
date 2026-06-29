@@ -10,6 +10,8 @@ from .core.entities import (
     Sensor,
     Vector3,
     Zone,
+    create_adaptive_corner_sensors,
+    create_adaptive_sensor_layout,
     create_corner_sensors,
 )
 from .physics.model import DigitalTwinModel
@@ -26,6 +28,8 @@ __all__ = [
     "Sensor",
     "Vector3",
     "Zone",
+    "create_adaptive_corner_sensors",
+    "create_adaptive_sensor_layout",
     "create_corner_sensors",
     "run_validation_suite",
 ]

@@ -20,6 +20,7 @@ from digital_twin.core.entities import (
     Sensor,
     Vector3,
     Zone,
+    create_adaptive_sensor_layout,
 )
 from digital_twin.core.scenarios import build_device
 from digital_twin.physics.model import METRICS, DigitalTwinModel, FieldGrid
@@ -338,10 +339,6 @@ def _build_room_bundle(payload: Dict) -> Dict[str, object]:
         ny=int(resolution_payload["ny"]),
         nz=int(resolution_payload["nz"]),
     )
-    sensors = [
-        Sensor(name=str(item["name"]), position=_vector(item["position"]))
-        for item in payload.get("sensors", [])
-    ]
     zones = [
         Zone(
             name=str(item["name"]),
@@ -352,7 +349,38 @@ def _build_room_bundle(payload: Dict) -> Dict[str, object]:
     ]
     devices = [_device_from_design(item) for item in payload.get("devices", [])]
     furniture = [_furniture_from_design(item) for item in payload.get("furniture", [])]
+    base_sensors = [
+        Sensor(name=str(item["name"]), position=_vector(item["position"]))
+        for item in payload.get("sensors", [])
+    ]
     comfort_payload = payload["comfort_target"]
+    target_sensors = [
+        Sensor(
+            name=f"target_{str(comfort_payload.get('location_name', 'comfort_point'))}",
+            position=_vector(comfort_payload["position"]),
+        )
+    ]
+    for zone in zones:
+        if "desk" not in zone.name.lower():
+            continue
+        target_sensors.append(
+            Sensor(
+                name=f"target_{zone.name}",
+                position=Vector3(
+                    x=(zone.min_corner.x + zone.max_corner.x) / 2.0,
+                    y=(zone.min_corner.y + zone.max_corner.y) / 2.0,
+                    z=(zone.min_corner.z + zone.max_corner.z) / 2.0,
+                ),
+            )
+        )
+    sensors = create_adaptive_sensor_layout(
+        room=room,
+        base_sensors=base_sensors,
+        furniture=furniture,
+        target_sensors=target_sensors,
+        compensation_per_blocked_sensor=4,
+        compensation_step=0.3,
+    )
     comfort_target = ComfortTarget(
         temperature=float(comfort_payload["temperature_c"]),
         temperature_tolerance=float(comfort_payload.get("temperature_tolerance_c", 1.0)),
