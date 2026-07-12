@@ -1,3 +1,5 @@
+import json
+import tempfile
 import unittest
 from pathlib import Path
 import sys
@@ -7,6 +9,7 @@ root_str = str(ROOT)
 if root_str not in sys.path:
     sys.path.insert(0, root_str)
 
+import digital_twin.web.web_demo as web_demo
 from digital_twin.web.web_demo import (
     INDEX_HTML,
     load_public_benchmark_dashboard,
@@ -110,7 +113,42 @@ class WebDemoTests(unittest.TestCase):
         self.assertEqual(_query_name("name=light_only"), "light_only")
 
     def test_public_benchmark_dashboard_contains_mapped_comparisons(self) -> None:
-        dashboard = load_public_benchmark_dashboard()
+        with tempfile.TemporaryDirectory() as temp_dir:
+            benchmark_dir = Path(temp_dir)
+            fixture = {
+                "dataset": "SML2010",
+                "benchmark_mode": "unit_test_fixture",
+                "mapped_model_name": "hybrid_digital_twin_readout",
+                "metadata": {"unsupported": []},
+                "mapping_notes": ["unit test fixture"],
+                "tasks": [
+                    {
+                        "task_id": "S1",
+                        "horizon_minutes": 15,
+                        "sample_count": 100,
+                        "train_samples": 70,
+                        "test_samples": 30,
+                        "targets": {
+                            "temperature": {
+                                "hybrid_digital_twin_readout": {"mae": 0.42, "rmse": 0.5, "correlation": 0.8},
+                                "linear_regression": {"mae": 0.55, "rmse": 0.7, "correlation": 0.6},
+                                "persistence": {"mae": 0.5, "rmse": 0.65, "correlation": 0.7},
+                            }
+                        },
+                    }
+                ],
+            }
+            (benchmark_dir / "sml2010_hybrid_twin_comparison.json").write_text(
+                json.dumps(fixture),
+                encoding="utf-8",
+            )
+            old_public_benchmarks = web_demo.PUBLIC_BENCHMARKS
+            web_demo.PUBLIC_BENCHMARKS = benchmark_dir
+            try:
+                dashboard = load_public_benchmark_dashboard()
+            finally:
+                web_demo.PUBLIC_BENCHMARKS = old_public_benchmarks
+
         self.assertIn("claim_boundary", dashboard)
         self.assertIn("pipeline", dashboard)
         self.assertGreaterEqual(len(dashboard["datasets"]), 1)
