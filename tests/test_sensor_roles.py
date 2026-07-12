@@ -19,13 +19,15 @@ from digital_twin.core.entities import (
     input_sensors,
     validation_sensors,
 )
-from digital_twin.core.scenarios import build_standard_room, build_validation_scenarios
+from digital_twin.core.scenarios import build_standard_devices, build_standard_room, build_validation_scenarios
 from digital_twin.core.validation import (
     SensorLayout,
     build_sensor_layout,
     build_standard_holdout_layout,
     run_synthetic_holdout_validation,
 )
+from digital_twin.physics.learning import learn_device_impact_from_sensor_delta
+from digital_twin.physics.model import DigitalTwinModel
 
 
 class SensorRoleTests(unittest.TestCase):
@@ -130,6 +132,48 @@ class SensorRoleTests(unittest.TestCase):
             self.assertGreaterEqual(metric["mae"], 0.0)
             self.assertGreaterEqual(metric["rmse"], metric["mae"] - 1e-9)
             self.assertGreaterEqual(metric["max_error"], metric["mae"] - 1e-9)
+
+    def test_device_impact_learning_ignores_validation_observations(self) -> None:
+        room = build_standard_room()
+        model = DigitalTwinModel()
+        device = next(device for device in build_standard_devices() if device.name == "ac_main")
+        device.activation = 0.85
+        input_sensor = Sensor(name="fit", position=Vector3(4.0, 2.0, 1.4))
+        validation_sensor = Sensor(
+            name="holdout",
+            position=Vector3(2.0, 2.0, 1.4),
+            role=SENSOR_ROLE_VALIDATION,
+        )
+        before = {
+            "fit": {"temperature": 28.0, "humidity": 65.0, "illuminance": 100.0},
+            "holdout": {"temperature": 28.0, "humidity": 65.0, "illuminance": 100.0},
+        }
+        after = {
+            "fit": {"temperature": 26.5, "humidity": 63.0, "illuminance": 100.0},
+            "holdout": {"temperature": 80.0, "humidity": 5.0, "illuminance": 9000.0},
+        }
+        input_only = learn_device_impact_from_sensor_delta(
+            model=model,
+            device=device,
+            room=room,
+            furniture=[],
+            sensors=[input_sensor],
+            before_observations=before,
+            after_observations=after,
+            elapsed_minutes=18.0,
+        )
+        mixed_roles = learn_device_impact_from_sensor_delta(
+            model=model,
+            device=device,
+            room=room,
+            furniture=[],
+            sensors=[input_sensor, validation_sensor],
+            before_observations=before,
+            after_observations=after,
+            elapsed_minutes=18.0,
+        )
+        self.assertEqual(mixed_roles.metric_coefficients, input_only.metric_coefficients)
+        self.assertEqual(mixed_roles.sensor_observation_delta, input_only.sensor_observation_delta)
 
 
 if __name__ == "__main__":
