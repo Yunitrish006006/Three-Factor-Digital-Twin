@@ -43,24 +43,28 @@
 
 ## ADDED Requirements
 
-### Requirement: Google Home command logs are context evidence, not ground truth
+### Requirement: Google Home UI operation logs are context evidence, not environmental truth
 
-Google Home、Google Assistant、Home app automations 或 Home APIs 產生的設備控制紀錄 SHALL 被視為 operation context / command evidence，而不是設備實際狀態的 ground truth。
+Google Home UI、Google Assistant、Home app automations 或 Home APIs 產生的設備控制紀錄 SHALL 被視為 operation context / command evidence；若操作者可確認 Google Home UI 操作成功，則可標記為 `ui_operator_verified` operation event，但仍不得取代環境 measurement 或 validation truth。
 
-#### Scenario: Google Home controls AC, fan, or light
+#### Scenario: Google Home UI controls AC, fan, or light successfully
 
-- **GIVEN** Google Home issues a command to AC, fan, or light
-- **WHEN** the command is stored in the experiment log
+- **GIVEN** the experimenter operates AC, fan, or light through Google Home UI
+- **AND** the experimenter confirms the UI operation succeeded or the device physically reacted
+- **WHEN** the operation is stored in the experiment log
 - **THEN** the event is recorded as `operation_event`
-- **AND** the event contains command time, device id, requested state, source, and confidence
+- **AND** `source_detail` is `google_home_ui`
+- **AND** `state_confidence` is `ui_operator_verified` or `verified_state`
+- **AND** the event contains command time, device id, requested state, source, confidence, and verification method
 - **AND** the event does not replace sensor measurements or validation truth
 
-#### Scenario: IR-controlled device may not confirm actual state
+#### Scenario: IR-controlled device is confirmed by operator
 
-- **GIVEN** an AC or fan is controlled through an IR blaster or cloud integration without reliable state feedback
+- **GIVEN** an AC or fan is controlled through an IR blaster or cloud integration
+- **AND** the operator confirms the device actually reacted
 - **WHEN** a command event is used as a model feature
-- **THEN** the event confidence is marked `command_sent` or `unverified_state`
-- **AND** actual device state must be inferred from follow-up context, smart plug, environmental response, or manual confirmation
+- **THEN** the event confidence may be upgraded from `command_sent` to `ui_operator_verified` or `verified_state`
+- **AND** the verification method is recorded as `ui_observed_success`, `physical_observed_success`, or another explicit method
 
 #### Scenario: Light device reports reliable state
 
@@ -73,13 +77,13 @@ Google Home、Google Assistant、Home app automations 或 Home APIs 產生的設
 
 所有 smart-home operation logs SHALL 使用與 sensor payload 相容的 timestamp 格式，並保存 timezone、source clock 與 possible delay。
 
-#### Scenario: Voice command is issued before sensor response
+#### Scenario: Google Home UI command precedes sensor response
 
-- **GIVEN** a user tells Google Home to turn on the fan
+- **GIVEN** a user turns on the fan from Google Home UI
 - **WHEN** the command is logged
 - **THEN** the event timestamp is stored in ISO-8601 with timezone
 - **AND** the data processor may define a settling window before evaluating temperature/humidity response
-- **AND** command latency or unknown execution time is recorded as an uncertainty source
+- **AND** command latency, operator confirmation time, or unknown execution time is recorded as an uncertainty source
 
 ### Requirement: Privacy-sensitive Google Home activity is minimized
 
