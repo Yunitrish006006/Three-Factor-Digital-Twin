@@ -2,8 +2,9 @@
 
 本目錄整理三因子感測節點與房間部署規劃。
 
-- `three_factor_sensor_node_zh.md`：ESP32-C3 + DHT11 + BH1750 的 v1 感測節點設計。
-- `sensor_node_bom_estimate_zh.md`：單顆 node 與 6 / 8 / 10 / 12 / 14 顆部署成本估算。
+- `three_factor_sensor_node_zh.md`：ESP32-C3 + DHT11 + BH1750 的 v1 感測節點設計，包含 fan-aware payload 與 node metadata。
+- `sensor_node_bom_estimate_zh.md`：單顆 node 與 6 / 8 / 10 / 12 / 14 顆部署成本估算，包含風扇狀態紀錄選項。
+- `../thesis/fan_effect_design_zh.md`：電風扇作為 dynamic airflow redistribution source 的論文處理方式。
 
 目前硬體定位：
 
@@ -12,3 +13,4 @@
 - 用於真實房間 target-point validation。
 - DHT11 不作高精度實驗室 reference。
 - BH1750 優先作為正式照度 lux sensor。
+- 電風扇狀態需以 manual log、smart plug 或其他安全方式標記，fan-on 與 fan-off 不混算。
