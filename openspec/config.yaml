@@ -1,0 +1,40 @@
+schema: spec-driven
+
+context: |
+  Project: Three-Factor Digital Twin
+  Research language: Traditional Chinese for thesis-facing artifacts; English terms may be retained when they are standard technical names.
+  Tech stack: Python 3, Markdown, LaTeX, python-pptx, local Web/MCP interfaces.
+
+  Research scope:
+  - Single-room sparse-sensing spatial digital twin.
+  - Environmental variables: temperature, relative humidity, and illuminance.
+  - Main appliance/environmental actors: air conditioner, window, and lighting.
+  - Core method: interpretable variable-specific nominal models, sensor-based calibration, optional residual learning, and target-point estimation.
+  - MCP, Web, and agent integrations are service/interface layers, not the primary scientific contribution.
+
+  Evidence policy:
+  - Synthetic full-field results support claims only under controlled simulation truth.
+  - Real-room measurements support claims only at measured holdout target points or measured zones.
+  - Public datasets support task-aligned temporal benchmarks, not dense 3-D field reconstruction.
+  - Estimated or pseudo values must never be described as ground truth.
+  - Action ranking is a model-based counterfactual result until verified by before/after intervention.
+
+  Artifact policy:
+  - Thesis Markdown/LaTeX/PDF, IEEE paper, presentation, figures, and benchmark summaries must remain mutually consistent.
+  - Any reported metric must be reproducible from a named script and a versioned output file.
+  - Method status must be labelled as implemented, experimentally validated, proposed extension, or future work.
+
+rules:
+  specs:
+    - Use observable research behavior and evidence boundaries rather than unsupported implementation claims.
+    - Every hard requirement must include at least one concrete GIVEN/WHEN/THEN scenario.
+    - Distinguish input sensors, validation sensors, target points, and model-generated pseudo values.
+    - State what each experiment can and cannot prove.
+  design:
+    - Map each design decision to a research question, threat to validity, and expected output artifact.
+    - Prefer modular estimator interfaces so baselines and proposed methods can be compared under identical splits.
+    - Document leakage prevention, temporal split strategy, and failure-case analysis.
+  tasks:
+    - Separate completed groundwork from remaining work.
+    - Include tests, experiment commands, expected output files, and thesis/presentation synchronization tasks.
+    - Do not mark a research claim complete until its required evidence artifact exists.
