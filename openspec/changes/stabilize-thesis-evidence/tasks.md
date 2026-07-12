@@ -116,7 +116,7 @@
 - [ ] 10.7 論文與簡報不再把 synthetic dense field、public dataset 或 pseudo nodes 描述成真實完整 3-D ground truth。
 - [ ] 10.8 完成 OpenSpec review 後，將 delta specs merge 至 main specs 並 archive 此 change。
 
-## 11. 實體 sensing node 與房間部署
+## 11. 實體 sensing node、Google Home 與房間部署
 
 - [x] 11.1 新增 `openspec/specs/sensing-node/spec.md`，定義 ESP32-C3 + DHT11 + BH1750 v1 node、payload、role、calibration 與 deployment levels。
 - [x] 11.2 新增 `openspec/changes/stabilize-thesis-evidence/specs/sensing-node/spec.md`，將 sensing node 納入 active change。
@@ -126,12 +126,15 @@
 - [x] 11.6a 將電風扇納入 OpenSpec 與硬體文件，定位為 dynamic airflow redistribution source。
 - [x] 11.6b 更新 10 顆 node 建議配置，加入 `input_fan_path` 與 `input_fan_shadow_zone`。
 - [x] 11.6c 新增 `docs/thesis/fan_effect_design_zh.md`，定義 fan-on/off 分組、fan metadata 與論文用語。
+- [x] 11.6d 新增 Google Home operation log 規則，定位為 command/context evidence，不作 validation truth。
+- [x] 11.6e 新增 `docs/thesis/google_home_operation_logging_zh.md`，定義 Google Home event schema、可信度、隱私與論文用語。
 - [ ] 11.7 固定實際 bedroom_01 的 node deployment map：node_id、role、x/y/z、height、light_orientation、nearby_furniture、fan_relative_position。
-- [ ] 11.8 建立 node firmware schema 與 MQTT topic validation tests。
+- [ ] 11.8 建立 node firmware schema、MQTT topic 與 operation_event_v1 validation tests。
 - [ ] 11.9 建立同位置 12–24 小時校正資料格式與 offset / scale 計算腳本。
-- [ ] 11.10 建立 real-room collection checklist：供電、RSSI、時間同步、掉線、DHT11 自熱、BH1750 方向、fan state log。
+- [ ] 11.10 建立 real-room collection checklist：供電、RSSI、時間同步、掉線、DHT11 自熱、BH1750 方向、fan state log、Google Home operation log。
 - [ ] 11.11 決定 validation nodes 是否仍用 DHT11，或將 pillow / desk validation nodes 升級為 DHT22/SHT31。
-- [ ] 11.12 決定電風扇狀態紀錄方式：manual log、smart plug、vibration sensor 或其他安全方式。
+- [ ] 11.12 決定電風扇狀態紀錄方式：manual log、Google Home activity、smart plug、vibration sensor 或其他安全方式。
+- [ ] 11.13 決定 Google Home 紀錄採集方式：手動整理、Home Assistant / Node-RED 對照、Home APIs 或其他 integration。
 
 ## CI
 
