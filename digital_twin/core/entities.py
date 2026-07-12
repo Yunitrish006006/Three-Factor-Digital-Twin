@@ -2,6 +2,20 @@ from dataclasses import dataclass, field
 from typing import Dict, Iterable, List, Optional, Sequence, Tuple
 
 
+SENSOR_ROLE_INPUT = "input"
+SENSOR_ROLE_VALIDATION = "validation"
+SENSOR_ROLE_TARGET = "target"
+SENSOR_ROLE_PSEUDO = "pseudo"
+SENSOR_ROLES = frozenset(
+    {
+        SENSOR_ROLE_INPUT,
+        SENSOR_ROLE_VALIDATION,
+        SENSOR_ROLE_TARGET,
+        SENSOR_ROLE_PSEUDO,
+    }
+)
+
+
 @dataclass(frozen=True)
 class Vector3:
     x: float
@@ -46,6 +60,26 @@ class Zone:
 class Sensor:
     name: str
     position: Vector3
+    role: str = SENSOR_ROLE_INPUT
+    metadata: Dict[str, object] = field(default_factory=dict)
+
+    def __post_init__(self) -> None:
+        normalized_role = str(self.role).strip().lower()
+        if normalized_role not in SENSOR_ROLES:
+            valid = ", ".join(sorted(SENSOR_ROLES))
+            raise ValueError(f"Unsupported sensor role '{self.role}'. Expected one of: {valid}.")
+        object.__setattr__(self, "role", normalized_role)
+        object.__setattr__(self, "metadata", dict(self.metadata))
+
+    @property
+    def can_fit(self) -> bool:
+        """Whether this observation may participate in calibration or training."""
+        return self.role == SENSOR_ROLE_INPUT
+
+    @property
+    def is_measured(self) -> bool:
+        """Whether this node represents a physical observation location."""
+        return self.role in {SENSOR_ROLE_INPUT, SENSOR_ROLE_VALIDATION}
 
 
 @dataclass
@@ -120,6 +154,23 @@ class Action:
     name: str
     description: str
     effects: List[ActionEffect]
+
+
+def select_sensors_by_role(sensors: Sequence[Sensor], *roles: str) -> List[Sensor]:
+    normalized_roles = {str(role).strip().lower() for role in roles}
+    unknown = normalized_roles - SENSOR_ROLES
+    if unknown:
+        valid = ", ".join(sorted(SENSOR_ROLES))
+        raise ValueError(f"Unsupported sensor role(s) {sorted(unknown)}. Expected one of: {valid}.")
+    return [sensor for sensor in sensors if sensor.role in normalized_roles]
+
+
+def input_sensors(sensors: Sequence[Sensor]) -> List[Sensor]:
+    return select_sensors_by_role(sensors, SENSOR_ROLE_INPUT)
+
+
+def validation_sensors(sensors: Sequence[Sensor]) -> List[Sensor]:
+    return select_sensors_by_role(sensors, SENSOR_ROLE_VALIDATION)
 
 
 def _corner_sensor_specs(room: Room) -> List[Tuple[str, Vector3]]:
@@ -213,7 +264,23 @@ def create_adaptive_sensor_layout(
                 name = f"{sensor.name}_comp_{added + 1}"
                 while name in used_names:
                     name = f"{sensor.name}_comp_{added + 1}_{index}"
-                sensors.append(Sensor(name=name, position=candidate))
+                metadata = dict(sensor.metadata)
+                metadata.update(
+                    {
+                        "layout_kind": "compensation",
+                        "source_sensor": sensor.name,
+                        "source_role": sensor.role,
+                        "blocked_reason": "furniture_occupied",
+                    }
+                )
+                sensors.append(
+                    Sensor(
+                        name=name,
+                        position=candidate,
+                        role=sensor.role,
+                        metadata=metadata,
+                    )
+                )
                 used_names.add(name)
                 used_positions.add(key)
                 added += 1
@@ -231,7 +298,16 @@ def create_adaptive_sensor_layout(
             while f"{name}_{suffix}" in used_names:
                 suffix += 1
             name = f"{name}_{suffix}"
-        sensors.append(Sensor(name=name, position=position))
+        metadata = dict(target.metadata)
+        metadata.setdefault("layout_kind", "target")
+        sensors.append(
+            Sensor(
+                name=name,
+                position=position,
+                role=target.role,
+                metadata=metadata,
+            )
+        )
         used_names.add(name)
         used_positions.add(key)
 
@@ -242,11 +318,37 @@ def create_adaptive_corner_sensors(
     room: Room,
     furniture: Optional[Sequence[Furniture]] = None,
     target_points: Optional[Iterable[Tuple[str, Vector3]]] = None,
+    validation_target_points: Optional[Iterable[Tuple[str, Vector3]]] = None,
     compensation_per_blocked_corner: int = 4,
     compensation_step: float = 0.35,
 ) -> List[Sensor]:
-    base = [Sensor(name=name, position=position) for name, position in _corner_sensor_specs(room)]
-    targets = [Sensor(name=name, position=position) for name, position in (target_points or [])]
+    base = [
+        Sensor(
+            name=name,
+            position=position,
+            role=SENSOR_ROLE_INPUT,
+            metadata={"layout_kind": "corner"},
+        )
+        for name, position in _corner_sensor_specs(room)
+    ]
+    targets = [
+        Sensor(
+            name=name,
+            position=position,
+            role=SENSOR_ROLE_INPUT,
+            metadata={"layout_kind": "target_input"},
+        )
+        for name, position in (target_points or [])
+    ]
+    targets.extend(
+        Sensor(
+            name=name,
+            position=position,
+            role=SENSOR_ROLE_VALIDATION,
+            metadata={"layout_kind": "target_validation"},
+        )
+        for name, position in (validation_target_points or [])
+    )
     return create_adaptive_sensor_layout(
         room=room,
         base_sensors=base,
@@ -258,4 +360,12 @@ def create_adaptive_corner_sensors(
 
 
 def create_corner_sensors(room: Room) -> List[Sensor]:
-    return [Sensor(name=name, position=position) for name, position in _corner_sensor_specs(room)]
+    return [
+        Sensor(
+            name=name,
+            position=position,
+            role=SENSOR_ROLE_INPUT,
+            metadata={"layout_kind": "corner"},
+        )
+        for name, position in _corner_sensor_specs(room)
+    ]
