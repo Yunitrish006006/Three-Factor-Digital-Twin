@@ -1,0 +1,41 @@
+name: Python test matrix
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - "agent/**"
+
+permissions:
+  contents: read
+
+jobs:
+  test-module:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        test_file:
+          - tests/test_sensor_roles.py
+          - tests/test_digital_twin.py
+          - tests/test_architecture_diagrams.py
+          - tests/test_hybrid_residual.py
+          - tests/test_gemma_bridge.py
+          - tests/test_web_demo.py
+          - tests/test_mcp_server.py
+          - tests/test_public_dataset_benchmark.py
+          - tests/test_public_dataset_model_comparison.py
+    name: ${{ matrix.test_file }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile source
+        run: python -m compileall -q digital_twin scripts tests
+      - name: Run test module
+        run: python -m unittest -v ${{ matrix.test_file }}
