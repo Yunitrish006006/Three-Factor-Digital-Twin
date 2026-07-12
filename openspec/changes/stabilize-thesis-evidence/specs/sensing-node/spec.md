@@ -28,14 +28,51 @@
 - **WHEN** 規劃房間節點數量
 - **THEN** 使用 8–10 顆 node 作為建議基準
 - **AND** 至少 2 顆 node 作為 validation nodes
-- **AND** input nodes 覆蓋 window side、AC path、room center、door side 與 furniture boundary
+- **AND** input nodes 覆蓋 window side、AC path、room center、door side、fan path、fan shadow zone 與 furniture boundary
 
 #### Scenario: Dense furniture-aware deployment
 
 - **GIVEN** 家具遮蔽造成多個角落、光照路徑或氣流路徑不可觀測
 - **WHEN** 需要更完整的 free-space estimator comparison
 - **THEN** 可擴充到 12–14 顆 node
-- **AND** 額外 nodes 優先放在家具邊界兩側、床邊、書桌工作面與窗邊高度差位置
+- **AND** 額外 nodes 優先放在家具邊界兩側、床邊、書桌工作面、風扇死角與窗邊高度差位置
+
+### Requirement: Validation nodes use validation-grade temperature humidity sensors
+
+`S_validation` nodes SHOULD 使用 validation-grade 溫濕度感測器，例如 SHT31、SHT35、SHT40、SHT45 或同等級 sensor；DHT11 SHALL 被定位為 low-cost input-grade sensor，不作高精度 validation truth。
+
+#### Scenario: Pillow and desk are primary validation targets
+
+- **GIVEN** `validation_pillow` and `validation_desk` are used as real target-point evidence
+- **WHEN** selecting temperature / humidity hardware
+- **THEN** those nodes SHOULD use SHT31 / SHT35 / SHT40 / SHT45 or equivalent sensors
+- **AND** node metadata includes `sensor_grade = validation_grade`
+- **AND** method and limitation sections report the sensor model and calibration procedure
+
+#### Scenario: DHT11 is used only for input-grade sensing
+
+- **GIVEN** input nodes use DHT11 for cost control
+- **WHEN** reporting model performance
+- **THEN** DHT11 nodes are described as low-cost sparse observations
+- **AND** DHT11 measurements are not described as laboratory-grade ground truth
+
+#### Scenario: Reported error is below sensor absolute accuracy
+
+- **GIVEN** a target-point MAE is numerically smaller than the validation sensor's nominal accuracy
+- **WHEN** writing conclusions
+- **THEN** the result is interpreted as relative prediction error under the calibrated measurement setup
+- **AND** the thesis does not claim absolute physical accuracy beyond sensor capability
+
+### Requirement: Reference-grade calibration package is tracked separately
+
+OpenSpec SHALL track the cost and role of a small validation / reference upgrade package separate from full-node replacement.
+
+#### Scenario: Cost-controlled upgrade
+
+- **GIVEN** budget is limited
+- **WHEN** deciding what to upgrade first
+- **THEN** recommended first purchase is two validation-grade sensors for pillow/desk plus one higher-grade reference/calibration sensor
+- **AND** the BOM includes an estimated cost range for the package
 
 ### Requirement: Node BOM cost is tracked by deployment level
 
@@ -46,18 +83,19 @@ OpenSpec SHALL 記錄單顆感測節點與多節點部署的成本區間，並�
 - **GIVEN** v1 node 單價包含 ESP32-C3、DHT11、BH1750、外殼、線材與 USB 供電材料
 - **WHEN** 估算 defensible 10-node deployment
 - **THEN** 文件輸出低、中、高三種預算區間
-- **AND** 成本不包含 3D 列印失敗、運費、備品耗損與替代高精度感測器升級
+- **AND** 成本另外列出 validation-grade upgrade package，不把高精度感測器成本藏在 input-grade node 小計中
 
 ### Requirement: DHT11 is low-cost input, not high-precision reference
 
-使用 DHT11 的 node SHALL 被定位為低成本稀疏感測輸入；若作為 validation node，論文 SHALL 說明其精度限制與校正流程。
+使用 DHT11 的 node SHALL 被定位為低成本稀疏感測輸入；若暫時作為 validation node，論文 SHALL 說明其精度限制與校正流程，並將結果標示為 preliminary。
 
-#### Scenario: DHT11 validation node is used at pillow
+#### Scenario: DHT11 validation node is used at pillow temporarily
 
 - **GIVEN** pillow validation node 使用 DHT11
 - **WHEN** 報告 real target-point error
 - **THEN** 方法段落說明 DHT11 為低成本 sensor，已做同位置 offset calibration
 - **AND** 不將單顆 DHT11 讀值描述為高精度實驗室 reference
+- **AND** 結論標示該結果受 validation sensor 精度限制
 
 ### Requirement: Light sensor should produce calibrated lux
 
