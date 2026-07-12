@@ -1,5 +1,10 @@
 from .core.demo import run_validation_suite
 from .core.entities import (
+    SENSOR_ROLE_INPUT,
+    SENSOR_ROLE_PSEUDO,
+    SENSOR_ROLE_TARGET,
+    SENSOR_ROLE_VALIDATION,
+    SENSOR_ROLES,
     Action,
     ActionEffect,
     ComfortTarget,
@@ -13,6 +18,15 @@ from .core.entities import (
     create_adaptive_corner_sensors,
     create_adaptive_sensor_layout,
     create_corner_sensors,
+    input_sensors,
+    select_sensors_by_role,
+    validation_sensors,
+)
+from .core.validation import (
+    SensorLayout,
+    build_sensor_layout,
+    build_standard_holdout_layout,
+    run_synthetic_holdout_validation,
 )
 from .physics.model import DigitalTwinModel
 
@@ -25,11 +39,23 @@ __all__ = [
     "Environment",
     "GridResolution",
     "Room",
+    "SENSOR_ROLE_INPUT",
+    "SENSOR_ROLE_PSEUDO",
+    "SENSOR_ROLE_TARGET",
+    "SENSOR_ROLE_VALIDATION",
+    "SENSOR_ROLES",
     "Sensor",
+    "SensorLayout",
     "Vector3",
     "Zone",
+    "build_sensor_layout",
+    "build_standard_holdout_layout",
     "create_adaptive_corner_sensors",
     "create_adaptive_sensor_layout",
     "create_corner_sensors",
+    "input_sensors",
+    "run_synthetic_holdout_validation",
     "run_validation_suite",
+    "select_sensors_by_role",
+    "validation_sensors",
 ]

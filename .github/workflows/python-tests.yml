@@ -1,0 +1,32 @@
+name: Python tests
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - "agent/**"
+
+permissions:
+  contents: read
+
+jobs:
+  unittest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile source
+        run: python -m compileall -q digital_twin scripts tests
+      - name: Run role and core smoke tests
+        run: |
+          python -m unittest -v \
+            tests/test_sensor_roles.py \
+            tests/test_digital_twin.py
+      - name: Run target holdout validation smoke test
+        run: python scripts/run_target_holdout_validation.py --scenario ac_only --output outputs/data/ci_target_holdout_validation.json

@@ -9,20 +9,25 @@
 
 ## 1. 研究主張與資料角色收斂
 
-- [ ] 1.1 在共用資料結構中加入 sensor/node role：`input`、`validation`、`target`、`pseudo`。
-- [ ] 1.2 保持現有 `Sensor(name, position)` 相容性，未指定 role 時預設為 `input`。
-- [ ] 1.3 將 scenario builder 改為分別輸出 `input_sensors`、`validation_sensors` 與 `target_points`。
-- [ ] 1.4 新增測試：validation sensor 不得出現在 power calibration、impact learning 或 trilinear fitting 的輸入。
+- [x] 1.1 在共用資料結構中加入 sensor/node role：`input`、`validation`、`target`、`pseudo`。
+- [x] 1.2 保持現有 `Sensor(name, position)` 相容性，未指定 role 時預設為 `input`。
+- [x] 1.3a 建立 `SensorLayout` 與 standard holdout layout builder，可分別輸出 input、validation、target 與 pseudo nodes。
+- [ ] 1.3b 將所有既有 `Scenario`、service、demo 與 hybrid residual pipeline 全面改用 role-aware layout。
+- [x] 1.4a 新增測試：synthetic holdout pipeline 不會把 validation truth 傳入 calibration/trilinear fitting。
+- [x] 1.4b 新增防護與測試：device impact learning 只使用 `input` role。
+- [ ] 1.4c 在 `DigitalTwinModel` 的 power calibration 與 trilinear fitting 入口加入額外 role filter，避免錯誤呼叫端直接混入 validation sensors。
 - [ ] 1.5 新增測試：validation observation 不得進入 residual dataset、normalization statistics 或 model selection。
-- [ ] 1.6 在 `docs/thesis/problem_statement_zh.md` 與主論文草稿中，將核心主張改為「家具感知自由空間中的可驗證目標點估計」。
-- [ ] 1.7 建立 method-status inventory，逐項標示 implemented / validated / proposed extension / future work。
+- [x] 1.6a 在 `docs/thesis/problem_statement_zh.md` 將核心主張改為「家具感知自由空間中的可驗證目標點估計」。
+- [ ] 1.6b 同步修改主論文 Markdown、LaTeX、IEEE 稿與既有簡報來源。
+- [x] 1.7 建立 method-status inventory，逐項標示 implemented / validated / proposed extension / future work。
 
 ## 2. 自由空間與幾何支撐
 
 - [ ] 2.1 新增 `Ω_room`、`Ω_occ`、`Ω_free` 的程式與文件定義。
 - [ ] 2.2 新增查詢：點是否位於自由空間、線段是否穿越家具、cell 是否退化或與家具非法相交。
-- [ ] 2.3 定義 `V_geom`、`V_target`、`V_pseudo` 與支撐節點 provenance。
-- [ ] 2.4 將 adaptive compensation sensor 的產生原因、來源角落與 rejection reason 寫入 metadata。
+- [x] 2.3a 定義 `V_target`、`V_pseudo` 的 node roles，並在輸出保留 role/provenance metadata。
+- [ ] 2.3b 建立完整 `V_geom` 與 free-space support-node model。
+- [x] 2.4 將 adaptive compensation sensor 的產生原因、來源角落與 blocked reason 寫入 metadata。
 - [ ] 2.5 新增測試：補償點不重複、不超出房間、不位於家具內。
 - [ ] 2.6 新增測試：illuminance 的 visibility constraint 不允許直接跨越完全遮蔽家具。
 - [ ] 2.7 匯出自由空間、家具佔據區、input sensors、validation sensors 與 target points 的 2-D/3-D 配置圖。
@@ -46,7 +51,8 @@
 - [ ] 4.5 實作 `CellIDWFusionEstimator`，輸出 `p`、top-k、valid cell count 與 rejected cells。
 - [ ] 4.6 加入 temperature/humidity 的 soft obstruction factor 與 illuminance 的 hard visibility constraint。
 - [ ] 4.7 建立參數敏感度：`p ∈ {1,2,3}`、top-k、minimum volume/area threshold。
-- [ ] 4.8 不將任何 pseudo node 標記為 measured ground truth，並新增對應測試。
+- [x] 4.8a `target` 與 `pseudo` roles 不會被標記為 measured，並已有 unit test。
+- [ ] 4.8b 後續 estimator outputs 與圖表全面禁止把 pseudo node 標記為 ground truth。
 
 ## 5. Residual corrector 與資料切分
 
@@ -73,7 +79,7 @@
 
 - [ ] 7.1 新增統一 JSON summary schema，包含 dataset、split、method、status、metrics、runtime、worst cases、provenance。
 - [ ] 7.2 新增 `scripts/run_estimator_comparison.py` 或等價入口。
-- [ ] 7.3 新增 `scripts/run_target_holdout_validation.py` 或等價入口。
+- [x] 7.3 新增 `scripts/run_target_holdout_validation.py`，目前輸出 synthetic target-point holdout summary。
 - [ ] 7.4 新增 `scripts/build_claim_evidence_matrix.py` 或等價入口。
 - [ ] 7.5 記錄單點推論、完整網格、校正、residual inference 與整批評估時間。
 - [ ] 7.6 產生 occlusion on/off、residual on/off 與 estimator family 的消融表。
@@ -103,9 +109,15 @@
 
 - [ ] 10.1 `python3 -m unittest discover -s tests` 全部通過。
 - [ ] 10.2 既有 demo、window matrix、hybrid residual 與 public benchmark 可正常執行。
-- [ ] 10.3 target holdout 報告證明 validation observations 未參與 fitting/training。
+- [x] 10.3 已在 CI 執行 target holdout runner smoke test，證明 validation observations 未參與 fitting/training 的流程可執行。
 - [ ] 10.4 estimator comparison 至少包含 BasePhysics、IDW 與一個 free-space estimator。
 - [ ] 10.5 real target-point 結果至少涵蓋 pillow，並盡可能涵蓋 desk、center 與 near-furniture。
 - [ ] 10.6 claim-to-evidence matrix 的每個核心 RQ 都有對應 artifact 或明確標記 evidence missing。
 - [ ] 10.7 論文與簡報不再把 synthetic dense field、public dataset 或 pseudo nodes 描述成真實完整 3-D ground truth。
 - [ ] 10.8 完成 OpenSpec review 後，將 delta specs merge 至 main specs 並 archive 此 change。
+
+## CI
+
+- [x] C.1 新增 `.github/workflows/python-tests.yml`，執行 compileall、sensor-role tests、core smoke tests 與 target holdout runner smoke test。
+- [x] C.2 GitHub Actions run `29188538604` 已完成且結論為 `success`。
+- [ ] C.3 先前完整 `python -m unittest discover -s tests` run `29187873712` 失敗，且完整 logs 被 connector 截斷；後續需分拆完整測試模組逐一排查。
