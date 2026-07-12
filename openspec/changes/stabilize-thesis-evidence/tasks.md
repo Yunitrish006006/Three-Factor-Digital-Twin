@@ -116,6 +116,19 @@
 - [ ] 10.7 論文與簡報不再把 synthetic dense field、public dataset 或 pseudo nodes 描述成真實完整 3-D ground truth。
 - [ ] 10.8 完成 OpenSpec review 後，將 delta specs merge 至 main specs 並 archive 此 change。
 
+## 11. 實體 sensing node 與房間部署
+
+- [x] 11.1 新增 `openspec/specs/sensing-node/spec.md`，定義 ESP32-C3 + DHT11 + BH1750 v1 node、payload、role、calibration 與 deployment levels。
+- [x] 11.2 新增 `openspec/changes/stabilize-thesis-evidence/specs/sensing-node/spec.md`，將 sensing node 納入 active change。
+- [x] 11.3 新增 `docs/hardware/three_factor_sensor_node_zh.md`，整理硬體接線、外殼、payload、MQTT topic 與校正流程。
+- [x] 11.4 新增 `docs/hardware/sensor_node_bom_estimate_zh.md`，整理單顆與 6 / 8 / 10 / 12 / 14 顆部署成本估算。
+- [x] 11.5 將家具遮蔽情境下的建議部署提高為 8–10 顆 node，dense option 為 12–14 顆。
+- [ ] 11.6 固定實際 bedroom_01 的 node deployment map：node_id、role、x/y/z、height、light_orientation、nearby_furniture。
+- [ ] 11.7 建立 node firmware schema 與 MQTT topic validation tests。
+- [ ] 11.8 建立同位置 12–24 小時校正資料格式與 offset / scale 計算腳本。
+- [ ] 11.9 建立 real-room collection checklist：供電、RSSI、時間同步、掉線、DHT11 自熱、BH1750 方向。
+- [ ] 11.10 決定 validation nodes 是否仍用 DHT11，或將 pillow / desk validation nodes 升級為 DHT22/SHT31。
+
 ## CI
 
 - [x] C.1 新增 `.github/workflows/python-tests.yml`，執行 compileall、sensor-role tests、core smoke tests 與 target holdout runner smoke test。
