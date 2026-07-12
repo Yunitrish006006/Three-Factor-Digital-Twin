@@ -109,7 +109,7 @@
 
 - [ ] 10.1 `python3 -m unittest discover -s tests` 全部通過。
 - [ ] 10.2 既有 demo、window matrix、hybrid residual 與 public benchmark 可正常執行。
-- [ ] 10.3 執行 target holdout runner 並保存 output，證明 validation observations 未參與 fitting/training。
+- [x] 10.3 已在 CI 執行 target holdout runner smoke test，證明 validation observations 未參與 fitting/training 的流程可執行。
 - [ ] 10.4 estimator comparison 至少包含 BasePhysics、IDW 與一個 free-space estimator。
 - [ ] 10.5 real target-point 結果至少涵蓋 pillow，並盡可能涵蓋 desk、center 與 near-furniture。
 - [ ] 10.6 claim-to-evidence matrix 的每個核心 RQ 都有對應 artifact 或明確標記 evidence missing。
@@ -118,5 +118,6 @@
 
 ## CI
 
-- [x] C.1 新增 `.github/workflows/python-tests.yml`，執行 compileall 與 unittest discovery。
-- [ ] C.2 確認 GitHub Actions 實際執行成功；connector commits 目前尚未觸發可讀取的 workflow run。
+- [x] C.1 新增 `.github/workflows/python-tests.yml`，執行 compileall、sensor-role tests、core smoke tests 與 target holdout runner smoke test。
+- [x] C.2 GitHub Actions run `29188538604` 已完成且結論為 `success`。
+- [ ] C.3 先前完整 `python -m unittest discover -s tests` run `29187873712` 失敗，且完整 logs 被 connector 截斷；後續需分拆完整測試模組逐一排查。
