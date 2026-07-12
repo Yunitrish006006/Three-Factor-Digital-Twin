@@ -70,9 +70,9 @@
 - [ ] 6.2 記錄每個 validation sensor 的座標、高度、裝置距離、家具遮蔽關係與取樣頻率。
 - [ ] 6.3 收集或整理連續多日 measured values，明確區分 raw measurement、人工整理值與 model estimate。
 - [ ] 6.4 產生每個目標點的 measured-vs-predicted 時序圖。
-- [ ] 6.5 產生分組誤差：day/night、AC on/off、window open/closed、light on/off。
+- [ ] 6.5 產生分組誤差：day/night、AC on/off、window open/closed、light on/off、fan on/off。
 - [ ] 6.6 產生每個 method/target/metric 的 MAE、RMSE、MaxErr 與 bias。
-- [ ] 6.7 記錄 worst-case timestamps，分析外氣、裝置狀態、遮蔽與 sensor anomaly。
+- [ ] 6.7 記錄 worst-case timestamps，分析外氣、裝置狀態、遮蔽、fan state 與 sensor anomaly。
 - [ ] 6.8 若無法同時部署四個 validation sensors，文件化輪替量測限制，不將跨時段資料當作同時空間場真值。
 
 ## 7. 實驗輸出與運算成本
@@ -82,7 +82,7 @@
 - [x] 7.3 新增 `scripts/run_target_holdout_validation.py`，目前輸出 synthetic target-point holdout summary。
 - [ ] 7.4 新增 `scripts/build_claim_evidence_matrix.py` 或等價入口。
 - [ ] 7.5 記錄單點推論、完整網格、校正、residual inference 與整批評估時間。
-- [ ] 7.6 產生 occlusion on/off、residual on/off 與 estimator family 的消融表。
+- [ ] 7.6 產生 occlusion on/off、residual on/off、fan on/off 與 estimator family 的消融表。
 - [ ] 7.7 保存代表性失敗案例與方法排名反轉案例，不只輸出平均最佳結果。
 - [ ] 7.8 在 README 或 experiment docs 提供完整重現指令與預期 output paths。
 
@@ -123,11 +123,15 @@
 - [x] 11.3 新增 `docs/hardware/three_factor_sensor_node_zh.md`，整理硬體接線、外殼、payload、MQTT topic 與校正流程。
 - [x] 11.4 新增 `docs/hardware/sensor_node_bom_estimate_zh.md`，整理單顆與 6 / 8 / 10 / 12 / 14 顆部署成本估算。
 - [x] 11.5 將家具遮蔽情境下的建議部署提高為 8–10 顆 node，dense option 為 12–14 顆。
-- [ ] 11.6 固定實際 bedroom_01 的 node deployment map：node_id、role、x/y/z、height、light_orientation、nearby_furniture。
-- [ ] 11.7 建立 node firmware schema 與 MQTT topic validation tests。
-- [ ] 11.8 建立同位置 12–24 小時校正資料格式與 offset / scale 計算腳本。
-- [ ] 11.9 建立 real-room collection checklist：供電、RSSI、時間同步、掉線、DHT11 自熱、BH1750 方向。
-- [ ] 11.10 決定 validation nodes 是否仍用 DHT11，或將 pillow / desk validation nodes 升級為 DHT22/SHT31。
+- [x] 11.6a 將電風扇納入 OpenSpec 與硬體文件，定位為 dynamic airflow redistribution source。
+- [x] 11.6b 更新 10 顆 node 建議配置，加入 `input_fan_path` 與 `input_fan_shadow_zone`。
+- [x] 11.6c 新增 `docs/thesis/fan_effect_design_zh.md`，定義 fan-on/off 分組、fan metadata 與論文用語。
+- [ ] 11.7 固定實際 bedroom_01 的 node deployment map：node_id、role、x/y/z、height、light_orientation、nearby_furniture、fan_relative_position。
+- [ ] 11.8 建立 node firmware schema 與 MQTT topic validation tests。
+- [ ] 11.9 建立同位置 12–24 小時校正資料格式與 offset / scale 計算腳本。
+- [ ] 11.10 建立 real-room collection checklist：供電、RSSI、時間同步、掉線、DHT11 自熱、BH1750 方向、fan state log。
+- [ ] 11.11 決定 validation nodes 是否仍用 DHT11，或將 pillow / desk validation nodes 升級為 DHT22/SHT31。
+- [ ] 11.12 決定電風扇狀態紀錄方式：manual log、smart plug、vibration sensor 或其他安全方式。
 
 ## CI
 
