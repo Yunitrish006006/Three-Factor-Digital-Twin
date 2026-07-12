@@ -15,16 +15,19 @@
   - 三因子主模型、家具感知感測器配置、校正與 baseline
 - `specs/evidence-and-artifacts/spec.md`
   - 證據分層、資料切分、可重現性與論文產物同步
+- `specs/sensing-node/spec.md`
+  - ESP32-C3 + DHT11 + BH1750 低成本三因子感測節點、成本估算、部署數量與資料 payload
 
 ## Active change
 
 `changes/stabilize-thesis-evidence/`
 
-目標是先解決口試最關鍵的三個風險：
+目標是先解決口試最關鍵的風險：
 
 1. 分離 `S_input` 與 `S_validation`，避免 target-point leakage。
 2. 在同一介面與 split 下比較 BasePhysics、IDW 與 free-space estimators。
 3. 建立 claim-to-evidence matrix，同步論文、IEEE 稿、簡報、圖表與結果檔。
+4. 定義實體 sensing node 與房間家具遮蔽下的部署數量，使真實資料收集能支撐 target-point validation。
 
 閱讀順序：
 
@@ -32,6 +35,18 @@
 2. `specs/*/spec.md`：行為與驗收條件如何改變
 3. `design.md`：資料角色、估計器介面與實驗設計
 4. `tasks.md`：實作與研究待辦
+
+## Hardware docs
+
+硬體設計文件位於：
+
+```text
+docs/hardware/
+├── three_factor_sensor_node_zh.md
+└── sensor_node_bom_estimate_zh.md
+```
+
+目前建議以 10 顆 node 作為家具感知的 defensible deployment：7–8 顆 `input`，2–3 顆 `validation`。
 
 ## OpenSpec commands
 
