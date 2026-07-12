@@ -52,6 +52,37 @@
 - **THEN** evaluator 才讀取 validation observation 計算 error
 - **AND** prediction artifact 記錄該點在 fitting 階段被排除
 
+### Requirement: Fan state is an experimental condition
+
+電風扇 SHALL 被視為獨立 experimental condition，因為它會改變局部氣流、溫度梯度、濕度混合與感測器附近對流，而不是單純背景噪音。
+
+#### Scenario: Fan-on data enters validation
+
+- **GIVEN** real-room validation data is collected while the fan is on
+- **WHEN** results are summarized
+- **THEN** the report includes `fan_on`, `fan_speed`, `fan_direction`, and `fan_oscillation` if available
+- **AND** metrics are grouped separately from fan-off periods
+- **AND** the claim boundary states that fan-on airflow was part of the boundary condition
+
+#### Scenario: Fan state cannot be recovered
+
+- **GIVEN** a time window has unknown fan state
+- **WHEN** building the primary validation split
+- **THEN** that window is marked `unknown_fan_state`
+- **AND** it is excluded from primary validation unless explicitly analyzed as uncertain data
+
+### Requirement: Fan-aware nodes cover airflow path and dead zone
+
+家具房間中的實體 node deployment SHALL 包含電風扇氣流路徑與風扇難以到達的相對靜止區。
+
+#### Scenario: Fan is present in bedroom_01
+
+- **GIVEN** a fan has a known approximate location and facing direction
+- **WHEN** the node deployment map is created
+- **THEN** at least one input node is placed in the primary fan airflow path
+- **AND** at least one input or validation node is placed in a fan-shadow/dead-zone region
+- **AND** node metadata records distance to fan, relative angle, and whether it is in the main airflow path
+
 ### Requirement: Free-space domain is explicit
 
 系統 SHALL 將可估計空氣空間定義為 `Ω_free = Ω_room \ Ω_occ`，並拒絕將家具佔據點當作一般空氣查詢點。
@@ -105,7 +136,7 @@
 
 ### Requirement: Cell-IDW fuses valid local estimates
 
-`CellIDWFusionEstimator` SHALL 先過濾有效 local cells，再以正規化 centroid-distance weights 融合 local estimates。
+`Cell-IDWFusionEstimator` SHALL 先過濾有效 local cells，再以正規化 centroid-distance weights 融合 local estimates。
 
 #### Scenario: Multiple valid cells support one target
 

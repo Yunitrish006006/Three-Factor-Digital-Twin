@@ -18,6 +18,25 @@
 - **AND** 濕度路徑包含水氣交換與除濕近似
 - **AND** 照度路徑包含光源方向、距離、遮蔽與反射近似
 
+### Requirement: Fan is modeled as airflow redistribution, not a primary cooling source
+
+電風扇 SHALL 被建模為動態氣流混合與局部對流增強來源，而不是等同冷氣的主動降溫設備。
+
+#### Scenario: Fan is on during validation
+
+- **GIVEN** electric fan state is `on` with known or logged speed, direction, and oscillation state
+- **WHEN** the model estimates target-point temperature and humidity
+- **THEN** fan effect is recorded as airflow redistribution or mixing strength
+- **AND** reported results are grouped or filtered by fan state
+- **AND** fan-on data is not mixed with fan-off data as if they were the same boundary condition
+
+#### Scenario: Fan state is unknown
+
+- **GIVEN** real-room data includes a period where fan state is unknown
+- **WHEN** the period is considered for primary validation
+- **THEN** the evidence label is downgraded to `unknown_fan_state`
+- **AND** the period is not used as primary validation evidence unless the limitation is explicitly stated
+
 ### Requirement: Furniture-aware sensor placement
 
 系統 SHALL 排除位於家具佔據區內的基礎感測器點，並可在自由空間加入補償感測器與指定目標點。

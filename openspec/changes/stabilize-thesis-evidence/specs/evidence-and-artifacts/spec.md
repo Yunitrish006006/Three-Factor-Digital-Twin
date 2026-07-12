@@ -43,6 +43,59 @@
 
 ## ADDED Requirements
 
+### Requirement: Google Home UI operation logs are context evidence, not environmental truth
+
+Google Home UI、Google Assistant、Home app automations 或 Home APIs 產生的設備控制紀錄 SHALL 被視為 operation context / command evidence；若操作者可確認 Google Home UI 操作成功，則可標記為 `ui_operator_verified` operation event，但仍不得取代環境 measurement 或 validation truth。
+
+#### Scenario: Google Home UI controls AC, fan, or light successfully
+
+- **GIVEN** the experimenter operates AC, fan, or light through Google Home UI
+- **AND** the experimenter confirms the UI operation succeeded or the device physically reacted
+- **WHEN** the operation is stored in the experiment log
+- **THEN** the event is recorded as `operation_event`
+- **AND** `source_detail` is `google_home_ui`
+- **AND** `state_confidence` is `ui_operator_verified` or `verified_state`
+- **AND** the event contains command time, device id, requested state, source, confidence, and verification method
+- **AND** the event does not replace sensor measurements or validation truth
+
+#### Scenario: IR-controlled device is confirmed by operator
+
+- **GIVEN** an AC or fan is controlled through an IR blaster or cloud integration
+- **AND** the operator confirms the device actually reacted
+- **WHEN** a command event is used as a model feature
+- **THEN** the event confidence may be upgraded from `command_sent` to `ui_operator_verified` or `verified_state`
+- **AND** the verification method is recorded as `ui_observed_success`, `physical_observed_success`, or another explicit method
+
+#### Scenario: Light device reports reliable state
+
+- **GIVEN** a light is controlled through a smart switch, smart bulb, or Matter/Google Home compatible device with readable state
+- **WHEN** the state is exported to the experiment dataset
+- **THEN** it may be recorded as `reported_state`
+- **AND** the provenance must identify whether it came from Google Home, the device cloud, Matter, Home API, or another integration
+
+### Requirement: Operation logs are time-synchronized with sensor data
+
+所有 smart-home operation logs SHALL 使用與 sensor payload 相容的 timestamp 格式，並保存 timezone、source clock 與 possible delay。
+
+#### Scenario: Google Home UI command precedes sensor response
+
+- **GIVEN** a user turns on the fan from Google Home UI
+- **WHEN** the command is logged
+- **THEN** the event timestamp is stored in ISO-8601 with timezone
+- **AND** the data processor may define a settling window before evaluating temperature/humidity response
+- **AND** command latency, operator confirmation time, or unknown execution time is recorded as an uncertainty source
+
+### Requirement: Privacy-sensitive Google Home activity is minimized
+
+研究資料 SHALL 只保存設備控制所需欄位，不保存語音內容、個人對話、帳號資訊或不必要的 household activity。
+
+#### Scenario: Exporting Google Home activity for thesis dataset
+
+- **GIVEN** Google Home activity contains voice or account metadata
+- **WHEN** the data is transformed for the thesis experiment dataset
+- **THEN** only device operation fields are retained
+- **AND** actor identity, transcript, raw voice, account email, and unrelated household events are removed or anonymized
+
 ### Requirement: Real target-point validation uses held-out measurements
 
 真實目標點準確度 SHALL 只以未參與 calibration、training 與 model selection 的 measurement 計算。
