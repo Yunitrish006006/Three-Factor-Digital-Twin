@@ -135,7 +135,7 @@ def build_blocks() -> List[Block]:
             "智慧建築與智慧居家系統需要掌握室內環境狀態，才能支援舒適度評估、能源管理與設備控制。然而，一般房間中的冷氣、窗戶與照明常不具備連網遙測能力，室內也通常只能布建少量感測器，難以直接取得完整空間分布。本研究以單一矩形房間為場域，提出以 8 顆角落感測器支援之三因子空間數位孿生原型，針對 temperature、humidity 與 illuminance 建立變數專屬的 reduced-order nominal model：溫度以熱交換與熱源項描述，濕度以水氣交換與除濕項描述，照度以燈具光束幾何、窗戶日照 envelope、遮蔽與 single-bounce diffuse reflection 描述。系統再結合冷氣、窗戶與照明的參數化影響函數、active-device power calibration 與 trilinear residual correction，從稀疏觀測修正空間場估計；並以 hybrid residual neural network 學習主模型剩餘誤差，而不以純黑盒模型取代可解釋結構。"
         ),
         paragraph(
-            "評估採分層證據設計，分別檢查受控完整場重建、公開資料相容子任務與真實稀疏校正。8 組標準情境中，base model 的平均 field MAE 為溫度 0.0474、濕度 0.1765、照度 2.0269，低於 IDW baseline 的 0.1723、0.4633、54.9052；hybrid residual leave-one-scenario-out 平均進一步降至 0.0017、0.0059、0.1407。7 天 real-bedroom snapshot 中，pillow 參考點校正後 MAE 由 0.8967°C、4.1286% 與 309.0142 lux 降至 0.1676°C、0.3939% 與 16.6450 lux。公開資料集 SML2010 與 CU-BEMS 僅作 task-aligned benchmark，不宣稱 full 3D dense-field 驗證；SML2010 的 24 個任務中有 12 項取得最低 MAE，CU-BEMS 的 12 個任務中有 9 項優於 linear regression 但 0 項優於 persistence。結果顯示，稀疏角落感測在搭配變數專屬物理結構、校正與殘差學習時，可支援可解釋且可訓練的室內環境場估計；推薦動作目前仍屬模型反事實排序，實際因果改善需後續 before/after 介入驗證。"
+            "評估採分層證據設計，分別檢查受控完整場重建、公開資料相容子任務與真實稀疏校正。8 組標準情境中，base model 的平均 field MAE 為溫度 0.0474、濕度 0.1765、照度 2.0269，低於 IDW baseline 的 0.1723、0.4633、54.9052；hybrid residual leave-one-scenario-out 平均進一步降至 0.0017、0.0059、0.1407。7 天 real-bedroom snapshot 中，pillow 參考點校正後 MAE 由 0.8967°C、4.1286% 與 309.0142 lux 降至 0.1676°C、0.3939% 與 16.6450 lux；以日期為 block 的 20,000 次 paired bootstrap 顯示三因子 MAE 降幅之 95% 區間下界皆大於 0。公開資料集 SML2010 與 CU-BEMS 僅作 task-aligned benchmark，不宣稱 full 3D dense-field 驗證；SML2010 的 24 個任務中有 12 項取得最低 MAE，CU-BEMS 的 12 個任務中有 9 項優於 linear regression 但 0 項優於 persistence。結果顯示，稀疏角落感測在搭配變數專屬物理結構、校正與殘差學習時，可支援可解釋且可訓練的室內環境場估計；推薦動作目前仍屬模型反事實排序，實際因果改善需後續 before/after 介入驗證。"
         ),
         paragraph("關鍵字：空間數位孿生、稀疏感測、非連網家電、室內環境建模、溫度、濕度、照度、角落感測器。"),
         page_break(),
@@ -144,7 +144,7 @@ def build_blocks() -> List[Block]:
             "Smart building and smart home systems require indoor environmental awareness for comfort assessment, energy management, and device control. In ordinary rooms, however, air conditioners, manual windows, and lights often expose no telemetry, while only a small number of sensors can be installed. This thesis proposes a sparse-sensing spatial digital twin for a single rectangular room using eight corner sensors. The model uses variable-specific reduced-order nominal structures: temperature is represented by thermal exchange and heat-source terms, humidity by moisture exchange and dehumidification terms, and illuminance by lamp beam geometry, window daylight envelopes, obstruction, and a lightweight single-bounce diffuse reflection approximation. Parameterized appliance influence functions, active-device power calibration, and trilinear residual correction are used to estimate the room field from sparse observations, and a hybrid residual neural network learns remaining systematic error without replacing the interpretable base model."
         ),
         paragraph(
-            "The evaluation separates controlled full-field reconstruction, public task-aligned benchmarks, and real sparse-calibration checks. Across eight canonical scenarios, the base model achieves average field MAE of 0.0474/0.1765/2.0269 for temperature, humidity, and illuminance, compared with 0.1723/0.4633/54.9052 for IDW. Leave-one-scenario-out hybrid residual correction further reduces MAE to 0.0017/0.0059/0.1407. In a seven-day real-bedroom snapshot, pillow-point calibration error is reduced from 0.8967°C, 4.1286%, and 309.0142 lux to 0.1676°C, 0.3939%, and 16.6450 lux. SML2010 and CU-BEMS are used only as compatible task-aligned external benchmarks rather than dense 3-D spatial ground truth: the mapped model obtains the lowest MAE in 12 of 24 SML2010 tasks, and outperforms linear regression in 9 of 12 CU-BEMS tasks but never outperforms persistence on CU-BEMS. These results show that sparse corner sensing can support an interpretable and trainable indoor environmental field estimator when physical structure, calibration, and residual learning are assigned complementary roles. Action recommendations remain model-based counterfactual rankings and require future before/after intervention validation for causal claims."
+            "The evaluation separates controlled full-field reconstruction, public task-aligned benchmarks, and real sparse-calibration checks. Across eight canonical scenarios, the base model achieves average field MAE of 0.0474/0.1765/2.0269 for temperature, humidity, and illuminance, compared with 0.1723/0.4633/54.9052 for IDW. Leave-one-scenario-out hybrid residual correction further reduces MAE to 0.0017/0.0059/0.1407. In a seven-day real-bedroom snapshot, pillow-point calibration error is reduced from 0.8967°C, 4.1286%, and 309.0142 lux to 0.1676°C, 0.3939%, and 16.6450 lux; a 20,000-replicate paired date-block bootstrap keeps every 95% MAE-reduction interval above zero. SML2010 and CU-BEMS are used only as compatible task-aligned external benchmarks rather than dense 3-D spatial ground truth: the mapped model obtains the lowest MAE in 12 of 24 SML2010 tasks, and outperforms linear regression in 9 of 12 CU-BEMS tasks but never outperforms persistence on CU-BEMS. These results show that sparse corner sensing can support an interpretable and trainable indoor environmental field estimator when physical structure, calibration, and residual learning are assigned complementary roles. Action recommendations remain model-based counterfactual rankings and require future before/after intervention validation for causal claims."
         ),
         paragraph("Keywords: spatial digital twin, sparse sensing, non-networked appliances, indoor environment modeling, temperature, humidity, illuminance, corner sensors."),
         page_break(),
@@ -170,8 +170,9 @@ def build_blocks() -> List[Block]:
         paragraph("  2.6 MCP 與 AI Agent Tool Interface…… 5"),
         paragraph("  2.7 與相似研究之差異定位…… 5"),
         paragraph("  2.8 公開資料與訓練資料適用性…… 6"),
+        paragraph("  2.9 動態精準環境應用與 Kalman Filter 方向…… 6"),
         paragraph("第三章 系統架構與數學模型…… 7"),
-        paragraph("  3.1 系統架構…… 7"),
+        paragraph("  3.1 研究邏輯與系統架構…… 7"),
         paragraph("  3.2 房間、區域與感測器設定…… 7"),
         paragraph("  3.3 三因子場模型…… 8"),
         paragraph("    3.3.1 共用符號與 Indoor Baseline…… 8"),
@@ -237,7 +238,7 @@ def build_blocks() -> List[Block]:
         paragraph("表 5-11 CU-BEMS 任務族群優劣勢拆解…… 18"),
         page_break(),
         heading("圖目錄", 1),
-        paragraph("圖 3-1 系統整體抽象樹狀架構…… 7"),
+        paragraph("圖 3-1 研究整體邏輯架構…… 7"),
         paragraph("圖 3-2 主要執行資料流…… 7"),
         paragraph("圖 3-3 房間感測器與目標區域配置…… 8"),
         paragraph("圖 3-4 感測器校正與影響學習流程…… 9"),
@@ -290,8 +291,10 @@ def build_blocks() -> List[Block]:
                 "研究場域固定為單一矩形房間，不處理多房間或跨空間空氣交換。",
                 "感測器配置固定為天花板四角與地面四角，共 8 顆角落節點。",
                 "設備類型聚焦於冷氣、窗戶與照明。",
+                "目前室內受控或估測狀態的溫度建模與應用討論只涵蓋 20–30 °C；外部天氣邊界可超出此區間，但不因此擴張室內適用性主張，其他環境或製程亦不得直接外推。",
                 "模型為簡化動態模型，不追求 CFD 等級高精度流場。",
                 "濕度保留於模型中，但作為次核心變數處理。",
+                "人體舒適以目標值與容許範圍表示；低估測誤差本身不等於需要同等精度的實體舒適控制。",
                 "控制功能只做候選動作排序，不做自動閉環控制；推薦動作的真實因果效果需透過後續介入實驗驗證。",
                 "MCP 部分定位為本地 stdio server 與 AI-agent-accessible interface，不宣稱提出新的 MCP protocol。",
             ]
@@ -342,6 +345,9 @@ def build_blocks() -> List[Block]:
             "若從研究方法的相似性來看，本研究最接近的文獻不是一般性的 building digital twin 平台論文，而是有限感測器室內場重建、控制導向簡化熱模型，以及 hybrid thermal surrogate 這三類研究。Qian 等人以資料同化方法重建實際住宅房間中的溫濕度分布，重點在於以有限量測重建連續場並分析量測配置 [8]；Huljak 等人聚焦於空調房間中的 hybrid 溫度模型，強調以 physics-based 與 surrogate model 共同描述空調空間中的溫度分布 [5]；Megri 等人則以 DOMA 動態 zonal model 處理時間變化與熱舒適預測 [6]。這三類工作與本研究皆有明顯關聯，但關注點不同。"
         ),
         paragraph(
+            "Oh、Sfarra 與 Kim 進一步把建築物理模擬與 operational data 整合為 next-day indoor air temperature hybrid predictor：物理模擬先提供 forecast day 的基線輸出，再由資料驅動模型學習歷史 simulation--measurement gap 並預測同一目標時刻的修正量 [26]。此研究直接支持「物理基線加上 learned residual」的建模邏輯，但其任務是次日溫度時序預測；本研究目前則以指定 elapsed time 的三因子空間場估測為主，兩者不能視為相同驗證任務。"
+        ),
+        paragraph(
             "本研究的具體定位是：在不做 CFD、不追求完整 BIM 平台，也不假設家電可回報狀態的前提下，建立一個可由 8 顆角落感測器校正、可學習非連網裝置影響、並可透過 MCP 與 Web 互動使用的單房間三因子數位孿生原型。換言之，本研究刻意把問題收斂在「單房間、有限角落感測器、溫濕度照度三因子、非連網家電影響學習、控制推薦、可工具化服務」這個組合上。從目前檢視到的相似研究來看，尚未看到與本研究完全同構的公開論文。"
         ),
         table(
@@ -349,6 +355,7 @@ def build_blocks() -> List[Block]:
             [
                 ["Qian et al. (2025) [8]", "有限觀測下重建室內溫濕度分布", "未把照度、非連網家電影響學習與 MCP 工具化整合在同一系統"],
                 ["Huljak et al. (2025) [5]", "使用 hybrid 溫度模型處理空調房間", "主變數偏溫度，且依賴較強的建物邊界條件與物理模擬流程"],
+                ["Oh et al. (2024) [26]", "以 forecast-day simulation 加上 learned simulation--measurement residual 預測次日室溫", "屬 next-day 單變數時序預測，不直接驗證本研究三因子 3D spatial field"],
                 ["Megri et al. (2022) [6]", "強調動態 zonal / transient prediction", "目標偏熱舒適分析，不處理照度與非連網裝置學習"],
                 ["Chen & Wen (2007) [9]", "討論感測器配置與 zonal model", "重點在感測器設計，不是建立可互動的單房間數位孿生原型"],
                 ["Cespedes-Cubides & Jradi (2024) [7]", "界定 building digital twin 的整體脈絡", "屬綜述，不提供本研究這種單房間三因子可執行原型"],
@@ -388,16 +395,29 @@ def build_blocks() -> List[Block]:
                 ["public task-aligned", "Denmark IEQ / ASHRAE", "舒適度評分與控制目標合理性", "comfort-only mode", "score error、accuracy、F1、AUROC"],
             ],
         ),
+        heading("2.9 動態精準環境應用與 Kalman Filter 方向", 2),
+        paragraph(
+            "本研究原先以人體舒適作為推薦目標，但舒適決策通常以可接受範圍而非極窄單點判定。因此，模型 MAE 很低只能說明估測解析度提高，不能直接證明一般人居空間需要同等精度的致動控制。教授建議後，本研究保留人居舒適作為具有 tolerance 的 point/zone decision-support 情境，並另行尋找真正需要時間變化環境配方的應用。"
+        ),
+        paragraph(
+            "現階段最符合「封閉環境、動態設定值、空間不均與稀疏感測」的候選，是小型植物生長室或植物工廠模組。Chiang、Bånkestad 與 Hoch 比較固定、正弦波與追蹤自然變化的溫度、濕度與光照設定，顯示環境波動方式會影響植物表現 [29]；Kim 等人也在人工光植物工廠中使用日夜溫差與光週期處理幼苗 [30]。不過，本研究目前只涵蓋 20–30 °C，文獻中任何超出此區間的處理都只能視為 out-of-domain 方法參考。另一方面，現有照度變數採 lux，不能代替植物 PPFD/PAR；系統也缺少 CO2、基質水分、氣流與生物量或品質等 endpoint。因此，封閉植物生長目前只是候選研究方向，不是已驗證部署或植物效益主張。"
+        ),
+        paragraph(
+            "Kalman filter 可作為未來動態狀態估測的參考。原始 Kalman 架構要求明確的 state transition、observation model、process noise 與 measurement noise [28]。Speetjens 等人以 extended Kalman filter 進行溫室模型線上參數調整，支持其作為 time-varying model adaptation 的可能性 [32]；但 van Mourik 等人比較 moving average、EKF 與 UKF 時，沒有得到普遍改善，並指出基礎 climate model 的準確性會主導 filtering 成效 [31]。因此本研究只把 Kalman family 登記為後續相同資料的未濾波、moving-average、KF 與 EKF 比較方向，現階段證據狀態為 NOT_EVALUATED。"
+        ),
         page_break(),
         heading("第三章 系統架構與數學模型", 1),
-        heading("3.1 系統架構", 2),
+        heading("3.1 研究邏輯與系統架構", 2),
         paragraph(
-            "本研究系統由五個主要模組組成：房間與設備設定、三因子影響場模型、角落感測器校正、非連網裝置影響學習、以及控制動作排序與 MCP 工具介面。為了避免把互動入口誤認為模型本體，圖 3-1 先以 top-down 樹狀圖整理系統責任邊界：情境與觀測層提供房間、感測器、外部邊界與時間狀態；估測與學習層負責三因子場模型、校正與殘差學習；服務與決策層則把同一套 estimator path 暴露給腳本、Web demo 與 MCP/Gemma bridge。整體流程為：輸入房間幾何、設備位置與外部環境條件後，模型先建立背景場，再加入設備影響函數，接著使用 8 顆角落感測器觀測值校準 active device power scale 並建立 trilinear 校正場，最後輸出任意座標或目標區域的三因子估計；只有在已有 point/cluster sample 與完整三因子目標時，才進一步輸出候選控制動作排序。"
+            "本研究的整體論證不是從服務介面出發，而是從一般房間的兩項限制出發：室內只能布建少量感測器，冷氣、窗戶與照明又常缺乏可直接讀取的遙測。圖 3-1 因此把整篇論文整理成「研究缺口、研究問題、方法核心、對應證據、有界結論」五個連續階段。RQ1 對應變數專屬 nominal model、active-device power calibration、trilinear correction 與 optional hybrid residual，並由 E1--E3、E6 與 E7 分別提供受控完整場、baseline、robustness 與真實未見點證據；RQ2 對應 before/after delta 與裝置 spatial basis，並由 E4、E5 與 E9 的 event-aligned 子任務定位其可支持範圍；RQ3 對應 point/zone sample、完整三因子目標與反事實 comfort-penalty 排序，但推薦實際因果改善仍需 E8 介入驗證；RQ4 則是 scripts、Web、MCP 與 Gemma bridge 共用同一 estimator path 的次要服務化問題，不作為 headline novelty。"
         ),
         image(
-            "outputs/figures/architecture/整體分層架構.svg",
-            "圖 3-1 系統整體抽象樹狀架構。此圖以 top-down tree 呈現情境與觀測、估測與學習、服務與決策三個責任域，並標示 MCP/Gemma bridge 屬於工具介面層而非主模型核心。",
-            asset_name="fig_3_1_overall_architecture",
+            "outputs/figures/architecture/研究整體邏輯架構.svg",
+            "圖 3-1 研究整體邏輯架構。此圖將研究缺口、RQ1--RQ4、方法核心、E1--E9 證據層與 claim boundary 串成同一條論證鏈；其中 RQ1--RQ3 為主要研究線，RQ4 為次要服務線，E8 維持 future intervention protocol。",
+            asset_name="fig_3_1_research_logic",
+        ),
+        paragraph(
+            "在上述研究邏輯之下，系統實作由房間與設備設定、三因子影響場模型、角落感測器校正、非連網裝置影響學習、控制動作排序與服務介面組成。輸入房間幾何、設備位置、外部環境與時間後，模型先建立變數專屬 nominal field，再用 8 顆角落感測器校準 active-device power scale 並建立 trilinear correction；必要時加上 hybrid residual，最後輸出任意座標或目標區域的三因子估計。只有在已有 point/cluster sample 與完整三因子目標時，才進一步輸出候選控制動作排序。圖 3-2 接著以一次 runtime request 說明這些模組的執行順序。"
         ),
         image(
             "outputs/figures/architecture/主要執行資料流.svg",
@@ -997,7 +1017,21 @@ def build_blocks() -> List[Block]:
             "雖然主模型已具有可解釋的變數專屬 nominal model 結構，但在設備交互作用、局部照度分布或窗邊複合邊界條件下，仍可能存在系統性殘差。為此，本研究不以純黑盒神經網路取代主模型，而是加入 hybrid residual neural network 作為第二層修正器："
         ),
         math(r"F_v^{\text{hybrid}}(\mathbf{p},t) = F_v(\mathbf{p},t) + R_v(\mathbf{p},t;\,\boldsymbol{\theta}_v)"),
-        paragraph("其中 $F_v$ 為第三章前述的 reduced-order 主模型，$R_v$ 則由小型多層感知器近似其殘差。訓練目標定義為："),
+        paragraph(
+            "其中 $F_v$ 為第三章前述的 reduced-order 主模型，$R_v$ 則由小型多層感知器近似其殘差。這是本研究目前使用的 current-state spatial estimate：$t$ 表示同一情境的 elapsed time，主模型與 residual model 都估計位置 $\\mathbf{p}$ 在同一時刻 $t$ 的場值。"
+        ),
+        paragraph(
+            "若將此架構推廣為從預測起點 $t$ 出發的 $h$-step forecast，較完整的時間對齊寫法如下。Oh 等人的 next-day temperature study 即屬這類概念：forecast-day 的物理模擬結果提供目標日基線，再以歷史 simulation--measurement gap 學習同一目標時刻的修正量 [26]。"
+        ),
+        math(
+            r"\widehat{F}_v^{\text{hybrid}}(\mathbf{p},t+h\mid\mathcal{I}_t)"
+            r"=\widehat{F}_v^{\text{phys}}(\mathbf{p},t+h\mid\mathcal{I}_t)"
+            r"+\widehat{R}_v(\mathbf{p},t+h\mid\mathcal{I}_t)"
+        ),
+        paragraph(
+            "式中的 $h$ 是 forecast lead，不是物理模型額外增加的係數。物理項之所以也寫成 $t+h$，是因為加法兩側必須估計同一個 target time：物理模型由 $t$ 時刻可得的狀態、邊界條件預報與既定控制輸入向前推進，得到 $t+h$ 的 baseline；residual model 則預測同一 $t+h$ 尚未被物理模型吸收的誤差。$\\mathcal{I}_t$ 明確表示預測起點可用資訊，不能包含 $t+h$ 的實測真值或 truth residual，否則會造成 future-observation leakage。本研究目前未執行新的 $h>0$ 預測實驗，因此現有公式應視為 $h=0$ 的空間估測特例。"
+        ),
+        paragraph("在目前 $h=0$ 的實作中，訓練目標定義為："),
         math(r"R_v^*(\mathbf{p},t) = F_v^{\text{truth}}(\mathbf{p},t) - F_v(\mathbf{p},t)"),
         paragraph("其損失函數可表示為："),
         math(r"\mathcal{L}(\boldsymbol{\theta}_v) = \frac{1}{N}\sum_{i=1}^{N}\bigl\|R_v^*(\mathbf{p}_i,t_i) - R_v(\mathbf{p}_i,t_i;\boldsymbol{\theta}_v)\bigr\|^2 + \lambda\|\boldsymbol{\theta}_v\|^2"),
@@ -1014,6 +1048,8 @@ def build_blocks() -> List[Block]:
                 ["$\\|\\cdot\\|^2$", "平方誤差。", "懲罰預測 residual 與目標 residual 的差距。"],
                 ["$\\lambda$", "L2 regularization 權重。", "控制模型參數大小，降低過擬合風險。"],
                 ["$\\lambda\\|\\boldsymbol{\\theta}_v\\|^2$", "參數懲罰項。", "鼓勵殘差網路保持較平滑、較小幅度的修正。"],
+                ["$h$", "由預測起點 $t$ 到目標時刻 $t+h$ 的 forecast lead。", "只在 forecast 推廣式中使用；目前實驗為 $h=0$。"],
+                ["$\\mathcal{I}_t$", "預測起點 $t$ 時合法可得的資訊集合。", "不得包含 $t+h$ 的實測真值或 truth residual。"],
             ],
         ),
         paragraph(
@@ -1381,7 +1417,7 @@ def build_blocks() -> List[Block]:
         ),
         heading("5.6 【實驗 E5】窗戶時段、天氣、季節矩陣與直接輸入", 2),
         paragraph(
-            "本研究新增 48 組窗戶矩陣情境，組合 4 個時段、3 種天氣與 4 個季節。此矩陣可作為外部環境變數敏感度分析，用於說明窗戶在不同外部條件下對靠窗區與中心區的溫度、濕度與照度影響。"
+            "本研究新增 48 組窗戶矩陣情境，組合 4 個時段、3 種天氣與 4 個季節。此矩陣可作為外部環境變數敏感度分析，用於說明窗戶在不同外部條件下對靠窗區與中心區的溫度、濕度與照度影響。依目前室內溫度適用範圍 20–30 °C 稽核，34 組 target-zone 室內溫度位於範圍內；其餘 14 組保留為範圍外壓力測試，不支援目前應用適用性主張。"
         ),
         paragraph(
             "除列舉矩陣外，系統亦支援窗戶 direct input 模式。使用者可直接提供外部溫度、外部濕度、外部日照照度、開窗比例，以及可選的室內基準溫濕度。此模式適合接入即時天氣資料、手動量測資料或使用者指定條件，不必先將外部條件離散化為季節、天氣與時段分類。"
@@ -1390,9 +1426,9 @@ def build_blocks() -> List[Block]:
         table(
             ["情境", "外部溫度", "外部濕度", "外部日照", "窗戶區照度"],
             [
-                ["window_summer_sunny_noon", "37.0", "71.0", "36000.0", "243.7090"],
-                ["window_winter_rainy_night", "11.0", "78.0", "15.2", "68.9740"],
-                ["window_spring_cloudy_morning", "21.5", "70.0", "5005.0", "93.2172"],
+                ["window_summer_sunny_noon", "37.0", "71.0", "36000.0", "247.3004"],
+                ["window_winter_rainy_night", "11.0", "78.0", "15.2", "73.0820"],
+                ["window_spring_cloudy_morning", "21.5", "70.0", "5005.0", "96.7992"],
             ],
         ),
         heading("5.7 【實驗 E6】Hybrid Residual Neural Network 結果", 2),
@@ -1426,6 +1462,15 @@ def build_blocks() -> List[Block]:
             "本節比較 raw reduced-order model 與套用 active-device power calibration + trilinear residual correction 後的估計結果。8 顆角落感測器觀測值用於校正，因此校正後 corner sensor MAE 為 0 是預期結果，代表模型與稀疏感測點一致，不能單獨解讀為 dense field validation。相對地，pillow 位置未參與校正，可作為獨立局部檢查點。結果顯示，pillow 位置的 MAE 由 raw model 的 temperature 0.8967°C、humidity 4.1286%、illuminance 309.0142 lux，下降至校正後的 0.1676°C、0.3939% 與 16.6450 lux，顯示同一套 sparse-sensor calibration 管線可實際吸收真實房間觀測並改善非感測點估計。"
         ),
         paragraph(
+            "為檢查上述平均改善是否只由少數時間點造成，本研究進一步進行 paired day-block bootstrap。由於同一天的 morning、afternoon、night 與 sleep 四筆快照共享日期層級的天氣與使用脈絡，重抽樣時以日期為 block，將同一天的四筆資料一起抽取；固定 seed 20260726 執行 20,000 次，並以 2.5 與 97.5 percentile 建立 95% interval。Temperature 的平均 MAE 降幅為 0.7291°C，95% CI [0.4582, 1.0232]；humidity 為 3.7346 %RH，95% CI [3.2005, 4.2524]；illuminance 為 292.3692 lux，95% CI [288.3083, 297.0237]。三個區間下界均大於 0，且逐快照改善數分別為 26/28、28/28、28/28，表示此七天資料中的改善並非只由單一日期驅動。"
+        ),
+        paragraph(
+            "為更直接檢查單一日期的影響，本研究另執行 7-fold leave-one-date-out sensitivity analysis：每次移除一天的 4 筆快照，使用其餘 24 筆重算 raw 與 calibrated MAE。七個 folds 中，temperature、humidity、illuminance 的最小 MAE 降幅分別仍為 0.6123°C、3.5551 %RH 與 290.5716 lux，三者皆大於 0。因此，在目前觀察到的七個日期內，改善不依賴保留某一個特定日期；但七個 folds 高度重疊，這仍是單一房間、單一 pillow point 的內部敏感度分析，而非新的獨立重複實驗。"
+        ),
+        paragraph(
+            "上述 bootstrap 是針對既有七個日期 block 的描述性不確定性分析，不會增加新的獨立資料，也不能把逐快照改善比例解讀為控制介入成功率。其結論仍限定在 bedroom_01、單一 pillow hold-out 位置與觀察到的七天期間。"
+        ),
+        paragraph(
             "另外，本研究在真實臥室資料中加入分時 comfort target。一般時段沿用 pillow 位置原始 comfort target；sleep_02_00 快照則將照度目標設為 0 lux，容許範圍為 5 lux，以避免將睡眠時合理的黑暗狀態誤判為不舒適。分時後 sleep segment 的平均 comfort penalty 為 0.0000，而最差 penalty 轉移至 morning segment，表示舒適度評分已能反映不同使用情境。"
         ),
         table(
@@ -1448,6 +1493,12 @@ def build_blocks() -> List[Block]:
         ),
         paragraph(
             "此驗證方法建議至少記錄四類數值：第一，介入前實測 penalty；第二，系統對每個候選動作預測的 penalty 與 predicted improvement；第三，介入後實測 penalty；第四，predicted improvement 與 actual improvement 的差距。若同一初始條件可測試多個候選動作，則可進一步比較預測排名與實測排名的一致性。"
+        ),
+        paragraph(
+            "為避免實驗完成後才改變欄位或指標，本研究已將 E8 protocol 實作成預註冊 execution kit：e8_intervention_trial_schema.json 固定 study、trial、target、before/after observations、predicted ranking、executed action、settling interval、control condition 與 protocol deviations；e8_intervention_trials_template.json 提供 bedroom_01 pillow point 的空白收集格式；analyze_e8_intervention_trials.py 則重新計算 comfort penalty、actual improvement、prediction error、direction accuracy，並僅在同一 block 具有可比較 action arms 時輸出 top-1 regret 與 Spearman rank correlation。"
+        ),
+        paragraph(
+            "目前執行套件已可重現地產生 e8_intervention_summary.json，但 E8 目前完成真實介入試驗數為 0，證據狀態仍是 `NOT_EVALUATED`，所有效益估計維持 null。這表示資料契約與分析路徑已準備完成，不表示推薦具有實測效果；單元測試使用的 synthetic fixtures 只驗證公式與錯誤處理，不能進入論文證據。"
         ),
         table(
             ["指標", "定義", "用途"],
@@ -1523,7 +1574,63 @@ def build_blocks() -> List[Block]:
         paragraph(
             "從物理意義來看，這個結果與本研究模型設計一致。模型不是為了最佳化一般自回歸時序預測，而是把外部邊界、設備作用、空間位置與變數專屬響應拆開處理；因此當任務需要知道事件造成的方向與長視窗環境響應時較有利，當任務只需要複製上一時步照度時則不佔優勢。"
         ),
-        heading("5.9.3 CU-BEMS：C1/C2/C3 任務族群拆解", 3),
+        heading("5.9.3 Oh et al. (2024) 方法移植比較", 3),
+        paragraph(
+            "為回答新增文獻中的方法能否直接拿來比較，本研究另建立一個 focused transfer benchmark。其核心保留 Oh、Sfarra 與 Kim [26] 的加法邏輯：先用本研究 mapped physics model 產生目標時刻的 temperature baseline，再用 origin-time 的室內量測、外部邊界與操作特徵，學習 measured - physics residual，最後以 physics + predicted residual 得到輸出。為避免偽稱重現，residual learner 固定為 ridge-linear head（ridge = 0.001），不是原文的 CNN--LSTM；資料也改用 SML2010 S2 兩點溫度，而不是原文機密的商辦 return-air BEMS data。所有方法使用相同 chronological 70/30 split，並比較 persistence、direct linear regression、raw physics prior、本研究 hybrid digital-twin readout 與 Oh2024-inspired additive residual。"
+        ),
+        table(
+            ["Horizon", "Persistence MAE\n(dining/room)", "Direct LR MAE", "Raw physics MAE", "本研究 readout MAE", "Oh2024-inspired MAE"],
+            [
+                ["15 min", "0.1182 / 0.1153", "0.0426 / 0.0519", "0.4332 / 0.1572", "0.0728 / 0.0951", "0.0422 / 0.0517"],
+                ["60 min", "0.4698 / 0.4580", "0.1925 / 0.2297", "0.4209 / 0.4204", "0.1562 / 0.2167", "0.1925 / 0.2305"],
+                ["1440 min", "1.5175 / 1.4996", "1.7532 / 1.7686", "1.5869 / 1.5092", "1.7894 / 1.8010", "1.7538 / 1.7723"],
+            ],
+        ),
+        paragraph(
+            "預註冊判準為 Oh2024-inspired residual 在 6 個 temperature target--horizon cases 中至少 4 個優於 raw physics；實際結果為 4/6，因此支持「additive residual 能在部分 task 修正 physics bias」的有限主張。不過，最低 MAE 的分布更重要：Oh2024-inspired 方法只在兩個 15 分鐘 case 最佳，本研究 readout 在兩個 60 分鐘 case 最佳，而 24 小時的兩個 case 都由 persistence 最佳。尤其 1440 分鐘下，Oh2024-inspired MAE 反而比 raw physics 高 0.1668°C 與 0.2630°C，表示原文在 next-day commercial return-air task 的優勢沒有在 SML2010 兩點溫度 transfer 中重現。"
+        ),
+        heading("5.9.3.1 次日預測改善實驗", 4),
+        paragraph(
+            "為檢查是否能增加次日預測優勢，本研究另以 h=1440 min 建立 leakage-controlled follow-up。Primary protocol 固定採 chronological 60/10/30 train/validation/test；候選方法包含 bias-corrected persistence、damped daily trend、persistence--physics blend 與 seasonal residual ridge，所有 candidate 與 hyperparameter 只由 validation MAE 決定，選定後以最前 70% refit，再評估與前節相同的末段 30% test。輸入只允許 forecast origin 已知的室內狀態、歷史 lag、外部邊界、forecast_temperature_c、週期特徵與 origin-derived physics；不得使用 target-time 實測值。"
+        ),
+        table(
+            ["次日方法", "Dining MAE", "Room MAE", "相對 persistence"],
+            [
+                ["Seasonal persistence", "1.5175", "1.4996", "baseline"],
+                ["Validation-selected fixed model：damped trend，alpha=0.25", "1.6289", "1.6250", "-7.34% / -8.36%"],
+                ["Registered bias-corrected persistence（未被 validation 選中）", "1.5018", "1.4884", "+1.04% / +0.75%"],
+                ["Post-primary exploratory adaptive median 14d", "1.6515", "1.6456", "-8.83% / -9.73%"],
+            ],
+        ),
+        paragraph(
+            "Primary validation 在兩個 target 都選到 alpha=0.25 的 damped daily trend，但 final test 反而比 persistence 差；paired date-block bootstrap 的 MAE reduction 95% interval 分別為 [-0.2623, 0.0295]°C 與 [-0.2788, 0.0197]°C，兩者均跨越 0，因此 H-ND-01、robustness hypothesis 與次日優勢 claim 均不支持。固定 bias correction 雖在 test 顯示約 1% 的小幅改善，但它沒有通過 validation selection，不能事後改稱主要方法。"
+        ),
+        paragraph(
+            "在 primary 結果已知後，本研究另預先列出 rolling mean、median 與 EWMA same-slot daily-delta correction，作為明確標記的 post-primary exploratory online analysis。Validation 選到 14-day median，但 test 仍惡化約 9%，故沒有探索性改善訊號。此結果顯示目前限制不是 residual 公式本身，而是 validation/test 間的非平穩漂移、資料檔案時間缺口，以及缺少可靠的 target-day weather 與 HVAC schedule forecast。要建立可主張的次日優勢，後續需要新增獨立日期或建築作 untouched holdout，並在 forecast origin 提供可信的次日外氣與操作排程，再用 rolling-origin evaluation 驗證；不能只在同一 test 上繼續調參。"
+        ),
+        paragraph(
+            "因此，這篇方法適合納入本研究作為「published-method-inspired baseline」，但不適合把原文的 December/January/February CVRMSE 與本研究 MAE 直接排在同一排名表。原文資料明示為 confidential，且建築、target、physical model、CNN--LSTM 架構與訓練月份均不同；本節只能支持方法概念移植與同資料公平比較，不能宣稱重現 Oh et al.、優於其 published model，或完成 full 3-D field validation。"
+        ),
+        heading("5.9.3.2 Vanilla RNN 同資料公平比較", 4),
+        paragraph(
+            "依教授建議，本研究另在 SML2010 S2 的 dining/room 溫度與濕度上加入固定 vanilla Elman RNN [27]，比較 15、60 與 1,440 分鐘 horizon。四種方法先共用同一 eligible-endpoint index：每個案例具有相同四筆 origin-history、chronological 70/30 split、target 與 test rows；sequence linear regression 與 RNN 取得相同 raw history，physics-structured readout 只能從相同 origin records 衍生特徵，且主要比較不載入額外 synthetic learned checkpoint。每個 horizon 另保存各方法相同的 endpoint 與 input-content hash。"
+        ),
+        paragraph(
+            "RNN 同資料比較為 COMPLETE，12/12 個案例通過資料一致性，共完成 12 個 target--horizon 案例。最低 MAE 次數為 sequence linear regression 為 7 項、persistence 為 5 項、physics-structured readout 為 0 項、RNN 為 0 項。RNN 在兩個 60 分鐘溫度案例勝過 persistence，也在兩個 15 分鐘濕度案例勝過 physics readout，但 12 個案例均未勝過 sequence linear regression。"
+        ),
+        table(
+            ["方法", "最低 MAE 案例數", "結果解讀"],
+            [
+                ["Sequence linear regression", "7 / 12", "四步歷史的線性關係已能描述多數短中期案例"],
+                ["Persistence", "5 / 12", "60 分鐘 dining humidity 與四個 24 小時案例仍由時間慣性佔優"],
+                ["Physics-structured readout", "0 / 12", "此 focused S2 absolute-value 任務沒有取得最低 MAE"],
+                ["Vanilla RNN", "0 / 12", "固定小型 recurrent model 未建立優勢"],
+            ],
+        ),
+        paragraph(
+            "這是需要保留的負向結果。它支持的主張是 RNN 已在相同資料條件下完成比較，而不是 RNN 或本研究方法較佳。若後續增加 history length、LSTM/GRU 或調整 architecture，必須另立 protocol，且所有其他模型仍須取得相同資料與 test rows。"
+        ),
+        heading("5.9.4 CU-BEMS：C1/C2/C3 任務族群拆解", 3),
         image(
             "outputs/figures/public_benchmarks/cu_bems_task_breakdown.svg",
             "圖 5-7 CU-BEMS C1/C2/C3 任務族群拆解。CU-BEMS 呈現出與 SML2010 不同的型態：本研究常能勝過 linear regression，但在高時間慣性的商辦 zone-level 任務中未勝過 persistence。",
@@ -1541,7 +1648,7 @@ def build_blocks() -> List[Block]:
         paragraph(
             "CU-BEMS 呈現與 SML2010 不同的結果。12 個 target-horizon 任務中，本研究映射模型有 9 項 MAE 勝過 linear regression，但沒有任何一項勝過 persistence。這表示在大規模 zone-level building operation forecasting 中，資料本身的時間慣性非常強，上一時步觀測值往往已是極強 baseline；本研究模型的優勢較適合解讀為 structured prior 對 linear readout 的補強，而不是全面取代 persistence。"
         ),
-        heading("5.9.4 綜合判讀與 Claim Boundary", 3),
+        heading("5.9.5 綜合判讀與 Claim Boundary", 3),
         paragraph(
             "綜合兩個資料集，本研究在公開資料上的主要優勢不是「所有任務都比 baseline 好」，而是「當任務包含事件、邊界變化或長視窗響應時，變數專屬 structured prior 能提供比一般 linear regression 更有用的特徵」。最強證據是 SML2010 S3：15 分鐘 horizon 下 6 個 target 中有 5 項勝過 linear regression、4 項勝過 persistence；60 分鐘 horizon 下 6 個 target 全部同時勝過兩個 baseline。"
         ),
@@ -1590,10 +1697,19 @@ def build_blocks() -> List[Block]:
             "在公開資料集 task-aligned benchmark 方面，本研究以 MAE、RMSE 與 Pearson Correlation 三項指標，對比 persistence 與 linear regression 兩個 baseline。SML2010 共 24 個 target-horizon 任務中，本研究映射模型有 12 項取得最低 MAE，並在 S3 facade event delta 的 60 分鐘 horizon 中對 6 個 target 全部優於兩個 baseline；這說明物理結構與 boundary/event response 先驗在長視窗變化任務中具明確價值。CU-BEMS 則提供相反提醒：在 12 個 target-horizon 任務中，本研究映射模型有 9 項勝過 linear regression，但沒有任何一項勝過 persistence，表示高時間慣性的大規模 zone-level building forecasting 不一定能由本研究模型取代簡單時間延續策略。劣勢主要集中於短視窗純照度任務與外部資料濕度尺度不匹配。此分析說明本研究的優勢來自模型結構對裝置、邊界與空間響應的顯式建模，而非針對一般純時序預測最佳化。"
         ),
         paragraph(
+            "以 Oh et al. (2024) 為概念來源的 focused transfer benchmark 進一步顯示，同一 additive residual 方法在 15 分鐘兩點溫度任務可取得最低 MAE，但在 60 分鐘由本研究 readout 較佳，24 小時則由 persistence 最佳，且 transferred residual 在兩個 24 小時 case 都劣於 raw physics。這個結果支持把 published hybrid method 當作可執行比較基線，同時否定「只要加入 learned residual 就能跨資料集維持 next-day 優勢」的過度推論。"
+        ),
+        paragraph(
+            "針對 24 小時 horizon 的 leakage-controlled follow-up 也未建立新的優勢：validation-selected damped daily trend 在 dining 與 room 的 test MAE 分別為 1.6289°C 與 1.6250°C，均高於 persistence 的 1.5175°C 與 1.4996°C；post-primary adaptive correction 亦未改善。這個負結果表示目前不能把約 1% 的未選中 bias-correction 小訊號包裝成次日優勢，後續必須以新增獨立時段、可信 target-day weather/HVAC schedule forecast 與 rolling-origin validation 重新驗證。"
+        ),
+        paragraph(
+            "教授指定的 vanilla RNN 也已在完全相同的 SML2010 S2 四步歷史、split 與 test rows 下完成比較。12 個 target--horizon 案例中，sequence linear regression 在 7 項取得最低 MAE，persistence 在 5 項取得最低 MAE，而 RNN 與 physics-structured readout 都是 0 項。此結果說明目前資料下的 recurrent complexity 沒有轉化為可驗證優勢，也再次支持保留簡單基準與負向結果。"
+        ),
+        paragraph(
             "另一項結論是，公開資料集並非不能使用，而是必須依資料本身支援的任務層級進行比較。對完整 3D 場重建，本研究目前仍以 canonical synthetic benchmark 作為主要依據；對 zone-level 響應、兩點時序響應與舒適度評分，則可分別利用相容的公開資料建立 task-aligned benchmark。此作法比直接宣稱所有資料集都能完整驗證本研究系統更嚴謹，也使後續 IEEE 稿件能從中文論文抽取一致的資料、數字與 claim boundary。"
         ),
         paragraph(
-            "真實臥室快照驗證進一步補足了純模擬實驗的不足。7 天、28 筆快照結果顯示，當 8 顆角落感測器提供真實觀測時，校正後模型能將未參與校正的 pillow 位置估計誤差降至 0.1676°C、0.3939% 與 16.6450 lux。此結果不等同於完整 3D 場 ground truth，但已證明本研究的 sparse-sensor calibration pipeline 可直接接入真實房間資料。"
+            "真實臥室快照驗證進一步補足了純模擬實驗的不足。7 天、28 筆快照結果顯示，當 8 顆角落感測器提供真實觀測時，校正後模型能將未參與校正的 pillow 位置估計誤差降至 0.1676°C、0.3939% 與 16.6450 lux。以日期為 block 的 20,000 次 paired bootstrap 亦顯示三因子 MAE 降幅的 95% interval 下界均高於 0；進一步逐日剔除時，三因子的最小 MAE 降幅仍為 0.6123°C、3.5551 %RH 與 290.5716 lux。因此改善在既有七個日期的重抽樣與單日 influence diagnostic 下皆保持正值；但此結果不等同於完整 3D 場 ground truth，也不能外推為跨房間成功率。"
         ),
         paragraph(
             "對推薦動作而言，本研究目前完成的是模型導向的反事實排序與驗證方法設計，而非真實閉環控制。推薦前必須先指定 point/cluster sample 與完整溫度、濕度、照度目標；實際因果驗證應以介入前後量測為準，檢查排名第一的動作是否帶來正的 actual improvement，並比較 predicted improvement 與 measured improvement 是否一致。"
@@ -1601,12 +1717,18 @@ def build_blocks() -> List[Block]:
         heading("6.2 研究限制", 2),
         bullets(
             [
-                "目前已加入小型真實臥室快照驗證，但仍缺乏長期連續部署資料與 dense spatial ground truth。",
+                "目前已加入小型真實臥室快照、date-block bootstrap 與逐日剔除敏感度分析，但資料仍只有七個日期 block、單一 pillow hold-out，且缺乏長期連續部署資料與 dense spatial ground truth；七個剔除 folds 高度重疊，不能視為獨立重複實驗。",
                 "Hybrid residual 的 leave-one-scenario-out 結果證明標準情境 family 內的殘差可學習，但尚未證明可直接泛化到任意房間幾何、家具配置或使用者行為。",
                 "模型不處理多房間氣流、牆體熱容或完整流體動力學。",
+                "目前室內受控或估測狀態的研究溫度範圍為 20–30 °C；外部天氣邊界不擴張此主張，即使候選應用需要動態環境控制，也不得把室內結果外推到此區間以外。",
+                "48 組窗戶矩陣中，依 target-zone 室內溫度稽核只有 34 組位於 20–30 °C；其餘 14 組僅作範圍外壓力測試，不得列入目前應用適用性證據。",
+                "人體舒適採目標帶與容許範圍，現有低 MAE 不能直接證明一般人居環境需要極窄溫濕度控制。",
                 "濕度模型採簡化耦合，驗證強度低於溫度與照度；在外部資料集（SML2010）中存在系統性基準偏差，需進一步對齊量測尺度。",
                 "短視窗（15min）純照度預測上，persistence baseline 因照度短期穩定性而具優勢，本研究的物理估計引入額外誤差。",
                 "公開資料集多缺乏完整單房間幾何與 dense ground truth，因此無法直接作為 full-field benchmark。",
+                "Oh et al. (2024) 的 BEMS data 為 confidential，本文只能執行 ridge-linear method transfer，不能重現其 TRNSYS/RC、CNN--LSTM 或 published next-day performance；SML2010 的 24 小時 transfer 亦未顯示 residual 優於 persistence。",
+                "次日改善 follow-up 的 fixed 與 adaptive 方法都未通過預註冊判準；validation/test 非平穩漂移與缺少 target-day 邊界/操作 forecast 使現有 SML2010 結果不足以支持 next-day advantage。",
+                "固定 vanilla RNN 在同資料的 12 個 SML2010 S2 案例中沒有取得最低 MAE；此結果不能代表所有 recurrent architecture，但也不能省略或改寫為模型改善。",
                 "MCP server 目前為本地 stdio 版本，尚未包含遠端部署、OAuth 或多使用者管理。",
                 "控制功能目前為具前置條件的推薦排序：必須先有 point/cluster sample 與三因子目標，且尚未完成真實介入式因果驗證，也尚未進入自動閉環控制。",
             ]
@@ -1623,6 +1745,8 @@ def build_blocks() -> List[Block]:
                 "進一步研究閉環控制，將已驗證的推薦排序延伸為實際控制策略。",
                 "加入長時間資料以學習季節性與日夜週期變化。",
                 "以真實量測資料重新訓練與驗證 hybrid residual neural network，檢驗其在真實房間中的泛化能力。",
+                "以全程位於 20–30 °C 的小型封閉植物生長環境作為候選情境，先驗證日夜或生長階段 setpoint 的溫濕度、光照追蹤與空間均勻性；在加入 PPFD/PAR、CO2、基質水分、氣流與生物 endpoint 前，不宣稱植物培養成效。",
+                "定義 state transition、observation model 與 noise covariance，預註冊相同資料的未濾波、moving average、linear Kalman filter 與必要時 EKF 比較；在正式執行前維持 NOT_EVALUATED。",
             ]
         ),
         page_break(),
@@ -1654,6 +1778,13 @@ def build_blocks() -> List[Block]:
                 "[23] Z. Wang, Q. Xue, Y. Ji, Z. Yu, Indoor environment quality in a low-energy residential building in winter in Harbin, Building and Environment, vol. 135, pp. 194-201, 2018. DOI: 10.1016/j.buildenv.2018.03.012",
                 "[24] Y. Geng, B. Lin, Y. Zhu, Comparative study on indoor environment quality of green office buildings with different levels of energy use intensity, Building and Environment, vol. 168, 106482, 2020. DOI: 10.1016/j.buildenv.2019.106482",
                 "[25] J. Lee et al., A Comparative Field Study of Indoor Environment Quality and Work Productivity between Job Types in a Research Institute in Korea, International Journal of Environmental Research and Public Health, vol. 19, no. 21, 14332, 2022. DOI: 10.3390/ijerph192114332",
+                "[26] Ju-Hong Oh, Stefano Sfarra, Eui-Jong Kim, Hybrid modeling based on integrating simulation and operational data to improve indoor air temperature predictions, a controlled variable in digital twin models, Energy and Buildings, vol. 324, 114898, 2024. DOI: 10.1016/j.enbuild.2024.114898",
+                "[27] Jeffrey L. Elman, Finding Structure in Time, Cognitive Science, vol. 14, no. 2, pp. 179-211, 1990. DOI: 10.1207/s15516709cog1402_1",
+                "[28] R. E. Kalman, A New Approach to Linear Filtering and Prediction Problems, Journal of Basic Engineering, vol. 82, no. 1, pp. 35-45, 1960. DOI: 10.1115/1.3662552",
+                "[29] Camilo Chiang, Daniel Bånkestad, Günter Hoch, Reaching Natural Growth: The Significance of Light and Temperature Fluctuations in Plant Performance in Indoor Growth Facilities, Plants, vol. 9, no. 10, 1312, 2020. DOI: 10.3390/plants9101312",
+                "[30] Young Ho Kim et al., Preventing Overgrowth of Cucumber and Tomato Seedlings Using Difference between Day and Night Temperature in a Plant Factory with Artificial Lighting, Plants, vol. 12, no. 17, 3164, 2023. DOI: 10.3390/plants12173164",
+                "[31] Simon van Mourik, Peter J. M. van Beveren, Irineo L. López-Cruz, Eldert J. van Henten, Improving climate monitoring in greenhouse cultivation via model based filtering, Biosystems Engineering, vol. 181, pp. 40-51, 2019. DOI: 10.1016/j.biosystemseng.2019.03.001",
+                "[32] S. L. Speetjens, J. D. Stigter, G. van Straten, Towards an adaptive model for greenhouse control, Computers and Electronics in Agriculture, vol. 67, no. 1-2, pp. 1-8, 2009. DOI: 10.1016/j.compag.2009.01.012",
             ]
         ),
         page_break(),
@@ -2139,6 +2270,13 @@ def styles_xml() -> str:
 def main() -> None:
     DOCS.mkdir(exist_ok=True)
     PAPERS.mkdir(parents=True, exist_ok=True)
+    ensure_image_asset(
+        image(
+            "outputs/figures/architecture/overall_research_logic_architecture.svg",
+            "IEEE companion figure asset",
+            asset_name="fig_3_1_research_logic_en",
+        )
+    )
     blocks = build_blocks()
     markdown_path = DOCS / "thesis" / "thesis_draft_zh.md"
     docx_path = PAPERS / "thesis_draft_zh.docx"

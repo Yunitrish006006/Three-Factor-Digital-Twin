@@ -66,6 +66,16 @@ B.~Huljak, J.~A. Acero, Z.~H. Kyaw, and F.~Chinesta, ``Hybrid models for
   simulating indoor temperature distribution in air-conditioned spaces,''
   \emph{Frontiers in Built Environment}, vol.~11, p. 1690062, 2025.
 
+\bibitem{oh2024hybridmodeling}
+J.-H. Oh, S.~Sfarra, and E.-J. Kim, ``Hybrid modeling based on integrating
+  simulation and operational data to improve indoor air temperature
+  predictions, a controlled variable in digital twin models,'' \emph{Energy and
+  Buildings}, vol. 324, p. 114898, 2024.
+
+\bibitem{elman1990structure}
+J.~L. Elman, ``Finding structure in time,'' \emph{Cognitive Science}, vol.~14,
+  no.~2, pp. 179--211, 1990.
+
 \bibitem{qian2025dafield}
 W.~Qian, C.~Li, H.~Gao, L.~Zhuang, Y.~Lu, S.~Hu, and J.~Liu, ``Estimating
   indoor air temperature and humidity distributions by data assimilation with
@@ -77,6 +87,21 @@ Y.~L. Chen and J.~Wen, ``Application of zonal model on indoor air sensor
   network design,'' in \emph{Sensors and Smart Structures Technologies for
   Civil, Mechanical, and Aerospace Systems 2007}, ser. Proceedings of SPIE,
   vol. 6529, 2007, p. 652911.
+
+\bibitem{chiang2020naturalgrowth}
+C.~Chiang, D.~B{\aa}nkestad, and G.~Hoch, ``Reaching natural growth: The
+  significance of light and temperature fluctuations in plant performance in
+  indoor growth facilities,'' \emph{Plants}, vol.~9, no.~10, p. 1312, 2020.
+
+\bibitem{speetjens2009adaptive}
+S.~L. Speetjens, J.~D. Stigter, and G.~van Straten, ``Towards an adaptive model
+  for greenhouse control,'' \emph{Computers and Electronics in Agriculture},
+  vol.~67, no. 1--2, pp. 1--8, 2009.
+
+\bibitem{vanmourik2019filtering}
+S.~van Mourik, P.~J.~M. van Beveren, I.~L. L{\'o}pez-Cruz, and E.~J. van
+  Henten, ``Improving climate monitoring in greenhouse cultivation via model
+  based filtering,'' \emph{Biosystems Engineering}, vol. 181, pp. 40--51, 2019.
 
 \bibitem{shepard1968two}
 D.~Shepard, ``A two-dimensional interpolation function for irregularly-spaced

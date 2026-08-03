@@ -8,9 +8,9 @@
 - 有限感測器下仍需估計全室環境
 - 早期純插值與 local-only 模型都不合理
 
-## Slide 3: 系統架構
-- top-down tree 區分情境觀測、估測學習、服務決策三個責任域
-- MCP/Gemma bridge 屬於工具介面層，不是主模型核心
+## Slide 3: 論文整體邏輯：問題、方法、證據與結論邊界
+- RQ1--RQ3 為主要研究線，RQ4 為次要服務線
+- 每個研究問題對應方法、E1--E9 證據層與可支持／不可過度宣稱的結論
 
 ## Slide 4: 房間拓樸、感測器與目標區域
 - 8 顆角落感測器
@@ -45,10 +45,11 @@
 ## Slide 9: 驗證流程與比較原則
 - E1-E3：synthetic full-field、IDW baseline、ablation
 - E4：非連網裝置影響學習與推薦排序
-- E5：48 組窗戶矩陣與 direct input
+- E5：48 組窗戶矩陣（34 範圍內／14 範圍外壓力測試）與 direct input
 - E6：hybrid residual no-Fourier 與 LOO cross-validation
 - E7：bedroom_01 7 天真實快照與 pillow hold-out
-- E8 protocol、E9 public task-aligned benchmark；demo 不是量化實驗
+- E8 execution kit：schema / template / analyzer；0 trials、NOT_EVALUATED
+- E9 public task-aligned benchmark；demo 不是量化實驗
 
 ## Slide 10: 主要結果
 - 平均 field MAE
@@ -62,19 +63,27 @@
 - train/test sample count
 - 研究定位不是黑盒替代
 - LOO 結果限標準情境 family
+- E7 date-block bootstrap 的三因子改善區間下界均大於 0
+- E7 逐日剔除的最小 MAE 降幅仍為 T 0.6123、H 3.5551、L 290.5716
 
 ## Slide 12: 公開資料任務拆解
 - SML2010：S1 純照度劣勢、S2 長視窗溫度部分優勢、S3 事件 delta 主要優勢
+- Oh2024-inspired transfer：15min 兩點溫度最佳、60min 本研究 readout 最佳、24h persistence 最佳
+- 次日 primary 與 post-primary adaptive 均未建立優勢；未選中 bias correction 僅約 1% 改善
+- RNN 與其他模型共用四筆 history、split、targets、test rows；12/12 parity 通過，RNN lowest MAE 0/12
 - CU-BEMS：C1/C3 勝 linear regression 但不勝 persistence，C2 照度劣勢
 - 明確說明 public benchmark 不是 full 3D 場驗證
 
 ## Slide 13: 研究貢獻與資料策略
 - 三因子、有限感測器、非連網裝置、服務化
 - canonical synthetic benchmark + real-bedroom snapshots + task-aligned public datasets
+- 室內應用溫度限 20–30 °C；人體舒適採目標帶與 tolerance
 - 明確列出每種資料支援的驗證範圍
 
 ## Slide 14: 結論與未來工作
 - 長期真實資料、dense real-room ground truth、更多因子、multi-zone、推薦動作介入驗證、閉環控制
+- 候選動態植物生長情境需補 PPFD/CO2/基質/生物 endpoint
+- Kalman family 先定義 state/observation/noise，再做同資料比較
 
 ## Slide 15: 公式說明 1：三因子場與查詢點
 - 場的定義

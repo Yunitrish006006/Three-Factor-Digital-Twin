@@ -56,38 +56,37 @@
 - **Real-bedroom snapshot**：真實臥室中的稀疏量測快照，用於檢查校正對未參與 fitting 點位的改善。
 - **Before/after intervention**：實際採取動作前後量測環境變化，用於驗證推薦是否有因果改善效果。
 
-## Slide 3: 研究主軸與輸入輸出
+## Slide 3: 論文整體邏輯：問題、方法、證據與結論邊界
 
-這頁把研究整理成三段：輸入、模型與輸出。輸入端不是只有感測值，還包含房間尺寸、座標系、8 顆角落感測器、室內 baseline、室外邊界條件、時間，以及冷氣、窗戶、燈具等設備狀態。
+這張圖是整篇論文的 argument map。起點不是 MCP 或 Web，而是一般房間同時存在稀疏感測與非連網裝置兩個限制；因此需要回答空間場估計、裝置影響學習與決策支援三個主要研究問題。
 
-這些輸入之所以都需要，是因為室內環境不是均勻的。冷氣出風方向、窗戶日照位置、燈具距離、家具遮蔽，都會讓同一個房間中的不同位置出現不同溫度、濕度或照度。
+RQ1 對應變數專屬 nominal model、power calibration、trilinear correction 與 optional hybrid residual，證據來自 E1 到 E3、E6 與 E7。這些結果可以支持受控完整場與真實未見點改善，但不能外推成任意房間 dense truth。
 
-模型端先用變數專屬 nominal model 建立可解釋的主要趨勢，再用 power calibration 調整設備作用強度，最後用 trilinear residual correction 把 8 個角落觀測到的誤差補到整個房間。Hybrid residual 是額外的第二層修正，用來學習 base model 還沒有捕捉到的剩餘誤差。
+RQ2 對應 before/after delta 與裝置 spatial basis，證據包含 E4、E5 與 E9 的事件型相容子任務。這可以支持 structured impact prior 的價值，但不等同已完成真實因果識別。
 
-輸出端包含兩種層級。第一種是估計結果，例如任意 sample point 或 zone 的溫度、濕度、照度，以及 3D 視覺化。第二種是決策支援，例如學習到的非連網裝置影響係數，和針對目標舒適度的反事實推薦排序。
+RQ3 對應 point 或 zone sample、完整 T/H/L target 與反事實 comfort-penalty 排序。目前只能說模型可提供決策支援；E8 before/after intervention 尚未完成，所以不能宣稱推薦具有實際因果改善。
 
-因此這頁的主軸可以理解成：少量感測資料本身不夠，但如果結合房間幾何、設備先驗與校正機制，就能把 sparse observations 轉成可查詢的 spatial field。
+RQ4 是 secondary systems line，說明 scripts、Web、MCP 與 Gemma bridge 如何共用同一 estimator。它證明介面整合與模型重用，但不是論文的 headline novelty。
 
 ### 名詞註釋
 - **非連網家電/裝置**：沒有穩定 API 或遙測資料可讀取狀態的冷氣、窗戶、照明等設備。
 - **稀疏感測**：感測點數量少於完整空間場需求，需靠模型與校正推估未量測位置。
-- **角落感測器**：配置在房間地面四角與天花板四角的 8 個感測點，用於建立 sparse observation 與 residual correction。
-- **三因子**：本研究同時估計溫度、相對濕度與照度三種室內環境量。
 - **空間場**：不是單一平均值，而是在房間 3D 座標中任意位置可查詢的環境量分布。
-- **Sample**：指定房間中的查詢點，用來取得該座標的三因子估計。
 - **Zone**：房間內的目標區域，用於彙整多個點的平均狀態或舒適度評估。
-- **Baseline**：泛指比較或模型參考基準；在模型脈絡中常指未加入設備作用前的室內溫濕照度基準。
 - **Nominal model**：主模型的可解釋估計部分，描述設備、邊界與空間結構造成的主要趨勢。
 - **Residual**：觀測或 truth 與模型預測之間的差，用於校正或第二層學習。
-- **Residual correction**：利用感測器 residual 修正 nominal model，使估計更貼近觀測。
 - **Trilinear correction**：用 X/Y/Z 三個座標方向的一階補間，由 8 個角點 residual 推估室內 residual 場。
 - **Power calibration**：依觀測差異調整設備影響強度，避免裝置作用尺度只依預設值決定。
-- **影響係數 β_m**：描述裝置操作對第 m 個環境因子的方向與大小；m 可為溫度、濕度或照度。
 - **Hybrid residual**：在可解釋 base estimator 後面再加一個資料驅動 residual 模型，不直接取代主模型。
-- **Visibility/obstruction**：家具或幾何遮擋造成設備影響變弱的因素。
+- **MCP**：Model Context Protocol，是讓 LLM application 以標準化方式連接外部資料與工具的 open protocol；本研究用它封裝數位孿生工具。
+- **Gemma/Ollama bridge**：讓本地語言模型透過工具呼叫流程存取模型服務的橋接層。
+- **Estimator**：實際負責產生場估計的模型物件，可切換 base、corrected 或 hybrid 版本。
+- **Task-aligned benchmark**：只比較公開資料集中與本研究觀測型態相容的子任務，不宣稱完整場驗證。
+- **Synthetic full-field**：可取得完整場 truth 的受控驗證資料，用於完整 3D 場誤差比較。
+- **Dense ground truth**：房間內大量點位的真實環境場資料，是更嚴格但較難取得的驗證基準。
 - **Counterfactual simulation**：假設某候選動作發生後重新估計結果，用來比較預期改善。
 - **Comfort penalty**：偏離目標溫濕照度時的懲罰值，推薦排序用它衡量改善幅度。
-- **座標系**：用 x/y/z 公尺座標描述房間內位置；本研究原點在地面西南角。
+- **Before/after intervention**：實際採取動作前後量測環境變化，用於驗證推薦是否有因果改善效果。
 
 ## Slide 4: 研究背景與問題
 
@@ -439,7 +438,7 @@ finish 階段必須提供同一批感測器的 after_observations。系統用 af
 
 驗證採分層設計，因為不同資料能支持的結論不同。E1 到 E3 使用受控完整場資料，重點是直接比較整個 3D field 的估計誤差，並和 IDW baseline 及 ablation variants 比較。
 
-E4 到 E6 驗證模型的其他元件。E4 檢查非連網裝置影響學習是否能從 before/after observations 解出合理係數；E5 檢查 48 組窗戶矩陣與 direct input 對外部邊界的支援；E6 檢查 hybrid no-Fourier 和 leave-one-scenario-out，確認改善不是單一切分造成。
+E4 到 E6 驗證模型的其他元件。E4 檢查非連網裝置影響學習是否能從 before/after observations 解出合理係數；E5 檢查 48 組窗戶矩陣與 direct input 對外部邊界的支援，其中 34 組 target-zone 室內溫度位於 20–30 °C，14 組只作範圍外壓力測試；E6 檢查 hybrid no-Fourier 和 leave-one-scenario-out，確認改善不是單一切分造成。
 
 E7 使用 bedroom_01 的 28 筆真實快照做 pillow hold-out 檢查。這裡能支持的是 sparse real-room calibration，也就是校正後對未參與 fitting 的 pillow 點有改善，但它不是 dense 3D truth。
 
@@ -452,6 +451,7 @@ E9 使用公開資料集做 task-aligned benchmark。這部分不是單房間完
 - **非連網家電/裝置**：沒有穩定 API 或遙測資料可讀取狀態的冷氣、窗戶、照明等設備。
 - **稀疏感測**：感測點數量少於完整空間場需求，需靠模型與校正推估未量測位置。
 - **空間場**：不是單一平均值，而是在房間 3D 座標中任意位置可查詢的環境量分布。
+- **Zone**：房間內的目標區域，用於彙整多個點的平均狀態或舒適度評估。
 - **Baseline**：泛指比較或模型參考基準；在模型脈絡中常指未加入設備作用前的室內溫濕照度基準。
 - **外部邊界**：室外溫度、濕度、日照等會透過窗戶或邊界條件影響室內的輸入。
 - **Hybrid residual**：在可解釋 base estimator 後面再加一個資料驅動 residual 模型，不直接取代主模型。
@@ -511,7 +511,7 @@ E9 使用公開資料集做 task-aligned benchmark。這部分不是單房間完
 
 這種設計的目的不是列出所有可能生活情境，而是建立可控的 benchmark family。單裝置情境可以看每個裝置的基本影響，雙裝置情境可以看交互作用，all_active 則檢查多來源影響疊加時模型是否仍穩定。
 
-窗戶相關輸入除了標準情境，也包含 48 組 window matrix。矩陣會組合季節、天氣、時段等條件，用來測試外部溫度、濕度與日照輸入變化時，模型是否能產生合理反應。
+窗戶相關輸入除了標準情境，也包含 48 組 window matrix。矩陣會組合季節、天氣、時段等條件；依 target-zone 室內溫度稽核，34 組位於 20–30 °C，另 14 組只保留為範圍外壓力測試。
 
 系統也支援 direct input，讓使用者不一定要選預設矩陣，而可以直接輸入外部溫度、濕度、日照與開窗比例。這對 demo 和 MCP tools 很重要，因為使用者可能會問一個當下的自訂條件。
 
@@ -519,6 +519,7 @@ E9 使用公開資料集做 task-aligned benchmark。這部分不是單房間完
 
 ### 名詞註釋
 - **三因子**：本研究同時估計溫度、相對濕度與照度三種室內環境量。
+- **Zone**：房間內的目標區域，用於彙整多個點的平均狀態或舒適度評估。
 - **MCP**：Model Context Protocol，是讓 LLM application 以標準化方式連接外部資料與工具的 open protocol；本研究用它封裝數位孿生工具。
 - **MCP Tools**：MCP server 可暴露可執行工具；client 可列出工具並以結構化 arguments 呼叫。
 - **Scenario**：一組房間、設備、外部邊界與時間設定，用於模擬或驗證。
@@ -541,6 +542,10 @@ E9 使用公開資料集做 task-aligned benchmark。這部分不是單房間完
 右下角的真實臥室校正檢查不是同一張柱狀圖的資料，而是 E7 bedroom_01 的 28 筆真實快照，房間網格解析度為 12 x 12 x 6。Pillow 參考點沒有參與 8 角點 residual fitting，所以可當 held-out point 檢查非感測點估計。
 
 真實臥室 pillow 點的 raw MAE 為 T=0.8967, H=4.1286, L=309.0142，校正後 MAE 為 T=0.1676, H=0.3939, L=16.6450。相對 raw，校正後降幅約為 temperature 81.3%、humidity 90.5%、illuminance 94.6%。這支持稀疏校正在此真實快照設定下有改善，但仍不能宣稱已具備 dense real-room ground truth 驗證。
+
+另外，E7 不是把 28 筆快照全部當成互相獨立，而是用日期作為 block，把同一天四個時段一起重抽樣。固定 seed 執行 20,000 次後，temperature、humidity、illuminance 的 MAE 降幅 95% CI 分別為 [0.4582, 1.0232]、[3.2005, 4.2524]、[288.3083, 297.0237]，下界都大於零。
+
+再逐一移除七個日期中的任一天後，三因子最小 MAE 降幅仍為 0.6123、3.5551 與 290.5716。這表示正向改善不依賴保留某一特定日期，但 folds 高度重疊，仍不是獨立重複實驗。
 
 ### 名詞註釋
 - **三因子**：本研究同時估計溫度、相對濕度與照度三種室內環境量。
@@ -568,18 +573,30 @@ E7 的重點是 pillow 參考點沒有參與 8 個角點 residual fitting，因�
 
 結果上，校正後 pillow MAE 從 raw 的 T=0.8967, H=4.1286, L=309.0142 降到 T=0.1676, H=0.3939, L=16.6450。
 
-E8 目前是推薦動作驗證 protocol。也就是說，本研究已能做模型反事實排序，但實際控制行為是否真的改善舒適度，仍需要 before/after intervention 來驗證。
+為保留同一天四個時段的相依性，我用 7 個日期作 block 做 20,000 次 paired bootstrap。逐快照改善數是 temperature 26/28、humidity 28/28、illuminance 28/28；這只能解讀成七天內的穩定改善，不能叫做控制介入成功率。
+
+逐日剔除分析進一步顯示，移除任一天後的最小 MAE 降幅仍為 T 0.6123、H 3.5551、L 290.5716，所以結果不依賴保留某一特定日期。
+
+這個 bootstrap 沒有增加新的獨立資料，所以 E7 的外部效度限制不變：仍是單一房間、單一 pillow hold-out，而且沒有 dense 3D ground truth。
+
+E8 現在不只是一段文字 protocol：repository 已有 versioned JSON schema、bedroom_01 pillow 的空白 trial template，以及會重新計算 penalty、actual improvement、prediction error、direction accuracy、top-1 regret 與 rank correlation 的 deterministic analyzer。
+
+目前 machine-readable summary 顯示 completed real intervention trials 為 0，status 是 NOT_EVALUATED，所有 efficacy estimates 都是 null。這代表可以直接開始收資料，但不能把 synthetic unit tests 或空白模板說成推薦效果。
 
 ### 名詞註釋
 - **角落感測器**：配置在房間地面四角與天花板四角的 8 個感測點，用於建立 sparse observation 與 residual correction。
+- **三因子**：本研究同時估計溫度、相對濕度與照度三種室內環境量。
 - **Residual**：觀測或 truth 與模型預測之間的差，用於校正或第二層學習。
 - **Residual correction**：利用感測器 residual 修正 nominal model，使估計更貼近觀測。
+- **Synthetic full-field**：可取得完整場 truth 的受控驗證資料，用於完整 3D 場誤差比較。
 - **Real-bedroom snapshot**：真實臥室中的稀疏量測快照，用於檢查校正對未參與 fitting 點位的改善。
 - **Pillow hold-out**：將 pillow 位置作為未參與校正 fitting 的參考點，用於測試非感測點估計效果。
+- **Dense ground truth**：房間內大量點位的真實環境場資料，是更嚴格但較難取得的驗證基準。
 - **MAE**：Mean Absolute Error，平均絕對誤差；數值越低代表平均偏差越小。
-- **Counterfactual simulation**：假設某候選動作發生後重新估計結果，用來比較預期改善。
+- **Correlation**：衡量預測與真值趨勢方向一致性的指標。
 - **Comfort penalty**：偏離目標溫濕照度時的懲罰值，推薦排序用它衡量改善幅度。
 - **Before/after intervention**：實際採取動作前後量測環境變化，用於驗證推薦是否有因果改善效果。
+- **L(p,t)**：位置 p、時間 t 的照度場值。
 
 ## Slide 21: 3D 視覺化結果
 
@@ -620,11 +637,26 @@ S1 純照度短視窗是主要劣勢，因為 persistence 在短時間照度高�
 
 S3 facade event delta 是主要優勢，因為事件後變化方向和長視窗響應更能受益於 structured prior。
 
+另外把 Oh et al. 2024 的 simulation-plus-residual 概念移植成固定 ridge-linear residual head。15 分鐘兩個溫度點由 transfer 最佳，60 分鐘由本研究 readout 最佳，24 小時則由 persistence 最佳；transfer 在 24 小時還劣於 raw physics。
+
+為嘗試增加次日優勢，primary follow-up 用 60/10/30 chronological split，只在 validation 選模型。兩點都選到 alpha=0.25 daily trend，但 final test 反而比 persistence 惡化 7.34% 與 8.36%，date-block bootstrap interval 也都跨 0。
+
+Primary 結果後另做明確標記的 adaptive online exploratory analysis，validation 選到 14-day median，但 test 仍惡化 8.83% 與 9.73%。Registered bias correction 雖約改善 1%，卻未被 validation 選中，因此不能事後包裝成次日優勢。
+
+依教授建議，我也加入固定 vanilla RNN。四種方法先共用完全相同的四筆歷史、chronological split、targets 與 test rows，並以 endpoint 和 input-content hash 稽核。12 個案例全部通過 parity；最低 MAE 由 sequence linear regression 取得 7 項、persistence 取得 5 項，RNN 為 0 項。
+
+這個結果必須保留。它代表在目前資料、四筆歷史與固定小型架構下，recurrent complexity 沒有帶來可驗證優勢；不能因為 RNN 較複雜就把它當成改進後模型。
+
+原文 BEMS data 為 confidential，且沒有可用的 CNN--LSTM code，因此這只能稱 published-method-inspired transfer，不能稱重現原文 next-day performance。
+
 ### 名詞註釋
+- **Residual**：觀測或 truth 與模型預測之間的差，用於校正或第二層學習。
 - **SML2010**：公開智慧建築資料集；本研究用於 two-point boundary-response 類任務。
 - **Public dataset**：外部公開資料來源；本研究只用於相容任務壓力測試，不作完整 3D truth。
 - **Dense ground truth**：房間內大量點位的真實環境場資料，是更嚴格但較難取得的驗證基準。
+- **MAE**：Mean Absolute Error，平均絕對誤差；數值越低代表平均偏差越小。
 - **Persistence**：直接沿用上一時步值作預測的時間序列 baseline，在高慣性短視窗資料中通常很強。
+- **Linear regression**：線性回歸 baseline，用線性權重將輸入特徵映射到目標值。
 - **Structured prior**：模型內建的設備、邊界與物理結構先驗。
 - **Facade event delta**：檢查外部邊界或事件造成的變化量，而非只預測下一時步絕對值。
 
@@ -653,7 +685,13 @@ C3 compound event 可勝 linear regression，但仍不勝 persistence。這表�
 
 限制方面，目前仍缺長期 dense real-room ground truth，hybrid residual 的泛化也主要限於標準情境 family。
 
-未來工作包括擴大 ESP32 長期資料、加入 CO2/PM2.5、發展 multi-zone model、執行推薦動作介入驗證，以及往閉環控制與遠端 MCP 延伸。
+教授提醒後，室內溫度適用範圍明確限制在 20–30 °C，人體舒適改以目標帶和容許範圍判定；現有低 MAE 不能直接證明一般人居空間需要極窄控制，也不能外推到超出溫度範圍的用途。
+
+需要動態環境配方的小型封閉植物生長空間可作候選，但目前 lux 不是 PPFD/PAR，並缺 CO2、基質水分、氣流與生物 endpoint，所以不能宣稱已具培養成效。
+
+Kalman filter 目前只列為狀態估測、感測融合或線上參數調整的後續方法。未來要先定義 state、observation 與 covariance，再讓未濾波、moving average、KF 與 EKF 使用相同資料比較。
+
+其他未來工作包括擴大 ESP32 長期資料、發展 multi-zone model、執行推薦動作介入驗證，以及往閉環控制延伸。
 
 ### 名詞註釋
 - **單房間**：本研究限定在單一矩形房間，不處理多房間或整棟建築的氣流與能量交換。
@@ -664,13 +702,13 @@ C3 compound event 可勝 linear regression，但仍不勝 persistence。這表�
 - **Zone**：房間內的目標區域，用於彙整多個點的平均狀態或舒適度評估。
 - **Residual**：觀測或 truth 與模型預測之間的差，用於校正或第二層學習。
 - **Hybrid residual**：在可解釋 base estimator 後面再加一個資料驅動 residual 模型，不直接取代主模型。
-- **MCP**：Model Context Protocol，是讓 LLM application 以標準化方式連接外部資料與工具的 open protocol；本研究用它封裝數位孿生工具。
 - **Scenario**：一組房間、設備、外部邊界與時間設定，用於模擬或驗證。
 - **Dense ground truth**：房間內大量點位的真實環境場資料，是更嚴格但較難取得的驗證基準。
+- **MAE**：Mean Absolute Error，平均絕對誤差；數值越低代表平均偏差越小。
+- **目標值與容許範圍**：g_m 是舒適目標，δ_m 是允許偏離範圍；超出範圍才累積 penalty。
 - **Before/after intervention**：實際採取動作前後量測環境變化，用於驗證推薦是否有因果改善效果。
 - **ESP32**：低成本微控制器平台，可用於後續長期真實感測資料蒐集。
 - **CO2**：二氧化碳濃度，可作為未來室內空氣品質因子。
-- **PM2.5**：細懸浮微粒濃度，可作為未來室內空氣品質因子。
 - **Multi-zone model**：將房間或建築切成多個區域處理交換與隔間效應的模型。
 - **閉環控制**：模型輸出進一步驅動控制動作，並用後續感測結果回饋修正決策。
 
@@ -1151,14 +1189,16 @@ M_xx、M_yy、M_zz 的名字來自二階偏導數記號。M_xx 不是 x 乘 x，
 
 接著說明「定位」。這一部分通常用來補上模型設計理由、限制或可主張範圍。
 
-右側重點包含：hybrid 不是取代物理模型；它只修正主模型剩下的系統性誤差；這樣可保留可解釋結構。
+右側重點包含：hybrid 不是取代物理模型；physics 有 t+h：主模型須預測目標時刻 baseline；I_t 只含 t 時可得資訊；禁止未來觀測 leakage。
 
-數字範例：若 base estimator 輸出 F=27.0°C，hybrid residual model 預測 R=-0.3°C，則 F_hybrid=27.0-0.3=26.7°C。
+數字範例：若 base estimator 輸出 F=27.0°C，hybrid residual model 預測 R=-0.3°C，則 F_hybrid=27.0-0.3=26.7°C。若改寫為 h-step forecast，physics 與 residual 都必須對齊 t+h；h 是 lead time，不是 physics 參數，且 I_t 不得含 t+h 的實測真值。本研究現有空間估測等價於 h=0。
 
 ### 名詞註釋
+- **Baseline**：泛指比較或模型參考基準；在模型脈絡中常指未加入設備作用前的室內溫濕照度基準。
 - **Residual**：觀測或 truth 與模型預測之間的差，用於校正或第二層學習。
 - **Hybrid residual**：在可解釋 base estimator 後面再加一個資料驅動 residual 模型，不直接取代主模型。
 - **Estimator**：實際負責產生場估計的模型物件，可切換 base、corrected 或 hybrid 版本。
+- **H(p,t)**：位置 p、時間 t 的相對濕度場值。
 
 ## Slide 51: 公式說明 25：Hybrid 訓練目標
 

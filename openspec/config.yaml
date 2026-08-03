@@ -1,0 +1,68 @@
+schema: research-first
+
+context: |
+  Project: A Sparse-Sensing Spatial Digital Twin for Learning Environmental
+  Impacts of Non-Networked Appliances in a Single Room.
+
+  Research focus:
+  - Sparse IoT sensing and indoor spatial intelligence in one rectangular room.
+  - Temperature, humidity, and illuminance field estimation.
+  - Environmental-impact learning for non-networked air conditioners, windows,
+    and lights.
+  - Explainable counterfactual action ranking for decision support.
+  - MCP and Web interfaces are secondary service layers, not the headline novelty.
+
+  Current implementation:
+  - Python 3.9+ package under digital_twin/.
+  - Eight corner sensors are the standard topology.
+  - Reduced-order physics model plus sparse calibration is the primary estimator.
+  - A small MLP is an optional additive residual corrector.
+  - Evidence includes controlled simulation, a real-bedroom snapshot study, and
+    task-aligned SML2010/CU-BEMS public benchmarks.
+
+  Governance:
+  - Repository-root AGENTS.md is authoritative.
+  - It records IoTaIS 2026 as the current English manuscript target.
+  - Chinese thesis, English IEEE paper, presentation, figures, and generated
+    outputs are a coupled deliverable.
+  - A research claim is not accepted merely because it appears in prose.
+    It needs an evidence artifact, a reproducible command, and an explicit
+    support level.
+
+rules:
+  proposal:
+    - State the research gap, current state, proposed state, and claim impact.
+    - Distinguish research-method changes from interface-only changes.
+    - List every synchronized thesis, IEEE, presentation, figure, and output artifact affected.
+    - State whether the change is claim-strengthening, claim-weakening, neutral, or breaking.
+  research:
+    - Assign stable IDs to research questions, hypotheses, and intended claims.
+    - Separate confirmatory hypotheses from exploratory questions.
+    - Include claim boundaries, competing explanations, ethics, privacy, and likely threats to validity.
+    - Do not convert simulated evidence into real-world causal evidence.
+  protocol:
+    - Pre-register units of analysis, variables, controls, baselines, exclusions, splits, metrics, and decision criteria.
+    - Declare data provenance, licenses, sampling cadence, settling interval, and leakage controls where applicable.
+    - Map every experiment to a script and expected machine-readable evidence path.
+    - Specify how missing, failed, or contradictory evidence will be reported.
+  specs:
+    - Use OpenSpec Requirement and Scenario headings with SHALL statements and WHEN/THEN bullets.
+    - Give every requirement a stable capability-scoped ID.
+    - Keep observable research or system behavior in specs and implementation detail in design.
+    - Record evidence status without overstating generalization.
+  design:
+    - Map design decisions to requirement, research-question, hypothesis, and experiment IDs.
+    - Preserve the reduced-order physics model as primary and MCP as secondary unless the proposal explicitly changes scope.
+    - Include data flow, failure modes, compatibility, migration, and artifact synchronization.
+  reproducibility:
+    - Pin commands, seeds, inputs, outputs, environment assumptions, and expected verification checks.
+    - Distinguish committed evidence from ignored raw or normalized public datasets.
+    - Include a clean-room rerun order and a provenance record.
+  tasks:
+    - Use checkboxes and include requirement or experiment IDs on substantive tasks.
+    - Include tests, evidence generation, result verification, claim review, synchronized rebuilds, and stale-text searches.
+    - Never mark a task complete solely because a document was edited.
+  evidence:
+    - Record actual run metadata, deviations, machine-readable outputs, metrics, uncertainty, failures, and exclusions.
+    - For each hypothesis and claim, conclude supported, partially supported, not supported, or not evaluated.
+    - Do not archive a research change while required evidence or synchronized artifacts remain incomplete.

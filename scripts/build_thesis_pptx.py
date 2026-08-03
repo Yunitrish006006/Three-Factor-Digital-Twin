@@ -51,6 +51,15 @@ def read_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def window_temperature_domain_counts(summary: dict) -> Tuple[int, int]:
+    scenarios = summary.get("scenarios", [])
+    in_domain = sum(
+        20.0 <= float(item["target_zone_estimated"]["temperature"]) <= 30.0
+        for item in scenarios
+    )
+    return in_domain, len(scenarios) - in_domain
+
+
 def average_field_mae(summary: dict) -> dict:
     scenarios = summary.get("scenarios", [])
     metrics = ("temperature", "humidity", "illuminance")
@@ -952,15 +961,15 @@ FORMULA_WALKTHROUGH = [
             "F_hybridᵛ(p,t) = Fᵥ(p,t) + Rᵥ(p,t; θᵥ)",
             "Fᵥ：前面可解釋的 base estimator",
             "Rᵥ：小型 neural network 預測的 residual",
-            "θᵥ：該變數 residual model 的參數",
-            "每個變數可有自己的 residual 修正器",
+            "預測推廣：ŷ_hybrid(t+h|I_t)=ŷ_phys(t+h|I_t)+ê(t+h|I_t)",
+            "h 是 lead time；兩項對齊同一 target time",
         ],
         "定位",
         [
             "hybrid 不是取代物理模型",
-            "它只修正主模型剩下的系統性誤差",
-            "這樣可保留可解釋結構",
-            "也能用資料修正不易手刻的偏差",
+            "physics 有 t+h：主模型須預測目標時刻 baseline",
+            "I_t 只含 t 時可得資訊；禁止未來觀測 leakage",
+            "本研究目前為 current-state spatial estimate，即 h=0",
             "LOO 結果代表標準情境 family 內 residual 可學習",
         ],
     ),
@@ -1137,7 +1146,7 @@ FORMULA_NUMERIC_EXAMPLES: dict[str, tuple[str, str]] = {
     ),
     "公式說明 24：Hybrid residual": (
         "F=27.0,R=-0.3 → F_hybrid=26.7°C",
-        "若 base estimator 輸出 F=27.0°C，hybrid residual model 預測 R=-0.3°C，則 F_hybrid=27.0-0.3=26.7°C。",
+        "若 base estimator 輸出 F=27.0°C，hybrid residual model 預測 R=-0.3°C，則 F_hybrid=27.0-0.3=26.7°C。若改寫為 h-step forecast，physics 與 residual 都必須對齊 t+h；h 是 lead time，不是 physics 參數，且 I_t 不得含 t+h 的實測真值。本研究現有空間估測等價於 h=0。",
     ),
     "公式說明 25：Hybrid 訓練目標": (
         "errors=(0.2,-0.1), λ||θ||²=0.01 → ℒ=0.035",
@@ -1178,9 +1187,15 @@ def build_presentation() -> Presentation:
     validation_summary = read_json(DATA / "validation_summary.json")
     submission_summary = read_json(DATA / "submission_readiness_summary.json")
     window_summary = read_json(DATA / "window_matrix_summary.json")
+    window_in_domain, window_out_of_domain = window_temperature_domain_counts(window_summary)
     bedroom_summary = read_json(DATA / "bedroom_01_weekly" / "weekly_simulation_summary.json")
+    e8_summary = read_json(DATA / "e8_intervention_summary.json")
+    rnn_summary = read_json(DATA / "public_benchmarks" / "rnn_sml2010_comparison.json")
     avg_mae = average_field_mae(validation_summary)
     bedroom_aggregate = bedroom_summary["aggregate"]
+    bedroom_bootstrap = bedroom_aggregate["paired_day_block_bootstrap"]
+    bedroom_lodo = bedroom_aggregate["leave_one_date_out_sensitivity"]
+    bedroom_lodo_metrics = bedroom_lodo["metrics"]
 
     # Slide 1
     slide = new_slide(prs)
@@ -1252,22 +1267,8 @@ def build_presentation() -> Presentation:
 
     # Slide 3
     slide = new_slide(prs)
-    add_title(slide, "系統架構")
-    add_picture(slide, ARCHITECTURE / "整體分層架構.svg", 0.8, 1.4, 6.0, 5.2)
-    add_bullets(
-        slide,
-        7.1,
-        1.6,
-        5.2,
-        5.0,
-        [
-            "top-down tree 先區分三個責任域",
-            "情境與觀測層整理房間、8 點感測與外部邊界",
-            "估測與學習層負責 T/H/L field model、校正與 residual",
-            "服務與決策層才包含 scripts、Web、MCP/Gemma 與 action ranking",
-        ],
-        level0_size=17,
-    )
+    add_title(slide, "論文整體邏輯：問題、方法、證據與結論邊界")
+    add_picture(slide, ARCHITECTURE / "研究整體邏輯架構.svg", 0.55, 1.25, 12.25, 5.75)
     add_footer(slide, 3)
 
     # Slide 4
@@ -1376,7 +1377,7 @@ def build_presentation() -> Presentation:
         "輸入模式",
         [
             "標準情境 8 組",
-            "窗戶矩陣 48 組",
+            f"窗戶矩陣 {window_summary.get('count', 0)} 組：{window_in_domain} 範圍內／{window_out_of_domain} 壓力測試",
             "窗戶 direct input",
             "自訂家具與自訂裝置",
         ],
@@ -1398,10 +1399,11 @@ def build_presentation() -> Presentation:
         [
             "E1-E3：synthetic full-field、IDW baseline、ablation",
             "E4：非連網裝置影響學習與推薦排序",
-            f"E5：window matrix {window_summary.get('count', 0)} 組外部邊界條件",
+            f"E5：window matrix {window_summary.get('count', 0)} 組（{window_in_domain} 範圍內／{window_out_of_domain} 壓力測試）",
             "E6：hybrid no-Fourier 對照與 LOO cross-validation",
             f"E7：bedroom_01 {bedroom_summary['snapshot_count']} 筆，pillow hold-out",
-            "E8 protocol、E9 public benchmark；demo 不是量化實驗",
+            f"E8 execution kit：schema / template / analyzer；{e8_summary['trial_counts']['completed']} trials、{e8_summary['evidence_status']}",
+            "E9 public benchmark；demo 不是量化實驗",
         ],
         level0_size=17,
     )
@@ -1470,9 +1472,10 @@ def build_presentation() -> Presentation:
         [
             "hybrid residual 是第二層修正器，不取代主模型",
             "LOO 結果證明標準情境 family 內殘差可學習，不代表任意房間泛化",
-            "另以 bedroom_01 真實快照檢查 sparse calibration 對 pillow 點的改善",
+            f"E7 以 {bedroom_bootstrap['replicates']:,} 次 date-block bootstrap 檢查 pillow 改善，三因子 95% CI 下界皆 > 0",
+            f"E7 逐日剔除最小降幅：T {bedroom_lodo_metrics['temperature']['minimum_absolute_mae_reduction']:.4f} / H {bedroom_lodo_metrics['humidity']['minimum_absolute_mae_reduction']:.4f} / L {bedroom_lodo_metrics['illuminance']['minimum_absolute_mae_reduction']:.4f}",
         ],
-        level0_size=15,
+        level0_size=13,
     )
     add_footer(slide, 10)
 
@@ -1486,13 +1489,17 @@ def build_presentation() -> Presentation:
         0.9,
         5.05,
         11.6,
-        1.45,
+        1.6,
         [
             "S3 是主要優勢：事件/邊界 delta 需要變化方向，structured prior 比 persistence 與 linear regression 更有用",
             "S1 與 C2 是主要劣勢：短視窗照度高度自相關，且公開資料缺實際幾何、遮蔽與多燈具資訊",
-            "CU-BEMS C1/C3 可勝過 linear regression，但商辦 zone-level persistence 太強，不能宣稱全面勝出",
+            "Oh2024-inspired residual：15min 兩點溫度最佳；60min 本研究 readout 最佳；24h persistence 最佳",
+            "次日 primary：validation 選出的 daily trend 反而惡化 7.34% / 8.36%；bootstrap interval 均跨 0",
+            "探索性 adaptive median 亦惡化 8.83% / 9.73%；約 1% 的未選中 bias correction 不足以主張優勢",
+            f"RNN 同資料比較：{rnn_summary['summary']['evaluated_cases']}/12 通過 parity；lowest MAE = sequence LR 7、persistence 5、RNN 0",
+            "四種方法共用四筆 history、split、targets 與 test rows；負向結果保留",
         ],
-        level0_size=15,
+        level0_size=13,
     )
     add_footer(slide, 11)
 
@@ -1513,8 +1520,9 @@ def build_presentation() -> Presentation:
             "完整 3D 場比較以 canonical synthetic benchmark 為主",
             f"真實臥室快照校正後 pillow MAE: {metric_triplet(bedroom_aggregate['estimated_pillow_mae'])}",
             "公開資料集則採 task-aligned benchmark：CU-BEMS / SML2010 / ASHRAE 各比相容子任務",
+            "室內應用溫度範圍固定 20–30 °C；人體舒適採目標帶與容許範圍",
         ],
-        level0_size=18,
+        level0_size=16,
     )
     add_footer(slide, 12)
 
@@ -1549,7 +1557,8 @@ def build_presentation() -> Presentation:
             "改進 multi-zone / partition 模型",
             "補足 dense real-room ground truth",
             "執行推薦動作 before/after 介入驗證",
-            "研究遠端 MCP 與閉環控制",
+            "20–30 °C 動態植物生長環境：先補 PPFD/CO2/基質與生物 endpoint",
+            "定義 state/observation/noise 後比較 moving average、KF 與 EKF",
         ],
     )
     add_footer(slide, 13)
@@ -1563,10 +1572,17 @@ def build_presentation_30min() -> Presentation:
     validation_summary = read_json(DATA / "validation_summary.json")
     submission_summary = read_json(DATA / "submission_readiness_summary.json")
     window_summary = read_json(DATA / "window_matrix_summary.json")
+    window_in_domain, window_out_of_domain = window_temperature_domain_counts(window_summary)
     bedroom_summary = read_json(DATA / "bedroom_01_weekly" / "weekly_simulation_summary.json")
+    e8_summary = read_json(DATA / "e8_intervention_summary.json")
+    rnn_summary = read_json(DATA / "public_benchmarks" / "rnn_sml2010_comparison.json")
     avg_mae = average_field_mae(validation_summary)
     scenarios = scenario_map(validation_summary)
     bedroom_aggregate = bedroom_summary["aggregate"]
+    bedroom_bootstrap = bedroom_aggregate["paired_day_block_bootstrap"]
+    bedroom_bootstrap_metrics = bedroom_bootstrap["metrics"]
+    bedroom_lodo = bedroom_aggregate["leave_one_date_out_sensitivity"]
+    bedroom_lodo_metrics = bedroom_lodo["metrics"]
 
     # 1 cover
     slide = new_slide(prs)
@@ -1613,67 +1629,11 @@ def build_presentation_30min() -> Presentation:
     )
     add_footer(slide, 2)
 
-    # research core
+    # research logic overview
     slide = new_slide(prs)
-    add_title(slide, "研究主軸與輸入輸出")
-    add_card(
-        slide,
-        0.85,
-        1.45,
-        11.6,
-        1.6,
-        "研究主軸",
-        [
-            "少量角落感測 + 非連網家電 + 單房間幾何配置 → 可解釋、可校正、可學習的三因子空間場估計與決策支援。",
-        ],
-        body_size=15,
-    )
-    add_card(
-        slide,
-        0.85,
-        3.35,
-        3.65,
-        2.8,
-        "輸入",
-        [
-            "房間尺寸、裝置/家具配置",
-            "8 顆角落感測器",
-            "室內 baseline 與外部邊界",
-            "時間、設備狀態、使用者目標",
-        ],
-        body_size=12,
-    )
-    add_card(
-        slide,
-        4.85,
-        3.35,
-        3.65,
-        2.8,
-        "模型",
-        [
-            "溫度、濕度、照度各自的 nominal model",
-            "power calibration",
-            "trilinear residual correction",
-            "optional hybrid residual",
-        ],
-        body_size=12,
-    )
-    add_card(
-        slide,
-        8.85,
-        3.35,
-        3.6,
-        2.8,
-        "輸出",
-        [
-            "任意點/區域三因子估計",
-            "3D 視覺化",
-            "非連網裝置影響係數",
-            "反事實推薦排序與 MCP 查詢",
-        ],
-        body_size=12,
-    )
-    add_footer(slide, 4)
+    add_title(slide, "論文整體邏輯：問題、方法、證據與結論邊界")
+    add_picture(slide, ARCHITECTURE / "研究整體邏輯架構.svg", 0.55, 1.25, 12.25, 5.75)
+    add_footer(slide, 3)
 
     # 3 background
     slide = new_slide(prs)
@@ -1717,7 +1677,7 @@ def build_presentation_30min() -> Presentation:
             "在 sample/cluster + 三因子目標下支援推薦",
         ],
     )
-    add_footer(slide, 3)
+    add_footer(slide, 4)
 
     # 4 questions and contributions
     slide = new_slide(prs)
@@ -2136,7 +2096,7 @@ def build_presentation_30min() -> Presentation:
         "窗戶模式",
         [
             "四季 × 天氣 × 時段",
-            "matrix evaluation",
+            f"{window_in_domain} 組範圍內／{window_out_of_domain} 組範圍外壓力測試",
             "也支援 direct outdoor input",
             "可分析窗邊區與中心區差異",
         ],
@@ -2190,15 +2150,17 @@ def build_presentation_30min() -> Presentation:
     add_card(
         slide,
         4.6,
-        4.75,
+        4.65,
         7.7,
-        1.35,
+        1.7,
         "真實臥室校正檢查",
         [
             f"Raw pillow MAE: {metric_triplet(bedroom_aggregate['raw_pillow_mae'])}",
             f"Corrected pillow MAE: {metric_triplet(bedroom_aggregate['estimated_pillow_mae'])}",
-            "推薦動作以實測 penalty 下降作為後續驗證指標",
+            f"{bedroom_bootstrap['replicates']:,} 次 date-block bootstrap：三因子 MAE 降幅 95% CI 下界皆 > 0",
+            f"逐日剔除最小降幅 T/H/L：{bedroom_lodo_metrics['temperature']['minimum_absolute_mae_reduction']:.4f} / {bedroom_lodo_metrics['humidity']['minimum_absolute_mae_reduction']:.4f} / {bedroom_lodo_metrics['illuminance']['minimum_absolute_mae_reduction']:.4f}",
         ],
+        body_size=11,
     )
     add_footer(slide, 15)
 
@@ -2213,14 +2175,15 @@ def build_presentation_30min() -> Presentation:
         4.95,
         "E7：real-bedroom sparse calibration",
         [
-            f"Snapshot count: {bedroom_summary['snapshot_count']}",
-            "pillow 參考點不參與 8 角點 residual fitting",
-            f"Raw pillow MAE: {metric_triplet(bedroom_aggregate['raw_pillow_mae'])}",
-            f"Corrected pillow MAE: {metric_triplet(bedroom_aggregate['estimated_pillow_mae'])}",
-            "支援範圍：此快照設定下的 held-out pillow 改善",
-            "尚未完成：全室 dense real-room truth 驗證",
+            f"{bedroom_summary['snapshot_count']} snapshots；pillow 不參與 8 角點 fitting",
+            f"Raw → corrected MAE: {metric_triplet(bedroom_aggregate['raw_pillow_mae'])} → {metric_triplet(bedroom_aggregate['estimated_pillow_mae'])}",
+            f"Paired bootstrap：{bedroom_bootstrap['replicates']:,} 次，以 7 個 date blocks 重抽樣",
+            "95% CI (T/H/L reduction):",
+            f"[{bedroom_bootstrap_metrics['temperature']['ci95_absolute_mae_reduction']['lower']:.4f}, {bedroom_bootstrap_metrics['temperature']['ci95_absolute_mae_reduction']['upper']:.4f}] / [{bedroom_bootstrap_metrics['humidity']['ci95_absolute_mae_reduction']['lower']:.4f}, {bedroom_bootstrap_metrics['humidity']['ci95_absolute_mae_reduction']['upper']:.4f}] / [{bedroom_bootstrap_metrics['illuminance']['ci95_absolute_mae_reduction']['lower']:.4f}, {bedroom_bootstrap_metrics['illuminance']['ci95_absolute_mae_reduction']['upper']:.4f}]",
+            f"改善快照：T {bedroom_bootstrap_metrics['temperature']['snapshots_improved']}/28；H/L 28/28；仍非 dense truth",
+            f"7-fold 逐日剔除最小降幅：T {bedroom_lodo_metrics['temperature']['minimum_absolute_mae_reduction']:.4f}；H {bedroom_lodo_metrics['humidity']['minimum_absolute_mae_reduction']:.4f}；L {bedroom_lodo_metrics['illuminance']['minimum_absolute_mae_reduction']:.4f}",
         ],
-        body_size=12,
+        body_size=10,
     )
     add_card(
         slide,
@@ -2231,10 +2194,10 @@ def build_presentation_30min() -> Presentation:
         "E8：recommendation validation protocol",
         [
             "目前 rank actions 是模型反事實重跑後的 penalty reduction 排序",
-            "不可解讀為已完成實際控制有效性的因果驗證",
-            "正式驗證應執行 before/after intervention",
-            "比較 predicted improvement、actual penalty reduction 與 action rank consistency",
-            "此項列為未來工作與驗證限制",
+            "versioned schema、空白 trial template 與 deterministic analyzer 已完成",
+            f"完成真實介入 trials：{e8_summary['trial_counts']['completed']}；status：{e8_summary['evidence_status']}",
+            "所有 efficacy estimates 維持 null；synthetic tests 只驗證公式",
+            "正式驗證仍須 before/after intervention 與 matched controls",
         ],
         body_size=12,
     )
@@ -2298,12 +2261,16 @@ def build_presentation_30min() -> Presentation:
         4.85,
         "S1 / S2 / S3 判讀",
         [
-            "S1：純照度短視窗，persistence 最強，是劣勢",
-            "S2：長視窗溫度有優勢，但濕度有尺度對齊問題",
-            "S3：事件 delta response 是主要優勢",
             "SML2010 24 任務：12 lowest MAE、15 勝 LR、14 勝 persistence",
-            "不能宣稱公開資料等同 full 3D 場驗證",
+            "原 E9：S1 照度弱；S2 混合；S3 event delta 最強",
+            "Oh-inspired：15min 兩點 T 最佳；本研究 readout 在 60min 最佳",
+            "24h 兩點 T 皆由 persistence 最佳；transfer 亦劣於 raw physics",
+            "次日 primary 選中 trend 但 test 惡化 7.34% / 8.36%，CI 均跨 0",
+            "Post-primary adaptive 亦惡化；未建立 next-day advantage",
+            f"RNN 公平比較：{rnn_summary['summary']['evaluated_cases']}/12 parity 通過；lowest MAE 為 sequence LR 7、persistence 5、RNN 0",
+            "資料 confidential；只稱 method transfer，不稱原文重現或 full 3D 驗證",
         ],
+        body_size=11,
     )
     add_footer(slide, 18)
 
@@ -2359,6 +2326,8 @@ def build_presentation_30min() -> Presentation:
             "LOO hybrid 目前只支持標準情境 family 內殘差可學習",
             "不是 CFD 等級模型",
             "公開資料集缺乏 full-field ground truth",
+            "室內溫度適用範圍限 20–30 °C；人體舒適以 tolerance 判定",
+            "固定 RNN 同資料比較 lowest MAE 為 0/12",
             "推薦動作尚未完成真實介入式因果驗證",
         ],
     )
@@ -2373,9 +2342,10 @@ def build_presentation_30min() -> Presentation:
             "擴大 ESP32 長期真實資料",
             "加入 CO2 / PM2.5",
             "發展 multi-zone / partition model",
-            "把 CU-BEMS / SML2010 / ASHRAE 納入 task-aligned benchmark",
+            "補足 PPFD/CO2/基質與生物 endpoint 後再評估動態植物生長情境",
+            "定義狀態與雜訊模型後比較 moving average、KF、EKF",
             "執行推薦動作 before/after 介入驗證",
-            "朝閉環控制與遠端 MCP 延伸",
+            "朝閉環控制延伸",
         ],
     )
     add_footer(slide, 20)
@@ -2436,21 +2406,24 @@ def build_presentation_30min() -> Presentation:
 
 
 def build_outline() -> str:
+    e8_summary = read_json(DATA / "e8_intervention_summary.json")
+    window_summary = read_json(DATA / "window_matrix_summary.json")
+    window_in_domain, window_out_of_domain = window_temperature_domain_counts(window_summary)
     slides = [
         ("封面", ["題目、姓名、雙指導教授、研究定位"]),
         ("研究問題與動機", ["非連網裝置無法直接回報狀態", "有限感測器下仍需估計全室環境", "早期純插值與 local-only 模型都不合理"]),
-        ("系統架構", ["top-down tree 區分情境觀測、估測學習、服務決策三個責任域", "MCP/Gemma bridge 屬於工具介面層，不是主模型核心"]),
+        ("論文整體邏輯：問題、方法、證據與結論邊界", ["RQ1--RQ3 為主要研究線，RQ4 為次要服務線", "每個研究問題對應方法、E1--E9 證據層與可支持／不可過度宣稱的結論"]),
         ("房間拓樸、感測器與目標區域", ["8 顆角落感測器", "三個主要區域與三個核心裝置"]),
         ("數學模型", ["變數專屬 nominal model", "trilinear correction", "裝置與家具模組化", "溫度、濕度、照度分別使用不同公式"]),
         ("模型學習、推論與推薦資料流", ["學習端：raw records → 對齊 → scenario state → labels → coefficients/checkpoint", "推論端：runtime input → nominal field → correction / hybrid → point or zone prediction", "推薦端：sample / cluster + T/H/L 目標 → 反事實重跑 → penalty reduction 排序"]),
         ("系統實作與介面", ["MCP 是工具化介面，不是預測模型本身", "initialize：設定 scenario、室內 baseline、外部邊界、設備/家具、預設時間與 estimator", "AC state：模式、目標溫度、風量、水平/垂直角度與固定/擺動", "sample point：查指定座標在特定時間或穩定態的溫濕照度", "learn impacts：start/finish before-after record", "window direct / rank actions：輸入外部窗戶資料；rank actions 需指定 sample 與 T/H/L 目標", "Gemma bridge 與 Web demo 分別負責 AI tool calling 與人機展示"]),
         ("learn_impacts：動作如何成為資料記錄", ["start：device_name + device_state 記錄實際操作狀態", "record：儲存 learning_record_id、baseline、外部邊界、家具、elapsed time 與 before observations", "finish：用同一批感測器 after observations 計算 after-before delta", "least squares：由 influence envelope 與 delta 求 learned_device_impacts"]),
-        ("驗證流程與比較原則", ["E1-E3：synthetic full-field、IDW baseline、ablation", "E4：非連網裝置影響學習與推薦排序", "E5：48 組窗戶矩陣與 direct input", "E6：hybrid residual no-Fourier 與 LOO cross-validation", "E7：bedroom_01 7 天真實快照與 pillow hold-out", "E8 protocol、E9 public task-aligned benchmark；demo 不是量化實驗"]),
+        ("驗證流程與比較原則", ["E1-E3：synthetic full-field、IDW baseline、ablation", "E4：非連網裝置影響學習與推薦排序", f"E5：{window_summary.get('count', 0)} 組窗戶矩陣（{window_in_domain} 範圍內／{window_out_of_domain} 範圍外壓力測試）與 direct input", "E6：hybrid residual no-Fourier 與 LOO cross-validation", "E7：bedroom_01 7 天真實快照與 pillow hold-out", f"E8 execution kit：schema / template / analyzer；{e8_summary['trial_counts']['completed']} trials、{e8_summary['evidence_status']}", "E9 public task-aligned benchmark；demo 不是量化實驗"]),
         ("主要結果", ["平均 field MAE", "IDW / Base / LOO Hybrid 誤差比較", "真實臥室 pillow MAE 比較", "推薦排序目前為 counterfactual simulation", "3D 視覺化案例"]),
-        ("Hybrid Residual 結果", ["default held-out、no-Fourier、LOO MAE", "train/test sample count", "研究定位不是黑盒替代", "LOO 結果限標準情境 family"]),
-        ("公開資料任務拆解", ["SML2010：S1 純照度劣勢、S2 長視窗溫度部分優勢、S3 事件 delta 主要優勢", "CU-BEMS：C1/C3 勝 linear regression 但不勝 persistence，C2 照度劣勢", "明確說明 public benchmark 不是 full 3D 場驗證"]),
-        ("研究貢獻與資料策略", ["三因子、有限感測器、非連網裝置、服務化", "canonical synthetic benchmark + real-bedroom snapshots + task-aligned public datasets", "明確列出每種資料支援的驗證範圍"]),
-        ("結論與未來工作", ["長期真實資料、dense real-room ground truth、更多因子、multi-zone、推薦動作介入驗證、閉環控制"]),
+        ("Hybrid Residual 結果", ["default held-out、no-Fourier、LOO MAE", "train/test sample count", "研究定位不是黑盒替代", "LOO 結果限標準情境 family", "E7 date-block bootstrap 的三因子改善區間下界均大於 0", "E7 逐日剔除的最小 MAE 降幅仍為 T 0.6123、H 3.5551、L 290.5716"]),
+        ("公開資料任務拆解", ["SML2010：S1 純照度劣勢、S2 長視窗溫度部分優勢、S3 事件 delta 主要優勢", "Oh2024-inspired transfer：15min 兩點溫度最佳、60min 本研究 readout 最佳、24h persistence 最佳", "次日 primary 與 post-primary adaptive 均未建立優勢；未選中 bias correction 僅約 1% 改善", "RNN 與其他模型共用四筆 history、split、targets、test rows；12/12 parity 通過，RNN lowest MAE 0/12", "CU-BEMS：C1/C3 勝 linear regression 但不勝 persistence，C2 照度劣勢", "明確說明 public benchmark 不是 full 3D 場驗證"]),
+        ("研究貢獻與資料策略", ["三因子、有限感測器、非連網裝置、服務化", "canonical synthetic benchmark + real-bedroom snapshots + task-aligned public datasets", "室內應用溫度限 20–30 °C；人體舒適採目標帶與 tolerance", "明確列出每種資料支援的驗證範圍"]),
+        ("結論與未來工作", ["長期真實資料、dense real-room ground truth、更多因子、multi-zone、推薦動作介入驗證、閉環控制", "候選動態植物生長情境需補 PPFD/CO2/基質/生物 endpoint", "Kalman family 先定義 state/observation/noise，再做同資料比較"]),
     ]
     slides.extend(
         (
@@ -2471,10 +2444,13 @@ def build_outline() -> str:
 
 
 def build_outline_30min() -> str:
+    e8_summary = read_json(DATA / "e8_intervention_summary.json")
+    window_summary = read_json(DATA / "window_matrix_summary.json")
+    window_in_domain, window_out_of_domain = window_temperature_domain_counts(window_summary)
     slides = [
         ("封面", ["題目、姓名、雙指導教授、研究定位"]),
         ("報告流程", ["背景、文獻、方法、實作、驗證、結論、公式與指標整理"]),
-        ("研究主軸與輸入輸出", ["研究主軸：少量角落感測 + 非連網家電 + 單房間幾何配置 → 三因子空間場估計與決策支援", "輸入：房間、8 點感測、baseline、外部邊界、時間與設備狀態", "模型：三因子 nominal model、power calibration、trilinear correction、hybrid residual", "輸出：任意點/區域估計、3D 視覺化、影響學習、推薦排序與 MCP 查詢"]),
+        ("論文整體邏輯：問題、方法、證據與結論邊界", ["研究缺口 → RQ1--RQ4 → 方法核心 → E1--E9 → 有界結論", "controlled、real snapshot、public aligned 與 future intervention 證據層不可互換"]),
         ("研究背景與問題", ["非連網裝置造成空間影響但無法直接讀取", "有限感測器仍需估全室環境"]),
         ("研究問題與貢獻", ["RQ1-RQ4、主要技術貢獻、task-aligned benchmark 策略"]),
         ("文獻定位、研究缺口與比較原則", ["IEQ 實驗、場重建、hybrid model、digital twin 平台之差異", "公開資料集只比較相容子任務"]),
@@ -2489,14 +2465,14 @@ def build_outline_30min() -> str:
         ("learn_impacts：動作如何成為資料記錄", ["start：device_name + device_state 記錄實際操作狀態", "record：儲存 learning_record_id、baseline、外部邊界、家具、elapsed time 與 before observations", "finish：用同一批感測器 after observations 計算 after-before delta", "least squares：由 influence envelope 與 delta 求 learned_device_impacts"]),
         ("驗證設計", ["E1-E3：truth-adjusted simulation、IDW、synthetic ablation", "E4-E6：裝置影響學習、window matrix、hybrid no-Fourier/LOO", "E7：bedroom_01 7 天真實快照與 pillow 位置比較", "E8：推薦動作 before/after intervention protocol", "E9：public datasets 僅作 task-aligned benchmark", "Web demo 與 3D 展示是呈現層，不列為量化實驗"]),
         ("證據鏈與驗證範圍", ["Synthetic full-field 支援完整 3D 場比較，但不等同長期真實場", "Real-bedroom snapshot 支援稀疏校正的 held-out 點位檢查，但不是 dense truth", "Public datasets 僅支援相容子任務，不是單房間 8 點拓樸驗證", "Recommendation 目前是反事實排序，仍需 before/after 介入驗證"]),
-        ("情境設計與輸入模式", ["8 組 scenario、48 組窗戶矩陣、direct input、timeline"]),
-        ("主要量化結果", ["圖表資料：8 組標準情境、full 3D grid Field MAE、log-scale y 軸", "三種柱狀結果：IDW、Base、LOO Hybrid", "真實臥室 raw vs corrected pillow MAE", "推薦有效性以 actual comfort-penalty reduction 驗證", "實驗 E1-E7 與 E9 已有數值輸出；E8 僅為介入 protocol"]),
-        ("真實臥室快照與推薦驗證狀態", ["E7：pillow hold-out 不參與 8 角點 residual fitting，呈現 raw vs corrected MAE", "E8：rank actions 目前是模型反事實排序，需實測介入驗證因果效果"]),
+        ("情境設計與輸入模式", [f"8 組 scenario、{window_summary.get('count', 0)} 組窗戶矩陣（{window_in_domain} 範圍內／{window_out_of_domain} 範圍外壓力測試）、direct input、timeline"]),
+        ("主要量化結果", ["圖表資料：8 組標準情境、full 3D grid Field MAE、log-scale y 軸", "三種柱狀結果：IDW、Base、LOO Hybrid", "真實臥室 raw vs corrected pillow MAE、date-block bootstrap 與逐日剔除敏感度", "推薦有效性以 actual comfort-penalty reduction 驗證", "實驗 E1-E7 與 E9 已有數值輸出；E8 僅為介入 protocol"]),
+        ("真實臥室快照與推薦驗證狀態", ["E7：pillow hold-out 不參與 8 角點 fitting；20,000 次 date-block bootstrap 報告三因子 MAE 降幅區間與改善快照數", "E7：7-fold 逐日剔除後，三因子最小 MAE 降幅仍為 0.6123 / 3.5551 / 290.5716", "E7 仍限單一房間、單一 pillow 與七個日期；不是 dense truth 或介入成功率", f"E8：versioned schema、空白 template 與 analyzer 已完成；{e8_summary['trial_counts']['completed']} trials、{e8_summary['evidence_status']}", "真實 before/after 與 matched controls 完成前不得宣稱 efficacy"]),
         ("3D 視覺化結果", ["溫度與照度熱區案例"]),
         ("Hybrid Residual 結果", ["default held-out、no-Fourier、LOO robustness checks", "train/test sample count 與 synthetic benchmark 限制", "LOO 結果限標準情境 family", "真實快照作為 sparse calibration 驗證"]),
-        ("公開資料任務拆解：SML2010", ["S1：純照度短視窗是劣勢", "S2：長視窗溫度有優勢但濕度有尺度對齊問題", "S3：事件 delta response 是主要優勢"]),
+        ("公開資料任務拆解：SML2010", ["原 E9：S1 照度弱、S2 混合、S3 event delta 最強", "Oh2024-inspired transfer：15min 兩點溫度最低 MAE", "60min 由本研究 readout 最佳；24h 由 persistence 最佳且 transfer 劣於 raw physics", "次日 primary 選中 trend 但 test 惡化 7.34% / 8.36%，bootstrap interval 均跨 0", "RNN 與其他模型共用四筆 history、split、targets、test rows；12/12 parity 通過，RNN lowest MAE 0/12", "資料 confidential；方法移植不等於原文 CNN--LSTM 重現"]),
         ("公開資料任務拆解：CU-BEMS", ["C1：AC 溫濕度可補強 linear regression", "C2：商辦照度與單房間假設差距大", "C3：compound event 可勝 linear regression 但不勝 persistence"]),
-        ("結論、限制與未來工作", ["目前完成度、真實快照限制、hybrid 泛化限制、推薦動作尚需介入驗證、task-aligned benchmark 與後續方向"]),
+        ("結論、限制與未來工作", ["目前完成度、真實快照限制、hybrid 泛化限制、推薦動作尚需介入驗證、task-aligned benchmark 與後續方向", "室內溫度限 20–30 °C；人體舒適採 tolerance，RNN 負向結果保留", "候選植物生長情境需補 PPFD/CO2/基質/生物 endpoint；Kalman 尚未評估"]),
         ("公式與指標整理", ["場模型：三因子場、總估計式、baseline、activation、envelope", "三因子公式：溫度、濕度、照度分別說明", "校正與評估：8 點三線性校正、影響學習、hybrid residual、metrics、IDW、推薦排序"]),
     ]
     slides.extend(
@@ -2649,9 +2625,15 @@ def build_speaker_notes_30min() -> str:
     validation_summary = read_json(DATA / "validation_summary.json")
     submission_summary = read_json(DATA / "submission_readiness_summary.json")
     window_summary = read_json(DATA / "window_matrix_summary.json")
+    window_in_domain, window_out_of_domain = window_temperature_domain_counts(window_summary)
     bedroom_summary = read_json(DATA / "bedroom_01_weekly" / "weekly_simulation_summary.json")
+    e8_summary = read_json(DATA / "e8_intervention_summary.json")
     avg_mae = average_field_mae(validation_summary)
     bedroom_aggregate = bedroom_summary["aggregate"]
+    bedroom_bootstrap = bedroom_aggregate["paired_day_block_bootstrap"]
+    bedroom_bootstrap_metrics = bedroom_bootstrap["metrics"]
+    bedroom_lodo = bedroom_aggregate["leave_one_date_out_sensitivity"]
+    bedroom_lodo_metrics = bedroom_lodo["metrics"]
     default_hybrid = submission_summary["default_holdout_hybrid"]
     no_fourier = submission_summary["no_fourier_holdout_hybrid"]
     loo = submission_summary["leave_one_scenario_out"]
@@ -2683,13 +2665,13 @@ def build_speaker_notes_30min() -> str:
             ],
         ),
         (
-            "研究主軸與輸入輸出",
+            "論文整體邏輯：問題、方法、證據與結論邊界",
             [
-                "這頁把研究整理成三段：輸入、模型與輸出。輸入端不是只有感測值，還包含房間尺寸、座標系、8 顆角落感測器、室內 baseline、室外邊界條件、時間，以及冷氣、窗戶、燈具等設備狀態。",
-                "這些輸入之所以都需要，是因為室內環境不是均勻的。冷氣出風方向、窗戶日照位置、燈具距離、家具遮蔽，都會讓同一個房間中的不同位置出現不同溫度、濕度或照度。",
-                "模型端先用變數專屬 nominal model 建立可解釋的主要趨勢，再用 power calibration 調整設備作用強度，最後用 trilinear residual correction 把 8 個角落觀測到的誤差補到整個房間。Hybrid residual 是額外的第二層修正，用來學習 base model 還沒有捕捉到的剩餘誤差。",
-                "輸出端包含兩種層級。第一種是估計結果，例如任意 sample point 或 zone 的溫度、濕度、照度，以及 3D 視覺化。第二種是決策支援，例如學習到的非連網裝置影響係數，和針對目標舒適度的反事實推薦排序。",
-                "因此這頁的主軸可以理解成：少量感測資料本身不夠，但如果結合房間幾何、設備先驗與校正機制，就能把 sparse observations 轉成可查詢的 spatial field。",
+                "這張圖是整篇論文的 argument map。起點不是 MCP 或 Web，而是一般房間同時存在稀疏感測與非連網裝置兩個限制；因此需要回答空間場估計、裝置影響學習與決策支援三個主要研究問題。",
+                "RQ1 對應變數專屬 nominal model、power calibration、trilinear correction 與 optional hybrid residual，證據來自 E1 到 E3、E6 與 E7。這些結果可以支持受控完整場與真實未見點改善，但不能外推成任意房間 dense truth。",
+                "RQ2 對應 before/after delta 與裝置 spatial basis，證據包含 E4、E5 與 E9 的事件型相容子任務。這可以支持 structured impact prior 的價值，但不等同已完成真實因果識別。",
+                "RQ3 對應 point 或 zone sample、完整 T/H/L target 與反事實 comfort-penalty 排序。目前只能說模型可提供決策支援；E8 before/after intervention 尚未完成，所以不能宣稱推薦具有實際因果改善。",
+                "RQ4 是 secondary systems line，說明 scripts、Web、MCP 與 Gemma bridge 如何共用同一 estimator。它證明介面整合與模型重用，但不是論文的 headline novelty。",
             ],
         ),
         (
@@ -2820,7 +2802,7 @@ def build_speaker_notes_30min() -> str:
             "驗證設計",
             [
                 "驗證採分層設計，因為不同資料能支持的結論不同。E1 到 E3 使用受控完整場資料，重點是直接比較整個 3D field 的估計誤差，並和 IDW baseline 及 ablation variants 比較。",
-                f"E4 到 E6 驗證模型的其他元件。E4 檢查非連網裝置影響學習是否能從 before/after observations 解出合理係數；E5 檢查 {window_summary.get('count', 0)} 組窗戶矩陣與 direct input 對外部邊界的支援；E6 檢查 hybrid no-Fourier 和 leave-one-scenario-out，確認改善不是單一切分造成。",
+                f"E4 到 E6 驗證模型的其他元件。E4 檢查非連網裝置影響學習是否能從 before/after observations 解出合理係數；E5 檢查 {window_summary.get('count', 0)} 組窗戶矩陣與 direct input 對外部邊界的支援，其中 {window_in_domain} 組 target-zone 室內溫度位於 20–30 °C，{window_out_of_domain} 組只作範圍外壓力測試；E6 檢查 hybrid no-Fourier 和 leave-one-scenario-out，確認改善不是單一切分造成。",
                 f"E7 使用 bedroom_01 的 {bedroom_summary['snapshot_count']} 筆真實快照做 pillow hold-out 檢查。這裡能支持的是 sparse real-room calibration，也就是校正後對未參與 fitting 的 pillow 點有改善，但它不是 dense 3D truth。",
                 "E8 是推薦動作的 before/after intervention protocol。也就是說，現在系統可以做 counterfactual ranking，但實際採取推薦後是否真的降低 comfort penalty，仍需要用介入實驗補上因果驗證。",
                 "E9 使用公開資料集做 task-aligned benchmark。這部分不是單房間完整場驗證，而是把公開資料中相容的 boundary-response 或 device-response 子任務拿來壓力測試模型概念。",
@@ -2841,7 +2823,7 @@ def build_speaker_notes_30min() -> str:
             [
                 "標準情境共有 8 組，包含 idle、ac_only、window_only、light_only、ac_window、window_light、ac_light 和 all_active。這些情境讓模型可以分別觀察單一設備、兩兩組合，以及全部設備同時作用時的三因子場變化。",
                 "這種設計的目的不是列出所有可能生活情境，而是建立可控的 benchmark family。單裝置情境可以看每個裝置的基本影響，雙裝置情境可以看交互作用，all_active 則檢查多來源影響疊加時模型是否仍穩定。",
-                f"窗戶相關輸入除了標準情境，也包含 {window_summary.get('count', 0)} 組 window matrix。矩陣會組合季節、天氣、時段等條件，用來測試外部溫度、濕度與日照輸入變化時，模型是否能產生合理反應。",
+                f"窗戶相關輸入除了標準情境，也包含 {window_summary.get('count', 0)} 組 window matrix。矩陣會組合季節、天氣、時段等條件；依 target-zone 室內溫度稽核，{window_in_domain} 組位於 20–30 °C，另 {window_out_of_domain} 組只保留為範圍外壓力測試。",
                 "系統也支援 direct input，讓使用者不一定要選預設矩陣，而可以直接輸入外部溫度、濕度、日照與開窗比例。這對 demo 和 MCP tools 很重要，因為使用者可能會問一個當下的自訂條件。",
                 "所有 scenario 都有 elapsed time，設備影響用一階收斂近似描述從剛啟動到接近 quasi-steady state 的過程。這讓系統不只看靜態開關，也能呈現時間推進後的環境變化。",
             ],
@@ -2856,6 +2838,8 @@ def build_speaker_notes_30min() -> str:
                 "解讀重點是：IDW 在照度特別差，因為它不知道窗戶日照方向、燈具位置、家具遮蔽或反射；只靠距離很難重建局部光照分布。溫度與濕度也有改善，表示設備狀態、方向性與房間幾何先驗確實提供了純幾何插值沒有的資訊。",
                 f"右下角的真實臥室校正檢查不是同一張柱狀圖的資料，而是 E7 bedroom_01 的 {bedroom_summary['snapshot_count']} 筆真實快照，房間網格解析度為 {grid_resolution['nx']} x {grid_resolution['ny']} x {grid_resolution['nz']}。Pillow 參考點沒有參與 8 角點 residual fitting，所以可當 held-out point 檢查非感測點估計。",
                 f"真實臥室 pillow 點的 raw MAE 為 {metric_triplet(bedroom_aggregate['raw_pillow_mae'])}，校正後 MAE 為 {metric_triplet(bedroom_aggregate['estimated_pillow_mae'])}。相對 raw，校正後降幅約為 temperature {percent_reduction(bedroom_aggregate['raw_pillow_mae']['temperature'], bedroom_aggregate['estimated_pillow_mae']['temperature']):.1f}%、humidity {percent_reduction(bedroom_aggregate['raw_pillow_mae']['humidity'], bedroom_aggregate['estimated_pillow_mae']['humidity']):.1f}%、illuminance {percent_reduction(bedroom_aggregate['raw_pillow_mae']['illuminance'], bedroom_aggregate['estimated_pillow_mae']['illuminance']):.1f}%。這支持稀疏校正在此真實快照設定下有改善，但仍不能宣稱已具備 dense real-room ground truth 驗證。",
+                f"另外，E7 不是把 28 筆快照全部當成互相獨立，而是用日期作為 block，把同一天四個時段一起重抽樣。固定 seed 執行 {bedroom_bootstrap['replicates']:,} 次後，temperature、humidity、illuminance 的 MAE 降幅 95% CI 分別為 [{bedroom_bootstrap_metrics['temperature']['ci95_absolute_mae_reduction']['lower']:.4f}, {bedroom_bootstrap_metrics['temperature']['ci95_absolute_mae_reduction']['upper']:.4f}]、[{bedroom_bootstrap_metrics['humidity']['ci95_absolute_mae_reduction']['lower']:.4f}, {bedroom_bootstrap_metrics['humidity']['ci95_absolute_mae_reduction']['upper']:.4f}]、[{bedroom_bootstrap_metrics['illuminance']['ci95_absolute_mae_reduction']['lower']:.4f}, {bedroom_bootstrap_metrics['illuminance']['ci95_absolute_mae_reduction']['upper']:.4f}]，下界都大於零。",
+                f"再逐一移除七個日期中的任一天後，三因子最小 MAE 降幅仍為 {bedroom_lodo_metrics['temperature']['minimum_absolute_mae_reduction']:.4f}、{bedroom_lodo_metrics['humidity']['minimum_absolute_mae_reduction']:.4f} 與 {bedroom_lodo_metrics['illuminance']['minimum_absolute_mae_reduction']:.4f}。這表示正向改善不依賴保留某一特定日期，但 folds 高度重疊，仍不是獨立重複實驗。",
             ],
         ),
         (
@@ -2863,7 +2847,11 @@ def build_speaker_notes_30min() -> str:
             [
                 "E7 的重點是 pillow 參考點沒有參與 8 個角點 residual fitting，因此它可以用來檢查校正場是否改善非感測點估計。",
                 f"結果上，校正後 pillow MAE 從 raw 的 {metric_triplet(bedroom_aggregate['raw_pillow_mae'])} 降到 {metric_triplet(bedroom_aggregate['estimated_pillow_mae'])}。",
-                "E8 目前是推薦動作驗證 protocol。也就是說，本研究已能做模型反事實排序，但實際控制行為是否真的改善舒適度，仍需要 before/after intervention 來驗證。",
+                f"為保留同一天四個時段的相依性，我用 7 個日期作 block 做 {bedroom_bootstrap['replicates']:,} 次 paired bootstrap。逐快照改善數是 temperature {bedroom_bootstrap_metrics['temperature']['snapshots_improved']}/28、humidity 28/28、illuminance 28/28；這只能解讀成七天內的穩定改善，不能叫做控制介入成功率。",
+                f"逐日剔除分析進一步顯示，移除任一天後的最小 MAE 降幅仍為 T {bedroom_lodo_metrics['temperature']['minimum_absolute_mae_reduction']:.4f}、H {bedroom_lodo_metrics['humidity']['minimum_absolute_mae_reduction']:.4f}、L {bedroom_lodo_metrics['illuminance']['minimum_absolute_mae_reduction']:.4f}，所以結果不依賴保留某一特定日期。",
+                "這個 bootstrap 沒有增加新的獨立資料，所以 E7 的外部效度限制不變：仍是單一房間、單一 pillow hold-out，而且沒有 dense 3D ground truth。",
+                "E8 現在不只是一段文字 protocol：repository 已有 versioned JSON schema、bedroom_01 pillow 的空白 trial template，以及會重新計算 penalty、actual improvement、prediction error、direction accuracy、top-1 regret 與 rank correlation 的 deterministic analyzer。",
+                f"目前 machine-readable summary 顯示 completed real intervention trials 為 {e8_summary['trial_counts']['completed']}，status 是 {e8_summary['evidence_status']}，所有 efficacy estimates 都是 null。這代表可以直接開始收資料，但不能把 synthetic unit tests 或空白模板說成推薦效果。",
             ],
         ),
         (
@@ -2888,6 +2876,12 @@ def build_speaker_notes_30min() -> str:
                 "SML2010 被映射成 two-point boundary-response benchmark。它適合檢查外氣、日照與室內兩點響應，但沒有完整 3D 場真值。",
                 "S1 純照度短視窗是主要劣勢，因為 persistence 在短時間照度高度自相關時很強。S2 長視窗溫度有部分優勢，但濕度有尺度對齊問題。",
                 "S3 facade event delta 是主要優勢，因為事件後變化方向和長視窗響應更能受益於 structured prior。",
+                "另外把 Oh et al. 2024 的 simulation-plus-residual 概念移植成固定 ridge-linear residual head。15 分鐘兩個溫度點由 transfer 最佳，60 分鐘由本研究 readout 最佳，24 小時則由 persistence 最佳；transfer 在 24 小時還劣於 raw physics。",
+                "為嘗試增加次日優勢，primary follow-up 用 60/10/30 chronological split，只在 validation 選模型。兩點都選到 alpha=0.25 daily trend，但 final test 反而比 persistence 惡化 7.34% 與 8.36%，date-block bootstrap interval 也都跨 0。",
+                "Primary 結果後另做明確標記的 adaptive online exploratory analysis，validation 選到 14-day median，但 test 仍惡化 8.83% 與 9.73%。Registered bias correction 雖約改善 1%，卻未被 validation 選中，因此不能事後包裝成次日優勢。",
+                "依教授建議，我也加入固定 vanilla RNN。四種方法先共用完全相同的四筆歷史、chronological split、targets 與 test rows，並以 endpoint 和 input-content hash 稽核。12 個案例全部通過 parity；最低 MAE 由 sequence linear regression 取得 7 項、persistence 取得 5 項，RNN 為 0 項。",
+                "這個結果必須保留。它代表在目前資料、四筆歷史與固定小型架構下，recurrent complexity 沒有帶來可驗證優勢；不能因為 RNN 較複雜就把它當成改進後模型。",
+                "原文 BEMS data 為 confidential，且沒有可用的 CNN--LSTM code，因此這只能稱 published-method-inspired transfer，不能稱重現原文 next-day performance。",
             ],
         ),
         (
@@ -2903,7 +2897,10 @@ def build_speaker_notes_30min() -> str:
             [
                 "本研究完成一個單房間三因子空間數位孿生原型，能在少量角落感測器下估計溫度、濕度與照度分布，並支援非連網裝置影響學習。",
                 "限制方面，目前仍缺長期 dense real-room ground truth，hybrid residual 的泛化也主要限於標準情境 family。",
-                "未來工作包括擴大 ESP32 長期資料、加入 CO2/PM2.5、發展 multi-zone model、執行推薦動作介入驗證，以及往閉環控制與遠端 MCP 延伸。",
+                "教授提醒後，室內溫度適用範圍明確限制在 20–30 °C，人體舒適改以目標帶和容許範圍判定；現有低 MAE 不能直接證明一般人居空間需要極窄控制，也不能外推到超出溫度範圍的用途。",
+                "需要動態環境配方的小型封閉植物生長空間可作候選，但目前 lux 不是 PPFD/PAR，並缺 CO2、基質水分、氣流與生物 endpoint，所以不能宣稱已具培養成效。",
+                "Kalman filter 目前只列為狀態估測、感測融合或線上參數調整的後續方法。未來要先定義 state、observation 與 covariance，再讓未濾波、moving average、KF 與 EKF 使用相同資料比較。",
+                "其他未來工作包括擴大 ESP32 長期資料、發展 multi-zone model、執行推薦動作介入驗證，以及往閉環控制延伸。",
             ],
         ),
         (

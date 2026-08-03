@@ -11,6 +11,9 @@
 | controlled simulation | `outputs/data/validation_summary.json`、`window_matrix_summary.json`、`hybrid_residual_summary.json`、`submission_readiness_summary.json` | 8 組標準情境、IDW baseline、hybrid residual、LOO 在受控真值下的 field MAE | 不能直接宣稱任意真實房間都達到相同 dense-field 誤差 |
 | real-bedroom snapshot | `outputs/data/bedroom_01_weekly/weekly_simulation_summary.json` | 7 天、28 筆快照中，8 角落感測校正改善未參與校正的 pillow 參考點 | 不能宣稱已完成真實房間完整 3D dense ground truth 驗證 |
 | public task-aligned benchmark | `outputs/data/public_benchmarks/*_hybrid_twin_comparison.json` | SML2010、CU-BEMS 上與 persistence / linear regression 的 shared-task 比較 | 不能宣稱公開資料支援本研究的 full 3D field MAE、8-corner calibration 或完整非連網裝置係數學習 |
+| published-method transfer | `outputs/data/public_benchmarks/oh2024_inspired_sml2010_comparison.json` | Oh et al. (2024) 啟發的 additive residual 在相同 SML2010 split 上與五個方法比較 | 不能稱原文 CNN--LSTM、TRNSYS/RC 或機密 BEMS data 重現 |
+| next-day follow-up | `outputs/data/public_benchmarks/next_day_temperature_improvement.json` | 固定 60/10/30 selection、primary negative result 與 post-primary adaptive exploratory analysis | 未通過判準時不得宣稱 next-day advantage；adaptive 結果不可取代 primary |
+| RNN same-data comparison | `outputs/data/public_benchmarks/rnn_sml2010_comparison.json` | 固定 vanilla RNN、persistence、sequence LR 與 physics readout 使用相同 SML2010 S2 endpoints/history/split/test rows 的比較 | RNN 負向結果不得省略；不是最佳化 RNN 或 full 3-D 驗證 |
 
 推薦排序目前屬於 counterfactual simulation。若要宣稱推薦動作具有實際因果改善效果，仍需額外做 before/after intervention 實測。
 
@@ -24,7 +27,7 @@
 | 實驗 E2 | IDW baseline 比較 | controlled simulation baseline | `outputs/data/validation_summary.json` | `REPRODUCIBLE` |
 | 實驗 E3 | 消融與可重現性 | robustness / ablation | `outputs/data/submission_readiness_summary.json` | `REPRODUCIBLE` |
 | 實驗 E4 | 非連網裝置影響學習 | controlled impact-learning check | `outputs/data/validation_summary.json` 或 demo output | 以既有 summary 與論文描述檢查，不等同實測因果 |
-| 實驗 E5 | 窗戶矩陣與 direct input | boundary-condition sensitivity | `outputs/data/window_matrix_summary.json` | `REPRODUCIBLE` |
+| 實驗 E5 | 窗戶矩陣與 direct input | boundary-condition sensitivity；target-zone 室內溫度 34 組位於 20–30 °C、14 組為範圍外壓力測試 | `outputs/data/window_matrix_summary.json` | `REPRODUCIBLE` |
 | 實驗 E6 | Hybrid residual robustness | model residual experiment | `outputs/data/hybrid_residual_summary.json`、`hybrid_residual_checkpoint.json` | `REPRODUCIBLE` |
 | 實驗 E7 | 真實臥室快照 sparse calibration | real-bedroom snapshot | `outputs/data/bedroom_01_weekly/weekly_simulation_summary.json` | `REPRODUCIBLE`，但不是 dense ground truth |
 | 驗證方案 E8 | 推薦動作 before/after 介入 | future intervention protocol | 尚未有完成實測 summary | `DOCUMENT_ONLY` / protocol-only |
@@ -119,8 +122,11 @@ python3 scripts/run_all_thesis_experiments.py
 5. `scripts/run_submission_readiness_experiments.py`
 6. `scripts/run_bedroom_weekly_simulation.py`
 7. public benchmark scripts，如果 normalized public data 已存在
-8. `scripts/build_public_benchmark_figures.py`，如果 public comparison JSON 已存在
-9. `scripts/verify_thesis_results.py`
+8. `scripts/run_oh2024_inspired_comparison.py`，如果 normalized SML2010 已存在
+9. `scripts/run_next_day_temperature_comparison.py`，如果 normalized SML2010 已存在
+10. `scripts/run_rnn_public_comparison.py`，如果 normalized SML2010 已存在
+11. `scripts/build_public_benchmark_figures.py`，如果 public comparison JSON 已存在
+12. `scripts/verify_thesis_results.py`
 
 如果 public dataset 不存在，總控腳本會跳過 public benchmark，不會讓整體流程崩潰；最後驗證報告會將 public rows 標示為 `MISSING` / `NEEDS_DATA`。
 
@@ -172,7 +178,8 @@ outputs/data/thesis_result_verification_report.json
 
 驗證腳本會檢查以下論文數字：
 
-- 標準驗證規模：8 組標準情境、48 組窗戶矩陣
+- 標準驗證規模：8 組標準情境、48 組窗戶矩陣；其中 target-zone 室內溫度 34 組位於 20–30 °C，14 組僅作範圍外壓力測試
+- 自動結果核對：71/71 `PASS`，0 `FAIL`，0 `MISSING`
 - hybrid residual 訓練規模：default split `576 / 192` train/test samples、LOO `8` folds
 - real-bedroom snapshot 規模：7 天、`28` 筆快照
 - base model 平均 field MAE：temperature `0.0474`、humidity `0.1765`、illuminance `2.0269`
@@ -185,6 +192,9 @@ outputs/data/thesis_result_verification_report.json
   - S1：0/4 lowest MAE、2/4 勝過 linear regression、0/4 勝過 persistence，屬短視窗純照度劣勢任務。
   - S2：2/8 lowest MAE、2/8 勝過 linear regression、4/8 勝過 persistence，長視窗溫度有優勢但濕度有尺度對齊問題。
   - S3：10/12 lowest MAE、11/12 勝過 linear regression、10/12 勝過 persistence，是事件/邊界 delta response 的主要優勢任務。
+- Oh2024-inspired method transfer：6 個 temperature target-horizon cases 中 4 個改善 raw physics；15 分鐘兩點溫度由 transfer 最佳，60 分鐘由本研究 readout 最佳，1440 分鐘由 persistence 最佳。
+- 次日 follow-up：validation-selected trend 的 test MAE 為 1.6289/1.6250，高於 persistence 1.5175/1.4996；adaptive exploratory 亦未改善，故 next-day claim 不支持。
+- RNN 同資料比較為 `COMPLETE`：12/12 個案例通過資料一致性；最低 MAE 次數為 sequence linear regression 7、persistence 5、physics-structured readout 0、RNN 0。此為需保留的負向結果。
 - CU-BEMS：12 個 target-horizon tasks、9 個勝過 linear regression、0 個勝過 persistence
   - C1：0/4 lowest MAE、3/4 勝過 linear regression、0/4 勝過 persistence，代表 AC 溫濕度 zone response 只能主張補強 LR。
   - C2：0/2 lowest MAE、0/2 勝過 linear regression、0/2 勝過 persistence，是商辦照度外推劣勢任務。

@@ -1,5 +1,7 @@
 import argparse
 import json
+import math
+import random
 import sys
 from copy import deepcopy
 from pathlib import Path
@@ -20,7 +22,6 @@ from digital_twin.core.entities import (
     Sensor,
     Vector3,
     Zone,
-    create_adaptive_sensor_layout,
 )
 from digital_twin.core.scenarios import build_device
 from digital_twin.physics.model import METRICS, DigitalTwinModel, FieldGrid
@@ -86,6 +87,8 @@ def main() -> None:
         elapsed_minutes=args.elapsed_minutes,
         sleep_illuminance_target=args.sleep_illuminance_target,
         sleep_illuminance_tolerance=args.sleep_illuminance_tolerance,
+        bootstrap_replicates=args.bootstrap_replicates,
+        bootstrap_seed=args.bootstrap_seed,
     )
     summary["source"] = {
         "room_design": str(room_design_path),
@@ -138,6 +141,8 @@ def run_weekly_simulation(
     elapsed_minutes: float,
     sleep_illuminance_target: float = 0.0,
     sleep_illuminance_tolerance: float = 5.0,
+    bootstrap_replicates: int = 20000,
+    bootstrap_seed: int = 20260726,
 ) -> Tuple[Dict, Optional[Tuple[str, object, List[Device]]]]:
     model = DigitalTwinModel()
     rows: List[Dict[str, object]] = []
@@ -235,8 +240,14 @@ def run_weekly_simulation(
                 "estimated_pillow": _round_metrics(estimated_pillow),
                 "raw_pillow_abs_error": _metric_abs_error(raw_pillow, pillow_observed),
                 "estimated_pillow_abs_error": _metric_abs_error(estimated_pillow, pillow_observed),
-                "raw_sensor_mae": compare_sensors(raw_result.sensor_predictions, observed_sensors),
-                "estimated_sensor_mae": compare_sensors(estimated_result.sensor_predictions, observed_sensors),
+                "raw_sensor_mae": _compare_observed_sensors(
+                    raw_result.sensor_predictions,
+                    observed_sensors,
+                ),
+                "estimated_sensor_mae": _compare_observed_sensors(
+                    estimated_result.sensor_predictions,
+                    observed_sensors,
+                ),
                 "estimated_zone_averages": _round_zone_averages(estimated_result.zone_averages),
                 "estimated_field_ranges": _field_ranges(estimated_result.field),
                 "estimated_comfort_penalty": round(
@@ -252,11 +263,18 @@ def run_weekly_simulation(
                 representative_penalty = penalty
                 representative = (str(row["snapshot_id"]), estimated_result, estimated_result.calibrated_devices)
 
+    aggregate = _aggregate(rows)
+    aggregate["paired_day_block_bootstrap"] = _paired_day_block_bootstrap(
+        rows,
+        replicates=bootstrap_replicates,
+        seed=bootstrap_seed,
+    )
+    aggregate["leave_one_date_out_sensitivity"] = _leave_one_date_out_sensitivity(rows)
     summary = {
         "room": _room_dict(bundle["room"]),
         "grid_resolution": _resolution_dict(bundle["resolution"]),
         "snapshot_count": len(rows),
-        "aggregate": _aggregate(rows),
+        "aggregate": aggregate,
         "worst_snapshots": {
             "by_estimated_comfort_penalty": _top_rows(rows, "estimated_comfort_penalty"),
             "by_estimated_pillow_mae_total": _top_rows(rows, "estimated_pillow_mae_total"),
@@ -300,6 +318,18 @@ def _parse_args() -> argparse.Namespace:
         dest="export_representative",
         action="store_false",
         help="Skip representative field CSV and SVG figure export.",
+    )
+    parser.add_argument(
+        "--bootstrap-replicates",
+        type=int,
+        default=20000,
+        help="Number of paired date-block bootstrap replicates for E7 uncertainty.",
+    )
+    parser.add_argument(
+        "--bootstrap-seed",
+        type=int,
+        default=20260726,
+        help="Random seed for paired date-block bootstrap resampling.",
     )
     parser.set_defaults(export_representative=True)
     return parser.parse_args()
@@ -354,33 +384,10 @@ def _build_room_bundle(payload: Dict) -> Dict[str, object]:
         for item in payload.get("sensors", [])
     ]
     comfort_payload = payload["comfort_target"]
-    target_sensors = [
-        Sensor(
-            name=f"target_{str(comfort_payload.get('location_name', 'comfort_point'))}",
-            position=_vector(comfort_payload["position"]),
-        )
-    ]
-    for zone in zones:
-        if "desk" not in zone.name.lower():
-            continue
-        target_sensors.append(
-            Sensor(
-                name=f"target_{zone.name}",
-                position=Vector3(
-                    x=(zone.min_corner.x + zone.max_corner.x) / 2.0,
-                    y=(zone.min_corner.y + zone.max_corner.y) / 2.0,
-                    z=(zone.min_corner.z + zone.max_corner.z) / 2.0,
-                ),
-            )
-        )
-    sensors = create_adaptive_sensor_layout(
-        room=room,
-        base_sensors=base_sensors,
-        furniture=furniture,
-        target_sensors=target_sensors,
-        compensation_per_blocked_sensor=4,
-        compensation_step=0.3,
-    )
+    # E7 is defined by the eight named sensor observations in the weekly data.
+    # Keep that recorded topology fixed for calibration; adaptive compensation
+    # sensors belong to deployment design and have no matching E7 observations.
+    sensors = base_sensors
     comfort_target = ComfortTarget(
         temperature=float(comfort_payload["temperature_c"]),
         temperature_tolerance=float(comfort_payload.get("temperature_tolerance_c", 1.0)),
@@ -533,6 +540,20 @@ def _observed_sensors(readings: List[Dict]) -> Dict[str, Dict[str, float]]:
         }
         for item in readings
     }
+
+
+def _compare_observed_sensors(
+    predicted: Dict[str, Dict[str, float]],
+    observed: Dict[str, Dict[str, float]],
+) -> Dict[str, float]:
+    comparable = {
+        sensor_name: metric_values
+        for sensor_name, metric_values in predicted.items()
+        if sensor_name in observed
+    }
+    if not comparable:
+        raise ValueError("sensor comparison requires at least one shared observed sensor")
+    return compare_sensors(comparable, observed)
 
 
 def _pillow_observation(snapshot: Dict) -> Dict[str, float]:
@@ -717,6 +738,233 @@ def _mean_metric_error(rows: List[Dict[str, object]], key: str) -> Dict[str, flo
         )
         for metric in METRICS
     }
+
+
+def _paired_day_block_bootstrap(
+    rows: List[Dict[str, object]],
+    replicates: int = 20000,
+    seed: int = 20260726,
+    confidence_level: float = 0.95,
+) -> Dict[str, object]:
+    if not rows:
+        raise ValueError("paired day-block bootstrap requires at least one snapshot")
+    if replicates <= 0:
+        raise ValueError("bootstrap replicates must be greater than zero")
+    if not 0.0 < confidence_level < 1.0:
+        raise ValueError("confidence level must be between zero and one")
+
+    rows_by_date: Dict[str, List[Dict[str, object]]] = {}
+    for row in rows:
+        date = str(row.get("date", "")).strip()
+        if not date:
+            raise ValueError("every bootstrap row must contain a non-empty date")
+        for key in ("raw_pillow_abs_error", "estimated_pillow_abs_error"):
+            values = row.get(key)
+            if not isinstance(values, dict):
+                raise ValueError(f"bootstrap row {date} is missing {key}")
+            for metric in METRICS:
+                if metric not in values:
+                    raise ValueError(f"bootstrap row {date} is missing {key}.{metric}")
+                float(values[metric])
+        rows_by_date.setdefault(date, []).append(row)
+
+    dates = sorted(rows_by_date)
+    observed = {
+        metric: _paired_metric_summary(rows, metric)
+        for metric in METRICS
+    }
+    replicate_values = {
+        metric: {
+            "absolute_mae_reduction": [],
+            "relative_mae_reduction_percent": [],
+            "improved_fraction": [],
+        }
+        for metric in METRICS
+    }
+    rng = random.Random(seed)
+    for _ in range(replicates):
+        sampled_rows = [
+            row
+            for sampled_date in (rng.choice(dates) for _ in dates)
+            for row in rows_by_date[sampled_date]
+        ]
+        for metric in METRICS:
+            summary = _paired_metric_summary(sampled_rows, metric)
+            for key in replicate_values[metric]:
+                replicate_values[metric][key].append(summary[key])
+
+    alpha = (1.0 - confidence_level) / 2.0
+    metric_output: Dict[str, Dict[str, object]] = {}
+    for metric in METRICS:
+        current = observed[metric]
+        distributions = replicate_values[metric]
+        metric_output[metric] = {
+            "raw_mae": round(current["raw_mae"], 4),
+            "calibrated_mae": round(current["calibrated_mae"], 4),
+            "absolute_mae_reduction": round(current["absolute_mae_reduction"], 4),
+            "relative_mae_reduction_percent": round(current["relative_mae_reduction_percent"], 2),
+            "ci95_absolute_mae_reduction": {
+                "lower": round(_percentile(distributions["absolute_mae_reduction"], alpha), 4),
+                "upper": round(_percentile(distributions["absolute_mae_reduction"], 1.0 - alpha), 4),
+            },
+            "ci95_relative_mae_reduction_percent": {
+                "lower": round(_percentile(distributions["relative_mae_reduction_percent"], alpha), 2),
+                "upper": round(_percentile(distributions["relative_mae_reduction_percent"], 1.0 - alpha), 2),
+            },
+            "snapshots_improved": int(current["snapshots_improved"]),
+            "snapshot_count": int(current["snapshot_count"]),
+            "improved_fraction": round(current["improved_fraction"], 4),
+            "ci95_improved_fraction": {
+                "lower": round(_percentile(distributions["improved_fraction"], alpha), 4),
+                "upper": round(_percentile(distributions["improved_fraction"], 1.0 - alpha), 4),
+            },
+        }
+
+    return {
+        "method": "paired_day_block_bootstrap",
+        "resampling_unit": "date",
+        "confidence_level": confidence_level,
+        "replicates": replicates,
+        "seed": seed,
+        "cluster_count": len(dates),
+        "snapshot_count": len(rows),
+        "metrics": metric_output,
+        "all_interval_lower_bounds_positive": all(
+            float(metric_output[metric]["ci95_absolute_mae_reduction"]["lower"]) > 0.0
+            for metric in METRICS
+        ),
+        "interpretation_boundary": (
+            "Descriptive uncertainty for one room, one held-out pillow point, and seven observed dates; "
+            "not a dense-field, cross-room, or intervention success claim."
+        ),
+    }
+
+
+def _paired_metric_summary(rows: List[Dict[str, object]], metric: str) -> Dict[str, float]:
+    raw_errors = [float(row["raw_pillow_abs_error"][metric]) for row in rows]
+    calibrated_errors = [float(row["estimated_pillow_abs_error"][metric]) for row in rows]
+    count = len(rows)
+    raw_mae = sum(raw_errors) / float(count)
+    calibrated_mae = sum(calibrated_errors) / float(count)
+    reduction = raw_mae - calibrated_mae
+    relative_reduction = 100.0 * reduction / raw_mae if raw_mae > 0.0 else 0.0
+    snapshots_improved = sum(
+        calibrated < raw
+        for raw, calibrated in zip(raw_errors, calibrated_errors)
+    )
+    return {
+        "raw_mae": raw_mae,
+        "calibrated_mae": calibrated_mae,
+        "absolute_mae_reduction": reduction,
+        "relative_mae_reduction_percent": relative_reduction,
+        "snapshots_improved": float(snapshots_improved),
+        "snapshot_count": float(count),
+        "improved_fraction": snapshots_improved / float(count),
+    }
+
+
+def _leave_one_date_out_sensitivity(rows: List[Dict[str, object]]) -> Dict[str, object]:
+    if not rows:
+        raise ValueError("leave-one-date-out sensitivity requires at least one snapshot")
+
+    rows_by_date: Dict[str, List[Dict[str, object]]] = {}
+    for row in rows:
+        date = str(row.get("date", "")).strip()
+        if not date:
+            raise ValueError("every leave-one-date-out row must contain a non-empty date")
+        for key in ("raw_pillow_abs_error", "estimated_pillow_abs_error"):
+            values = row.get(key)
+            if not isinstance(values, dict):
+                raise ValueError(f"leave-one-date-out row {date} is missing {key}")
+            for metric in METRICS:
+                if metric not in values:
+                    raise ValueError(
+                        f"leave-one-date-out row {date} is missing {key}.{metric}"
+                    )
+                float(values[metric])
+        rows_by_date.setdefault(date, []).append(row)
+
+    dates = sorted(rows_by_date)
+    if len(dates) < 2:
+        raise ValueError("leave-one-date-out sensitivity requires at least two dates")
+
+    folds: List[Dict[str, object]] = []
+    for omitted_date in dates:
+        remaining_rows = [
+            row
+            for date in dates
+            if date != omitted_date
+            for row in rows_by_date[date]
+        ]
+        metric_output: Dict[str, Dict[str, float]] = {}
+        for metric in METRICS:
+            summary = _paired_metric_summary(remaining_rows, metric)
+            metric_output[metric] = {
+                "raw_mae": round(summary["raw_mae"], 4),
+                "calibrated_mae": round(summary["calibrated_mae"], 4),
+                "absolute_mae_reduction": round(summary["absolute_mae_reduction"], 4),
+                "relative_mae_reduction_percent": round(
+                    summary["relative_mae_reduction_percent"], 2
+                ),
+            }
+        folds.append(
+            {
+                "omitted_date": omitted_date,
+                "remaining_date_count": len(dates) - 1,
+                "snapshot_count": len(remaining_rows),
+                "metrics": metric_output,
+            }
+        )
+
+    metric_summary: Dict[str, Dict[str, object]] = {}
+    for metric in METRICS:
+        reductions = [
+            (
+                float(fold["metrics"][metric]["absolute_mae_reduction"]),
+                str(fold["omitted_date"]),
+            )
+            for fold in folds
+        ]
+        minimum_reduction, minimum_date = min(reductions)
+        maximum_reduction, maximum_date = max(reductions)
+        metric_summary[metric] = {
+            "minimum_absolute_mae_reduction": round(minimum_reduction, 4),
+            "minimum_omitted_date": minimum_date,
+            "maximum_absolute_mae_reduction": round(maximum_reduction, 4),
+            "maximum_omitted_date": maximum_date,
+            "all_fold_reductions_positive": all(value > 0.0 for value, _ in reductions),
+        }
+
+    return {
+        "method": "leave_one_date_out_sensitivity",
+        "omission_unit": "date",
+        "date_count": len(dates),
+        "fold_count": len(folds),
+        "full_snapshot_count": len(rows),
+        "folds": folds,
+        "metrics": metric_summary,
+        "all_metric_minimum_reductions_positive": all(
+            bool(metric_summary[metric]["all_fold_reductions_positive"])
+            for metric in METRICS
+        ),
+        "interpretation_boundary": (
+            "Sensitivity to deleting one observed date in one room at one held-out pillow point; "
+            "not an independent replication, dense-field validation, or cross-room claim."
+        ),
+    }
+
+
+def _percentile(values: List[float], quantile: float) -> float:
+    if not values:
+        raise ValueError("percentile requires at least one value")
+    ordered = sorted(float(value) for value in values)
+    rank = (len(ordered) - 1) * quantile
+    lower_index = int(math.floor(rank))
+    upper_index = int(math.ceil(rank))
+    if lower_index == upper_index:
+        return ordered[lower_index]
+    weight = rank - lower_index
+    return ordered[lower_index] * (1.0 - weight) + ordered[upper_index] * weight
 
 
 def _top_rows(rows: List[Dict[str, object]], key: str, limit: int = 5) -> List[Dict[str, object]]:

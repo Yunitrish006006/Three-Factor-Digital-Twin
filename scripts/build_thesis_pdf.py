@@ -98,6 +98,9 @@ def render_table(headers: List[object], rows: List[List[object]]) -> str:
     the generated PDF shows the raw dollar signs and backslashes. Non-math
     text is still escaped normally.
     """
+    if len(rows) > 25:
+        return render_longtable(headers, rows)
+
     spec = column_spec(len(headers))
     lines = [
         r"\begin{table}[htbp]",
@@ -114,6 +117,35 @@ def render_table(headers: List[object], rows: List[List[object]]) -> str:
         lines.append(" & ".join(latex_escape_with_math(cell) for cell in padded[: len(headers)]) + r" \\")
         lines.append(r"\hline")
     lines.extend([r"\end{tabular}", r"\end{table}"])
+    return "\n".join(lines) + "\n"
+
+
+def render_longtable(headers: List[object], rows: List[List[object]]) -> str:
+    """Render a multi-page table with repeated headers and no clipped rows."""
+    spec = column_spec(len(headers))
+    header = " & ".join(rf"\textbf{{{latex_escape_with_math(item)}}}" for item in headers) + r" \\"
+    lines = [
+        r"{\footnotesize",
+        r"\renewcommand{\arraystretch}{1.25}",
+        rf"\begin{{longtable}}{{{spec}}}",
+        r"\hline",
+        header,
+        r"\hline",
+        r"\endfirsthead",
+        r"\hline",
+        header,
+        r"\hline",
+        r"\endhead",
+        r"\hline",
+        r"\endfoot",
+        r"\hline",
+        r"\endlastfoot",
+    ]
+    for row in rows:
+        padded = list(row) + [""] * (len(headers) - len(row))
+        lines.append(" & ".join(latex_escape_with_math(cell) for cell in padded[: len(headers)]) + r" \\")
+        lines.append(r"\hline")
+    lines.extend([r"\end{longtable}", r"}"])
     return "\n".join(lines) + "\n"
 
 
@@ -171,6 +203,7 @@ def render_document(blocks: List[Block]) -> str:
 \usepackage{{fontspec}}
 \usepackage{{xeCJK}}
 \usepackage{{array}}
+\usepackage{{longtable}}
 \usepackage{{graphicx}}
 \usepackage{{hyperref}}
 \usepackage{{amsmath}}

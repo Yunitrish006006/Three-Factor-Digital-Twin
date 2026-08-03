@@ -1,0 +1,89 @@
+name: research-first
+version: 1
+description: Evidence-first OpenSpec workflow for thesis methods, experiments, claims, and synchronized research artifacts.
+
+artifacts:
+  - id: proposal
+    generates: proposal.md
+    description: Research or system change proposal
+    template: proposal.md
+    instruction: |
+      Explain why the change is needed, what observable state changes, and which
+      research claims or synchronized artifacts are affected. Use the explicit
+      From/To/Reason/Impact format for each change.
+    requires: []
+
+  - id: research
+    generates: research.md
+    description: Research questions, hypotheses, construct definitions, and claim boundaries
+    template: research.md
+    instruction: |
+      Ground the change in the existing thesis and evidence. Assign stable IDs to
+      research questions, hypotheses, exploratory questions, and intended claims.
+      State competing explanations and conditions that would weaken or reject a claim.
+    requires: [proposal]
+
+  - id: protocol
+    generates: protocol.md
+    description: Pre-registered experimental and analysis protocol
+    template: protocol.md
+    instruction: |
+      Define an executable protocol before observing new results. Include units,
+      variables, controls, sampling, exclusions, leakage controls, metrics,
+      decision criteria, scripts, and machine-readable evidence paths.
+    requires: [research]
+
+  - id: specs
+    generates: specs/**/*.md
+    description: Delta specifications for the future accepted research state
+    template: specs.md
+    instruction: |
+      Describe the observable future state using ADDED, MODIFIED, and REMOVED
+      requirements. Every requirement must use a stable ID, a SHALL statement,
+      and at least one WHEN/THEN scenario. Do not write results that do not yet exist.
+    requires: [research, protocol]
+
+  - id: design
+    generates: design.md
+    description: Technical and research execution design
+    template: design.md
+    instruction: |
+      Explain how the protocol and delta specs will be implemented. Map decisions
+      to requirement, question, hypothesis, and experiment IDs. Include data flow,
+      failure modes, compatibility, and synchronized artifact impact.
+    requires: [research, protocol, specs]
+
+  - id: reproducibility
+    generates: reproducibility.md
+    description: Reproduction manifest and provenance plan
+    template: reproducibility.md
+    instruction: |
+      Provide a clean-room rerun order with inputs, licenses, environment,
+      commands, seeds, expected outputs, checksums or provenance fields, and
+      verification commands. Mark unavailable inputs explicitly.
+    requires: [protocol, design]
+
+  - id: tasks
+    generates: tasks.md
+    description: Traceable implementation, experiment, evidence, and synchronization checklist
+    template: tasks.md
+    instruction: |
+      Turn the accepted artifacts into ordered checkbox tasks. Reference IDs,
+      include tests and negative cases, produce evidence, review claims, rebuild
+      all synchronized outputs, and search for stale text before closure.
+    requires: [specs, design, reproducibility]
+
+  - id: evidence
+    generates: evidence.md
+    description: Post-run evidence report and claim decision
+    template: evidence.md
+    instruction: |
+      Populate only from actual runs or completed inspections. Record run metadata,
+      deviations, outputs, metrics, uncertainty, failures, exclusions, and a
+      supported/partial/not-supported/not-evaluated decision for every hypothesis
+      and intended claim. Do not hide null or adverse results.
+    requires: [tasks]
+
+apply:
+  requires: [tasks]
+  tracks: tasks.md

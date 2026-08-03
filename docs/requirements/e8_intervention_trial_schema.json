@@ -1,0 +1,387 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/e8_intervention_trial_schema.json",
+  "title": "E8 Real-Room Intervention Trial Dataset",
+  "description": "Versioned contract for real before/after validation of ranked action recommendations.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "experiment_id",
+    "evidence_class",
+    "study",
+    "trials"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "experiment_id": {
+      "const": "E8"
+    },
+    "evidence_class": {
+      "enum": [
+        "REAL_INTERVENTION",
+        "SYNTHETIC_TEST"
+      ]
+    },
+    "study": {
+      "$ref": "#/$defs/study"
+    },
+    "trials": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/trial"
+      }
+    }
+  },
+  "$defs": {
+    "metricTarget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "tolerance",
+        "weight"
+      ],
+      "properties": {
+        "value": {
+          "type": "number"
+        },
+        "tolerance": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "weight": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "targets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "temperature",
+        "humidity",
+        "illuminance"
+      ],
+      "properties": {
+        "temperature": {
+          "$ref": "#/$defs/metricTarget"
+        },
+        "humidity": {
+          "$ref": "#/$defs/metricTarget"
+        },
+        "illuminance": {
+          "$ref": "#/$defs/metricTarget"
+        }
+      }
+    },
+    "values": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "temperature",
+        "humidity",
+        "illuminance"
+      ],
+      "properties": {
+        "temperature": {
+          "type": "number"
+        },
+        "humidity": {
+          "type": "number"
+        },
+        "illuminance": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "position": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "x",
+        "y",
+        "z"
+      ],
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": 0
+        },
+        "y": {
+          "type": "number",
+          "minimum": 0
+        },
+        "z": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "external": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "outdoor_temperature",
+        "outdoor_humidity",
+        "sunlight_illuminance"
+      ],
+      "properties": {
+        "outdoor_temperature": {
+          "type": "number"
+        },
+        "outdoor_humidity": {
+          "type": "number"
+        },
+        "sunlight_illuminance": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "values",
+        "external"
+      ],
+      "properties": {
+        "values": {
+          "$ref": "#/$defs/values"
+        },
+        "external": {
+          "$ref": "#/$defs/external"
+        }
+      }
+    },
+    "rankingItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rank",
+        "action_name",
+        "predicted_after",
+        "predicted_penalty",
+        "predicted_improvement"
+      ],
+      "properties": {
+        "rank": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "action_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "predicted_after": {
+          "$ref": "#/$defs/values"
+        },
+        "predicted_penalty": {
+          "type": "number",
+          "minimum": 0
+        },
+        "predicted_improvement": {
+          "type": "number"
+        }
+      }
+    },
+    "study": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "study_id",
+        "room_id",
+        "target_scope",
+        "settling_interval_minutes",
+        "planned_conditions",
+        "status"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "room_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_scope": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "name",
+            "position_m"
+          ],
+          "properties": {
+            "kind": {
+              "enum": [
+                "point"
+              ]
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "position_m": {
+              "$ref": "#/$defs/position"
+            }
+          }
+        },
+        "settling_interval_minutes": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "minimum",
+            "maximum"
+          ],
+          "properties": {
+            "minimum": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "maximum": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          }
+        },
+        "planned_conditions": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "top_ranked",
+              "no_action",
+              "human_baseline",
+              "alternative_action"
+            ]
+          }
+        },
+        "status": {
+          "enum": [
+            "READY_FOR_DATA_COLLECTION",
+            "DATA_COLLECTION_IN_PROGRESS",
+            "COMPLETE"
+          ]
+        }
+      }
+    },
+    "trial": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "trial_id",
+        "block_id",
+        "status",
+        "condition",
+        "started_at",
+        "completed_at",
+        "target",
+        "before",
+        "predicted_ranking",
+        "executed_action",
+        "settling_minutes",
+        "after",
+        "protocol_deviations"
+      ],
+      "properties": {
+        "trial_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "block_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "COMPLETED",
+            "EXCLUDED"
+          ]
+        },
+        "exclusion_reason": {
+          "type": "string"
+        },
+        "condition": {
+          "enum": [
+            "top_ranked",
+            "no_action",
+            "human_baseline",
+            "alternative_action"
+          ]
+        },
+        "started_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "completed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "target": {
+          "$ref": "#/$defs/targets"
+        },
+        "before": {
+          "$ref": "#/$defs/observation"
+        },
+        "predicted_ranking": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/rankingItem"
+          }
+        },
+        "executed_action": {
+          "type": "string",
+          "minLength": 1
+        },
+        "settling_minutes": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "after": {
+          "$ref": "#/$defs/observation"
+        },
+        "protocol_deviations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "operator_notes": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "EXCLUDED"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "exclusion_reason"
+            ],
+            "properties": {
+              "exclusion_reason": {
+                "minLength": 1
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+

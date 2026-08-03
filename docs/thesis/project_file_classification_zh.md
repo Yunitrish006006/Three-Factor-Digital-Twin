@@ -128,7 +128,8 @@
 - docs/papers/thesis/assets/all_active_temperature_3d.png
 - docs/papers/thesis/assets/cu_bems_task_breakdown.png
 - docs/papers/thesis/assets/field_mae_comparison.png
-- docs/papers/thesis/assets/fig_3_1_overall_architecture.png
+- docs/papers/thesis/assets/fig_3_1_research_logic.png
+- docs/papers/thesis/assets/fig_3_1_research_logic_en.png
 - docs/papers/thesis/assets/fig_3_2_execution_flow.png
 - docs/papers/thesis/assets/fig_3_3_room_topology.png
 - docs/papers/thesis/assets/fig_3_4_sensor_calibration_learning.png
@@ -283,6 +284,8 @@
 - outputs/figures/architecture/可模組化裝置與家具架構.svg
 - outputs/figures/architecture/感測器校正與學習流程.svg
 - outputs/figures/architecture/房間感測器與目標區域配置.svg
+- outputs/figures/architecture/overall_research_logic_architecture.svg
+- outputs/figures/architecture/研究整體邏輯架構.svg
 - outputs/figures/architecture/整體分層架構.svg
 - outputs/figures/architecture/文件與輸出結構圖.svg
 - outputs/figures/architecture/模型學習推論與推薦資料流.svg
@@ -330,7 +333,6 @@
 - outputs/figures/window_only_temperature_3d.svg
 - outputs/papers/assets/ac_only_temperature_3d.png
 - outputs/papers/assets/all_active_temperature_3d.png
-- outputs/papers/assets/fig_3_1_overall_architecture.png
 - outputs/papers/assets/fig_3_2_execution_flow.png
 - outputs/papers/assets/fig_3_3_room_topology.png
 - outputs/papers/assets/fig_3_4_sensor_calibration_learning.png
@@ -430,4 +432,3 @@
 - docs/papers/thesis/thesis_draft_zh.log
 - docs/papers/thesis/thesis_draft_zh.out
 - outputs/.DS_Store
-

@@ -66,6 +66,25 @@ def main() -> None:
             ],
             failures,
         )
+        _run(
+            [
+                "python3",
+                "scripts/run_oh2024_inspired_comparison.py",
+                "--checkpoint",
+                "outputs/data/hybrid_residual_checkpoint.json",
+            ],
+            failures,
+        )
+        _run(
+            [
+                "python3",
+                "scripts/run_next_day_temperature_comparison.py",
+                "--checkpoint",
+                "outputs/data/hybrid_residual_checkpoint.json",
+            ],
+            failures,
+        )
+        _run(["python3", "scripts/run_rnn_public_comparison.py"], failures)
     else:
         print(
             "Public normalized datasets are missing; skipping public benchmark scripts. "
@@ -77,6 +96,7 @@ def main() -> None:
     else:
         print("Public comparison JSON is missing; skipping public benchmark figure generation.")
 
+    _run(["python3", "scripts/analyze_e8_intervention_trials.py"], failures)
     _run(["python3", "scripts/verify_thesis_results.py"], failures)
 
     if failures:

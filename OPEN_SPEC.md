@@ -1,8 +1,13 @@
-# Three-Factor Digital Twin 開放規格（OPEN_SPEC）
+# Three-Factor Digital Twin 專案導覽（OPEN_SPEC）
+
+> 正式、可驗證的研究 OpenSpec 已建立在 [`openspec/`](openspec/README.md)。
+> `openspec/specs/` 是目前研究與系統行為的契約，
+> `openspec/changes/` 用於後續方法、實驗、指標與主張變更。
+> 本檔保留為快速專案地圖，不再作為規格唯一來源。
 
 ## 目的
 
-本檔案為專案的開放式規格說明，供每次代理程式啟動時快速掌握整體架構、資料來源、處理鏈、執行方式與知識關係。
+本檔案為專案導覽，供每次代理程式啟動時快速掌握整體架構、資料來源、處理鏈、執行方式與知識關係。正式需求、驗收情境、研究證據邊界與變更流程以 `openspec/` 為準。
 
 目標是讓代理程式與開發者能快速理解：
 - 這個專案的研究目標與系統邊界
@@ -67,6 +72,8 @@
   - `run_hybrid_residual_experiment.py`：混合式殘差模型訓練與評估
   - `run_public_dataset_benchmark.py`：公開資料集任務對齊基線評測
   - `run_public_dataset_model_comparison.py`：公開資料集一對一模型比較
+  - `run_oh2024_inspired_comparison.py`：Oh et al. (2024) 啟發的 additive residual 方法移植比較
+  - `run_next_day_temperature_comparison.py`：次日溫度 seasonal-delta、validation selection 與 adaptive exploratory comparison
   - `normalize_public_benchmark_data.py`：公開資料正規化
   - `build_architecture_diagrams.py`：產生架構圖 SVG
   - `build_thesis_docx.py` / `build_thesis_pdf.py`：中文論文輸出
@@ -208,6 +215,8 @@ python3 scripts/run_mcp_server.py
 python3 scripts/run_web_demo.py
 python3 scripts/run_public_dataset_benchmark.py --dataset cu-bems --horizons 15,60
 python3 scripts/run_public_dataset_model_comparison.py --dataset sml2010 --horizons 15,60
+python3 scripts/run_oh2024_inspired_comparison.py
+python3 scripts/run_next_day_temperature_comparison.py
 python3 -m unittest discover -s tests
 ```
 
@@ -293,6 +302,9 @@ flowchart LR
 
 ## 7. 參考文件
 
+- `openspec/README.md`
+- `openspec/config.yaml`
+- `openspec/specs/*/spec.md`
 - `README.md`
 - `docs/thesis/system_architecture_diagrams_zh.md`
 - `docs/thesis/chatgpt_project_data_summary.md`
@@ -305,12 +317,16 @@ flowchart LR
 
 ## 8. 代理程式啟動建議流程
 
-1. 先讀取本 OPEN_SPEC.md，快速建立專案全局知識。
-2. 再根據需求定位目標模組：
+1. 先讀取 `AGENTS.md`、`openspec/config.yaml` 與受影響的
+   `openspec/specs/*/spec.md`，確認研究契約與同步規則。
+2. 再讀取本 OPEN_SPEC.md，快速建立專案全局知識。
+3. 根據需求定位目標模組：
    - 若要理解模型：查看 `digital_twin/physics/` 與 `digital_twin/neural/`
    - 若要理解資料：查看 `outputs/data/`、`docs/thesis/chatgpt_project_data_summary.md`
    - 若要理解互動：查看 `digital_twin/mcp/`、`digital_twin/web/`
-3. 如需驗證或執行：使用 `scripts/` 中的對應腳本。
+4. 若變更研究內容：先在 `openspec/changes/` 建立 `research-first` change。
+5. 如需驗證或執行：使用 `scripts/` 中的對應腳本，並執行
+   `python3 scripts/validate_research_openspec.py`。
 
 ---
 
@@ -318,6 +334,7 @@ flowchart LR
 
 本 repo 的論文與實驗產物應保持同步，任何方法或架構變更後，應同時考慮：
 
+- `openspec/specs/` 與對應的 `openspec/changes/`
 - `docs/thesis/thesis_draft_zh.md`
 - `docs/papers/ieee/paper.tex`
 - `scripts/build_thesis_pptx.py`

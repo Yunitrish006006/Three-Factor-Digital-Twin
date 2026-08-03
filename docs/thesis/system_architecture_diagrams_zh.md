@@ -2,9 +2,65 @@
 
 本文件將目前單房間三因子空間數位孿生原型的實作架構整理成 GitHub 可直接顯示的 Mermaid 圖表，方便用於 README、論文方法章、口試簡報與系統說明。
 
-正式論文與簡報輸出的 SVG 由 `scripts/build_architecture_diagrams.py` 產生。該腳本目前使用統一的 16:9 local SVG renderer，讓圖 3-1、圖 3-2、圖 3-3、圖 3-4、圖 3-5 與圖 5-1 保持相同字級、色彩、框線與箭頭風格；其中圖 3-1 由 Python top-down tree renderer 產生，用於整理整個系統的抽象責任邊界。下方 Mermaid 區塊保留作為語意草稿與 GitHub 預覽。
+正式論文與簡報輸出的 SVG 由 `scripts/build_architecture_diagrams.py` 產生。該腳本目前使用統一的 16:9 local SVG renderer，讓研究整體邏輯圖、圖 3-1、圖 3-2、圖 3-3、圖 3-4、圖 3-5 與圖 5-1 保持相同字級、色彩、框線與箭頭風格。研究整體邏輯圖先回答「研究問題如何連到方法、證據與有界結論」，既有系統分層圖再回答「系統責任如何分層」。下方 Mermaid 區塊保留作為語意草稿與 GitHub 預覽。
 
-## 1. 整體分層架構
+## 1. 研究整體邏輯架構
+
+```mermaid
+flowchart LR
+    GAP["研究缺口<br/>稀疏 IoT 感測 + 非連網家電<br/>仍需理解 T/H/L 空間分布與裝置影響"]
+
+    RQ1["RQ1 空間場估計<br/>8 角點能否支援 T/H/L 場？"]
+    M1["變數專屬 nominal model<br/>power calibration + trilinear correction<br/>optional hybrid residual"]
+    E1["E1-E3 / E6 / E7<br/>controlled field + IDW + LOO<br/>real pillow hold-out"]
+    C1["有界結論<br/>受控完整場與真實未見點改善<br/>不等同任意房間 dense truth"]
+
+    RQ2["RQ2 裝置影響學習<br/>能否由環境變化學習非連網裝置？"]
+    M2["before / after delta + spatial basis<br/>AC / window / light impact learning"]
+    E2["E4 / E5 / E9 event tasks<br/>impact check + window matrix<br/>public aligned response"]
+    C2["有界結論<br/>structured impact prior 有效<br/>不等同真實因果識別"]
+
+    RQ3["RQ3 決策支援<br/>能否輸出可解釋候選動作排序？"]
+    M3["point / zone + complete T/H/L target<br/>counterfactual rerun + comfort penalty"]
+    E3["目前：model-based ranking<br/>E8：future intervention protocol"]
+    C3["有界結論<br/>可提供反事實決策支援<br/>尚未證明實際因果改善"]
+
+    RQ4["RQ4 標準化服務（secondary）<br/>能否讓 AI client 使用同一模型？"]
+    M4["shared service path<br/>scripts / Web / MCP + Gemma bridge"]
+    E4["functional tests + demo<br/>非獨立量化實驗"]
+    C4["有界結論<br/>介面重用同一 estimator<br/>不作 headline novelty"]
+
+    GAP --> RQ1 --> M1 --> E1 --> C1
+    GAP --> RQ2 --> M2 --> E2 --> C2
+    GAP --> RQ3 --> M3 --> E3 --> C3
+    GAP -. secondary .-> RQ4 -.-> M4 -.-> E4 -.-> C4
+```
+
+這張圖是整篇論文的 argument map，而不是另一張 runtime flow。閱讀順序固定為：
+
+1. 一般房間同時面臨稀疏感測與非連網裝置限制。
+2. RQ1--RQ3 構成主要研究線，RQ4 是服務化的次要系統線。
+3. 每個研究問題都必須對應到方法與明確證據層。
+4. 結論只能落在證據能支持的範圍；controlled、real snapshot、public aligned 與 future intervention 不可互換。
+
+## Overall Research Logic Architecture
+
+```mermaid
+flowchart LR
+    GAP["Research gap<br/>Sparse IoT sensing + non-networked appliances<br/>Spatial T/H/L fields and appliance impacts remain unknown"]
+    RQ1["RQ1 Spatial field estimation"] --> M1["Variable-specific model"] --> E1["E1-E3 / E6 / E7"] --> C1["Bounded field-estimation claims"]
+    RQ2["RQ2 Appliance-impact learning"] --> M2["Before / after impact"] --> E2["E4 / E5 / E9 event tasks"] --> C2["Structured impact prior, not causality"]
+    RQ3["RQ3 Decision support"] --> M3["Counterfactual ranking"] --> E3["Current / E8 future protocol"] --> C3["Ranking support, not proven intervention gain"]
+    RQ4["RQ4 Standardized service<br/>(secondary)"] -.-> M4["Shared service path"] -.-> E4["Functional evidence"] -.-> C4["Secondary contribution"]
+    GAP --> RQ1
+    GAP --> RQ2
+    GAP --> RQ3
+    GAP -.-> RQ4
+```
+
+此英文對應圖與中文研究整體邏輯圖使用相同的節點、證據邊界與版面，專供 IEEE 稿使用，避免英文論文出現中文主圖。
+
+## 2. 整體分層架構
 
 ```mermaid
 %%{init: {'flowchart': {'nodeSpacing': 20, 'rankSpacing': 28}} }%%
@@ -25,7 +81,7 @@ flowchart TB
     SERVICE --> OUT["Decision outputs<br/>point / zone / 3D / action ranking"]
 ```
 
-## 2. 主要執行資料流
+## 3. 主要執行資料流
 
 ```mermaid
 %%{init: {'flowchart': {'nodeSpacing': 22, 'rankSpacing': 32}} }%%
@@ -62,7 +118,7 @@ flowchart TB
     Estimate --> Output
 ```
 
-## 3. 感測器校正與學習流程
+## 4. 感測器校正與學習流程
 
 ```mermaid
 %%{init: {'flowchart': {'nodeSpacing': 20, 'rankSpacing': 28}} }%%
@@ -89,7 +145,7 @@ flowchart TB
     R1 --> R3["Action ranking / recommendation"]
 ```
 
-## 4. 模型學習推論與推薦資料流
+## 5. 模型學習推論與推薦資料流
 
 ```mermaid
 %%{init: {'flowchart': {'nodeSpacing': 18, 'rankSpacing': 28, 'curve': 'basis'}} }%%
@@ -127,7 +183,7 @@ flowchart LR
     A3 -. "reproducible evidence" .-> R10
 ```
 
-## 5. 可模組化裝置與家具架構
+## 6. 可模組化裝置與家具架構
 
 ```mermaid
 %%{init: {'flowchart': {'nodeSpacing': 20, 'rankSpacing': 28}} }%%
@@ -145,7 +201,7 @@ flowchart TB
     E3 --> R
 ```
 
-## 6. 房間感測器與目標區域配置
+## 7. 房間感測器與目標區域配置
 
 ```mermaid
 %%{init: {'flowchart': {'nodeSpacing': 18, 'rankSpacing': 24}} }%%
@@ -189,7 +245,7 @@ flowchart LR
     Zones --> Floor
 ```
 
-## 7. 驗證與實驗流程圖
+## 8. 驗證與實驗流程圖
 
 ```mermaid
 %%{init: {'flowchart': {'nodeSpacing': 20, 'rankSpacing': 28}} }%%
@@ -220,7 +276,7 @@ flowchart TB
     Corr --> Eval
 ```
 
-## 8. 程式碼結構圖
+## 9. 程式碼結構圖
 
 ```mermaid
 %%{init: {'flowchart': {'nodeSpacing': 20, 'rankSpacing': 28}} }%%
@@ -237,7 +293,7 @@ flowchart TB
     DT --> WEB["web/<br/>web_demo / render"]
 ```
 
-## 9. 文件與輸出結構圖
+## 10. 文件與輸出結構圖
 
 ```mermaid
 %%{init: {'flowchart': {'nodeSpacing': 20, 'rankSpacing': 28}} }%%
@@ -259,10 +315,10 @@ flowchart TB
     OUT --> PAP["papers/"]
 ```
 
-## 10. 圖表使用建議
+## 11. 圖表使用建議
 
 - 若要放進 GitHub repo，直接保留 Mermaid 區塊即可。
-- 若要放進論文正文，建議優先使用第 1 張、第 2 張、第 3 張、第 4 張、第 6 張與第 7 張。
-- 第 4 張適合放方法章與口試簡報，用來說明資料如何從訓練一路接到推論與推薦。
-- 第 5 張適合放方法章或附錄，用來說明裝置與家具的可模組化設計。
-- 第 8 張與第 9 張較適合 README、系統說明或口試備用頁，不建議放論文正文。
+- 若要先說清楚整篇論文的邏輯，優先使用第 1 張研究整體邏輯架構。
+- 若要說明方法實作，再使用第 2 張系統分層、第 3 張執行資料流、第 4 張校正學習與第 5 張學習推論推薦資料流。
+- 第 6 張適合放方法章或附錄，用來說明裝置與家具的可模組化設計。
+- 第 9 張與第 10 張較適合 README、系統說明或口試備用頁，不建議放論文正文。

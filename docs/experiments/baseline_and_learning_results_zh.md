@@ -71,7 +71,7 @@ delta_v(sensor_i) ≈ coefficient_v · envelope(device, sensor_i)
 
 | 裝置 | Temperature coefficient | Humidity coefficient | Illuminance coefficient |
 | --- | ---: | ---: | ---: |
-| `ac_main` | -9.1798 | -5.3999 | 0.0000 |
+| `ac_main` | -36.8076 | -16.9792 | 0.0000 |
 
 解讀：
 
@@ -83,13 +83,15 @@ delta_v(sensor_i) ≈ coefficient_v · envelope(device, sensor_i)
 
 | 裝置 | Temperature coefficient | Humidity coefficient | Illuminance coefficient |
 | --- | ---: | ---: | ---: |
-| `light_main` | 0.8400 | 0.0000 | 1102.4793 |
+| `light_main` | 2.7633 | 0.0000 | 321.7206 |
 
 解讀：
 
 - 照明主要提升照度。
 - 照明帶來少量熱效應。
 - 照明對濕度無直接影響。
+
+以上係數以目前 `outputs/data/validation_summary.json` 的 `learned_device_impacts` 為準。係數會隨 spatial envelope 尺度、裝置狀態與情境設定改變，因此適合判讀方向與情境內相對強度，不應跨設備直接比較，也不等同真實介入因果效果。
 
 ## 論文可用結論
 

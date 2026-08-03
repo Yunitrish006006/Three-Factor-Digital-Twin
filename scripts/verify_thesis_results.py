@@ -94,6 +94,26 @@ def _build_specs(tolerance_override: Optional[float]) -> List[ResultSpec]:
                 category="controlled_simulation",
             ),
             ResultSpec(
+                result_name="window_matrix_target_zone_temperature_in_domain_count",
+                thesis_value=34.0,
+                evidence_file=DATA / "window_matrix_summary.json",
+                compute=lambda: _window_temperature_domain_count(True),
+                tolerance=0.0 if tolerance_override is None else tolerance_override,
+                thesis_patterns=["34 組 target-zone 室內溫度", "34 target-zone temperature cases"],
+                suggested_script="python3 scripts/run_window_matrix.py",
+                category="controlled_simulation",
+            ),
+            ResultSpec(
+                result_name="window_matrix_target_zone_temperature_out_of_domain_count",
+                thesis_value=14.0,
+                evidence_file=DATA / "window_matrix_summary.json",
+                compute=lambda: _window_temperature_domain_count(False),
+                tolerance=0.0 if tolerance_override is None else tolerance_override,
+                thesis_patterns=["其餘 14 組保留為範圍外壓力測試", "14 out-of-domain stress cases"],
+                suggested_script="python3 scripts/run_window_matrix.py",
+                category="controlled_simulation",
+            ),
+            ResultSpec(
                 result_name="hybrid_default_train_samples",
                 thesis_value=576.0,
                 evidence_file=DATA / "hybrid_residual_summary.json",
@@ -132,6 +152,45 @@ def _build_specs(tolerance_override: Optional[float]) -> List[ResultSpec]:
                 thesis_patterns=["28 筆快照", "28 cases"],
                 suggested_script="python3 scripts/run_bedroom_weekly_simulation.py",
                 category="real_bedroom_snapshot",
+            ),
+            ResultSpec(
+                result_name="e8_completed_real_intervention_trial_count",
+                thesis_value=0.0,
+                evidence_file=DATA / "e8_intervention_summary.json",
+                compute=lambda: _json_metric(
+                    DATA / "e8_intervention_summary.json",
+                    ["trial_counts", "completed"],
+                ),
+                tolerance=0.0 if tolerance_override is None else tolerance_override,
+                thesis_patterns=[
+                    "E8 目前完成真實介入試驗數為 0",
+                    "E8 currently has 0 completed real intervention trials",
+                ],
+                suggested_script="python3 scripts/analyze_e8_intervention_trials.py",
+                category="intervention_readiness",
+            ),
+            ResultSpec(
+                result_name="e8_not_evaluated_status_flag",
+                thesis_value=1.0,
+                evidence_file=DATA / "e8_intervention_summary.json",
+                compute=_e8_not_evaluated_status_flag,
+                tolerance=0.0 if tolerance_override is None else tolerance_override,
+                thesis_patterns=["`NOT_EVALUATED`", "\\texttt{NOT\\_EVALUATED}"],
+                suggested_script="python3 scripts/analyze_e8_intervention_trials.py",
+                category="intervention_readiness",
+            ),
+            ResultSpec(
+                result_name="e8_non_null_efficacy_estimate_count",
+                thesis_value=0.0,
+                evidence_file=DATA / "e8_intervention_summary.json",
+                compute=_e8_non_null_efficacy_count,
+                tolerance=0.0 if tolerance_override is None else tolerance_override,
+                thesis_patterns=[
+                    "所有效益估計維持 null",
+                    "all efficacy estimates remain null",
+                ],
+                suggested_script="python3 scripts/analyze_e8_intervention_trials.py",
+                category="intervention_readiness",
             ),
         ]
     )
@@ -240,6 +299,119 @@ def _build_specs(tolerance_override: Optional[float]) -> List[ResultSpec]:
                 )
             )
 
+    bootstrap_path = DATA / "bedroom_01_weekly" / "weekly_simulation_summary.json"
+    specs.extend(
+        [
+            ResultSpec(
+                result_name="real_bedroom_bootstrap_replicates",
+                thesis_value=20000.0,
+                evidence_file=bootstrap_path,
+                compute=lambda: _json_metric(
+                    bootstrap_path,
+                    ["aggregate", "paired_day_block_bootstrap", "replicates"],
+                ),
+                tolerance=0.0 if tolerance_override is None else tolerance_override,
+                thesis_patterns=["20,000 次"],
+                suggested_script="python3 scripts/run_bedroom_weekly_simulation.py",
+                category="real_bedroom_snapshot",
+            ),
+            ResultSpec(
+                result_name="real_bedroom_temperature_improved_snapshots",
+                thesis_value=26.0,
+                evidence_file=bootstrap_path,
+                compute=lambda: _json_metric(
+                    bootstrap_path,
+                    [
+                        "aggregate",
+                        "paired_day_block_bootstrap",
+                        "metrics",
+                        "temperature",
+                        "snapshots_improved",
+                    ],
+                ),
+                tolerance=0.0 if tolerance_override is None else tolerance_override,
+                thesis_patterns=["26/28"],
+                suggested_script="python3 scripts/run_bedroom_weekly_simulation.py",
+                category="real_bedroom_snapshot",
+            ),
+        ]
+    )
+    for metric, reduction, lower, upper in [
+        ("temperature", 0.7291, 0.4582, 1.0232),
+        ("humidity", 3.7346, 3.2005, 4.2524),
+        ("illuminance", 292.3692, 288.3083, 297.0237),
+    ]:
+        for label, value, path_key in [
+            ("mae_reduction", reduction, "absolute_mae_reduction"),
+            ("ci95_lower", lower, "lower"),
+            ("ci95_upper", upper, "upper"),
+        ]:
+            metric_path = [
+                "aggregate",
+                "paired_day_block_bootstrap",
+                "metrics",
+                metric,
+            ]
+            if label.startswith("ci95"):
+                metric_path.extend(["ci95_absolute_mae_reduction", path_key])
+            else:
+                metric_path.append(path_key)
+            specs.append(
+                ResultSpec(
+                    result_name=f"real_bedroom_bootstrap_{label}.{metric}",
+                    thesis_value=value,
+                    evidence_file=bootstrap_path,
+                    compute=lambda metric_path=metric_path: _json_metric(bootstrap_path, metric_path),
+                    tolerance=tol4,
+                    thesis_patterns=[f"{value:.4f}"],
+                    suggested_script="python3 scripts/run_bedroom_weekly_simulation.py",
+                    category="real_bedroom_snapshot",
+                )
+            )
+
+    lodo_path = DATA / "bedroom_01_weekly" / "weekly_simulation_summary.json"
+    specs.append(
+        ResultSpec(
+            result_name="real_bedroom_leave_one_date_out_fold_count",
+            thesis_value=7.0,
+            evidence_file=lodo_path,
+            compute=lambda: _json_metric(
+                lodo_path,
+                ["aggregate", "leave_one_date_out_sensitivity", "fold_count"],
+            ),
+            tolerance=0.0 if tolerance_override is None else tolerance_override,
+            thesis_patterns=["7-fold leave-one-date-out", "seven-fold leave-one-date-out"],
+            suggested_script="python3 scripts/run_bedroom_weekly_simulation.py",
+            category="real_bedroom_snapshot",
+        )
+    )
+    for metric, value in {
+        "temperature": 0.6123,
+        "humidity": 3.5551,
+        "illuminance": 290.5716,
+    }.items():
+        specs.append(
+            ResultSpec(
+                result_name=f"real_bedroom_leave_one_date_out_minimum_reduction.{metric}",
+                thesis_value=value,
+                evidence_file=lodo_path,
+                compute=lambda metric=metric: _json_metric(
+                    lodo_path,
+                    [
+                        "aggregate",
+                        "leave_one_date_out_sensitivity",
+                        "metrics",
+                        metric,
+                        "minimum_absolute_mae_reduction",
+                    ],
+                ),
+                tolerance=tol4,
+                thesis_patterns=[f"{value:.4f}"],
+                suggested_script="python3 scripts/run_bedroom_weekly_simulation.py",
+                category="real_bedroom_snapshot",
+            )
+        )
+
     public_specs = [
         ("sml2010_public_task_count", 24, DATA / "public_benchmarks" / "sml2010_hybrid_twin_comparison.json", lambda: _public_stats("sml2010")["target_count"], ["SML2010 共 24", "24 個 target-horizon"]),
         ("sml2010_lowest_mae_count", 12, DATA / "public_benchmarks" / "sml2010_hybrid_twin_comparison.json", lambda: _public_stats("sml2010")["lowest_mae_count"], ["12 項取得最低 MAE"]),
@@ -264,6 +436,140 @@ def _build_specs(tolerance_override: Optional[float]) -> List[ResultSpec]:
                     "python3 scripts/run_public_dataset_model_comparison.py --dataset {dataset} --horizons 15,60"
                 ).format(dataset=dataset),
                 category="public_task_aligned_benchmark",
+                needs_public_data=True,
+            )
+        )
+
+    oh2024_path = DATA / "public_benchmarks" / "oh2024_inspired_sml2010_comparison.json"
+    oh2024_specs = [
+        (
+            "oh2024_transfer_evaluated_case_count",
+            6.0,
+            lambda: _json_metric(oh2024_path, ["summary", "evaluated_cases"]),
+            ["6 個 temperature target--horizon", "6 個 SML2010 temperature target-horizon"],
+        ),
+        (
+            "oh2024_transfer_wins_vs_raw_physics",
+            4.0,
+            lambda: _json_metric(oh2024_path, ["summary", "oh2024_inspired_wins_vs_raw_physics"]),
+            ["實際結果為 4/6", "4/6"],
+        ),
+        (
+            "oh2024_transfer_15min_dining_mae",
+            0.042169,
+            lambda: _oh2024_case_metric("dining_temperature", 15, "oh2024_inspired_additive_residual", "mae"),
+            ["0.0422"],
+        ),
+        (
+            "oh2024_transfer_15min_room_mae",
+            0.051743,
+            lambda: _oh2024_case_metric("room_temperature", 15, "oh2024_inspired_additive_residual", "mae"),
+            ["0.0517"],
+        ),
+        (
+            "oh2024_transfer_1440min_dining_mae",
+            1.753754,
+            lambda: _oh2024_case_metric("dining_temperature", 1440, "oh2024_inspired_additive_residual", "mae"),
+            ["1.7538"],
+        ),
+        (
+            "oh2024_transfer_1440min_room_mae",
+            1.772293,
+            lambda: _oh2024_case_metric("room_temperature", 1440, "oh2024_inspired_additive_residual", "mae"),
+            ["1.7723"],
+        ),
+    ]
+    for result_name, thesis_value, compute, patterns in oh2024_specs:
+        specs.append(
+            ResultSpec(
+                result_name=result_name,
+                thesis_value=thesis_value,
+                evidence_file=oh2024_path,
+                compute=compute,
+                tolerance=tol4,
+                thesis_patterns=patterns,
+                suggested_script="python3 scripts/run_oh2024_inspired_comparison.py",
+                category="public_task_method_transfer",
+                needs_public_data=True,
+            )
+        )
+
+    next_day_path = DATA / "public_benchmarks" / "next_day_temperature_improvement.json"
+    next_day_specs = [
+        ("next_day_persistence_dining_mae", 1.517486, lambda: _next_day_primary_metric("dining_temperature", "seasonal_persistence", "mae"), ["1.5175"]),
+        ("next_day_persistence_room_mae", 1.499639, lambda: _next_day_primary_metric("room_temperature", "seasonal_persistence", "mae"), ["1.4996"]),
+        ("next_day_selected_dining_mae", 1.628868, lambda: _next_day_selected_metric("dining_temperature", "mae"), ["1.6289"]),
+        ("next_day_selected_room_mae", 1.624972, lambda: _next_day_selected_metric("room_temperature", "mae"), ["1.6250"]),
+        ("next_day_bias_corrected_dining_mae", 1.501763, lambda: _next_day_primary_metric("dining_temperature", "bias_corrected_persistence", "mae"), ["1.5018"]),
+        ("next_day_bias_corrected_room_mae", 1.488394, lambda: _next_day_primary_metric("room_temperature", "bias_corrected_persistence", "mae"), ["1.4884"]),
+        ("next_day_adaptive_selected_dining_mae", 1.651511, lambda: _next_day_adaptive_selected_metric("dining_temperature", "mae"), ["1.6515"]),
+        ("next_day_adaptive_selected_room_mae", 1.645603, lambda: _next_day_adaptive_selected_metric("room_temperature", "mae"), ["1.6456"]),
+    ]
+    for result_name, thesis_value, compute, patterns in next_day_specs:
+        specs.append(
+            ResultSpec(
+                result_name=result_name,
+                thesis_value=thesis_value,
+                evidence_file=next_day_path,
+                compute=compute,
+                tolerance=tol4,
+                thesis_patterns=patterns,
+                suggested_script="python3 scripts/run_next_day_temperature_comparison.py",
+                category="public_task_next_day_followup",
+                needs_public_data=True,
+            )
+        )
+
+    rnn_path = DATA / "public_benchmarks" / "rnn_sml2010_comparison.json"
+    rnn_specs = [
+        (
+            "rnn_same_data_complete_status",
+            1.0,
+            _rnn_complete_status_flag,
+            ["RNN 同資料比較為 `COMPLETE`", "RNN same-data comparison is complete"],
+        ),
+        (
+            "rnn_same_data_parity_passed",
+            1.0,
+            _rnn_data_parity_flag,
+            ["12/12 個案例通過資料一致性", "all 12 cases passed the data-parity audit"],
+        ),
+        (
+            "rnn_same_data_evaluated_case_count",
+            12.0,
+            lambda: _json_metric(rnn_path, ["summary", "evaluated_cases"]),
+            ["12 個 target--horizon 案例", "12 target--horizon cases"],
+        ),
+        (
+            "rnn_lowest_mae_count",
+            0.0,
+            lambda: _json_metric(rnn_path, ["summary", "lowest_mae_counts", "vanilla_rnn"]),
+            ["RNN 為 0 項", "RNN was lowest in 0"],
+        ),
+        (
+            "rnn_sequence_linear_lowest_mae_count",
+            7.0,
+            lambda: _json_metric(rnn_path, ["summary", "lowest_mae_counts", "sequence_linear_regression"]),
+            ["sequence linear regression 為 7 項", "sequence linear regression in 7"],
+        ),
+        (
+            "rnn_persistence_lowest_mae_count",
+            5.0,
+            lambda: _json_metric(rnn_path, ["summary", "lowest_mae_counts", "persistence"]),
+            ["persistence 為 5 項", "persistence in 5"],
+        ),
+    ]
+    for result_name, thesis_value, compute, patterns in rnn_specs:
+        specs.append(
+            ResultSpec(
+                result_name=result_name,
+                thesis_value=thesis_value,
+                evidence_file=rnn_path,
+                compute=compute,
+                tolerance=0.0 if tolerance_override is None else tolerance_override,
+                thesis_patterns=patterns,
+                suggested_script="python3 scripts/run_rnn_public_comparison.py",
+                category="public_task_rnn_same_data_comparison",
                 needs_public_data=True,
             )
         )
@@ -375,6 +681,16 @@ def _json_metric(path: Path, keys: Sequence[str]) -> float:
     return float(node)
 
 
+def _window_temperature_domain_count(in_domain: bool) -> float:
+    payload = _read_json(DATA / "window_matrix_summary.json")
+    temperatures = [
+        float(item["target_zone_estimated"]["temperature"])
+        for item in payload.get("scenarios", [])
+    ]
+    count = sum(20.0 <= value <= 30.0 for value in temperatures)
+    return float(count if in_domain else len(temperatures) - count)
+
+
 def _public_stats(dataset_key: str) -> Dict[str, int]:
     path = DATA / "public_benchmarks" / f"{dataset_key}_hybrid_twin_comparison.json"
     payload = _read_json(path)
@@ -403,6 +719,90 @@ def _public_stats(dataset_key: str) -> Dict[str, int]:
         "better_than_linear_regression_count": better_than_linear_regression_count,
         "better_than_persistence_count": better_than_persistence_count,
     }
+
+
+def _oh2024_case_metric(target: str, horizon_minutes: int, method: str, metric: str) -> float:
+    path = DATA / "public_benchmarks" / "oh2024_inspired_sml2010_comparison.json"
+    payload = _read_json(path)
+    for case in payload.get("cases", []):
+        if (
+            case.get("status") == "ok"
+            and case.get("target") == target
+            and int(case.get("horizon_minutes", 0)) == horizon_minutes
+        ):
+            return float(case["metrics"][method][metric])
+    raise ValueError(f"Missing Oh2024 transfer case: {target}, {horizon_minutes}")
+
+
+def _next_day_case(target: str) -> Dict[str, object]:
+    path = DATA / "public_benchmarks" / "next_day_temperature_improvement.json"
+    payload = _read_json(path)
+    for case in payload.get("cases", []):
+        if case.get("status") == "ok" and case.get("target") == target:
+            return case
+    raise ValueError(f"Missing next-day primary case: {target}")
+
+
+def _next_day_primary_metric(target: str, candidate: str, metric: str) -> float:
+    case = _next_day_case(target)
+    return float(case["final_test_candidate_metrics"][candidate]["test_metrics"][metric])
+
+
+def _next_day_selected_metric(target: str, metric: str) -> float:
+    case = _next_day_case(target)
+    selected = str(case["selected_candidate"])
+    return float(case["final_test_candidate_metrics"][selected]["test_metrics"][metric])
+
+
+def _next_day_adaptive_selected_metric(target: str, metric: str) -> float:
+    path = DATA / "public_benchmarks" / "next_day_temperature_improvement.json"
+    payload = _read_json(path)
+    for case in payload.get("adaptive_online_followup", {}).get("cases", []):
+        if case.get("target") == target:
+            selected = str(case["selected_candidate"])
+            return float(case["test_metrics"][selected][metric])
+    raise ValueError(f"Missing next-day adaptive case: {target}")
+
+
+def _e8_not_evaluated_status_flag() -> float:
+    payload = _read_json(DATA / "e8_intervention_summary.json")
+    return 1.0 if payload.get("evidence_status") == "NOT_EVALUATED" else 0.0
+
+
+def _e8_non_null_efficacy_count() -> float:
+    payload = _read_json(DATA / "e8_intervention_summary.json")
+    metrics = payload.get("metrics", {})
+    selected = [
+        metrics.get("top_ranked_success_rate"),
+        metrics.get("top_ranked_mean_actual_improvement"),
+        metrics.get("mean_absolute_prediction_error"),
+        metrics.get("overall_direction_accuracy"),
+        metrics.get("matched_block_top1_regret_mean"),
+        metrics.get("matched_block_spearman_mean"),
+    ]
+    selected.extend(metrics.get("direction_accuracy", {}).values())
+    return float(sum(value is not None for value in selected))
+
+
+def _rnn_complete_status_flag() -> float:
+    payload = _read_json(DATA / "public_benchmarks" / "rnn_sml2010_comparison.json")
+    return 1.0 if payload.get("status") == "COMPLETE" else 0.0
+
+
+def _rnn_data_parity_flag() -> float:
+    payload = _read_json(DATA / "public_benchmarks" / "rnn_sml2010_comparison.json")
+    audits = payload.get("data_parity", {}).get("horizon_audits", [])
+    method_hashes_match = bool(audits) and all(
+        len(
+            {
+                contract.get("shared_test_input_hash")
+                for contract in audit.get("method_data_contracts", {}).values()
+            }
+        )
+        == 1
+        for audit in audits
+    )
+    return 1.0 if payload.get("data_parity", {}).get("all_horizons_passed") and method_hashes_match else 0.0
 
 
 def _read_json(path: Path) -> Dict[str, object]:

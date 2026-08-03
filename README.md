@@ -29,6 +29,17 @@
 
 詳細規則見 [AGENTS.md](/Volumes/DataExtended/school/AGENTS.md)。
 
+## Research OpenSpec
+
+本專案的正式研究規格位於
+[`openspec/`](/Volumes/DataExtended/school/openspec/README.md)，包含目前能力
+契約、研究問題與 claim boundary、E1--E9 證據規則、研究專用變更 workflow、
+重現性模板與自動結構驗證。
+
+```bash
+python3 scripts/validate_research_openspec.py
+```
+
 模型採用「連續影響場 + 高解析度離散採樣網格」的混合方式，並固定使用 8 顆角落感測器進行觀測與校正。研究重點是：即使冷氣、窗戶、照明等裝置本身沒有連網、沒有 API、也無法直接回報狀態，系統仍可透過環境感測資料學習其影響，並用於更準確地控制溫度、濕度與照度。MCP server 與 web demo 則作為同一套模型能力的互動式存取介面。
 
 ## 內容
@@ -103,6 +114,10 @@
   對正規化後的公開資料集執行 shared-task benchmark，輸出 persistence 與線性回歸 baseline 比較結果。
 - `scripts/run_public_dataset_model_comparison.py`
   將本研究的 hybrid digital twin 映射到相同 public tasks，並與 persistence / linear regression 做一對一比較。
+- `scripts/run_oh2024_inspired_comparison.py`
+  將 Oh et al. (2024) 的 simulation-plus-residual 概念移植為 ridge-linear additive residual baseline，在 SML2010 15/60/1440 分鐘兩點溫度任務上與四個 comparator 使用相同 chronological split 比較；此流程不是原文 CNN--LSTM 重現。
+- `scripts/run_next_day_temperature_comparison.py`
+  以固定 60/10/30 chronological split 評估 SML2010 次日溫度 seasonal-delta candidates，並保留 post-primary adaptive exploratory negative result。
 - `scripts/build_public_benchmark_figures.py`
   從 public benchmark JSON 產生 SML2010 S1/S2/S3 與 CU-BEMS C1/C2/C3 任務族群拆解圖，供論文與簡報使用。
 
@@ -174,8 +189,18 @@ python3 scripts/run_public_dataset_benchmark.py --dataset cu-bems --horizons 15,
 python3 scripts/run_public_dataset_benchmark.py --dataset sml2010 --horizons 15,60
 python3 scripts/run_public_dataset_model_comparison.py --dataset sml2010 --horizons 15,60
 python3 scripts/run_public_dataset_model_comparison.py --dataset cu-bems --horizons 15,60
+python3 scripts/run_oh2024_inspired_comparison.py
+python3 scripts/run_next_day_temperature_comparison.py
 python3 scripts/build_public_benchmark_figures.py
 ```
+
+準備與分析 E8 推薦動作真實介入資料：
+
+```bash
+python3 scripts/analyze_e8_intervention_trials.py
+```
+
+資料契約位於 `docs/requirements/e8_intervention_trial_schema.json`，空白收集範本位於 `docs/templates/e8_intervention_trials_template.json`。目前範本沒有真實 trials，因此輸出狀態為 `NOT_EVALUATED`，所有 efficacy metrics 維持 `null`；這個命令只代表 E8 收集與分析流程已就緒，不代表推薦效果已驗證。
 
 ## MCP Server
 

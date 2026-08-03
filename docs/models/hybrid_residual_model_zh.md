@@ -17,6 +17,30 @@ F_final(p, t) = F_physics(p, t) + f_theta(features(p, t))
 - 感測器校正、power scale calibration、時間常數等物理啟發式結構不會被黑盒吃掉
 - 神經網路只負責修正殘差，較容易在論文中說明其角色與限制
 
+## 時間符號：為什麼 physics 項也有 `t+h`
+
+目前專案實作的是指定 scenario elapsed time 的空間估測：
+
+```text
+F_hybrid(p, t) = F_physics(p, t) + R(p, t)
+```
+
+若把同一架構推廣成從預測起點 `t` 出發的 `h`-step forecast，完整寫法應為：
+
+```text
+F̂_hybrid(p, t+h | I_t)
+  = F̂_physics(p, t+h | I_t)
+  + R̂(p, t+h | I_t)
+```
+
+- `h` 是 forecast lead，不是 physics model 的額外物理參數。
+- physics 項也標為 `t+h`，因為它必須先由 `t` 時刻的狀態與預報邊界/控制輸入向前推進，產生目標時刻 `t+h` 的 baseline。
+- residual 項同樣預測 `t+h` 的剩餘誤差；只有兩項對齊同一 target time，兩者才能相加。
+- `I_t` 只包含預測起點 `t` 可得的資訊，不得包含 `t+h` 的實測真值或 truth residual。
+- 本專案目前沒有新增 `h>0` forecasting experiment，因此現行公式是 `h=0` 的 current-state spatial-estimation 特例。
+
+相關先行研究為 Ju-Hong Oh、Stefano Sfarra 與 Eui-Jong Kim，〈Hybrid modeling based on integrating simulation and operational data to improve indoor air temperature predictions, a controlled variable in digital twin models〉，*Energy and Buildings*, vol. 324, 114898, 2024，DOI: `10.1016/j.enbuild.2024.114898`。該研究以 forecast-day simulation output 為物理基線，再學習歷史 simulation--measurement gap；此概念支持 target-time 對齊，但其 next-day temperature task 不等同於本專案目前的三因子 3-D 空間估測。
+
 ## 目前實作
 
 核心檔案：

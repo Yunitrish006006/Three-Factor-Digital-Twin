@@ -204,6 +204,192 @@ def page(title: str, subtitle: str, body: str) -> str:
 """
 
 
+def svg_research_logic_architecture() -> str:
+    row_y = (270, 400, 530, 660)
+    body_parts = [
+        panel(45, 95, 1510, 735),
+        box(
+            190,
+            125,
+            1220,
+            90,
+            "green",
+            "研究缺口",
+            [
+                "一般房間只有稀疏 IoT 感測，冷氣、窗戶與照明又常無遙測",
+                "仍需理解 temperature / humidity / illuminance 空間分布與裝置影響",
+            ],
+        ),
+        text_lines(170, 252, "研究問題", "panelTitle"),
+        text_lines(540, 252, "方法核心", "panelTitle"),
+        text_lines(980, 252, "對應證據", "panelTitle"),
+        text_lines(1380, 252, "有界結論", "panelTitle"),
+    ]
+
+    rows = [
+        (
+            "blue",
+            "RQ1 空間場估計",
+            ["8 角點能否", "支援 T/H/L 場？"],
+            "orange",
+            "Variable-specific model",
+            ["power calibration + trilinear", "optional hybrid residual"],
+            "green",
+            "E1-E3 / E6 / E7",
+            ["controlled field + IDW + LOO", "real pillow hold-out"],
+            "soft",
+            "可支持",
+            ["受控完整場 + 真實未見點改善", "不等同任意房間 dense truth"],
+        ),
+        (
+            "blue",
+            "RQ2 裝置影響學習",
+            ["能否由環境變化", "學習非連網裝置？"],
+            "orange",
+            "Before / after impact",
+            ["delta + spatial basis", "AC / window / light"],
+            "green",
+            "E4 / E5 / E9 event",
+            ["impact check + window matrix", "public aligned response"],
+            "soft",
+            "可支持",
+            ["structured impact prior", "不等同真實因果識別"],
+        ),
+        (
+            "blue",
+            "RQ3 決策支援",
+            ["能否輸出可解釋", "候選動作排序？"],
+            "orange",
+            "Counterfactual ranking",
+            ["point / zone + T/H/L target", "rerun + comfort penalty"],
+            "yellow",
+            "目前 / E8",
+            ["model-based ranking", "future intervention protocol"],
+            "yellow",
+            "目前邊界",
+            ["可提供反事實決策支援", "尚未證明實際因果改善"],
+        ),
+        (
+            "soft",
+            "RQ4 標準化服務",
+            ["secondary systems line", "AI client uses same model"],
+            "soft",
+            "Shared service path",
+            ["scripts / Web", "MCP + Gemma bridge"],
+            "soft",
+            "Functional evidence",
+            ["tests + demo", "非獨立量化實驗"],
+            "soft",
+            "次要貢獻",
+            ["介面重用同一 estimator", "不作 headline novelty"],
+        ),
+    ]
+
+    for y, row in zip(row_y, rows):
+        (
+            q_css,
+            q_title,
+            q_lines,
+            m_css,
+            m_title,
+            m_lines,
+            e_css,
+            e_title,
+            e_lines,
+            c_css,
+            c_title,
+            c_lines,
+        ) = row
+        body_parts.extend(
+            [
+                box(60, y, 220, 100, q_css, q_title, q_lines),
+                box(340, y, 400, 100, m_css, m_title, m_lines),
+                box(800, y, 360, 100, e_css, e_title, e_lines),
+                box(1220, y, 320, 100, c_css, c_title, c_lines),
+            ]
+        )
+        if y == row_y[-1]:
+            body_parts.extend(
+                [
+                    dash(f"M280 {y + 50} L340 {y + 50}"),
+                    dash(f"M740 {y + 50} L800 {y + 50}"),
+                    dash(f"M1160 {y + 50} L1220 {y + 50}"),
+                ]
+            )
+        else:
+            body_parts.extend(
+                [
+                    arrow(280, y + 50, 340, y + 50),
+                    arrow(740, y + 50, 800, y + 50),
+                    arrow(1160, y + 50, 1220, y + 50),
+                ]
+            )
+
+    body_parts.append(
+        text_lines(
+            800,
+            805,
+            "證據層不可互換：controlled ≠ real dense；public aligned ≠ full 3D；counterfactual ≠ causal。",
+            "subtitle",
+        )
+    )
+    return page(
+        "研究整體邏輯架構",
+        "從研究缺口、RQ1-RQ4、方法核心與 E1-E9，連到可支持與不可過度宣稱的結論",
+        "\n".join(body_parts),
+    )
+
+
+def svg_research_logic_architecture_en() -> str:
+    svg = svg_research_logic_architecture()
+    replacements = {
+        "研究整體邏輯架構": "Overall Research Logic Architecture",
+        "從研究缺口、RQ1-RQ4、方法核心與 E1-E9，連到可支持與不可過度宣稱的結論": (
+            "From research gap and RQ1-RQ4 through methods and E1-E9 evidence to bounded conclusions"
+        ),
+        "研究缺口": "Research gap",
+        "一般房間只有稀疏 IoT 感測，冷氣、窗戶與照明又常無遙測": (
+            "Ordinary rooms have sparse IoT sensing and non-networked AC, windows, and lights"
+        ),
+        "仍需理解 temperature / humidity / illuminance 空間分布與裝置影響": (
+            "Spatial T/H/L fields and appliance impacts must still be estimated"
+        ),
+        "研究問題": "Research question",
+        "方法核心": "Method core",
+        "對應證據": "Evidence",
+        "有界結論": "Bounded conclusion",
+        "RQ1 空間場估計": "RQ1 Field estimation",
+        "8 角點能否": "Can 8 corner sensors",
+        "支援 T/H/L 場？": "support T/H/L fields?",
+        "可支持": "Supported",
+        "受控完整場 + 真實未見點改善": "Controlled fields + unseen real-point gains",
+        "不等同任意房間 dense truth": "Not arbitrary-room dense truth",
+        "RQ2 裝置影響學習": "RQ2 Impact learning",
+        "能否由環境變化": "Can sensing deltas",
+        "學習非連網裝置？": "reveal appliance impact?",
+        "不等同真實因果識別": "Not causal identification",
+        "RQ3 決策支援": "RQ3 Decision support",
+        "能否輸出可解釋": "Can the model rank",
+        "候選動作排序？": "candidate actions?",
+        "目前 / E8": "Current / E8",
+        "目前邊界": "Current boundary",
+        "可提供反事實決策支援": "Supports counterfactual decision ranking",
+        "尚未證明實際因果改善": "No proven causal improvement yet",
+        "RQ4 標準化服務": "RQ4 Service interface",
+        "非獨立量化實驗": "Not an independent quantitative test",
+        "次要貢獻": "Secondary contribution",
+        "介面重用同一 estimator": "Interfaces reuse the same estimator",
+        "不作 headline novelty": "Not headline novelty",
+        "證據層不可互換：controlled ≠ real dense；public aligned ≠ full 3D；counterfactual ≠ causal。": (
+            "Evidence layers are not interchangeable: controlled ≠ real dense; public aligned ≠ full 3D; "
+            "counterfactual ≠ causal."
+        ),
+    }
+    for source, target in replacements.items():
+        svg = svg.replace(escape(source), escape(target))
+    return svg
+
+
 def system_abstraction_tree() -> TreeNode:
     return TreeNode(
         "單房間三因子空間數位孿生系統",
@@ -514,6 +700,8 @@ def svg_docs_outputs() -> str:
 
 def fallback_svg_for_title(title: str) -> str:
     renderers = {
+        "研究整體邏輯架構": svg_research_logic_architecture,
+        "overall_research_logic_architecture": svg_research_logic_architecture_en,
         "整體分層架構": svg_overall_architecture,
         "主要執行資料流": svg_execution_flow,
         "感測器校正與學習流程": svg_sensor_calibration_learning,

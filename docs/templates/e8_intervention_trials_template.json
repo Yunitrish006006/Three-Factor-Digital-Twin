@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0.0",
+  "experiment_id": "E8",
+  "evidence_class": "REAL_INTERVENTION",
+  "study": {
+    "study_id": "e8_bedroom_01_pillow_v1",
+    "room_id": "bedroom_01",
+    "target_scope": {
+      "kind": "point",
+      "name": "pillow_position",
+      "position_m": {
+        "x": 1.1,
+        "y": 3.55,
+        "z": 0.75
+      }
+    },
+    "settling_interval_minutes": {
+      "minimum": 18,
+      "maximum": 30
+    },
+    "planned_conditions": [
+      "top_ranked",
+      "no_action",
+      "human_baseline",
+      "alternative_action"
+    ],
+    "status": "READY_FOR_DATA_COLLECTION"
+  },
+  "trials": []
+}

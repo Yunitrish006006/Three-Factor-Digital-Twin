@@ -2,12 +2,15 @@
 
 This folder contains the IEEE conference-style English paper draft for the single-room spatial digital twin thesis prototype.
 
-As of 2026-05-01, the active submission target is `IoTaIS 2026`, the 2026 IEEE International Conference on Internet of Things and Intelligence Systems. The manuscript should be reframed from a digital-twin-first venue toward an IoT and intelligence-systems venue: sparse IoT sensing, indoor spatial intelligence, non-networked appliance impact learning, and decision-support services. The MCP interface remains a secondary service layer rather than the paper's headline novelty.
+As of 2026-08-03, the active submission target is `IoTaIS 2026`, the 2026 IEEE International Conference on Internet of Things and Intelligence Systems. The manuscript should be reframed from a digital-twin-first venue toward an IoT and intelligence-systems venue: sparse IoT sensing, indoor spatial intelligence, non-networked appliance impact learning, and decision-support services. The MCP interface remains a secondary service layer rather than the paper's headline novelty.
 
-Current IoTaIS 2026 planning notes checked on 2026-05-01:
+Current IoTaIS 2026 planning notes checked on 2026-08-03 against the [official call for papers](https://iotais.org/call-for-papers/):
 
 - Paper submission: `https://edas.info/N34817`.
-- Full paper submission deadline: June 15, 2026.
+- Extended full paper submission deadline: August 10, 2026.
+- Acceptance notification: September 7, 2026.
+- Author registration and final manuscript deadline: October 7, 2026.
+- Conference dates: November 5-7, 2026.
 - Full papers are listed as 6-7 pages using the IEEE paper template on A4 size pages; the camera-ready maximum is 7 pages without additional page charges, with 1 extra page allowed for a fee if accepted.
 - Submissions are subject to blind review; author lists should be finalized before submission because IoTaIS notes that author-list changes are prohibited once a paper has been submitted for review.
 

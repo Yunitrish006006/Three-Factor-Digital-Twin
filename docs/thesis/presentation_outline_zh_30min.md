@@ -6,11 +6,9 @@
 ## Slide 2: 報告流程
 - 背景、文獻、方法、實作、驗證、結論、公式與指標整理
 
-## Slide 3: 研究主軸與輸入輸出
-- 研究主軸：少量角落感測 + 非連網家電 + 單房間幾何配置 → 三因子空間場估計與決策支援
-- 輸入：房間、8 點感測、baseline、外部邊界、時間與設備狀態
-- 模型：三因子 nominal model、power calibration、trilinear correction、hybrid residual
-- 輸出：任意點/區域估計、3D 視覺化、影響學習、推薦排序與 MCP 查詢
+## Slide 3: 論文整體邏輯：問題、方法、證據與結論邊界
+- 研究缺口 → RQ1--RQ4 → 方法核心 → E1--E9 → 有界結論
+- controlled、real snapshot、public aligned 與 future intervention 證據層不可互換
 
 ## Slide 4: 研究背景與問題
 - 非連網裝置造成空間影響但無法直接讀取
@@ -81,18 +79,21 @@
 - Recommendation 目前是反事實排序，仍需 before/after 介入驗證
 
 ## Slide 18: 情境設計與輸入模式
-- 8 組 scenario、48 組窗戶矩陣、direct input、timeline
+- 8 組 scenario、48 組窗戶矩陣（34 範圍內／14 範圍外壓力測試）、direct input、timeline
 
 ## Slide 19: 主要量化結果
 - 圖表資料：8 組標準情境、full 3D grid Field MAE、log-scale y 軸
 - 三種柱狀結果：IDW、Base、LOO Hybrid
-- 真實臥室 raw vs corrected pillow MAE
+- 真實臥室 raw vs corrected pillow MAE、date-block bootstrap 與逐日剔除敏感度
 - 推薦有效性以 actual comfort-penalty reduction 驗證
 - 實驗 E1-E7 與 E9 已有數值輸出；E8 僅為介入 protocol
 
 ## Slide 20: 真實臥室快照與推薦驗證狀態
-- E7：pillow hold-out 不參與 8 角點 residual fitting，呈現 raw vs corrected MAE
-- E8：rank actions 目前是模型反事實排序，需實測介入驗證因果效果
+- E7：pillow hold-out 不參與 8 角點 fitting；20,000 次 date-block bootstrap 報告三因子 MAE 降幅區間與改善快照數
+- E7：7-fold 逐日剔除後，三因子最小 MAE 降幅仍為 0.6123 / 3.5551 / 290.5716
+- E7 仍限單一房間、單一 pillow 與七個日期；不是 dense truth 或介入成功率
+- E8：versioned schema、空白 template 與 analyzer 已完成；0 trials、NOT_EVALUATED
+- 真實 before/after 與 matched controls 完成前不得宣稱 efficacy
 
 ## Slide 21: 3D 視覺化結果
 - 溫度與照度熱區案例
@@ -104,9 +105,12 @@
 - 真實快照作為 sparse calibration 驗證
 
 ## Slide 23: 公開資料任務拆解：SML2010
-- S1：純照度短視窗是劣勢
-- S2：長視窗溫度有優勢但濕度有尺度對齊問題
-- S3：事件 delta response 是主要優勢
+- 原 E9：S1 照度弱、S2 混合、S3 event delta 最強
+- Oh2024-inspired transfer：15min 兩點溫度最低 MAE
+- 60min 由本研究 readout 最佳；24h 由 persistence 最佳且 transfer 劣於 raw physics
+- 次日 primary 選中 trend 但 test 惡化 7.34% / 8.36%，bootstrap interval 均跨 0
+- RNN 與其他模型共用四筆 history、split、targets、test rows；12/12 parity 通過，RNN lowest MAE 0/12
+- 資料 confidential；方法移植不等於原文 CNN--LSTM 重現
 
 ## Slide 24: 公開資料任務拆解：CU-BEMS
 - C1：AC 溫濕度可補強 linear regression
@@ -115,6 +119,8 @@
 
 ## Slide 25: 結論、限制與未來工作
 - 目前完成度、真實快照限制、hybrid 泛化限制、推薦動作尚需介入驗證、task-aligned benchmark 與後續方向
+- 室內溫度限 20–30 °C；人體舒適採 tolerance，RNN 負向結果保留
+- 候選植物生長情境需補 PPFD/CO2/基質/生物 endpoint；Kalman 尚未評估
 
 ## Slide 26: 公式與指標整理
 - 場模型：三因子場、總估計式、baseline、activation、envelope

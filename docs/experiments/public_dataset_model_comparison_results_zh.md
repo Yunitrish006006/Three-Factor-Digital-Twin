@@ -155,3 +155,77 @@ CU-BEMS 的一對一比較結果和 SML2010 很不一樣。這份資料上，本
 可直接改寫為第五章的一段結果描述：
 
 > 在已完成的一對一 public-task comparison 中，本研究將 physics-based digital twin 與 hybrid residual correction 映射為可在公開資料上評估的 structured prior，並在與 baseline 相同的 chronological split 上 fit 線性 readout。結果顯示，本研究模型在 SML2010 的 facade event delta benchmark (`S3`) 上表現最佳，特別是 60 分鐘 horizon 時對所有 target 皆優於 persistence 與 linear regression；例如 dining/room temperature delta 的 MAE 分別為 0.1894/0.2156，皆低於 linear regression 的 0.2118/0.2431 與 persistence 的 0.5634/0.5327。相對地，在 CU-BEMS 這類大規模 zone-level building operation forecasting 資料上，本研究模型雖常優於 linear regression，但仍未超越 persistence，顯示其優勢主要體現在具有明確幾何與事件結構的空間或邊界響應任務，而非一般高時間慣性的建築時間序列 forecasting。
+
+## Oh et al. (2024) 啟發的方法移植比較
+
+新增的 focused comparison 由 `scripts/run_oh2024_inspired_comparison.py` 產生
+`outputs/data/public_benchmarks/oh2024_inspired_sml2010_comparison.json`。它保留
+`physics prediction + learned residual` 的方法概念，但 residual learner 固定為
+ridge-linear head，不是原文 CNN--LSTM；SML2010 也不是原文機密的商辦
+return-air BEMS data，因此只能稱 method transfer。
+
+| Horizon | 最低 MAE 方法 | dining / room MAE | Transfer 相對 raw physics |
+| --- | --- | --- | --- |
+| 15 min | Oh2024-inspired additive residual | 0.0422 / 0.0517 | 兩點皆改善 |
+| 60 min | 本研究 hybrid digital-twin readout | 0.1562 / 0.2167 | transfer 雖改善 physics，但落後本研究 readout |
+| 1440 min | persistence | 1.5175 / 1.4996 | transfer 比 raw physics 差 0.1668 / 0.2630°C |
+
+預註冊門檻為 6 個 temperature target--horizon cases 至少 4 個改善 raw physics，
+實際為 4/6；但 transfer 只在兩個 15 分鐘 case 取得最低 MAE。24 小時 adverse
+result 表示原文 next-day 優勢沒有在 SML2010 transfer 中重現，不能把原文
+December/January/February CVRMSE 與本研究 MAE 直接合併排名。
+
+## 次日預測改善 follow-up
+
+`scripts/run_next_day_temperature_comparison.py` 以固定 60/10/30 chronological
+split 比較 seasonal persistence、bias correction、damped daily trend、
+physics blend 與 seasonal residual ridge。Candidate 只由 validation MAE
+選擇，再以最前 70% refit 並評估末段 30%。
+
+| 方法 | Dining MAE | Room MAE | 判讀 |
+| --- | ---: | ---: | --- |
+| persistence | 1.5175 | 1.4996 | 最強 confirmatory baseline |
+| validation-selected trend，alpha=0.25 | 1.6289 | 1.6250 | 惡化 7.34% / 8.36% |
+| registered bias correction，未選中 | 1.5018 | 1.4884 | 約 1% 小訊號，不可事後改稱主要方法 |
+| post-primary adaptive median 14d | 1.6515 | 1.6456 | 探索性分析亦惡化 |
+
+Primary paired date-block bootstrap interval 均跨 0，因此不能宣稱 next-day
+advantage。合理的下一步不是繼續在同一 test 調參，而是新增獨立日期或建築、
+提供 forecast-origin 可取得的 target-day weather/HVAC schedule forecast，
+並採 rolling-origin evaluation。
+
+## Vanilla RNN 同資料公平比較
+
+依教授建議，另以 `scripts/run_rnn_public_comparison.py` 在 SML2010 S2 加入固定的
+vanilla Elman RNN。這不是把不同實驗表格中的數字直接並排，而是先建立共同的
+eligible endpoint：所有方法取得相同四筆 origin-history、相同 target、相同
+chronological 70/30 split 與相同 test rows。Sequence linear regression 與 RNN
+使用同一組 raw history；physics-structured readout 只能由相同 origin records
+產生結構化特徵；主要比較不載入額外的 synthetic learned checkpoint。每個方法的
+train/test endpoint hash 與完整 input-content hash 都寫入 evidence JSON。
+
+RNN 同資料比較為 `COMPLETE`，12/12 個案例通過資料一致性。最低 MAE 次數為：
+sequence linear regression 為 7 項、persistence 為 5 項、physics-structured
+readout 為 0 項、RNN 為 0 項。RNN 雖在兩個 60 分鐘溫度案例勝過 persistence，
+也在兩個 15 分鐘濕度案例勝過 physics-structured readout，但 12 個案例都未勝過
+sequence linear regression，因此不能主張 recurrence 在目前四步歷史與固定小型
+架構下帶來優勢。
+
+| Horizon | Target | Persistence MAE | Sequence LR MAE | Physics readout MAE | RNN MAE | 最低 MAE |
+| --- | --- | ---: | ---: | ---: | ---: | --- |
+| 15 min | dining temperature | 0.1182 | 0.0165 | 0.0692 | 0.2598 | sequence LR |
+| 15 min | room temperature | 0.1152 | 0.0188 | 0.0679 | 0.3161 | sequence LR |
+| 15 min | dining humidity | 0.1984 | 0.1895 | 0.7788 | 0.4843 | sequence LR |
+| 15 min | room humidity | 0.1558 | 0.1289 | 0.7279 | 0.6334 | sequence LR |
+| 60 min | dining temperature | 0.4696 | 0.0671 | 0.0934 | 0.4354 | sequence LR |
+| 60 min | room temperature | 0.4577 | 0.0847 | 0.1013 | 0.4291 | sequence LR |
+| 60 min | dining humidity | 0.5669 | 0.5845 | 0.8958 | 1.2090 | persistence |
+| 60 min | room humidity | 0.4822 | 0.3705 | 0.7160 | 1.1132 | sequence LR |
+| 1440 min | dining temperature | 1.5214 | 1.7793 | 1.7620 | 1.8172 | persistence |
+| 1440 min | room temperature | 1.5039 | 1.7910 | 1.7851 | 1.8406 | persistence |
+| 1440 min | dining humidity | 2.7840 | 3.2949 | 3.2348 | 3.9661 | persistence |
+| 1440 min | room humidity | 3.5201 | 4.1298 | 4.2796 | 4.3230 | persistence |
+
+這個 focused comparison 只證明「固定 RNN 已在同資料條件下完成比較並保留負向結果」。
+它不代表已調到 RNN 的最佳架構，也不是 full 3-D spatial validation。若後續測試
+LSTM/GRU 或增加 history length，必須另立 protocol，且仍要讓其他模型取得相同資料。

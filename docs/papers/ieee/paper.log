@@ -19,7 +19,7 @@ LaTeX Font Info:    No file TUptm.fd. on input line 503.
 LaTeX Font Warning: Font shape `TU/ptm/m/n' undefined
 (Font)              using `TU/lmr/m/n' instead on input line 503.
 
--- Using 8.5in x 11in (letter) paper.
+-- Using 210mm x 297mm (a4) paper.
 -- Using DVI output.
 \@IEEEnormalsizeunitybaselineskip=\dimen141
 -- This is a 10 point document.
@@ -299,120 +299,136 @@ LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
 LaTeX Font Warning: Font shape `TU/ptm/m/sc' undefined
 (Font)              using `TU/ptm/m/n' instead on input line 45.
 
-[1
+File: ../thesis/assets/fig_3_1_research_logic_en.png Graphic file (type bmp)
+<../thesis/assets/fig_3_1_research_logic_en.png>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [1
 
 
 ]
-File: ../thesis/assets/fig_3_1_overall_architecture.png Graphic file (type bmp)
-
-<../thesis/assets/fig_3_1_overall_architecture.png>
 File: ../thesis/assets/fig_3_3_room_topology.png Graphic file (type bmp)
 <../thesis/assets/fig_3_3_room_topology.png>
- [2]
+
+[2]
+Overfull \hbox (1.5117pt too wide) detected at line 107
+[][]\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 p\OML/cmm/m/it/10 ; t \OT1/cmr/m/n/10 + \
+OML/cmm/m/it/10 h \OMS/cmsy/m/n/10 j I[]\OT1/cmr/m/n/10 ) = [](\OT1/cmr/bx/n/10
+ p\OML/cmm/m/it/10 ; t \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 h \OMS/cmsy/m/n/10 j 
+I[]\OT1/cmr/m/n/10 ) + [](\OT1/cmr/bx/n/10 p\OML/cmm/m/it/10 ; t \OT1/cmr/m/n/1
+0 + \OML/cmm/m/it/10 h \OMS/cmsy/m/n/10 j I[]\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 
+:
+ []
+
+[3]
 File: ../thesis/assets/fig_3_5_training_inference_flow.png Graphic file (type b
 mp)
 <../thesis/assets/fig_3_5_training_inference_flow.png>
- [3]
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 LaTeX Font Info:    Trying to load font information for TU+pcr on input line 12
-1.
-LaTeX Font Info:    No file TUpcr.fd. on input line 121.
+7.
+LaTeX Font Info:    No file TUpcr.fd. on input line 127.
 
 
 LaTeX Font Warning: Font shape `TU/pcr/m/n' undefined
-(Font)              using `TU/lmr/m/n' instead on input line 121.
+(Font)              using `TU/lmr/m/n' instead on input line 127.
 
 
-Underfull \hbox (badness 3428) in paragraph at lines 121--122
+Underfull \hbox (badness 3428) in paragraph at lines 127--128
 \TU/pcr/m/n/10 settling interval with outdoor temperature $\OT1/cmr/m/n/10 33\O
 ML/cmm/m/it/10 :\OT1/cmr/m/n/10 0[]$\TU/pcr/m/n/10 C,
  []
 
 
-Underfull \hbox (badness 2027) in paragraph at lines 121--122
+Underfull \hbox (badness 2027) in paragraph at lines 127--128
 \TU/pcr/m/n/10 and all active. Dense synthetic truth is generated
  []
 
 
-Underfull \hbox (badness 4001) in paragraph at lines 121--122
+Underfull \hbox (badness 4001) in paragraph at lines 127--128
 \TU/pcr/m/n/10 by deterministic appliance power adjustments and
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--122
+Underfull \hbox (badness 10000) in paragraph at lines 127--128
 \TU/pcr/m/n/10 predictions with fixed index-based perturbations:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--122
+Underfull \hbox (badness 10000) in paragraph at lines 127--128
 \TU/pcr/m/n/10 temperature adds $\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/
 n/10 08((\OML/cmm/m/it/10 i  []  \OT1/cmr/m/n/10 4) \OMS/cmsy/m/n/10 ^^@ \OT1/c
 mr/m/n/10 1\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 5)$\TU/pcr/m/n/10 , humidity
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--122
+Underfull \hbox (badness 10000) in paragraph at lines 127--128
 \TU/pcr/m/n/10 adds $\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 3((\OML
 /cmm/m/it/10 i  []  \OT1/cmr/m/n/10 4) \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 1\O
 ML/cmm/m/it/10 :\OT1/cmr/m/n/10 5)$\TU/pcr/m/n/10 , and illuminance adds
  []
 
 
-Underfull \hbox (badness 1859) in paragraph at lines 121--122
+Underfull \hbox (badness 1859) in paragraph at lines 127--128
 \OT1/cmr/m/n/10 3\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0((\OML/cmm/m/it/10 i  []  \
 OT1/cmr/m/n/10 4) \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 :\OT1/
 cmr/m/n/10 5)$\TU/pcr/m/n/10 . The main reproduction scripts
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--122
+Underfull \hbox (badness 10000) in paragraph at lines 127--128
 \TU/pcr/m/n/10 run_submission_readiness_experiments.py,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--122
+Underfull \hbox (badness 10000) in paragraph at lines 127--128
 \TU/pcr/m/n/10 run_bedroom_weekly_simulation.py, and
  []
 
+[4]
 File: assets/field_mae_comparison.png Graphic file (type bmp)
 <assets/field_mae_comparison.png>
-[4]
 File: ../thesis/assets/fig_5_7_light_only_illum_3d.png Graphic file (type bmp)
 <../thesis/assets/fig_5_7_light_only_illum_3d.png>
- [5]
-Underfull \hbox (badness 1424) in paragraph at lines 220--221
-[]\TU/pcr/m/n/10 For external comparison, we evaluate task-aligned
+ [5] [6]
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 239.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 240.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 241.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 242.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 243.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 244.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 245.
+
+
+Underfull \hbox (badness 1688) in paragraph at lines 254--255
+[]\TU/pcr/m/n/10 The appliance-aware bulk-plus-local model outper-
  []
 
-
-LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 231.
-
-
-LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 232.
-
-
-LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 233.
-
-
-LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 234.
-
-
-LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 235.
-
-
-LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 236.
-
-
-LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 237.
-
-(paper.bbl [6]
-Underfull \hbox (badness 4024) in paragraph at lines 91--93
+(paper.bbl
+Underfull \hbox (badness 4024) in paragraph at lines 116--118
 []\TU/ptm/m/sc/8 P. Romeu-Guallart and F. Zamora-Martinez, “SML2010
  []
 
@@ -428,11 +444,9 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[7
-
-] (paper.aux)
+[7] (paper.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  )
-Output written on paper.xdv (7 pages, 305704 bytes).
+Output written on paper.xdv (7 pages, 323268 bytes).

@@ -4,11 +4,11 @@ This repository contains one research project expressed in multiple synchronized
 
 ## Current Submission Target
 
-As of 2026-05-01, the active submission target for the English IEEE-style manuscript is IoTaIS 2026, the 2026 IEEE International Conference on Internet of Things and Intelligence Systems.
+As of 2026-08-03, the active submission target for the English IEEE-style manuscript is IoTaIS 2026, the 2026 IEEE International Conference on Internet of Things and Intelligence Systems.
 
 - Active target: IoTaIS 2026.
 - Submission system: EDAS, `https://edas.info/N34817`.
-- Full paper deadline: June 15, 2026.
+- Extended full paper deadline: August 10, 2026.
 - Current format target: IEEE A4 conference paper, 6-7 pages for full papers.
 - Former targets no longer active: IEEE Digital Twin 2026 and IEEE DTPI 2026.
 
@@ -79,6 +79,23 @@ This means:
 - `scripts/build_thesis_pptx.py` is the source of truth for the presentation.
 - Generated outputs must be rebuilt after source changes.
 - Do not update only generated files while leaving source files stale.
+
+## Research OpenSpec Workflow
+
+The canonical research specification lives under `openspec/`.
+
+- Read `openspec/config.yaml` and the affected capability files in
+  `openspec/specs/` before making a substantive research change.
+- Any change to the topic, method, experiment, metric, architecture, figure,
+  chapter structure, evidence level, or conclusion must first use a directory
+  under `openspec/changes/` with the `research-first` schema.
+- Research changes must trace proposal, research questions or hypotheses,
+  protocol, delta specs, design, reproducibility, tasks, and post-run evidence.
+- Do not create `evidence.md` from expected or invented outcomes. Populate it
+  from actual runs and preserve null, adverse, failed, and missing results.
+- Do not archive a research change until its evidence decisions and all
+  applicable synchronized artifacts are complete.
+- Run `python3 scripts/validate_research_openspec.py` after OpenSpec edits.
 
 ## Definition of Done
 
