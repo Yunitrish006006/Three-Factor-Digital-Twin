@@ -7,7 +7,7 @@
 - 期刊：Journal of Inequalities and Applications
 - 年份與文章編號：2022, 109
 - DOI：10.1186/s13660-022-02841-w
-- PDF：`docs/papers/data source/s13660-022-02841-w.pdf`
+- PDF：`docs/papers/reference_sources/s13660-022-02841-w.pdf`
 
 這篇論文屬於數值分析與有限元素方法的補間誤差研究。它不是應用系統論文，而是處理一個很基礎但重要的問題：當我們用 linear Lagrange interpolation 在三角形元素上近似一個函數時，最大點誤差可以如何用一個明確的常數控制。
 

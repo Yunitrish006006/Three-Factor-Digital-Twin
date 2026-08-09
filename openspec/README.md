@@ -1,8 +1,8 @@
 # Research OpenSpec
 
-This directory is the canonical OpenSpec workspace for the thesis project. It
-turns the existing project map in `../OPEN_SPEC.md` into testable research and
-system contracts.
+This directory is the canonical OpenSpec workspace for the thesis project.
+`../OPEN_SPEC.md` is only a short compatibility entrypoint; the testable
+research and system contracts live here.
 
 ## Directory map
 

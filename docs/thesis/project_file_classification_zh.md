@@ -1,434 +1,67 @@
-# 專案檔案分類總覽
+# 專案檔案角色與正式來源
 
-本文件依目前工作區實際檔案掃描結果整理，提供完整檔案分類與清單。
+本文件取代容易過期的「逐檔掃描清單」。需要找檔案時，依角色與正式來源定位；實際檔名以 repository 當下內容為準。
 
-## 1. 統計摘要
-- 檔案總數（不含 .git 內部物件）：359
-- 掃描時間：2026-06-29 16:07:53
+## 一、正式來源
 
-## 2. 分類說明
-- A 類：專案根目錄與設定檔（規範、說明、建置設定）。
-- B 類：核心程式碼（digital_twin）。
-- C 類：研究文件（docs）。
-- D 類：執行輸出與資料產物（outputs）。
-- E 類：自動化腳本（scripts）。
-- F 類：測試程式（tests）。
-- G 類：隱藏目錄與開發工具設定（.github、.vscode、.roo 等）。
-- H 類：快取與中繼檔（__pycache__、.pytest_cache、.DS_Store 等）。
+| 產物 | 唯一正式來源 | 產生／驗證方式 |
+| --- | --- | --- |
+| 中文論文內容 | `docs/thesis/thesis_draft_zh.md`、`scripts/build_thesis_docx.py` | `build_thesis_docx.py`、`build_thesis_pdf.py` |
+| 英文 IEEE 稿 | `docs/papers/ieee/paper.tex`、`references.bib` | `tectonic paper.tex` |
+| 簡報 | `scripts/build_thesis_pptx.py`、兩份 presentation outline | `build_thesis_pptx.py` |
+| 架構圖 | `scripts/build_architecture_diagrams.py`、`system_architecture_diagrams_zh.md` | `build_architecture_diagrams.py` |
+| 研究契約 | `openspec/specs/` | `validate_research_openspec.py` |
+| 實驗證據 | 實驗 runner、result JSON、OpenSpec evidence | `verify_thesis_results.py`、tests |
 
-## 2.1 補充分類（原先未細分項）
-- C-文件中繼檔：位於 docs 下但屬於編譯中繼或暫存（例如 docs/papers/ieee/*.aux、*.log、*.bbl、*.blg 與 docs/papers/thesis/assets/.ql_tmp/*），邏輯上歸於 H 類管理。
-- D-交付輸出：outputs/papers/* 為可交付成品（docx、pdf、pptx），與 D-資料輸出（outputs/data/*）分開看待。
-- D-圖像輸出：outputs/figures/* 為視覺化輸出，與 D-資料輸出不同，建議獨立追蹤版本。
-- G/H 重疊處理：.pytest_cache/* 屬快取，優先歸 H 類；G 類保留為開發工具設定（.github、.vscode、.roo、.roomodes、.gitignore）。
-- B/H 重疊處理：digital_twin/**/__pycache__/* 與 *.pyc 屬 H 類，不視為核心程式碼。
+不要直接修改 DOCX、PDF、PPTX 或自動產生的圖來取代來源修改。
 
-## 3. 檔案清單（依分類）
+## 二、程式角色
 
-### A 類：根目錄與設定檔
-- .DS_Store
-- .gitignore
-- .roomodes
-- 2345-5634-1-PB.pdf
-- 2345-5634-1-PB.txt
-- AGENTS.md
-- OPEN_SPEC.md
-- README.md
-- pyproject.toml
+- `digital_twin/`：可重用的模型、評估與服務程式。
+- `scripts/`：實驗、驗證、資料準備與建置入口。
+- `tests/`：單元測試及研究行為檢查。
+- `pyproject.toml`：Python 專案基本中繼資訊。
 
-### B 類：核心程式碼 digital_twin
-- digital_twin/__init__.py
-- digital_twin/__main__.py
-- digital_twin/__pycache__/__init__.cpython-311.pyc
-- digital_twin/agent/__init__.py
-- digital_twin/agent/tool_runtime.py
-- digital_twin/core/__init__.py
-- digital_twin/core/__pycache__/__init__.cpython-311.pyc
-- digital_twin/core/__pycache__/demo.cpython-311.pyc
-- digital_twin/core/__pycache__/entities.cpython-311.pyc
-- digital_twin/core/__pycache__/math_utils.cpython-311.pyc
-- digital_twin/core/__pycache__/scenarios.cpython-311.pyc
-- digital_twin/core/__pycache__/service.cpython-311.pyc
-- digital_twin/core/demo.py
-- digital_twin/core/entities.py
-- digital_twin/core/math_utils.py
-- digital_twin/core/public_dataset_alignment.py
-- digital_twin/core/public_dataset_benchmark.py
-- digital_twin/core/public_dataset_model_comparison.py
-- digital_twin/core/scenarios.py
-- digital_twin/core/service.py
-- digital_twin/mcp/__init__.py
-- digital_twin/mcp/gemma_bridge.py
-- digital_twin/mcp/mcp_server.py
-- digital_twin/neural/__init__.py
-- digital_twin/neural/__pycache__/__init__.cpython-311.pyc
-- digital_twin/neural/__pycache__/hybrid_residual.cpython-311.pyc
-- digital_twin/neural/hybrid_residual.py
-- digital_twin/physics/__init__.py
-- digital_twin/physics/__pycache__/__init__.cpython-311.pyc
-- digital_twin/physics/__pycache__/baselines.cpython-311.pyc
-- digital_twin/physics/__pycache__/learning.cpython-311.pyc
-- digital_twin/physics/__pycache__/model.cpython-311.pyc
-- digital_twin/physics/__pycache__/recommendations.cpython-311.pyc
-- digital_twin/physics/baselines.py
-- digital_twin/physics/learning.py
-- digital_twin/physics/model.py
-- digital_twin/physics/recommendations.py
-- digital_twin/web/__init__.py
-- digital_twin/web/__pycache__/__init__.cpython-311.pyc
-- digital_twin/web/__pycache__/render.cpython-311.pyc
-- digital_twin/web/__pycache__/web_demo.cpython-311.pyc
-- digital_twin/web/render.py
-- digital_twin/web/web_demo.py
+詳細模組與腳本用途分別見 `digital_twin/README.md` 與 `scripts/README.md`。
 
-### C 類：研究文件 docs
-- docs/.DS_Store
-- docs/admin/graduation_requirements_checklist_zh.md
-- docs/admin/oral_defense_playbook_zh.md
-- docs/admin/oral_defense_timeline_checklist_zh.md
-- docs/admin/reference_files/【學位考試申請】資工系碩士學位考試申請流程.pdf
-- docs/admin/reference_files/【論文】資訊工程學系碩士班論文審定書.docx
-- docs/admin/reference_files/【論文】資訊工程學系碩士班論文封面.doc
-- docs/admin/reference_files/彰化師範大學資訊工程系碩士班修業規章-1141014修正通過.pdf
-- docs/experiments/action_recommendation_validation_protocol_zh.md
-- docs/experiments/baseline_and_learning_results_zh.md
-- docs/experiments/literature_overlap_zh.md
-- docs/experiments/public_dataset_benchmark_plan_zh.md
-- docs/experiments/public_dataset_benchmark_results_zh.md
-- docs/experiments/public_dataset_model_comparison_results_zh.md
-- docs/experiments/simulation_results_zh.md
-- docs/experiments/thesis_result_verification_zh.md
-- docs/experiments/window_matrix_simulation_zh.md
-- docs/mcp/gemma_ollama_bridge_zh.md
-- docs/mcp/mcp_service_zh.md
-- docs/models/hybrid_residual_model_zh.md
-- docs/models/model_reading_notes_zh.md
-- docs/models/model_references_zh.md
-- docs/models/reference_models_zh.md
-- docs/models/system_architecture_and_training_roadmap_zh.md
-- docs/papers/.DS_Store
-- docs/papers/data source/create_lagrange_speaker_script_glossary.py
-- docs/papers/data source/lagrange_error_constant_report_google_slides_reportonly.pdf
-- docs/papers/data source/lagrange_speaker_script_clearer.md
-- docs/papers/data source/lagrange_speaker_script_with_terms.pdf
-- docs/papers/data source/lagrange_speaker_script_with_terms.txt
-- docs/papers/data source/s13660-022-02841-w.pdf
-- docs/papers/data source/s13660-022-02841-w.zh.md
-- docs/papers/ieee/README.md
-- docs/papers/ieee/assets/field_mae_comparison.png
-- docs/papers/ieee/paper.aux
-- docs/papers/ieee/paper.bbl
-- docs/papers/ieee/paper.blg
-- docs/papers/ieee/paper.log
-- docs/papers/ieee/paper.pdf
-- docs/papers/ieee/paper.tex
-- docs/papers/ieee/references.bib
-- docs/papers/thesis/assets/.ql_tmp/模型學習推論與推薦資料流.svg
-- docs/papers/thesis/assets/ac_only_temperature_3d.png
-- docs/papers/thesis/assets/all_active_temperature_3d.png
-- docs/papers/thesis/assets/cu_bems_task_breakdown.png
-- docs/papers/thesis/assets/field_mae_comparison.png
-- docs/papers/thesis/assets/fig_3_1_research_logic.png
-- docs/papers/thesis/assets/fig_3_1_research_logic_en.png
-- docs/papers/thesis/assets/fig_3_2_execution_flow.png
-- docs/papers/thesis/assets/fig_3_3_room_topology.png
-- docs/papers/thesis/assets/fig_3_4_sensor_calibration_learning.png
-- docs/papers/thesis/assets/fig_3_5_training_inference_flow.png
-- docs/papers/thesis/assets/fig_5_10_light_only_illum_3d.png
-- docs/papers/thesis/assets/fig_5_1_validation_flow.png
-- docs/papers/thesis/assets/fig_5_2_all_active_temp_3d.png
-- docs/papers/thesis/assets/fig_5_3_ac_only_temp_3d.png
-- docs/papers/thesis/assets/fig_5_4_light_only_illum_3d.png
-- docs/papers/thesis/assets/fig_5_5_all_active_temp_3d.png
-- docs/papers/thesis/assets/fig_5_6_all_active_temp_3d.png
-- docs/papers/thesis/assets/fig_5_6_sml2010_task_breakdown.png
-- docs/papers/thesis/assets/fig_5_6_window_only_temp_3d.png
-- docs/papers/thesis/assets/fig_5_7_cu_bems_task_breakdown.png
-- docs/papers/thesis/assets/fig_5_7_light_only_illum_3d.png
-- docs/papers/thesis/assets/fig_5_7_window_only_temp_3d.png
-- docs/papers/thesis/assets/fig_5_8_all_active_temp_3d.png
-- docs/papers/thesis/assets/fig_5_8_light_only_illum_3d.png
-- docs/papers/thesis/assets/fig_5_9_window_only_temp_3d.png
-- docs/papers/thesis/assets/sml2010_task_breakdown.png
-- docs/papers/thesis/assets/window_only_illuminance_3d.png
-- docs/papers/thesis/assets/主要執行資料流.png
-- docs/papers/thesis/assets/可模組化裝置與家具架構.png
-- docs/papers/thesis/assets/感測器校正與學習流程.png
-- docs/papers/thesis/assets/房間感測器與目標區域配置.png
-- docs/papers/thesis/assets/整體分層架構.png
-- docs/papers/thesis/assets/模型學習推論與推薦資料流.png
-- docs/papers/thesis/assets/驗證與實驗流程圖.png
-- docs/papers/thesis/cu_bems_dataset_selection_visual_report.pptx
-- docs/papers/thesis/thesis_draft_zh.aux
-- docs/papers/thesis/thesis_draft_zh.docx
-- docs/papers/thesis/thesis_draft_zh.log
-- docs/papers/thesis/thesis_draft_zh.out
-- docs/papers/thesis/thesis_draft_zh.pdf
-- docs/papers/thesis/thesis_draft_zh.tex
-- docs/papers/thesis/thesis_presentation_zh.pptx
-- docs/papers/thesis/thesis_presentation_zh_30min.pptx
-- docs/papers/thesis/thesis_revision_v5_free_space_occupancy.pdf
-- docs/requirements/bedroom_01_combined_room_and_weekly_simulation.json
-- docs/requirements/room_design_format_requirements_zh.md
-- docs/templates/room_design_bedroom_01.json
-- docs/templates/room_design_standard_room_example.json
-- docs/templates/room_design_template.json
-- docs/thesis/chatgpt_project_data_summary.md
-- docs/thesis/lagrange_interpolation_paper_report_full_zh.md
-- docs/thesis/lagrange_interpolation_paper_report_zh.md
-- docs/thesis/lagrange_interpolation_paper_speaker_notes_zh.md
-- docs/thesis/mcp_thesis_positioning_zh.md
-- docs/thesis/presentation_outline_zh.md
-- docs/thesis/presentation_outline_zh_30min.md
-- docs/thesis/presentation_speaker_notes_zh_30min.md
-- docs/thesis/problem_statement_zh.md
-- docs/thesis/project_academic_architecture_zh.md
-- docs/thesis/project_file_classification_zh.md
-- docs/thesis/research_proposal_zh.md
-- docs/thesis/room_indoor_factor_experimental_papers_zh.md
-- docs/thesis/similar_work_and_datasets_zh.md
-- docs/thesis/system_architecture_diagrams_zh.md
-- docs/thesis/thesis_draft_zh.md
-- docs/thesis/thesis_guide_zh.md
-- docs/web/web_demo_zh.md
+## 三、文件角色
 
-### D 類：執行輸出 outputs
-- outputs/.DS_Store
-- outputs/data/ac_light_field.csv
-- outputs/data/ac_only_field.csv
-- outputs/data/ac_window_field.csv
-- outputs/data/all_active_field.csv
-- outputs/data/bedroom_01_weekly/2026-04-14_sleep_02_00_estimated_field.csv
-- outputs/data/bedroom_01_weekly/2026-04-18_morning_09_00_estimated_field.csv
-- outputs/data/bedroom_01_weekly/weekly_simulation_summary.json
-- outputs/data/experiment_data_preparation_report.json
-- outputs/data/experiment_data_preparation_report.md
-- outputs/data/hybrid_residual_checkpoint.json
-- outputs/data/hybrid_residual_summary.json
-- outputs/data/idle_field.csv
-- outputs/data/light_only_field.csv
-- outputs/data/mcp_impact_learning_log.jsonl
-- outputs/data/normalized_public/cu_bems/auxiliary_features.csv
-- outputs/data/normalized_public/cu_bems/corner_sensor_timeseries.csv
-- outputs/data/normalized_public/cu_bems/device_event_log.csv
-- outputs/data/normalized_public/cu_bems/normalization_summary.json
-- outputs/data/normalized_public/cu_bems/outdoor_environment.csv
-- outputs/data/normalized_public/cu_bems/scenario_metadata.json
-- outputs/data/normalized_public/sml2010/auxiliary_features.csv
-- outputs/data/normalized_public/sml2010/corner_sensor_timeseries.csv
-- outputs/data/normalized_public/sml2010/device_event_log.csv
-- outputs/data/normalized_public/sml2010/normalization_summary.json
-- outputs/data/normalized_public/sml2010/outdoor_environment.csv
-- outputs/data/normalized_public/sml2010/scenario_metadata.json
-- outputs/data/public_benchmarks/cu_bems_benchmark_summary.json
-- outputs/data/public_benchmarks/cu_bems_hybrid_twin_comparison.json
-- outputs/data/public_benchmarks/sml2010_benchmark_summary.json
-- outputs/data/public_benchmarks/sml2010_hybrid_twin_comparison.json
-- outputs/data/raw_public/cu-bems/2018Floor1.csv
-- outputs/data/raw_public/cu-bems/2018Floor2.csv
-- outputs/data/raw_public/cu-bems/2018Floor3.csv
-- outputs/data/raw_public/cu-bems/2018Floor4.csv
-- outputs/data/raw_public/cu-bems/2018Floor5.csv
-- outputs/data/raw_public/cu-bems/2018Floor6.csv
-- outputs/data/raw_public/cu-bems/2018Floor7.csv
-- outputs/data/raw_public/cu-bems/2019Floor1.csv
-- outputs/data/raw_public/cu-bems/2019Floor2.csv
-- outputs/data/raw_public/cu-bems/2019Floor3.csv
-- outputs/data/raw_public/cu-bems/2019Floor4.csv
-- outputs/data/raw_public/cu-bems/2019Floor5.csv
-- outputs/data/raw_public/cu-bems/2019Floor6.csv
-- outputs/data/raw_public/cu-bems/2019Floor7.csv
-- outputs/data/raw_public/cu-bems/article_metadata.json
-- outputs/data/raw_public/sml2010/NEW-DATA-1.T15.txt
-- outputs/data/raw_public/sml2010/NEW-DATA-2.T15.txt
-- outputs/data/raw_public/sml2010/sml2010.zip
-- outputs/data/submission_readiness_summary.json
-- outputs/data/thesis_result_verification_report.json
-- outputs/data/thesis_result_verification_report.md
-- outputs/data/validation_summary.json
-- outputs/data/window_light_field.csv
-- outputs/data/window_matrix_summary.json
-- outputs/data/window_only_field.csv
-- outputs/data_templates/corner_sensor_timeseries_template.csv
-- outputs/data_templates/device_event_log_template.csv
-- outputs/data_templates/outdoor_environment_template.csv
-- outputs/data_templates/public_benchmark_auxiliary_features_template.csv
-- outputs/data_templates/public_dataset_alignment_template.json
-- outputs/data_templates/scenario_metadata_template.json
-- outputs/data_templates/spatial_probe_ground_truth_template.csv
-- outputs/figures/ac_light_humidity.svg
-- outputs/figures/ac_light_humidity_3d.svg
-- outputs/figures/ac_light_illuminance.svg
-- outputs/figures/ac_light_illuminance_3d.svg
-- outputs/figures/ac_light_temperature.svg
-- outputs/figures/ac_light_temperature_3d.svg
-- outputs/figures/ac_only_humidity.svg
-- outputs/figures/ac_only_humidity_3d.svg
-- outputs/figures/ac_only_illuminance.svg
-- outputs/figures/ac_only_illuminance_3d.svg
-- outputs/figures/ac_only_temperature.svg
-- outputs/figures/ac_only_temperature_3d.svg
-- outputs/figures/ac_window_humidity.svg
-- outputs/figures/ac_window_humidity_3d.svg
-- outputs/figures/ac_window_illuminance.svg
-- outputs/figures/ac_window_illuminance_3d.svg
-- outputs/figures/ac_window_temperature.svg
-- outputs/figures/ac_window_temperature_3d.svg
-- outputs/figures/all_active_humidity.svg
-- outputs/figures/all_active_humidity_3d.svg
-- outputs/figures/all_active_illuminance.svg
-- outputs/figures/all_active_illuminance_3d.svg
-- outputs/figures/all_active_temperature.svg
-- outputs/figures/all_active_temperature_3d.svg
-- outputs/figures/architecture/主要執行資料流.svg
-- outputs/figures/architecture/可模組化裝置與家具架構.svg
-- outputs/figures/architecture/感測器校正與學習流程.svg
-- outputs/figures/architecture/房間感測器與目標區域配置.svg
-- outputs/figures/architecture/overall_research_logic_architecture.svg
-- outputs/figures/architecture/研究整體邏輯架構.svg
-- outputs/figures/architecture/整體分層架構.svg
-- outputs/figures/architecture/文件與輸出結構圖.svg
-- outputs/figures/architecture/模型學習推論與推薦資料流.svg
-- outputs/figures/architecture/程式碼結構圖.svg
-- outputs/figures/architecture/驗證與實驗流程圖.svg
-- outputs/figures/bedroom_01_weekly/2026-04-14_sleep_02_00_humidity_3d.svg
-- outputs/figures/bedroom_01_weekly/2026-04-14_sleep_02_00_humidity_slice.svg
-- outputs/figures/bedroom_01_weekly/2026-04-14_sleep_02_00_illuminance_3d.svg
-- outputs/figures/bedroom_01_weekly/2026-04-14_sleep_02_00_illuminance_slice.svg
-- outputs/figures/bedroom_01_weekly/2026-04-14_sleep_02_00_temperature_3d.svg
-- outputs/figures/bedroom_01_weekly/2026-04-14_sleep_02_00_temperature_slice.svg
-- outputs/figures/bedroom_01_weekly/2026-04-18_morning_09_00_humidity_3d.svg
-- outputs/figures/bedroom_01_weekly/2026-04-18_morning_09_00_humidity_slice.svg
-- outputs/figures/bedroom_01_weekly/2026-04-18_morning_09_00_illuminance_3d.svg
-- outputs/figures/bedroom_01_weekly/2026-04-18_morning_09_00_illuminance_slice.svg
-- outputs/figures/bedroom_01_weekly/2026-04-18_morning_09_00_temperature_3d.svg
-- outputs/figures/bedroom_01_weekly/2026-04-18_morning_09_00_temperature_slice.svg
-- outputs/figures/idle_humidity.svg
-- outputs/figures/idle_humidity_3d.svg
-- outputs/figures/idle_illuminance.svg
-- outputs/figures/idle_illuminance_3d.svg
-- outputs/figures/idle_temperature.svg
-- outputs/figures/idle_temperature_3d.svg
-- outputs/figures/light_only_humidity.svg
-- outputs/figures/light_only_humidity_3d.svg
-- outputs/figures/light_only_illuminance.svg
-- outputs/figures/light_only_illuminance_3d.svg
-- outputs/figures/light_only_temperature.svg
-- outputs/figures/light_only_temperature_3d.svg
-- outputs/figures/public_benchmarks/cu_bems_task_breakdown.svg
-- outputs/figures/public_benchmarks/sml2010_task_breakdown.svg
-- outputs/figures/submission/field_mae_comparison.png
-- outputs/figures/submission/field_mae_comparison.svg
-- outputs/figures/window_light_humidity.svg
-- outputs/figures/window_light_humidity_3d.svg
-- outputs/figures/window_light_illuminance.svg
-- outputs/figures/window_light_illuminance_3d.svg
-- outputs/figures/window_light_temperature.svg
-- outputs/figures/window_light_temperature_3d.svg
-- outputs/figures/window_only_humidity.svg
-- outputs/figures/window_only_humidity_3d.svg
-- outputs/figures/window_only_illuminance.svg
-- outputs/figures/window_only_illuminance_3d.svg
-- outputs/figures/window_only_temperature.svg
-- outputs/figures/window_only_temperature_3d.svg
-- outputs/papers/assets/ac_only_temperature_3d.png
-- outputs/papers/assets/all_active_temperature_3d.png
-- outputs/papers/assets/fig_3_2_execution_flow.png
-- outputs/papers/assets/fig_3_3_room_topology.png
-- outputs/papers/assets/fig_3_4_sensor_calibration_learning.png
-- outputs/papers/assets/fig_5_1_validation_flow.png
-- outputs/papers/assets/window_only_illuminance_3d.png
-- outputs/papers/assets/主要執行資料流.png
-- outputs/papers/assets/可模組化裝置與家具架構.png
-- outputs/papers/assets/感測器校正與學習流程.png
-- outputs/papers/assets/房間感測器與目標區域配置.png
-- outputs/papers/assets/整體分層架構.png
-- outputs/papers/assets/驗證與實驗流程圖.png
-- outputs/papers/lagrange_interpolation_paper_report_zh.pptx
-- outputs/papers/thesis_draft_zh.docx
-- outputs/papers/thesis_draft_zh.pdf
-- outputs/papers/thesis_presentation_zh.pptx
-- outputs/papers/thesis_presentation_zh_30min.pptx
+- `docs/reports/`：教授版週報、完整實驗總覽與內部進度。
+- `docs/thesis/`：中文論文及簡報主線。
+- `docs/experiments/`：實驗協定、結果與驗證說明。
+- `docs/models/`：模型設計與文獻判讀。
+- `docs/research/`：研究範圍與教授方向。
+- `docs/requirements/`、`docs/templates/`：資料與房間設計契約。
+- `docs/mcp/`、`docs/web/`：次要服務與展示文件。
+- `docs/archive/`：非目前論文主線的歷史或課程材料。
 
-### E 類：自動化腳本 scripts
-- scripts/ask_gemma.py
-- scripts/build_architecture_diagrams.py
-- scripts/build_lagrange_interpolation_paper_pptx.py
-- scripts/build_public_benchmark_figures.py
-- scripts/build_public_dataset_benchmark_templates.py
-- scripts/build_thesis_docx.py
-- scripts/build_thesis_full_zh_mcp_updated.py
-- scripts/build_thesis_pdf.py
-- scripts/build_thesis_pptx.py
-- scripts/build_thesis_pptx_mcp_updated.py
-- scripts/build_thesis_presentation_agent_zh.js
-- scripts/build_thesis_presentation_agent_zh.py
-- scripts/build_training_templates.py
-- scripts/normalize_public_benchmark_data.py
-- scripts/prepare_experiment_data.py
-- scripts/run_all_thesis_experiments.py
-- scripts/run_bedroom_weekly_simulation.py
-- scripts/run_demo.py
-- scripts/run_hybrid_residual_experiment.py
-- scripts/run_mcp_server.py
-- scripts/run_public_dataset_benchmark.py
-- scripts/run_public_dataset_model_comparison.py
-- scripts/run_submission_readiness_experiments.py
-- scripts/run_web_demo.py
-- scripts/run_window_matrix.py
-- scripts/validate_room_design.py
-- scripts/verify_thesis_results.py
+## 四、輸出與外部資料
 
-### F 類：測試程式 tests
-- tests/test_architecture_diagrams.py
-- tests/test_digital_twin.py
-- tests/test_gemma_bridge.py
-- tests/test_hybrid_residual.py
-- tests/test_mcp_server.py
-- tests/test_public_dataset_benchmark.py
-- tests/test_public_dataset_model_comparison.py
-- tests/test_web_demo.py
+- `outputs/data/`：實驗 JSON/CSV、原始公開資料與正規化中介檔。
+- `outputs/figures/`：可重建視覺化。
+- `outputs/papers/`：正式 DOCX、PDF、PPTX 交付檔。
+- `docs/papers/reference_sources/`：外部論文及文字轉錄，不是本研究證據。
 
-### G 類：隱藏設定檔
-- .github/PR_WORKFLOW.md
-- .github/PULL_REQUEST_TEMPLATE.md
-- .gitignore
-- .pytest_cache/.gitignore
-- .roo/mcp.json
-- .roomodes
-- .vscode/mcp.json
+大型 `outputs/` 預設不進版本控制。刪除本地 raw data 前必須先確認是否可重新下載，以及相關結果是否已有重現資訊。
 
-### H 類：快取與中繼檔
-- .DS_Store
-- .pytest_cache/.gitignore
-- .pytest_cache/CACHEDIR.TAG
-- .pytest_cache/README.md
-- .pytest_cache/v/cache/lastfailed
-- .pytest_cache/v/cache/nodeids
-- digital_twin/__pycache__/__init__.cpython-311.pyc
-- digital_twin/core/__pycache__/__init__.cpython-311.pyc
-- digital_twin/core/__pycache__/demo.cpython-311.pyc
-- digital_twin/core/__pycache__/entities.cpython-311.pyc
-- digital_twin/core/__pycache__/math_utils.cpython-311.pyc
-- digital_twin/core/__pycache__/scenarios.cpython-311.pyc
-- digital_twin/core/__pycache__/service.cpython-311.pyc
-- digital_twin/neural/__pycache__/__init__.cpython-311.pyc
-- digital_twin/neural/__pycache__/hybrid_residual.cpython-311.pyc
-- digital_twin/physics/__pycache__/__init__.cpython-311.pyc
-- digital_twin/physics/__pycache__/baselines.cpython-311.pyc
-- digital_twin/physics/__pycache__/learning.cpython-311.pyc
-- digital_twin/physics/__pycache__/model.cpython-311.pyc
-- digital_twin/physics/__pycache__/recommendations.cpython-311.pyc
-- digital_twin/web/__pycache__/__init__.cpython-311.pyc
-- digital_twin/web/__pycache__/render.cpython-311.pyc
-- digital_twin/web/__pycache__/web_demo.cpython-311.pyc
-- docs/.DS_Store
-- docs/papers/.DS_Store
-- docs/papers/ieee/paper.aux
-- docs/papers/ieee/paper.bbl
-- docs/papers/ieee/paper.blg
-- docs/papers/ieee/paper.log
-- docs/papers/thesis/thesis_draft_zh.aux
-- docs/papers/thesis/thesis_draft_zh.log
-- docs/papers/thesis/thesis_draft_zh.out
-- outputs/.DS_Store
+## 五、不應保留的平行版本
+
+以下檔名模式容易造成正式來源不明，不再新增：
+
+- `*_updated.*`
+- `*_final_v2.*`
+- `*_agent.*`
+- 同內容只改中文／英文檔名的重複圖片
+
+需要修改正式產物時，更新 canonical builder；需要保存歷史材料時，移至 `docs/archive/` 並補一份簡短 README。
+
+## 六、快取與中繼檔
+
+下列檔案不屬於研究成果，應由 `.gitignore` 排除：
+
+- `.DS_Store`
+- `__pycache__/`、`*.pyc`、`.pytest_cache/`
+- LaTeX `*.aux`、`*.log`、`*.bbl`、`*.blg`、`*.out`
+- Quick Look 暫存目錄
+
+整理檔案時不得刪除 OpenSpec evidence、原始量測、已登錄結果 JSON 或 AGENTS.md 指定的正式交付成品。

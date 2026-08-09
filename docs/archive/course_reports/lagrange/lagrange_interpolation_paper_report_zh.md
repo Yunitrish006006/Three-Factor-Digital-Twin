@@ -1,6 +1,6 @@
 # Galindo et al. (2022) 論文專題報告簡報大綱
 
-- PDF source: `docs/papers/data source/s13660-022-02841-w.pdf`
+- PDF source: `docs/papers/reference_sources/s13660-022-02841-w.pdf`
 - Generated PPTX: `outputs/papers/lagrange_interpolation_paper_report_zh.pptx`
 - Citation: Galindo, S. M., Ike, K., & Liu, X. (2022). Error-constant estimation under the maximum norm for linear Lagrange interpolation. Journal of Inequalities and Applications, 2022, 109. https://doi.org/10.1186/s13660-022-02841-w
 

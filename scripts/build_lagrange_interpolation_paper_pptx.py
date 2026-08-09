@@ -12,13 +12,13 @@ from pptx.util import Inches, Pt
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_DIR = ROOT / "outputs" / "papers"
-DOCS_THESIS = ROOT / "docs" / "thesis"
+REPORT_DIR = ROOT / "docs" / "archive" / "course_reports" / "lagrange"
 
 PPTX_PATH = OUTPUT_DIR / "lagrange_interpolation_paper_report_zh.pptx"
-OUTLINE_PATH = DOCS_THESIS / "lagrange_interpolation_paper_report_zh.md"
-REPORT_PATH = DOCS_THESIS / "lagrange_interpolation_paper_report_full_zh.md"
-SPEAKER_NOTES_PATH = DOCS_THESIS / "lagrange_interpolation_paper_speaker_notes_zh.md"
-PDF_SOURCE = ROOT / "docs" / "papers" / "data source" / "s13660-022-02841-w.pdf"
+OUTLINE_PATH = REPORT_DIR / "lagrange_interpolation_paper_report_zh.md"
+REPORT_PATH = REPORT_DIR / "lagrange_interpolation_paper_report_full_zh.md"
+SPEAKER_NOTES_PATH = REPORT_DIR / "lagrange_interpolation_paper_speaker_notes_zh.md"
+PDF_SOURCE = ROOT / "docs" / "papers" / "reference_sources" / "s13660-022-02841-w.pdf"
 
 SLIDE_W = 13.333
 SLIDE_H = 7.5
@@ -1029,7 +1029,7 @@ def write_full_report() -> None:
         "- 期刊：Journal of Inequalities and Applications",
         "- 年份與文章編號：2022, 109",
         "- DOI：10.1186/s13660-022-02841-w",
-        "- PDF：`docs/papers/data source/s13660-022-02841-w.pdf`",
+        "- PDF：`docs/papers/reference_sources/s13660-022-02841-w.pdf`",
         "",
         "這篇論文屬於數值分析與有限元素方法的補間誤差研究。它不是應用系統論文，而是處理一個很基礎但重要的問題：當我們用 linear Lagrange interpolation 在三角形元素上近似一個函數時，最大點誤差可以如何用一個明確的常數控制。",
         "",
@@ -1195,7 +1195,7 @@ def write_speaker_notes(notes: Iterable[tuple[str, list[str]]]) -> None:
 
 def main() -> None:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    DOCS_THESIS.mkdir(parents=True, exist_ok=True)
+    REPORT_DIR.mkdir(parents=True, exist_ok=True)
     prs = new_presentation()
     notes = build_slides(prs)
     prs.save(PPTX_PATH)

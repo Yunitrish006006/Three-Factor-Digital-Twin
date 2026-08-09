@@ -1,6 +1,7 @@
 # Thesis Markdown 導覽
 
 這個資料夾的 Markdown 已整理成「先看主線、再看支援、最後看參考」三層。
+整個專案的跨資料夾入口請見 [`../README.md`](../README.md)。
 
 ## 1. 主線文件（每天主要維護）
 
@@ -28,11 +29,9 @@
 
 - 專案檔案分類總覽：[project_file_classification_zh.md](project_file_classification_zh.md)
 
-## 5. 課程/外部報告文件（非主論文主線）
+## 5. 歷史與非主線文件
 
-- 論文專題報告簡報大綱：[lagrange_interpolation_paper_report_zh.md](lagrange_interpolation_paper_report_zh.md)
-- 論文報告完整版：[lagrange_interpolation_paper_report_full_zh.md](lagrange_interpolation_paper_report_full_zh.md)
-- 論文報告逐頁講稿：[lagrange_interpolation_paper_speaker_notes_zh.md](lagrange_interpolation_paper_speaker_notes_zh.md)
+課程／外部論文報告已移至 [`../archive/`](../archive/)，避免和目前論文主線混在一起。
 
 ## 建議使用順序
 

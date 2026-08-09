@@ -1,8 +1,8 @@
 # Galindo et al. (2022) 論文報告逐頁講稿
 
 - 對應簡報：`outputs/papers/lagrange_interpolation_paper_report_zh.pptx`
-- 對應大綱：`docs/thesis/lagrange_interpolation_paper_report_zh.md`
-- 完整報告：`docs/thesis/lagrange_interpolation_paper_report_full_zh.md`
+- 對應大綱：`docs/archive/course_reports/lagrange/lagrange_interpolation_paper_report_zh.md`
+- 完整報告：`docs/archive/course_reports/lagrange/lagrange_interpolation_paper_report_full_zh.md`
 
 ## 使用方式
 
