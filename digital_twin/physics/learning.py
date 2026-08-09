@@ -1,9 +1,14 @@
 from dataclasses import dataclass
-from typing import Dict, List
+from typing import Dict, List, Optional
 
-from typing import Optional
-
-from digital_twin.core.entities import Device, Furniture, Room, Sensor
+from digital_twin.core.entities import (
+    SENSOR_ROLE_INPUT,
+    Device,
+    Furniture,
+    Room,
+    Sensor,
+    select_sensors_by_role,
+)
 from digital_twin.core.math_utils import solve_linear_system
 from digital_twin.physics.model import DigitalTwinModel, METRICS
 
@@ -26,6 +31,7 @@ def learn_device_impact_from_sensor_delta(
     after_observations: Dict[str, Dict[str, float]],
     elapsed_minutes: float,
 ) -> LearnedImpact:
+    fitting_sensors = select_sensors_by_role(sensors, SENSOR_ROLE_INPUT)
     basis_by_sensor = {
         sensor.name: model.influence_envelope(
             device,
@@ -34,7 +40,7 @@ def learn_device_impact_from_sensor_delta(
             room=room,
             furniture=furniture,
         )
-        for sensor in sensors
+        for sensor in fitting_sensors
     }
     metric_coefficients: Dict[str, float] = {}
     sensor_mae: Dict[str, float] = {}
@@ -44,7 +50,7 @@ def learn_device_impact_from_sensor_delta(
         numerator = 0.0
         denominator = 0.0
         deltas: List[float] = []
-        for sensor in sensors:
+        for sensor in fitting_sensors:
             if sensor.name not in before_observations or sensor.name not in after_observations:
                 continue
             observed_delta = after_observations[sensor.name][metric] - before_observations[sensor.name][metric]
@@ -58,7 +64,7 @@ def learn_device_impact_from_sensor_delta(
         sensor_observation_delta[metric] = sum(deltas) / float(len(deltas)) if deltas else 0.0
 
         errors = []
-        for sensor in sensors:
+        for sensor in fitting_sensors:
             if sensor.name not in before_observations or sensor.name not in after_observations:
                 continue
             observed_delta = after_observations[sensor.name][metric] - before_observations[sensor.name][metric]
@@ -88,6 +94,7 @@ def learn_active_device_impacts_from_observations(
     if not active_devices:
         return []
 
+    fitting_sensors = select_sensors_by_role(sensors, SENSOR_ROLE_INPUT)
     basis_by_sensor = {
         sensor.name: [
             model.influence_envelope(
@@ -99,7 +106,7 @@ def learn_active_device_impacts_from_observations(
             )
             for device in active_devices
         ]
-        for sensor in sensors
+        for sensor in fitting_sensors
     }
 
     coefficients_by_metric: Dict[str, List[float]] = {}
@@ -111,7 +118,7 @@ def learn_active_device_impacts_from_observations(
         normal_vector = [0.0 for _ in active_devices]
         observed_deltas: List[float] = []
 
-        for sensor in sensors:
+        for sensor in fitting_sensors:
             if sensor.name not in before_observations or sensor.name not in after_observations:
                 continue
             features = basis_by_sensor[sensor.name]
@@ -133,7 +140,7 @@ def learn_active_device_impacts_from_observations(
         mean_delta_by_metric[metric] = sum(observed_deltas) / float(len(observed_deltas)) if observed_deltas else 0.0
 
         errors = []
-        for sensor in sensors:
+        for sensor in fitting_sensors:
             if sensor.name not in before_observations or sensor.name not in after_observations:
                 continue
             features = basis_by_sensor[sensor.name]

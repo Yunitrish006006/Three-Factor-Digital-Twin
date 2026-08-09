@@ -1,0 +1,61 @@
+name: Python test matrix
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - "agent/**"
+
+permissions:
+  contents: read
+
+jobs:
+  test-module:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - test_file: tests/test_sensor_roles.py
+            artifact_name: test-sensor-roles
+          - test_file: tests/test_digital_twin.py
+            artifact_name: test-digital-twin
+          - test_file: tests/test_architecture_diagrams.py
+            artifact_name: test-architecture-diagrams
+          - test_file: tests/test_hybrid_residual.py
+            artifact_name: test-hybrid-residual
+          - test_file: tests/test_gemma_bridge.py
+            artifact_name: test-gemma-bridge
+          - test_file: tests/test_web_demo.py
+            artifact_name: test-web-demo
+          - test_file: tests/test_mcp_server.py
+            artifact_name: test-mcp-server
+          - test_file: tests/test_public_dataset_benchmark.py
+            artifact_name: test-public-dataset-benchmark
+          - test_file: tests/test_public_dataset_model_comparison.py
+            artifact_name: test-public-dataset-model-comparison
+    name: ${{ matrix.test_file }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile source
+        run: python -m compileall -q digital_twin scripts tests
+      - name: Run test module
+        run: |
+          set +e
+          python -m unittest -v ${{ matrix.test_file }} > test-output.txt 2>&1
+          status=$?
+          cat test-output.txt
+          exit $status
+      - name: Upload test output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact_name }}
+          path: test-output.txt

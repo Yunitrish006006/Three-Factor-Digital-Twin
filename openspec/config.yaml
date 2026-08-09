@@ -8,26 +8,37 @@ context: |
   - Sparse IoT sensing and indoor spatial intelligence in one rectangular room.
   - Temperature, humidity, and illuminance field estimation.
   - Environmental-impact learning for non-networked air conditioners, windows,
-    and lights.
+    lights, and fan-aware boundary conditions.
   - Explainable counterfactual action ranking for decision support.
   - MCP and Web interfaces are secondary service layers, not the headline novelty.
+  - The validated temperature operating domain is currently limited to 20-30 C.
 
   Current implementation:
   - Python 3.9+ package under digital_twin/.
-  - Eight corner sensors are the standard topology.
-  - Reduced-order physics model plus sparse calibration is the primary estimator.
+  - Eight corner sensors are the standard sparse-input topology.
+  - Input, validation, target, and pseudo nodes have distinct research roles.
+  - Reduced-order physics plus sparse calibration is the primary estimator.
   - A small MLP is an optional additive residual corrector.
-  - Evidence includes controlled simulation, a real-bedroom snapshot study, and
+  - Evidence includes controlled simulation, real-bedroom target snapshots, and
     task-aligned SML2010/CU-BEMS public benchmarks.
+  - Low-cost input nodes and higher-accuracy validation nodes are distinct
+    hardware roles; input-grade DHT11 readings are not laboratory references.
+
+  Evidence policy:
+  - Synthetic full-field results support only controlled-simulation claims.
+  - Real-room measurements support only measured holdout points or zones.
+  - Public datasets support task-aligned temporal tasks, not dense 3-D truth.
+  - Estimated or pseudo values are never ground truth.
+  - Action ranking remains model-based until a real before/after intervention.
+  - Method status is explicit: implemented, validated, proposed, or future.
 
   Governance:
   - Repository-root AGENTS.md is authoritative.
-  - It records IoTaIS 2026 as the current English manuscript target.
-  - Chinese thesis, English IEEE paper, presentation, figures, and generated
+  - Chinese thesis, English IEEE paper, presentations, figures, and generated
     outputs are a coupled deliverable.
-  - A research claim is not accepted merely because it appears in prose.
-    It needs an evidence artifact, a reproducible command, and an explicit
-    support level.
+  - A claim needs an evidence artifact, reproducible command, and support level.
+  - Active research changes remain visibly incomplete until every required
+    research-first artifact and synchronized output exists.
 
 rules:
   proposal:
@@ -49,17 +60,20 @@ rules:
     - Use OpenSpec Requirement and Scenario headings with SHALL statements and WHEN/THEN bullets.
     - Give every requirement a stable capability-scoped ID.
     - Keep observable research or system behavior in specs and implementation detail in design.
-    - Record evidence status without overstating generalization.
+    - Distinguish input sensors, validation sensors, target points, and model-generated pseudo values.
+    - Record evidence and method status without overstating generalization.
   design:
     - Map design decisions to requirement, research-question, hypothesis, and experiment IDs.
     - Preserve the reduced-order physics model as primary and MCP as secondary unless the proposal explicitly changes scope.
-    - Include data flow, failure modes, compatibility, migration, and artifact synchronization.
+    - Prefer shared estimator interfaces and identical data splits for comparisons.
+    - Include data flow, leakage prevention, failure modes, compatibility, migration, and artifact synchronization.
   reproducibility:
     - Pin commands, seeds, inputs, outputs, environment assumptions, and expected verification checks.
     - Distinguish committed evidence from ignored raw or normalized public datasets.
     - Include a clean-room rerun order and a provenance record.
   tasks:
     - Use checkboxes and include requirement or experiment IDs on substantive tasks.
+    - Separate completed groundwork from remaining work.
     - Include tests, evidence generation, result verification, claim review, synchronized rebuilds, and stale-text searches.
     - Never mark a task complete solely because a document was edited.
   evidence:
