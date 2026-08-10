@@ -33,6 +33,7 @@
 - `run_oh2024_inspired_comparison.py`：文獻概念移植比較。
 - `run_next_day_temperature_comparison.py`：次日溫度比較。
 - `run_rnn_public_comparison.py`：教授指定的 vanilla RNN 公平比較。
+- `run_target_holdout_validation.py`：以分離的 input／validation roles 執行受控 target-point holdout；目前證據類型是 synthetic。
 - `analyze_e8_intervention_trials.py`：E8 真實介入資料分析；空白模板只能得到 `NOT_EVALUATED`。
 
 ## 資料準備

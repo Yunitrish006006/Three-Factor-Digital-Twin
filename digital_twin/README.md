@@ -4,7 +4,7 @@
 
 | 模組 | 責任 |
 | --- | --- |
-| `core/` | 實體、情境、共用服務與公開資料任務對齊 |
+| `core/` | 實體、sensor/node roles、情境、holdout validation、共用服務與公開資料任務對齊 |
 | `physics/` | reduced-order 場模型、校正、影響學習、baseline 與動作排序 |
 | `neural/` | 可選的 hybrid residual 模型 |
 | `evaluation/` | E8、次日預測、RNN 與公開方法比較的可測試評估邏輯 |
@@ -27,6 +27,7 @@ entities/scenarios
 ## 維護規則
 
 - 資料結構優先共用 `core/entities.py`，避免在各 runner 重複定義。
+- input、validation、target 與 pseudo roles 必須在 fitting 前分離；holdout evaluator 使用 `core/validation.py`。
 - 評估切分、指標與 hash 應放在可測試模組，不只寫在腳本內。
 - `physics`、`neural` 與 comparator 必須取得同一批資料與切分後才能宣稱公平比較。
 - Web/MCP 只能呼叫共用 service，不另建一套研究模型。

@@ -18,6 +18,7 @@
 ## 實驗與研究判讀
 
 - [`experiments/`](experiments/)：實驗協定、結果與驗證說明。
+- [`experiments/target_holdout_validation_zh.md`](experiments/target_holdout_validation_zh.md)：input／validation 角色分離與受控 holdout 驗證。
 - [`research/`](research/)：教授方向與應用範圍判讀。
 - [`models/`](models/)：模型設計、參考模型與 Kalman 研究方向。
 
@@ -27,6 +28,7 @@
 
 - [`requirements/`](requirements/)：房間設計與 E8 資料契約。
 - [`templates/`](templates/)：標準房間、真實房間與介入試驗範本。
+- [`hardware/`](hardware/)：input-grade、validation-grade 感測節點與部署規劃。
 - [`../openspec/`](../openspec/)：正式研究能力、證據邊界與變更紀錄。
 
 ## 系統與展示文件

@@ -24,6 +24,12 @@
 - 室內因子實驗論文清單：[room_indoor_factor_experimental_papers_zh.md](room_indoor_factor_experimental_papers_zh.md)
 - MCP 在論文中的定位：[mcp_thesis_positioning_zh.md](mcp_thesis_positioning_zh.md)
 - 專案資料來源與使用摘要：[chatgpt_project_data_summary.md](chatgpt_project_data_summary.md)
+- 方法完成狀態盤點：[method_status_inventory_zh.md](method_status_inventory_zh.md)
+- 電風扇條件設計：[fan_effect_design_zh.md](fan_effect_design_zh.md)
+- Google Home 操作紀錄邊界：[google_home_operation_logging_zh.md](google_home_operation_logging_zh.md)
+- 論文同步狀態：[thesis_sync_status_zh.md](thesis_sync_status_zh.md)
+
+上述四份文件支援目前進行中的 evidence stabilization；尚未同步完成的內容不得直接寫成論文既成成果。
 
 ## 4. 專案管理與檔案盤點
 

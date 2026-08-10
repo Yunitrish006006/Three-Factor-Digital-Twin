@@ -31,6 +31,7 @@
 - `docs/experiments/`：實驗協定、結果與驗證說明。
 - `docs/models/`：模型設計與文獻判讀。
 - `docs/research/`：研究範圍與教授方向。
+- `docs/hardware/`：input-grade、validation-grade 節點與部署規劃。
 - `docs/requirements/`、`docs/templates/`：資料與房間設計契約。
 - `docs/mcp/`、`docs/web/`：次要服務與展示文件。
 - `docs/archive/`：非目前論文主線的歷史或課程材料。

@@ -17,6 +17,7 @@
 | 查看教授版進度與完整實驗 | [`docs/reports/`](docs/reports/) |
 | 閱讀中文論文主線 | [`docs/thesis/README.md`](docs/thesis/README.md) |
 | 找研究、模型或實驗文件 | [`docs/README.md`](docs/README.md) |
+| 查看感測節點與驗證級硬體 | [`docs/hardware/README.md`](docs/hardware/README.md) |
 | 理解程式模組 | [`digital_twin/README.md`](digital_twin/README.md) |
 | 找可執行腳本 | [`scripts/README.md`](scripts/README.md) |
 | 查看研究規格與變更流程 | [`openspec/README.md`](openspec/README.md) |
@@ -33,6 +34,12 @@ python3 -m unittest discover -s tests
 
 ```bash
 python3 scripts/run_all_thesis_experiments.py
+```
+
+執行 input／validation 角色分離的受控 holdout 檢查：
+
+```bash
+python3 scripts/run_target_holdout_validation.py
 ```
 
 執行本地展示：
