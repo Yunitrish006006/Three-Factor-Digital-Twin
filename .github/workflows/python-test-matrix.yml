@@ -36,6 +36,8 @@ jobs:
             artifact_name: test-public-dataset-benchmark
           - test_file: tests/test_public_dataset_model_comparison.py
             artifact_name: test-public-dataset-model-comparison
+          - test_file: tests/test_research_orchestration.py
+            artifact_name: test-research-orchestration
     name: ${{ matrix.test_file }}
     steps:
       - name: Checkout
