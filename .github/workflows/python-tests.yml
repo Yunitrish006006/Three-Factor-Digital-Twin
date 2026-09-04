@@ -23,6 +23,10 @@ jobs:
           python-version: "3.12"
       - name: Compile source
         run: python -m compileall -q digital_twin scripts tests
+      - name: Validate research OpenSpec
+        run: python scripts/validate_research_openspec.py
+      - name: Run research orchestration regressions
+        run: python -m unittest -v tests/test_research_orchestration.py
       - name: Run role and core smoke tests
         run: |
           python -m unittest -v \
