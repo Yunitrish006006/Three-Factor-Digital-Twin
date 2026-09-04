@@ -33,5 +33,5 @@ This Phase-1 infrastructure change does not alter thesis method, experiment resu
 - [x] First-version data models and deterministic planner implemented in isolated skeleton.
 - [x] Regression tests cover required orchestration/evidence invariants in isolated skeleton.
 - [x] Code integrated on a feature branch.
-- [ ] Run repository OpenSpec validation and targeted/full test suites on the integrated branch.
-- [ ] Create `evidence.md` from actual integrated runs.
+- [x] Repository OpenSpec validation and targeted/full test suites pass on the integrated branch.
+- [x] `evidence.md` records actual integrated runs and bounded claim decisions.
