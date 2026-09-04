@@ -10,7 +10,17 @@
 | `verify_thesis_results.py` | 核對論文登錄結果與輸出證據 |
 | `validate_research_openspec.py` | 驗證 OpenSpec 結構與規格 |
 | `validate_room_design.py` | 驗證房間尺寸、點位與 bounding boxes |
+| `research_orchestration.py` | 產生/驗證 deterministic Research Adaptive Orchestration plan |
 | `run_submission_readiness_experiments.py` | 執行資料範圍與 readiness 稽核；不是投稿動作 |
+
+### Research Adaptive Orchestration CLI
+
+```bash
+python3 scripts/research_orchestration.py example-task > /tmp/research-task.json
+python3 scripts/research_orchestration.py plan /tmp/research-task.json
+```
+
+CLI 只負責 task schema 與 deterministic plan。實際 agent runtime 必須遵守 plan 中的 waves、budget、dependencies 與 assignment boundaries；沒有 multi-agent runtime 時，Primary 依同一 waves 順序執行。
 
 ## 論文、簡報與圖表建置
 

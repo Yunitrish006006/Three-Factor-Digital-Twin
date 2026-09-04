@@ -17,6 +17,7 @@
 | 查看教授版進度與完整實驗 | [`docs/reports/`](docs/reports/) |
 | 閱讀中文論文主線 | [`docs/thesis/README.md`](docs/thesis/README.md) |
 | 找研究、模型或實驗文件 | [`docs/README.md`](docs/README.md) |
+| 查看 Research Adaptive Orchestration | [`docs/research_orchestration/ARCHITECTURE.md`](docs/research_orchestration/ARCHITECTURE.md) |
 | 查看感測節點與驗證級硬體 | [`docs/hardware/README.md`](docs/hardware/README.md) |
 | 理解程式模組 | [`digital_twin/README.md`](digital_twin/README.md) |
 | 找可執行腳本 | [`scripts/README.md`](scripts/README.md) |
@@ -28,6 +29,13 @@
 python3 scripts/validate_research_openspec.py
 python3 scripts/verify_thesis_results.py
 python3 -m unittest discover -s tests
+```
+
+產生 Research Adaptive Orchestration 範例 task 與規劃：
+
+```bash
+python3 scripts/research_orchestration.py example-task > /tmp/research-task.json
+python3 scripts/research_orchestration.py plan /tmp/research-task.json
 ```
 
 執行完整研究實驗：
@@ -52,10 +60,10 @@ python3 scripts/run_web_demo.py
 ## 專案結構
 
 ```text
-digital_twin/   可重用的模型、評估與服務程式碼
-scripts/        實驗、驗證、建置與展示入口
+digital_twin/   可重用的模型、評估、研究流程與服務程式碼
+scripts/        實驗、驗證、研究規劃、建置與展示入口
 tests/          單元測試與研究行為檢查
-docs/           論文、實驗、模型、報告與規格說明
+docs/           論文、實驗、模型、報告、研究流程與規格說明
 openspec/       研究能力契約、變更與證據治理
 outputs/        可重建輸出、公開資料中介檔與本地原始資料
 ```
@@ -91,5 +99,6 @@ cd docs/papers/ieee && tectonic --keep-logs --keep-intermediates paper.tex
 
 - 正式來源只維護一份；產生檔由指定 builder 重建。
 - 模擬、真實房間快照、公開 task-aligned benchmark 與真實介入證據分開陳述。
+- Agent 的自然語言摘要不是 evidence truth；研究 claim 必須回指結構化 evidence。
 - 不新增 `final_v2`、`new_updated`、`agent_version` 等平行版本；需要保留的歷史材料移至 `docs/archive/`。
 - 任何研究方法、數字或結論變更，都要遵守 [`AGENTS.md`](AGENTS.md) 的同步範圍。
