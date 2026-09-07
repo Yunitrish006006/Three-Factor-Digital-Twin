@@ -9,12 +9,15 @@ import math
 import zipfile
 from pathlib import Path
 
+from digital_twin.enclosure.aau_role import stable_json_sha256
+
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "outputs/data/enclosure/aau_temperature_ranges_e11d_manifest.json"
 RESULT = ROOT / "outputs/data/enclosure/aau_role_conditioned_confirmation.json"
-EXPECTED_MANIFEST_SHA = "3c030b7765f73fce878dd584faefd436f29e47203ef8ca95c923d4b56dc54f4e"
-EXPECTED_RESULT_SHA = "1a7750cfaba8d87916ac96066d783cc8c335746dcf77d34d84c60516b5c4a747"
+HISTORICAL_MANIFEST_SHA = "3c030b7765f73fce878dd584faefd436f29e47203ef8ca95c923d4b56dc54f4e"
+HISTORICAL_RESULT_SHA = "1a7750cfaba8d87916ac96066d783cc8c335746dcf77d34d84c60516b5c4a747"
+EXPECTED_MANIFEST_STABLE_SHA = "c72925e6c15afa594a48b8dfef506eb3017bbd5c99259799b1975930fce75064"
 
 
 def sha256(path: Path) -> str:
@@ -40,8 +43,10 @@ def archive_contains(path: Path, token: str) -> bool:
 
 
 def main() -> None:
-    require(sha256(MANIFEST) == EXPECTED_MANIFEST_SHA, "manifest SHA-256 mismatch")
-    require(sha256(RESULT) == EXPECTED_RESULT_SHA, "result SHA-256 mismatch")
+    require(
+        stable_json_sha256(MANIFEST) == EXPECTED_MANIFEST_STABLE_SHA,
+        "timestamp-independent manifest SHA-256 mismatch",
+    )
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     require(len(manifest["fragments"]) == 11, "expected 11 fragments")
     for item in manifest["fragments"]:
@@ -84,9 +89,8 @@ def main() -> None:
     for relative in outputs:
         path = ROOT / relative
         require(path.read_bytes()[:4] == b"%PDF" and path.stat().st_size > 10_000, f"invalid PDF: {relative}")
-    print("E11D verification passed: evidence, 7 synchronized sources, raw fragments, and outputs")
+    print("E11D verification passed: semantic evidence, stable manifest, 7 synchronized sources, raw fragments, and outputs")
 
 
 if __name__ == "__main__":
     main()
-

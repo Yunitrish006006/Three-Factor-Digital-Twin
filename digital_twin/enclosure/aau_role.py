@@ -5,6 +5,7 @@ from __future__ import annotations
 import csv
 import hashlib
 import io
+import json
 import math
 import random
 import re
@@ -274,3 +275,25 @@ def sha256_file(path: Path) -> str:
         for block in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(block)
     return digest.hexdigest()
+
+
+def stable_json_sha256(
+    path: Path,
+    volatile_keys: tuple[str, ...] = ("generated_at", "generated_at_utc", "retrieved_at_utc"),
+) -> str:
+    """Hash JSON evidence after removing volatile run timestamps recursively."""
+
+    def cleaned(value):
+        if isinstance(value, dict):
+            return {
+                key: cleaned(item)
+                for key, item in value.items()
+                if key not in volatile_keys
+            }
+        if isinstance(value, list):
+            return [cleaned(item) for item in value]
+        return value
+
+    payload = cleaned(json.loads(path.read_text(encoding="utf-8")))
+    serialized = json.dumps(payload, ensure_ascii=True, indent=2) + "\n"
+    return hashlib.sha256(serialized.encode("utf-8")).hexdigest()

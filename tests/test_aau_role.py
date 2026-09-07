@@ -1,10 +1,14 @@
 import unittest
+import json
+import tempfile
+from pathlib import Path
 
 from digital_twin.enclosure.aau_role import (
     bootstrap_day_improvement,
     classify_sensor_role,
     evaluate_role_conditioning,
     extract_frozen_role_map,
+    stable_json_sha256,
 )
 
 
@@ -50,6 +54,14 @@ class AAURoleTest(unittest.TestCase):
         first = bootstrap_day_improvement(values, replicates=100, seed=7)
         second = bootstrap_day_improvement(values, replicates=100, seed=7)
         self.assertEqual(first, second)
+
+    def test_stable_json_hash_ignores_generation_timestamps(self):
+        with tempfile.TemporaryDirectory() as directory:
+            first = Path(directory) / "first.json"
+            second = Path(directory) / "second.json"
+            first.write_text(json.dumps({"generated_at": "old", "value": [1, 2]}))
+            second.write_text(json.dumps({"generated_at": "new", "value": [1, 2]}))
+            self.assertEqual(stable_json_sha256(first), stable_json_sha256(second))
 
 
 if __name__ == "__main__":

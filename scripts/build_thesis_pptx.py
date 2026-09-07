@@ -3037,32 +3037,45 @@ if __name__ == "__main__":
     ):
         _path = _e11d_root / _relative
         _deck = _E11DPresentation(_path)
-        _slide = _deck.slides.add_slide(_deck.slide_layouts[1])
-        _slide.shapes.title.text = "E11D：角色語意的獨立確認"
-        _body = _slide.placeholders[1].text_frame
-        _body.text = "H-ENC-04 supported；11 x 4 MiB，1,505 分鐘快照"
-        for _text in (
-            "MAE：2.3972 -> 1.6517 C；RMSE：2.9748 -> 2.3648 C",
-            "逐感測器勝出 30/42；配對改善 0.7455 C",
-            "20,000 次日區塊 bootstrap 95% CI：[0.6867, 0.8124] C",
-            "限制：預測性角色資訊，不是氣流因果；仍屬次要機箱證據",
-        ):
-            _paragraph = _body.add_paragraph()
-            _paragraph.text = _text
-            _paragraph.level = 0
-        _e11e_slide = _deck.slides.add_slide(_deck.slide_layouts[1])
-        _e11e_slide.shapes.title.text = "E11E：平均改善，但尾端 gate 未通過"
-        _e11e_body = _e11e_slide.placeholders[1].text_frame
-        _e11e_body.text = "開發集：1,502 分鐘快照；E11F 未下載"
-        for _text in (
-            "Baseline MAE/RMSE/P95：1.1168/1.7250/3.4900 C",
-            "role_local_k5_p2：1.0187/1.6792/3.7699 C",
-            "Bootstrap CI：[0.0708, 0.1292] C；但只贏 25/42",
-            "決策：no_candidate_forwarded，不宣稱確認改善",
-        ):
-            _paragraph = _e11e_body.add_paragraph()
-            _paragraph.text = _text
-            _paragraph.level = 0
+        _slide = _deck.slides.add_slide(_deck.slide_layouts[6])
+        style_slide(_slide)
+        add_title(_slide, "E11D：角色語意的獨立確認")
+        add_bullets(
+            _slide,
+            0.9,
+            1.55,
+            11.5,
+            5.25,
+            (
+                "H-ENC-04 supported；11 x 4 MiB，1,505 分鐘快照",
+                "MAE：2.3972 -> 1.6517 C；RMSE：2.9748 -> 2.3648 C",
+                "逐感測器勝出 30/42；配對改善 0.7455 C",
+                "20,000 次日區塊 bootstrap 95% CI：[0.6867, 0.8124] C",
+                "限制：預測性角色資訊，不是氣流因果；仍屬次要機箱證據",
+            ),
+            level0_size=20,
+        )
+        add_footer(_slide, len(_deck.slides))
+
+        _e11e_slide = _deck.slides.add_slide(_deck.slide_layouts[6])
+        style_slide(_e11e_slide)
+        add_title(_e11e_slide, "E11E：平均改善，但尾端 gate 未通過")
+        add_bullets(
+            _e11e_slide,
+            0.9,
+            1.55,
+            11.5,
+            5.25,
+            (
+                "開發集：1,502 分鐘快照；E11F 未下載",
+                "Baseline MAE/RMSE/P95：1.1168/1.7250/3.4900 C",
+                "role_local_k5_p2：1.0187/1.6792/3.7699 C",
+                "Bootstrap CI：[0.0708, 0.1292] C；但只贏 25/42",
+                "決策：no_candidate_forwarded，不宣稱確認改善",
+            ),
+            level0_size=20,
+        )
+        add_footer(_e11e_slide, len(_deck.slides))
         _deck.save(_path)
 
     _e11d_outline_blocks = {
@@ -3111,3 +3124,9 @@ if __name__ == "__main__":
     from sync_e11hf_generated_artifacts import sync_pptx_outputs as sync_e11hf_pptx_outputs
 
     sync_e11hf_pptx_outputs()
+
+# Keep presentations synchronized with the E12-E15 BMC correction chain.
+if __name__ == "__main__":
+    from sync_bmc_e14_generated_artifacts import sync_pptx_outputs as sync_bmc_e14_pptx_outputs
+
+    sync_bmc_e14_pptx_outputs()

@@ -35,9 +35,14 @@ class ResultSpec:
     needs_public_data: bool = False
 
 
-def main() -> None:
+def main() -> int:
     parser = argparse.ArgumentParser(description="Verify thesis result numbers against reproducible output JSON.")
     parser.add_argument("--tolerance", type=float, default=None, help="Override all per-result tolerances.")
+    parser.add_argument(
+        "--allow-incomplete",
+        action="store_true",
+        help="Write the audit report but exit successfully even when FAIL or MISSING rows remain.",
+    )
     args = parser.parse_args()
 
     DATA.mkdir(parents=True, exist_ok=True)
@@ -64,6 +69,7 @@ def main() -> None:
     print(f"Wrote {REPORT_JSON.relative_to(ROOT)}")
     print(f"Wrote {REPORT_MD.relative_to(ROOT)}")
     print(json.dumps(summary, ensure_ascii=False, indent=2))
+    return 0 if args.allow_incomplete else _exit_code(summary)
 
 
 def _build_specs(tolerance_override: Optional[float]) -> List[ResultSpec]:
@@ -734,6 +740,50 @@ def _build_specs(tolerance_override: Optional[float]) -> List[ResultSpec]:
                 needs_public_data=True,
             )
         )
+
+    e12_path = DATA / "enclosure" / "bmc_cross_run_e12_result.json"
+    e14a_path = DATA / "enclosure" / "bmc_section_parser_e14a_result.json"
+    e14b_path = DATA / "enclosure" / "bmc_unit_regimes_e14b_result.json"
+    e14c_path = DATA / "enclosure" / "bmc_corrected_e14c_result.json"
+    bmc_chain_specs = [
+        ("e12_development_failure_count", 6.0, e12_path, lambda: float(len(_read_json(e12_path)["failures"])), ["6 個 development files", "six development files"]),
+        ("e12_final_test_opened_flag", 0.0, e12_path, lambda: 1.0 if _read_json(e12_path).get("final_test_opened") else 0.0, ["未開啟 final-test files", "stops before final-test access"]),
+        ("e14a_source_correct_row_count", 4038.0, e14a_path, lambda: float(sum(item["production_count"] for item in _read_json(e14a_path)["file_reports"])), ["4,038 筆 source-correct", "preserve 4,038 source-correct rows"]),
+        ("e14b_raw_unit_file_count", 3.0, e14b_path, lambda: float(len(_read_json(e14b_path)["inferred_raw_files"])), ["三個 selection files", "normalize three raw-unit files"]),
+        ("e14c_baseline_mae_c", 4.0882, e14c_path, lambda: _json_metric(e14c_path, ["retrospective_test", "baseline", "pooled", "mae_c"]), ["4.0882", "4.0882"]),
+        ("e14c_ridge_mae_c", 1.8054, e14c_path, lambda: _json_metric(e14c_path, ["retrospective_test", "model", "pooled", "mae_c"]), ["1.8054", "1.8054"]),
+        ("e14c_model_run_wins", 13.0, e14c_path, lambda: _json_metric(e14c_path, ["retrospective_test", "model_run_wins"]), ["13/14", "13/14"]),
+        ("e14c_bootstrap_lower_c", 1.4271, e14c_path, lambda: _json_metric(e14c_path, ["retrospective_test", "run_bootstrap_95_ci_c", 0]), ["[1.4271, 2.7939]", "[1.4271,2.7939]"]),
+        ("e14c_bootstrap_upper_c", 2.7939, e14c_path, lambda: _json_metric(e14c_path, ["retrospective_test", "run_bootstrap_95_ci_c", 1]), ["[1.4271, 2.7939]", "[1.4271,2.7939]"]),
+    ]
+    for result_name, thesis_value, evidence_file, compute, patterns in bmc_chain_specs:
+        specs.append(
+            ResultSpec(
+                result_name=result_name,
+                thesis_value=thesis_value,
+                evidence_file=evidence_file,
+                compute=compute,
+                tolerance=1e-4 if tolerance_override is None else tolerance_override,
+                thesis_patterns=patterns,
+                suggested_script="python3 scripts/download_bmc_cross_run_e12.py --retrieval-date 2026-08-24 && python3 scripts/run_corrected_bmc_sensitivity_e14c.py",
+                category="public_bmc_correction_chain",
+                needs_public_data=True,
+            )
+        )
+
+    e15_status_path = ROOT / "openspec" / "changes" / "confirm-bmc-temporal-transfer-e15" / "evidence.md"
+    specs.append(
+        ResultSpec(
+            result_name="e15_not_evaluated_status_flag",
+            thesis_value=1.0,
+            evidence_file=e15_status_path,
+            compute=lambda: _e15_not_evaluated_status_flag(e15_status_path),
+            tolerance=0.0 if tolerance_override is None else tolerance_override,
+            thesis_patterns=["E15 尚未執行", "E15 unused-file confirmation remains"],
+            suggested_script="Do not execute E15 without an explicit decision to consume the untouched confirmation set.",
+            category="public_bmc_confirmation_readiness",
+        )
+    )
     return specs
 
 
@@ -834,12 +884,18 @@ def _average_scenario_metric(path: Path, key: str, metric: str) -> float:
     return sum(float(item[key][metric]) for item in scenarios) / float(len(scenarios))
 
 
-def _json_metric(path: Path, keys: Sequence[str]) -> float:
+def _json_metric(path: Path, keys: Sequence[object]) -> float:
     payload = _read_json(path)
     node = payload
     for key in keys:
         node = node[key]
     return float(node)
+
+
+def _e15_not_evaluated_status_flag(path: Path) -> float:
+    result_path = DATA / "enclosure" / "bmc_confirmation_e15_result.json"
+    text = path.read_text(encoding="utf-8")
+    return 1.0 if "NOT_EVALUATED" in text and not result_path.exists() else 0.0
 
 
 def _window_temperature_domain_count(in_domain: bool) -> float:
@@ -1002,6 +1058,10 @@ def _summarize(results: Sequence[Dict[str, object]]) -> Dict[str, int]:
     return output
 
 
+def _exit_code(summary: Dict[str, int]) -> int:
+    return 1 if summary.get("FAIL", 0) or summary.get("MISSING", 0) else 0
+
+
 def _render_markdown(report: Dict[str, object]) -> str:
     lines = [
         "# Thesis Result Verification Report",
@@ -1059,4 +1119,4 @@ def _fmt(value: object) -> str:
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

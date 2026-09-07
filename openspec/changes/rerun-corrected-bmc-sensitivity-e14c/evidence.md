@@ -23,3 +23,7 @@ plausibility gates passed. The candidate is eligible for a new frozen
 confirmation study. This does not restore an unseen-test claim for E14C and
 does not establish transfer to another server, a desktop computer enclosure,
 or an NTC sensor deployment.
+
+## 2026-09-07 reproducibility rerun
+
+The fixed 31-file manifest, E14A raw-unit reconstruction, and E14B normalization reproduced their registered hashes. E14C reproduced the same selected inlet baseline, `load_aware` ridge with lambda 1.0, pooled metrics, 13/14 run wins, bootstrap interval, and prediction range. The regenerated container hashes were `f2656902840da05cd08b167af2e220f255fa998889a30c4f6d75f1da8685d98b` for the frozen-model JSON and `915debea6b03e6ecb59fd7e3ba7476b0b60bc45b25c0e6b55cc68be25e3075a9` for the result JSON. These differ from the historical serialization hashes but not from the registered numerical result or claim boundary.

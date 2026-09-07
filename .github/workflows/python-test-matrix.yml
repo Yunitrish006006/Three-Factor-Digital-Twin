@@ -36,6 +36,14 @@ jobs:
             artifact_name: test-public-dataset-benchmark
           - test_file: tests/test_public_dataset_model_comparison.py
             artifact_name: test-public-dataset-model-comparison
+          - test_file: tests/test_gru_lstm_public_comparison.py
+            artifact_name: test-gru-lstm-public-comparison
+          - test_file: tests/test_aau_commissioning.py
+            artifact_name: test-aau-commissioning
+          - test_file: tests/test_bmc_virtual_sensor.py
+            artifact_name: test-bmc-virtual-sensor
+          - test_file: tests/test_bmc_confirmation_e15.py
+            artifact_name: test-bmc-confirmation-e15
     name: ${{ matrix.test_file }}
     steps:
       - name: Checkout
@@ -44,6 +52,8 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Install research dependencies
+        run: python -m pip install -e ".[research]"
       - name: Compile source
         run: python -m compileall -q digital_twin scripts tests
       - name: Run test module

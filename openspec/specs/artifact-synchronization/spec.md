@@ -211,3 +211,15 @@ E11G synchronization must retain both its aggregate tail-safe improvement and it
 ## E11H and E11F Synchronization Note
 
 Synchronized artifacts must distinguish E11H development from E11F no-refit confirmation. E11F support wording must include the within-campaign boundary, calendar overlap, frozen model status, and exclusion of NTC hardware validation.
+
+### Requirement: SYN-013 Synchronize E12-E15 BMC status
+
+The Chinese thesis, IEEE manuscript, presentations, professor report, and canonical OpenSpec SHALL agree on the BMC correction chain and its evidence boundaries.
+
+#### Scenario: Rendering the BMC correction chain
+
+- **WHEN** a synchronized artifact discusses E12 through E15
+- **THEN** E12 SHALL be a pretest data-quality failure and E13 SHALL be parser-invalidated
+- **AND** E14A/E14B SHALL be data-pipeline audits rather than accuracy evidence
+- **AND** E14C SHALL retain its retrospective 4.0882-to-1.8054 degrees C MAE comparison, 13/14 wins, and positive run-block interval
+- **AND** E15 SHALL remain protocol-only and `NOT_EVALUATED`

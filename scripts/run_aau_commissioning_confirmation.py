@@ -28,6 +28,7 @@ E11G_RESULT = ROOT / "outputs/data/enclosure/aau_tail_safe_development.json"
 E11H_RESULT = ROOT / "outputs/data/enclosure/aau_commissioning_development.json"
 OUTPUT = ROOT / "outputs/data/enclosure/aau_commissioning_confirmation_e11f.json"
 EXPECTED_E11H_SHA256 = "b76ecfe3e597d0641515df60b0d6636ed9a0ff1e23ebcb2852a225d4eee490e9"
+EXPECTED_E11H_MODEL_CONTENT_SHA256 = "dd7947f8cdac872a6447282c232a1b8d7a827d38752c23a18f7c38f9bd7bc2af"
 
 
 def sha256_file(path: Path) -> str:
@@ -36,13 +37,24 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
+def selected_models_sha256(document: dict) -> str:
+    payload = json.dumps(
+        document["evaluation"]["selected_models"],
+        ensure_ascii=True,
+        sort_keys=True,
+        separators=(",", ":"),
+    ).encode("utf-8")
+    return hashlib.sha256(payload).hexdigest()
+
+
 def main() -> None:
-    if sha256_file(E11H_RESULT) != EXPECTED_E11H_SHA256:
-        raise ValueError("frozen E11H result hash changed")
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     metadata_document = json.loads(METADATA.read_text(encoding="utf-8"))
     e11g = json.loads(E11G_RESULT.read_text(encoding="utf-8"))
     e11h = json.loads(E11H_RESULT.read_text(encoding="utf-8"))
+    e11h_model_sha = selected_models_sha256(e11h)
+    if e11h_model_sha != EXPECTED_E11H_MODEL_CONTENT_SHA256:
+        raise ValueError("frozen E11H selected-model content hash changed")
     metadata = extract_frozen_sensor_metadata(metadata_document)
     header = next(csv.reader([manifest["csv_header"]]))
     sensor_columns = {
@@ -80,6 +92,7 @@ def main() -> None:
             "frozen_metadata_sha256": sha256_file(METADATA),
             "e11g_result_sha256": sha256_file(E11G_RESULT),
             "e11h_result_sha256": sha256_file(E11H_RESULT),
+            "e11h_selected_models_sha256": e11h_model_sha,
         },
         "parse": diagnostics,
         "evaluation": evaluation,
@@ -95,4 +108,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

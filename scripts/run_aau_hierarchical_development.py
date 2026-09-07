@@ -19,18 +19,19 @@ from digital_twin.enclosure.aau_hierarchical import (  # noqa: E402
     evaluate_hierarchical_grid,
     extract_frozen_sensor_metadata,
 )
-from digital_twin.enclosure.aau_role import load_minute_snapshots, sha256_file  # noqa: E402
+from digital_twin.enclosure.aau_role import load_minute_snapshots, sha256_file, stable_json_sha256  # noqa: E402
 
 
 MANIFEST = ROOT / "outputs/data/enclosure/aau_temperature_ranges_e11e_manifest.json"
 E11C_RESULT = ROOT / "outputs/data/enclosure/aau_local_idw_confirmation.json"
 OUTPUT = ROOT / "outputs/data/enclosure/aau_hierarchical_development.json"
 EXPECTED_E11C_SHA256 = "0b667ca8bb959e332aeff0155b9dceb1318dca3f91a26c1aa5552fb6bfef7055"
+EXPECTED_E11C_STABLE_SHA256 = "3c6ca841e100358669be193390947d94bce7096ca83da71a2e6b8b90736cd643"
 
 
 def main() -> None:
-    if sha256_file(E11C_RESULT) != EXPECTED_E11C_SHA256:
-        raise RuntimeError("frozen E11C metadata hash mismatch")
+    if stable_json_sha256(E11C_RESULT) != EXPECTED_E11C_STABLE_SHA256:
+        raise RuntimeError("stable frozen E11C metadata hash mismatch")
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     prior = json.loads(E11C_RESULT.read_text(encoding="utf-8"))
     metadata = extract_frozen_sensor_metadata(prior)
@@ -55,7 +56,10 @@ def main() -> None:
         "experiment": "E11E", "purpose": "development_only", "generated_at_utc": datetime.now(timezone.utc).isoformat(),
         "preregistration": "openspec/changes/develop-aau-hierarchical-role-local/protocol.md",
         "inputs": {"manifest": str(MANIFEST.relative_to(ROOT)), "manifest_sha256": sha256_file(MANIFEST),
-                   "frozen_metadata": str(E11C_RESULT.relative_to(ROOT)), "frozen_metadata_sha256": EXPECTED_E11C_SHA256},
+                   "frozen_metadata": str(E11C_RESULT.relative_to(ROOT)),
+                   "frozen_metadata_sha256": EXPECTED_E11C_SHA256,
+                   "frozen_metadata_stable_sha256": EXPECTED_E11C_STABLE_SHA256,
+                   "reconstructed_metadata_sha256": sha256_file(E11C_RESULT)},
         "parse": parse_stats, "sensor_count": len(metadata), "evaluation": evaluation,
         "e11f_accessed": False,
         "interpretation_limit": "E11E selects a candidate only; it does not confirm H-ENC-05 or generalization.",
@@ -69,4 +73,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

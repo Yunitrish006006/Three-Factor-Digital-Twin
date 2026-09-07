@@ -23,6 +23,7 @@ from digital_twin.enclosure.aau_role import (  # noqa: E402
     load_minute_snapshots,
     resolve_header_roles,
     sha256_file,
+    stable_json_sha256,
 )
 
 
@@ -30,11 +31,12 @@ MANIFEST = ROOT / "outputs/data/enclosure/aau_temperature_ranges_e11d_manifest.j
 E11C_RESULT = ROOT / "outputs/data/enclosure/aau_local_idw_confirmation.json"
 OUTPUT = ROOT / "outputs/data/enclosure/aau_role_conditioned_confirmation.json"
 EXPECTED_E11C_SHA256 = "0b667ca8bb959e332aeff0155b9dceb1318dca3f91a26c1aa5552fb6bfef7055"
+EXPECTED_E11C_STABLE_SHA256 = "3c6ca841e100358669be193390947d94bce7096ca83da71a2e6b8b90736cd643"
 
 
 def main() -> None:
-    if sha256_file(E11C_RESULT) != EXPECTED_E11C_SHA256:
-        raise RuntimeError("frozen E11C metadata artifact hash mismatch")
+    if stable_json_sha256(E11C_RESULT) != EXPECTED_E11C_STABLE_SHA256:
+        raise RuntimeError("stable frozen E11C metadata artifact hash mismatch")
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     prior = json.loads(E11C_RESULT.read_text(encoding="utf-8"))
     frozen = extract_frozen_role_map(prior)
@@ -73,6 +75,8 @@ def main() -> None:
             "manifest_sha256": sha256_file(MANIFEST),
             "frozen_role_metadata": str(E11C_RESULT.relative_to(ROOT)),
             "frozen_role_metadata_sha256": EXPECTED_E11C_SHA256,
+            "frozen_role_metadata_stable_sha256": EXPECTED_E11C_STABLE_SHA256,
+            "reconstructed_role_metadata_sha256": sha256_file(E11C_RESULT),
         },
         "role_counts": role_counts,
         "parse": parse_stats,
@@ -91,4 +95,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

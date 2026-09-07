@@ -100,7 +100,9 @@ def main() -> None:
         path = RAW_DIR / item["filename"]
         raw_ok = path.stat().st_size == item["bytes"] and sha256_path(path) == item["sha256"]
         raw_hashes_ok = raw_hashes_ok and raw_ok
-        parsed = parse_influx_bmc(path)
+        # E14A predates the separately preregistered E14B unit normalization.
+        # Reconstruct the source-aware parser result without applying later scales.
+        parsed = parse_influx_bmc(path, normalize_units=False)
         oracle = oracle_bmc_count(path)
         for row in parsed["rows"]:
             update_extrema(extrema, row)

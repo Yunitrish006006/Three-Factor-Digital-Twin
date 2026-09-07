@@ -283,3 +283,12 @@
 - E11F：不 refit；MAE 0.3966°C、RMSE 0.6723°C、P95 1.2756°C，39/42。
 - H-ENC-05 僅於同 campaign 未見 bytes 獲支持；日期重疊，非跨機箱或 NTC 硬體驗證。
 - 決策：`h_enc_05_supported_within_campaign`。
+
+
+## BMC E12–E15：資料修正後仍待新確認
+
+- E12：6 個 development files 未達 30 rows；final test 未開啟，NOT_EVALUATED。
+- E13：舊 parser／unit pipeline 的結果標記為 PARSER_INVALIDATED。
+- E14A/B：4,038 rows 完成來源與單位稽核；三檔 raw-unit regime 被正規化。
+- E14C retrospective：MAE 4.0882→1.8054°C，13/14 runs，95% CI [1.4271, 2.7939]°C。
+- E15：另 14 個未使用檔案已預註冊，但尚未下載或執行，維持 NOT_EVALUATED。

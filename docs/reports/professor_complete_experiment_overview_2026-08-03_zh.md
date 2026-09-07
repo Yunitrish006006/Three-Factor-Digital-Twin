@@ -382,6 +382,7 @@ Base model 相對 IDW 的平均降幅為 72.47%、61.90%、96.31%；LOO hybrid �
 2. 跨房間與長期 dense real-room ground truth。
 3. 全程位於 20–30°C 的動態封閉植物環境驗證。
 4. 以獨立 validation reference 執行實體 sensing-node filtering，估計 real measurement noise、missingness 與 covariance drift；EKF/UKF 仍未評估。
+5. E15 同一伺服器跨時間／工作負載的未使用檔案確認；目前只有預註冊 protocol，尚未下載或執行，狀態為 `NOT_EVALUATED`。
 
 ## 七、完整重現命令索引
 
@@ -424,3 +425,16 @@ E11G 使用 E11E 開發資料進行 12 日 leave-one-day-out 與折內感測器�
 ## E11H commissioning 與 E11F frozen confirmation
 
 E11H 以 2 日校正、1 日選模、9 日凍結測試模擬短期 NTC／參考感測器 commissioning。MAE/RMSE/P95 由 1.0958/1.7435/3.5061°C 降至 0.4039/0.6830/1.2900°C，39/42 感測器改善，95% CI 為 [0.4854, 0.9271]°C。E11F 完全凍結模型且不 refit，MAE/RMSE/P95 為 0.3966/0.6723/1.2756°C，39/42 改善，95% CI 為 [0.5851, 0.9274]°C，故 `h_enc_05_supported_within_campaign`。但 E11F 日期與 E11G/E11H 重疊，證據不是跨日期、跨機箱或 NTC 硬體驗證。
+
+## E12–E15：BMC 跨 run 資料修正與候選確認狀態
+
+E12 在固定 12/5/14 檔 train/selection/test split 上要求每檔至少 30 筆有效 BMC rows。2026-09-07 的重現確認有 6 個 development files 未達門檻，因此未選模、未開啟 final-test files，狀態為 `NOT_EVALUATED`。E13 降低門檻後的輸出仍使用舊 parser／unit pipeline，現保留為 `PARSER_INVALIDATED`，不能當模型證據。
+
+E14A 以逐 section header 與獨立 oracle 保留 4,038 筆 source-correct rows，但 raw hwmon 單位使合理性閘門失敗。E14B 辨識三個 raw-unit files 並套用固定 powers-of-ten normalization，其餘 28 檔維持原單位；校正後溫度為 29.0–77.5°C，八個資料品質閘門全數通過。
+
+| E14C 回溯資料 | MAE（°C） | RMSE（°C） | P95（°C） | 逐 run 勝出 |
+| --- | ---: | ---: | ---: | ---: |
+| Inlet + frozen offset | 4.0882 | 5.2087 | 12.0000 | 1/14 |
+| Load-aware ridge | **1.8054** | **2.8001** | **7.1146** | **13/14** |
+
+E14C 的 run-block bootstrap 95% CI 為 [1.4271, 2.7939]°C，候選通過進入新確認的資格閘門；但這 14 個檔案已在除錯期間開啟，所以只能稱 retrospective sensitivity。E15 已另固定 14 個未使用檔案與模型內容 hash，目前尚未下載或執行，維持 `NOT_EVALUATED`。即使未來通過，也只能支持同一公開伺服器資料庫內的跨時間／工作負載 transfer，不代表 PC 機箱、NTC、跨伺服器、3-D 空間場或控制效益。

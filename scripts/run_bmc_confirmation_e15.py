@@ -24,6 +24,7 @@ MANIFEST_PATH = ROOT / "outputs/data/enclosure/bmc_confirmation_e15_manifest.jso
 MODEL_PATH = ROOT / "outputs/data/enclosure/bmc_corrected_e14c_frozen_model.json"
 RESULT_PATH = ROOT / "outputs/data/enclosure/bmc_confirmation_e15_result.json"
 EXPECTED_MODEL_SHA256 = "609048167f2a7e261bee45e2d935c650be7a55184cdce3966b014e6cd1e5ba84"
+EXPECTED_MODEL_CONTENT_SHA256 = "cff6dfbf05fa0f81bff5ebf5cd4d812575b4ec89c5946e8eb1c15384aa8c7935"
 EXPECTED_FILENAMES = (
     "202308022155.csv", "202308022222.csv", "202308051737.csv",
     "202308051757.csv", "202308051827.csv", "202308052003.csv",
@@ -44,6 +45,16 @@ def sha256(path: Path) -> str:
         for chunk in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def frozen_model_content_sha256(document: dict) -> str:
+    payload = json.dumps(
+        document["frozen_models"],
+        ensure_ascii=True,
+        sort_keys=True,
+        separators=(",", ":"),
+    ).encode("utf-8")
+    return hashlib.sha256(payload).hexdigest()
 
 
 def percentile(values: Iterable[float], probability: float) -> float:
@@ -111,8 +122,9 @@ def main() -> None:
     manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
     frozen = json.loads(MODEL_PATH.read_text(encoding="utf-8"))
     model_sha = sha256(MODEL_PATH)
-    if model_sha != EXPECTED_MODEL_SHA256:
-        raise SystemExit(f"Frozen model hash mismatch: {model_sha}")
+    model_content_sha = frozen_model_content_sha256(frozen)
+    if model_content_sha != EXPECTED_MODEL_CONTENT_SHA256:
+        raise SystemExit(f"Frozen model content hash mismatch: {model_content_sha}")
 
     records = manifest.get("files", [])
     names = tuple(record.get("filename") for record in records)
@@ -218,6 +230,7 @@ def main() -> None:
         "hypothesis_decision": "h_enc_08_supported" if supported else "h_enc_08_not_supported",
         "manifest_sha256": sha256(MANIFEST_PATH),
         "frozen_model_sha256": model_sha,
+        "frozen_model_content_sha256": model_content_sha,
         "confirmation_previously_unopened": True,
         "file_count": len(per_run),
         "row_count": len(all_actual),

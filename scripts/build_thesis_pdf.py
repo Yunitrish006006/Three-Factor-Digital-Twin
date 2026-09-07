@@ -102,10 +102,11 @@ def render_table(headers: List[object], rows: List[List[object]]) -> str:
         return render_longtable(headers, rows)
 
     spec = column_spec(len(headers))
+    font_size = r"\scriptsize" if len(headers) >= 6 else r"\footnotesize"
     lines = [
         r"\begin{table}[htbp]",
         r"\centering",
-        r"\footnotesize",
+        font_size,
         r"\renewcommand{\arraystretch}{1.25}",
         rf"\begin{{tabular}}{{{spec}}}",
         r"\hline",
@@ -267,13 +268,18 @@ def compile_pdf(tex_path: Path) -> None:
 
 def main() -> None:
     PAPERS.mkdir(parents=True, exist_ok=True)
+    OUTPUTS.mkdir(parents=True, exist_ok=True)
     blocks = build_blocks()
     blocks.extend(e11g_blocks())
     blocks.extend(e11hf_blocks())
     write_latex(TEX_PATH, blocks)
     compile_pdf(TEX_PATH)
+    output_pdf = OUTPUTS / "papers" / PDF_PATH.name
+    output_pdf.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(PDF_PATH, output_pdf)
     print(f"Wrote {TEX_PATH}")
     print(f"Wrote {PDF_PATH}")
+    print(f"Wrote {output_pdf}")
 
 
 if __name__ == "__main__":

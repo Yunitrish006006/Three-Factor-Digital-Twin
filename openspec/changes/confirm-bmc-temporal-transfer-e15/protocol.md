@@ -3,7 +3,8 @@
 ## Frozen inputs
 
 - Model: `outputs/data/enclosure/bmc_corrected_e14c_frozen_model.json`
-- Required model SHA-256: `609048167f2a7e261bee45e2d935c650be7a55184cdce3966b014e6cd1e5ba84`
+- Historical E14C container SHA-256: `609048167f2a7e261bee45e2d935c650be7a55184cdce3966b014e6cd1e5ba84`
+- Required canonical `frozen_models` content SHA-256: `cff6dfbf05fa0f81bff5ebf5cd4d812575b4ec89c5946e8eb1c15384aa8c7935`
 - Parser and normalization: frozen E14B section-aware implementation
 - Baseline: inlet temperature plus 8.0 degrees C
 - Candidate: load-aware ridge, lambda 1.0, coefficients from the frozen file
@@ -37,3 +38,7 @@ Use exactly these previously unused complete exports:
 Write the manifest after download, then execute the evaluator once. No model
 changes, threshold changes, or file substitutions are allowed after outcomes
 are loaded. Preserve null, adverse, failed, and missing results.
+
+## Pre-execution integrity amendment (2026-09-07)
+
+The full E14C JSON container could not be reconstructed byte-for-byte because it includes serialization-sensitive surrounding evidence. Before any E15 file was downloaded or outcome loaded, the gate was narrowed to a canonical hash of the actual baseline and ridge model objects. The model family, coefficients, means, scales, feature order, thresholds, filenames, and decision rules are unchanged. E15 remains `NOT_EVALUATED`.

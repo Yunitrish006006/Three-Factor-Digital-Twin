@@ -8,18 +8,25 @@ import json
 import zipfile
 from pathlib import Path
 
+from digital_twin.enclosure.aau_role import stable_json_sha256
+
 
 ROOT = Path(__file__).resolve().parents[1]
 E11H = ROOT / "outputs/data/enclosure/aau_commissioning_development.json"
 E11F = ROOT / "outputs/data/enclosure/aau_commissioning_confirmation_e11f.json"
 E11H_MANIFEST = ROOT / "outputs/data/enclosure/aau_temperature_ranges_e11h_manifest.json"
 E11F_MANIFEST = ROOT / "outputs/data/enclosure/aau_temperature_ranges_e11f_manifest.json"
-EXPECTED = {
+HISTORICAL_HASHES = {
     E11H: "b76ecfe3e597d0641515df60b0d6636ed9a0ff1e23ebcb2852a225d4eee490e9",
     E11F: "14c606e26f4da454b96d1e8911189df65e498f64f6b7fd1fac2f567461db5c3a",
     E11H_MANIFEST: "79a46e8f0df311292864d2c155597416af4ae4320d631f1dbd8a0b4206d012f0",
     E11F_MANIFEST: "d31e94a21124eeb789d1c2935ef7673781c7fddc2c3b31f447c70ffe739c214e",
 }
+STABLE_MANIFEST_HASHES = {
+    E11H_MANIFEST: "a5f4f2996a60b3d8c33a937e5fe2a3935d7240da7cc57caa8adbdafdf69271de",
+    E11F_MANIFEST: "ab3e876e49a2aa614ae290257d24ba9f3767b0c1cb3a9069e8083f6d307418b2",
+}
+EXPECTED_E11H_MODEL_CONTENT_SHA256 = "dd7947f8cdac872a6447282c232a1b8d7a827d38752c23a18f7c38f9bd7bc2af"
 SOURCE_PATHS = (
     "docs/thesis/thesis_draft_zh.md",
     "scripts/build_thesis_docx.py",
@@ -69,8 +76,8 @@ def verify_manifest(path: Path) -> None:
 
 
 def main() -> None:
-    for path, expected in EXPECTED.items():
-        require(sha256(path) == expected, f"hash changed: {path}")
+    for path, expected in STABLE_MANIFEST_HASHES.items():
+        require(stable_json_sha256(path) == expected, f"stable manifest hash changed: {path}")
     verify_manifest(E11H_MANIFEST)
     verify_manifest(E11F_MANIFEST)
     e11h = json.loads(E11H.read_text(encoding="utf-8"))
@@ -80,6 +87,10 @@ def main() -> None:
     require(h_eval["development_decision"] == "candidate_forwarded_to_e11f", "E11H decision changed")
     require(f_eval["confirmation_decision"] == "h_enc_05_supported_within_campaign", "E11F decision changed")
     require(e11f["refit_performed"] is False, "E11F refit flag changed")
+    require(
+        e11f["inputs"]["e11h_selected_models_sha256"] == EXPECTED_E11H_MODEL_CONTENT_SHA256,
+        "E11F selected-model content hash changed",
+    )
     require(all(h_eval["gates"].values()) and all(f_eval["gates"].values()), "gate changed")
     require(h_eval["sensor_wins"] == 39 and f_eval["sensor_wins"] == 39, "sensor wins changed")
     h_model = h_eval["metrics"]["commissioning_sensor_map_v1"]
@@ -103,9 +114,8 @@ def main() -> None:
     for relative in ARCHIVE_PATHS:
         text = archive_text(ROOT / relative)
         require("0.3966" in text and "h_enc_05_supported_within_campaign" in text, f"stale archive {relative}")
-    print("E11H/E11F verification passed: hashes, raw fragments, frozen no-refit result, calendar limit, sources, and outputs")
+    print("E11H/E11F verification passed: stable manifests, raw fragments, frozen no-refit result, calendar limit, sources, and outputs")
 
 
 if __name__ == "__main__":
     main()
-

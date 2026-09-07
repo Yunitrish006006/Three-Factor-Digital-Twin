@@ -5,3 +5,4 @@
 - Production parser and oracle SHALL be separate functions in separate files.
 - Synthetic tests SHALL include multiple `#group` sections and a host section whose row width can match a BMC header.
 - Machine-readable output SHALL include every file count, mismatch, gate, accepted extrema, and the known-row exclusion result.
+- The E14A audit SHALL invoke the production parser with `normalize_units=False` so the later E14B normalization cannot retroactively alter E14A's registered raw-unit result.

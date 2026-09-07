@@ -122,6 +122,8 @@ def _append_pptx(path: Path) -> None:
         return
     from pptx import Presentation
 
+    from build_thesis_pptx import add_bullets, add_footer, add_title, style_slide
+
     presentation = Presentation(path)
     existing = "\n".join(
         shape.text
@@ -131,16 +133,26 @@ def _append_pptx(path: Path) -> None:
     )
     if TOKEN in existing:
         return
-    slide = presentation.slides.add_slide(presentation.slide_layouts[1])
-    slide.shapes.title.text = "E11G tail-safe：尾端改善但覆蓋未過"
-    slide.placeholders[1].text = (
-        "12 日 leave-one-day-out，42 感測器，30 候選\n"
-        "MAE：1.1168 → 0.8945°C\n"
-        "RMSE：1.7250 → 1.5415°C\n"
-        "P95：3.4900 → 3.1013°C\n"
-        "日區塊改善 95% CI：[0.1847, 0.2620]°C\n"
-        "嚴格勝率 21/42 < 26/42；no_candidate_forwarded，E11F 未存取"
+    slide = presentation.slides.add_slide(presentation.slide_layouts[6])
+    style_slide(slide)
+    add_title(slide, "E11G tail-safe：尾端改善但覆蓋未過")
+    add_bullets(
+        slide,
+        0.9,
+        1.55,
+        11.5,
+        5.25,
+        [
+            "12 日 leave-one-day-out，42 感測器，30 候選",
+            "MAE：1.1168 → 0.8945°C",
+            "RMSE：1.7250 → 1.5415°C",
+            "P95：3.4900 → 3.1013°C",
+            "日區塊改善 95% CI：[0.1847, 0.2620]°C",
+            "嚴格勝率 21/42 < 26/42；no_candidate_forwarded，E11F 未存取",
+        ],
+        level0_size=20,
     )
+    add_footer(slide, len(presentation.slides))
     presentation.save(path)
 
 

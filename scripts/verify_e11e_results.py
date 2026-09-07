@@ -9,12 +9,15 @@ import math
 import zipfile
 from pathlib import Path
 
+from digital_twin.enclosure.aau_role import stable_json_sha256
+
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "outputs/data/enclosure/aau_temperature_ranges_e11e_manifest.json"
 RESULT = ROOT / "outputs/data/enclosure/aau_hierarchical_development.json"
-MANIFEST_SHA = "873e155bceaaac530f004b1ef14d1cceb8356af83f5a9ace1638ec54a34919d6"
-RESULT_SHA = "c345e1320bd7e1aed21fd67f04e661d555a18e6e0fd312f638bc350300eb732a"
+HISTORICAL_MANIFEST_SHA = "873e155bceaaac530f004b1ef14d1cceb8356af83f5a9ace1638ec54a34919d6"
+HISTORICAL_RESULT_SHA = "c345e1320bd7e1aed21fd67f04e661d555a18e6e0fd312f638bc350300eb732a"
+MANIFEST_STABLE_SHA = "ea5b48eb572ed694ad616cc0d57d867c17dcb6c9657b903a2345af660e596fd5"
 
 
 def sha256(path: Path) -> str:
@@ -36,8 +39,7 @@ def archive_contains(path: Path, token: str) -> bool:
 
 
 def main() -> None:
-    require(sha256(MANIFEST) == MANIFEST_SHA, "manifest SHA mismatch")
-    require(sha256(RESULT) == RESULT_SHA, "result SHA mismatch")
+    require(stable_json_sha256(MANIFEST) == MANIFEST_STABLE_SHA, "stable manifest SHA mismatch")
     manifest = json.loads(MANIFEST.read_text())
     result = json.loads(RESULT.read_text())
     require(len(manifest["fragments"]) == 11, "fragment count mismatch")

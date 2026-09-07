@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 from datetime import date
@@ -56,6 +57,13 @@ def download(url: str, path: Path) -> None:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--retrieval-date",
+        default=str(date.today()),
+        help="Manifest retrieval date (YYYY-MM-DD); set this to reproduce an existing frozen manifest hash.",
+    )
+    args = parser.parse_args()
     validate_split()
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     frozen = None
@@ -89,7 +97,7 @@ def main() -> None:
             records.append(record)
     manifest = {
         "study_id": "E12",
-        "retrieval_date": str(date.today()),
+        "retrieval_date": args.retrieval_date,
         "source_repository": "https://github.com/arealuser/bmcdata",
         "source_license": "MIT",
         "source_note": "Mutable master URLs are frozen by complete-file SHA-256.",

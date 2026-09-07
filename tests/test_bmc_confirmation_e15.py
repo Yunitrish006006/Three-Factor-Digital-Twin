@@ -1,4 +1,6 @@
 import importlib.util
+import hashlib
+import json
 import unittest
 from pathlib import Path
 
@@ -11,6 +13,13 @@ SPEC.loader.exec_module(MODULE)
 
 
 class BmcConfirmationE15Tests(unittest.TestCase):
+    def test_frozen_model_content_hash_ignores_container_metadata(self):
+        model = {"frozen_models": {"ridge": {"coefficients": [1.0, 2.0]}}}
+        expected = hashlib.sha256(
+            json.dumps(model["frozen_models"], sort_keys=True, separators=(",", ":")).encode()
+        ).hexdigest()
+        self.assertEqual(MODULE.frozen_model_content_sha256(model), expected)
+
     def test_frozen_ridge_prediction_standardizes_features(self):
         row = {"a": 12.0, "b": 16.0}
         model = {

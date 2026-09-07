@@ -51,7 +51,9 @@ def main() -> None:
             path = RAW_DIR / item["filename"]
             if path.stat().st_size != item["bytes"] or sha256_path(path) != item["sha256"]:
                 raise RuntimeError(f"frozen source mismatch: {item['filename']}")
-            parsed = parse_influx_bmc(path)
+            # Reconstruct the pre-E14B raw-unit run. E13 remains parser/unit
+            # invalidated and must never be promoted as model evidence.
+            parsed = parse_influx_bmc(path, normalize_units=False)
             count = len(parsed["rows"])
             parse_report[item["filename"]] = {
                 "split": split,
@@ -123,7 +125,9 @@ def main() -> None:
                 "BMC component telemetry is not a room-coordinate spatial field.",
                 "No physical PC chassis or NTC sensor was used.",
                 "E13 follows an E12 development-only availability failure.",
+                "E13 predates the E14 parser/unit corrections and is invalidated for model claims.",
             ],
+            "evidence_status": "PARSER_INVALIDATED",
         }
     RESULT.write_text(
         json.dumps(result, ensure_ascii=True, indent=2) + "\n",

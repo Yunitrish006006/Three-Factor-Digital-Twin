@@ -28,7 +28,7 @@ FEATURE_SETS = {
 LAMBDAS = (0.01, 0.1, 1.0, 10.0)
 
 
-def parse_influx_bmc(path: Path) -> dict:
+def parse_influx_bmc(path: Path, *, normalize_units: bool = True) -> dict:
     header = None
     section_is_bmc_capable = False
     raw_section_rows = []
@@ -56,8 +56,10 @@ def parse_influx_bmc(path: Path) -> dict:
         )
         temperature_raw = temperature_median >= 1000.0
         power_raw = power_median >= 100000.0
-        temperature_scale = 0.001 if temperature_raw else 1.0
-        power_scale = 0.000001 if power_raw else 1.0
+        inferred_temperature_scale = 0.001 if temperature_raw else 1.0
+        inferred_power_scale = 0.000001 if power_raw else 1.0
+        temperature_scale = inferred_temperature_scale if normalize_units else 1.0
+        power_scale = inferred_power_scale if normalize_units else 1.0
         concordant = temperature_raw == power_raw
         unit_sections.append({
             "section_index": current_section_index,

@@ -35,6 +35,15 @@
 - `run_rnn_3d_field_comparison.py`：同八情境、同稀疏觀測的 pure RNN 完整 3-D 場 LOO baseline。
 - `run_rnn_public_comparison.py`：SML2010 時序 vanilla RNN 公平比較。
 - `run_kalman_filter_comparison.py`：固定 protocol 的同資料受控 Kalman filtering 比較。
+- `run_gru_lstm_public_comparison.py`：SML2010 上的單層 GRU／LSTM 與既有時序基線公平比較；需要 `.[research]` 的 NumPy。
+- `run_enclosure_bmc_baseline.py`：BMC 機櫃資料的時間轉移 baseline。
+- `run_aau_spatial_baseline.py`：AAU 伺服器室固定區段的空間轉移 baseline。
+- `run_aau_local_idw_confirmation.py`、`run_aau_role_confirmation.py`：AAU 局部與角色條件化的確認實驗。
+- `run_aau_hierarchical_development.py`、`run_aau_tail_safe_development.py`：AAU 階層式與尾端安全 gating 的開發實驗。
+- `run_aau_commissioning_development.py`、`run_aau_commissioning_confirmation.py`：AAU commissioning 校正的開發與凍結確認。
+- `run_bmc_cross_run_e12.py`、`run_bmc_cross_run_e13.py`：BMC 跨 run 的資料品質與短 run 復原稽核。
+- `audit_bmc_section_parser_e14a.py`、`audit_bmc_unit_regimes_e14b.py`、`run_corrected_bmc_sensitivity_e14c.py`：BMC parser、單位 regime 與修正資料的回溯敏感度鏈。
+- `download_bmc_confirmation_e15.py`、`run_bmc_confirmation_e15.py`：E15 未使用檔案確認；只能在預註冊檢查完成並決定消耗 final confirmation 後執行。
 - `build_professor_demo.py`：由 canonical JSON 產生教授版兩週離線成果頁。
 - `run_target_holdout_validation.py`：以分離的 input／validation roles 執行受控 target-point holdout；目前證據類型是 synthetic。
 - `analyze_e8_intervention_trials.py`：E8 真實介入資料分析；空白模板只能得到 `NOT_EVALUATED`。

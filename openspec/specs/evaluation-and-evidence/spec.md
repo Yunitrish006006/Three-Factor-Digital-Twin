@@ -547,3 +547,39 @@ The project SHALL retain all 12 case outcomes, parity hashes, training diagnosti
 - **AND** GRU retains 2/12 wins over vanilla with -12.880146% median relative reduction
 - **AND** LSTM retains 0/12 wins over vanilla with -11.368865% median relative reduction
 - **AND** H-RNNGATE-01 remains not supported and no candidate is forwarded
+
+### Requirement: EVD-041 Preserve the E12-E14 BMC evidence chain
+
+The project SHALL report the BMC data-quality, parser, unit-normalization, and retrospective-model studies as a linked evidence chain without promoting invalidated or retrospective results to confirmation.
+
+#### Scenario: Reporting E12 and E13
+
+- **WHEN** the cross-run studies are summarized
+- **THEN** E12 SHALL remain a pretest data-quality failure with the 30-row gate unchanged and final-test files unopened
+- **AND** the 2026-09-07 reproducibility audit SHALL report all six development files below 30 valid rows
+- **AND** E13 SHALL remain `PARSER_INVALIDATED` and SHALL not support a model-performance claim
+
+#### Scenario: Reporting E14A and E14B
+
+- **WHEN** the corrected data pipeline is summarized
+- **THEN** E14A SHALL report 4,038 source-correct rows and the failed raw-unit sanity gate
+- **AND** E14B SHALL report exactly three raw-unit files, 4,038 preserved rows, normalized temperatures from 29.0 to 77.5 degrees C, and all eight data-quality gates passing
+- **AND** neither data-quality audit SHALL be described as model confirmation
+
+#### Scenario: Reporting E14C
+
+- **WHEN** the corrected-data model result is summarized
+- **THEN** the inlet baseline MAE/RMSE/P95 SHALL remain 4.0882/5.2087/12.0000 degrees C
+- **AND** the load-aware ridge result SHALL remain 1.8054/2.8001/7.1146 degrees C with 13/14 run wins and bootstrap interval [1.4271, 2.7939] degrees C
+- **AND** E14C SHALL be labeled retrospective candidate-eligibility evidence, not unseen confirmation
+
+### Requirement: EVD-042 Preserve E15 as an unexecuted confirmation protocol
+
+The project SHALL distinguish the preregistered E15 protocol from empirical evidence until its untouched files are intentionally downloaded and evaluated once.
+
+#### Scenario: Reporting current E15 status
+
+- **WHEN** E15 appears in a thesis, paper, report, or presentation before execution
+- **THEN** it SHALL be labeled `NOT_EVALUATED` or protocol-only
+- **AND** no E15 metrics, supported hypothesis, or cross-time confirmation claim SHALL be stated
+- **AND** the scope SHALL remain same-server temporal and workload transfer, excluding NTC hardware, PC enclosures, spatial fields, cross-server transfer, and control

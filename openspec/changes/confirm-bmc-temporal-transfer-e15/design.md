@@ -2,7 +2,7 @@
 
 The downloader stores immutable per-file hashes even though the upstream raw
 URLs use a mutable branch. The evaluator verifies the exact filename set,
-manifest hashes, and frozen-model hash before parsing any confirmation row.
+manifest hashes, and canonical frozen-model content hash before parsing any confirmation row.
 
 Metrics are calculated both over all rows and as equal-weighted run means.
 The bootstrap resamples complete runs rather than individual timestamps to

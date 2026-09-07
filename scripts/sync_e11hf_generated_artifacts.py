@@ -122,6 +122,8 @@ def _append_pptx(path: Path) -> None:
         return
     from pptx import Presentation
 
+    from build_thesis_pptx import add_bullets, add_footer, add_title, style_slide
+
     presentation = Presentation(path)
     existing = "\n".join(
         shape.text
@@ -131,23 +133,44 @@ def _append_pptx(path: Path) -> None:
     )
     if TOKEN in existing:
         return
-    slide = presentation.slides.add_slide(presentation.slide_layouts[1])
-    slide.shapes.title.text = "E11H commissioning：開發通過"
-    slide.placeholders[1].text = (
-        "2 日校正、1 日選模、9 日凍結測試\n"
-        "MAE：1.0958 → 0.4039°C；P95：3.5061 → 1.2900°C\n"
-        "39/42 感測器改善；95% CI：[0.4854, 0.9271]°C\n"
-        "限制：Huber slope 邊界與 commissioning prerequisite"
+    slide = presentation.slides.add_slide(presentation.slide_layouts[6])
+    style_slide(slide)
+    add_title(slide, "E11H commissioning：開發通過")
+    add_bullets(
+        slide,
+        0.9,
+        1.55,
+        11.5,
+        5.25,
+        [
+            "2 日校正、1 日選模、9 日凍結測試",
+            "MAE：1.0958 → 0.4039°C；P95：3.5061 → 1.2900°C",
+            "39/42 感測器改善；95% CI：[0.4854, 0.9271]°C",
+            "限制：Huber slope 邊界與 commissioning prerequisite",
+        ],
+        level0_size=20,
     )
-    slide = presentation.slides.add_slide(presentation.slide_layouts[1])
-    slide.shapes.title.text = "E11F：frozen no-refit confirmation"
-    slide.placeholders[1].text = (
-        "MAE/RMSE/P95：0.3966/0.6723/1.2756°C\n"
-        "39/42 感測器改善；95% CI：[0.5851, 0.9274]°C\n"
-        "h_enc_05_supported_within_campaign\n"
-        "日期與開發重疊：僅同 campaign unseen-byte evidence\n"
-        "不是跨機箱、氣流因果或 NTC 硬體驗證"
+    add_footer(slide, len(presentation.slides))
+
+    slide = presentation.slides.add_slide(presentation.slide_layouts[6])
+    style_slide(slide)
+    add_title(slide, "E11F：frozen no-refit confirmation")
+    add_bullets(
+        slide,
+        0.9,
+        1.55,
+        11.5,
+        5.25,
+        [
+            "MAE/RMSE/P95：0.3966/0.6723/1.2756°C",
+            "39/42 感測器改善；95% CI：[0.5851, 0.9274]°C",
+            "h_enc_05_supported_within_campaign",
+            "日期與開發重疊：僅同 campaign unseen-byte evidence",
+            "不是跨機箱、氣流因果或 NTC 硬體驗證",
+        ],
+        level0_size=20,
     )
+    add_footer(slide, len(presentation.slides))
     presentation.save(path)
 
 
@@ -156,4 +179,3 @@ def sync_pptx_outputs() -> None:
         _append_outline(path)
     for path in PPTX_PATHS:
         _append_pptx(path)
-

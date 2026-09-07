@@ -26,10 +26,14 @@
 ## 快速驗證
 
 ```bash
-python3 scripts/validate_research_openspec.py
-python3 scripts/verify_thesis_results.py
-python3 -m unittest discover -s tests
+python3 -m venv .venv
+.venv/bin/python -m pip install -e ".[research,artifacts]"
+.venv/bin/python scripts/validate_research_openspec.py
+.venv/bin/python scripts/verify_thesis_results.py
+.venv/bin/python -m unittest discover -s tests
 ```
+
+`verify_thesis_results.py` 在任何 `FAIL` 或 `MISSING` 時會以非零狀態結束；乾淨 clone 必須先依報告中的 `suggested_script` 重建被忽略的 `outputs/data/` 證據。
 
 執行完整研究實驗：
 

@@ -1394,11 +1394,11 @@ Kalman 受控同資料比較為 COMPLETE，12/12 Kalman 案例通過資料一致
 
 | Case | Eligible pairs | Persistence MAE | Linear MAE | Thermal-balance MAE | 最低 MAE |
 | --- | --- | --- | --- | --- | --- |
-| 202512112333:bmc | 45 | 0.111111 | 0.611499 | 0.644822 | Persistence |
-| 202512120002:bmc | 75 | 0.200000 | 0.236494 | 0.464760 | Persistence |
-| 202512120114:bmc | 249 | 0.019608 | 0.075570 | 0.165912 | Persistence |
-| 202512132226:bmc | 86 | 0.000000 | 0.086525 | 0.083910 | Persistence |
-| 202512132302:bmc | 99 | 0.000000 | 0.027354 | 0.033091 | Persistence |
+| 202512112333 / bmc | 45 | 0.111111 | 0.611499 | 0.644822 | Persistence |
+| 202512120002 / bmc | 75 | 0.200000 | 0.236494 | 0.464760 | Persistence |
+| 202512120114 / bmc | 249 | 0.019608 | 0.075570 | 0.165912 | Persistence |
+| 202512132226 / bmc | 86 | 0.000000 | 0.086525 | 0.083910 | Persistence |
+| 202512132302 / bmc | 99 | 0.000000 | 0.027354 | 0.033091 | Persistence |
 
 Persistence 在 5/5 案例取得最低 test MAE，thermal-balance 對 persistence 為 0/5，因此 H-ENC-01 不支持。兩個 test partition 的 outlet reading 維持常數，使 persistence MAE 為 0；其餘三案也仍由 persistence 最佳。這項負向結果表示，在目前短 cadence、量化且高慣性的 outlet-air task 中，加入簡化 thermal terms 沒有形成可驗證增益。它只回答公開 BMC temporal task，不能宣稱 3-D 機箱熱場、CPU/GPU hotspot、PID 效益或一般設備櫃適用性；後續空間轉移仍需具座標的 airflow、temperature、power 與 reference field 資料另立 E11B protocol。
 
@@ -1425,6 +1425,19 @@ IDW 雖優於全域平均，卻未勝過最近鄰，且僅在 6/42 個感測器�
 | Global IDW（p=2） | 1.844 | 2.285 | 4.507 |
 
 Local IDW 的 paired MAE 改善為 0.0783 °C，20,000 次 day-block bootstrap 95% 區間為 [0.0546, 0.1063] °C；但 per-sensor 結果為 local IDW 21/42、最近鄰 21/42，未達預註冊至少 26/42 的廣度門檻。因此四項條件只通過三項，H-ENC-03 判定為不支持。探索性分群顯示 local IDW 在 gradient、rack back、rack front 分別勝出 0/5、17/28、4/9；這只能形成 sensor-role heterogeneity 假說，不能證明機櫃拓撲、氣流方向或熱分層原因。
+
+#### 5.9.3.7 BMC 跨 run 資料修正與回溯敏感度
+
+E12 至 E14C 形成一條必須依序解讀的資料品質與模型證據鏈。E12 在固定 12/5/14 檔 train/selection/test split 上要求每檔至少 30 筆有效 BMC rows；2026-09-07 的結構化重現確認有 6 個 development files 未達門檻，因此未選模、未開啟 final-test files，狀態為 NOT_EVALUATED。E13 將開發門檻改為 10 rows 後雖完成運算，但該結果使用尚未修正的 parser／unit pipeline，現標記為 PARSER_INVALIDATED，不作模型證據。
+
+E14A 以逐 section header 與獨立 oracle 稽核 31 檔，保留 4,038 筆 source-correct BMC rows，但三個 selection files 的 raw hwmon 單位使溫度合理性閘門失敗。E14B 再以固定中位數規則辨識單位 regime，對這三檔套用 10^-3 溫度與 10^-6 功率縮放，其餘 28 檔維持 scale 1.0；4,038 rows 全數保留，校正後溫度範圍為 29.0–77.5 °C，八個資料品質閘門全通過。E14A/E14B 只支持資料管線正確性，不是模型準確度確認。
+
+| E14C retrospective test | MAE（°C） | RMSE（°C） | P95（°C） | 逐 run 勝出 |
+| --- | --- | --- | --- | --- |
+| Inlet + frozen offset baseline | 4.0882 | 5.2087 | 12.0000 | 1/14 |
+| Load-aware ridge（lambda=1.0） | 1.8054 | 2.8001 | 7.1146 | 13/14 |
+
+E14C 在 E14B 修正資料上重跑未改動的 candidate family。Load-aware ridge 的 macro MAE 改善之 run-block bootstrap 95% 區間為 [1.4271, 2.7939] °C，且預測落在 37.0033–64.3640 °C，因此通過候選資格閘門。然而這 14 個 test files 已在 E13 與 parser 除錯期間開啟，E14C 只能稱 retrospective sensitivity，不能稱 unseen confirmation。E15 已固定另 14 個未使用檔案、模型內容 hash 與全部閘門，但目前未下載、未執行，狀態維持 NOT_EVALUATED。
 
 ### 5.9.4 CU-BEMS：C1/C2/C3 任務族群拆解
 
@@ -1492,6 +1505,8 @@ Kalman controlled filtering 亦顯示相同的比較原則：12 個案例皆以�
 
 機箱 E11B 與 E11C 進一步顯示 spatial interpolation 的結論必須分層。E11B 的全域 IDW 不如最近鄰；E11C 在獨立 ranges 上以 local IDW 改善 aggregate MAE、RMSE 與 bootstrap interval，但只在 21/42 感測器勝出，未達 26/42 門檻。三個 enclosure 假說目前均不支持，其中 E11C 的 aggregate improvement 只能作有限描述，不能改寫成普遍改善。
 
+BMC E12–E14C 的主要研究成果是把資料可用性、parser 正確性、單位正規化與模型表現拆開驗證。E12 在 final-test 未開啟前因六個 development files 未達 30 rows 而停止；E13 的輸出因舊 parser／unit pipeline 而失效。E14A/E14B 完成 4,038 rows 的來源與單位稽核後，E14C 的 frozen load-aware ridge 將回溯 test MAE 由 4.0882°C 降至 1.8054°C、勝出 13/14 runs，bootstrap 區間為 [1.4271, 2.7939]°C。此結果只使候選具備進入新確認的資格；E15 尚未執行，不能宣稱跨時間確認完成。
+
 另一項結論是，公開資料集並非不能使用，而是必須依資料本身支援的任務層級進行比較。對完整 3D 場重建，本研究目前仍以 canonical synthetic benchmark 作為主要依據；對 zone-level 響應、兩點時序響應與舒適度評分，則可分別利用相容的公開資料建立 task-aligned benchmark。此作法比直接宣稱所有資料集都能完整驗證本研究系統更嚴謹，也使後續 IEEE 稿件能從中文論文抽取一致的資料、數字與 claim boundary。
 
 真實臥室快照驗證進一步補足了純模擬實驗的不足。7 天、28 筆快照結果顯示，當 8 顆角落感測器提供真實觀測時，校正後模型能將未參與校正的 pillow 位置估計誤差降至 0.1676°C、0.3939% 與 16.6450 lux。以日期為 block 的 20,000 次 paired bootstrap 亦顯示三因子 MAE 降幅的 95% interval 下界均高於 0；進一步逐日剔除時，三因子的最小 MAE 降幅仍為 0.6123°C、3.5551 %RH 與 290.5716 lux。因此改善在既有七個日期的重抽樣與單日 influence diagnostic 下皆保持正值；但此結果不等同於完整 3D 場 ground truth，也不能外推為跨房間成功率。
@@ -1515,6 +1530,7 @@ Kalman controlled filtering 亦顯示相同的比較原則：12 個案例皆以�
 - 固定 pure Elman RNN 在八情境完整 3-D 場的 24 個 fold×因子比較亦未取得最低 MAE；sensor-token recurrence 不是物理時間序列，結果只限此單房間 controlled synthetic 設定。
 - Kalman 目前只完成 SML2010 固定種子 injected-noise current-time filtering；linear Kalman 與 MA(3) 各在 6/12 案例最低，不能外推為真實 sensing node、forecast、3D field 或 online parameter adaptation 優勢。
 - 機箱 E11A 只完成公開 BMC next-observation outlet-air task；317 個 file-device cases 中 312 個未達 20–30 °C 內最低樣本門檻，5 個可評估案例全部由 persistence 最佳，不能外推到 3-D 熱場、元件 hotspot、PID 或任意設備櫃。
+- BMC E12 因 6 個 development files 未達 30-row 門檻而未評估 final test；E13 為 parser-invalidated。E14C 雖在修正後回溯資料上顯著優於 baseline，但 test bytes 已開啟，只能視為候選資格證據；E15 仍為 NOT_EVALUATED。
 - 機箱 E11B/E11C 只完成 AAU 固定 byte-range 的 leave-one-sensor-out 比較；E11C local IDW 雖降低 aggregate error，卻只在 21/42 感測器勝出，不能外推為 CFD、因果控制、完整期間或 topology-aware 模型已驗證。
 - MCP server 目前為本地 stdio 版本，尚未包含遠端部署、OAuth 或多使用者管理。
 - 控制功能目前為具前置條件的推薦排序：必須先有 point/cluster sample 與三因子目標，且尚未完成真實介入式因果驗證，也尚未進入自動閉環控制。
@@ -1534,7 +1550,7 @@ Kalman controlled filtering 亦顯示相同的比較原則：12 個案例皆以�
 - 以獨立 validation reference 執行實體 sensing-node filtering，估計 real measurement noise、missingness 與 covariance drift；只有在 nonlinear transition/observation model 明確後才擴展 EKF/UKF 或 online parameter adaptation。
 - GRU 與 LSTM 已完成第一個單一 seed、同資料、近似參數量的 SML2010 簡易比較；兩者最低 MAE 皆為 0/12，GRU 僅 2/12 勝 vanilla 且中位相對改善 -12.880146%，LSTM 為 0/12 與 -11.368865%，沒有候選通過門檻。若改 history、容量、seed 或完整 3-D 任務，必須另立 protocol。
 - 將 PID 納入未來閉環控制 baseline；在執行前固定 plant、動態 setpoint、disturbance、sampling、actuator limit 與安全 cutoff，並比較 tracking MAE、settling time、overshoot、control effort 與 constraint violations。PID 不屬於 3-D 場估測器，目前亦為 NOT_EVALUATED。
-- 機箱 E11A 至 E11C 已完成且三個假說均不支持。若後續研究 sensor-role、rack topology、airflow direction 或非等向性距離，必須以新的資料切分與 OpenSpec 預註冊；不得用 E11C confirmation metrics 回頭選規則，超過 30 °C 的元件熱點仍不在目前適用範圍。
+- 機箱 E11A 至 E11F 已完成分層研究；E11D 支持角色語意的預測資訊，E11F 只支持同一 AAU campaign 的 commissioning-assisted unseen-byte transfer。BMC E14C 候選仍須由尚未執行的 E15 新檔案確認。後續任何跨機箱、跨伺服器、NTC 硬體或氣流因果主張都必須另立 protocol。
 
 
 ---

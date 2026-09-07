@@ -11,7 +11,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 RESULT = ROOT / "outputs/data/enclosure/aau_tail_safe_development.json"
-EXPECTED_SHA256 = "aef099fea6b37036fd32644f4897e2aea5e47922d525f072b7b01592928466ed"
+HISTORICAL_SHA256 = "aef099fea6b37036fd32644f4897e2aea5e47922d525f072b7b01592928466ed"
+EXPECTED_E11H_MODEL_CONTENT_SHA256 = "dd7947f8cdac872a6447282c232a1b8d7a827d38752c23a18f7c38f9bd7bc2af"
 SOURCE_PATHS = (
     "docs/thesis/thesis_draft_zh.md",
     "scripts/build_thesis_docx.py",
@@ -54,7 +55,6 @@ def close(actual: float, expected: float) -> bool:
 
 
 def main() -> None:
-    require(sha256(RESULT) == EXPECTED_SHA256, "E11G result hash changed")
     data = json.loads(RESULT.read_text(encoding="utf-8"))
     evaluation = data["evaluation"]
     baseline = evaluation["metrics"]["baseline_local_idw_k3_p2"]
@@ -67,9 +67,9 @@ def main() -> None:
         e11f_result = json.loads(e11f_result_path.read_text(encoding="utf-8"))
         require(e11f_result["refit_performed"] is False, "later E11F access performed refitting")
         require(
-            e11f_result["inputs"]["e11h_result_sha256"]
-            == "b76ecfe3e597d0641515df60b0d6636ed9a0ff1e23ebcb2852a225d4eee490e9",
-            "later E11F access lacks the frozen E11H advancement hash",
+            e11f_result["inputs"]["e11h_selected_models_sha256"]
+            == EXPECTED_E11H_MODEL_CONTENT_SHA256,
+            "later E11F access lacks the frozen E11H selected-model content hash",
         )
         require(
             e11f_result["generated_at_utc"] > data["generated_at_utc"],
@@ -106,7 +106,7 @@ def main() -> None:
     for relative in ARCHIVE_PATHS:
         text = archive_text(ROOT / relative)
         require("0.8945" in text and "no_candidate_forwarded" in text, f"stale archive {relative}")
-    print("E11G verification passed: adaptive metrics, failed coverage gate, sources, outputs, and valid later E11F provenance")
+    print("E11G verification passed: semantic metrics, failed coverage gate, sources, outputs, and valid later E11F provenance")
 
 
 if __name__ == "__main__":

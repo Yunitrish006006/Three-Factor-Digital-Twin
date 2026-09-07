@@ -208,3 +208,20 @@ The project SHALL not generalize the single-seed SML2010 GRU/LSTM comparison to 
 - **THEN** `H-ENC-03` SHALL remain not supported
 - **AND** the positive bootstrap interval and the failed 21/42 breadth result SHALL both remain visible
 - **AND** exploratory gradient, rack-front, and rack-back differences SHALL not be described as causal topology or airflow evidence
+
+### Requirement: RGV-010 BMC correction-chain governance
+
+The project SHALL preserve the order and evidence level of E12 through E15 so that later parser repairs cannot retroactively upgrade earlier experiments.
+
+#### Scenario: A later parser or unit repair changes a rerun
+
+- **WHEN** E12, E13, or E14A is reconstructed after E14B
+- **THEN** the runner SHALL explicitly select the historically applicable normalization mode
+- **AND** the reconstructed output SHALL retain its original failure or invalidation status
+
+#### Scenario: E15 remains unopened
+
+- **WHEN** the E15 protocol is synchronized before empirical execution
+- **THEN** frozen inputs and gates MAY be repaired for reproducibility only before any confirmation outcome is loaded
+- **AND** the repair rationale and new content identity SHALL be recorded
+- **AND** E15 SHALL remain `NOT_EVALUATED`
