@@ -15,6 +15,7 @@
 | 需求 | 入口 |
 | --- | --- |
 | 查看教授版進度與完整實驗 | [`docs/reports/`](docs/reports/) |
+| 開啟兩週教授成果與 Demo 指南 | [`docs/reports/professor_two_week_report_2026-08-04_2026-08-17_zh.md`](docs/reports/professor_two_week_report_2026-08-04_2026-08-17_zh.md)／[`docs/demos/professor_demo_guide_2026-08-17_zh.md`](docs/demos/professor_demo_guide_2026-08-17_zh.md) |
 | 閱讀中文論文主線 | [`docs/thesis/README.md`](docs/thesis/README.md) |
 | 找研究、模型或實驗文件 | [`docs/README.md`](docs/README.md) |
 | 查看感測節點與驗證級硬體 | [`docs/hardware/README.md`](docs/hardware/README.md) |
@@ -40,12 +41,14 @@ python3 scripts/run_all_thesis_experiments.py
 
 ```bash
 python3 scripts/run_target_holdout_validation.py
+python3 scripts/run_kalman_filter_comparison.py
 ```
 
 執行本地展示：
 
 ```bash
 python3 scripts/run_demo.py
+python3 scripts/build_professor_demo.py
 python3 scripts/run_web_demo.py
 ```
 

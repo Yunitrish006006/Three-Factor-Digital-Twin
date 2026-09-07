@@ -7,7 +7,7 @@
 | `core/` | 實體、sensor/node roles、情境、holdout validation、共用服務與公開資料任務對齊 |
 | `physics/` | reduced-order 場模型、校正、影響學習、baseline 與動作排序 |
 | `neural/` | 可選的 hybrid residual 模型 |
-| `evaluation/` | E8、次日預測、RNN 與公開方法比較的可測試評估邏輯 |
+| `evaluation/` | E8、次日預測、pure RNN 3-D 場、時序 RNN、Kalman 與公開方法比較的可測試評估邏輯 |
 | `mcp/` | MCP runtime 與 Gemma/Ollama bridge |
 | `web/` | 本地 Web API、頁面與視覺化輸出 |
 | `agent/` | 共用工具 runtime 包裝 |

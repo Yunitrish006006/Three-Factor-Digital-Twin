@@ -12,6 +12,10 @@ context: |
   - Explainable counterfactual action ranking for decision support.
   - MCP and Web interfaces are secondary service layers, not the headline novelty.
   - The validated temperature operating domain is currently limited to 20-30 C.
+  - GRU and LSTM have a completed single-seed SML2010 same-data comparison: neither is lowest-MAE in any of 12 cases, GRU beats vanilla RNN in 2/12, LSTM in 0/12, and H-RNNGATE-01 is not supported; PID remains NOT_EVALUATED.
+  - E11A public BMC temporal transfer is evaluated: only 5 of 317 file-device cases were eligible inside 20-30 C, persistence was lowest-MAE in all 5, and the thermal-balance hypothesis was not supported.
+  - E11B AAU spatial transfer is evaluated: 42 eligible sensors and 1,641 one-minute snapshots were compared; nearest neighbor achieved MAE 1.175 C and 30/42 per-sensor wins, while 3-D IDW achieved MAE 1.687 C and 6/42 wins, so H-ENC-02 was not supported.
+  - E11C independent local-IDW confirmation is evaluated: local IDW reduced macro MAE from 1.301 C to 1.223 C on 1,505 snapshots and had a positive day-block-bootstrap interval, but won only 21/42 sensors rather than the required 26/42, so H-ENC-03 was not supported.
 
   Current implementation:
   - Python 3.9+ package under digital_twin/.
@@ -19,6 +23,7 @@ context: |
   - Input, validation, target, and pseudo nodes have distinct research roles.
   - Reduced-order physics plus sparse calibration is the primary estimator.
   - A small MLP is an optional additive residual corrector.
+  - A standalone pure Elman RNN is a controlled 3-D field comparator, not a production estimator.
   - Evidence includes controlled simulation, real-bedroom target snapshots, and
     task-aligned SML2010/CU-BEMS public benchmarks.
   - Low-cost input nodes and higher-accuracy validation nodes are distinct
@@ -80,3 +85,5 @@ rules:
     - Record actual run metadata, deviations, machine-readable outputs, metrics, uncertainty, failures, and exclusions.
     - For each hypothesis and claim, conclude supported, partially supported, not supported, or not evaluated.
     - Do not archive a research change while required evidence or synchronized artifacts remain incomplete.
+
+# E11D status (2026-08-23): H-ENC-04 supported as secondary, predictive, non-causal enclosure evidence.

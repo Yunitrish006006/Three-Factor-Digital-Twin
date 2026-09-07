@@ -150,3 +150,61 @@ The project SHALL separate numerical estimator precision from demonstrated appli
 - **WHEN** any required operating temperature is below `20 °C` or above `30 °C`
 - **THEN** the application SHALL be labeled out of current model scope
 - **AND** it SHALL require new modeling, calibration, and validation before any applicability claim
+
+### Requirement: RGV-008 Recurrent, control, and enclosure direction status
+
+The project SHALL distinguish evaluated bounded gated-recurrent comparators, future closed-loop control baselines, completed E11A temporal evidence, and completed E11B spatial evidence.
+
+#### Scenario: Reporting GRU or LSTM
+
+- **WHEN** GRU or LSTM is listed in current results or future work
+- **THEN** it SHALL be labeled evaluated only for the single-seed SML2010 same-data temporal comparison
+- **AND** the existing vanilla RNN adverse results SHALL remain visible
+- **AND** GRU 2/12 and LSTM 0/12 MAE wins over vanilla RNN, zero lowest-MAE cases for both, and the unsupported H-RNNGATE-01 decision SHALL remain visible
+- **AND** any architecture, history, seed, or tuning change requires a new protocol and SHALL not replace the completed adverse result
+
+### Requirement: RGV-009 Bounded gated-model interpretation
+
+The project SHALL not generalize the single-seed SML2010 GRU/LSTM comparison to all recurrent architectures, dense spatial fields, enclosures, or control.
+
+#### Scenario: No gated model satisfies the forwarding gate
+
+- **WHEN** neither model reaches eight MAE wins over vanilla RNN and positive median relative MAE reduction
+- **THEN** the adverse result remains visible and no model is forwarded from this task
+- **AND** PID remains outside the estimator experiment and `NOT_EVALUATED`
+
+#### Scenario: Proposing PID
+
+- **WHEN** PID is listed as future work
+- **THEN** it SHALL be identified as a closed-loop control comparator rather than a 3-D field estimator
+- **AND** its future evaluation SHALL share plant, trajectory, disturbance, observation, actuator, and safety constraints with competing controllers
+- **AND** current counterfactual action ranking SHALL not be described as implemented PID control
+
+#### Scenario: Proposing an equipment enclosure
+
+- **WHEN** a machine or equipment enclosure is proposed as an application
+- **THEN** it SHALL be labeled a transfer candidate requiring new scale, airflow, heat-source, sensor, and validation contracts
+- **AND** every intended air-state target SHALL remain within `20–30 °C` for current-scope alignment
+- **AND** room-level evidence SHALL not be reused as enclosure applicability evidence
+
+#### Scenario: Reporting the E11A BMC temporal transfer
+
+- **WHEN** the completed public BMC outlet-air comparison is reported
+- **THEN** it SHALL state that 5 of 317 file-device cases were eligible and persistence was lowest-MAE in all 5
+- **AND** `H-ENC-01` SHALL be reported as not supported because thermal-balance beat persistence in 0 of 5 cases
+- **AND** the result SHALL remain a public task-aligned temporal negative result rather than 3-D enclosure, component-hotspot, PID, or deployment evidence
+
+#### Scenario: Reporting the E11B AAU spatial transfer
+
+- **WHEN** the completed AAU leave-one-sensor-out comparison is reported
+- **THEN** it SHALL state that nearest neighbor beat 3-D IDW in macro MAE and won 30/42 sensors
+- **AND** `H-ENC-02` SHALL be reported as not supported because IDW won only 6/42 and did not beat nearest neighbor
+- **AND** no post-hoc parameter or coordinate change SHALL replace the registered result
+- **AND** topology-aware or anisotropic follow-up work SHALL require a separate protocol
+
+#### Scenario: Reporting the E11C local-IDW confirmation
+
+- **WHEN** aggregate E11C errors improve but sensor-wise coverage fails
+- **THEN** `H-ENC-03` SHALL remain not supported
+- **AND** the positive bootstrap interval and the failed 21/42 breadth result SHALL both remain visible
+- **AND** exploratory gradient, rack-front, and rack-back differences SHALL not be described as causal topology or airflow evidence

@@ -27,7 +27,7 @@ task-aligned benchmarks, and intervention studies as distinct evidence classes.
 
 ### Requirement: EVD-002 Experiment registry
 
-The project SHALL maintain experiments and validation items `E1` through `E9`
+The project SHALL maintain experiments and validation items `E1` through `E11`
 with stable meanings and explicit evidence status.
 
 #### Scenario: Listing the current registry
@@ -42,6 +42,8 @@ with stable meanings and explicit evidence status.
 - **AND** `E7` SHALL mean real-bedroom snapshot sparse calibration
 - **AND** `E8` SHALL mean real before/after action intervention validation
 - **AND** `E9` SHALL mean public task-aligned benchmarking
+- **AND** `E10` SHALL mean controlled injected-noise current-time filtering comparison
+- **AND** `E11` SHALL mean equipment-enclosure transfer, with `E11A` for public BMC temporal transfer and `E11B` reserved for spatial transfer
 
 #### Scenario: Reporting registry status
 
@@ -50,6 +52,8 @@ with stable meanings and explicit evidence status.
 - **AND** `E4` SHALL be bounded to controlled or recorded learning checks rather than real causal identification
 - **AND** `E8` SHALL remain `DOCUMENT_ONLY` or `NOT_EVALUATED` until intervention evidence exists
 - **AND** `E9` SHALL be `REPRODUCIBLE` only when the required public evidence JSON files exist
+- **AND** `E10` SHALL be `REPRODUCIBLE` only when all registered raw, moving-average, and Kalman cases pass shared-row parity
+- **AND** `E11A`, `E11B`, and `E11C` SHALL be `REPRODUCIBLE` bounded negative or mixed-negative evidence with their temporal, discovery, and confirmation task limits kept separate
 
 ### Requirement: EVD-003 Metrics and comparator parity
 
@@ -351,12 +355,12 @@ The project SHALL compare the professor-requested vanilla RNN with project and b
 
 ### Requirement: EVD-016 Canonical complete experiment inventory
 
-The project SHALL maintain a consolidated E1–E9 inventory that is traceable to current machine-readable evidence and preserves adverse, missing, and out-of-domain outcomes.
+The project SHALL maintain a consolidated E1–E11 inventory that is traceable to current machine-readable evidence and preserves adverse, missing, and out-of-domain outcomes.
 
 #### Scenario: Rendering the inventory
 
 - **WHEN** the complete experiment overview is generated
-- **THEN** every E1–E9 item SHALL identify its evidence class, data, comparators, metrics, status, evidence path, producer command, and claim boundary
+- **THEN** every E1–E11 item SHALL identify its evidence class, data, comparators, metrics, status, evidence path, producer command, and claim boundary
 - **AND** E9 subexperiments SHALL remain distinguishable rather than being collapsed into one result
 
 #### Scenario: Reconciling stale prose
@@ -370,3 +374,176 @@ The project SHALL maintain a consolidated E1–E9 inventory that is traceable to
 - **WHEN** an E5 target-zone indoor temperature is outside `20–30 °C`
 - **THEN** the row SHALL be retained as an out-of-domain stress case
 - **AND** it SHALL not support current-domain applicability claims
+
+### Requirement: EVD-017 Same-data controlled Kalman filtering comparison
+
+The project SHALL compare raw observations, a causal moving average, and a registered linear Kalman filter on identical fixed-seed corrupted SML2010 current-time rows.
+
+#### Scenario: Building one corrupted input
+
+- **WHEN** a target and registered noise profile are evaluated
+- **THEN** one corrupted observation sequence SHALL be generated before any method is run
+- **AND** every method SHALL use the same chronological split, timestamps, corrupted values, reference targets, and metric functions
+- **AND** the timestamp and corrupted-value hashes SHALL be preserved in evidence
+
+#### Scenario: Running the registered filter
+
+- **WHEN** the scalar Kalman filter is executed
+- **THEN** its transition, observation, process covariance, measurement covariance, initialization, and gap-reset rules SHALL match the registered protocol
+- **AND** innovations, gains, resets, and every method loss SHALL remain visible
+
+#### Scenario: Reporting bounded results
+
+- **WHEN** the comparison is reported
+- **THEN** it SHALL be labeled controlled injected-noise current-time filtering
+- **AND** it SHALL NOT be described as real-sensor, forecasting, dense 3-D field, control, or cross-site validation
+- **AND** non-Kalman winners and adverse cases SHALL not be removed
+
+### Requirement: EVD-018 Same-task pure RNN 3-D field comparison
+
+The project SHALL compare IDW, base model, pure RNN, and LOO hybrid on identical canonical controlled scenario folds, sparse observations, query grids, dense truth fields, and metric functions.
+
+#### Scenario: Building one held-out fold
+
+- **WHEN** one canonical scenario is held out
+- **THEN** the other seven scenarios SHALL be the only source of learned RNN and hybrid parameters
+- **AND** both learned models SHALL use the same deterministic 96 training points per training scenario
+- **AND** the held-out sparse observation payload, query grid, and truth field SHALL be hashed before ranking methods
+
+#### Scenario: Running the pure RNN
+
+- **WHEN** the pure RNN predicts a held-out field point
+- **THEN** it SHALL receive the canonical eight-sensor sequence and registered current query/scenario context
+- **AND** it SHALL NOT receive a physics estimate, residual target, IDW prediction, target-point truth, or held-out dense truth
+
+#### Scenario: Reporting results
+
+- **WHEN** the eight-fold comparison completes
+- **THEN** per-fold and average temperature, humidity, and illuminance full-field MAE SHALL be retained for all four methods
+- **AND** training diagnostics, parity hashes, non-RNN winners, and adverse RNN folds SHALL remain visible
+- **AND** the result SHALL be labeled controlled synthetic full-field evidence rather than real-room or cross-room validation
+
+### Requirement: EVD-019 Equipment-enclosure public-task evidence
+
+The project SHALL preserve E11A BMC transfer and E11B AAU spatial transfer as separate, bounded negative public-task evidence.
+
+#### Scenario: Reporting E11A eligibility and ranking
+
+- **WHEN** E11A results are summarized
+- **THEN** the summary SHALL report 317 file-device cases, 5 eligible cases, and 312 insufficient-in-scope cases
+- **AND** persistence SHALL remain lowest-MAE in 5 of 5 while linear and thermal-balance readouts remain lowest in 0
+- **AND** `H-ENC-01` SHALL be labeled not supported
+
+#### Scenario: Separating temporal and spatial enclosure evidence
+
+- **WHEN** the BMC result is used in a synchronized artifact
+- **THEN** it SHALL be labeled next-observation outlet-air prediction inside 20–30 °C
+- **AND** it SHALL not be treated as dense 3-D truth, component-hotspot validation, PID evaluation, or arbitrary equipment-enclosure applicability
+
+#### Scenario: Reporting E11B AAU spatial transfer
+
+- **WHEN** E11B results are summarized
+- **THEN** the summary SHALL report 42 eligible sensors and 1,641 one-minute snapshots from 12 fixed 4 MiB ranges
+- **AND** global mean, nearest neighbor, and 3-D IDW macro MAE SHALL remain 2.293 °C, 1.175 °C, and 1.687 °C
+- **AND** nearest neighbor and IDW per-sensor wins SHALL remain 30/42 and 6/42
+- **AND** `H-ENC-02` SHALL be labeled not supported without post-hoc IDW tuning
+- **AND** possible topology, airflow, or stratification explanations SHALL remain unverified
+
+#### Scenario: Reporting E11C independent local-IDW confirmation
+
+- **WHEN** E11C results are summarized
+- **THEN** the summary SHALL report 11 E11B-disjoint ranges, 42 sensors, and 1,505 one-minute snapshots
+- **AND** nearest, local-IDW, and global-IDW macro MAE SHALL remain 1.301 °C, 1.223 °C, and 1.844 °C
+- **AND** the paired day-block-bootstrap 95% interval SHALL remain [0.0546, 0.1063] °C
+- **AND** local IDW and nearest neighbor SHALL each retain 21/42 per-sensor wins
+- **AND** `H-ENC-03` SHALL remain not supported because the required 26/42 breadth condition failed
+
+### Requirement: EVD-022 Independent Role-Conditioned Enclosure Evidence
+
+The research record SHALL preserve the preregistered E11D role-conditioned AAU confirmation, including its independent ranges, raw hashes, paired uncertainty, per-sensor coverage, and non-causal interpretation.
+
+#### Scenario: All H-ENC-04 thresholds pass
+
+- **WHEN** role-conditioned MAE and RMSE are below the global baseline
+- **AND** role conditioning wins at least 26 of 42 sensors
+- **AND** the paired day-block confidence interval lower bound exceeds zero
+- **THEN** H-ENC-04 is reported as `supported`
+- **AND** the result remains secondary enclosure-transfer evidence
+
+#### Scenario: Predictive evidence is interpreted
+
+- **WHEN** H-ENC-04 is summarized in synchronized artifacts
+- **THEN** the wording distinguishes sensor-role predictive information from airflow causality
+- **AND** cross-split E11C/E11D metrics are not presented as paired rankings
+### Requirement: EVD-023 Hierarchical Role-Local Development Evidence
+
+The research record SHALL preserve E11E as development-only evidence and SHALL NOT treat its selected-grid performance as confirmation.
+
+#### Scenario: No candidate satisfies tail and coverage gates
+
+- **WHEN** no registered candidate improves P95 and no candidate wins at least 26 of 42 sensors
+- **THEN** E11E records `no_candidate_forwarded`
+- **AND** aggregate improvements remain visible rather than being reported as confirmation
+
+#### Scenario: E11F remains untouched
+
+- **WHEN** E11E forwards no candidate
+- **THEN** no reserved E11F range is downloaded or evaluated
+### Requirement: EVD-024 E11G tail-safe development evidence shall preserve the coverage failure
+
+The repository SHALL report E11G as adaptive out-of-fold development evidence and SHALL retain `no_candidate_forwarded` whenever the strict sensor-win gate fails.
+
+#### Scenario: Aggregate and tail metrics improve but spatial coverage fails
+
+- **WHEN** E11G lowers MAE, RMSE, and P95 but improves fewer than 26 of 42 sensors
+- **THEN** synchronized artifacts report the improved metrics, the failed coverage gate, and the untouched E11F state together
+
+#### Scenario: E11G is interpreted for publication
+
+- **WHEN** E11G appears in a thesis, paper, report, or presentation
+- **THEN** it is labeled adaptive development rather than independent enclosure confirmation
+### Requirement: EVD-026 E11F confirmation shall remain bounded to unseen bytes within one campaign
+
+The repository SHALL preserve the frozen no-refit E11F result, all confirmation gates, and the observed calendar-day overlap when reporting H-ENC-05.
+
+#### Scenario: H-ENC-05 passes on E11F
+
+- **WHEN** the frozen commissioning map passes all aggregate, tail, coverage, bootstrap, and absolute-error gates
+- **THEN** artifacts may report H-ENC-05 as supported only for calibration-assisted unseen-byte transfer within the AAU campaign
+
+#### Scenario: Calendar dates overlap development
+
+- **WHEN** E11F dates intersect E11G or E11H dates
+- **THEN** artifacts state that cross-date, cross-campaign, and cross-enclosure generalization remain unverified
+
+### Requirement: EVD-025 E11H development shall preserve commissioning prerequisites
+
+The repository SHALL report that E11H requires two days of target-location observations and SHALL not relabel commissioning-assisted results as zero-shot sparse reconstruction.
+
+#### Scenario: E11H results are summarized
+
+- **WHEN** the E11H development metrics or advancement decision appear in an artifact
+- **THEN** the artifact includes the two-day calibration, one-day selection, frozen-test sequence and the Huber identifiability limitation
+
+### Requirement: EVD-039 Fixed-budget gated recurrent comparison
+
+The project SHALL compare vanilla RNN, GRU, and LSTM on the same SML2010 S2 temporal endpoints with preregistered, approximately matched parameter budgets.
+
+#### Scenario: Reporting the completed recurrent comparison
+
+- **WHEN** the GRU/LSTM result is summarized
+- **THEN** all recurrent models share four-record inputs, chronological 70/30 splits, test endpoint hashes, 30 epochs, Adam settings, and seed 42
+- **AND** parameter counts remain 148 for vanilla RNN, 169 for GRU, and 140 for LSTM
+
+### Requirement: EVD-040 Preserve complete gated-model outcomes
+
+The project SHALL retain all 12 case outcomes, parity hashes, training diagnostics, adverse results, and the bounded decision.
+
+#### Scenario: H-RNNGATE-01 is evaluated
+
+- **WHEN** all 12 cases and three horizon parity audits pass
+- **THEN** sequence linear regression retains 7/12 lowest-MAE cases and persistence 5/12
+- **AND** vanilla RNN, GRU, and LSTM each retain 0/12 lowest-MAE cases
+- **AND** GRU retains 2/12 wins over vanilla with -12.880146% median relative reduction
+- **AND** LSTM retains 0/12 wins over vanilla with -11.368865% median relative reduction
+- **AND** H-RNNGATE-01 remains not supported and no candidate is forwarded

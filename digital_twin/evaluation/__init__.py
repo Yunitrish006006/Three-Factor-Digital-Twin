@@ -20,6 +20,12 @@ from digital_twin.evaluation.rnn_public_comparison import (
     run_rnn_public_comparison,
     write_rnn_public_comparison,
 )
+from digital_twin.evaluation.kalman_filter_comparison import (
+    KalmanComparisonConfig,
+    ScalarRandomWalkKalman,
+    run_kalman_filter_comparison,
+    write_kalman_filter_comparison,
+)
 
 __all__ = [
     "InterventionValidationError",
@@ -34,4 +40,8 @@ __all__ = [
     "VanillaElmanRNN",
     "run_rnn_public_comparison",
     "write_rnn_public_comparison",
+    "KalmanComparisonConfig",
+    "ScalarRandomWalkKalman",
+    "run_kalman_filter_comparison",
+    "write_kalman_filter_comparison",
 ]

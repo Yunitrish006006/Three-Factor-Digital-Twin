@@ -21,6 +21,7 @@ DATA = OUTPUTS / "data"
 FIGURES = OUTPUTS / "figures"
 ARCHITECTURE = FIGURES / "architecture"
 PUBLIC_BENCHMARK_FIGURES = FIGURES / "public_benchmarks"
+PRESENTATION_ASSETS = PAPERS / "assets"
 THESIS_PAPERS = ROOT / "docs" / "papers" / "thesis"
 PRESENTATION_PATH = PAPERS / "thesis_presentation_zh.pptx"
 STORED_PRESENTATION_PATH = THESIS_PAPERS / "thesis_presentation_zh.pptx"
@@ -488,7 +489,13 @@ def add_learning_record_slide(prs: Presentation, footer_number: int) -> None:
 
 
 def add_picture(slide, source: Path, left: float, top: float, width: float, height: float) -> None:
-    png = ensure_image_asset({"path": str(source.relative_to(ROOT)), "asset_name": source.stem})
+    png = ensure_image_asset(
+        {
+            "path": str(source.relative_to(ROOT)),
+            "asset_name": source.stem,
+            "output_dir": str(PRESENTATION_ASSETS),
+        }
+    )
     image_width_px, image_height_px = png_dimensions(png)
     image_ratio = image_width_px / image_height_px
     box_ratio = width / height
@@ -1191,6 +1198,8 @@ def build_presentation() -> Presentation:
     bedroom_summary = read_json(DATA / "bedroom_01_weekly" / "weekly_simulation_summary.json")
     e8_summary = read_json(DATA / "e8_intervention_summary.json")
     rnn_summary = read_json(DATA / "public_benchmarks" / "rnn_sml2010_comparison.json")
+    rnn_3d_summary = read_json(DATA / "rnn_3d_field_comparison.json")
+    kalman_summary = read_json(DATA / "public_benchmarks" / "kalman_sml2010_filtering_comparison.json")
     avg_mae = average_field_mae(validation_summary)
     bedroom_aggregate = bedroom_summary["aggregate"]
     bedroom_bootstrap = bedroom_aggregate["paired_day_block_bootstrap"]
@@ -1403,7 +1412,7 @@ def build_presentation() -> Presentation:
             "E6：hybrid no-Fourier 對照與 LOO cross-validation",
             f"E7：bedroom_01 {bedroom_summary['snapshot_count']} 筆，pillow hold-out",
             f"E8 execution kit：schema / template / analyzer；{e8_summary['trial_counts']['completed']} trials、{e8_summary['evidence_status']}",
-            "E9 public benchmark；demo 不是量化實驗",
+            "E9 public benchmark；E10 controlled filtering；E11A BMC temporal transfer；demo 不是量化實驗",
         ],
         level0_size=17,
     )
@@ -1443,7 +1452,7 @@ def build_presentation() -> Presentation:
 
     # Slide 10
     slide = new_slide(prs)
-    add_title(slide, "Hybrid Residual Neural Network 結果")
+    add_title(slide, "Pure RNN 與 Hybrid Residual 結果")
     default_hybrid = submission_summary["default_holdout_hybrid"]
     no_fourier = submission_summary["no_fourier_holdout_hybrid"]
     loo = submission_summary["leave_one_scenario_out"]
@@ -1458,6 +1467,7 @@ def build_presentation() -> Presentation:
             f"Default samples: {default_hybrid['dataset']['train_samples']} / {default_hybrid['dataset']['test_samples']}",
             f"Default hybrid MAE: {metric_triplet(default_hybrid['hybrid_test_field_mae'])}",
             f"No-Fourier hybrid MAE: {metric_triplet(no_fourier['hybrid_test_field_mae'])}",
+            f"Pure RNN LOO MAE: {metric_triplet(rnn_3d_summary['summary']['average_field_mae']['pure_rnn'])}",
             f"LOO avg hybrid MAE: {metric_triplet(loo['average_hybrid_field_mae'])}",
             f"LOO reduction: T {loo['average_field_mae_reduction_percent']['temperature']:.2f}%, H {loo['average_field_mae_reduction_percent']['humidity']:.2f}%, L {loo['average_field_mae_reduction_percent']['illuminance']:.2f}%",
         ],
@@ -1471,6 +1481,7 @@ def build_presentation() -> Presentation:
         1.5,
         [
             "hybrid residual 是第二層修正器，不取代主模型",
+            "Pure RNN 不使用 physics estimate；8/8 folds parity，lowest MAE 0/24",
             "LOO 結果證明標準情境 family 內殘差可學習，不代表任意房間泛化",
             f"E7 以 {bedroom_bootstrap['replicates']:,} 次 date-block bootstrap 檢查 pillow 改善，三因子 95% CI 下界皆 > 0",
             f"E7 逐日剔除最小降幅：T {bedroom_lodo_metrics['temperature']['minimum_absolute_mae_reduction']:.4f} / H {bedroom_lodo_metrics['humidity']['minimum_absolute_mae_reduction']:.4f} / L {bedroom_lodo_metrics['illuminance']['minimum_absolute_mae_reduction']:.4f}",
@@ -1496,8 +1507,9 @@ def build_presentation() -> Presentation:
             "Oh2024-inspired residual：15min 兩點溫度最佳；60min 本研究 readout 最佳；24h persistence 最佳",
             "次日 primary：validation 選出的 daily trend 反而惡化 7.34% / 8.36%；bootstrap interval 均跨 0",
             "探索性 adaptive median 亦惡化 8.83% / 9.73%；約 1% 的未選中 bias correction 不足以主張優勢",
-            f"RNN 同資料比較：{rnn_summary['summary']['evaluated_cases']}/12 通過 parity；lowest MAE = sequence LR 7、persistence 5、RNN 0",
+            f"SML2010 時序 RNN：{rnn_summary['summary']['evaluated_cases']}/12 通過 parity；lowest MAE = sequence LR 7、persistence 5、RNN 0",
             "四種方法共用四筆 history、split、targets 與 test rows；負向結果保留",
+            f"Kalman 受控 filtering：{kalman_summary['summary']['evaluated_cases']}/12 parity；lowest MAE = MA(3) 6、Linear Kalman 6、raw 0",
         ],
         level0_size=13,
     )
@@ -1541,6 +1553,7 @@ def build_presentation() -> Presentation:
             "非連網裝置可透過環境變化進行影響學習與校正",
             "bedroom_01 7 天快照顯示校正後可改善未參與 fitting 的 pillow 點",
             "各資料來源支援的驗證範圍已拆開說明",
+            "Kalman injected-noise 結果依變數分化：溫度由 MA(3) 較佳，濕度由 Linear Kalman 較佳",
             "模型已能輸出區域估計、反事實推薦排序與 AI 可查詢工具",
         ],
     )
@@ -1552,13 +1565,13 @@ def build_presentation() -> Presentation:
         4.8,
         "未來工作",
         [
-            "擴大 ESP32 長期真實資料",
-            "擴充 CO2 / PM2.5 等因子",
-            "改進 multi-zone / partition 模型",
-            "補足 dense real-room ground truth",
+            "擴大長期資料、dense ground truth 與 multi-zone 驗證",
+            "GRU / LSTM：SML2010 簡易同資料比較完成；兩者 lowest MAE 皆 0/12，H-RNNGATE-01 不支持",
+            "PID：相同 plant / setpoint / disturbance 的閉環控制 baseline（尚未評估）",
+            "機箱 E11A/E11B 假說不支持；E11C local IDW aggregate MAE 1.223 °C，但僅勝出 21/42，H-ENC-03 不支持",
             "執行推薦動作 before/after 介入驗證",
             "20–30 °C 動態植物生長環境：先補 PPFD/CO2/基質與生物 endpoint",
-            "定義 state/observation/noise 後比較 moving average、KF 與 EKF",
+            "以獨立 reference 驗證實體 sensing-node filtering，再評估 EKF/UKF",
         ],
     )
     add_footer(slide, 13)
@@ -1576,6 +1589,8 @@ def build_presentation_30min() -> Presentation:
     bedroom_summary = read_json(DATA / "bedroom_01_weekly" / "weekly_simulation_summary.json")
     e8_summary = read_json(DATA / "e8_intervention_summary.json")
     rnn_summary = read_json(DATA / "public_benchmarks" / "rnn_sml2010_comparison.json")
+    rnn_3d_summary = read_json(DATA / "rnn_3d_field_comparison.json")
+    kalman_summary = read_json(DATA / "public_benchmarks" / "kalman_sml2010_filtering_comparison.json")
     avg_mae = average_field_mae(validation_summary)
     scenarios = scenario_map(validation_summary)
     bedroom_aggregate = bedroom_summary["aggregate"]
@@ -2002,7 +2017,7 @@ def build_presentation_30min() -> Presentation:
             f"E4-E6：裝置影響學習、{window_summary.get('count', 0)} 組 window matrix、hybrid no-Fourier/LOO",
             f"E7：bedroom_01 {bedroom_summary['snapshot_count']} 筆快照與 pillow 位置比較",
             "E8：推薦動作 before/after intervention protocol",
-            "E9：public datasets 僅作 task-aligned benchmark",
+            "E9：public datasets；E10：controlled filtering；E11A：BMC temporal transfer",
             "Web demo 與 3D 展示是呈現層，不列為量化實驗",
         ],
         level0_size=16,
@@ -2142,7 +2157,7 @@ def build_presentation_30min() -> Presentation:
         [
             "8 scenarios, full 3D grid",
             "Y axis: log-scale Field MAE",
-            "Bars: IDW / Base / LOO Hybrid",
+            "Bars: IDW / Base / Pure RNN / LOO Hybrid",
             "IDW uses same 8 corner readings",
         ],
     )
@@ -2213,7 +2228,7 @@ def build_presentation_30min() -> Presentation:
 
     # 17 hybrid result
     slide = new_slide(prs)
-    add_title(slide, "Hybrid Residual Neural Network 結果")
+    add_title(slide, "Pure RNN 與 Hybrid Residual 結果")
     default_hybrid = submission_summary["default_holdout_hybrid"]
     no_fourier = submission_summary["no_fourier_holdout_hybrid"]
     loo = submission_summary["leave_one_scenario_out"]
@@ -2228,6 +2243,7 @@ def build_presentation_30min() -> Presentation:
             f"Default samples: {default_hybrid['dataset']['train_samples']} / {default_hybrid['dataset']['test_samples']}",
             f"Default MAE: {metric_triplet(default_hybrid['hybrid_test_field_mae'])}",
             f"No-Fourier MAE: {metric_triplet(no_fourier['hybrid_test_field_mae'])}",
+            f"Pure RNN LOO: {metric_triplet(rnn_3d_summary['summary']['average_field_mae']['pure_rnn'])}",
             f"LOO avg MAE: {metric_triplet(loo['average_hybrid_field_mae'])}",
             f"LOO reduction: T {loo['average_field_mae_reduction_percent']['temperature']:.2f}%, H {loo['average_field_mae_reduction_percent']['humidity']:.2f}%, L {loo['average_field_mae_reduction_percent']['illuminance']:.2f}%",
         ],
@@ -2242,6 +2258,7 @@ def build_presentation_30min() -> Presentation:
         [
             "no-Fourier 對照顯示照度改善不是頻域處理造成",
             "LOO 降低單一 held-out split 過度樂觀的風險",
+            "Pure RNN 直接預測完整場、不使用 physics estimate；lowest MAE 0/24",
             "LOO 結果仍限標準情境 family，不等同任意房間泛化",
             "真實臥室快照已驗證 calibration，推薦有效性仍需介入實驗",
         ],
@@ -2268,6 +2285,7 @@ def build_presentation_30min() -> Presentation:
             "次日 primary 選中 trend 但 test 惡化 7.34% / 8.36%，CI 均跨 0",
             "Post-primary adaptive 亦惡化；未建立 next-day advantage",
             f"RNN 公平比較：{rnn_summary['summary']['evaluated_cases']}/12 parity 通過；lowest MAE 為 sequence LR 7、persistence 5、RNN 0",
+            f"Kalman controlled filtering：{kalman_summary['summary']['evaluated_cases']}/12 parity；MA(3) 與 Linear Kalman 各 lowest MAE 6 項",
             "資料 confidential；只稱 method transfer，不稱原文重現或 full 3D 驗證",
         ],
         body_size=11,
@@ -2328,6 +2346,7 @@ def build_presentation_30min() -> Presentation:
             "公開資料集缺乏 full-field ground truth",
             "室內溫度適用範圍限 20–30 °C；人體舒適以 tolerance 判定",
             "固定 RNN 同資料比較 lowest MAE 為 0/12",
+            "Kalman 只完成 injected-noise current-time filtering；溫度 MA(3) 較佳、濕度 Kalman 較佳",
             "推薦動作尚未完成真實介入式因果驗證",
         ],
     )
@@ -2339,13 +2358,13 @@ def build_presentation_30min() -> Presentation:
         4.9,
         "未來工作",
         [
-            "擴大 ESP32 長期真實資料",
-            "加入 CO2 / PM2.5",
-            "發展 multi-zone / partition model",
+            "擴大長期資料、dense ground truth 與 multi-zone 驗證",
+            "GRU / LSTM：同資料簡易比較完成；GRU 2/12、LSTM 0/12 勝 vanilla，無候選通過",
+            "PID：同 plant / setpoint / disturbance 閉環 baseline（尚未評估）",
+            "機箱 E11A/E11B 為負向；E11C aggregate 改善但 sensor wins 21/42，仍未達門檻",
             "補足 PPFD/CO2/基質與生物 endpoint 後再評估動態植物生長情境",
-            "定義狀態與雜訊模型後比較 moving average、KF、EKF",
+            "以獨立 reference 做實體 sensor filtering，再評估 EKF/UKF",
             "執行推薦動作 before/after 介入驗證",
-            "朝閉環控制延伸",
         ],
     )
     add_footer(slide, 20)
@@ -2407,6 +2426,7 @@ def build_presentation_30min() -> Presentation:
 
 def build_outline() -> str:
     e8_summary = read_json(DATA / "e8_intervention_summary.json")
+    rnn_3d_summary = read_json(DATA / "rnn_3d_field_comparison.json")
     window_summary = read_json(DATA / "window_matrix_summary.json")
     window_in_domain, window_out_of_domain = window_temperature_domain_counts(window_summary)
     slides = [
@@ -2418,12 +2438,14 @@ def build_outline() -> str:
         ("模型學習、推論與推薦資料流", ["學習端：raw records → 對齊 → scenario state → labels → coefficients/checkpoint", "推論端：runtime input → nominal field → correction / hybrid → point or zone prediction", "推薦端：sample / cluster + T/H/L 目標 → 反事實重跑 → penalty reduction 排序"]),
         ("系統實作與介面", ["MCP 是工具化介面，不是預測模型本身", "initialize：設定 scenario、室內 baseline、外部邊界、設備/家具、預設時間與 estimator", "AC state：模式、目標溫度、風量、水平/垂直角度與固定/擺動", "sample point：查指定座標在特定時間或穩定態的溫濕照度", "learn impacts：start/finish before-after record", "window direct / rank actions：輸入外部窗戶資料；rank actions 需指定 sample 與 T/H/L 目標", "Gemma bridge 與 Web demo 分別負責 AI tool calling 與人機展示"]),
         ("learn_impacts：動作如何成為資料記錄", ["start：device_name + device_state 記錄實際操作狀態", "record：儲存 learning_record_id、baseline、外部邊界、家具、elapsed time 與 before observations", "finish：用同一批感測器 after observations 計算 after-before delta", "least squares：由 influence envelope 與 delta 求 learned_device_impacts"]),
-        ("驗證流程與比較原則", ["E1-E3：synthetic full-field、IDW baseline、ablation", "E4：非連網裝置影響學習與推薦排序", f"E5：{window_summary.get('count', 0)} 組窗戶矩陣（{window_in_domain} 範圍內／{window_out_of_domain} 範圍外壓力測試）與 direct input", "E6：hybrid residual no-Fourier 與 LOO cross-validation", "E7：bedroom_01 7 天真實快照與 pillow hold-out", f"E8 execution kit：schema / template / analyzer；{e8_summary['trial_counts']['completed']} trials、{e8_summary['evidence_status']}", "E9 public task-aligned benchmark；demo 不是量化實驗"]),
-        ("主要結果", ["平均 field MAE", "IDW / Base / LOO Hybrid 誤差比較", "真實臥室 pillow MAE 比較", "推薦排序目前為 counterfactual simulation", "3D 視覺化案例"]),
-        ("Hybrid Residual 結果", ["default held-out、no-Fourier、LOO MAE", "train/test sample count", "研究定位不是黑盒替代", "LOO 結果限標準情境 family", "E7 date-block bootstrap 的三因子改善區間下界均大於 0", "E7 逐日剔除的最小 MAE 降幅仍為 T 0.6123、H 3.5551、L 290.5716"]),
-        ("公開資料任務拆解", ["SML2010：S1 純照度劣勢、S2 長視窗溫度部分優勢、S3 事件 delta 主要優勢", "Oh2024-inspired transfer：15min 兩點溫度最佳、60min 本研究 readout 最佳、24h persistence 最佳", "次日 primary 與 post-primary adaptive 均未建立優勢；未選中 bias correction 僅約 1% 改善", "RNN 與其他模型共用四筆 history、split、targets、test rows；12/12 parity 通過，RNN lowest MAE 0/12", "CU-BEMS：C1/C3 勝 linear regression 但不勝 persistence，C2 照度劣勢", "明確說明 public benchmark 不是 full 3D 場驗證"]),
+        ("驗證流程與比較原則", ["E1-E3：synthetic full-field、IDW baseline、ablation", "E4：非連網裝置影響學習與推薦排序", f"E5：{window_summary.get('count', 0)} 組窗戶矩陣（{window_in_domain} 範圍內／{window_out_of_domain} 範圍外壓力測試）與 direct input", "E6：hybrid residual no-Fourier 與 LOO cross-validation", "E7：bedroom_01 7 天真實快照與 pillow hold-out", f"E8 execution kit：schema / template / analyzer；{e8_summary['trial_counts']['completed']} trials、{e8_summary['evidence_status']}", "E9 public benchmark；E10 controlled filtering；E11A BMC temporal transfer；demo 不是量化實驗"]),
+        ("主要結果", ["平均 field MAE", "IDW / Base / Pure RNN / LOO Hybrid 同八情境比較", "Pure RNN lowest MAE 0/24", "真實臥室 pillow MAE 比較", "推薦排序目前為 counterfactual simulation", "3D 視覺化案例"]),
+        ("Pure RNN 與 Hybrid Residual 結果", ["Pure RNN 直接預測完整場、不使用 physics estimate，lowest MAE 0/24", "default held-out、no-Fourier、LOO hybrid MAE", "train/test sample count", "LOO 結果限標準情境 family", "E7 date-block bootstrap 的三因子改善區間下界均大於 0", "E7 逐日剔除的最小 MAE 降幅仍為 T 0.6123、H 3.5551、L 290.5716"]),
+        ("公開資料任務拆解", ["SML2010：S1 純照度劣勢、S2 長視窗溫度部分優勢、S3 事件 delta 主要優勢", "Oh2024-inspired transfer：15min 兩點溫度最佳、60min 本研究 readout 最佳、24h persistence 最佳", "次日 primary 與 post-primary adaptive 均未建立優勢；未選中 bias correction 僅約 1% 改善", "RNN 與其他模型共用四筆 history、split、targets、test rows；12/12 parity 通過，RNN lowest MAE 0/12", "Kalman controlled filtering 12/12 parity；MA(3) 與 Linear Kalman 各 lowest MAE 6/12", "CU-BEMS：C1/C3 勝 linear regression 但不勝 persistence，C2 照度劣勢", "明確說明 public benchmark 不是 full 3D 場驗證"]),
         ("研究貢獻與資料策略", ["三因子、有限感測器、非連網裝置、服務化", "canonical synthetic benchmark + real-bedroom snapshots + task-aligned public datasets", "室內應用溫度限 20–30 °C；人體舒適採目標帶與 tolerance", "明確列出每種資料支援的驗證範圍"]),
-        ("結論與未來工作", ["長期真實資料、dense real-room ground truth、更多因子、multi-zone、推薦動作介入驗證、閉環控制", "候選動態植物生長情境需補 PPFD/CO2/基質/生物 endpoint", "Kalman family 先定義 state/observation/noise，再做同資料比較"]),
+        ("E11B：AAU 伺服器機房空間轉移", ["42 個高信心 PT100、1,641 個一分鐘快照；六個不明通道預先排除", "MAE：全域平均 2.293 °C、最近鄰 1.175 °C、3D IDW 1.687 °C", "感測器勝出：最近鄰 30/42、IDW 6/42，未達預註冊 60% 門檻", "H-ENC-02 不支持；不事後調參，可能原因須另行驗證"]),
+        ("E11C：局部鄰域獨立確認", ["11 個 E11B-disjoint ranges、42 點、1,505 快照、11 個 day blocks", "MAE：最近鄰 1.301 °C、local IDW 1.223 °C、global IDW 1.844 °C", "paired improvement 0.0783 °C；bootstrap 95% CI [0.0546, 0.1063]", "local 與 nearest 各勝出 21/42；未達 26/42，H-ENC-03 不支持"]),
+        ("結論與未來工作", ["長期真實資料、dense real-room ground truth、更多因子、multi-zone 與推薦動作介入驗證", "GRU/LSTM 簡易同資料比較完成：lowest MAE 皆 0/12，GRU 2/12、LSTM 0/12 勝 vanilla；PID 尚未評估", "E11C aggregate 改善但 sensor coverage 不足；後續 sensor-role/topology model 須新資料與預註冊", "候選動態植物生長情境需補 PPFD/CO2/基質/生物 endpoint", "Kalman 受控比較為混合結果；下一步以獨立 reference 驗證實體 sensor filtering"]),
     ]
     slides.extend(
         (
@@ -2463,16 +2485,18 @@ def build_outline_30min() -> str:
         ("模型學習、推論與推薦資料流", ["學習資料流：raw data → 對齊 → scenario state → labels → coefficients/checkpoint", "推論資料流：runtime input → nominal field → correction/hybrid → 溫濕照度", "推薦資料流：sample / cluster + T/H/L 目標 → 反事實重跑 → penalty reduction 排序"]),
         ("系統實作與介面", ["MCP 是工具化介面，不是預測模型本身", "initialize：設定 scenario、baseline、外部邊界、設備/家具、時間與 estimator", "AC state：模式、目標溫度、風量、水平/垂直角度與固定/擺動", "sample point：註冊環境後查指定座標三因子估計", "learn impacts：以 before/after observations 建立可學習資料", "window direct / rank actions：直接輸入窗戶外部資料；rank actions 需指定 sample 與 T/H/L 目標", "Gemma/Ollama 透過 bridge 呼叫 tools；Web demo 負責人機互動展示"]),
         ("learn_impacts：動作如何成為資料記錄", ["start：device_name + device_state 記錄實際操作狀態", "record：儲存 learning_record_id、baseline、外部邊界、家具、elapsed time 與 before observations", "finish：用同一批感測器 after observations 計算 after-before delta", "least squares：由 influence envelope 與 delta 求 learned_device_impacts"]),
-        ("驗證設計", ["E1-E3：truth-adjusted simulation、IDW、synthetic ablation", "E4-E6：裝置影響學習、window matrix、hybrid no-Fourier/LOO", "E7：bedroom_01 7 天真實快照與 pillow 位置比較", "E8：推薦動作 before/after intervention protocol", "E9：public datasets 僅作 task-aligned benchmark", "Web demo 與 3D 展示是呈現層，不列為量化實驗"]),
+        ("驗證設計", ["E1-E3：truth-adjusted simulation、IDW、synthetic ablation", "E4-E6：裝置影響學習、window matrix、hybrid no-Fourier/LOO", "E7：bedroom_01 7 天真實快照與 pillow 位置比較", "E8：推薦動作 before/after intervention protocol", "E9：public benchmark；E10：controlled filtering；E11A：BMC temporal transfer", "Web demo 與 3D 展示是呈現層，不列為量化實驗"]),
         ("證據鏈與驗證範圍", ["Synthetic full-field 支援完整 3D 場比較，但不等同長期真實場", "Real-bedroom snapshot 支援稀疏校正的 held-out 點位檢查，但不是 dense truth", "Public datasets 僅支援相容子任務，不是單房間 8 點拓樸驗證", "Recommendation 目前是反事實排序，仍需 before/after 介入驗證"]),
         ("情境設計與輸入模式", [f"8 組 scenario、{window_summary.get('count', 0)} 組窗戶矩陣（{window_in_domain} 範圍內／{window_out_of_domain} 範圍外壓力測試）、direct input、timeline"]),
-        ("主要量化結果", ["圖表資料：8 組標準情境、full 3D grid Field MAE、log-scale y 軸", "三種柱狀結果：IDW、Base、LOO Hybrid", "真實臥室 raw vs corrected pillow MAE、date-block bootstrap 與逐日剔除敏感度", "推薦有效性以 actual comfort-penalty reduction 驗證", "實驗 E1-E7 與 E9 已有數值輸出；E8 僅為介入 protocol"]),
+        ("主要量化結果", ["圖表資料：8 組標準情境、full 3D grid Field MAE、log-scale y 軸", "四種柱狀結果：IDW、Base、Pure RNN、LOO Hybrid；Pure RNN lowest MAE 0/24", "真實臥室 raw vs corrected pillow MAE、date-block bootstrap 與逐日剔除敏感度", "推薦有效性以 actual comfort-penalty reduction 驗證", "實驗 E1-E7、E9-E11 已有數值輸出；E8 僅為介入 protocol", "E11B：42 點、1,641 快照；最近鄰 MAE 1.175 °C 優於 IDW 1.687 °C"]),
         ("真實臥室快照與推薦驗證狀態", ["E7：pillow hold-out 不參與 8 角點 fitting；20,000 次 date-block bootstrap 報告三因子 MAE 降幅區間與改善快照數", "E7：7-fold 逐日剔除後，三因子最小 MAE 降幅仍為 0.6123 / 3.5551 / 290.5716", "E7 仍限單一房間、單一 pillow 與七個日期；不是 dense truth 或介入成功率", f"E8：versioned schema、空白 template 與 analyzer 已完成；{e8_summary['trial_counts']['completed']} trials、{e8_summary['evidence_status']}", "真實 before/after 與 matched controls 完成前不得宣稱 efficacy"]),
         ("3D 視覺化結果", ["溫度與照度熱區案例"]),
-        ("Hybrid Residual 結果", ["default held-out、no-Fourier、LOO robustness checks", "train/test sample count 與 synthetic benchmark 限制", "LOO 結果限標準情境 family", "真實快照作為 sparse calibration 驗證"]),
-        ("公開資料任務拆解：SML2010", ["原 E9：S1 照度弱、S2 混合、S3 event delta 最強", "Oh2024-inspired transfer：15min 兩點溫度最低 MAE", "60min 由本研究 readout 最佳；24h 由 persistence 最佳且 transfer 劣於 raw physics", "次日 primary 選中 trend 但 test 惡化 7.34% / 8.36%，bootstrap interval 均跨 0", "RNN 與其他模型共用四筆 history、split、targets、test rows；12/12 parity 通過，RNN lowest MAE 0/12", "資料 confidential；方法移植不等於原文 CNN--LSTM 重現"]),
+        ("Pure RNN 與 Hybrid Residual 結果", ["Pure RNN 不使用 physics estimate；8/8 folds parity、lowest MAE 0/24", "default held-out、no-Fourier、LOO hybrid robustness checks", "train/test sample count 與 synthetic benchmark 限制", "LOO 結果限標準情境 family", "真實快照作為 sparse calibration 驗證"]),
+        ("公開資料任務拆解：SML2010", ["原 E9：S1 照度弱、S2 混合、S3 event delta 最強", "Oh2024-inspired transfer：15min 兩點溫度最低 MAE", "60min 由本研究 readout 最佳；24h 由 persistence 最佳且 transfer 劣於 raw physics", "次日 primary 選中 trend 但 test 惡化 7.34% / 8.36%，bootstrap interval 均跨 0", "RNN 與其他模型共用四筆 history、split、targets、test rows；12/12 parity 通過，RNN lowest MAE 0/12", "固定預算 GRU/LSTM：lowest MAE 皆 0/12；GRU 2/12、LSTM 0/12 勝 vanilla，H-RNNGATE-01 不支持", "Kalman controlled filtering 12/12 parity；MA(3) 與 Linear Kalman 各 lowest MAE 6/12", "資料 confidential；方法移植不等於原文 CNN--LSTM 重現"]),
         ("公開資料任務拆解：CU-BEMS", ["C1：AC 溫濕度可補強 linear regression", "C2：商辦照度與單房間假設差距大", "C3：compound event 可勝 linear regression 但不勝 persistence"]),
-        ("結論、限制與未來工作", ["目前完成度、真實快照限制、hybrid 泛化限制、推薦動作尚需介入驗證、task-aligned benchmark 與後續方向", "室內溫度限 20–30 °C；人體舒適採 tolerance，RNN 負向結果保留", "候選植物生長情境需補 PPFD/CO2/基質/生物 endpoint；Kalman 尚未評估"]),
+        ("E11B：AAU 伺服器機房空間轉移", ["42 個高信心 PT100、1,641 個一分鐘快照；六個不明通道預先排除", "MAE：全域平均 2.293 °C、最近鄰 1.175 °C、3D IDW 1.687 °C", "最近鄰勝出 30/42、IDW 6/42；H-ENC-02 不支持", "不事後調參；拓撲與非等向性解釋須另行預註冊"]),
+        ("E11C：局部鄰域獨立確認", ["11 個 E11B-disjoint ranges、42 點、1,505 快照、11 個 day blocks", "local IDW MAE/RMSE 1.223/1.886 °C，低於 nearest 1.301/2.218 °C", "bootstrap 95% CI [0.0546, 0.1063]，但 local 僅勝出 21/42", "H-ENC-03 不支持；分群差異只列 exploratory"]),
+        ("結論、限制與未來工作", ["目前完成度、真實快照限制、hybrid 泛化限制、推薦動作尚需介入驗證、task-aligned benchmark 與後續方向", "室內溫度限 20–30 °C；人體舒適採 tolerance，RNN 與機箱 E11A-E11C 負向或混合結果保留", "GRU/LSTM 簡易比較無候選通過；PID 仍待評估；後續改 history/容量/3-D 任務須重新預註冊", "候選植物生長情境需補 PPFD/CO2/基質/生物 endpoint；Kalman 受控結果不可外推為實體感測器驗證"]),
         ("公式與指標整理", ["場模型：三因子場、總估計式、baseline、activation、envelope", "三因子公式：溫度、濕度、照度分別說明", "校正與評估：8 點三線性校正、影響學習、hybrid residual、metrics、IDW、推薦排序"]),
     ]
     slides.extend(
@@ -2628,6 +2652,7 @@ def build_speaker_notes_30min() -> str:
     window_in_domain, window_out_of_domain = window_temperature_domain_counts(window_summary)
     bedroom_summary = read_json(DATA / "bedroom_01_weekly" / "weekly_simulation_summary.json")
     e8_summary = read_json(DATA / "e8_intervention_summary.json")
+    rnn_3d_summary = read_json(DATA / "rnn_3d_field_comparison.json")
     avg_mae = average_field_mae(validation_summary)
     bedroom_aggregate = bedroom_summary["aggregate"]
     bedroom_bootstrap = bedroom_aggregate["paired_day_block_bootstrap"]
@@ -2642,6 +2667,7 @@ def build_speaker_notes_30min() -> str:
     idw_mae = base_variants["idw"]["average_field_mae"]
     base_mae = base_variants["full_base"]["average_field_mae"]
     loo_hybrid_mae = loo["average_hybrid_field_mae"]
+    pure_rnn_mae = rnn_3d_summary["summary"]["average_field_mae"]["pure_rnn"]
     grid_resolution = bedroom_summary["grid_resolution"]
 
     slides: List[Tuple[str, List[str]]] = [
@@ -2833,8 +2859,8 @@ def build_speaker_notes_30min() -> str:
             [
                 f"這頁上方的柱狀圖是 field_mae_comparison，資料來自 {scenario_count} 組 canonical scenarios 的完整 3D grid 評估。每一個 scenario 都會在整個房間網格上比較估計值與 truth，再把 temperature、humidity、illuminance 各自的 field MAE 平均起來。",
                 "圖表的三個群組分別代表溫度、濕度與照度。Y 軸是 log-scale，原因是照度 MAE 的量級比溫度與濕度大很多；因此這張圖要看柱上數字與相對排序，不能只用柱高做線性比例解讀。",
-                "每個群組內有三根柱。IDW 使用同一批 8 個角落觀測值做反距離插值，只知道距離與感測值；Base 是本研究的可解釋主模型，包含變數專屬 nominal model、裝置與幾何先驗、power calibration 與 trilinear residual correction；LOO Hybrid 是 leave-one-scenario-out 的 residual model 平均結果，用來檢查第二層 residual 是否只對單一切分有效。",
-                f"具體數字上，IDW 的平均 field MAE 是 {metric_triplet(idw_mae)}；Base 是 {metric_triplet(base_mae)}；LOO Hybrid 是 {metric_triplet(loo_hybrid_mae)}。Base 相對 IDW 的降幅約為 temperature {percent_reduction(idw_mae['temperature'], base_mae['temperature']):.1f}%、humidity {percent_reduction(idw_mae['humidity'], base_mae['humidity']):.1f}%、illuminance {percent_reduction(idw_mae['illuminance'], base_mae['illuminance']):.1f}%。",
+                "每個群組內有四根柱。IDW 使用同一批 8 個角落觀測值做反距離插值；Base 是設備感知主模型；Pure RNN 以八顆感測器作 spatial tokens，直接預測完整場且不使用 physics estimate；LOO Hybrid 是 physics 加 residual 的平均結果。",
+                f"具體數字上，IDW 的平均 field MAE 是 {metric_triplet(idw_mae)}；Base 是 {metric_triplet(base_mae)}；Pure RNN 是 {metric_triplet(pure_rnn_mae)}；LOO Hybrid 是 {metric_triplet(loo_hybrid_mae)}。Pure RNN 在 24 個 fold×因子皆未取得最低 MAE，顯示 recurrence 本身沒有取代空間結構先驗。",
                 "解讀重點是：IDW 在照度特別差，因為它不知道窗戶日照方向、燈具位置、家具遮蔽或反射；只靠距離很難重建局部光照分布。溫度與濕度也有改善，表示設備狀態、方向性與房間幾何先驗確實提供了純幾何插值沒有的資訊。",
                 f"右下角的真實臥室校正檢查不是同一張柱狀圖的資料，而是 E7 bedroom_01 的 {bedroom_summary['snapshot_count']} 筆真實快照，房間網格解析度為 {grid_resolution['nx']} x {grid_resolution['ny']} x {grid_resolution['nz']}。Pillow 參考點沒有參與 8 角點 residual fitting，所以可當 held-out point 檢查非感測點估計。",
                 f"真實臥室 pillow 點的 raw MAE 為 {metric_triplet(bedroom_aggregate['raw_pillow_mae'])}，校正後 MAE 為 {metric_triplet(bedroom_aggregate['estimated_pillow_mae'])}。相對 raw，校正後降幅約為 temperature {percent_reduction(bedroom_aggregate['raw_pillow_mae']['temperature'], bedroom_aggregate['estimated_pillow_mae']['temperature']):.1f}%、humidity {percent_reduction(bedroom_aggregate['raw_pillow_mae']['humidity'], bedroom_aggregate['estimated_pillow_mae']['humidity']):.1f}%、illuminance {percent_reduction(bedroom_aggregate['raw_pillow_mae']['illuminance'], bedroom_aggregate['estimated_pillow_mae']['illuminance']):.1f}%。這支持稀疏校正在此真實快照設定下有改善，但仍不能宣稱已具備 dense real-room ground truth 驗證。",
@@ -2881,7 +2907,15 @@ def build_speaker_notes_30min() -> str:
                 "Primary 結果後另做明確標記的 adaptive online exploratory analysis，validation 選到 14-day median，但 test 仍惡化 8.83% 與 9.73%。Registered bias correction 雖約改善 1%，卻未被 validation 選中，因此不能事後包裝成次日優勢。",
                 "依教授建議，我也加入固定 vanilla RNN。四種方法先共用完全相同的四筆歷史、chronological split、targets 與 test rows，並以 endpoint 和 input-content hash 稽核。12 個案例全部通過 parity；最低 MAE 由 sequence linear regression 取得 7 項、persistence 取得 5 項，RNN 為 0 項。",
                 "這個結果必須保留。它代表在目前資料、四筆歷史與固定小型架構下，recurrent complexity 沒有帶來可驗證優勢；不能因為 RNN 較複雜就把它當成改進後模型。",
+                "Kalman controlled filtering 也使用同樣的公平性原則。SML2010 原始溫濕度作 task reference，三種方法取得相同 fixed-seed corrupted observations。12 個案例全部通過 parity；溫度六個案例由 causal MA(3) 最佳，濕度六個案例由 linear Kalman 最佳，未濾波沒有任何最低 MAE。",
+                "這只能說明 injected-noise current-time filtering 的混合結果，不能稱為真實 DHT11 或其他 sensing node 去噪、forecast 或完整 3D 場驗證。",
                 "原文 BEMS data 為 confidential，且沒有可用的 CNN--LSTM code，因此這只能稱 published-method-inspired transfer，不能稱重現原文 next-day performance。",
+                "機箱 E11A 使用完整 BMC inventory：124 個 source CSV 展開為 317 個 file-device cases，只有 5 個符合 20–30 °C 與最低 30 pairs。Persistence 在 5/5 最低，thermal-balance 0/5，因此 H-ENC-01 不支持。",
+                "這只是 next-observation outlet-air temporal negative result；312/317 cases insufficient-in-scope，不能外推為 3-D 機箱熱場、元件 hotspot、PID 或部署驗證。",
+                "E11B 使用 AAU Server Room v4 的 12 個固定 4 MiB 區段，42 個高信心 PT100 形成 1,641 個一分鐘快照。最近鄰 MAE 1.175 °C、勝出 30/42；3D IDW MAE 1.687 °C、勝出 6/42，因此 H-ENC-02 不支持。",
+                "機櫃拓撲、氣流方向或熱分層只能列為可能解釋；本輪不事後調整 IDW，後續模型須另立預註冊實驗。",
+                "E11C 使用 11 個不重疊 ranges 作獨立確認：local IDW 將 MAE 由 1.301 降至 1.223 °C，bootstrap 95% CI 全為正，但 local 與 nearest 各勝出 21/42。",
+                "因未達至少 26/42 的廣度門檻，H-ENC-03 不支持。gradient 0/5、rack back 17/28、rack front 4/9 只列 exploratory，不能當成氣流原因證據。",
             ],
         ),
         (
@@ -2899,8 +2933,10 @@ def build_speaker_notes_30min() -> str:
                 "限制方面，目前仍缺長期 dense real-room ground truth，hybrid residual 的泛化也主要限於標準情境 family。",
                 "教授提醒後，室內溫度適用範圍明確限制在 20–30 °C，人體舒適改以目標帶和容許範圍判定；現有低 MAE 不能直接證明一般人居空間需要極窄控制，也不能外推到超出溫度範圍的用途。",
                 "需要動態環境配方的小型封閉植物生長空間可作候選，但目前 lux 不是 PPFD/PAR，並缺 CO2、基質水分、氣流與生物 endpoint，所以不能宣稱已具培養成效。",
-                "Kalman filter 目前只列為狀態估測、感測融合或線上參數調整的後續方法。未來要先定義 state、observation 與 covariance，再讓未濾波、moving average、KF 與 EKF 使用相同資料比較。",
-                "其他未來工作包括擴大 ESP32 長期資料、發展 multi-zone model、執行推薦動作介入驗證，以及往閉環控制延伸。",
+                "Kalman 已完成第一個固定 state、observation 與 covariance 的受控同資料比較，但結果依變數分化，並非普遍改善。下一步應以獨立 validation reference 驗證實體 sensing node 的 noise、missingness 與 covariance drift，再決定是否需要 EKF、UKF 或 online parameter adaptation。",
+                "GRU 與 LSTM 已完成單一 seed、近似參數量的 SML2010 簡易比較。兩者 lowest MAE 都是 0/12；GRU 只在兩個 60 分鐘濕度案例勝過 vanilla RNN，中位相對改善為 -12.88%，LSTM 0/12 且為 -11.37%，所以沒有候選通過。PID 仍是尚未評估的閉環控制 baseline。",
+                "機箱 E11A 至 E11C 均已完成；E11C 雖有 aggregate 改善但 sensor coverage 未達門檻。後續 sensor-role、拓撲感知或非等向性模型必須用新資料另行預註冊，超過 30 °C 的 hotspot 仍不在目前範圍。",
+                "其他未來工作包括擴大 ESP32 長期資料、發展 multi-zone model，以及執行推薦動作介入驗證。",
             ],
         ),
         (
@@ -2988,3 +3024,90 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+# Synchronized E11D result slide; the main builder recreates decks before this post-process.
+if __name__ == "__main__":
+    from pathlib import Path as _E11DPath
+    from pptx import Presentation as _E11DPresentation
+
+    _e11d_root = _E11DPath(__file__).resolve().parents[1]
+    for _relative in (
+        "outputs/papers/thesis_presentation_zh.pptx",
+        "outputs/papers/thesis_presentation_zh_30min.pptx",
+    ):
+        _path = _e11d_root / _relative
+        _deck = _E11DPresentation(_path)
+        _slide = _deck.slides.add_slide(_deck.slide_layouts[1])
+        _slide.shapes.title.text = "E11D：角色語意的獨立確認"
+        _body = _slide.placeholders[1].text_frame
+        _body.text = "H-ENC-04 supported；11 x 4 MiB，1,505 分鐘快照"
+        for _text in (
+            "MAE：2.3972 -> 1.6517 C；RMSE：2.9748 -> 2.3648 C",
+            "逐感測器勝出 30/42；配對改善 0.7455 C",
+            "20,000 次日區塊 bootstrap 95% CI：[0.6867, 0.8124] C",
+            "限制：預測性角色資訊，不是氣流因果；仍屬次要機箱證據",
+        ):
+            _paragraph = _body.add_paragraph()
+            _paragraph.text = _text
+            _paragraph.level = 0
+        _e11e_slide = _deck.slides.add_slide(_deck.slide_layouts[1])
+        _e11e_slide.shapes.title.text = "E11E：平均改善，但尾端 gate 未通過"
+        _e11e_body = _e11e_slide.placeholders[1].text_frame
+        _e11e_body.text = "開發集：1,502 分鐘快照；E11F 未下載"
+        for _text in (
+            "Baseline MAE/RMSE/P95：1.1168/1.7250/3.4900 C",
+            "role_local_k5_p2：1.0187/1.6792/3.7699 C",
+            "Bootstrap CI：[0.0708, 0.1292] C；但只贏 25/42",
+            "決策：no_candidate_forwarded，不宣稱確認改善",
+        ):
+            _paragraph = _e11e_body.add_paragraph()
+            _paragraph.text = _text
+            _paragraph.level = 0
+        _deck.save(_path)
+
+    _e11d_outline_blocks = {
+        "docs/thesis/presentation_outline_zh.md": """
+
+## 補充結果：E11D 角色條件式確認
+
+- H-ENC-04：supported；1,505 分鐘快照。
+- 全域平均 MAE/RMSE：2.3972/2.9748 C；角色條件模型：1.6517/2.3648 C。
+- 角色模型勝出 30/42；配對改善 0.7455 C，95% CI [0.6867, 0.8124] C。
+- 僅為預測性角色資訊，不宣稱氣流因果。
+
+## E11E 開發結果
+
+- 最佳 role_local_k5_p2：MAE 1.0187 C，但 P95 3.7699 C 高於 baseline 3.4900 C。
+- 只贏 25/42，決策為 no_candidate_forwarded；E11F 未下載。
+""",
+        "docs/thesis/presentation_outline_zh_30min.md": """
+
+## 補充投影片：E11D 機箱角色語意（約 1 分鐘）
+
+- H-ENC-04 supported；1,505 分鐘快照。
+- MAE 2.3972 -> 1.6517 C；RMSE 2.9748 -> 2.3648 C；30/42 感測器勝出。
+- 95% CI [0.6867, 0.8124] C；預測性而非氣流因果證據。
+
+## E11E 開發結果
+
+- MAE 1.1168 -> 1.0187 C，但 P95 3.4900 -> 3.7699 C。
+- 25/42；no_candidate_forwarded，E11F 未下載。
+""",
+    }
+    for _relative, _block in _e11d_outline_blocks.items():
+        _path = _e11d_root / _relative
+        if "H-ENC-04" not in _path.read_text(encoding="utf-8"):
+            with _path.open("a", encoding="utf-8") as _handle:
+                _handle.write(_block)
+
+# Keep generated presentations and outlines synchronized with E11G evidence.
+if __name__ == "__main__":
+    from sync_e11g_generated_artifacts import sync_pptx_outputs
+
+    sync_pptx_outputs()
+
+# Keep generated presentations synchronized with E11H/E11F evidence.
+if __name__ == "__main__":
+    from sync_e11hf_generated_artifacts import sync_pptx_outputs as sync_e11hf_pptx_outputs
+
+    sync_e11hf_pptx_outputs()

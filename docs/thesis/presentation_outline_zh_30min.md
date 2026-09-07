@@ -69,7 +69,7 @@
 - E4-E6：裝置影響學習、window matrix、hybrid no-Fourier/LOO
 - E7：bedroom_01 7 天真實快照與 pillow 位置比較
 - E8：推薦動作 before/after intervention protocol
-- E9：public datasets 僅作 task-aligned benchmark
+- E9：public benchmark；E10：controlled filtering；E11A：BMC temporal transfer
 - Web demo 與 3D 展示是呈現層，不列為量化實驗
 
 ## Slide 17: 證據鏈與驗證範圍
@@ -83,10 +83,11 @@
 
 ## Slide 19: 主要量化結果
 - 圖表資料：8 組標準情境、full 3D grid Field MAE、log-scale y 軸
-- 三種柱狀結果：IDW、Base、LOO Hybrid
+- 四種柱狀結果：IDW、Base、Pure RNN、LOO Hybrid；Pure RNN lowest MAE 0/24
 - 真實臥室 raw vs corrected pillow MAE、date-block bootstrap 與逐日剔除敏感度
 - 推薦有效性以 actual comfort-penalty reduction 驗證
-- 實驗 E1-E7 與 E9 已有數值輸出；E8 僅為介入 protocol
+- 實驗 E1-E7、E9-E11 已有數值輸出；E8 僅為介入 protocol
+- E11B：42 點、1,641 快照；最近鄰 MAE 1.175 °C 優於 IDW 1.687 °C
 
 ## Slide 20: 真實臥室快照與推薦驗證狀態
 - E7：pillow hold-out 不參與 8 角點 fitting；20,000 次 date-block bootstrap 報告三因子 MAE 降幅區間與改善快照數
@@ -98,8 +99,9 @@
 ## Slide 21: 3D 視覺化結果
 - 溫度與照度熱區案例
 
-## Slide 22: Hybrid Residual 結果
-- default held-out、no-Fourier、LOO robustness checks
+## Slide 22: Pure RNN 與 Hybrid Residual 結果
+- Pure RNN 不使用 physics estimate；8/8 folds parity、lowest MAE 0/24
+- default held-out、no-Fourier、LOO hybrid robustness checks
 - train/test sample count 與 synthetic benchmark 限制
 - LOO 結果限標準情境 family
 - 真實快照作為 sparse calibration 驗證
@@ -110,6 +112,8 @@
 - 60min 由本研究 readout 最佳；24h 由 persistence 最佳且 transfer 劣於 raw physics
 - 次日 primary 選中 trend 但 test 惡化 7.34% / 8.36%，bootstrap interval 均跨 0
 - RNN 與其他模型共用四筆 history、split、targets、test rows；12/12 parity 通過，RNN lowest MAE 0/12
+- 固定預算 GRU/LSTM：lowest MAE 皆 0/12；GRU 2/12、LSTM 0/12 勝 vanilla，H-RNNGATE-01 不支持
+- Kalman controlled filtering 12/12 parity；MA(3) 與 Linear Kalman 各 lowest MAE 6/12
 - 資料 confidential；方法移植不等於原文 CNN--LSTM 重現
 
 ## Slide 24: 公開資料任務拆解：CU-BEMS
@@ -117,124 +121,165 @@
 - C2：商辦照度與單房間假設差距大
 - C3：compound event 可勝 linear regression 但不勝 persistence
 
-## Slide 25: 結論、限制與未來工作
-- 目前完成度、真實快照限制、hybrid 泛化限制、推薦動作尚需介入驗證、task-aligned benchmark 與後續方向
-- 室內溫度限 20–30 °C；人體舒適採 tolerance，RNN 負向結果保留
-- 候選植物生長情境需補 PPFD/CO2/基質/生物 endpoint；Kalman 尚未評估
+## Slide 25: E11B：AAU 伺服器機房空間轉移
+- 42 個高信心 PT100、1,641 個一分鐘快照；六個不明通道預先排除
+- MAE：全域平均 2.293 °C、最近鄰 1.175 °C、3D IDW 1.687 °C
+- 最近鄰勝出 30/42、IDW 6/42；H-ENC-02 不支持
+- 不事後調參；拓撲與非等向性解釋須另行預註冊
 
-## Slide 26: 公式與指標整理
+## Slide 26: E11C：局部鄰域獨立確認
+- 11 個 E11B-disjoint ranges、42 點、1,505 快照、11 個 day blocks
+- local IDW MAE/RMSE 1.223/1.886 °C，低於 nearest 1.301/2.218 °C
+- bootstrap 95% CI [0.0546, 0.1063]，但 local 僅勝出 21/42
+- H-ENC-03 不支持；分群差異只列 exploratory
+
+## Slide 27: 結論、限制與未來工作
+- 目前完成度、真實快照限制、hybrid 泛化限制、推薦動作尚需介入驗證、task-aligned benchmark 與後續方向
+- 室內溫度限 20–30 °C；人體舒適採 tolerance，RNN 與機箱 E11A-E11C 負向或混合結果保留
+- GRU/LSTM 簡易比較無候選通過；PID 仍待評估；後續改 history/容量/3-D 任務須重新預註冊
+- 候選植物生長情境需補 PPFD/CO2/基質/生物 endpoint；Kalman 受控結果不可外推為實體感測器驗證
+
+## Slide 28: 公式與指標整理
 - 場模型：三因子場、總估計式、baseline、activation、envelope
 - 三因子公式：溫度、濕度、照度分別說明
 - 校正與評估：8 點三線性校正、影響學習、hybrid residual、metrics、IDW、推薦排序
 
-## Slide 27: 公式說明 1：三因子場與查詢點
+## Slide 29: 公式說明 1：三因子場與查詢點
 - 場的定義
 - 適用範圍
 
-## Slide 28: 公式說明 2：總估計式
+## Slide 30: 公式說明 2：總估計式
 - 主公式
 - 為什麼這樣拆
 
-## Slide 29: 公式說明 3：Indoor baseline
+## Slide 31: 公式說明 3：Indoor baseline
 - baseline 定義
 - 跟 baseline 比較法的差別
 
-## Slide 30: 公式說明 4：baseline 的取得方式
+## Slide 32: 公式說明 4：baseline 的取得方式
 - 有啟動前觀測時
 - 沒有啟動前觀測時
 
-## Slide 31: 公式說明 5：高度正規化
+## Slide 33: 公式說明 5：高度正規化
 - 垂直座標
 - 為什麼需要
 
-## Slide 32: 公式說明 6：設備 activation
+## Slide 34: 公式說明 6：設備 activation
 - 時間響應
 - 使用原因
 
-## Slide 33: 公式說明 7：influence envelope
+## Slide 35: 公式說明 7：influence envelope
 - 空間作用範圍
 - 距離衰減
 
-## Slide 34: 公式說明 8：溫度場主式
+## Slide 36: 公式說明 8：溫度場主式
 - 溫度 nominal model
 - 使用原因
 
-## Slide 35: 公式說明 9：溫度的全室與局部項
+## Slide 37: 公式說明 9：溫度的全室與局部項
 - 分解式
 - 三類來源
 
-## Slide 36: 公式說明 10：冷氣溫度項
+## Slide 38: 公式說明 10：冷氣溫度項
 - 冷氣全室項
 - 冷氣局部項
 
-## Slide 37: 公式說明 11：窗戶與燈具溫度項
+## Slide 39: 公式說明 11：窗戶與燈具溫度項
 - 窗戶熱交換
 - 燈具熱源
 
-## Slide 38: 公式說明 12：濕度場主式
+## Slide 40: 公式說明 12：濕度場主式
 - 濕度 nominal model
 - 使用原因
 
-## Slide 39: 公式說明 13：濕度來源項
+## Slide 41: 公式說明 13：濕度來源項
 - 全室濕度項
 - 局部濕度項
 
-## Slide 40: 公式說明 14：照度場主式
+## Slide 42: 公式說明 14：照度場主式
 - 照度 nominal model
 - 為什麼不同於溫濕度
 
-## Slide 41: 公式說明 15：直射光與環境光
+## Slide 43: 公式說明 15：直射光與環境光
 - 窗戶直射光
 - 燈具與環境光
 
-## Slide 42: 公式說明 16：一次漫反射
+## Slide 44: 公式說明 16：一次漫反射
 - 反射公式
 - 模型限制
 
-## Slide 43: 公式說明 17：8 參數校正多項式
+## Slide 45: 公式說明 17：8 參數校正多項式
 - 三線性形式
 - 為什麼剛好 8 點
 
-## Slide 44: 公式說明 18：角點 residual
+## Slide 46: 公式說明 18：角點 residual
 - residual 定義
 - 直覺意義
 
-## Slide 45: 公式說明 19：三線性校正式
+## Slide 47: 公式說明 19：三線性校正式
 - 校正公式
 - 重要性質
 
-## Slide 46: 公式說明 20：校正後估計值
+## Slide 48: 公式說明 20：校正後估計值
 - 回到主公式
 - 適用範圍
 
-## Slide 47: 公式說明 21：可完全表示的 residual 空間
+## Slide 49: 公式說明 21：可完全表示的 residual 空間
 - 函數空間
 - 適用範圍
 
-## Slide 48: 公式說明 22：平滑 residual 的誤差界
+## Slide 50: 公式說明 22：平滑 residual 的誤差界
 - 這個上界在衡量什麼
 - 為什麼會這樣
 
-## Slide 49: 公式說明 23：非連網裝置影響學習
+## Slide 51: 公式說明 23：非連網裝置影響學習
 - before/after delta
 - least-squares 估計
 
-## Slide 50: 公式說明 24：Hybrid residual
+## Slide 52: 公式說明 24：Hybrid residual
 - 第二層修正
 - 定位
 
-## Slide 51: 公式說明 25：Hybrid 訓練目標
+## Slide 53: 公式說明 25：Hybrid 訓練目標
 - residual label
 - 損失函數
 
-## Slide 52: 公式說明 26：MAE、RMSE 與 Correlation
+## Slide 54: 公式說明 26：MAE、RMSE 與 Correlation
 - 誤差指標
 - 使用原因
 
-## Slide 53: 公式說明 27：IDW baseline
+## Slide 55: 公式說明 27：IDW baseline
 - IDW 插值
 - 比較基準理由
 
-## Slide 54: 公式說明 28：推薦排序與驗證
+## Slide 56: 公式說明 28：推薦排序與驗證
 - 推薦分數
 - 驗證限制
+
+
+## 補充投影片：E11D 機箱角色語意（約 1 分鐘）
+
+- H-ENC-04 supported；1,505 分鐘快照。
+- MAE 2.3972 -> 1.6517 C；RMSE 2.9748 -> 2.3648 C；30/42 感測器勝出。
+- 95% CI [0.6867, 0.8124] C；預測性而非氣流因果證據。
+
+## E11E 開發結果
+
+- MAE 1.1168 -> 1.0187 C，但 P95 3.4900 -> 3.7699 C。
+- 25/42；no_candidate_forwarded，E11F 未下載。
+
+
+## E11G tail-safe 自適應開發
+
+- 12 日 leave-one-day-out、42 感測器、30 個裁切與回退候選。
+- MAE 1.1168→0.8945°C；RMSE 1.7250→1.5415°C；P95 3.4900→3.1013°C。
+- bootstrap 95% CI：[0.1847, 0.2620]°C。
+- 嚴格勝率僅 21/42，低於 26/42；`no_candidate_forwarded`，E11F 未存取。
+
+
+## E11H commissioning 與 E11F confirmation
+
+- E11H：2 日校正、1 日選模、9 日凍結測試；MAE 0.4039°C，P95 1.2900°C，39/42。
+- E11F：不 refit；MAE 0.3966°C、RMSE 0.6723°C、P95 1.2756°C，39/42。
+- H-ENC-05 僅於同 campaign 未見 bytes 獲支持；日期重疊，非跨機箱或 NTC 硬體驗證。
+- 決策：`h_enc_05_supported_within_campaign`。

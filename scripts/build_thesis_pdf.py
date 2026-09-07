@@ -12,7 +12,7 @@ OUTPUTS = ROOT / "outputs"
 PAPERS = ROOT / "docs" / "papers" / "thesis"
 
 sys.path.insert(0, str(SCRIPT_DIR))
-from build_thesis_docx import Block, build_blocks, ensure_image_asset  # noqa: E402
+from build_thesis_docx import Block, build_blocks, e11g_blocks, e11hf_blocks, ensure_image_asset  # noqa: E402
 
 
 TEX_PATH = PAPERS / "thesis_draft_zh.tex"
@@ -211,12 +211,14 @@ def render_document(blocks: List[Block]) -> str:
 \usepackage{{setspace}}
 \usepackage{{indentfirst}}
 
-\setmainfont{{Times New Roman}}
-\setsansfont{{Arial}}
-\setmonofont{{Menlo}}
-\setCJKmainfont[BoldFont={{Heiti TC}}]{{Songti TC}}
-\setCJKsansfont{{Heiti TC}}
-\setCJKmonofont{{Heiti TC}}
+\IfFontExistsTF{{Times New Roman}}{{\setmainfont{{Times New Roman}}}}{{\setmainfont{{Liberation Serif}}}}
+\IfFontExistsTF{{Arial}}{{\setsansfont{{Arial}}}}{{\setsansfont{{Liberation Sans}}}}
+\IfFontExistsTF{{Menlo}}{{\setmonofont{{Menlo}}}}{{\setmonofont{{Liberation Mono}}}}
+\IfFontExistsTF{{Songti TC}}{{
+  \IfFontExistsTF{{Heiti TC}}{{\setCJKmainfont[BoldFont={{Heiti TC}}]{{Songti TC}}}}{{\setCJKmainfont[BoldFont={{Noto Sans CJK TC}}]{{Songti TC}}}}
+}}{{\setCJKmainfont[BoldFont={{Noto Sans CJK TC}}]{{Noto Serif CJK TC}}}}
+\IfFontExistsTF{{Heiti TC}}{{\setCJKsansfont{{Heiti TC}}}}{{\setCJKsansfont{{Noto Sans CJK TC}}}}
+\IfFontExistsTF{{Heiti TC}}{{\setCJKmonofont{{Heiti TC}}}}{{\setCJKmonofont{{Noto Sans Mono CJK TC}}}}
 \XeTeXlinebreaklocale "zh"
 \XeTeXlinebreakskip = 0pt plus 1pt
 \hypersetup{{hidelinks}}
@@ -266,6 +268,8 @@ def compile_pdf(tex_path: Path) -> None:
 def main() -> None:
     PAPERS.mkdir(parents=True, exist_ok=True)
     blocks = build_blocks()
+    blocks.extend(e11g_blocks())
+    blocks.extend(e11hf_blocks())
     write_latex(TEX_PATH, blocks)
     compile_pdf(TEX_PATH)
     print(f"Wrote {TEX_PATH}")

@@ -32,7 +32,10 @@
 - `run_public_dataset_model_comparison.py`：同資料模型比較。
 - `run_oh2024_inspired_comparison.py`：文獻概念移植比較。
 - `run_next_day_temperature_comparison.py`：次日溫度比較。
-- `run_rnn_public_comparison.py`：教授指定的 vanilla RNN 公平比較。
+- `run_rnn_3d_field_comparison.py`：同八情境、同稀疏觀測的 pure RNN 完整 3-D 場 LOO baseline。
+- `run_rnn_public_comparison.py`：SML2010 時序 vanilla RNN 公平比較。
+- `run_kalman_filter_comparison.py`：固定 protocol 的同資料受控 Kalman filtering 比較。
+- `build_professor_demo.py`：由 canonical JSON 產生教授版兩週離線成果頁。
 - `run_target_holdout_validation.py`：以分離的 input／validation roles 執行受控 target-point holdout；目前證據類型是 synthetic。
 - `analyze_e8_intervention_trials.py`：E8 真實介入資料分析；空白模板只能得到 `NOT_EVALUATED`。
 

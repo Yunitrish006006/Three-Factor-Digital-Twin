@@ -2423,7 +2423,7 @@ INDEX_HTML = """<!doctype html>
 
     function renderPublicBenchmarks(data) {
       const container = document.getElementById("publicBenchmark");
-      if (!data.datasets?.length) {
+      if (!data.datasets?.length && !data.comparator_studies?.length) {
         container.innerHTML = `<p class="status">No public benchmark output JSON files were found under outputs/data/public_benchmarks.</p>`;
         return;
       }
@@ -2434,6 +2434,13 @@ INDEX_HTML = """<!doctype html>
               <div class="metric">${dataset.dataset}</div>
               <div class="value">${dataset.summary.total_targets}</div>
               <div class="status">targets compared, ${dataset.summary.model_best_count} best MAE by the mapped model.</div>
+            </div>
+          `).join("")}
+          ${(data.comparator_studies || []).map(study => `
+            <div class="card">
+              <div class="metric">${study.label}</div>
+              <div class="value">${study.evaluated_cases}/${study.expected_cases}</div>
+              <div class="status">${study.parity_passed ? "Same-data parity passed" : "Parity incomplete"}. ${study.short_result}</div>
             </div>
           `).join("")}
           <div class="card">
@@ -2449,7 +2456,16 @@ INDEX_HTML = """<!doctype html>
           `${step.title}<br><span class="status">${step.description}</span>`,
           `<code>${step.command}</code>`
         ]))}
+        ${(data.comparator_studies || []).map(renderComparatorStudy).join("")}
         ${data.datasets.map(renderPublicBenchmarkDataset).join("")}
+      `;
+    }
+
+    function renderComparatorStudy(study) {
+      return `
+        <h3>${study.label}: same-data comparator evidence</h3>
+        <p class="status">${study.claim_boundary}</p>
+        ${table(["Method", "Lowest MAE cases"], Object.entries(study.lowest_mae_counts).map(([method, count]) => [methodLabel(method), `${count}/${study.expected_cases}`]))}
       `;
     }
 
@@ -2524,7 +2540,13 @@ INDEX_HTML = """<!doctype html>
       const labels = {
         hybrid_digital_twin_readout: "Our mapped model",
         linear_regression: "Linear regression",
-        persistence: "Persistence"
+        persistence: "Persistence",
+        sequence_linear_regression: "Sequence linear regression",
+        physics_structured_readout: "Physics-structured readout",
+        vanilla_rnn: "Vanilla RNN",
+        raw_noisy: "Raw noisy observation",
+        causal_moving_average_3: "Causal MA(3)",
+        linear_kalman_random_walk: "Linear Kalman"
       };
       return labels[method] || method || "n/a";
     }
@@ -3227,6 +3249,37 @@ def load_public_benchmark_dashboard() -> Dict[str, Any]:
         path = PUBLIC_BENCHMARKS / filename
         if path.exists():
             datasets.append(_summarize_public_benchmark_file(path))
+    comparator_studies = []
+    rnn_path = PUBLIC_BENCHMARKS / "rnn_sml2010_comparison.json"
+    if rnn_path.exists():
+        payload = json.loads(rnn_path.read_text(encoding="utf-8"))
+        comparator_studies.append(
+            {
+                "label": "Vanilla RNN",
+                "status": payload.get("status", "NOT_EVALUATED"),
+                "evaluated_cases": payload.get("summary", {}).get("evaluated_cases", 0),
+                "expected_cases": payload.get("summary", {}).get("expected_cases", 0),
+                "parity_passed": payload.get("data_parity", {}).get("all_horizons_passed", False),
+                "lowest_mae_counts": payload.get("summary", {}).get("lowest_mae_counts", {}),
+                "short_result": "RNN lowest MAE 0/12; negative result retained.",
+                "claim_boundary": payload.get("claim_boundary", ""),
+            }
+        )
+    kalman_path = PUBLIC_BENCHMARKS / "kalman_sml2010_filtering_comparison.json"
+    if kalman_path.exists():
+        payload = json.loads(kalman_path.read_text(encoding="utf-8"))
+        comparator_studies.append(
+            {
+                "label": "Linear Kalman",
+                "status": payload.get("status", "NOT_EVALUATED"),
+                "evaluated_cases": payload.get("summary", {}).get("evaluated_cases", 0),
+                "expected_cases": payload.get("summary", {}).get("expected_cases", 0),
+                "parity_passed": payload.get("summary", {}).get("all_cases_data_parity_passed", False),
+                "lowest_mae_counts": payload.get("summary", {}).get("lowest_mae_counts", {}),
+                "short_result": "Kalman 6/12 and causal MA(3) 6/12; mixed result retained.",
+                "claim_boundary": payload.get("claim_boundary", ""),
+            }
+        )
 
     return {
         "claim_boundary": (
@@ -3255,6 +3308,7 @@ def load_public_benchmark_dashboard() -> Dict[str, Any]:
                 "command": "outputs/data/public_benchmarks/*_hybrid_twin_comparison.json",
             },
         ],
+        "comparator_studies": comparator_studies,
         "datasets": datasets,
     }
 

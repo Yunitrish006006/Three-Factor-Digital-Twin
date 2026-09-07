@@ -533,9 +533,9 @@ E9 使用公開資料集做 task-aligned benchmark。這部分不是單房間完
 
 圖表的三個群組分別代表溫度、濕度與照度。Y 軸是 log-scale，原因是照度 MAE 的量級比溫度與濕度大很多；因此這張圖要看柱上數字與相對排序，不能只用柱高做線性比例解讀。
 
-每個群組內有三根柱。IDW 使用同一批 8 個角落觀測值做反距離插值，只知道距離與感測值；Base 是本研究的可解釋主模型，包含變數專屬 nominal model、裝置與幾何先驗、power calibration 與 trilinear residual correction；LOO Hybrid 是 leave-one-scenario-out 的 residual model 平均結果，用來檢查第二層 residual 是否只對單一切分有效。
+每個群組內有四根柱。IDW 使用同一批 8 個角落觀測值做反距離插值；Base 是設備感知主模型；Pure RNN 以八顆感測器作 spatial tokens，直接預測完整場且不使用 physics estimate；LOO Hybrid 是 physics 加 residual 的平均結果。
 
-具體數字上，IDW 的平均 field MAE 是 T=0.1723, H=0.4633, L=54.9052；Base 是 T=0.0474, H=0.1765, L=2.0269；LOO Hybrid 是 T=0.0017, H=0.0059, L=0.1407。Base 相對 IDW 的降幅約為 temperature 72.5%、humidity 61.9%、illuminance 96.3%。
+具體數字上，IDW 的平均 field MAE 是 T=0.1723, H=0.4633, L=54.9052；Base 是 T=0.0474, H=0.1765, L=2.0269；Pure RNN 是 T=0.2091, H=0.2241, L=48.1422；LOO Hybrid 是 T=0.0017, H=0.0059, L=0.1407。Pure RNN 在 24 個 fold×因子皆未取得最低 MAE，顯示 recurrence 本身沒有取代空間結構先驗。
 
 解讀重點是：IDW 在照度特別差，因為它不知道窗戶日照方向、燈具位置、家具遮蔽或反射；只靠距離很難重建局部光照分布。溫度與濕度也有改善，表示設備狀態、方向性與房間幾何先驗確實提供了純幾何插值沒有的資訊。
 
@@ -550,11 +550,7 @@ E9 使用公開資料集做 task-aligned benchmark。這部分不是單房間完
 ### 名詞註釋
 - **三因子**：本研究同時估計溫度、相對濕度與照度三種室內環境量。
 - **空間場**：不是單一平均值，而是在房間 3D 座標中任意位置可查詢的環境量分布。
-- **Nominal model**：主模型的可解釋估計部分，描述設備、邊界與空間結構造成的主要趨勢。
 - **Residual**：觀測或 truth 與模型預測之間的差，用於校正或第二層學習。
-- **Residual correction**：利用感測器 residual 修正 nominal model，使估計更貼近觀測。
-- **Trilinear correction**：用 X/Y/Z 三個座標方向的一階補間，由 8 個角點 residual 推估室內 residual 場。
-- **Power calibration**：依觀測差異調整設備影響強度，避免裝置作用尺度只依預設值決定。
 - **Hybrid residual**：在可解釋 base estimator 後面再加一個資料驅動 residual 模型，不直接取代主模型。
 - **Scenario**：一組房間、設備、外部邊界與時間設定，用於模擬或驗證。
 - **Directionality**：冷氣出風方向、窗戶日照方向或光源方向造成的非均向影響。
@@ -647,12 +643,31 @@ Primary 結果後另做明確標記的 adaptive online exploratory analysis，va
 
 這個結果必須保留。它代表在目前資料、四筆歷史與固定小型架構下，recurrent complexity 沒有帶來可驗證優勢；不能因為 RNN 較複雜就把它當成改進後模型。
 
+Kalman controlled filtering 也使用同樣的公平性原則。SML2010 原始溫濕度作 task reference，三種方法取得相同 fixed-seed corrupted observations。12 個案例全部通過 parity；溫度六個案例由 causal MA(3) 最佳，濕度六個案例由 linear Kalman 最佳，未濾波沒有任何最低 MAE。
+
+這只能說明 injected-noise current-time filtering 的混合結果，不能稱為真實 DHT11 或其他 sensing node 去噪、forecast 或完整 3D 場驗證。
+
 原文 BEMS data 為 confidential，且沒有可用的 CNN--LSTM code，因此這只能稱 published-method-inspired transfer，不能稱重現原文 next-day performance。
+
+機箱 E11A 使用完整 BMC inventory：124 個 source CSV 展開為 317 個 file-device cases，只有 5 個符合 20–30 °C 與最低 30 pairs。Persistence 在 5/5 最低，thermal-balance 0/5，因此 H-ENC-01 不支持。
+
+這只是 next-observation outlet-air temporal negative result；312/317 cases insufficient-in-scope，不能外推為 3-D 機箱熱場、元件 hotspot、PID 或部署驗證。
+
+E11B 使用 AAU Server Room v4 的 12 個固定 4 MiB 區段，42 個高信心 PT100 形成 1,641 個一分鐘快照。最近鄰 MAE 1.175 °C、勝出 30/42；3D IDW MAE 1.687 °C、勝出 6/42，因此 H-ENC-02 不支持。
+
+機櫃拓撲、氣流方向或熱分層只能列為可能解釋；本輪不事後調整 IDW，後續模型須另立預註冊實驗。
+
+E11C 使用 11 個不重疊 ranges 作獨立確認：local IDW 將 MAE 由 1.301 降至 1.223 °C，bootstrap 95% CI 全為正，但 local 與 nearest 各勝出 21/42。
+
+因未達至少 26/42 的廣度門檻，H-ENC-03 不支持。gradient 0/5、rack back 17/28、rack front 4/9 只列 exploratory，不能當成氣流原因證據。
 
 ### 名詞註釋
 - **Residual**：觀測或 truth 與模型預測之間的差，用於校正或第二層學習。
+- **MCP host/client/server**：MCP 採 client-server 概念；host/client 是使用工具的 AI 應用端，server 則暴露工具、資源或 prompt。
+- **IDW**：Inverse Distance Weighting，反距離加權插值；只使用距離與感測值，不含設備物理先驗。
 - **SML2010**：公開智慧建築資料集；本研究用於 two-point boundary-response 類任務。
 - **Public dataset**：外部公開資料來源；本研究只用於相容任務壓力測試，不作完整 3D truth。
+- **Real-bedroom snapshot**：真實臥室中的稀疏量測快照，用於檢查校正對未參與 fitting 點位的改善。
 - **Dense ground truth**：房間內大量點位的真實環境場資料，是更嚴格但較難取得的驗證基準。
 - **MAE**：Mean Absolute Error，平均絕對誤差；數值越低代表平均偏差越小。
 - **Persistence**：直接沿用上一時步值作預測的時間序列 baseline，在高慣性短視窗資料中通常很強。
@@ -689,9 +704,13 @@ C3 compound event 可勝 linear regression，但仍不勝 persistence。這表�
 
 需要動態環境配方的小型封閉植物生長空間可作候選，但目前 lux 不是 PPFD/PAR，並缺 CO2、基質水分、氣流與生物 endpoint，所以不能宣稱已具培養成效。
 
-Kalman filter 目前只列為狀態估測、感測融合或線上參數調整的後續方法。未來要先定義 state、observation 與 covariance，再讓未濾波、moving average、KF 與 EKF 使用相同資料比較。
+Kalman 已完成第一個固定 state、observation 與 covariance 的受控同資料比較，但結果依變數分化，並非普遍改善。下一步應以獨立 validation reference 驗證實體 sensing node 的 noise、missingness 與 covariance drift，再決定是否需要 EKF、UKF 或 online parameter adaptation。
 
-其他未來工作包括擴大 ESP32 長期資料、發展 multi-zone model、執行推薦動作介入驗證，以及往閉環控制延伸。
+GRU 與 LSTM 已完成單一 seed、近似參數量的 SML2010 簡易比較。兩者 lowest MAE 都是 0/12；GRU 只在兩個 60 分鐘濕度案例勝過 vanilla RNN，中位相對改善為 -12.88%，LSTM 0/12 且為 -11.37%，所以沒有候選通過。PID 仍是尚未評估的閉環控制 baseline。
+
+機箱 E11A 至 E11C 均已完成；E11C 雖有 aggregate 改善但 sensor coverage 未達門檻。後續 sensor-role、拓撲感知或非等向性模型必須用新資料另行預註冊，超過 30 °C 的 hotspot 仍不在目前範圍。
+
+其他未來工作包括擴大 ESP32 長期資料、發展 multi-zone model，以及執行推薦動作介入驗證。
 
 ### 名詞註釋
 - **單房間**：本研究限定在單一矩形房間，不處理多房間或整棟建築的氣流與能量交換。
@@ -700,9 +719,11 @@ Kalman filter 目前只列為狀態估測、感測融合或線上參數調整的
 - **空間數位孿生**：以房間幾何、裝置、感測器與模型維持一個可查詢的室內環境狀態估計。
 - **三因子**：本研究同時估計溫度、相對濕度與照度三種室內環境量。
 - **Zone**：房間內的目標區域，用於彙整多個點的平均狀態或舒適度評估。
+- **Baseline**：泛指比較或模型參考基準；在模型脈絡中常指未加入設備作用前的室內溫濕照度基準。
 - **Residual**：觀測或 truth 與模型預測之間的差，用於校正或第二層學習。
 - **Hybrid residual**：在可解釋 base estimator 後面再加一個資料驅動 residual 模型，不直接取代主模型。
 - **Scenario**：一組房間、設備、外部邊界與時間設定，用於模擬或驗證。
+- **SML2010**：公開智慧建築資料集；本研究用於 two-point boundary-response 類任務。
 - **Dense ground truth**：房間內大量點位的真實環境場資料，是更嚴格但較難取得的驗證基準。
 - **MAE**：Mean Absolute Error，平均絕對誤差；數值越低代表平均偏差越小。
 - **目標值與容許範圍**：g_m 是舒適目標，δ_m 是允許偏離範圍；超出範圍才累積 penalty。

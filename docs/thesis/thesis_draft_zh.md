@@ -68,7 +68,7 @@ A Sparse-Sensing Spatial Digital Twin for Learning Environmental Impacts of Non-
 
 智慧建築與智慧居家系統需要掌握室內環境狀態，才能支援舒適度評估、能源管理與設備控制。然而，一般房間中的冷氣、窗戶與照明常不具備連網遙測能力，室內也通常只能布建少量感測器，難以直接取得完整空間分布。本研究以單一矩形房間為場域，提出以 8 顆角落感測器支援之三因子空間數位孿生原型，針對 temperature、humidity 與 illuminance 建立變數專屬的 reduced-order nominal model：溫度以熱交換與熱源項描述，濕度以水氣交換與除濕項描述，照度以燈具光束幾何、窗戶日照 envelope、遮蔽與 single-bounce diffuse reflection 描述。系統再結合冷氣、窗戶與照明的參數化影響函數、active-device power calibration 與 trilinear residual correction，從稀疏觀測修正空間場估計；並以 hybrid residual neural network 學習主模型剩餘誤差，而不以純黑盒模型取代可解釋結構。
 
-評估採分層證據設計，分別檢查受控完整場重建、公開資料相容子任務與真實稀疏校正。8 組標準情境中，base model 的平均 field MAE 為溫度 0.0474、濕度 0.1765、照度 2.0269，低於 IDW baseline 的 0.1723、0.4633、54.9052；hybrid residual leave-one-scenario-out 平均進一步降至 0.0017、0.0059、0.1407。7 天 real-bedroom snapshot 中，pillow 參考點校正後 MAE 由 0.8967°C、4.1286% 與 309.0142 lux 降至 0.1676°C、0.3939% 與 16.6450 lux；以日期為 block 的 20,000 次 paired bootstrap 顯示三因子 MAE 降幅之 95% 區間下界皆大於 0。公開資料集 SML2010 與 CU-BEMS 僅作 task-aligned benchmark，不宣稱 full 3D dense-field 驗證；SML2010 的 24 個任務中有 12 項取得最低 MAE，CU-BEMS 的 12 個任務中有 9 項優於 linear regression 但 0 項優於 persistence。結果顯示，稀疏角落感測在搭配變數專屬物理結構、校正與殘差學習時，可支援可解釋且可訓練的室內環境場估計；推薦動作目前仍屬模型反事實排序，實際因果改善需後續 before/after 介入驗證。
+評估採分層證據設計，分別檢查受控完整場重建、公開資料相容子任務與真實稀疏校正。8 組標準情境中，base model 的平均 field MAE 為溫度 0.0474、濕度 0.1765、照度 2.0269，低於 IDW baseline 的 0.1723、0.4633、54.9052；不使用 physics estimate 的 pure RNN 為 0.2091、0.2241、48.1422，24 個 fold×因子均未取得最低 MAE；hybrid residual leave-one-scenario-out 平均進一步降至 0.0017、0.0059、0.1407。7 天 real-bedroom snapshot 中，pillow 參考點校正後 MAE 由 0.8967°C、4.1286% 與 309.0142 lux 降至 0.1676°C、0.3939% 與 16.6450 lux；以日期為 block 的 20,000 次 paired bootstrap 顯示三因子 MAE 降幅之 95% 區間下界皆大於 0。公開資料集 SML2010 與 CU-BEMS 僅作 task-aligned benchmark，不宣稱 full 3D dense-field 驗證。結果顯示，稀疏角落感測在搭配變數專屬物理結構、校正與殘差學習時，可支援可解釋且可訓練的室內環境場估計；推薦動作目前仍屬模型反事實排序，實際因果改善需後續 before/after 介入驗證。
 
 關鍵字：空間數位孿生、稀疏感測、非連網家電、室內環境建模、溫度、濕度、照度、角落感測器。
 
@@ -80,7 +80,7 @@ A Sparse-Sensing Spatial Digital Twin for Learning Environmental Impacts of Non-
 
 Smart building and smart home systems require indoor environmental awareness for comfort assessment, energy management, and device control. In ordinary rooms, however, air conditioners, manual windows, and lights often expose no telemetry, while only a small number of sensors can be installed. This thesis proposes a sparse-sensing spatial digital twin for a single rectangular room using eight corner sensors. The model uses variable-specific reduced-order nominal structures: temperature is represented by thermal exchange and heat-source terms, humidity by moisture exchange and dehumidification terms, and illuminance by lamp beam geometry, window daylight envelopes, obstruction, and a lightweight single-bounce diffuse reflection approximation. Parameterized appliance influence functions, active-device power calibration, and trilinear residual correction are used to estimate the room field from sparse observations, and a hybrid residual neural network learns remaining systematic error without replacing the interpretable base model.
 
-The evaluation separates controlled full-field reconstruction, public task-aligned benchmarks, and real sparse-calibration checks. Across eight canonical scenarios, the base model achieves average field MAE of 0.0474/0.1765/2.0269 for temperature, humidity, and illuminance, compared with 0.1723/0.4633/54.9052 for IDW. Leave-one-scenario-out hybrid residual correction further reduces MAE to 0.0017/0.0059/0.1407. In a seven-day real-bedroom snapshot, pillow-point calibration error is reduced from 0.8967°C, 4.1286%, and 309.0142 lux to 0.1676°C, 0.3939%, and 16.6450 lux; a 20,000-replicate paired date-block bootstrap keeps every 95% MAE-reduction interval above zero. SML2010 and CU-BEMS are used only as compatible task-aligned external benchmarks rather than dense 3-D spatial ground truth: the mapped model obtains the lowest MAE in 12 of 24 SML2010 tasks, and outperforms linear regression in 9 of 12 CU-BEMS tasks but never outperforms persistence on CU-BEMS. These results show that sparse corner sensing can support an interpretable and trainable indoor environmental field estimator when physical structure, calibration, and residual learning are assigned complementary roles. Action recommendations remain model-based counterfactual rankings and require future before/after intervention validation for causal claims.
+The evaluation separates controlled full-field reconstruction, public task-aligned benchmarks, and real sparse-calibration checks. Across eight canonical scenarios, the base model achieves average field MAE of 0.0474/0.1765/2.0269 for temperature, humidity, and illuminance, compared with 0.1723/0.4633/54.9052 for IDW. A standalone pure RNN without physics estimates obtains 0.2091/0.2241/48.1422 and is lowest in 0 of 24 fold-factor comparisons; leave-one-scenario-out hybrid residual correction further reduces MAE to 0.0017/0.0059/0.1407. In a seven-day real-bedroom snapshot, pillow-point calibration error is reduced from 0.8967°C, 4.1286%, and 309.0142 lux to 0.1676°C, 0.3939%, and 16.6450 lux; a 20,000-replicate paired date-block bootstrap keeps every 95% MAE-reduction interval above zero. SML2010 and CU-BEMS are used only as compatible task-aligned external benchmarks rather than dense 3-D spatial ground truth. These results support complementary roles for physical structure, calibration, and residual learning. Action recommendations remain model-based counterfactual rankings and require future before/after intervention validation for causal claims.
 
 Keywords: spatial digital twin, sparse sensing, non-networked appliances, indoor environment modeling, temperature, humidity, illuminance, corner sensors.
 
@@ -194,7 +194,7 @@ Abstract……II
 
   5.6 【實驗 E5】窗戶時段、天氣、季節矩陣與直接輸入…… 14
 
-  5.7 【實驗 E6】Hybrid Residual Neural Network 結果…… 15
+  5.7 【實驗 E6】Pure RNN 與 Hybrid Residual Neural Network 結果…… 15
 
   5.8 【實驗 E7】真實臥室快照驗證與【驗證方案 E8】推薦動作驗證方法…… 16
 
@@ -435,7 +435,7 @@ Oh、Sfarra 與 Kim 進一步把建築物理模擬與 operational data 整合為
 
 現階段最符合「封閉環境、動態設定值、空間不均與稀疏感測」的候選，是小型植物生長室或植物工廠模組。Chiang、Bånkestad 與 Hoch 比較固定、正弦波與追蹤自然變化的溫度、濕度與光照設定，顯示環境波動方式會影響植物表現 [29]；Kim 等人也在人工光植物工廠中使用日夜溫差與光週期處理幼苗 [30]。不過，本研究目前只涵蓋 20–30 °C，文獻中任何超出此區間的處理都只能視為 out-of-domain 方法參考。另一方面，現有照度變數採 lux，不能代替植物 PPFD/PAR；系統也缺少 CO2、基質水分、氣流與生物量或品質等 endpoint。因此，封閉植物生長目前只是候選研究方向，不是已驗證部署或植物效益主張。
 
-Kalman filter 可作為未來動態狀態估測的參考。原始 Kalman 架構要求明確的 state transition、observation model、process noise 與 measurement noise [28]。Speetjens 等人以 extended Kalman filter 進行溫室模型線上參數調整，支持其作為 time-varying model adaptation 的可能性 [32]；但 van Mourik 等人比較 moving average、EKF 與 UKF 時，沒有得到普遍改善，並指出基礎 climate model 的準確性會主導 filtering 成效 [31]。因此本研究只把 Kalman family 登記為後續相同資料的未濾波、moving-average、KF 與 EKF 比較方向，現階段證據狀態為 NOT_EVALUATED。
+Kalman filter 可作為動態狀態估測的參考。原始 Kalman 架構要求明確的 state transition、observation model、process noise 與 measurement noise [28]。Speetjens 等人以 extended Kalman filter 進行溫室模型線上參數調整，支持其作為 time-varying model adaptation 的可能性 [32]；但 van Mourik 等人比較 moving average、EKF 與 UKF 時，沒有得到普遍改善，並指出基礎 climate model 的準確性會主導 filtering 成效 [31]。本研究因此先執行可稽核的 scalar random-walk controlled filtering：保留 normalized SML2010 溫濕度序列作 task reference，以固定 seed 注入三種受控 measurement noise，並讓未濾波、causal MA(3) 與 linear Kalman 使用相同 corrupted observations 與 test rows。此結果只定位 Kalman 作為 temporal filtering comparator；實體 sensing node、online parameter adaptation 與 EKF/UKF 仍需另行驗證。
 
 
 ---
@@ -1080,22 +1080,22 @@ Web demo 也新增 Public Dataset Comparison 區塊。此區塊讀取 outputs/da
 
 ## 5.1 標準情境設定
 
-本研究建立 8 組標準情境，包含無設備作用、僅冷氣、僅開窗、僅照明、冷氣與窗戶、窗戶與照明、冷氣與照明，以及三者同時作用。每組情境均輸出場重建誤差、區域平均值、感測器校正效果、IDW baseline 比較、非連網裝置影響學習與推薦排序。
+本研究建立 8 組標準情境，包含無設備作用、僅冷氣、僅開窗、僅照明、冷氣與窗戶、窗戶與照明、冷氣與照明，以及三者同時作用。每組情境均輸出場重建誤差、區域平均值、感測器校正效果、IDW baseline、pure RNN 與 LOO hybrid 同任務比較、非連網裝置影響學習與推薦排序。
 
 表 5-1 的最佳推薦表示在目前 comfort target 與模型估測下，哪一個候選動作具有最高預測改善量。此表用來檢查推薦模組是否能依情境輸出合理排序，但仍屬模擬與反事實評估；若要宣稱推薦動作在真實房間中有效，需依 5.8 節所述介入式驗證方法量測實際改善量。
 
-為避免將不同資料來源支持的主張混在一起，本章採用分層驗證邏輯。8 組標準情境、消融實驗與 leave-one-scenario-out hybrid residual 測試用於驗證受控條件下的完整 3D 場重建與模型元件貢獻；48 組窗戶矩陣用於檢查外部邊界條件敏感度；bedroom_01 真實快照用於檢查稀疏感測校正是否能改善未參與校正的 pillow 參考點；SML2010 與 CU-BEMS 僅作 public task-aligned benchmark，用於外部資料的相容子任務比較。換言之，synthetic benchmark 回答「完整場是否能在受控真值下重建」，真實快照回答「校正管線是否能吸收真實觀測並改善保留點」，公開資料集回答「模型在相容任務上的外部定位」，推薦介入實驗才回答「建議動作是否真的造成舒適度改善」。
+為避免將不同資料來源支持的主張混在一起，本章採用分層驗證邏輯。8 組標準情境、pure RNN 同任務 baseline、消融實驗與 leave-one-scenario-out hybrid residual 測試用於驗證受控條件下的完整 3D 場重建與模型元件貢獻；48 組窗戶矩陣用於檢查外部邊界條件敏感度；bedroom_01 真實快照用於檢查稀疏感測校正是否能改善未參與校正的 pillow 參考點；SML2010 與 CU-BEMS 僅作 public task-aligned benchmark，用於外部資料的相容子任務比較。換言之，synthetic benchmark 回答「完整場是否能在受控真值下重建」，真實快照回答「校正管線是否能吸收真實觀測並改善保留點」，公開資料集回答「模型在相容任務上的外部定位」，推薦介入實驗才回答「建議動作是否真的造成舒適度改善」。
 
 實驗標記總覽。本章後續以 E1--E9 標記實驗或驗證項目。E1--E6 為 controlled simulation 或 model robustness experiment，E7 為真實臥室 sparse-calibration check，E8 是尚未完成實測的推薦介入驗證方案，E9 為 public task-aligned benchmark。Web demo、MCP 與可旋轉 3D 展示屬於服務介面與展示輔助，不列為獨立量化實驗。
 
 | 標記 | 名稱 | 資料來源 | 主要比較或輸出 | 可支持主張 | 限制 |
 | --- | --- | --- | --- | --- | --- |
-| 實驗 E1 | 標準情境 full-field 重建 | 8 組 controlled synthetic scenarios | Base field MAE、zone MAE、sensor MAE | 受控條件下可重建完整 3D 場 | 非真實 dense ground truth |
+| 實驗 E1 | 標準情境 full-field 重建 | 8 組 controlled synthetic scenarios | IDW、base、pure RNN、LOO hybrid field MAE，以及 zone / sensor MAE | 受控條件下可重建完整 3D 場，並以同任務 baseline 比較 | 非真實 dense ground truth |
 | 實驗 E2 | IDW baseline 比較 | E1 同一組情境與 8 顆角落感測器 | Base model 與 IDW field MAE | 設備先驗、校準與場模型比純空間插值更適合有設備作用情境 | IDW 只是無設備語意 baseline，不代表所有空間插值上限 |
 | 實驗 E3 | 消融與可重現性 | E1 同一 synthetic setup | raw、no reflection、no calibration、no trilinear、full base | 說明反射、校準與 trilinear correction 的個別貢獻與限制 | trilinear 目標是感測點一致性，不保證 dense MAE 單調下降 |
 | 實驗 E4 | 非連網裝置影響學習 | controlled before/after synthetic observations | learned impact coefficients、推薦排序 | 可由環境變化學出裝置影響方向與相對強度 | 不是實測因果控制 |
 | 實驗 E5 | 窗戶矩陣與 direct input | 48 組 season/weather/time/window cases | window-zone 與 center-zone estimates | 外部溫濕度、日照與開窗比例會改變估測場 | 不是實際天氣部署或長期監測 |
-| 實驗 E6 | Hybrid residual robustness | default split、no-Fourier、8-fold leave-one-scenario-out | hybrid field MAE、train/test samples | 標準情境 family 內 residual 可學習，且不是只依賴單一切分 | 不代表任意房間或任意家具配置泛化 |
+| 實驗 E6 | Pure RNN / hybrid robustness | 同一 8 組情境與 8 顆角落觀測；8-fold leave-one-scenario-out | 四模型 field MAE、資料 parity、train/test samples | 檢查純黑盒 RNN 與物理結構加 residual learning 的差異 | RNN token 次序不是物理時間；結果不代表任意房間泛化 |
 | 實驗 E7 | 真實臥室快照 sparse calibration | bedroom_01，7 天 28 snapshots | raw vs corrected pillow MAE | 真實稀疏觀測可改善未參與校正的 pillow 參考點 | 只有單一 pillow reference，沒有 dense 3D ground truth |
 | 驗證方案 E8 | 推薦動作 before/after 介入 | 尚待實測 | actual improvement、success rate、top-1 regret | 定義未來如何驗證推薦是否真的造成改善 | 目前只完成 protocol，不列為已完成結果 |
 | 實驗 E9 | Public task-aligned benchmark | SML2010、CU-BEMS | persistence、linear regression、本研究 mapped readout | 提供外部資料相容子任務上的定位與比較 | 不能宣稱 full 3D field、8-corner calibration 或完整非連網裝置學習 |
@@ -1175,6 +1175,8 @@ IDW（Inverse Distance Weighting，反距離加權插值）是最基本的空間
 | no calibration | 0.0493 | 0.1772 | 3.3631 |
 | no trilinear | 0.0446 | 0.0274 | 0.9849 |
 | full base | 0.0474 | 0.1765 | 2.0269 |
+| pure RNN LOO | 0.2091 | 0.2241 | 48.1422 |
+| hybrid residual LOO | 0.0017 | 0.0059 | 0.1407 |
 
 因此，本研究在後續 hybrid residual 評估中不只報告單一 6/2 held-out split，也加入 leave-one-scenario-out cross-validation、train/test sample count 與 no-Fourier 對照，以降低僅憑單一切分得到過度漂亮結果的風險。可重現腳本包含 scripts/run_demo.py、scripts/run_hybrid_residual_experiment.py 與 scripts/run_submission_readiness_experiments.py。
 
@@ -1196,13 +1198,17 @@ IDW（Inverse Distance Weighting，反距離加權插值）是最基本的空間
 | window_winter_rainy_night | 11.0 | 78.0 | 15.2 | 73.0820 |
 | window_spring_cloudy_morning | 21.5 | 70.0 | 5005.0 | 96.7992 |
 
-## 5.7 【實驗 E6】Hybrid Residual Neural Network 結果
+## 5.7 【實驗 E6】Pure RNN 與 Hybrid Residual Neural Network 結果
+
+為補足 standalone black-box baseline，本研究另執行 pure Elman RNN 的完整 3-D 場比較。RNN 不接收 physics estimate、IDW prediction、residual target 或 held-out truth，而是依固定順序讀取同一 snapshot 的 8 顆角落感測器 token；每個 token 包含感測器座標與三因子觀測，並附上查詢點座標及當下 room、environment、device context。八個 leave-one-scenario-out folds 中，每 fold 以其餘 7 個情境、每情境 96 個固定點訓練，並在 held-out 情境完整 1,152 點計算 field MAE；資料 parity 8/8 通過。
+
+Pure RNN 的平均 field MAE 為 temperature 0.2091、humidity 0.2241、illuminance 48.1422。相對 IDW，humidity 與 illuminance 分別降低 51.62% 與 12.32%，但 temperature 增加 21.36%；相對 base model 與 LOO hybrid 三項皆較差，24 個 fold×因子均未取得最低 MAE。此負向結果保留而不在觀察後調整 architecture，並只代表固定 sensor-token Elman RNN 與八情境 controlled synthetic truth，不能推論所有 recurrent designs。
 
 在目前預設的 held-out 測試設定下，hybrid residual neural network 以 6 個情境作為訓練資料，並以 light\_only 與 all\_active 作為測試情境（與 5.2 節的 8 組全集平均為不同子集）。此切分包含 576 個訓練樣本與 192 個測試樣本。若對 temperature 與 humidity residual trace 啟用 Fourier low-pass denoising，並保留 illuminance 原始 residual，則 hybrid residual correction 套用於主模型輸出後，field MAE 可由 temperature 0.0474、humidity 0.1765、illuminance 2.1757，分別降至 0.0020、0.0051 與 0.1370。對應改善比例約為溫度 95.78%、濕度 97.11% 與照度 93.70%。
 
 為檢查 Fourier denoising 是否造成主要降幅，本研究另外關閉 Fourier low-pass denoising 重跑相同切分；結果為 temperature 0.0021、humidity 0.0057、illuminance 0.1370。此結果顯示，頻域低通主要對 humidity 有小幅穩定效果，而照度改善主要來自 residual model 對結構性偏差的學習，不是由頻域處理造成。進一步的 leave-one-scenario-out 設定中，每一 fold 以 7 個情境訓練、1 個情境測試，平均每 fold 為 672 個訓練樣本與 96 個測試樣本；8-fold 平均 hybrid field MAE 為 temperature 0.0017、humidity 0.0059、illuminance 0.1407，對應改善比例約為 96.41%、96.66% 與 93.06%。
 
-表 5-5 彙整預設切分、no-Fourier 對照與 LOO cross-validation。圖 5-5 則將 IDW、base model 與 LOO hybrid 的平均 field MAE 以 log-scale 顯示，避免照度量級過大而掩蓋溫度與濕度差異。
+表 5-5 彙整預設切分、no-Fourier 對照與 LOO cross-validation。圖 5-5 則將 IDW、base model、pure RNN 與 LOO hybrid 的平均 field MAE 以 log-scale 顯示，避免照度量級過大而掩蓋溫度與濕度差異。
 
 | 設定 | Train/Test samples | Base MAE (T/H/L) | Hybrid MAE (T/H/L) |
 | --- | --- | --- | --- |
@@ -1210,8 +1216,8 @@ IDW（Inverse Distance Weighting，反距離加權插值）是最基本的空間
 | no-Fourier held-out | 576 / 192 | 0.0474 / 0.1765 / 2.1757 | 0.0021 / 0.0057 / 0.1370 |
 | leave-one-scenario-out avg. | 672 / 96 per fold | 0.0474 / 0.1765 / 2.0269 | 0.0017 / 0.0059 / 0.1407 |
 
-![圖 5-5 IDW、base model 與 LOO hybrid residual correction 的平均 field MAE 比較。圖中使用 log-scale y-axis，數值為 8 組標準情境平均。](../../docs/papers/thesis/assets/field_mae_comparison.png)
-*圖 5-5 IDW、base model 與 LOO hybrid residual correction 的平均 field MAE 比較。圖中使用 log-scale y-axis，數值為 8 組標準情境平均。*
+![圖 5-5 IDW、base model、pure RNN 與 LOO hybrid residual correction 的平均 field MAE 比較。圖中使用 log-scale y-axis；pure RNN 與 hybrid 均採 8-fold LOO。](../../docs/papers/thesis/assets/field_mae_comparison.png)
+*圖 5-5 IDW、base model、pure RNN 與 LOO hybrid residual correction 的平均 field MAE 比較。圖中使用 log-scale y-axis；pure RNN 與 hybrid 均採 8-fold LOO。*
 
 ## 5.8 【實驗 E7】真實臥室快照驗證
 
@@ -1352,6 +1358,74 @@ RNN 同資料比較為 COMPLETE，12/12 個案例通過資料一致性，共完�
 
 這是需要保留的負向結果。它支持的主張是 RNN 已在相同資料條件下完成比較，而不是 RNN 或本研究方法較佳。若後續增加 history length、LSTM/GRU 或調整 architecture，必須另立 protocol，且所有其他模型仍須取得相同資料與 test rows。
 
+##### GRU 與 LSTM 簡易同資料比較
+
+為進一步回答 gated recurrence 是否能改善上述 vanilla RNN，本研究固定一個簡易、單一 seed 的後續比較。資料仍使用相同 SML2010 S2、四筆 origin history、15/60/1,440 分鐘 horizon、四個溫濕度 target 與 chronological 70/30 split。Vanilla RNN、GRU 與 LSTM 分別使用 6、3、2 個 hidden units，參數量為 148、169、140；三者均固定訓練 30 epochs、batch size 32、Adam learning rate 0.01、gradient clipping 1.0 與 seed 42，不使用 test set 選架構或停止時點。
+
+12/12 案例與三個 horizon 的 endpoint/input hash 全部一致，訓練 loss 與預測亦均為有限值。六方法最低 MAE 次數仍由 sequence linear regression 取得 7/12、persistence 取得 5/12；physics readout、vanilla RNN、GRU 與 LSTM 均為 0/12。GRU 只在兩個 60 分鐘濕度案例優於 vanilla RNN，為 2/12，其中位每案例相對 MAE 改善為 -12.880146%；LSTM 為 0/12，中位相對改善為 -11.368865%。
+
+| 模型 | 參數量 | 最低 MAE | 勝過 vanilla RNN | 中位相對 MAE 改善 |
+| --- | --- | --- | --- | --- |
+| Vanilla RNN | 148 | 0 / 12 | - | - |
+| GRU | 169 | 0 / 12 | 2 / 12 | -12.880146% |
+| LSTM | 140 | 0 / 12 | 0 / 12 | -11.368865% |
+
+預註冊門檻要求至少一個 gated model 在 8/12 案例勝過 vanilla RNN，且中位相對改善為正；兩者均未達成，因此 H-RNNGATE-01 不支持，沒有模型送入完整 3-D 後續比較。此結果只限單一 seed、四筆歷史的 SML2010 時序任務。它不能否定所有 GRU/LSTM 設計，也不能因結果不佳事後增加 hidden units、history 或 seeds 並覆蓋本次負結果。
+
+#### 5.9.3.3 Kalman Filter 受控同資料比較
+
+為把 Kalman 從文獻方向推進為可執行比較，本研究以 normalized SML2010 的 dining/room 溫度與濕度作 current-time task reference，固定 seed 後分別注入 low、nominal 與 high 三種 Gaussian measurement-noise stress profile。溫度標準差為 0.5、1.0、2.0 °C，濕度為 1.5、3.0、5.0 %RH。未濾波、causal MA(3) 與 scalar linear Kalman random-walk model 共用同一 corrupted series、chronological 70/30 split、test timestamps、current-time targets 與 metrics；Kalman 固定採 F=1、H=1，R 為登記的 injected-noise variance，Q 由 training reference 相鄰差分變異估計。
+
+Kalman 受控同資料比較為 COMPLETE，12/12 Kalman 案例通過資料一致性，共完成 12 個受控 filtering 案例。最低 MAE 次數為未濾波為 0 項、MA(3) 為 6 項、Linear Kalman 為 6 項；Kalman 在 12 項都優於未濾波。結果依變數呈現明確分化：六個溫度案例全部由 MA(3) 取得最低 MAE，六個濕度案例全部由 linear Kalman 取得最低 MAE。
+
+| 目標族群 | 案例數 | 未濾波最低 | MA(3) 最低 | Linear Kalman 最低 | 判讀 |
+| --- | --- | --- | --- | --- | --- |
+| 溫度 | 6 | 0 | 6 | 0 | 簡單三點平滑較符合目前溫度序列與固定 random-walk covariance |
+| 濕度 | 6 | 0 | 0 | 6 | Kalman 在三種受控雜訊下均低於 raw 與 MA(3) |
+| 合計 | 12 | 0 | 6 | 6 | Kalman 非普遍最佳，方法效果依變數動態而異 |
+
+這項結果的 evidence class 是 CONTROLLED_INJECTED_NOISE。原始 SML2010 量測只作 task reference，並非 latent physical ground truth；受控雜訊也不是 DHT11、DHT22、SHT31 或其他實體感測器的 noise characterization。因此，本節不能支持真實感測器去噪、未來值預測、完整 3D 場、控制效益或跨場域主張。
+
+#### 5.9.3.4 機箱 BMC 公開資料轉移比較
+
+為把機箱／設備櫃方向由規劃推進為可否證的第一階段實驗，本研究使用 Zhang et al. [34] 對應的公開 BMC dataset [35]，執行 E11A next-observation outlet-air temporal comparison。資料欄位包含 inlet/outlet temperature、PSU power 與 fan RPM；比較方法為 persistence、一般 linear readout，以及以 inlet-outlet temperature difference、power 與 fan-modulated difference 為特徵的 thermal-balance readout。所有方法共用 chronological 60/20/20 split、ridge=0.001、相同 endpoints 與 20–30 °C air-state 範圍。此設計參考 contained data-center lumped thermal model 與 data-driven model 的分工 [33]，但不宣稱重現原文模型。
+
+完整資料 commit 含 124 個 source CSV，展開為 317 個 file-device cases；其中 312 個因 20–30 °C 內合格 pair 少於 30 而標為 insufficient_in_scope_samples，只有 5 個案例可評估。五案皆為 11 秒 median cadence，結果如下。
+
+| Case | Eligible pairs | Persistence MAE | Linear MAE | Thermal-balance MAE | 最低 MAE |
+| --- | --- | --- | --- | --- | --- |
+| 202512112333:bmc | 45 | 0.111111 | 0.611499 | 0.644822 | Persistence |
+| 202512120002:bmc | 75 | 0.200000 | 0.236494 | 0.464760 | Persistence |
+| 202512120114:bmc | 249 | 0.019608 | 0.075570 | 0.165912 | Persistence |
+| 202512132226:bmc | 86 | 0.000000 | 0.086525 | 0.083910 | Persistence |
+| 202512132302:bmc | 99 | 0.000000 | 0.027354 | 0.033091 | Persistence |
+
+Persistence 在 5/5 案例取得最低 test MAE，thermal-balance 對 persistence 為 0/5，因此 H-ENC-01 不支持。兩個 test partition 的 outlet reading 維持常數，使 persistence MAE 為 0；其餘三案也仍由 persistence 最佳。這項負向結果表示，在目前短 cadence、量化且高慣性的 outlet-air task 中，加入簡化 thermal terms 沒有形成可驗證增益。它只回答公開 BMC temporal task，不能宣稱 3-D 機箱熱場、CPU/GPU hotspot、PID 效益或一般設備櫃適用性；後續空間轉移仍需具座標的 airflow、temperature、power 與 reference field 資料另立 E11B protocol。
+
+#### 5.9.3.5 AAU 伺服器機房空間轉移比較
+
+E11B 依預註冊協定使用 AAU Server Room v4 資料集 [36] 的 12 個固定 4 MiB 位元組區段，並以設備與量測研究 [37] 交叉確認量測背景。42 個高信心 PT100 位置經一分鐘中位數彙整後形成 1,641 個可評估快照；六個位置語意不明的冷卻單元通道於分析前排除。
+
+| 基線 | MAE（°C） | RMSE（°C） | P95 絕對誤差（°C） | 感測器勝出 |
+| --- | --- | --- | --- | --- |
+| 全域平均 | 2.293 | 2.624 | 4.554 | 6/42 |
+| 最近鄰 | 1.175 | 1.411 | 2.579 | 30/42 |
+| 3D IDW（p=2） | 1.687 | 1.921 | 3.319 | 6/42 |
+
+IDW 雖優於全域平均，卻未勝過最近鄰，且僅在 6/42 個感測器取得最低 MAE，未達預註冊的 60% 門檻，因此 H-ENC-02 判定為不支持。機櫃局部拓撲、氣流方向或熱分層是合理但尚未驗證的解釋；為避免事後選擇，本輪不調整 IDW 指數或座標。證據限制包括僅取樣 706 MB 原始物件的固定區段、排除六個不明通道，且結果不構成 CFD、因果或控制效能證據。
+
+#### 5.9.3.6 E11C 局部鄰域獨立確認
+
+由於 E11B 已揭露全域 IDW 的弱點，E11C 不重用 discovery rows，而在相鄰 E11B ranges 的 11 個空隙各固定一個 4 MiB range。方法在下載前固定為最近鄰、三最近點 local IDW（k=3, p=2）與全域 IDW；局部 IDW 的使用依據為 local-neighborhood interpolation 文獻 [38], [39]，資料中心 IDW 與 rack cooling 文獻 [40], [41] 只作方法與邊界參考，不視為同任務重現。11 個 ranges 形成 89,587 筆合格列、1,505 個一分鐘快照與 11 個 calendar-day bootstrap blocks。
+
+| 方法 | MAE（°C） | RMSE（°C） | P95 絕對誤差（°C） |
+| --- | --- | --- | --- |
+| 最近鄰 | 1.301 | 2.218 | 5.745 |
+| Local IDW（k=3, p=2） | 1.223 | 1.886 | 4.026 |
+| Global IDW（p=2） | 1.844 | 2.285 | 4.507 |
+
+Local IDW 的 paired MAE 改善為 0.0783 °C，20,000 次 day-block bootstrap 95% 區間為 [0.0546, 0.1063] °C；但 per-sensor 結果為 local IDW 21/42、最近鄰 21/42，未達預註冊至少 26/42 的廣度門檻。因此四項條件只通過三項，H-ENC-03 判定為不支持。探索性分群顯示 local IDW 在 gradient、rack back、rack front 分別勝出 0/5、17/28、4/9；這只能形成 sensor-role heterogeneity 假說，不能證明機櫃拓撲、氣流方向或熱分層原因。
+
 ### 5.9.4 CU-BEMS：C1/C2/C3 任務族群拆解
 
 ![圖 5-7 CU-BEMS C1/C2/C3 任務族群拆解。CU-BEMS 呈現出與 SML2010 不同的型態：本研究常能勝過 linear regression，但在高時間慣性的商辦 zone-level 任務中未勝過 persistence。](../../outputs/figures/public_benchmarks/cu_bems_task_breakdown.svg)
@@ -1400,7 +1474,7 @@ Web demo 提供可旋轉 3D 預覽，使使用者可直接觀察三因子點雲�
 
 ## 6.1 結論
 
-本研究建立一個面向非連網家電環境影響學習的單房間三因子空間數位孿生原型，針對 temperature、humidity 與 illuminance 的空間變化進行建模、校正與學習。透過 8 顆角落感測器、設備影響函數、active device power scale 校準、single-bounce diffuse reflection 與 trilinear 校正場，系統能估計房間內任意位置與指定區域的三因子狀態。模擬結果顯示，加入設備影響模型與照度反射近似後，在冷氣、窗戶與照明等情境下能提供較 IDW baseline 更可解釋且更精細的場估計；新增的消融實驗也說明反射、校準與 trilinear correction 在不同指標上扮演不同角色。進一步加入只作用於 temperature / humidity residual trace 的 Fourier low-pass denoising 與 hybrid residual neural correction 後，預設 held-out 與 leave-one-scenario-out 情境的場重建誤差皆可再顯著下降。
+本研究建立一個面向非連網家電環境影響學習的單房間三因子空間數位孿生原型，針對 temperature、humidity 與 illuminance 的空間變化進行建模、校正與學習。透過 8 顆角落感測器、設備影響函數、active device power scale 校準、single-bounce diffuse reflection 與 trilinear 校正場，系統能估計房間內任意位置與指定區域的三因子狀態。模擬結果顯示，加入設備影響模型與照度反射近似後，在冷氣、窗戶與照明等情境下能提供較 IDW baseline 與 pure RNN 更精細的場估計；pure RNN 在同八情境 LOO 比較為 0/24 lowest MAE，說明固定小型黑盒 recurrence 未取代結構先驗。進一步加入只作用於 temperature / humidity residual trace 的 Fourier low-pass denoising 與 hybrid residual neural correction 後，預設 held-out 與 leave-one-scenario-out 情境的場重建誤差皆可再顯著下降。
 
 此外，本研究將模型封裝為 MCP server，並提供 Gemma/Ollama bridge 與 web demo，使數位孿生不只是離線模擬程式，而是可被 AI client 或使用者互動查詢的工具化系統。整體成果符合研究目標：在有限感測器與非連網裝置條件下，學習裝置對空間環境的影響，並在 sample scope 與三因子目標明確時用於更可解釋的控制動作推薦排序。
 
@@ -1411,6 +1485,12 @@ Web demo 提供可旋轉 3D 預覽，使使用者可直接觀察三因子點雲�
 針對 24 小時 horizon 的 leakage-controlled follow-up 也未建立新的優勢：validation-selected damped daily trend 在 dining 與 room 的 test MAE 分別為 1.6289°C 與 1.6250°C，均高於 persistence 的 1.5175°C 與 1.4996°C；post-primary adaptive correction 亦未改善。這個負結果表示目前不能把約 1% 的未選中 bias-correction 小訊號包裝成次日優勢，後續必須以新增獨立時段、可信 target-day weather/HVAC schedule forecast 與 rolling-origin validation 重新驗證。
 
 教授指定的 vanilla RNN 也已在完全相同的 SML2010 S2 四步歷史、split 與 test rows 下完成比較。12 個 target--horizon 案例中，sequence linear regression 在 7 項取得最低 MAE，persistence 在 5 項取得最低 MAE，而 RNN 與 physics-structured readout 都是 0 項。此結果說明目前資料下的 recurrent complexity 沒有轉化為可驗證優勢，也再次支持保留簡單基準與負向結果。
+
+Kalman controlled filtering 亦顯示相同的比較原則：12 個案例皆以相同 corrupted observations 評估，linear Kalman 與 causal MA(3) 各取得 6 項最低 MAE。Kalman 在六個濕度案例較佳，但六個溫度案例均由 MA(3) 較佳；這支持把 Kalman 視為需依 state/noise model 評估的 comparator，而不是因方法名稱較複雜就假設普遍改善。
+
+機箱 E11A 公開 BMC transfer 也形成需要保留的負向結果：317 個 file-device cases 只有 5 個符合 20–30 °C 與最低樣本門檻，且 persistence 在 5/5 最低，thermal-balance 為 0/5。這否定目前簡化 thermal readout 在該短 cadence outlet-air task 的優勢，但不等同否定具 3-D 幾何、airflow 或不同 horizon 的後續機箱研究。
+
+機箱 E11B 與 E11C 進一步顯示 spatial interpolation 的結論必須分層。E11B 的全域 IDW 不如最近鄰；E11C 在獨立 ranges 上以 local IDW 改善 aggregate MAE、RMSE 與 bootstrap interval，但只在 21/42 感測器勝出，未達 26/42 門檻。三個 enclosure 假說目前均不支持，其中 E11C 的 aggregate improvement 只能作有限描述，不能改寫成普遍改善。
 
 另一項結論是，公開資料集並非不能使用，而是必須依資料本身支援的任務層級進行比較。對完整 3D 場重建，本研究目前仍以 canonical synthetic benchmark 作為主要依據；對 zone-level 響應、兩點時序響應與舒適度評分，則可分別利用相容的公開資料建立 task-aligned benchmark。此作法比直接宣稱所有資料集都能完整驗證本研究系統更嚴謹，也使後續 IEEE 稿件能從中文論文抽取一致的資料、數字與 claim boundary。
 
@@ -1432,6 +1512,10 @@ Web demo 提供可旋轉 3D 預覽，使使用者可直接觀察三因子點雲�
 - Oh et al. (2024) 的 BEMS data 為 confidential，本文只能執行 ridge-linear method transfer，不能重現其 TRNSYS/RC、CNN--LSTM 或 published next-day performance；SML2010 的 24 小時 transfer 亦未顯示 residual 優於 persistence。
 - 次日改善 follow-up 的 fixed 與 adaptive 方法都未通過預註冊判準；validation/test 非平穩漂移與缺少 target-day 邊界/操作 forecast 使現有 SML2010 結果不足以支持 next-day advantage。
 - 固定 vanilla RNN 在同資料的 12 個 SML2010 S2 案例中沒有取得最低 MAE；此結果不能代表所有 recurrent architecture，但也不能省略或改寫為模型改善。
+- 固定 pure Elman RNN 在八情境完整 3-D 場的 24 個 fold×因子比較亦未取得最低 MAE；sensor-token recurrence 不是物理時間序列，結果只限此單房間 controlled synthetic 設定。
+- Kalman 目前只完成 SML2010 固定種子 injected-noise current-time filtering；linear Kalman 與 MA(3) 各在 6/12 案例最低，不能外推為真實 sensing node、forecast、3D field 或 online parameter adaptation 優勢。
+- 機箱 E11A 只完成公開 BMC next-observation outlet-air task；317 個 file-device cases 中 312 個未達 20–30 °C 內最低樣本門檻，5 個可評估案例全部由 persistence 最佳，不能外推到 3-D 熱場、元件 hotspot、PID 或任意設備櫃。
+- 機箱 E11B/E11C 只完成 AAU 固定 byte-range 的 leave-one-sensor-out 比較；E11C local IDW 雖降低 aggregate error，卻只在 21/42 感測器勝出，不能外推為 CFD、因果控制、完整期間或 topology-aware 模型已驗證。
 - MCP server 目前為本地 stdio 版本，尚未包含遠端部署、OAuth 或多使用者管理。
 - 控制功能目前為具前置條件的推薦排序：必須先有 point/cluster sample 與三因子目標，且尚未完成真實介入式因果驗證，也尚未進入自動閉環控制。
 
@@ -1447,7 +1531,10 @@ Web demo 提供可旋轉 3D 預覽，使使用者可直接觀察三因子點雲�
 - 加入長時間資料以學習季節性與日夜週期變化。
 - 以真實量測資料重新訓練與驗證 hybrid residual neural network，檢驗其在真實房間中的泛化能力。
 - 以全程位於 20–30 °C 的小型封閉植物生長環境作為候選情境，先驗證日夜或生長階段 setpoint 的溫濕度、光照追蹤與空間均勻性；在加入 PPFD/PAR、CO2、基質水分、氣流與生物 endpoint 前，不宣稱植物培養成效。
-- 定義 state transition、observation model 與 noise covariance，預註冊相同資料的未濾波、moving average、linear Kalman filter 與必要時 EKF 比較；在正式執行前維持 NOT_EVALUATED。
+- 以獨立 validation reference 執行實體 sensing-node filtering，估計 real measurement noise、missingness 與 covariance drift；只有在 nonlinear transition/observation model 明確後才擴展 EKF/UKF 或 online parameter adaptation。
+- GRU 與 LSTM 已完成第一個單一 seed、同資料、近似參數量的 SML2010 簡易比較；兩者最低 MAE 皆為 0/12，GRU 僅 2/12 勝 vanilla 且中位相對改善 -12.880146%，LSTM 為 0/12 與 -11.368865%，沒有候選通過門檻。若改 history、容量、seed 或完整 3-D 任務，必須另立 protocol。
+- 將 PID 納入未來閉環控制 baseline；在執行前固定 plant、動態 setpoint、disturbance、sampling、actuator limit 與安全 cutoff，並比較 tracking MAE、settling time、overshoot、control effort 與 constraint violations。PID 不屬於 3-D 場估測器，目前亦為 NOT_EVALUATED。
+- 機箱 E11A 至 E11C 已完成且三個假說均不支持。若後續研究 sensor-role、rack topology、airflow direction 或非等向性距離，必須以新的資料切分與 OpenSpec 預註冊；不得用 E11C confirmation metrics 回頭選規則，超過 30 °C 的元件熱點仍不在目前適用範圍。
 
 
 ---
@@ -1487,6 +1574,15 @@ Web demo 提供可旋轉 3D 預覽，使使用者可直接觀察三因子點雲�
 - [30] Young Ho Kim et al., Preventing Overgrowth of Cucumber and Tomato Seedlings Using Difference between Day and Night Temperature in a Plant Factory with Artificial Lighting, Plants, vol. 12, no. 17, 3164, 2023. DOI: 10.3390/plants12173164
 - [31] Simon van Mourik, Peter J. M. van Beveren, Irineo L. López-Cruz, Eldert J. van Henten, Improving climate monitoring in greenhouse cultivation via model based filtering, Biosystems Engineering, vol. 181, pp. 40-51, 2019. DOI: 10.1016/j.biosystemseng.2019.03.001
 - [32] S. L. Speetjens, J. D. Stigter, G. van Straten, Towards an adaptive model for greenhouse control, Computers and Electronics in Agriculture, vol. 67, no. 1-2, pp. 1-8, 2009. DOI: 10.1016/j.compag.2009.01.012
+- [33] Yewan Wang, Yiru Zhang, David Nörtershäuser, Stéphane Le Masson, Jean-Marc Menaud, Model and data driven transient thermal system modelings for contained data centers, Energy and Buildings, vol. 258, 111790, 2022. DOI: 10.1016/j.enbuild.2021.111790
+- [34] Da Zhang, Haojun Xia, Xiaotong Wang, Yanchang Feng, Haohao Liu, Bibo Tu, Thermal Elasticity-Aware Host Resource Provision for Carbon Efficiency on Virtualized Servers, IEEE Transactions on Computers, vol. 74, no. 11, pp. 3682-3695, 2025. DOI: 10.1109/TC.2025.3603698
+- [35] arealuser, bmcdata: A dataset collected from server's Baseboard Management Controller (BMC), GitHub dataset, commit 24904fa9a9bac49a3f6f3198bb04e1be5e2707ea, 2026. Available: https://github.com/arealuser/bmcdata
+- [36] Simon Pommerencke Melgaard, Thomas Juul, Jesper Ellerbaek Nielsen, Rasmus Lund Jensen, Data from the AAU Server Room, version 4, Zenodo, 2026. DOI: 10.5281/zenodo.19398358
+- [37] Onur Muhammed Sarikaya et al., Energy efficiency enhancement in two European data centers through CFD modeling, Scientific Reports, vol. 15, 24952, 2025. DOI: 10.1038/s41598-025-11048-0
+- [38] L. Li, T. Losser, C. Yorke, R. Piltner, Fast inverse distance weighting-based spatiotemporal interpolation, International Journal of Environmental Research and Public Health, vol. 11, pp. 9101-9141, 2014. DOI: 10.3390/ijerph110909101
+- [39] F. Gao, Fast k-nearest-neighbors calculation for interpolation of radar reflectivity field, Journal of Atmospheric and Oceanic Technology, vol. 26, pp. 1410-1414, 2009. DOI: 10.1175/2009JTECHA1234.1
+- [40] E. Oktavia, Widyawan, I. W. Mustika, Inverse distance weighting and kriging spatial interpolation for data center thermal monitoring, ICITISEE, pp. 69-74, 2016. DOI: 10.1109/ICITISEE.2016.7803050
+- [41] X. Tong et al., A time-varying state-space model for real-time temperature predictions in rack-based cooling data centers, Applied Thermal Engineering, vol. 230, 120737, 2023. DOI: 10.1016/j.applthermaleng.2023.120737
 
 
 ---
@@ -1551,3 +1647,36 @@ python3 scripts/run_mcp_server.py
 | Point Sample | 推薦或查詢使用的單一指定座標樣本；若只查估測值，不需要目標；若要推薦動作，還必須提供完整三因子目標。 |
 | Cluster Sample | 由多個座標點或 target zone 組成的採樣範圍；推薦排序會先聚合此範圍的溫度、濕度與照度，再計算 comfort penalty。 |
 | Recommendation Preconditions | 推薦動作的必要前置條件：sample scope 必須存在，且 temperature、humidity、illuminance 三因子的目標與容許範圍必須可定義；缺少時不產生推薦。 |
+
+
+## E11D 機箱角色條件式獨立確認
+
+H-ENC-04 在 11 個獨立 4 MiB AAU v4 ranges、1,505 個一分鐘快照上判定為 supported。全域平均的 MAE/RMSE/P95 為 2.3972/2.9748/5.7232 C；固定角色條件模型為 1.6517/2.3648/5.4886 C，逐感測器勝出 30/42。
+
+配對 MAE 改善為 0.7455 C；13 個日區塊、20,000 次 bootstrap 的 95% CI 為 [0.6867, 0.8124] C。此結果只支持 rack-front、rack-back 與 gradient 角色具有預測資訊，不證明氣流因果，也不可把不同 split 的 E11C/E11D MAE 當成配對排名。
+
+
+## E11E 分層角色局部模型開發結果
+
+E11E 使用 11 個獨立 4 MiB ranges 與 1,502 個分鐘快照。較強 local IDW baseline 的 MAE/RMSE/P95 為 1.1168/1.7250/3.4900 C；最佳 `role_local_k5_p2` 為 1.0187/1.6792/3.7699 C，bootstrap 改善 CI [0.0708, 0.1292] C。
+
+候選雖降低平均誤差，P95 卻惡化，且只贏 25/42，未達 26/42。E11E 因此為 `no_candidate_forwarded`，E11F 保持未下載；不得宣稱確認改善。
+
+
+## 可重現比較狀態補充
+
+RNN 同資料比較為 `COMPLETE`；Kalman 受控同資料比較為 `COMPLETE`。兩者的 parity 與案例數由本地 evidence JSON 驗證。
+
+
+## E11G tail-safe 自適應開發與空間覆蓋限制
+
+E11G 針對 E11E 的 P95 惡化問題，在同一開發資料上預註冊 12 日 leave-one-day-out。方法以 local-IDW（k=3、p=2）為安全基線，以同角色 local-IDW（k=5、p=2）為專家，評估 30 組裁切修正與高分歧回退規格。每一折的感測器選擇只能使用其餘日期，候選必須同時改善 MAE、RMSE、P95 至少 0.02°C，並在至少 60% 訓練日降低 MAE；否則測試日回退基線。
+
+在 42 個感測器、12 日與 63,084 筆感測器分鐘評估上，out-of-fold MAE 由 1.1168°C 降至 0.8945°C，RMSE 由 1.7250°C 降至 1.5415°C，P95 由 3.4900°C 降至 3.1013°C；日區塊 MAE 改善 bootstrap 95% CI 為 [0.1847, 0.2620]°C。然而嚴格感測器勝率僅 21/42，另有 20 個因安全回退而持平、1 個微幅惡化，未達預註冊 26/42。因此決策為 `no_candidate_forwarded`，E11F 未存取；本結果僅屬適應性開發證據。
+
+
+## E11H commissioning 開發與 E11F 凍結確認
+
+E11H 將低成本 NTC 或參考感測器定位為短期 commissioning 工具：最早兩日的目標點真值用於 robust residual calibration，第三日只選擇模型，後續九日凍結測試。相較 local-IDW，E11H 測試 MAE 由 1.0958°C 降至 0.4039°C，RMSE 由 1.7435°C 降至 0.6830°C，P95 由 3.5061°C 降至 1.2900°C；39/42 感測器改善，日區塊 95% CI 為 [0.4854, 0.9271]°C。所有開發閘門通過，但多個 Huber slope 位於 0.5 邊界，窄溫域下 affine 參數不可解讀為物理係數。
+
+E11F 使用 11 個預先保留且未見的 byte ranges，完全凍結 E11H 的 42 組模型，不重新校正。相較 local-IDW，MAE 由 1.1399°C 降至 0.3966°C，RMSE 由 1.7850°C 降至 0.6723°C，P95 由 3.5735°C 降至 1.2756°C；39/42 感測器改善，13 日 bootstrap 95% CI 為 [0.5851, 0.9274]°C。因此 `h_enc_05_supported_within_campaign`。然而 11 個日期與 E11G 重疊、8 個與 E11H 重疊，故證據只支持同一 AAU campaign 的 calibration-assisted unseen-byte transfer，不是跨日期、跨機箱、氣流因果或 NTC 硬體準確度驗證。

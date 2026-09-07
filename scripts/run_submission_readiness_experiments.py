@@ -287,13 +287,20 @@ def render_error_comparison(summary: Dict[str, object]) -> Path:
     base = summary["base_ablation"]["variants"]["full_base"]["average_field_mae"]
     idw = summary["base_ablation"]["variants"]["idw"]["average_field_mae"]
     loo = summary["leave_one_scenario_out"]["average_hybrid_field_mae"]
+    rnn_path = OUTPUT_DATA / "rnn_3d_field_comparison.json"
+    if not rnn_path.exists():
+        raise FileNotFoundError(f"Missing registered pure RNN 3-D evidence: {rnn_path}")
+    rnn_summary = json.loads(rnn_path.read_text(encoding="utf-8"))
+    if rnn_summary.get("status") != "COMPLETE":
+        raise ValueError("Pure RNN 3-D evidence must be COMPLETE before rendering the comparison figure.")
+    pure_rnn = rnn_summary["summary"]["average_field_mae"]["pure_rnn"]
     groups = [
-        ("Temperature", [idw["temperature"], base["temperature"], loo["temperature"]]),
-        ("Humidity", [idw["humidity"], base["humidity"], loo["humidity"]]),
-        ("Illum.", [idw["illuminance"], base["illuminance"], loo["illuminance"]]),
+        ("Temperature", [idw["temperature"], base["temperature"], pure_rnn["temperature"], loo["temperature"]]),
+        ("Humidity", [idw["humidity"], base["humidity"], pure_rnn["humidity"], loo["humidity"]]),
+        ("Illum.", [idw["illuminance"], base["illuminance"], pure_rnn["illuminance"], loo["illuminance"]]),
     ]
-    labels = ["IDW", "Base", "LOO Hybrid"]
-    colors = ["#8f6b2f", "#1f6f8b", "#8a2d3b"]
+    labels = ["IDW", "Base", "Pure RNN", "LOO Hybrid"]
+    colors = ["#8f6b2f", "#1f6f8b", "#7758a6", "#8a2d3b"]
     width = 920
     height = 440
     margin_left = 88
@@ -313,7 +320,7 @@ def render_error_comparison(summary: Dict[str, object]) -> Path:
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
         '<rect width="100%" height="100%" fill="white"/>',
         '<text x="34" y="38" font-family="Arial" font-size="22" font-weight="700" fill="#202020">Field MAE comparison</text>',
-        '<text x="34" y="64" font-family="Arial" font-size="13" fill="#555">Average over the eight canonical scenarios; log-scale y-axis; hybrid uses leave-one-scenario-out evaluation.</text>',
+        '<text x="34" y="64" font-family="Arial" font-size="13" fill="#555">Eight leave-one-scenario-out folds; log-scale y-axis; pure RNN and hybrid use the same training-point rule.</text>',
     ]
     axis_y = height - margin_bottom
     svg.append(f'<line x1="{margin_left}" y1="{axis_y}" x2="{width - 24}" y2="{axis_y}" stroke="#222" stroke-width="1.2"/>')
@@ -333,11 +340,12 @@ def render_error_comparison(summary: Dict[str, object]) -> Path:
             y = axis_y - bar_height
             svg.append(f'<rect x="{x:.1f}" y="{y:.1f}" width="{bar_width}" height="{bar_height:.1f}" fill="{colors[value_index]}" rx="2"/>')
             svg.append(f'<text x="{x + bar_width / 2:.1f}" y="{y - 6:.1f}" font-family="Arial" font-size="10" fill="#333" text-anchor="middle">{value:.3g}</text>')
-        svg.append(f'<text x="{group_x + 78:.1f}" y="{axis_y + 28}" font-family="Arial" font-size="13" font-weight="700" fill="#333" text-anchor="middle">{group_name}</text>')
+        group_center = group_x + ((len(values) - 1) * (bar_width + 10) + bar_width) / 2.0
+        svg.append(f'<text x="{group_center:.1f}" y="{axis_y + 28}" font-family="Arial" font-size="13" font-weight="700" fill="#333" text-anchor="middle">{group_name}</text>')
 
     legend_x = margin_left
     for index, label in enumerate(labels):
-        x = legend_x + index * 126
+        x = legend_x + index * 164
         svg.append(f'<rect x="{x}" y="{height - 34}" width="15" height="15" fill="{colors[index]}"/>')
         svg.append(f'<text x="{x + 22}" y="{height - 22}" font-family="Arial" font-size="12" fill="#333">{label}</text>')
     svg.append('</svg>')
@@ -415,7 +423,7 @@ def _render_chart_png(groups, labels, colors, png_path: Path) -> None:
     text(
         draw,
         (34, 64),
-        "Average over the eight canonical scenarios; log-scale y-axis; hybrid uses leave-one-scenario-out evaluation.",
+        "Eight leave-one-scenario-out folds; log-scale y-axis; pure RNN and hybrid share training points.",
         (85, 85, 85),
         subtitle_font,
     )
@@ -441,11 +449,12 @@ def _render_chart_png(groups, labels, colors, png_path: Path) -> None:
                 fill=hex_to_rgb(colors[value_index]),
             )
             text(draw, (x + bar_width / 2, y - 6), f"{value:.3g}", (51, 51, 51), value_font, anchor="ms")
-        text(draw, (group_x + 78, axis_y + 28), group_name, (51, 51, 51), label_font, anchor="mm")
+        group_center = group_x + ((len(values) - 1) * (bar_width + 10) + bar_width) / 2.0
+        text(draw, (group_center, axis_y + 28), group_name, (51, 51, 51), label_font, anchor="mm")
 
     legend_x = margin_left
     for index, label in enumerate(labels):
-        x = legend_x + index * 126
+        x = legend_x + index * 164
         draw.rectangle((sx(x), sy(height - 34), sx(x + 15), sy(height - 19)), fill=hex_to_rgb(colors[index]))
         text(draw, (x + 22, height - 22), label, (51, 51, 51), legend_font)
 

@@ -1,12 +1,12 @@
 # 碩士論文完整實驗總覽
 
-- 整理日期：2026 年 8 月 3 日
+- 初次整理：2026 年 8 月 3 日；更新：2026 年 8 月 17 日
 - 研究主題：以稀疏感測建構單房間空間數位孿生，學習非連網設備的環境影響
 - 適用對象：教授進度報告與實驗架構確認
 
 ## 一、閱讀方式與證據分層
 
-目前實驗不是由單一資料集完成全部驗證，而是分成四種證據層。不同層回答的問題不同，不能把結果合併成「模型已在所有環境驗證成功」。
+目前實驗不是由單一資料集完成全部驗證，而是分成五種證據層。不同層回答的問題不同，不能把結果合併成「模型已在所有環境驗證成功」。
 
 | 證據層 | 對應實驗 | 能回答的問題 | 不能宣稱的內容 |
 | --- | --- | --- | --- |
@@ -14,6 +14,8 @@
 | 真實房間快照 | E7 | 八角落感測校正能否改善未參與校正的 pillow 參考點 | 完整三維真實場、跨房間泛化或因果控制 |
 | 真實介入 | E8 | 執行建議動作後是否真的改善目標 | 目前尚無完成 trial，不能宣稱效果 |
 | 公開資料相容任務 | E9 | 模型概念在 SML2010、CU-BEMS 相容時序任務中的外部比較 | 八角落三維場、完整房間幾何或真實裝置係數驗證 |
+| 受控量測雜訊 | E10 | 相同 corrupted observations 下的 current-time filtering 比較 | 實體感測器、forecast、3D 場或控制效益驗證 |
+| 公開機箱 telemetry | E11A | 20–30°C BMC outlet-air next-observation temporal transfer | 3-D 機箱熱場、元件 hotspot、PID 或一般設備櫃適用性 |
 
 證據狀態定義：
 
@@ -22,7 +24,7 @@
 - `NOT_EVALUATED`：尚未完成所需資料或實驗。
 - `OUT_OF_DOMAIN`：結果保留，但超出目前模型應用範圍，不可支持適用性主張。
 
-## 二、E1–E9 實驗總表
+## 二、E1–E11 實驗總表
 
 | 編號 | 實驗名稱 | 資料 | 主要比較 | 指標 | 目前狀態 | 最重要結論 |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -35,6 +37,8 @@
 | E7 | 真實臥室稀疏校正 | 7 天、28 筆快照、held-out pillow point | raw vs calibrated | pillow MAE、block bootstrap、LODO | `REPRODUCIBLE` | 三因子均改善，且 bootstrap 與逐日剔除仍為正；只限一房一點七天 |
 | E8 | 推薦動作真實介入 | 規劃中的 before/after trials | top-ranked、alternative、human、no-action | actual improvement、direction accuracy、regret | `NOT_EVALUATED` | 目前 0 個完成 trial，所有因果效果指標為 null |
 | E9 | 公開資料 task-aligned benchmark | SML2010、CU-BEMS | persistence、linear、project readout、transfer、RNN | MAE、RMSE、correlation | `REPRODUCIBLE` | 優勢集中在部分事件與溫度任務；照度、高慣性、次日與 RNN 有明確負向結果 |
+| E10 | Kalman controlled filtering | SML2010 reference + fixed-seed injected noise | raw、causal MA(3)、scalar linear Kalman | MAE、RMSE、correlation、innovation、gain | `REPRODUCIBLE` | 12/12 parity；溫度由 MA(3) 勝 6 案例，濕度由 Kalman 勝 6 案例 |
+| E11A | 機箱 BMC temporal transfer | 124 個 BMC CSV、317 個 file-device cases | persistence、linear、thermal-balance readout | outlet-air MAE/RMSE、eligibility、win count | `REPRODUCIBLE` negative | 只有 5 案可評估；persistence 最低 5/5、thermal-balance 0/5，H-ENC-01 不支持 |
 
 ## 三、共同實驗設定
 
@@ -272,6 +276,70 @@
 **E9 證據**：`outputs/data/public_benchmarks/`  
 **詳細逐案例表**：`docs/experiments/public_dataset_model_comparison_results_zh.md`
 
+### E10：Kalman controlled filtering
+
+**方法**：以 normalized SML2010 dining/room 溫度與濕度作 current-time task reference，固定 seed 注入 low／nominal／high Gaussian measurement-noise profile，再比較 raw noisy observation、causal MA(3) 與 scalar linear Kalman random-walk model。
+
+**公平性**：三方法共用相同 corrupted observations、chronological 70/30 split、test timestamps、reference targets 與 metric functions；每案例保存 timestamp、corrupted-input 與 target hashes。
+
+| 目標族群 | 案例數 | Raw 最低 | MA(3) 最低 | Kalman 最低 |
+| --- | ---: | ---: | ---: | ---: |
+| 溫度 | 6 | 0 | 6 | 0 |
+| 濕度 | 6 | 0 | 0 | 6 |
+| 合計 | 12 | 0 | 6 | 6 |
+
+**判讀**：Kalman 在 12/12 案例都優於 raw，但只有濕度六案例優於 MA(3)。結果只支持 `CONTROLLED_INJECTED_NOISE` current-time filtering，不是實體 sensing-node 去噪、forecast 或 spatial-field 證據。
+
+**E10 證據**：`outputs/data/public_benchmarks/kalman_sml2010_filtering_comparison.json`
+
+### E11A：機箱 BMC temporal transfer
+
+**方法**：使用 arealuser/bmcdata commit `24904fa9a9bac49a3f6f3198bb04e1be5e2707ea` 的完整 124-file inventory，針對 20–30°C 內 next-observation outlet-air task，比較 persistence、一般 linear readout 與具有 inlet--outlet difference、PSU power、fan-modulated difference 的 thermal-balance readout。
+
+**公平性**：每個 file-device case 使用相同 eligible endpoints、chronological 60/20/20 split、ridge=0.001 與 test rows；少於 30 pairs 的案例保留為 `insufficient_in_scope_samples`。
+
+| Cases | 可評估 | Insufficient | Persistence 最低 | Linear 最低 | Thermal-balance 最低 |
+| ---: | ---: | ---: | ---: | ---: | ---: |
+| 317 | 5 | 312 | 5 | 0 | 0 |
+
+**判讀**：H-ENC-01 不支持。結果只限公開 BMC 11 秒 median-cadence outlet-air temporal task，不是 3-D 機箱熱場、元件 hotspot、PID 或部署驗證。
+
+**E11A 證據**：`outputs/data/enclosure/enclosure_bmc_baseline.json`
+
+### E11B：AAU 伺服器機房 spatial transfer
+
+**方法**：使用 AAU Server Room v4 的 12 個預先固定 4 MiB byte ranges，將 42 個高信心 PT100 位置聚合為 1,641 個一分鐘快照；六個位置不明的冷卻通道預先排除。以相同快照進行 leave-one-sensor-out，比較全域平均、最近鄰與 3D IDW（`p=2`）。
+
+| 方法 | MAE（°C） | RMSE（°C） | P95（°C） | 感測器勝出 |
+| --- | ---: | ---: | ---: | ---: |
+| 全域平均 | 2.293 | 2.624 | 4.554 | 6/42 |
+| 最近鄰 | **1.175** | **1.411** | **2.579** | **30/42** |
+| 3D IDW | 1.687 | 1.921 | 3.319 | 6/42 |
+
+**判讀**：IDW 未勝過最近鄰，且 6/42 的勝出數未達預註冊 60% 門檻，因此 H-ENC-02 不支持。機櫃拓撲、氣流方向與熱分層只是假說；沒有在看過結果後調整 IDW 指數、座標或排除規則。
+
+**限制**：固定 range 樣本不等同完整 706 MB 期間；結果不是 CFD、因果控制、元件 hotspot 或任意機箱精度證據。
+
+**E11B 證據**：`outputs/data/enclosure/aau_spatial_baseline.json`；研究難題見 `docs/research/research_difficulty_log_zh.md` 的 RDL-006 至 RDL-012。
+
+### E11C：局部鄰域獨立確認
+
+**方法**：因 local model 選擇已受 E11B 啟發，E11C 在相鄰 E11B ranges 的 11 個空隙各取一個固定 4 MiB range，不重用 discovery observations。42 個感測器形成 1,505 個一分鐘快照；比較最近鄰、local IDW（`k=3, p=2`）與 global IDW，並以 11 個 calendar-day blocks 執行 20,000 次 paired bootstrap。
+
+| 方法 | MAE（°C） | RMSE（°C） | P95（°C） |
+| --- | ---: | ---: | ---: |
+| 最近鄰 | 1.301 | 2.218 | 5.745 |
+| Local IDW | **1.223** | **1.886** | **4.026** |
+| Global IDW | 1.844 | 2.285 | 4.507 |
+
+**統計結果**：paired MAE improvement 為 0.0783 °C，bootstrap 95% CI [0.0546, 0.1063] °C。Local IDW 與最近鄰各勝出 21/42 感測器。
+
+**判讀**：四項預註冊條件中，local IDW 通過 MAE、RMSE 與 bootstrap 下界三項，但未達至少 26/42 sensor wins，因此 H-ENC-03 不支持。不能因 aggregate improvement 改寫門檻。
+
+**探索性診斷**：local IDW 在 gradient 0/5、rack back 17/28、rack front 4/9 勝出。這只形成 sensor-role heterogeneity 假說，不證明 airflow 或 rack topology。
+
+**E11C 證據**：`outputs/data/enclosure/aau_local_idw_confirmation.json`；完整執行難題與修正見 RDL-015 至 RDL-021。
+
 ## 五、先前模型與改進後模型對比
 
 | 層級 | 方法 | Temperature MAE | Humidity MAE | Illuminance MAE | 證據邊界 |
@@ -293,6 +361,7 @@ Base model 相對 IDW 的平均降幅為 72.47%、61.90%、96.31%；LOO hybrid �
 3. 真實臥室七天資料中，稀疏校正可改善未參與校正的 pillow 參考點，且日期 block bootstrap 與逐日剔除結果保持正向。
 4. 公開資料中，結構化方法的優勢集中於部分 event/boundary delta 與中期溫度任務。
 5. RNN 已完成同資料公平比較，但沒有最低 MAE 案例。
+6. Kalman 已完成受控同資料 filtering；在濕度六案例勝出，但溫度六案例由 MA(3) 勝出。
 
 ### 必須保留的負向或限制
 
@@ -303,13 +372,16 @@ Base model 相對 IDW 的平均降幅為 72.47%、61.90%、96.31%；LOO hybrid �
 5. 次日主要方法與 post-primary adaptive 方法都未建立優勢。
 6. RNN 最低 MAE 為 0/12。
 7. 人體舒適不等於需要極窄控制；植物應用仍缺 PPFD/PAR、CO2、基質、氣流與生物 endpoint。
+8. Kalman 結果使用 fixed-seed injected noise，不能外推為實體感測器或 online spatial estimator 改善。
+9. E11B 中最近鄰優於全域 3D IDW；只能報告模型排名，不能把機櫃拓撲或氣流方向寫成已證實原因。
+10. E11C 雖改善 aggregate MAE/RMSE，卻只在 21/42 感測器勝出；不得改寫為普遍改善或降低既定門檻。
 
 ### 尚未完成
 
 1. E8 真實推薦介入與因果效果。
 2. 跨房間與長期 dense real-room ground truth。
 3. 全程位於 20–30°C 的動態封閉植物環境驗證。
-4. 相同資料的 unfiltered、moving average、KF、EKF 比較；目前 Kalman 仍為 `NOT_EVALUATED`。
+4. 以獨立 validation reference 執行實體 sensing-node filtering，估計 real measurement noise、missingness 與 covariance drift；EKF/UKF 仍未評估。
 
 ## 七、完整重現命令索引
 
@@ -325,7 +397,30 @@ python3 scripts/run_public_dataset_model_comparison.py
 python3 scripts/run_oh2024_inspired_comparison.py
 python3 scripts/run_next_day_temperature_comparison.py
 python3 scripts/run_rnn_public_comparison.py
+python3 scripts/run_kalman_filter_comparison.py
+python3 scripts/download_aau_temperature_ranges.py
+python3 scripts/run_aau_spatial_baseline.py
+python3 scripts/verify_e11b_results.py
+python3 scripts/download_aau_temperature_ranges_e11c.py
+python3 scripts/run_aau_local_idw_confirmation.py
+python3 scripts/verify_e11c_results.py
+python3 scripts/build_professor_demo.py
 python3 scripts/verify_thesis_results.py
 ```
 
 完整流程也可由 `python3 scripts/run_all_thesis_experiments.py` 統一執行；公開資料存在時才執行相應 benchmark，缺資料不得以預期結果替代。
+
+## E11D：AAU 感測器角色條件式獨立確認（2026-08-23）
+
+H-ENC-04 在預註冊且與 E11B/E11C 不重疊的 11 個 4 MiB ranges 上得到 supported。89,584 列形成 1,505 個一分鐘快照；全域平均基線的 MAE/RMSE/P95 為 2.3972/2.9748/5.7232 C，固定角色條件模型為 1.6517/2.3648/5.4886 C。角色模型逐感測器勝出 30/42，配對改善 0.7455 C，13 個日區塊的 20,000 次 bootstrap 95% CI 為 [0.6867, 0.8124] C。四個預註冊門檻全部通過，但結論限定為「rack-front、rack-back、gradient 等角色語意提供預測資訊」；沒有風速介入資料，不能宣稱氣流因果，亦不得跨不同 split 直接比較 E11C 與 E11D 的絕對 MAE。
+## E11E：分層角色局部模型開發（2026-08-23）
+
+E11E 是開發集，不是確認集。89,606 列形成 1,502 個分鐘快照；較強 baseline local IDW k3 p2 為 MAE/RMSE/P95 1.1168/1.7250/3.4900 C。24 個固定候選中，最佳 `role_local_k5_p2` 達 1.0187/1.6792/3.7699 C，bootstrap 改善 CI [0.0708, 0.1292] C，但 P95 比 baseline 差 0.2799 C，且只贏 25/42，未達 26/42。依 gate 記為 `no_candidate_forwarded`；E11F 保留 ranges 完全未下載。
+
+## E11G tail-safe 自適應開發
+
+E11G 使用 E11E 開發資料進行 12 日 leave-one-day-out 與折內感測器選擇。相較 local-IDW，MAE 1.1168→0.8945°C、RMSE 1.7250→1.5415°C、P95 3.4900→3.1013°C，日區塊改善 95% CI 為 [0.1847, 0.2620]°C。但嚴格感測器勝率只有 21/42，低於預註冊 26/42；20 個持平、1 個微幅惡化。正式決策仍為 `no_candidate_forwarded`，E11F 未存取，不宣稱完成外部機箱驗證。
+
+## E11H commissioning 與 E11F frozen confirmation
+
+E11H 以 2 日校正、1 日選模、9 日凍結測試模擬短期 NTC／參考感測器 commissioning。MAE/RMSE/P95 由 1.0958/1.7435/3.5061°C 降至 0.4039/0.6830/1.2900°C，39/42 感測器改善，95% CI 為 [0.4854, 0.9271]°C。E11F 完全凍結模型且不 refit，MAE/RMSE/P95 為 0.3966/0.6723/1.2756°C，39/42 改善，95% CI 為 [0.5851, 0.9274]°C，故 `h_enc_05_supported_within_campaign`。但 E11F 日期與 E11G/E11H 重疊，證據不是跨日期、跨機箱或 NTC 硬體驗證。

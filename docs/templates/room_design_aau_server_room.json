@@ -1,0 +1,133 @@
+{
+  "schema_version": "room-design-v1",
+  "room": {
+    "name": "aau_server_room_e11b",
+    "description": "AAU server room normalized from CAD bounds x=100..4300 mm, y=100..5820 mm",
+    "width_m": 4.2,
+    "length_m": 5.72,
+    "height_m": 3.0,
+    "base_temperature_c": 26.0,
+    "base_humidity_pct": 0.0,
+    "base_illuminance_lux": 0.0
+  },
+  "grid_resolution": {
+    "nx": 21,
+    "ny": 29,
+    "nz": 15
+  },
+  "coordinate_system": {
+    "unit": "m",
+    "origin": "floor southwest corner",
+    "x_axis": "CAD x minus 0.100 m",
+    "y_axis": "CAD y minus 0.100 m",
+    "z_axis": "height from floor"
+  },
+  "environment": {
+    "outdoor_temperature_c": 0.0,
+    "outdoor_humidity_pct": 0.0,
+    "sunlight_illuminance_lux": 0.0,
+    "daylight_factor": 0.0
+  },
+  "sensors": [
+    { "name": "floor_sw", "position": { "x": 0.0, "y": 0.0, "z": 0.0 }, "metadata": { "role": "schema_anchor", "include_in_e11b": false } },
+    { "name": "floor_se", "position": { "x": 4.2, "y": 0.0, "z": 0.0 }, "metadata": { "role": "schema_anchor", "include_in_e11b": false } },
+    { "name": "floor_nw", "position": { "x": 0.0, "y": 5.72, "z": 0.0 }, "metadata": { "role": "schema_anchor", "include_in_e11b": false } },
+    { "name": "floor_ne", "position": { "x": 4.2, "y": 5.72, "z": 0.0 }, "metadata": { "role": "schema_anchor", "include_in_e11b": false } },
+    { "name": "ceiling_sw", "position": { "x": 0.0, "y": 0.0, "z": 3.0 }, "metadata": { "role": "schema_anchor", "include_in_e11b": false } },
+    { "name": "ceiling_se", "position": { "x": 4.2, "y": 0.0, "z": 3.0 }, "metadata": { "role": "schema_anchor", "include_in_e11b": false } },
+    { "name": "ceiling_nw", "position": { "x": 0.0, "y": 5.72, "z": 3.0 }, "metadata": { "role": "schema_anchor", "include_in_e11b": false } },
+    { "name": "ceiling_ne", "position": { "x": 4.2, "y": 5.72, "z": 3.0 }, "metadata": { "role": "schema_anchor", "include_in_e11b": false } },
+
+    { "name": "gradient_1", "position": { "x": 0.17, "y": 3.67, "z": 0.3 }, "metadata": { "csv_column": "Temperature mod 4 ch 1", "source_label": "Gradient 1", "include_in_e11b": true } },
+    { "name": "gradient_2", "position": { "x": 0.17, "y": 3.67, "z": 0.84 }, "metadata": { "csv_column": "Temperature mod 4 ch 2", "source_label": "Gradient 2", "include_in_e11b": true } },
+    { "name": "gradient_3", "position": { "x": 0.17, "y": 3.67, "z": 1.33 }, "metadata": { "csv_column": "Temperature mod 4 ch 3", "source_label": "Gradient 3", "include_in_e11b": true } },
+    { "name": "gradient_4", "position": { "x": 0.17, "y": 3.67, "z": 1.84 }, "metadata": { "csv_column": "Temperature mod 4 ch 5", "source_label": "Gradient 4", "include_in_e11b": true } },
+    { "name": "gradient_5", "position": { "x": 0.17, "y": 3.67, "z": 2.3 }, "metadata": { "csv_column": "Temperature mod 4 ch 4", "source_label": "Gradient 5", "include_in_e11b": true } },
+
+    { "name": "rack_1_front", "position": { "x": 1.835, "y": 1.15, "z": 1.19 }, "metadata": { "csv_column": "Temperature mod 2 ch 7", "source_label": "Rack 1 front", "include_in_e11b": true } },
+    { "name": "rack_2_front", "position": { "x": 1.835, "y": 1.77, "z": 1.19 }, "metadata": { "csv_column": "Temperature mod 1 ch 1", "source_label": "Rack 2 front", "include_in_e11b": true } },
+    { "name": "rack_3_front", "position": { "x": 1.835, "y": 2.36, "z": 1.19 }, "metadata": { "csv_column": "Temperature mod 1 ch 8", "source_label": "Rack 3 front", "include_in_e11b": true } },
+    { "name": "rack_4_front", "position": { "x": 1.835, "y": 2.96, "z": 1.19 }, "metadata": { "csv_column": "Temperature mod 1 ch 6", "source_label": "Rack 4 front", "include_in_e11b": true } },
+    { "name": "rack_5_front_1", "position": { "x": 1.835, "y": 3.56, "z": 0.36 }, "metadata": { "csv_column": "Temperature mod 1 ch 3", "source_label": "Rack 5 front 1", "include_in_e11b": true } },
+    { "name": "rack_5_front_2", "position": { "x": 1.835, "y": 3.56, "z": 0.89 }, "metadata": { "csv_column": "Temperature mod 1 ch 4", "source_label": "Rack 5 front 2", "include_in_e11b": true } },
+    { "name": "rack_5_front_3", "position": { "x": 1.835, "y": 3.56, "z": 1.54 }, "metadata": { "csv_column": "Temperature mod 1 ch 5", "source_label": "Rack 5 front 3", "include_in_e11b": true } },
+    { "name": "rack_5_front_4", "position": { "x": 1.835, "y": 3.56, "z": 1.91 }, "metadata": { "csv_column": "Temperature mod 7 ch 1", "source_label": "Rack 5 front 4", "include_in_e11b": true } },
+    { "name": "rack_6_front", "position": { "x": 1.835, "y": 4.16, "z": 1.19 }, "metadata": { "csv_column": "Temperature mod 1 ch 7", "source_label": "Rack 6 front", "include_in_e11b": true } },
+
+    { "name": "rack_1_back_1", "position": { "x": 0.785, "y": 1.207284, "z": 0.83 }, "metadata": { "csv_column": "Temperature mod 7 ch 3", "source_label": "Rack 1 back 1", "include_in_e11b": true } },
+    { "name": "rack_1_back_2", "position": { "x": 0.785, "y": 1.207284, "z": 1.8 }, "metadata": { "csv_column": "Temperature mod 7 ch 2", "source_label": "Rack 1 back 2", "include_in_e11b": true } },
+    { "name": "rack_2_back_1", "position": { "x": 1.035, "y": 1.81, "z": 0.78 }, "metadata": { "csv_column": "Temperature mod 6 ch 1", "source_label": "Rack 2 back 1", "include_in_e11b": true } },
+    { "name": "rack_2_back_2", "position": { "x": 1.035, "y": 1.81, "z": 1.76 }, "metadata": { "csv_column": "Temperature mod 7 ch 4", "source_label": "Rack 2 back 2", "include_in_e11b": true } },
+    { "name": "rack_3_back_1", "position": { "x": 1.035, "y": 2.41, "z": 0.78 }, "metadata": { "csv_column": "Temperature mod 6 ch 3", "source_label": "Rack 3 back 1", "include_in_e11b": true } },
+    { "name": "rack_3_back_2", "position": { "x": 1.035, "y": 2.41, "z": 1.76 }, "metadata": { "csv_column": "Temperature mod 6 ch 2", "source_label": "Rack 3 back 2", "include_in_e11b": true } },
+    { "name": "rack_4_back_1", "position": { "x": 1.035, "y": 3.01, "z": 0.76 }, "metadata": { "csv_column": "Temperature mod 5 ch 4", "source_label": "Rack 4 back 1", "include_in_e11b": true } },
+    { "name": "rack_4_back_2", "position": { "x": 1.035, "y": 3.01, "z": 1.76 }, "metadata": { "csv_column": "Temperature mod 6 ch 4", "source_label": "Rack 4 back 2", "include_in_e11b": true } },
+
+    { "name": "rack_5_back_l1", "position": { "x": 1.035, "y": 3.74, "z": 0.3 }, "metadata": { "csv_column": "Temperature mod 2 ch 8", "source_label": "Rack 5 back L1", "include_in_e11b": true } },
+    { "name": "rack_5_back_l2", "position": { "x": 1.035, "y": 3.61, "z": 0.53 }, "metadata": { "csv_column": "Temperature mod 2 ch 6", "source_label": "Rack 5 back L2", "include_in_e11b": true } },
+    { "name": "rack_5_back_l3", "position": { "x": 1.035, "y": 3.74, "z": 0.76 }, "metadata": { "csv_column": "Temperature mod 2 ch 2", "source_label": "Rack 5 back L3", "include_in_e11b": true } },
+    { "name": "rack_5_back_l4", "position": { "x": 1.035, "y": 3.61, "z": 0.93 }, "metadata": { "csv_column": "Temperature mod 2 ch 5", "source_label": "Rack 5 back L4", "include_in_e11b": true } },
+    { "name": "rack_5_back_l5", "position": { "x": 1.035, "y": 3.74, "z": 1.15 }, "metadata": { "csv_column": "Temperature mod 2 ch 1", "source_label": "Rack 5 back L5", "include_in_e11b": true } },
+    { "name": "rack_5_back_l6", "position": { "x": 1.035, "y": 3.61, "z": 1.34 }, "metadata": { "csv_column": "Temperature mod 2 ch 4", "source_label": "Rack 5 back L6", "include_in_e11b": true } },
+    { "name": "rack_5_back_l7", "position": { "x": 1.035, "y": 3.74, "z": 1.56 }, "metadata": { "csv_column": "Temperature mod 3 ch 3", "source_label": "Rack 5 back L7", "include_in_e11b": true } },
+    { "name": "rack_5_back_l8", "position": { "x": 1.035, "y": 3.61, "z": 1.73 }, "metadata": { "csv_column": "Temperature mod 3 ch 6", "source_label": "Rack 5 back L8", "include_in_e11b": true } },
+    { "name": "rack_5_back_l9", "position": { "x": 1.035, "y": 3.74, "z": 1.92 }, "metadata": { "csv_column": "Temperature mod 3 ch 7", "source_label": "Rack 5 back L9", "include_in_e11b": true } },
+
+    { "name": "rack_5_back_r1", "position": { "x": 1.035, "y": 3.47, "z": 0.3 }, "metadata": { "csv_column": "Temperature mod 3 ch 4", "source_label": "Rack 5 back R1", "include_in_e11b": true } },
+    { "name": "rack_5_back_r2", "position": { "x": 1.035, "y": 3.41, "z": 0.53 }, "metadata": { "csv_column": "Temperature mod 3 ch 8", "source_label": "Rack 5 back R2", "include_in_e11b": true } },
+    { "name": "rack_5_back_r3", "position": { "x": 1.035, "y": 3.47, "z": 0.76 }, "metadata": { "csv_column": "Temperature mod 3 ch 5", "source_label": "Rack 5 back R3", "include_in_e11b": true } },
+    { "name": "rack_5_back_r4", "position": { "x": 1.035, "y": 3.41, "z": 0.93 }, "metadata": { "csv_column": "Temperature mod 4 ch 6", "source_label": "Rack 5 back R4", "include_in_e11b": true } },
+    { "name": "rack_5_back_r5", "position": { "x": 1.035, "y": 3.47, "z": 1.15 }, "metadata": { "csv_column": "Temperature mod 4 ch 8", "source_label": "Rack 5 back R5", "include_in_e11b": true } },
+    { "name": "rack_5_back_r6", "position": { "x": 1.035, "y": 3.41, "z": 1.34 }, "metadata": { "csv_column": "Temperature mod 4 ch 7", "source_label": "Rack 5 back R6", "include_in_e11b": true } },
+    { "name": "rack_5_back_r7", "position": { "x": 1.035, "y": 3.47, "z": 1.56 }, "metadata": { "csv_column": "Temperature mod 5 ch 1", "source_label": "Rack 5 back R7", "include_in_e11b": true } },
+    { "name": "rack_5_back_r8", "position": { "x": 1.035, "y": 3.41, "z": 1.73 }, "metadata": { "csv_column": "Temperature mod 5 ch 2", "source_label": "Rack 5 back R8", "include_in_e11b": true } },
+    { "name": "rack_5_back_r9", "position": { "x": 1.035, "y": 3.47, "z": 1.92 }, "metadata": { "csv_column": "Temperature mod 5 ch 3", "source_label": "Rack 5 back R9", "include_in_e11b": true } },
+
+    { "name": "rack_6_back_1", "position": { "x": 1.035, "y": 4.22, "z": 0.74 }, "metadata": { "csv_column": "Temperature mod 1 ch 2", "source_label": "Rack 6 back 1", "include_in_e11b": true } },
+    { "name": "rack_6_back_2", "position": { "x": 1.035, "y": 4.22, "z": 1.76 }, "metadata": { "csv_column": "Temperature mod 2 ch 3", "source_label": "Rack 6 back 2", "include_in_e11b": true } }
+  ],
+  "zones": [
+    { "name": "rack_zone", "min_corner": { "x": 0.75, "y": 0.8, "z": 0.0 }, "max_corner": { "x": 2.05, "y": 4.5, "z": 2.4 } },
+    { "name": "vertical_gradient_zone", "min_corner": { "x": 0.1, "y": 3.55, "z": 0.1 }, "max_corner": { "x": 0.3, "y": 3.8, "z": 2.5 } },
+    { "name": "cooling_zone", "min_corner": { "x": 0.35, "y": 1.4, "z": 2.5 }, "max_corner": { "x": 1.2, "y": 5.0, "z": 3.0 } }
+  ],
+  "devices": [
+    { "name": "fancoil_wall", "kind": "ac", "position": { "x": 0.757, "y": 1.94, "z": 2.9 }, "orientation": { "x": 1.0, "y": 0.0, "z": -0.1 }, "influence_radius_m": 3.0, "activation": 0.0, "metadata": { "source": "CAD layer Fancoil 2" } },
+    { "name": "fancoil_window", "kind": "ac", "position": { "x": 0.757, "y": 4.56, "z": 2.9 }, "orientation": { "x": 1.0, "y": 0.0, "z": -0.1 }, "influence_radius_m": 3.0, "activation": 0.0, "metadata": { "source": "CAD layer Fancoil 1" } },
+    { "name": "window_south", "kind": "window", "position": { "x": 2.1, "y": 5.72, "z": 1.5 }, "orientation": { "x": 0.0, "y": -1.0, "z": 0.0 }, "influence_radius_m": 2.0, "activation": 0.0, "metadata": { "source": "annotated room plan" } }
+  ],
+  "furniture": [
+    { "name": "rack_1", "kind": "server_rack", "min_corner": { "x": 0.91, "y": 0.85, "z": 0.0 }, "max_corner": { "x": 1.71, "y": 1.45, "z": 2.3 }, "metadata": { "block_strength": 0.9 } },
+    { "name": "rack_2", "kind": "server_rack", "min_corner": { "x": 1.035, "y": 1.45, "z": 0.0 }, "max_corner": { "x": 1.835, "y": 2.05, "z": 2.3 }, "metadata": { "block_strength": 0.9 } },
+    { "name": "rack_3", "kind": "server_rack", "min_corner": { "x": 1.035, "y": 2.05, "z": 0.0 }, "max_corner": { "x": 1.835, "y": 2.65, "z": 2.3 }, "metadata": { "block_strength": 0.9 } },
+    { "name": "rack_4", "kind": "server_rack", "min_corner": { "x": 1.035, "y": 2.65, "z": 0.0 }, "max_corner": { "x": 1.835, "y": 3.25, "z": 2.3 }, "metadata": { "block_strength": 0.9 } },
+    { "name": "rack_5", "kind": "server_rack", "min_corner": { "x": 1.035, "y": 3.25, "z": 0.0 }, "max_corner": { "x": 1.835, "y": 3.85, "z": 2.3 }, "metadata": { "block_strength": 0.9 } },
+    { "name": "rack_6", "kind": "server_rack", "min_corner": { "x": 1.035, "y": 3.85, "z": 0.0 }, "max_corner": { "x": 1.835, "y": 4.45, "z": 2.3 }, "metadata": { "block_strength": 0.9 } }
+  ],
+  "comfort_target": {
+    "temperature_c": 27.0,
+    "temperature_tolerance_c": 3.0,
+    "humidity_pct": 0.0,
+    "humidity_tolerance_pct": 0.0,
+    "illuminance_lux": 0.0,
+    "illuminance_tolerance_lux": 0.0
+  },
+  "metadata": {
+    "author": "research workflow",
+    "created_date": "2026-08-23",
+    "source_doi": "10.5281/zenodo.19398358",
+    "reason": "42 non-corner PT100 locations replace the project's standard sensing layout; eight corner entries are schema anchors only",
+    "coordinate_transform": "x=(cad_x_mm-100)/1000, y=(cad_y_mm-100)/1000, z=cad_z_mm/1000",
+    "included_measurement_sensors": 42,
+    "excluded_channels": [
+      "Temperature mod 3 ch 1",
+      "Temperature mod 3 ch 2",
+      "Temperature mod 8 ch 1",
+      "Temperature mod 8 ch 2",
+      "Temperature mod 8 ch 3",
+      "Temperature mod 8 ch 4"
+    ],
+    "unmeasured_fields": ["humidity", "illuminance", "outdoor environment"],
+    "notes": "Zero values for unmeasured non-temperature fields are schema placeholders and are not used by E11B."
+  }
+}

@@ -520,6 +520,59 @@ def _build_specs(tolerance_override: Optional[float]) -> List[ResultSpec]:
             )
         )
 
+    rnn_3d_path = DATA / "rnn_3d_field_comparison.json"
+    rnn_3d_specs = [
+        (
+            "rnn_3d_complete_status",
+            1.0,
+            _rnn_3d_complete_status_flag,
+            ["資料 parity 8/8 通過", "Across eight leave-one-scenario-out folds"],
+        ),
+        (
+            "rnn_3d_parity_passed",
+            1.0,
+            _rnn_3d_data_parity_flag,
+            ["資料 parity 8/8 通過", "eight leave-one-scenario-out folds"],
+        ),
+        (
+            "rnn_3d_temperature_mae",
+            0.209125,
+            lambda: _json_metric(rnn_3d_path, ["summary", "average_field_mae", "pure_rnn", "temperature"]),
+            ["0.2091"],
+        ),
+        (
+            "rnn_3d_humidity_mae",
+            0.224112,
+            lambda: _json_metric(rnn_3d_path, ["summary", "average_field_mae", "pure_rnn", "humidity"]),
+            ["0.2241"],
+        ),
+        (
+            "rnn_3d_illuminance_mae",
+            48.142175,
+            lambda: _json_metric(rnn_3d_path, ["summary", "average_field_mae", "pure_rnn", "illuminance"]),
+            ["48.1422"],
+        ),
+        (
+            "rnn_3d_lowest_mae_count",
+            0.0,
+            lambda: _json_metric(rnn_3d_path, ["summary", "lowest_mae_counts_over_24_fold_metrics", "pure_rnn"]),
+            ["0/24", "0 of 24 fold-factor comparisons"],
+        ),
+    ]
+    for result_name, thesis_value, compute, patterns in rnn_3d_specs:
+        specs.append(
+            ResultSpec(
+                result_name=result_name,
+                thesis_value=thesis_value,
+                evidence_file=rnn_3d_path,
+                compute=compute,
+                tolerance=tol4,
+                thesis_patterns=patterns,
+                suggested_script="python3 scripts/run_rnn_3d_field_comparison.py",
+                category="controlled_synthetic_rnn_3d_field_comparison",
+            )
+        )
+
     rnn_path = DATA / "public_benchmarks" / "rnn_sml2010_comparison.json"
     rnn_specs = [
         (
@@ -570,6 +623,114 @@ def _build_specs(tolerance_override: Optional[float]) -> List[ResultSpec]:
                 thesis_patterns=patterns,
                 suggested_script="python3 scripts/run_rnn_public_comparison.py",
                 category="public_task_rnn_same_data_comparison",
+                needs_public_data=True,
+            )
+        )
+
+    kalman_path = DATA / "public_benchmarks" / "kalman_sml2010_filtering_comparison.json"
+    kalman_specs = [
+        (
+            "kalman_controlled_filtering_complete_status",
+            1.0,
+            _kalman_complete_status_flag,
+            ["Kalman 受控同資料比較為 `COMPLETE`", "Kalman controlled same-data comparison is complete"],
+        ),
+        (
+            "kalman_controlled_filtering_parity_passed",
+            1.0,
+            _kalman_data_parity_flag,
+            ["12/12 Kalman 案例通過資料一致性", "all 12 Kalman cases passed data parity"],
+        ),
+        (
+            "kalman_controlled_filtering_case_count",
+            12.0,
+            lambda: _json_metric(kalman_path, ["summary", "evaluated_cases"]),
+            ["12 個受控 filtering 案例", "12 controlled filtering cases"],
+        ),
+        (
+            "kalman_lowest_mae_count",
+            6.0,
+            lambda: _json_metric(kalman_path, ["summary", "lowest_mae_counts", "linear_kalman_random_walk"]),
+            ["Linear Kalman 為 6 項", "linear Kalman was lowest in 6"],
+        ),
+        (
+            "kalman_moving_average_lowest_mae_count",
+            6.0,
+            lambda: _json_metric(kalman_path, ["summary", "lowest_mae_counts", "causal_moving_average_3"]),
+            ["MA(3) 為 6 項", "moving average was lowest in 6"],
+        ),
+        (
+            "kalman_raw_lowest_mae_count",
+            0.0,
+            lambda: _json_metric(kalman_path, ["summary", "lowest_mae_counts", "raw_noisy"]),
+            ["未濾波為 0 項", "raw observation was lowest in 0"],
+        ),
+        (
+            "kalman_wins_vs_raw_count",
+            12.0,
+            lambda: _json_metric(kalman_path, ["summary", "kalman_wins_vs", "raw_noisy"]),
+            ["Kalman 在 12 項都優於未濾波", "Kalman beat the raw observation in all 12"],
+        ),
+    ]
+    for result_name, thesis_value, compute, patterns in kalman_specs:
+        specs.append(
+            ResultSpec(
+                result_name=result_name,
+                thesis_value=thesis_value,
+                evidence_file=kalman_path,
+                compute=compute,
+                tolerance=0.0 if tolerance_override is None else tolerance_override,
+                thesis_patterns=patterns,
+                suggested_script="python3 scripts/run_kalman_filter_comparison.py",
+                category="public_task_controlled_kalman_filtering",
+                needs_public_data=True,
+            )
+        )
+
+    enclosure_path = DATA / "enclosure" / "enclosure_bmc_baseline.json"
+    enclosure_specs = [
+        (
+            "enclosure_bmc_source_file_count",
+            124.0,
+            lambda: float(len({case["source_file"] for case in _read_json(enclosure_path)["cases"]})),
+            ["124 個 source CSV", "124 public BMC CSV files"],
+        ),
+        (
+            "enclosure_bmc_file_device_case_count",
+            317.0,
+            lambda: _json_metric(enclosure_path, ["summary", "case_count"]),
+            ["317 個 file-device cases", "317 file-device cases"],
+        ),
+        (
+            "enclosure_bmc_evaluated_case_count",
+            5.0,
+            lambda: _json_metric(enclosure_path, ["summary", "evaluated_case_count"]),
+            ["5 個案例可評估", "Only 5 cases met"],
+        ),
+        (
+            "enclosure_thermal_balance_wins_vs_persistence",
+            0.0,
+            lambda: _json_metric(enclosure_path, ["summary", "thermal_balance_wins_vs_persistence"]),
+            ["thermal-balance 對 persistence 為 0/5", "thermal-balance readout won 0"],
+        ),
+        (
+            "enclosure_persistence_lowest_mae_count",
+            5.0,
+            lambda: _json_metric(enclosure_path, ["summary", "lowest_test_mae_counts", "persistence"]),
+            ["Persistence 在 5/5 案例取得最低", "persistence was lowest-MAE in all 5"],
+        ),
+    ]
+    for result_name, thesis_value, compute, patterns in enclosure_specs:
+        specs.append(
+            ResultSpec(
+                result_name=result_name,
+                thesis_value=thesis_value,
+                evidence_file=enclosure_path,
+                compute=compute,
+                tolerance=0.0 if tolerance_override is None else tolerance_override,
+                thesis_patterns=patterns,
+                suggested_script="python3 scripts/run_enclosure_bmc_baseline.py /path/to/bmcdata/data/*.csv",
+                category="public_task_equipment_enclosure_transfer",
                 needs_public_data=True,
             )
         )
@@ -789,6 +950,21 @@ def _rnn_complete_status_flag() -> float:
     return 1.0 if payload.get("status") == "COMPLETE" else 0.0
 
 
+def _rnn_3d_complete_status_flag() -> float:
+    payload = _read_json(DATA / "rnn_3d_field_comparison.json")
+    return 1.0 if payload.get("status") == "COMPLETE" else 0.0
+
+
+def _rnn_3d_data_parity_flag() -> float:
+    payload = _read_json(DATA / "rnn_3d_field_comparison.json")
+    folds = payload.get("folds", [])
+    return 1.0 if (
+        payload.get("data_parity", {}).get("all_folds_passed") is True
+        and len(folds) == 8
+        and all(fold.get("data_parity", {}).get("passed") is True for fold in folds)
+    ) else 0.0
+
+
 def _rnn_data_parity_flag() -> float:
     payload = _read_json(DATA / "public_benchmarks" / "rnn_sml2010_comparison.json")
     audits = payload.get("data_parity", {}).get("horizon_audits", [])
@@ -803,6 +979,16 @@ def _rnn_data_parity_flag() -> float:
         for audit in audits
     )
     return 1.0 if payload.get("data_parity", {}).get("all_horizons_passed") and method_hashes_match else 0.0
+
+
+def _kalman_complete_status_flag() -> float:
+    payload = _read_json(DATA / "public_benchmarks" / "kalman_sml2010_filtering_comparison.json")
+    return 1.0 if payload.get("status") == "COMPLETE" else 0.0
+
+
+def _kalman_data_parity_flag() -> float:
+    payload = _read_json(DATA / "public_benchmarks" / "kalman_sml2010_filtering_comparison.json")
+    return 1.0 if payload.get("summary", {}).get("all_cases_data_parity_passed") is True else 0.0
 
 
 def _read_json(path: Path) -> Dict[str, object]:

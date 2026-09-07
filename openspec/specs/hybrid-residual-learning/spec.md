@@ -167,3 +167,36 @@ Kalman-family methods SHALL remain future state or parameter estimators until th
 - **WHEN** a Kalman experiment is started
 - **THEN** unfiltered, moving-average, and Kalman-family methods SHALL use identical observed rows and targets
 - **AND** adverse innovations, divergence, or lack of improvement SHALL remain visible
+
+### Requirement: HRL-010 Kalman comparator placement
+
+An executed Kalman filtering baseline SHALL remain a temporal state-estimation comparator unless a separate research change integrates it with the primary spatial estimator.
+
+#### Scenario: Completing a controlled filtering benchmark
+
+- **WHEN** the registered injected-noise benchmark completes
+- **THEN** its status MAY change from `NOT_EVALUATED` to `COMPLETE` for that benchmark only
+- **AND** the result SHALL not silently replace reduced-order physics, sparse calibration, or hybrid residual correction
+
+#### Scenario: Proposing real deployment
+
+- **WHEN** Kalman filtering is proposed for a physical sensing node or online model update
+- **THEN** real sensor noise, missingness, covariance drift, state definition, and independent reference measurements SHALL be registered separately
+- **AND** the controlled injected-noise result SHALL not be reused as deployment validation
+
+### Requirement: HRL-011 Pure RNN spatial comparator boundary
+
+A pure RNN 3-D field model SHALL remain an evaluation comparator unless a later research change accepts it as a production estimator component.
+
+#### Scenario: Comparing standalone and hybrid learning
+
+- **WHEN** pure RNN and LOO hybrid are compared
+- **THEN** pure RNN SHALL predict absolute field values without physics or residual inputs
+- **AND** LOO hybrid SHALL retain its additive physics-plus-residual definition
+- **AND** both SHALL use the same scenario folds, deterministic training-point rule, and held-out field metric
+
+#### Scenario: Observing a favorable or adverse RNN result
+
+- **WHEN** pure RNN wins or loses a factor or fold
+- **THEN** the observed result SHALL be retained without post-outcome architecture replacement
+- **AND** production estimator behavior SHALL remain unchanged

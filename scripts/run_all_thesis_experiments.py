@@ -42,6 +42,7 @@ def main() -> None:
     _run(["python3", "scripts/run_demo.py"], failures)
     _run(["python3", "scripts/run_window_matrix.py"], failures)
     _run(["python3", "scripts/run_hybrid_residual_experiment.py", "--fourier-denoise"], failures)
+    _run(["python3", "scripts/run_rnn_3d_field_comparison.py"], failures)
 
     if not args.skip_submission_readiness:
         _run(["python3", "scripts/run_submission_readiness_experiments.py"], failures)
@@ -85,6 +86,7 @@ def main() -> None:
             failures,
         )
         _run(["python3", "scripts/run_rnn_public_comparison.py"], failures)
+        _run(["python3", "scripts/run_kalman_filter_comparison.py"], failures)
     else:
         print(
             "Public normalized datasets are missing; skipping public benchmark scripts. "

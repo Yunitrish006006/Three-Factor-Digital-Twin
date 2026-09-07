@@ -107,6 +107,7 @@ class WebDemoTests(unittest.TestCase):
         self.assertIn("/api/public_benchmarks", INDEX_HTML)
         self.assertIn("loadPublicBenchmarks", INDEX_HTML)
         self.assertIn("chronological split", INDEX_HTML)
+        self.assertIn("renderComparatorStudy", INDEX_HTML)
 
     def test_query_name_defaults_to_idle(self) -> None:
         self.assertEqual(_query_name(""), "idle")
@@ -151,6 +152,7 @@ class WebDemoTests(unittest.TestCase):
 
         self.assertIn("claim_boundary", dashboard)
         self.assertIn("pipeline", dashboard)
+        self.assertIn("comparator_studies", dashboard)
         self.assertGreaterEqual(len(dashboard["datasets"]), 1)
         datasets = {item["dataset"] for item in dashboard["datasets"]}
         self.assertTrue({"SML2010", "CU-BEMS"} & datasets)

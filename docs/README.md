@@ -4,8 +4,9 @@
 
 ## 教授報告
 
+- [`reports/professor_two_week_report_2026-08-04_2026-08-17_zh.md`](reports/professor_two_week_report_2026-08-04_2026-08-17_zh.md)：兩週 RNN、Kalman、應用邊界、前後比較與教授 demo。
 - [`reports/professor_weekly_report_2026-07-28_2026-08-03_zh.md`](reports/professor_weekly_report_2026-07-28_2026-08-03_zh.md)：精簡週報與前後比較。
-- [`reports/professor_complete_experiment_overview_2026-08-03_zh.md`](reports/professor_complete_experiment_overview_2026-08-03_zh.md)：E1–E9 完整實驗總覽。
+- [`reports/professor_complete_experiment_overview_2026-08-03_zh.md`](reports/professor_complete_experiment_overview_2026-08-03_zh.md)：E1–E10 完整實驗總覽（於 2026-08-17 補入 Kalman 受控比較）。
 - [`reports/weekly_progress_2026-07-28_2026-08-03_zh.md`](reports/weekly_progress_2026-07-28_2026-08-03_zh.md)：內部完整進度；教授版不需引用個人開發細節。
 
 ## 論文與簡報主線
@@ -35,6 +36,7 @@
 
 - [`mcp/`](mcp/)：MCP 與 Gemma bridge。
 - [`web/`](web/)：Web demo。
+- [`demos/professor_demo_guide_2026-08-17_zh.md`](demos/professor_demo_guide_2026-08-17_zh.md)：教授版離線成果頁與 Live demo 展示順序。
 - [`../digital_twin/README.md`](../digital_twin/README.md)：程式模組與依賴方向。
 - [`../scripts/README.md`](../scripts/README.md)：腳本分類與建議入口。
 
