@@ -1,0 +1,47 @@
+{
+  "selected": [
+    {
+      "budget_h": 2,
+      "method": "auto_pi",
+      "q": 0.5,
+      "trial_sha256": "ecdc4234882e173097e46bf57e915e610fa753798f5de3b3115912323b69e455"
+    },
+    {
+      "budget_h": 2,
+      "method": "proposed",
+      "q": 0.5,
+      "trial_sha256": "fb9b526178a793d48dce2ce43d9dfb051aef1a2a60d87538d80bd80a65a23c16"
+    },
+    {
+      "budget_h": 6,
+      "method": "auto_pi",
+      "q": 0.5,
+      "trial_sha256": "8aa86a9fc8822559251e92ca7a579c569c868f1972459113f9190192ea0a2ea2"
+    },
+    {
+      "budget_h": 6,
+      "method": "proposed",
+      "q": 0.5,
+      "trial_sha256": "a746386f4c30447bf4a18f1346a0b088ea7dac661adb0ca21386f7b68d165355"
+    }
+  ],
+  "sources": {
+    "scripts/run_boptest_more_devices.py": "a80e94d841f97201a0ea40eac46fa22d2ace8a63b2180884e8cfd9ea7dd132fd",
+    "scripts/boptest_more_devices.json": "d91bbf73cf58819656f09c6e848d84fb1972b36dfa3b67b03599c86ee6b9dc2b",
+    "openspec/changes/evaluate-more-boptest-devices/protocol.md": "0df5f9894135eefaf8e0fe6a68f7573742e6bf293acb40d05a5f1359f1ac64d8",
+    "digital_twin/control/delayed_dynamics.py": "8098ec6b1d80c1459e2201fedc6bf92bcf3307181caf18563ef34e430a2215e2",
+    "digital_twin/control/portable_pi.py": "2ce85a77f1d16e1dbb8fbcd847ebe722233790a9658cc3946a9cac9ed895ac30",
+    "scripts/run_boptest_cross_plant.py": "3ad0154d942737e43f9263c1cd9bcc9ebbff2292cc319c24800f73169d9f5990",
+    "scripts/boptest_native_adapter.py": "db8528791878ba2536102e5ca651c37caef684f4d868dcb13041eaa8a4dbef15",
+    "openspec/changes/improve-portable-dynamics/artifacts/freeze.json": "66eee5b97a5ec56e59ba2d8d74f5afb93978ca5cdc25ffc8e1cd76848599415c",
+    "openspec/changes/improve-portable-dynamics/artifacts/air.json": "c6720c0cc4a48dda3a0389a5e579ccaee0fc1f9a398d06c72baa719128d27c68",
+    "openspec/changes/improve-portable-dynamics/artifacts/hydronic.json": "eb83dbbd9df5855725dc34c7a8136acc4ac25325921cb3010cf793960663aa39",
+    "outputs/vendor/boptest-v0.9.0/testcases/bestest_hydronic_heat_pump/models/wrapped.fmu": "674b9500c1c89fdbec64f2c053af8ddcd06afebe63bd7c1b7fc708692a11863e",
+    "outputs/vendor/boptest-v0.9.0/testcases/bestest_hydronic_heat_pump/doc/index.html": "9e4fefe4be681e861f40a14d7d2ae889ed4e5176527e79dbc36c370e84e45c1d",
+    "outputs/vendor/boptest-v0.9.0/testcases/twozone_apartment_hydronic/models/wrapped.fmu": "88916efe9fbd0543d78c323eb8221692cb4b2411ffa1b84c2dbc9e23a2d19d72",
+    "outputs/vendor/boptest-v0.9.0/testcases/twozone_apartment_hydronic/doc/index.html": "afdccf9c902f0d7775fc3f6361a3a5f000e55d4da7585a39ae3d8868b40bd105",
+    "outputs/vendor/boptest-v0.9.0/testcases/singlezone_commercial_hydronic/models/wrapped.fmu": "5de84fd8ade869dcaa2748e552aca6e2650f4c33aadcb3e4fe0737c05395ee51",
+    "outputs/vendor/boptest-v0.9.0/testcases/singlezone_commercial_hydronic/doc/index.html": "d158ffd44a45e0583e7155810e89e0d1f291421ae7f5c64cc2f2fe3aa103c26c"
+  },
+  "adaptation_sha256": "8bd24f3521a71cbbaab430453752934eee552a7b4b3eaabd9e3e98e4d7858c73"
+}

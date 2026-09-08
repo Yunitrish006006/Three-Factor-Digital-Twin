@@ -1,0 +1,911 @@
+{
+  "study_id": "E9-GRU-LSTM-SIMPLE-SAME-DATA",
+  "dataset": "SML2010",
+  "task_id": "S2",
+  "created_at": "2026-09-07T03:45:35.241093+00:00",
+  "status": "COMPLETE",
+  "input_dir": "/Volumes/DataExtended/school/outputs/data/normalized_public/sml2010",
+  "input_provenance": {
+    "corner_sensor_timeseries.csv": {
+      "sha256": "7be1dcde9ffaa42a327b7f21a24da28e995ac39dc6f2ee2bf13ad91e91d882c8",
+      "bytes": 530746
+    },
+    "outdoor_environment.csv": {
+      "sha256": "09c4eb14a63fa69992d6cda2b1f502937b09937d0b4b0c08db5c2d2816f751c9",
+      "bytes": 278439
+    },
+    "auxiliary_features.csv": {
+      "sha256": "c625fd0fd7d8c56b0b6832e1e4d68de3875696d6ace33d32f0772d72d5e41e5d",
+      "bytes": 654379
+    }
+  },
+  "protocol": {
+    "horizons_minutes": [
+      15,
+      60,
+      1440
+    ],
+    "targets": [
+      "dining_temperature",
+      "room_temperature",
+      "dining_humidity",
+      "room_humidity"
+    ],
+    "split": "chronological_70_30",
+    "cadence_minutes": 15,
+    "shared_history_records": 4,
+    "comparators": [
+      "persistence",
+      "sequence_linear_regression",
+      "physics_structured_readout",
+      "vanilla_rnn",
+      "gru",
+      "lstm"
+    ],
+    "configuration": {
+      "sequence_length": 4,
+      "vanilla_hidden_units": 6,
+      "gru_hidden_units": 3,
+      "lstm_hidden_units": 2,
+      "epochs": 30,
+      "batch_size": 32,
+      "learning_rate": 0.01,
+      "gradient_clip": 1.0,
+      "seed": 42
+    },
+    "parameter_counts": {
+      "vanilla_rnn": 148,
+      "gru": 169,
+      "lstm": 140
+    },
+    "parameter_budget_within_15_percent": true,
+    "candidate_gate": {
+      "minimum_mae_wins_vs_vanilla_over_12": 8,
+      "median_relative_mae_reduction_must_be_positive": true
+    },
+    "test_based_tuning": false
+  },
+  "data_parity": {
+    "all_horizons_passed": true,
+    "horizon_audits": [
+      {
+        "horizon_minutes": 15,
+        "parity_passed": true,
+        "eligible_endpoints": 4121,
+        "train_samples": 2884,
+        "test_samples": 1237,
+        "endpoint_hash": "3a4cc042d0ebe627c7e5071d7784e42c307ce47ad74f0fff1a7a57f5992be515",
+        "train_endpoint_hash": "e224f858883542dff531735bfb1207abf668cf398d194c9d20e8d22b29e911d0",
+        "test_endpoint_hash": "e29a4e75e87df6c3f09a87542da5e473d894b0b11b1be4bdf12ad8e9925f6e60",
+        "train_input_hash": "ced72019445524e5067162ef873c7b618df92243f2f97ca442776b4a455b82d4",
+        "test_input_hash": "938d3b5597761e048c0693902a94cae31fca1f0088fe4516b2006cda7be7f41b",
+        "method_data_contracts": {
+          "persistence": {
+            "shared_train_endpoint_hash": "e224f858883542dff531735bfb1207abf668cf398d194c9d20e8d22b29e911d0",
+            "shared_test_endpoint_hash": "e29a4e75e87df6c3f09a87542da5e473d894b0b11b1be4bdf12ad8e9925f6e60",
+            "shared_train_input_hash": "ced72019445524e5067162ef873c7b618df92243f2f97ca442776b4a455b82d4",
+            "shared_test_input_hash": "938d3b5597761e048c0693902a94cae31fca1f0088fe4516b2006cda7be7f41b"
+          },
+          "sequence_linear_regression": {
+            "shared_train_endpoint_hash": "e224f858883542dff531735bfb1207abf668cf398d194c9d20e8d22b29e911d0",
+            "shared_test_endpoint_hash": "e29a4e75e87df6c3f09a87542da5e473d894b0b11b1be4bdf12ad8e9925f6e60",
+            "shared_train_input_hash": "ced72019445524e5067162ef873c7b618df92243f2f97ca442776b4a455b82d4",
+            "shared_test_input_hash": "938d3b5597761e048c0693902a94cae31fca1f0088fe4516b2006cda7be7f41b"
+          },
+          "physics_structured_readout": {
+            "shared_train_endpoint_hash": "e224f858883542dff531735bfb1207abf668cf398d194c9d20e8d22b29e911d0",
+            "shared_test_endpoint_hash": "e29a4e75e87df6c3f09a87542da5e473d894b0b11b1be4bdf12ad8e9925f6e60",
+            "shared_train_input_hash": "ced72019445524e5067162ef873c7b618df92243f2f97ca442776b4a455b82d4",
+            "shared_test_input_hash": "938d3b5597761e048c0693902a94cae31fca1f0088fe4516b2006cda7be7f41b"
+          },
+          "vanilla_rnn": {
+            "shared_train_endpoint_hash": "e224f858883542dff531735bfb1207abf668cf398d194c9d20e8d22b29e911d0",
+            "shared_test_endpoint_hash": "e29a4e75e87df6c3f09a87542da5e473d894b0b11b1be4bdf12ad8e9925f6e60",
+            "shared_train_input_hash": "ced72019445524e5067162ef873c7b618df92243f2f97ca442776b4a455b82d4",
+            "shared_test_input_hash": "938d3b5597761e048c0693902a94cae31fca1f0088fe4516b2006cda7be7f41b"
+          },
+          "gru": {
+            "shared_train_endpoint_hash": "e224f858883542dff531735bfb1207abf668cf398d194c9d20e8d22b29e911d0",
+            "shared_test_endpoint_hash": "e29a4e75e87df6c3f09a87542da5e473d894b0b11b1be4bdf12ad8e9925f6e60",
+            "shared_train_input_hash": "ced72019445524e5067162ef873c7b618df92243f2f97ca442776b4a455b82d4",
+            "shared_test_input_hash": "938d3b5597761e048c0693902a94cae31fca1f0088fe4516b2006cda7be7f41b"
+          },
+          "lstm": {
+            "shared_train_endpoint_hash": "e224f858883542dff531735bfb1207abf668cf398d194c9d20e8d22b29e911d0",
+            "shared_test_endpoint_hash": "e29a4e75e87df6c3f09a87542da5e473d894b0b11b1be4bdf12ad8e9925f6e60",
+            "shared_train_input_hash": "ced72019445524e5067162ef873c7b618df92243f2f97ca442776b4a455b82d4",
+            "shared_test_input_hash": "938d3b5597761e048c0693902a94cae31fca1f0088fe4516b2006cda7be7f41b"
+          }
+        },
+        "training": {
+          "gru": {
+            "epochs": 30,
+            "samples": 2884,
+            "parameter_count": 169,
+            "initial_standardized_mse": 0.44204227,
+            "final_standardized_mse": 0.01323434,
+            "all_epoch_losses_finite": true,
+            "training_seconds": 0.617654
+          },
+          "lstm": {
+            "epochs": 30,
+            "samples": 2884,
+            "parameter_count": 140,
+            "initial_standardized_mse": 0.69339437,
+            "final_standardized_mse": 0.02254791,
+            "all_epoch_losses_finite": true,
+            "training_seconds": 0.798103
+          }
+        }
+      },
+      {
+        "horizon_minutes": 60,
+        "parity_passed": true,
+        "eligible_endpoints": 4110,
+        "train_samples": 2877,
+        "test_samples": 1233,
+        "endpoint_hash": "ac0e876db1ba109cf457fdce2ba4d0e3b4cdfefd24f7a66cc3f00bee252be65c",
+        "train_endpoint_hash": "fb605a1981aef2614af10111909eb4f59504650bc4a1f7aebd3c56df8571e7d5",
+        "test_endpoint_hash": "e13f44b408370667e441e21398d8469021695a89982667ae8d616a4618fb4c28",
+        "train_input_hash": "d1c2e67ebe6841ade7e5b896403e5ef88ae312ea9078252016174df5cec84f75",
+        "test_input_hash": "42bb64fa70f80e34acf918f8079bcb7c32ed447867436cc216cc4253afc8f8b1",
+        "method_data_contracts": {
+          "persistence": {
+            "shared_train_endpoint_hash": "fb605a1981aef2614af10111909eb4f59504650bc4a1f7aebd3c56df8571e7d5",
+            "shared_test_endpoint_hash": "e13f44b408370667e441e21398d8469021695a89982667ae8d616a4618fb4c28",
+            "shared_train_input_hash": "d1c2e67ebe6841ade7e5b896403e5ef88ae312ea9078252016174df5cec84f75",
+            "shared_test_input_hash": "42bb64fa70f80e34acf918f8079bcb7c32ed447867436cc216cc4253afc8f8b1"
+          },
+          "sequence_linear_regression": {
+            "shared_train_endpoint_hash": "fb605a1981aef2614af10111909eb4f59504650bc4a1f7aebd3c56df8571e7d5",
+            "shared_test_endpoint_hash": "e13f44b408370667e441e21398d8469021695a89982667ae8d616a4618fb4c28",
+            "shared_train_input_hash": "d1c2e67ebe6841ade7e5b896403e5ef88ae312ea9078252016174df5cec84f75",
+            "shared_test_input_hash": "42bb64fa70f80e34acf918f8079bcb7c32ed447867436cc216cc4253afc8f8b1"
+          },
+          "physics_structured_readout": {
+            "shared_train_endpoint_hash": "fb605a1981aef2614af10111909eb4f59504650bc4a1f7aebd3c56df8571e7d5",
+            "shared_test_endpoint_hash": "e13f44b408370667e441e21398d8469021695a89982667ae8d616a4618fb4c28",
+            "shared_train_input_hash": "d1c2e67ebe6841ade7e5b896403e5ef88ae312ea9078252016174df5cec84f75",
+            "shared_test_input_hash": "42bb64fa70f80e34acf918f8079bcb7c32ed447867436cc216cc4253afc8f8b1"
+          },
+          "vanilla_rnn": {
+            "shared_train_endpoint_hash": "fb605a1981aef2614af10111909eb4f59504650bc4a1f7aebd3c56df8571e7d5",
+            "shared_test_endpoint_hash": "e13f44b408370667e441e21398d8469021695a89982667ae8d616a4618fb4c28",
+            "shared_train_input_hash": "d1c2e67ebe6841ade7e5b896403e5ef88ae312ea9078252016174df5cec84f75",
+            "shared_test_input_hash": "42bb64fa70f80e34acf918f8079bcb7c32ed447867436cc216cc4253afc8f8b1"
+          },
+          "gru": {
+            "shared_train_endpoint_hash": "fb605a1981aef2614af10111909eb4f59504650bc4a1f7aebd3c56df8571e7d5",
+            "shared_test_endpoint_hash": "e13f44b408370667e441e21398d8469021695a89982667ae8d616a4618fb4c28",
+            "shared_train_input_hash": "d1c2e67ebe6841ade7e5b896403e5ef88ae312ea9078252016174df5cec84f75",
+            "shared_test_input_hash": "42bb64fa70f80e34acf918f8079bcb7c32ed447867436cc216cc4253afc8f8b1"
+          },
+          "lstm": {
+            "shared_train_endpoint_hash": "fb605a1981aef2614af10111909eb4f59504650bc4a1f7aebd3c56df8571e7d5",
+            "shared_test_endpoint_hash": "e13f44b408370667e441e21398d8469021695a89982667ae8d616a4618fb4c28",
+            "shared_train_input_hash": "d1c2e67ebe6841ade7e5b896403e5ef88ae312ea9078252016174df5cec84f75",
+            "shared_test_input_hash": "42bb64fa70f80e34acf918f8079bcb7c32ed447867436cc216cc4253afc8f8b1"
+          }
+        },
+        "training": {
+          "gru": {
+            "epochs": 30,
+            "samples": 2877,
+            "parameter_count": 169,
+            "initial_standardized_mse": 0.44253069,
+            "final_standardized_mse": 0.03129033,
+            "all_epoch_losses_finite": true,
+            "training_seconds": 0.593637
+          },
+          "lstm": {
+            "epochs": 30,
+            "samples": 2877,
+            "parameter_count": 140,
+            "initial_standardized_mse": 0.70130806,
+            "final_standardized_mse": 0.0355918,
+            "all_epoch_losses_finite": true,
+            "training_seconds": 0.769333
+          }
+        }
+      },
+      {
+        "horizon_minutes": 1440,
+        "parity_passed": true,
+        "eligible_endpoints": 3933,
+        "train_samples": 2753,
+        "test_samples": 1180,
+        "endpoint_hash": "a00736936c60d5f87ad1267a197981b5e1ef84b9ad66a57a0afeb7d9dda2f01d",
+        "train_endpoint_hash": "f7b6f620995fc782403a58b12946f38d8bad4bd639ce90ef6f071632b0869253",
+        "test_endpoint_hash": "f10e640d9f23e7bec0b2c4bfc3826edc4c40c54dd0e8c1d365b20550b322b29b",
+        "train_input_hash": "a6c21cc6a98fb4fc37c97636a87e4caa05f26f5fd293edd3950ff86859454a39",
+        "test_input_hash": "984698f521445c74023d9c5a685ce744c5047e8f9eb9c7e6a2bf8cb06a4dc263",
+        "method_data_contracts": {
+          "persistence": {
+            "shared_train_endpoint_hash": "f7b6f620995fc782403a58b12946f38d8bad4bd639ce90ef6f071632b0869253",
+            "shared_test_endpoint_hash": "f10e640d9f23e7bec0b2c4bfc3826edc4c40c54dd0e8c1d365b20550b322b29b",
+            "shared_train_input_hash": "a6c21cc6a98fb4fc37c97636a87e4caa05f26f5fd293edd3950ff86859454a39",
+            "shared_test_input_hash": "984698f521445c74023d9c5a685ce744c5047e8f9eb9c7e6a2bf8cb06a4dc263"
+          },
+          "sequence_linear_regression": {
+            "shared_train_endpoint_hash": "f7b6f620995fc782403a58b12946f38d8bad4bd639ce90ef6f071632b0869253",
+            "shared_test_endpoint_hash": "f10e640d9f23e7bec0b2c4bfc3826edc4c40c54dd0e8c1d365b20550b322b29b",
+            "shared_train_input_hash": "a6c21cc6a98fb4fc37c97636a87e4caa05f26f5fd293edd3950ff86859454a39",
+            "shared_test_input_hash": "984698f521445c74023d9c5a685ce744c5047e8f9eb9c7e6a2bf8cb06a4dc263"
+          },
+          "physics_structured_readout": {
+            "shared_train_endpoint_hash": "f7b6f620995fc782403a58b12946f38d8bad4bd639ce90ef6f071632b0869253",
+            "shared_test_endpoint_hash": "f10e640d9f23e7bec0b2c4bfc3826edc4c40c54dd0e8c1d365b20550b322b29b",
+            "shared_train_input_hash": "a6c21cc6a98fb4fc37c97636a87e4caa05f26f5fd293edd3950ff86859454a39",
+            "shared_test_input_hash": "984698f521445c74023d9c5a685ce744c5047e8f9eb9c7e6a2bf8cb06a4dc263"
+          },
+          "vanilla_rnn": {
+            "shared_train_endpoint_hash": "f7b6f620995fc782403a58b12946f38d8bad4bd639ce90ef6f071632b0869253",
+            "shared_test_endpoint_hash": "f10e640d9f23e7bec0b2c4bfc3826edc4c40c54dd0e8c1d365b20550b322b29b",
+            "shared_train_input_hash": "a6c21cc6a98fb4fc37c97636a87e4caa05f26f5fd293edd3950ff86859454a39",
+            "shared_test_input_hash": "984698f521445c74023d9c5a685ce744c5047e8f9eb9c7e6a2bf8cb06a4dc263"
+          },
+          "gru": {
+            "shared_train_endpoint_hash": "f7b6f620995fc782403a58b12946f38d8bad4bd639ce90ef6f071632b0869253",
+            "shared_test_endpoint_hash": "f10e640d9f23e7bec0b2c4bfc3826edc4c40c54dd0e8c1d365b20550b322b29b",
+            "shared_train_input_hash": "a6c21cc6a98fb4fc37c97636a87e4caa05f26f5fd293edd3950ff86859454a39",
+            "shared_test_input_hash": "984698f521445c74023d9c5a685ce744c5047e8f9eb9c7e6a2bf8cb06a4dc263"
+          },
+          "lstm": {
+            "shared_train_endpoint_hash": "f7b6f620995fc782403a58b12946f38d8bad4bd639ce90ef6f071632b0869253",
+            "shared_test_endpoint_hash": "f10e640d9f23e7bec0b2c4bfc3826edc4c40c54dd0e8c1d365b20550b322b29b",
+            "shared_train_input_hash": "a6c21cc6a98fb4fc37c97636a87e4caa05f26f5fd293edd3950ff86859454a39",
+            "shared_test_input_hash": "984698f521445c74023d9c5a685ce744c5047e8f9eb9c7e6a2bf8cb06a4dc263"
+          }
+        },
+        "training": {
+          "gru": {
+            "epochs": 30,
+            "samples": 2753,
+            "parameter_count": 169,
+            "initial_standardized_mse": 0.68236696,
+            "final_standardized_mse": 0.35801861,
+            "all_epoch_losses_finite": true,
+            "training_seconds": 0.588337
+          },
+          "lstm": {
+            "epochs": 30,
+            "samples": 2753,
+            "parameter_count": 140,
+            "initial_standardized_mse": 0.85716775,
+            "final_standardized_mse": 0.39097263,
+            "all_epoch_losses_finite": true,
+            "training_seconds": 0.783243
+          }
+        }
+      }
+    ]
+  },
+  "cases": [
+    {
+      "target": "dining_temperature",
+      "horizon_minutes": 15,
+      "status": "ok",
+      "eligible_endpoints": 4121,
+      "train_samples": 2884,
+      "test_samples": 1237,
+      "shared_endpoint_hash": "3a4cc042d0ebe627c7e5071d7784e42c307ce47ad74f0fff1a7a57f5992be515",
+      "shared_train_endpoint_hash": "e224f858883542dff531735bfb1207abf668cf398d194c9d20e8d22b29e911d0",
+      "shared_test_endpoint_hash": "e29a4e75e87df6c3f09a87542da5e473d894b0b11b1be4bdf12ad8e9925f6e60",
+      "shared_train_input_hash": "ced72019445524e5067162ef873c7b618df92243f2f97ca442776b4a455b82d4",
+      "shared_test_input_hash": "938d3b5597761e048c0693902a94cae31fca1f0088fe4516b2006cda7be7f41b",
+      "metrics": {
+        "persistence": {
+          "mae": 0.118154,
+          "rmse": 0.134822,
+          "correlation": 0.998597
+        },
+        "sequence_linear_regression": {
+          "mae": 0.016487,
+          "rmse": 0.023597,
+          "correlation": 0.999958
+        },
+        "physics_structured_readout": {
+          "mae": 0.069204,
+          "rmse": 0.087481,
+          "correlation": 0.999409
+        },
+        "vanilla_rnn": {
+          "mae": 0.259807,
+          "rmse": 0.420775,
+          "correlation": 0.989856
+        },
+        "gru": {
+          "mae": 0.325839,
+          "rmse": 0.549164,
+          "correlation": 0.985557
+        },
+        "lstm": {
+          "mae": 0.395809,
+          "rmse": 0.654747,
+          "correlation": 0.987019
+        }
+      },
+      "relative_mae_reduction_vs_vanilla_percent": {
+        "gru": -25.415789,
+        "lstm": -52.347319
+      },
+      "lowest_mae_method": "sequence_linear_regression"
+    },
+    {
+      "target": "room_temperature",
+      "horizon_minutes": 15,
+      "status": "ok",
+      "eligible_endpoints": 4121,
+      "train_samples": 2884,
+      "test_samples": 1237,
+      "shared_endpoint_hash": "3a4cc042d0ebe627c7e5071d7784e42c307ce47ad74f0fff1a7a57f5992be515",
+      "shared_train_endpoint_hash": "e224f858883542dff531735bfb1207abf668cf398d194c9d20e8d22b29e911d0",
+      "shared_test_endpoint_hash": "e29a4e75e87df6c3f09a87542da5e473d894b0b11b1be4bdf12ad8e9925f6e60",
+      "shared_train_input_hash": "ced72019445524e5067162ef873c7b618df92243f2f97ca442776b4a455b82d4",
+      "shared_test_input_hash": "938d3b5597761e048c0693902a94cae31fca1f0088fe4516b2006cda7be7f41b",
+      "metrics": {
+        "persistence": {
+          "mae": 0.115218,
+          "rmse": 0.135667,
+          "correlation": 0.998562
+        },
+        "sequence_linear_regression": {
+          "mae": 0.018776,
+          "rmse": 0.02605,
+          "correlation": 0.999949
+        },
+        "physics_structured_readout": {
+          "mae": 0.067937,
+          "rmse": 0.086175,
+          "correlation": 0.999426
+        },
+        "vanilla_rnn": {
+          "mae": 0.316127,
+          "rmse": 0.463491,
+          "correlation": 0.98619
+        },
+        "gru": {
+          "mae": 0.326538,
+          "rmse": 0.540775,
+          "correlation": 0.986639
+        },
+        "lstm": {
+          "mae": 0.408153,
+          "rmse": 0.642929,
+          "correlation": 0.988636
+        }
+      },
+      "relative_mae_reduction_vs_vanilla_percent": {
+        "gru": -3.293297,
+        "lstm": -29.110452
+      },
+      "lowest_mae_method": "sequence_linear_regression"
+    },
+    {
+      "target": "dining_humidity",
+      "horizon_minutes": 15,
+      "status": "ok",
+      "eligible_endpoints": 4121,
+      "train_samples": 2884,
+      "test_samples": 1237,
+      "shared_endpoint_hash": "3a4cc042d0ebe627c7e5071d7784e42c307ce47ad74f0fff1a7a57f5992be515",
+      "shared_train_endpoint_hash": "e224f858883542dff531735bfb1207abf668cf398d194c9d20e8d22b29e911d0",
+      "shared_test_endpoint_hash": "e29a4e75e87df6c3f09a87542da5e473d894b0b11b1be4bdf12ad8e9925f6e60",
+      "shared_train_input_hash": "ced72019445524e5067162ef873c7b618df92243f2f97ca442776b4a455b82d4",
+      "shared_test_input_hash": "938d3b5597761e048c0693902a94cae31fca1f0088fe4516b2006cda7be7f41b",
+      "metrics": {
+        "persistence": {
+          "mae": 0.198397,
+          "rmse": 0.304054,
+          "correlation": 0.998478
+        },
+        "sequence_linear_regression": {
+          "mae": 0.189546,
+          "rmse": 0.288539,
+          "correlation": 0.998675
+        },
+        "physics_structured_readout": {
+          "mae": 0.778755,
+          "rmse": 0.952992,
+          "correlation": 0.991141
+        },
+        "vanilla_rnn": {
+          "mae": 0.484262,
+          "rmse": 0.640232,
+          "correlation": 0.993867
+        },
+        "gru": {
+          "mae": 0.725383,
+          "rmse": 0.994107,
+          "correlation": 0.985484
+        },
+        "lstm": {
+          "mae": 0.767724,
+          "rmse": 0.981224,
+          "correlation": 0.988131
+        }
+      },
+      "relative_mae_reduction_vs_vanilla_percent": {
+        "gru": -49.791435,
+        "lstm": -58.534843
+      },
+      "lowest_mae_method": "sequence_linear_regression"
+    },
+    {
+      "target": "room_humidity",
+      "horizon_minutes": 15,
+      "status": "ok",
+      "eligible_endpoints": 4121,
+      "train_samples": 2884,
+      "test_samples": 1237,
+      "shared_endpoint_hash": "3a4cc042d0ebe627c7e5071d7784e42c307ce47ad74f0fff1a7a57f5992be515",
+      "shared_train_endpoint_hash": "e224f858883542dff531735bfb1207abf668cf398d194c9d20e8d22b29e911d0",
+      "shared_test_endpoint_hash": "e29a4e75e87df6c3f09a87542da5e473d894b0b11b1be4bdf12ad8e9925f6e60",
+      "shared_train_input_hash": "ced72019445524e5067162ef873c7b618df92243f2f97ca442776b4a455b82d4",
+      "shared_test_input_hash": "938d3b5597761e048c0693902a94cae31fca1f0088fe4516b2006cda7be7f41b",
+      "metrics": {
+        "persistence": {
+          "mae": 0.155824,
+          "rmse": 0.216938,
+          "correlation": 0.999443
+        },
+        "sequence_linear_regression": {
+          "mae": 0.128892,
+          "rmse": 0.191124,
+          "correlation": 0.999588
+        },
+        "physics_structured_readout": {
+          "mae": 0.727862,
+          "rmse": 0.899597,
+          "correlation": 0.994254
+        },
+        "vanilla_rnn": {
+          "mae": 0.63335,
+          "rmse": 0.850184,
+          "correlation": 0.993476
+        },
+        "gru": {
+          "mae": 0.697809,
+          "rmse": 0.971327,
+          "correlation": 0.989299
+        },
+        "lstm": {
+          "mae": 1.019422,
+          "rmse": 1.277392,
+          "correlation": 0.984683
+        }
+      },
+      "relative_mae_reduction_vs_vanilla_percent": {
+        "gru": -10.177469,
+        "lstm": -60.957133
+      },
+      "lowest_mae_method": "sequence_linear_regression"
+    },
+    {
+      "target": "dining_temperature",
+      "horizon_minutes": 60,
+      "status": "ok",
+      "eligible_endpoints": 4110,
+      "train_samples": 2877,
+      "test_samples": 1233,
+      "shared_endpoint_hash": "ac0e876db1ba109cf457fdce2ba4d0e3b4cdfefd24f7a66cc3f00bee252be65c",
+      "shared_train_endpoint_hash": "fb605a1981aef2614af10111909eb4f59504650bc4a1f7aebd3c56df8571e7d5",
+      "shared_test_endpoint_hash": "e13f44b408370667e441e21398d8469021695a89982667ae8d616a4618fb4c28",
+      "shared_train_input_hash": "d1c2e67ebe6841ade7e5b896403e5ef88ae312ea9078252016174df5cec84f75",
+      "shared_test_input_hash": "42bb64fa70f80e34acf918f8079bcb7c32ed447867436cc216cc4253afc8f8b1",
+      "metrics": {
+        "persistence": {
+          "mae": 0.4696,
+          "rmse": 0.533796,
+          "correlation": 0.977854
+        },
+        "sequence_linear_regression": {
+          "mae": 0.067138,
+          "rmse": 0.103279,
+          "correlation": 0.999284
+        },
+        "physics_structured_readout": {
+          "mae": 0.093449,
+          "rmse": 0.133826,
+          "correlation": 0.998635
+        },
+        "vanilla_rnn": {
+          "mae": 0.435441,
+          "rmse": 0.62619,
+          "correlation": 0.974914
+        },
+        "gru": {
+          "mae": 0.503295,
+          "rmse": 0.793814,
+          "correlation": 0.979174
+        },
+        "lstm": {
+          "mae": 0.440664,
+          "rmse": 0.699053,
+          "correlation": 0.971966
+        }
+      },
+      "relative_mae_reduction_vs_vanilla_percent": {
+        "gru": -15.582823,
+        "lstm": -1.199474
+      },
+      "lowest_mae_method": "sequence_linear_regression"
+    },
+    {
+      "target": "room_temperature",
+      "horizon_minutes": 60,
+      "status": "ok",
+      "eligible_endpoints": 4110,
+      "train_samples": 2877,
+      "test_samples": 1233,
+      "shared_endpoint_hash": "ac0e876db1ba109cf457fdce2ba4d0e3b4cdfefd24f7a66cc3f00bee252be65c",
+      "shared_train_endpoint_hash": "fb605a1981aef2614af10111909eb4f59504650bc4a1f7aebd3c56df8571e7d5",
+      "shared_test_endpoint_hash": "e13f44b408370667e441e21398d8469021695a89982667ae8d616a4618fb4c28",
+      "shared_train_input_hash": "d1c2e67ebe6841ade7e5b896403e5ef88ae312ea9078252016174df5cec84f75",
+      "shared_test_input_hash": "42bb64fa70f80e34acf918f8079bcb7c32ed447867436cc216cc4253afc8f8b1",
+      "metrics": {
+        "persistence": {
+          "mae": 0.457705,
+          "rmse": 0.53648,
+          "correlation": 0.977321
+        },
+        "sequence_linear_regression": {
+          "mae": 0.084668,
+          "rmse": 0.119516,
+          "correlation": 0.999055
+        },
+        "physics_structured_readout": {
+          "mae": 0.101314,
+          "rmse": 0.139483,
+          "correlation": 0.998626
+        },
+        "vanilla_rnn": {
+          "mae": 0.429146,
+          "rmse": 0.584613,
+          "correlation": 0.975728
+        },
+        "gru": {
+          "mae": 0.540479,
+          "rmse": 0.808348,
+          "correlation": 0.978372
+        },
+        "lstm": {
+          "mae": 0.472787,
+          "rmse": 0.712069,
+          "correlation": 0.971868
+        }
+      },
+      "relative_mae_reduction_vs_vanilla_percent": {
+        "gru": -25.942919,
+        "lstm": -10.169266
+      },
+      "lowest_mae_method": "sequence_linear_regression"
+    },
+    {
+      "target": "dining_humidity",
+      "horizon_minutes": 60,
+      "status": "ok",
+      "eligible_endpoints": 4110,
+      "train_samples": 2877,
+      "test_samples": 1233,
+      "shared_endpoint_hash": "ac0e876db1ba109cf457fdce2ba4d0e3b4cdfefd24f7a66cc3f00bee252be65c",
+      "shared_train_endpoint_hash": "fb605a1981aef2614af10111909eb4f59504650bc4a1f7aebd3c56df8571e7d5",
+      "shared_test_endpoint_hash": "e13f44b408370667e441e21398d8469021695a89982667ae8d616a4618fb4c28",
+      "shared_train_input_hash": "d1c2e67ebe6841ade7e5b896403e5ef88ae312ea9078252016174df5cec84f75",
+      "shared_test_input_hash": "42bb64fa70f80e34acf918f8079bcb7c32ed447867436cc216cc4253afc8f8b1",
+      "metrics": {
+        "persistence": {
+          "mae": 0.566856,
+          "rmse": 0.849368,
+          "correlation": 0.988159
+        },
+        "sequence_linear_regression": {
+          "mae": 0.584455,
+          "rmse": 0.825807,
+          "correlation": 0.989667
+        },
+        "physics_structured_readout": {
+          "mae": 0.895847,
+          "rmse": 1.108838,
+          "correlation": 0.986013
+        },
+        "vanilla_rnn": {
+          "mae": 1.209041,
+          "rmse": 1.646081,
+          "correlation": 0.961114
+        },
+        "gru": {
+          "mae": 0.98418,
+          "rmse": 1.294412,
+          "correlation": 0.973246
+        },
+        "lstm": {
+          "mae": 1.278711,
+          "rmse": 1.614794,
+          "correlation": 0.960355
+        }
+      },
+      "relative_mae_reduction_vs_vanilla_percent": {
+        "gru": 18.598294,
+        "lstm": -5.762418
+      },
+      "lowest_mae_method": "persistence"
+    },
+    {
+      "target": "room_humidity",
+      "horizon_minutes": 60,
+      "status": "ok",
+      "eligible_endpoints": 4110,
+      "train_samples": 2877,
+      "test_samples": 1233,
+      "shared_endpoint_hash": "ac0e876db1ba109cf457fdce2ba4d0e3b4cdfefd24f7a66cc3f00bee252be65c",
+      "shared_train_endpoint_hash": "fb605a1981aef2614af10111909eb4f59504650bc4a1f7aebd3c56df8571e7d5",
+      "shared_test_endpoint_hash": "e13f44b408370667e441e21398d8469021695a89982667ae8d616a4618fb4c28",
+      "shared_train_input_hash": "d1c2e67ebe6841ade7e5b896403e5ef88ae312ea9078252016174df5cec84f75",
+      "shared_test_input_hash": "42bb64fa70f80e34acf918f8079bcb7c32ed447867436cc216cc4253afc8f8b1",
+      "metrics": {
+        "persistence": {
+          "mae": 0.482232,
+          "rmse": 0.625263,
+          "correlation": 0.995394
+        },
+        "sequence_linear_regression": {
+          "mae": 0.370518,
+          "rmse": 0.492479,
+          "correlation": 0.997624
+        },
+        "physics_structured_readout": {
+          "mae": 0.715989,
+          "rmse": 0.89947,
+          "correlation": 0.992774
+        },
+        "vanilla_rnn": {
+          "mae": 1.113235,
+          "rmse": 1.571791,
+          "correlation": 0.97503
+        },
+        "gru": {
+          "mae": 0.834525,
+          "rmse": 1.209091,
+          "correlation": 0.983454
+        },
+        "lstm": {
+          "mae": 1.315936,
+          "rmse": 1.677825,
+          "correlation": 0.978799
+        }
+      },
+      "relative_mae_reduction_vs_vanilla_percent": {
+        "gru": 25.036044,
+        "lstm": -18.208285
+      },
+      "lowest_mae_method": "sequence_linear_regression"
+    },
+    {
+      "target": "dining_temperature",
+      "horizon_minutes": 1440,
+      "status": "ok",
+      "eligible_endpoints": 3933,
+      "train_samples": 2753,
+      "test_samples": 1180,
+      "shared_endpoint_hash": "a00736936c60d5f87ad1267a197981b5e1ef84b9ad66a57a0afeb7d9dda2f01d",
+      "shared_train_endpoint_hash": "f7b6f620995fc782403a58b12946f38d8bad4bd639ce90ef6f071632b0869253",
+      "shared_test_endpoint_hash": "f10e640d9f23e7bec0b2c4bfc3826edc4c40c54dd0e8c1d365b20550b322b29b",
+      "shared_train_input_hash": "a6c21cc6a98fb4fc37c97636a87e4caa05f26f5fd293edd3950ff86859454a39",
+      "shared_test_input_hash": "984698f521445c74023d9c5a685ce744c5047e8f9eb9c7e6a2bf8cb06a4dc263",
+      "metrics": {
+        "persistence": {
+          "mae": 1.52137,
+          "rmse": 1.756588,
+          "correlation": 0.764641
+        },
+        "sequence_linear_regression": {
+          "mae": 1.779259,
+          "rmse": 2.176246,
+          "correlation": 0.736704
+        },
+        "physics_structured_readout": {
+          "mae": 1.762011,
+          "rmse": 2.175281,
+          "correlation": 0.735057
+        },
+        "vanilla_rnn": {
+          "mae": 1.817166,
+          "rmse": 2.210854,
+          "correlation": 0.676716
+        },
+        "gru": {
+          "mae": 1.956786,
+          "rmse": 2.370916,
+          "correlation": 0.708093
+        },
+        "lstm": {
+          "mae": 1.876821,
+          "rmse": 2.296043,
+          "correlation": 0.718365
+        }
+      },
+      "relative_mae_reduction_vs_vanilla_percent": {
+        "gru": -7.683393,
+        "lstm": -3.282859
+      },
+      "lowest_mae_method": "persistence"
+    },
+    {
+      "target": "room_temperature",
+      "horizon_minutes": 1440,
+      "status": "ok",
+      "eligible_endpoints": 3933,
+      "train_samples": 2753,
+      "test_samples": 1180,
+      "shared_endpoint_hash": "a00736936c60d5f87ad1267a197981b5e1ef84b9ad66a57a0afeb7d9dda2f01d",
+      "shared_train_endpoint_hash": "f7b6f620995fc782403a58b12946f38d8bad4bd639ce90ef6f071632b0869253",
+      "shared_test_endpoint_hash": "f10e640d9f23e7bec0b2c4bfc3826edc4c40c54dd0e8c1d365b20550b322b29b",
+      "shared_train_input_hash": "a6c21cc6a98fb4fc37c97636a87e4caa05f26f5fd293edd3950ff86859454a39",
+      "shared_test_input_hash": "984698f521445c74023d9c5a685ce744c5047e8f9eb9c7e6a2bf8cb06a4dc263",
+      "metrics": {
+        "persistence": {
+          "mae": 1.503931,
+          "rmse": 1.760297,
+          "correlation": 0.760288
+        },
+        "sequence_linear_regression": {
+          "mae": 1.791041,
+          "rmse": 2.195994,
+          "correlation": 0.737212
+        },
+        "physics_structured_readout": {
+          "mae": 1.785077,
+          "rmse": 2.19642,
+          "correlation": 0.73731
+        },
+        "vanilla_rnn": {
+          "mae": 1.840638,
+          "rmse": 2.228868,
+          "correlation": 0.687021
+        },
+        "gru": {
+          "mae": 1.99829,
+          "rmse": 2.415527,
+          "correlation": 0.712587
+        },
+        "lstm": {
+          "mae": 1.923853,
+          "rmse": 2.344037,
+          "correlation": 0.724317
+        }
+      },
+      "relative_mae_reduction_vs_vanilla_percent": {
+        "gru": -8.565074,
+        "lstm": -4.520987
+      },
+      "lowest_mae_method": "persistence"
+    },
+    {
+      "target": "dining_humidity",
+      "horizon_minutes": 1440,
+      "status": "ok",
+      "eligible_endpoints": 3933,
+      "train_samples": 2753,
+      "test_samples": 1180,
+      "shared_endpoint_hash": "a00736936c60d5f87ad1267a197981b5e1ef84b9ad66a57a0afeb7d9dda2f01d",
+      "shared_train_endpoint_hash": "f7b6f620995fc782403a58b12946f38d8bad4bd639ce90ef6f071632b0869253",
+      "shared_test_endpoint_hash": "f10e640d9f23e7bec0b2c4bfc3826edc4c40c54dd0e8c1d365b20550b322b29b",
+      "shared_train_input_hash": "a6c21cc6a98fb4fc37c97636a87e4caa05f26f5fd293edd3950ff86859454a39",
+      "shared_test_input_hash": "984698f521445c74023d9c5a685ce744c5047e8f9eb9c7e6a2bf8cb06a4dc263",
+      "metrics": {
+        "persistence": {
+          "mae": 2.784009,
+          "rmse": 3.524998,
+          "correlation": 0.809103
+        },
+        "sequence_linear_regression": {
+          "mae": 3.29488,
+          "rmse": 4.172864,
+          "correlation": 0.745985
+        },
+        "physics_structured_readout": {
+          "mae": 3.234758,
+          "rmse": 4.055474,
+          "correlation": 0.755612
+        },
+        "vanilla_rnn": {
+          "mae": 3.966149,
+          "rmse": 4.789364,
+          "correlation": 0.711597
+        },
+        "gru": {
+          "mae": 5.103721,
+          "rmse": 6.183258,
+          "correlation": 0.723569
+        },
+        "lstm": {
+          "mae": 4.464633,
+          "rmse": 5.394831,
+          "correlation": 0.711789
+        }
+      },
+      "relative_mae_reduction_vs_vanilla_percent": {
+        "gru": -28.682029,
+        "lstm": -12.568464
+      },
+      "lowest_mae_method": "persistence"
+    },
+    {
+      "target": "room_humidity",
+      "horizon_minutes": 1440,
+      "status": "ok",
+      "eligible_endpoints": 3933,
+      "train_samples": 2753,
+      "test_samples": 1180,
+      "shared_endpoint_hash": "a00736936c60d5f87ad1267a197981b5e1ef84b9ad66a57a0afeb7d9dda2f01d",
+      "shared_train_endpoint_hash": "f7b6f620995fc782403a58b12946f38d8bad4bd639ce90ef6f071632b0869253",
+      "shared_test_endpoint_hash": "f10e640d9f23e7bec0b2c4bfc3826edc4c40c54dd0e8c1d365b20550b322b29b",
+      "shared_train_input_hash": "a6c21cc6a98fb4fc37c97636a87e4caa05f26f5fd293edd3950ff86859454a39",
+      "shared_test_input_hash": "984698f521445c74023d9c5a685ce744c5047e8f9eb9c7e6a2bf8cb06a4dc263",
+      "metrics": {
+        "persistence": {
+          "mae": 3.52006,
+          "rmse": 4.237947,
+          "correlation": 0.802184
+        },
+        "sequence_linear_regression": {
+          "mae": 4.129813,
+          "rmse": 5.221078,
+          "correlation": 0.700085
+        },
+        "physics_structured_readout": {
+          "mae": 4.279578,
+          "rmse": 5.25839,
+          "correlation": 0.696598
+        },
+        "vanilla_rnn": {
+          "mae": 4.322953,
+          "rmse": 5.388317,
+          "correlation": 0.702856
+        },
+        "gru": {
+          "mae": 5.185521,
+          "rmse": 6.420685,
+          "correlation": 0.721096
+        },
+        "lstm": {
+          "mae": 4.395314,
+          "rmse": 5.560579,
+          "correlation": 0.721135
+        }
+      },
+      "relative_mae_reduction_vs_vanilla_percent": {
+        "gru": -19.953213,
+        "lstm": -1.673879
+      },
+      "lowest_mae_method": "persistence"
+    }
+  ],
+  "summary": {
+    "evaluated_cases": 12,
+    "expected_cases": 12,
+    "lowest_mae_counts": {
+      "persistence": 5,
+      "sequence_linear_regression": 7,
+      "physics_structured_readout": 0,
+      "vanilla_rnn": 0,
+      "gru": 0,
+      "lstm": 0
+    },
+    "mae_wins_vs_vanilla_rnn": {
+      "gru": 2,
+      "lstm": 0
+    },
+    "median_relative_mae_reduction_vs_vanilla_percent": {
+      "gru": -12.880146,
+      "lstm": -11.368865
+    },
+    "forwarded_candidates": []
+  },
+  "decisions": {
+    "EQ-RNNGATE-01": "evaluated",
+    "H-RNNGATE-01": "not_supported"
+  },
+  "claim_boundary": "Single-seed same-data SML2010 S2 temporal comparison only. It is not dense 3-D, cross-building, computer-enclosure, physical-sensor, PID-control, or general recurrent-architecture evidence."
+}

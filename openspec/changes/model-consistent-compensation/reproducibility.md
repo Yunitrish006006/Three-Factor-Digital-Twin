@@ -1,0 +1,2 @@
+# Reproduction
+Use existing FMPy0.3.22 venv with local libgfortran4 LD_LIBRARY_PATH, python scripts/run_boptest_consistent.py --plant NAME for air,hydronic,heat_pump,apartment,commercial. Freeze sources before execution. No downloads or installation required. Run meaningful full-model/causality/bounds/fallback tests, full unittest suite, source/trace/metric/controller-replay verifier, OpenSpec validation, offline HTML/plot inspection. Then rebuild and validate ResearchWorkspace paper graph and both viewer data surfaces from canonical sources.

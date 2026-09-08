@@ -285,10 +285,14 @@
 - 決策：`h_enc_05_supported_within_campaign`。
 
 
-## BMC E12–E15：資料修正後仍待新確認
+## BMC E12–E15：資料修正與同伺服器確認
 
 - E12：6 個 development files 未達 30 rows；final test 未開啟，NOT_EVALUATED。
 - E13：舊 parser／unit pipeline 的結果標記為 PARSER_INVALIDATED。
 - E14A/B：4,038 rows 完成來源與單位稽核；三檔 raw-unit regime 被正規化。
 - E14C retrospective：MAE 4.0882→1.8054°C，13/14 runs，95% CI [1.4271, 2.7939]°C。
-- E15：另 14 個未使用檔案已預註冊，但尚未下載或執行，維持 NOT_EVALUATED。
+- E15：另 14 個先前未開啟檔案、3,112 rows，一次不重訓確認；H-ENC-08 支持，十項閘門全通過。
+- E15 MAE / RMSE / P95：1.6939 / 1.9672 / 3.5000 → 0.9744 / 1.2056 / 2.3888°C；12/14 runs 勝出。
+- Macro run MAE gain 0.6134°C；20,000 次 run-block bootstrap 95% CI [0.2721, 0.9831]°C。
+- 保留退步 runs：202308051757.csv（-0.5537°C）與 202310252230.csv（-0.3011°C）。
+- 只支持同伺服器 temporal/workload transfer；PC 機箱、NTC、跨伺服器、空間熱場與控制尚未驗證。機箱為目前應用方向，單房間仍屬整體論文範圍。

@@ -1,0 +1,131 @@
+{
+  "status": "PASS",
+  "plants": {
+    "heat_pump": {
+      "model_status": {
+        "2": "FITTED",
+        "6": "FITTED"
+      },
+      "decisions": [
+        {
+          "budget_h": 2,
+          "pairs": [
+            {
+              "day": 20,
+              "mae_gain_C": -0.018298129644882144,
+              "max_error_delta_C": 0.00010782334226178136,
+              "nonregression": true
+            },
+            {
+              "day": 50,
+              "mae_gain_C": -0.04662702971395555,
+              "max_error_delta_C": -0.024099885354416983,
+              "nonregression": false
+            }
+          ],
+          "gate": false
+        },
+        {
+          "budget_h": 6,
+          "pairs": [
+            {
+              "day": 20,
+              "mae_gain_C": -0.062337098864494005,
+              "max_error_delta_C": 0.02172373452958709,
+              "nonregression": false
+            },
+            {
+              "day": 50,
+              "mae_gain_C": -0.17364965500511942,
+              "max_error_delta_C": 0.0943903940525388,
+              "nonregression": false
+            }
+          ],
+          "gate": false
+        }
+      ],
+      "result_sha256": "6c0469e59d0e104a98599afd97314063d0db89d106e62e7f21ec0915b3c30ebb"
+    },
+    "apartment": {
+      "model_status": {
+        "2": "FITTED",
+        "6": "NO_ADMISSIBLE_MODEL"
+      },
+      "decisions": [
+        {
+          "budget_h": 2,
+          "pairs": [
+            {
+              "day": 20,
+              "mae_gain_C": -0.40634953269523577,
+              "max_error_delta_C": 0.42138040650075936,
+              "nonregression": false
+            },
+            {
+              "day": 50,
+              "mae_gain_C": -0.33594374077985445,
+              "max_error_delta_C": 0.18976822245429048,
+              "nonregression": false
+            }
+          ],
+          "gate": false
+        },
+        {
+          "budget_h": 6,
+          "pairs": [],
+          "gate": false
+        }
+      ],
+      "result_sha256": "5f645126dc4abd0be76aa30c2f413e66d9137cb58e9db5c72d13680dcb58aadd"
+    },
+    "commercial": {
+      "model_status": {
+        "2": "FITTED",
+        "6": "FITTED"
+      },
+      "decisions": [
+        {
+          "budget_h": 2,
+          "pairs": [
+            {
+              "day": 20,
+              "mae_gain_C": -0.005947994797628356,
+              "max_error_delta_C": 0.04295045812011722,
+              "nonregression": true
+            },
+            {
+              "day": 50,
+              "mae_gain_C": -0.007611019654957314,
+              "max_error_delta_C": -0.006129666883339269,
+              "nonregression": true
+            }
+          ],
+          "gate": false
+        },
+        {
+          "budget_h": 6,
+          "pairs": [
+            {
+              "day": 20,
+              "mae_gain_C": -0.006118037312151891,
+              "max_error_delta_C": 0.04224079205681619,
+              "nonregression": true
+            },
+            {
+              "day": 50,
+              "mae_gain_C": -0.0076875138032505685,
+              "max_error_delta_C": -0.006319573897769715,
+              "nonregression": true
+            }
+          ],
+          "gate": false
+        }
+      ],
+      "result_sha256": "9b31ead9096f8f75eff7a5c0f567d28affbb2bf9ac9807eeccbf589ba571bb73"
+    }
+  },
+  "sources_match": true,
+  "new_traces": 43,
+  "scope": "THREE_NEW_FMUS_WITH_BOUNDED_ADAPTATION",
+  "all_six_budgets_pass": false
+}

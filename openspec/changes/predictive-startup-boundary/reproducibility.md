@@ -1,0 +1,2 @@
+# Reproduction
+Existing BOPTEST venv/libgfortran4. Run run_boptest_predictive_startup.py development for all five plants, select_boptest_predictive_startup.py once, then confirmation for all five. First invocation creates freeze before simulation; start others only after it exists. Verify hashes/replay/metrics/gates, full Python suite, OpenSpec, offline HTML and graph endpoint pointers. No overwrites.

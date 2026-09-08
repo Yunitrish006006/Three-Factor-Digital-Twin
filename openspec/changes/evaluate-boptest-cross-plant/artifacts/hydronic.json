@@ -1,0 +1,118 @@
+{
+  "status": "COMPLETED",
+  "plant": "hydronic",
+  "config": {
+    "target_C": 22,
+    "step_s": 60,
+    "case": "bestest_hydronic",
+    "measurement_kind": "operative zone temperature (not air temperature)",
+    "supply_min_C": 20,
+    "supply_max_C": 80,
+    "temperature": "reaTRoo_y",
+    "outdoor": "weaSta_reaWeaTDryBul_y",
+    "supply": "oveTSetSup_y",
+    "supply_input": "oveTSetSup_u",
+    "supply_activate": "oveTSetSup_activate",
+    "aux_input": "ovePum_u",
+    "aux_activate": "ovePum_activate",
+    "aux_output": "ovePum_y",
+    "aux_value": 1,
+    "target_inputs": [
+      "oveTSetHea_u",
+      "oveTSetCoo_u"
+    ],
+    "target_activates": [
+      "oveTSetHea_activate",
+      "oveTSetCoo_activate"
+    ],
+    "power_outputs": {
+      "gas_thermal_W": "reaQHea_y",
+      "pump_W": "reaPPum_y"
+    }
+  },
+  "freeze_sha256": "3ebbe721f92c336421a794c488995fa2763efd73fc27fcaa2620cd436d4c6d7b",
+  "sources": {
+    "scripts/run_boptest_cross_plant.py": "3ad0154d942737e43f9263c1cd9bcc9ebbff2292cc319c24800f73169d9f5990",
+    "scripts/boptest_cross_plant_devices.json": "83c008c20b47f4c5da77dd832b45558dd064a75a9c705190f80f730d104fc100",
+    "digital_twin/control/portable_pi.py": "2ce85a77f1d16e1dbb8fbcd847ebe722233790a9658cc3946a9cac9ed895ac30",
+    "openspec/changes/evaluate-boptest-cross-plant/protocol.md": "c3980b61ad10121a8e3061ded6131d66ef6c0a903b7dc54c4ef0266bc23a4b6f",
+    "outputs/vendor/boptest-v0.9.0/testcases/bestest_air/models/wrapped.fmu": "158008fa3b635280a67dfed8bab5804d1f9a96d218b467dfebab77e5cbf8b86a",
+    "outputs/vendor/boptest-v0.9.0/testcases/bestest_hydronic/models/wrapped.fmu": "365b3085d97cc4620c06b6036156126a056d7f160fcc4f181d6b2fac4b05743b"
+  },
+  "fits": {
+    "2": {
+      "n": 120,
+      "coefficients": [
+        -0.039379390928502817,
+        0.22630948910287668,
+        0.10867626466660311,
+        2.403988090810095
+      ],
+      "condition_number": 6886.415328937954,
+      "rank": 4,
+      "fit_rmse_C": 0.025024124502251003,
+      "start_s": 86400,
+      "end_s": 93600,
+      "status": "REJECTED_NONPHYSICAL"
+    },
+    "6": {
+      "n": 360,
+      "coefficients": [
+        -0.024955967009910103,
+        0.20175784523893822,
+        -0.007541027409653325,
+        -0.17262587283738942
+      ],
+      "condition_number": 1114.6915895470897,
+      "rank": 4,
+      "fit_rmse_C": 0.02632185514690488,
+      "start_s": 86400,
+      "end_s": 108000,
+      "status": "REJECTED_NONPHYSICAL"
+    }
+  },
+  "trials": [],
+  "evaluations": [],
+  "skips": [
+    {
+      "budget_h": 2,
+      "reason": "REJECTED_NONPHYSICAL"
+    },
+    {
+      "budget_h": 6,
+      "reason": "REJECTED_NONPHYSICAL"
+    }
+  ],
+  "failures": [],
+  "identification": {
+    "trace": "outputs/boptest_cross_plant/bestest_hydronic/identification.csv",
+    "sha256": "d68b7f3ea41493243c7902e4d2c61050c7e02e50dde2c443a4fb3e40d6dc22ef",
+    "scored_hours": 6,
+    "warmup_hours": 24,
+    "wall_seconds": 2.030033520888537,
+    "initial_state": {
+      "T": 22.002962738836118,
+      "outdoor": 0.0,
+      "supply_C": 49.43572433438311,
+      "aux": 1.0,
+      "gas_thermal_W": 2689.5871399639145,
+      "pump_W": 12.248233915608973
+    },
+    "initial_u": 0.4905954055730518,
+    "metrics": {
+      "n": 360,
+      "mae_C": 0.42926343083258495,
+      "rmse_C": 0.5073351567511082,
+      "max_abs_error_C": 1.17894853546602,
+      "within_0_5_pct": 65.0,
+      "requested_TV_u": 6.95,
+      "saturation_pct": 0.0,
+      "outside_20_30_n": 0,
+      "gas_thermal_kWh": 17.622187372099436,
+      "pump_kWh": 0.07348940349365382
+    },
+    "first_30min_mae_C": 0.291799318946452,
+    "after_30min_mae_C": 0.44176016827677883
+  },
+  "selection_sha256": "4a38f59fd13aed94d75d15a6cd7dab35e7b821f4dadd599b20792982a2569025"
+}

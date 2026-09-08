@@ -1,0 +1,146 @@
+[
+  {
+    "day": 65,
+    "noise_sd_C": 0,
+    "controller": "v4",
+    "hot_n": 0,
+    "hot_and_applied_min_supply_n": 0,
+    "applied_saturation_pct": 0.0
+  },
+  {
+    "day": 65,
+    "noise_sd_C": 0,
+    "controller": "smooth035",
+    "hot_n": 0,
+    "hot_and_applied_min_supply_n": 0,
+    "applied_saturation_pct": 0.0
+  },
+  {
+    "day": 65,
+    "noise_sd_C": 0,
+    "controller": "grid",
+    "hot_n": 0,
+    "hot_and_applied_min_supply_n": 0,
+    "applied_saturation_pct": 0.0
+  },
+  {
+    "day": 65,
+    "noise_sd_C": 0.05,
+    "controller": "v4",
+    "hot_n": 0,
+    "hot_and_applied_min_supply_n": 0,
+    "applied_saturation_pct": 0.0
+  },
+  {
+    "day": 65,
+    "noise_sd_C": 0.05,
+    "controller": "smooth035",
+    "hot_n": 0,
+    "hot_and_applied_min_supply_n": 0,
+    "applied_saturation_pct": 0.0
+  },
+  {
+    "day": 65,
+    "noise_sd_C": 0.05,
+    "controller": "grid",
+    "hot_n": 0,
+    "hot_and_applied_min_supply_n": 0,
+    "applied_saturation_pct": 0.0
+  },
+  {
+    "day": 155,
+    "noise_sd_C": 0,
+    "controller": "v4",
+    "hot_n": 0,
+    "hot_and_applied_min_supply_n": 0,
+    "applied_saturation_pct": 0.0
+  },
+  {
+    "day": 155,
+    "noise_sd_C": 0,
+    "controller": "smooth035",
+    "hot_n": 0,
+    "hot_and_applied_min_supply_n": 0,
+    "applied_saturation_pct": 0.0
+  },
+  {
+    "day": 155,
+    "noise_sd_C": 0,
+    "controller": "grid",
+    "hot_n": 0,
+    "hot_and_applied_min_supply_n": 0,
+    "applied_saturation_pct": 0.0
+  },
+  {
+    "day": 155,
+    "noise_sd_C": 0.05,
+    "controller": "v4",
+    "hot_n": 0,
+    "hot_and_applied_min_supply_n": 0,
+    "applied_saturation_pct": 0.0
+  },
+  {
+    "day": 155,
+    "noise_sd_C": 0.05,
+    "controller": "smooth035",
+    "hot_n": 0,
+    "hot_and_applied_min_supply_n": 0,
+    "applied_saturation_pct": 0.0
+  },
+  {
+    "day": 155,
+    "noise_sd_C": 0.05,
+    "controller": "grid",
+    "hot_n": 0,
+    "hot_and_applied_min_supply_n": 0,
+    "applied_saturation_pct": 0.0
+  },
+  {
+    "day": 275,
+    "noise_sd_C": 0,
+    "controller": "v4",
+    "hot_n": 266,
+    "hot_and_applied_min_supply_n": 266,
+    "applied_saturation_pct": 24.444444444444443
+  },
+  {
+    "day": 275,
+    "noise_sd_C": 0,
+    "controller": "smooth035",
+    "hot_n": 267,
+    "hot_and_applied_min_supply_n": 267,
+    "applied_saturation_pct": 0.0
+  },
+  {
+    "day": 275,
+    "noise_sd_C": 0,
+    "controller": "grid",
+    "hot_n": 268,
+    "hot_and_applied_min_supply_n": 268,
+    "applied_saturation_pct": 23.680555555555557
+  },
+  {
+    "day": 275,
+    "noise_sd_C": 0.05,
+    "controller": "v4",
+    "hot_n": 267,
+    "hot_and_applied_min_supply_n": 267,
+    "applied_saturation_pct": 24.305555555555557
+  },
+  {
+    "day": 275,
+    "noise_sd_C": 0.05,
+    "controller": "smooth035",
+    "hot_n": 267,
+    "hot_and_applied_min_supply_n": 267,
+    "applied_saturation_pct": 0.0
+  },
+  {
+    "day": 275,
+    "noise_sd_C": 0.05,
+    "controller": "grid",
+    "hot_n": 268,
+    "hot_and_applied_min_supply_n": 268,
+    "applied_saturation_pct": 23.958333333333332
+  }
+]

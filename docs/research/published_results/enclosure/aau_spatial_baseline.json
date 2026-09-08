@@ -1,0 +1,1318 @@
+{
+  "schema_version": "aau-spatial-baseline-v1",
+  "generated_at": "2026-09-07T03:54:46.582385+00:00",
+  "experiment_id": "E11B",
+  "source": {
+    "doi": "10.5281/zenodo.19398358",
+    "url": "https://zenodo.org/api/records/19398358/files/AAU_temperature_and_power_use.csv/content",
+    "record_id": 19398358,
+    "version": "v4",
+    "file": "AAU_temperature_and_power_use.csv",
+    "bytes": 706160545,
+    "md5": "fdb84fef0733db5a0a9564e028725494",
+    "license": null,
+    "license_note": "Zenodo record is public but REST rights metadata was null on 2026-08-23"
+  },
+  "sampling": {
+    "strategy": "twelve_evenly_spaced_byte_ranges",
+    "range_count": 12,
+    "range_size_bytes": 4194304,
+    "offsets": [
+      0,
+      63815113,
+      127630226,
+      191445338,
+      255260451,
+      319075564,
+      382890677,
+      446705790,
+      510520903,
+      574336015,
+      638151128,
+      701966241
+    ]
+  },
+  "room_design": "docs/templates/room_design_aau_server_room.json",
+  "coordinate_mapping": {
+    "included_high_confidence_channels": 42,
+    "excluded_ambiguous_cooling_channels": 6,
+    "transform": "x=(cad_x_mm-100)/1000, y=(cad_y_mm-100)/1000, z=cad_z_mm/1000"
+  },
+  "parsing": {
+    "fragments": 12,
+    "boundary_records_discarded": 22,
+    "rows_seen": 97735,
+    "rows_accepted": 97735,
+    "rows_malformed": 0,
+    "rows_missing_or_nonfinite": 0,
+    "eligible_minutes": 1641
+  },
+  "evaluation": {
+    "sensor_count": 42,
+    "snapshot_count": 1641,
+    "time_range": {
+      "start": "2024-09-16T16:58:00",
+      "end": "2024-10-02T13:53:00"
+    },
+    "power_summary_w": {
+      "minimum": 2223.5,
+      "median": 2400.5,
+      "maximum": 3313.3
+    },
+    "macro_metrics": {
+      "global_mean": {
+        "mae_c": 2.2934647677512436,
+        "rmse_c": 2.6240065877668064,
+        "p95_absolute_error_c": 4.55359456591173
+      },
+      "nearest_neighbor": {
+        "mae_c": 1.1746036495748817,
+        "rmse_c": 1.4110064864072405,
+        "p95_absolute_error_c": 2.579047476190477
+      },
+      "idw_3d_p2": {
+        "mae_c": 1.6868251860571795,
+        "rmse_c": 1.9209756083380551,
+        "p95_absolute_error_c": 3.319201429555
+      }
+    },
+    "sensor_wins": {
+      "global_mean": 6,
+      "nearest_neighbor": 30,
+      "idw_3d_p2": 6
+    },
+    "sensor_win_fractions": {
+      "global_mean": 0.14285714285714285,
+      "nearest_neighbor": 0.7142857142857143,
+      "idw_3d_p2": 0.14285714285714285
+    },
+    "per_sensor": {
+      "gradient_1": {
+        "csv_column": "Temperature mod 4 ch 1",
+        "source_label": "Gradient 1",
+        "position_m": {
+          "x": 0.17,
+          "y": 3.67,
+          "z": 0.3
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 3.0531996999895963,
+            "rmse_c": 3.2185412051432354,
+            "p95_absolute_error_c": 4.853951926829264
+          },
+          "nearest_neighbor": {
+            "mae_c": 0.3528126672760512,
+            "rmse_c": 0.40911092490795203,
+            "p95_absolute_error_c": 0.8339649999999992
+          },
+          "idw_3d_p2": {
+            "mae_c": 2.7705746553388426,
+            "rmse_c": 2.944250361922594,
+            "p95_absolute_error_c": 4.5102346132842825
+          }
+        },
+        "lowest_mae_methods": [
+          "nearest_neighbor"
+        ]
+      },
+      "gradient_2": {
+        "csv_column": "Temperature mod 4 ch 2",
+        "source_label": "Gradient 2",
+        "position_m": {
+          "x": 0.17,
+          "y": 3.67,
+          "z": 0.84
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 2.6918381228727277,
+            "rmse_c": 2.863578802276368,
+            "p95_absolute_error_c": 4.521107804878049
+          },
+          "nearest_neighbor": {
+            "mae_c": 0.35642154265691656,
+            "rmse_c": 0.41525304529062546,
+            "p95_absolute_error_c": 0.8219929999999991
+          },
+          "idw_3d_p2": {
+            "mae_c": 2.5687524074012265,
+            "rmse_c": 2.786884701768697,
+            "p95_absolute_error_c": 4.643911139478643
+          }
+        },
+        "lowest_mae_methods": [
+          "nearest_neighbor"
+        ]
+      },
+      "gradient_3": {
+        "csv_column": "Temperature mod 4 ch 3",
+        "source_label": "Gradient 3",
+        "position_m": {
+          "x": 0.17,
+          "y": 3.67,
+          "z": 1.33
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 2.3271323114400797,
+            "rmse_c": 2.4726745928162583,
+            "p95_absolute_error_c": 3.7890851097560976
+          },
+          "nearest_neighbor": {
+            "mae_c": 0.35642154265691656,
+            "rmse_c": 0.41525304529062546,
+            "p95_absolute_error_c": 0.8219929999999991
+          },
+          "idw_3d_p2": {
+            "mae_c": 2.567309811819498,
+            "rmse_c": 2.793645897160828,
+            "p95_absolute_error_c": 4.557206197582353
+          }
+        },
+        "lowest_mae_methods": [
+          "nearest_neighbor"
+        ]
+      },
+      "gradient_4": {
+        "csv_column": "Temperature mod 4 ch 5",
+        "source_label": "Gradient 4",
+        "position_m": {
+          "x": 0.17,
+          "y": 3.67,
+          "z": 1.84
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 1.9176847575987277,
+            "rmse_c": 2.020809808775305,
+            "p95_absolute_error_c": 3.11719643902439
+          },
+          "nearest_neighbor": {
+            "mae_c": 0.27509350030469226,
+            "rmse_c": 0.3286743807575476,
+            "p95_absolute_error_c": 0.6510394999999995
+          },
+          "idw_3d_p2": {
+            "mae_c": 2.345939936393761,
+            "rmse_c": 2.5424126752270477,
+            "p95_absolute_error_c": 4.2041252786425005
+          }
+        },
+        "lowest_mae_methods": [
+          "nearest_neighbor"
+        ]
+      },
+      "gradient_5": {
+        "csv_column": "Temperature mod 4 ch 4",
+        "source_label": "Gradient 5",
+        "position_m": {
+          "x": 0.17,
+          "y": 3.67,
+          "z": 2.3
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 1.6364874214414171,
+            "rmse_c": 1.7197283389118172,
+            "p95_absolute_error_c": 2.685624756097557
+          },
+          "nearest_neighbor": {
+            "mae_c": 0.27509350030469226,
+            "rmse_c": 0.3286743807575476,
+            "p95_absolute_error_c": 0.6510394999999995
+          },
+          "idw_3d_p2": {
+            "mae_c": 2.131860095483228,
+            "rmse_c": 2.2938505298108542,
+            "p95_absolute_error_c": 3.785549294117896
+          }
+        },
+        "lowest_mae_methods": [
+          "nearest_neighbor"
+        ]
+      },
+      "rack_1_back_1": {
+        "csv_column": "Temperature mod 7 ch 3",
+        "source_label": "Rack 1 back 1",
+        "position_m": {
+          "x": 0.785,
+          "y": 1.207284,
+          "z": 0.83
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 2.332240740521098,
+            "rmse_c": 2.5273321321391156,
+            "p95_absolute_error_c": 4.217730231707318
+          },
+          "nearest_neighbor": {
+            "mae_c": 1.6143872720901888,
+            "rmse_c": 1.6573333730920017,
+            "p95_absolute_error_c": 2.2923025000000017
+          },
+          "idw_3d_p2": {
+            "mae_c": 2.000180213080274,
+            "rmse_c": 2.0577373685383358,
+            "p95_absolute_error_c": 2.9292178785074654
+          }
+        },
+        "lowest_mae_methods": [
+          "nearest_neighbor"
+        ]
+      },
+      "rack_1_back_2": {
+        "csv_column": "Temperature mod 7 ch 2",
+        "source_label": "Rack 1 back 2",
+        "position_m": {
+          "x": 0.785,
+          "y": 1.207284,
+          "z": 1.8
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 0.8297817035418618,
+            "rmse_c": 1.0402276192247564,
+            "p95_absolute_error_c": 2.0742276585365857
+          },
+          "nearest_neighbor": {
+            "mae_c": 2.5167712373552713,
+            "rmse_c": 2.545927777847374,
+            "p95_absolute_error_c": 3.1626590000000014
+          },
+          "idw_3d_p2": {
+            "mae_c": 0.4636249496424444,
+            "rmse_c": 0.6475480894941222,
+            "p95_absolute_error_c": 1.338288295519476
+          }
+        },
+        "lowest_mae_methods": [
+          "idw_3d_p2"
+        ]
+      },
+      "rack_1_front": {
+        "csv_column": "Temperature mod 2 ch 7",
+        "source_label": "Rack 1 front",
+        "position_m": {
+          "x": 1.835,
+          "y": 1.15,
+          "z": 1.19
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 2.8561161111012026,
+            "rmse_c": 3.041107138199417,
+            "p95_absolute_error_c": 4.892142731707317
+          },
+          "nearest_neighbor": {
+            "mae_c": 0.08602322699573428,
+            "rmse_c": 0.10449419692909571,
+            "p95_absolute_error_c": 0.19308399999999892
+          },
+          "idw_3d_p2": {
+            "mae_c": 2.0771160357446514,
+            "rmse_c": 2.1459185805256284,
+            "p95_absolute_error_c": 3.092156867986624
+          }
+        },
+        "lowest_mae_methods": [
+          "nearest_neighbor"
+        ]
+      },
+      "rack_2_back_1": {
+        "csv_column": "Temperature mod 6 ch 1",
+        "source_label": "Rack 2 back 1",
+        "position_m": {
+          "x": 1.035,
+          "y": 1.81,
+          "z": 0.78
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 0.9253770826236234,
+            "rmse_c": 1.3985504555255743,
+            "p95_absolute_error_c": 2.946917682926827
+          },
+          "nearest_neighbor": {
+            "mae_c": 0.41282307708714205,
+            "rmse_c": 0.5043933573883952,
+            "p95_absolute_error_c": 0.8809749999999994
+          },
+          "idw_3d_p2": {
+            "mae_c": 0.6383991169516995,
+            "rmse_c": 0.8074859662584098,
+            "p95_absolute_error_c": 1.565057212141582
+          }
+        },
+        "lowest_mae_methods": [
+          "nearest_neighbor"
+        ]
+      },
+      "rack_2_back_2": {
+        "csv_column": "Temperature mod 7 ch 4",
+        "source_label": "Rack 2 back 2",
+        "position_m": {
+          "x": 1.035,
+          "y": 1.81,
+          "z": 1.76
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 2.368891534638308,
+            "rmse_c": 2.6733827032566793,
+            "p95_absolute_error_c": 3.76068153658537
+          },
+          "nearest_neighbor": {
+            "mae_c": 1.413678857404022,
+            "rmse_c": 1.4820949740747509,
+            "p95_absolute_error_c": 2.0488380000000035
+          },
+          "idw_3d_p2": {
+            "mae_c": 2.413984009896312,
+            "rmse_c": 2.5759316547316784,
+            "p95_absolute_error_c": 3.483649528543765
+          }
+        },
+        "lowest_mae_methods": [
+          "nearest_neighbor"
+        ]
+      },
+      "rack_2_front": {
+        "csv_column": "Temperature mod 1 ch 1",
+        "source_label": "Rack 2 front",
+        "position_m": {
+          "x": 1.835,
+          "y": 1.77,
+          "z": 1.19
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 2.90441994616608,
+            "rmse_c": 3.1012390290895895,
+            "p95_absolute_error_c": 5.014768182926826
+          },
+          "nearest_neighbor": {
+            "mae_c": 0.2097566779402803,
+            "rmse_c": 0.24170461625459946,
+            "p95_absolute_error_c": 0.41801500000000047
+          },
+          "idw_3d_p2": {
+            "mae_c": 2.133291107848883,
+            "rmse_c": 2.2165482340980294,
+            "p95_absolute_error_c": 3.2725656131917233
+          }
+        },
+        "lowest_mae_methods": [
+          "nearest_neighbor"
+        ]
+      },
+      "rack_3_back_1": {
+        "csv_column": "Temperature mod 6 ch 3",
+        "source_label": "Rack 3 back 1",
+        "position_m": {
+          "x": 1.035,
+          "y": 2.41,
+          "z": 0.78
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 1.0256844574396933,
+            "rmse_c": 1.440079710019241,
+            "p95_absolute_error_c": 3.041265731707316
+          },
+          "nearest_neighbor": {
+            "mae_c": 0.41282307708714205,
+            "rmse_c": 0.5043933573883952,
+            "p95_absolute_error_c": 0.8809749999999994
+          },
+          "idw_3d_p2": {
+            "mae_c": 0.9426236478936754,
+            "rmse_c": 1.2561450434345716,
+            "p95_absolute_error_c": 2.5951351093897337
+          }
+        },
+        "lowest_mae_methods": [
+          "nearest_neighbor"
+        ]
+      },
+      "rack_3_back_2": {
+        "csv_column": "Temperature mod 6 ch 2",
+        "source_label": "Rack 3 back 2",
+        "position_m": {
+          "x": 1.035,
+          "y": 2.41,
+          "z": 1.76
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 1.3019712611881509,
+            "rmse_c": 1.410738942926774,
+            "p95_absolute_error_c": 2.390731451219512
+          },
+          "nearest_neighbor": {
+            "mae_c": 0.8029570344302255,
+            "rmse_c": 0.8689851318194779,
+            "p95_absolute_error_c": 1.2909819999999996
+          },
+          "idw_3d_p2": {
+            "mae_c": 0.9540099111734056,
+            "rmse_c": 1.0694243057440167,
+            "p95_absolute_error_c": 1.842876367131261
+          }
+        },
+        "lowest_mae_methods": [
+          "nearest_neighbor"
+        ]
+      },
+      "rack_3_front": {
+        "csv_column": "Temperature mod 1 ch 8",
+        "source_label": "Rack 3 front",
+        "position_m": {
+          "x": 1.835,
+          "y": 2.36,
+          "z": 1.19
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 2.9567338376807717,
+            "rmse_c": 3.168890794704477,
+            "p95_absolute_error_c": 5.156393695121949
+          },
+          "nearest_neighbor": {
+            "mae_c": 0.2097566779402803,
+            "rmse_c": 0.24170461625459946,
+            "p95_absolute_error_c": 0.41801500000000047
+          },
+          "idw_3d_p2": {
+            "mae_c": 2.488301579461848,
+            "rmse_c": 2.635895884670172,
+            "p95_absolute_error_c": 4.141279033596927
+          }
+        },
+        "lowest_mae_methods": [
+          "nearest_neighbor"
+        ]
+      },
+      "rack_4_back_1": {
+        "csv_column": "Temperature mod 5 ch 4",
+        "source_label": "Rack 4 back 1",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.01,
+          "z": 0.76
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 1.0528385539602563,
+            "rmse_c": 1.1207742529858309,
+            "p95_absolute_error_c": 1.714264
+          },
+          "nearest_neighbor": {
+            "mae_c": 0.7475424634369288,
+            "rmse_c": 0.8883958909573414,
+            "p95_absolute_error_c": 1.8004564999999992
+          },
+          "idw_3d_p2": {
+            "mae_c": 1.120523800339303,
+            "rmse_c": 1.240915199237058,
+            "p95_absolute_error_c": 2.1999698746328846
+          }
+        },
+        "lowest_mae_methods": [
+          "nearest_neighbor"
+        ]
+      },
+      "rack_4_back_2": {
+        "csv_column": "Temperature mod 6 ch 4",
+        "source_label": "Rack 4 back 2",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.01,
+          "z": 1.76
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 1.7383117402832895,
+            "rmse_c": 1.9711594196544897,
+            "p95_absolute_error_c": 2.6218634878048768
+          },
+          "nearest_neighbor": {
+            "mae_c": 2.259917164533821,
+            "rmse_c": 3.4791410202945334,
+            "p95_absolute_error_c": 7.286710500000002
+          },
+          "idw_3d_p2": {
+            "mae_c": 1.7301866051263692,
+            "rmse_c": 1.919042256404372,
+            "p95_absolute_error_c": 3.43775804421875
+          }
+        },
+        "lowest_mae_methods": [
+          "idw_3d_p2"
+        ]
+      },
+      "rack_4_front": {
+        "csv_column": "Temperature mod 1 ch 6",
+        "source_label": "Rack 4 front",
+        "position_m": {
+          "x": 1.835,
+          "y": 2.96,
+          "z": 1.19
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 2.9066886687326288,
+            "rmse_c": 3.0991455436512294,
+            "p95_absolute_error_c": 5.000074378048783
+          },
+          "nearest_neighbor": {
+            "mae_c": 0.1580901596587446,
+            "rmse_c": 0.20100246052322718,
+            "p95_absolute_error_c": 0.3971435000000021
+          },
+          "idw_3d_p2": {
+            "mae_c": 2.846709680872364,
+            "rmse_c": 3.0502305005732153,
+            "p95_absolute_error_c": 4.972955957851944
+          }
+        },
+        "lowest_mae_methods": [
+          "nearest_neighbor"
+        ]
+      },
+      "rack_5_back_l1": {
+        "csv_column": "Temperature mod 2 ch 8",
+        "source_label": "Rack 5 back L1",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.74,
+          "z": 0.3
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 1.9865712416581205,
+            "rmse_c": 2.3166565875320213,
+            "p95_absolute_error_c": 4.272621036585367
+          },
+          "nearest_neighbor": {
+            "mae_c": 4.039154888482632,
+            "rmse_c": 4.846428147345364,
+            "p95_absolute_error_c": 9.025264000000004
+          },
+          "idw_3d_p2": {
+            "mae_c": 2.0228937703189254,
+            "rmse_c": 2.413819846037711,
+            "p95_absolute_error_c": 4.445352195719298
+          }
+        },
+        "lowest_mae_methods": [
+          "global_mean"
+        ]
+      },
+      "rack_5_back_l2": {
+        "csv_column": "Temperature mod 2 ch 6",
+        "source_label": "Rack 5 back L2",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.61,
+          "z": 0.53
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 2.151099619714332,
+            "rmse_c": 2.6969340028230815,
+            "p95_absolute_error_c": 5.257697670731702
+          },
+          "nearest_neighbor": {
+            "mae_c": 2.913406357404022,
+            "rmse_c": 3.8306861775534022,
+            "p95_absolute_error_c": 7.707732
+          },
+          "idw_3d_p2": {
+            "mae_c": 2.375469128869787,
+            "rmse_c": 2.9374563949652277,
+            "p95_absolute_error_c": 5.69338324313032
+          }
+        },
+        "lowest_mae_methods": [
+          "global_mean"
+        ]
+      },
+      "rack_5_back_l3": {
+        "csv_column": "Temperature mod 2 ch 2",
+        "source_label": "Rack 5 back L3",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.74,
+          "z": 0.76
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 0.8792072794548238,
+            "rmse_c": 1.2750460128685448,
+            "p95_absolute_error_c": 2.9710044999999994
+          },
+          "nearest_neighbor": {
+            "mae_c": 1.3668630109689213,
+            "rmse_c": 1.7636966972121444,
+            "p95_absolute_error_c": 3.654871500000006
+          },
+          "idw_3d_p2": {
+            "mae_c": 0.42983538818509726,
+            "rmse_c": 0.6568012755886293,
+            "p95_absolute_error_c": 1.5446850331593787
+          }
+        },
+        "lowest_mae_methods": [
+          "idw_3d_p2"
+        ]
+      },
+      "rack_5_back_l4": {
+        "csv_column": "Temperature mod 2 ch 5",
+        "source_label": "Rack 5 back L4",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.61,
+          "z": 0.93
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 2.275299627160714,
+            "rmse_c": 2.884754201903617,
+            "p95_absolute_error_c": 5.824122439024393
+          },
+          "nearest_neighbor": {
+            "mae_c": 1.879360309567337,
+            "rmse_c": 2.82686019053338,
+            "p95_absolute_error_c": 6.282809
+          },
+          "idw_3d_p2": {
+            "mae_c": 1.3441877531904047,
+            "rmse_c": 1.786403439618524,
+            "p95_absolute_error_c": 3.83445949211087
+          }
+        },
+        "lowest_mae_methods": [
+          "idw_3d_p2"
+        ]
+      },
+      "rack_5_back_l5": {
+        "csv_column": "Temperature mod 2 ch 1",
+        "source_label": "Rack 5 back L5",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.74,
+          "z": 1.15
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 2.3896771420311826,
+            "rmse_c": 2.7604752928170817,
+            "p95_absolute_error_c": 4.9327985975609785
+          },
+          "nearest_neighbor": {
+            "mae_c": 0.36172046099939065,
+            "rmse_c": 0.5771172369510134,
+            "p95_absolute_error_c": 1.4487689999999986
+          },
+          "idw_3d_p2": {
+            "mae_c": 0.8757919873080343,
+            "rmse_c": 0.9590907378805128,
+            "p95_absolute_error_c": 1.75744724676548
+          }
+        },
+        "lowest_mae_methods": [
+          "nearest_neighbor"
+        ]
+      },
+      "rack_5_back_l6": {
+        "csv_column": "Temperature mod 2 ch 4",
+        "source_label": "Rack 5 back L6",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.61,
+          "z": 1.34
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 2.6796356799988112,
+            "rmse_c": 3.2217239470851315,
+            "p95_absolute_error_c": 5.9564901341463425
+          },
+          "nearest_neighbor": {
+            "mae_c": 0.49482328001218767,
+            "rmse_c": 0.5608708106524973,
+            "p95_absolute_error_c": 0.795337
+          },
+          "idw_3d_p2": {
+            "mae_c": 0.6783017146865348,
+            "rmse_c": 0.8307831126600368,
+            "p95_absolute_error_c": 1.5892482771247423
+          }
+        },
+        "lowest_mae_methods": [
+          "nearest_neighbor"
+        ]
+      },
+      "rack_5_back_l7": {
+        "csv_column": "Temperature mod 3 ch 3",
+        "source_label": "Rack 5 back L7",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.74,
+          "z": 1.56
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 3.6346809047279325,
+            "rmse_c": 4.167095190965242,
+            "p95_absolute_error_c": 7.569922097560976
+          },
+          "nearest_neighbor": {
+            "mae_c": 0.3402825289457648,
+            "rmse_c": 0.45376012021984863,
+            "p95_absolute_error_c": 1.0056920000000034
+          },
+          "idw_3d_p2": {
+            "mae_c": 1.28992655751146,
+            "rmse_c": 1.4284346146171034,
+            "p95_absolute_error_c": 2.6740209766877925
+          }
+        },
+        "lowest_mae_methods": [
+          "nearest_neighbor"
+        ]
+      },
+      "rack_5_back_l8": {
+        "csv_column": "Temperature mod 3 ch 6",
+        "source_label": "Rack 5 back L8",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.61,
+          "z": 1.73
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 3.660205155140382,
+            "rmse_c": 4.387626581960815,
+            "p95_absolute_error_c": 8.266628914634147
+          },
+          "nearest_neighbor": {
+            "mae_c": 0.4136535234613041,
+            "rmse_c": 0.49191288902784874,
+            "p95_absolute_error_c": 1.0003895000000043
+          },
+          "idw_3d_p2": {
+            "mae_c": 0.7841165187396888,
+            "rmse_c": 1.0638125899290385,
+            "p95_absolute_error_c": 2.2141190401942623
+          }
+        },
+        "lowest_mae_methods": [
+          "nearest_neighbor"
+        ]
+      },
+      "rack_5_back_l9": {
+        "csv_column": "Temperature mod 3 ch 7",
+        "source_label": "Rack 5 back L9",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.74,
+          "z": 1.92
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 5.207426679998811,
+            "rmse_c": 5.7142296922912035,
+            "p95_absolute_error_c": 9.846573573170733
+          },
+          "nearest_neighbor": {
+            "mae_c": 1.510399285191956,
+            "rmse_c": 1.5469214788700334,
+            "p95_absolute_error_c": 1.8762310000000006
+          },
+          "idw_3d_p2": {
+            "mae_c": 2.7317867130355085,
+            "rmse_c": 2.8674559859463447,
+            "p95_absolute_error_c": 4.547733988287774
+          }
+        },
+        "lowest_mae_methods": [
+          "nearest_neighbor"
+        ]
+      },
+      "rack_5_back_r1": {
+        "csv_column": "Temperature mod 3 ch 4",
+        "source_label": "Rack 5 back R1",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.47,
+          "z": 0.3
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 1.8438642364411943,
+            "rmse_c": 2.1146457193589954,
+            "p95_absolute_error_c": 3.8469766707317063
+          },
+          "nearest_neighbor": {
+            "mae_c": 0.9864393117001828,
+            "rmse_c": 1.008849928414124,
+            "p95_absolute_error_c": 1.3902390000000011
+          },
+          "idw_3d_p2": {
+            "mae_c": 1.7490048347867484,
+            "rmse_c": 1.9924337098161706,
+            "p95_absolute_error_c": 3.5199195545881317
+          }
+        },
+        "lowest_mae_methods": [
+          "nearest_neighbor"
+        ]
+      },
+      "rack_5_back_r2": {
+        "csv_column": "Temperature mod 3 ch 8",
+        "source_label": "Rack 5 back R2",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.41,
+          "z": 0.53
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 0.8521210732747728,
+            "rmse_c": 1.3022259248318475,
+            "p95_absolute_error_c": 2.9368225365853675
+          },
+          "nearest_neighbor": {
+            "mae_c": 2.913406357404022,
+            "rmse_c": 3.8306861775534022,
+            "p95_absolute_error_c": 7.707732
+          },
+          "idw_3d_p2": {
+            "mae_c": 1.1914418183967526,
+            "rmse_c": 1.7402392950828773,
+            "p95_absolute_error_c": 3.72579766447058
+          }
+        },
+        "lowest_mae_methods": [
+          "global_mean"
+        ]
+      },
+      "rack_5_back_r3": {
+        "csv_column": "Temperature mod 3 ch 5",
+        "source_label": "Rack 5 back R3",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.47,
+          "z": 0.76
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 0.6882998383347452,
+            "rmse_c": 1.0388224739115282,
+            "p95_absolute_error_c": 2.5258135609756103
+          },
+          "nearest_neighbor": {
+            "mae_c": 0.5864146953077392,
+            "rmse_c": 0.9093589128713137,
+            "p95_absolute_error_c": 2.2309400000000004
+          },
+          "idw_3d_p2": {
+            "mae_c": 0.3606493173226926,
+            "rmse_c": 0.5242382979895894,
+            "p95_absolute_error_c": 1.2144224908922325
+          }
+        },
+        "lowest_mae_methods": [
+          "idw_3d_p2"
+        ]
+      },
+      "rack_5_back_r4": {
+        "csv_column": "Temperature mod 4 ch 6",
+        "source_label": "Rack 5 back R4",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.41,
+          "z": 0.93
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 0.5904046165782315,
+            "rmse_c": 0.7187488347809072,
+            "p95_absolute_error_c": 1.3470995000000023
+          },
+          "nearest_neighbor": {
+            "mae_c": 0.5864146953077392,
+            "rmse_c": 0.9093589128713137,
+            "p95_absolute_error_c": 2.2309400000000004
+          },
+          "idw_3d_p2": {
+            "mae_c": 0.7973637828947877,
+            "rmse_c": 1.4379420012045603,
+            "p95_absolute_error_c": 3.2854510727112007
+          }
+        },
+        "lowest_mae_methods": [
+          "nearest_neighbor"
+        ]
+      },
+      "rack_5_back_r5": {
+        "csv_column": "Temperature mod 4 ch 8",
+        "source_label": "Rack 5 back R5",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.47,
+          "z": 1.15
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 2.0596772937679284,
+            "rmse_c": 2.7039915916749973,
+            "p95_absolute_error_c": 5.44450186585366
+          },
+          "nearest_neighbor": {
+            "mae_c": 0.23318943357708707,
+            "rmse_c": 0.3728972300265518,
+            "p95_absolute_error_c": 0.8871830000000003
+          },
+          "idw_3d_p2": {
+            "mae_c": 0.5531770407734315,
+            "rmse_c": 0.9292755151501019,
+            "p95_absolute_error_c": 2.0489065626306164
+          }
+        },
+        "lowest_mae_methods": [
+          "nearest_neighbor"
+        ]
+      },
+      "rack_5_back_r6": {
+        "csv_column": "Temperature mod 4 ch 7",
+        "source_label": "Rack 5 back R6",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.41,
+          "z": 1.34
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 2.2315436225234464,
+            "rmse_c": 2.937215257052721,
+            "p95_absolute_error_c": 5.758789634146346
+          },
+          "nearest_neighbor": {
+            "mae_c": 0.23318943357708707,
+            "rmse_c": 0.3728972300265518,
+            "p95_absolute_error_c": 0.8871830000000003
+          },
+          "idw_3d_p2": {
+            "mae_c": 0.44338812744462547,
+            "rmse_c": 0.7083246725286027,
+            "p95_absolute_error_c": 1.603629742857887
+          }
+        },
+        "lowest_mae_methods": [
+          "nearest_neighbor"
+        ]
+      },
+      "rack_5_back_r7": {
+        "csv_column": "Temperature mod 5 ch 1",
+        "source_label": "Rack 5 back R7",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.47,
+          "z": 1.56
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 2.9882948361052897,
+            "rmse_c": 3.6694440798383936,
+            "p95_absolute_error_c": 6.977083914634143
+          },
+          "nearest_neighbor": {
+            "mae_c": 0.2768362647775746,
+            "rmse_c": 0.32712812536260066,
+            "p95_absolute_error_c": 0.6587829999999997
+          },
+          "idw_3d_p2": {
+            "mae_c": 0.5242651882682777,
+            "rmse_c": 0.7648559457288392,
+            "p95_absolute_error_c": 1.5886721903921455
+          }
+        },
+        "lowest_mae_methods": [
+          "nearest_neighbor"
+        ]
+      },
+      "rack_5_back_r8": {
+        "csv_column": "Temperature mod 5 ch 2",
+        "source_label": "Rack 5 back R8",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.41,
+          "z": 1.73
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 3.252363544314145,
+            "rmse_c": 3.941065186363336,
+            "p95_absolute_error_c": 7.364091426829269
+          },
+          "nearest_neighbor": {
+            "mae_c": 0.2768362647775746,
+            "rmse_c": 0.32712812536260066,
+            "p95_absolute_error_c": 0.6587829999999997
+          },
+          "idw_3d_p2": {
+            "mae_c": 0.5423500088036772,
+            "rmse_c": 0.7749619063947363,
+            "p95_absolute_error_c": 1.5711131339916022
+          }
+        },
+        "lowest_mae_methods": [
+          "nearest_neighbor"
+        ]
+      },
+      "rack_5_back_r9": {
+        "csv_column": "Temperature mod 5 ch 3",
+        "source_label": "Rack 5 back R9",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.47,
+          "z": 1.92
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 4.012082561570131,
+            "rmse_c": 4.827334568174471,
+            "p95_absolute_error_c": 9.098466402439023
+          },
+          "nearest_neighbor": {
+            "mae_c": 0.7419410536258381,
+            "rmse_c": 0.8949425742784493,
+            "p95_absolute_error_c": 1.8065594999999988
+          },
+          "idw_3d_p2": {
+            "mae_c": 1.3045904175029264,
+            "rmse_c": 1.7152367830390771,
+            "p95_absolute_error_c": 3.457381964414388
+          }
+        },
+        "lowest_mae_methods": [
+          "nearest_neighbor"
+        ]
+      },
+      "rack_5_front_1": {
+        "csv_column": "Temperature mod 1 ch 3",
+        "source_label": "Rack 5 front 1",
+        "position_m": {
+          "x": 1.835,
+          "y": 3.56,
+          "z": 0.36
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 3.6166745284552846,
+            "rmse_c": 3.7869340293640597,
+            "p95_absolute_error_c": 5.578082475609751
+          },
+          "nearest_neighbor": {
+            "mae_c": 0.547358441499086,
+            "rmse_c": 0.6248972585148515,
+            "p95_absolute_error_c": 1.1313324999999992
+          },
+          "idw_3d_p2": {
+            "mae_c": 3.238429935979152,
+            "rmse_c": 3.41179774333847,
+            "p95_absolute_error_c": 5.091245305704131
+          }
+        },
+        "lowest_mae_methods": [
+          "nearest_neighbor"
+        ]
+      },
+      "rack_5_front_2": {
+        "csv_column": "Temperature mod 1 ch 4",
+        "source_label": "Rack 5 front 2",
+        "position_m": {
+          "x": 1.835,
+          "y": 3.56,
+          "z": 0.89
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 3.071496733342251,
+            "rmse_c": 3.231830566781837,
+            "p95_absolute_error_c": 4.906124158536581
+          },
+          "nearest_neighbor": {
+            "mae_c": 0.547358441499086,
+            "rmse_c": 0.6248972585148515,
+            "p95_absolute_error_c": 1.1313324999999992
+          },
+          "idw_3d_p2": {
+            "mae_c": 2.874613709829619,
+            "rmse_c": 3.0702864406423056,
+            "p95_absolute_error_c": 4.848915838762704
+          }
+        },
+        "lowest_mae_methods": [
+          "nearest_neighbor"
+        ]
+      },
+      "rack_5_front_3": {
+        "csv_column": "Temperature mod 1 ch 5",
+        "source_label": "Rack 5 front 3",
+        "position_m": {
+          "x": 1.835,
+          "y": 3.56,
+          "z": 1.54
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 2.447570707346799,
+            "rmse_c": 2.6363150705401317,
+            "p95_absolute_error_c": 4.350176463414634
+          },
+          "nearest_neighbor": {
+            "mae_c": 4.086656719073735,
+            "rmse_c": 4.221758425975501,
+            "p95_absolute_error_c": 6.110210500000001
+          },
+          "idw_3d_p2": {
+            "mae_c": 3.160389677866449,
+            "rmse_c": 3.4239801892073563,
+            "p95_absolute_error_c": 5.742240403217625
+          }
+        },
+        "lowest_mae_methods": [
+          "global_mean"
+        ]
+      },
+      "rack_5_front_4": {
+        "csv_column": "Temperature mod 7 ch 1",
+        "source_label": "Rack 5 front 4",
+        "position_m": {
+          "x": 1.835,
+          "y": 3.56,
+          "z": 1.91
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 1.7387822764524903,
+            "rmse_c": 1.806356519098871,
+            "p95_absolute_error_c": 2.648571365853659
+          },
+          "nearest_neighbor": {
+            "mae_c": 4.086656719073735,
+            "rmse_c": 4.221758425975501,
+            "p95_absolute_error_c": 6.110210500000001
+          },
+          "idw_3d_p2": {
+            "mae_c": 1.3994257036987414,
+            "rmse_c": 1.4718235339831425,
+            "p95_absolute_error_c": 1.9502967131930937
+          }
+        },
+        "lowest_mae_methods": [
+          "idw_3d_p2"
+        ]
+      },
+      "rack_6_back_1": {
+        "csv_column": "Temperature mod 1 ch 2",
+        "source_label": "Rack 6 back 1",
+        "position_m": {
+          "x": 1.035,
+          "y": 4.22,
+          "z": 0.74
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 2.808771624366463,
+            "rmse_c": 2.991763584567264,
+            "p95_absolute_error_c": 4.734826853658536
+          },
+          "nearest_neighbor": {
+            "mae_c": 3.5961589250457036,
+            "rmse_c": 4.036246296237016,
+            "p95_absolute_error_c": 7.508752999999999
+          },
+          "idw_3d_p2": {
+            "mae_c": 3.2550622188533005,
+            "rmse_c": 3.5501356805685025,
+            "p95_absolute_error_c": 5.8708333925915674
+          }
+        },
+        "lowest_mae_methods": [
+          "global_mean"
+        ]
+      },
+      "rack_6_back_2": {
+        "csv_column": "Temperature mod 2 ch 3",
+        "source_label": "Rack 6 back 2",
+        "position_m": {
+          "x": 1.035,
+          "y": 4.22,
+          "z": 1.76
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 1.5192897238744965,
+            "rmse_c": 1.7223280459757222,
+            "p95_absolute_error_c": 2.3674625609756106
+          },
+          "nearest_neighbor": {
+            "mae_c": 3.6740782373552716,
+            "rmse_c": 4.852108223799325,
+            "p95_absolute_error_c": 9.837845000000002
+          },
+          "idw_3d_p2": {
+            "mae_c": 1.590836049659406,
+            "rmse_c": 1.8837724504655908,
+            "p95_absolute_error_c": 3.67313664086398
+          }
+        },
+        "lowest_mae_methods": [
+          "global_mean"
+        ]
+      },
+      "rack_6_front": {
+        "csv_column": "Temperature mod 1 ch 7",
+        "source_label": "Rack 6 front",
+        "position_m": {
+          "x": 1.835,
+          "y": 4.16,
+          "z": 1.19
+        },
+        "metrics": {
+          "global_mean": {
+            "mae_c": 2.915081747699945,
+            "rmse_c": 3.0667532343438895,
+            "p95_absolute_error_c": 4.670196609756097
+          },
+          "nearest_neighbor": {
+            "mae_c": 0.18038496435100548,
+            "rmse_c": 0.2125690251265256,
+            "p95_absolute_error_c": 0.3846865000000008
+          },
+          "idw_3d_p2": {
+            "mae_c": 3.1359728860077247,
+            "rmse_c": 3.353746138215626,
+            "p95_absolute_error_c": 5.34211157103039
+          }
+        },
+        "lowest_mae_methods": [
+          "nearest_neighbor"
+        ]
+      }
+    },
+    "hypothesis": {
+      "id": "H-ENC-02",
+      "decision": "not_supported",
+      "reasons": [
+        "one_or_more_pre_registered_conditions_failed"
+      ],
+      "required_idw_sensor_win_fraction": 0.6
+    }
+  }
+}

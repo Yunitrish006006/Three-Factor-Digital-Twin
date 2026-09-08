@@ -1,0 +1,2 @@
+# PSB-001 research
+H-PSB-01: a shared trend/integral-aware startup helper can pass the existing early/late gates on new dates after development-only selection. Three horizons are engineering candidates, not universal constants. Prediction is not control validation; score actual FMU trajectories. Already known devices, repeated development day, simulation-only, no cost superiority or novelty claim. Competing explanations include actuator dynamics, environmental loads and model error.

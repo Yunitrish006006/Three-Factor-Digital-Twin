@@ -1,0 +1,1263 @@
+{
+  "status": "COMPLETED",
+  "plant": "hydronic",
+  "config": {
+    "target_C": 22,
+    "step_s": 60,
+    "case": "bestest_hydronic",
+    "measurement_kind": "operative zone temperature (not air temperature)",
+    "supply_min_C": 20,
+    "supply_max_C": 80,
+    "temperature": "reaTRoo_y",
+    "outdoor": "weaSta_reaWeaTDryBul_y",
+    "supply": "oveTSetSup_y",
+    "supply_input": "oveTSetSup_u",
+    "supply_activate": "oveTSetSup_activate",
+    "aux_input": "ovePum_u",
+    "aux_activate": "ovePum_activate",
+    "aux_output": "ovePum_y",
+    "aux_value": 1,
+    "target_inputs": [
+      "oveTSetHea_u",
+      "oveTSetCoo_u"
+    ],
+    "target_activates": [
+      "oveTSetHea_activate",
+      "oveTSetCoo_activate"
+    ],
+    "power_outputs": {
+      "gas_thermal_W": "reaQHea_y",
+      "pump_W": "reaPPum_y"
+    }
+  },
+  "sources": {
+    "scripts/run_boptest_delayed_dynamics.py": "1ca9c2280b9bfbb477526fd132bc2993f9bc460df9cf54612bd0343bbccf28f4",
+    "scripts/boptest_cross_plant_devices.json": "83c008c20b47f4c5da77dd832b45558dd064a75a9c705190f80f730d104fc100",
+    "openspec/changes/improve-portable-dynamics/protocol.md": "636890acd83b5038782f021d5b8735280c97e43cb9c377a70ab8dc40618b78e0",
+    "digital_twin/control/delayed_dynamics.py": "8098ec6b1d80c1459e2201fedc6bf92bcf3307181caf18563ef34e430a2215e2",
+    "digital_twin/control/portable_pi.py": "2ce85a77f1d16e1dbb8fbcd847ebe722233790a9658cc3946a9cac9ed895ac30",
+    "scripts/run_boptest_cross_plant.py": "3ad0154d942737e43f9263c1cd9bcc9ebbff2292cc319c24800f73169d9f5990",
+    "openspec/changes/evaluate-boptest-cross-plant/artifacts/air.json": "1bffc2430fe384af089f53220ddbb5908b98c993cd00f7c1d7f1ac2c30d361fb",
+    "outputs/boptest_cross_plant/bestest_air/identification.csv": "bf65320193556abc8b690921bf839262954230b9d5f90aaf93400bd32cd0d87f",
+    "outputs/vendor/boptest-v0.9.0/testcases/bestest_air/models/wrapped.fmu": "158008fa3b635280a67dfed8bab5804d1f9a96d218b467dfebab77e5cbf8b86a",
+    "openspec/changes/evaluate-boptest-cross-plant/artifacts/hydronic.json": "a2ab02a0dc3519d2e542301612d54080c33be997508bb3fc041ce6e0e93a3453",
+    "outputs/boptest_cross_plant/bestest_hydronic/identification.csv": "d68b7f3ea41493243c7902e4d2c61050c7e02e50dde2c443a4fb3e40d6dc22ef",
+    "outputs/vendor/boptest-v0.9.0/testcases/bestest_hydronic/models/wrapped.fmu": "365b3085d97cc4620c06b6036156126a056d7f160fcc4f181d6b2fac4b05743b"
+  },
+  "freeze_sha256": "66eee5b97a5ec56e59ba2d8d74f5afb93978ca5cdc25ffc8e1cd76848599415c",
+  "calibration_trace": "outputs/boptest_cross_plant/bestest_hydronic/identification.csv",
+  "banks": {
+    "2": {
+      "status": "FITTED",
+      "input_rows": 120,
+      "start_s": 86400.0,
+      "end_s": 93600.0,
+      "training_end_index_exclusive": 87,
+      "validation_starts": [
+        87,
+        97,
+        107
+      ],
+      "validation_points": 30,
+      "candidates": [
+        {
+          "order": 1,
+          "delay_steps": 0,
+          "a": [
+            1.0603533648479377
+          ],
+          "b": 0.21056723194481344,
+          "c": 0.26517687999988354,
+          "intercept": 5.861950635420385,
+          "poles": [
+            [
+              1.0603533648479377,
+              0.0
+            ]
+          ],
+          "radius": 1.0603533648479377,
+          "steady_gain_C_per_u": -3.4889062519603407,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 76,
+          "rank": 4,
+          "fit_one_step_rmse_C": 0.02452162879442225,
+          "validation_rollout_rmse_C": null
+        },
+        {
+          "order": 1,
+          "delay_steps": 1,
+          "a": [
+            1.0416050684336597
+          ],
+          "b": 0.21694563861104474,
+          "c": 0.2067003917934932,
+          "intercept": 4.571350057776628,
+          "poles": [
+            [
+              1.0416050684336597,
+              0.0
+            ]
+          ],
+          "radius": 1.0416050684336597,
+          "steady_gain_C_per_u": -5.214404080526142,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 76,
+          "rank": 4,
+          "fit_one_step_rmse_C": 0.019556223310516978,
+          "validation_rollout_rmse_C": null
+        },
+        {
+          "order": 1,
+          "delay_steps": 3,
+          "a": [
+            0.992487316375007
+          ],
+          "b": 0.211570473398734,
+          "c": 0.05025205822379864,
+          "intercept": 1.1183895649628346,
+          "poles": [
+            [
+              0.992487316375007,
+              0.0
+            ]
+          ],
+          "radius": 0.992487316375007,
+          "steady_gain_C_per_u": 28.161770674714194,
+          "status": "FITTED",
+          "n": 76,
+          "rank": 4,
+          "fit_one_step_rmse_C": 0.017543464155158388,
+          "validation_rollout_rmse_C": 0.08892991769256708
+        },
+        {
+          "order": 1,
+          "delay_steps": 5,
+          "a": [
+            0.9430579414341781
+          ],
+          "b": 0.2122638206458775,
+          "c": -0.11072373330324309,
+          "intercept": -2.4348688977089243,
+          "poles": [
+            [
+              0.9430579414341781,
+              0.0
+            ]
+          ],
+          "radius": 0.9430579414341781,
+          "steady_gain_C_per_u": 3.7277159623674674,
+          "status": "FITTED",
+          "n": 76,
+          "rank": 4,
+          "fit_one_step_rmse_C": 0.02083882618639843,
+          "validation_rollout_rmse_C": 0.14609281259849363
+        },
+        {
+          "order": 1,
+          "delay_steps": 10,
+          "a": [
+            0.8562629109736202
+          ],
+          "b": 0.21549327765549187,
+          "c": -0.3834033510199423,
+          "intercept": -8.45211382335323,
+          "poles": [
+            [
+              0.8562629109736202,
+              0.0
+            ]
+          ],
+          "radius": 0.8562629109736202,
+          "steady_gain_C_per_u": 1.4992183236432648,
+          "status": "FITTED",
+          "n": 76,
+          "rank": 4,
+          "fit_one_step_rmse_C": 0.0359980894526981,
+          "validation_rollout_rmse_C": 0.2685615677377564
+        },
+        {
+          "order": 2,
+          "delay_steps": 0,
+          "a": [
+            1.8673203984371645,
+            -0.884375102729247
+          ],
+          "b": 0.038642242259863256,
+          "c": -0.05009895371119859,
+          "intercept": -1.105136285391681,
+          "poles": [
+            [
+              0.9336601992185823,
+              0.11248882221965065
+            ],
+            [
+              0.9336601992185823,
+              -0.11248882221965065
+            ]
+          ],
+          "radius": 0.9404121983094685,
+          "steady_gain_C_per_u": 2.2657820152180803,
+          "status": "FITTED",
+          "n": 76,
+          "rank": 5,
+          "fit_one_step_rmse_C": 0.0025486384071767222,
+          "validation_rollout_rmse_C": 0.12595681674684292
+        },
+        {
+          "order": 2,
+          "delay_steps": 1,
+          "a": [
+            1.8333019340665533,
+            -0.8524062004612566
+          ],
+          "b": 0.04183106421307982,
+          "c": -0.053125100427829856,
+          "intercept": -1.1714773594305004,
+          "poles": [
+            [
+              0.9166509670332768,
+              0.11025971657053844
+            ],
+            [
+              0.9166509670332768,
+              -0.11025971657053844
+            ]
+          ],
+          "radius": 0.9232584689355722,
+          "steady_gain_C_per_u": 2.1896189756167534,
+          "status": "FITTED",
+          "n": 76,
+          "rank": 5,
+          "fit_one_step_rmse_C": 0.0028718496502908664,
+          "validation_rollout_rmse_C": 0.1390016279097869
+        },
+        {
+          "order": 2,
+          "delay_steps": 3,
+          "a": [
+            1.9559551203979395,
+            -0.9874809046422263
+          ],
+          "b": 0.0018257468172363036,
+          "c": -0.1011214339121849,
+          "intercept": -2.2317456947945282,
+          "poles": [
+            [
+              0.9779775601989698,
+              0.1761839844863798
+            ],
+            [
+              0.9779775601989698,
+              -0.1761839844863798
+            ]
+          ],
+          "radius": 0.9937207377539358,
+          "steady_gain_C_per_u": 0.057912812036299256,
+          "status": "FITTED",
+          "n": 76,
+          "rank": 5,
+          "fit_one_step_rmse_C": 0.0048105188173746104,
+          "validation_rollout_rmse_C": 0.2812339222225786
+        },
+        {
+          "order": 2,
+          "delay_steps": 5,
+          "a": [
+            2.0004922344497063,
+            -1.0306388200313794
+          ],
+          "b": -0.010055375644845743,
+          "c": -0.09936127754087168,
+          "intercept": -2.193199792181323,
+          "poles": [
+            [
+              1.000246117224853,
+              0.17362754680057146
+            ],
+            [
+              1.000246117224853,
+              -0.17362754680057146
+            ]
+          ],
+          "radius": 1.0152038317655123,
+          "steady_gain_C_per_u": -0.33354940371617575,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 76,
+          "rank": 5,
+          "fit_one_step_rmse_C": 0.0047442471199948604,
+          "validation_rollout_rmse_C": null
+        },
+        {
+          "order": 2,
+          "delay_steps": 10,
+          "a": [
+            1.9377242600319469,
+            -0.9787163222889179
+          ],
+          "b": 0.014756718430628797,
+          "c": -0.13249588737867987,
+          "intercept": -2.924408524780987,
+          "poles": [
+            [
+              0.9688621300159734,
+              0.20005623036993575
+            ],
+            [
+              0.9688621300159734,
+              -0.20005623036993575
+            ]
+          ],
+          "radius": 0.989300926052795,
+          "steady_gain_C_per_u": 0.359989656976072,
+          "status": "FITTED",
+          "n": 76,
+          "rank": 5,
+          "fit_one_step_rmse_C": 0.004651625726579702,
+          "validation_rollout_rmse_C": 0.33234688615621794
+        }
+      ],
+      "refits": [
+        {
+          "order": 1,
+          "delay_steps": 3,
+          "a": [
+            0.9912227112932719
+          ],
+          "b": 0.22968950343685204,
+          "c": 0.04546362763873039,
+          "intercept": 1.0125622429127863,
+          "poles": [
+            [
+              0.9912227112932719,
+              0.0
+            ]
+          ],
+          "radius": 0.9912227112932719,
+          "steady_gain_C_per_u": 26.16861665502544,
+          "status": "FITTED",
+          "n": 109,
+          "rank": 4,
+          "fit_one_step_rmse_C": 0.01838805404842937,
+          "tau_s": 6805.779829145082,
+          "validation_rollout_rmse_C": 0.08892991769256708
+        }
+      ],
+      "selected": {
+        "order": 1,
+        "delay_steps": 3,
+        "a": [
+          0.9912227112932719
+        ],
+        "b": 0.22968950343685204,
+        "c": 0.04546362763873039,
+        "intercept": 1.0125622429127863,
+        "poles": [
+          [
+            0.9912227112932719,
+            0.0
+          ]
+        ],
+        "radius": 0.9912227112932719,
+        "steady_gain_C_per_u": 26.16861665502544,
+        "status": "FITTED",
+        "n": 109,
+        "rank": 4,
+        "fit_one_step_rmse_C": 0.01838805404842937,
+        "tau_s": 6805.779829145082,
+        "validation_rollout_rmse_C": 0.08892991769256708
+      },
+      "offline_fit_count": 11,
+      "fit_wall_seconds": 0.5139730358496308
+    },
+    "6": {
+      "status": "FITTED",
+      "input_rows": 360,
+      "start_s": 86400.0,
+      "end_s": 108000.0,
+      "training_end_index_exclusive": 255,
+      "validation_starts": [
+        255,
+        265,
+        275,
+        285,
+        295,
+        305,
+        315,
+        325,
+        335,
+        345
+      ],
+      "validation_points": 100,
+      "candidates": [
+        {
+          "order": 1,
+          "delay_steps": 0,
+          "a": [
+            1.022079787109938
+          ],
+          "b": 0.20226304179622862,
+          "c": -0.008079466214891865,
+          "intercept": -0.18366577080068228,
+          "poles": [
+            [
+              1.022079787109938,
+              0.0
+            ]
+          ],
+          "radius": 1.022079787109938,
+          "steady_gain_C_per_u": -9.160552173312865,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 244,
+          "rank": 4,
+          "fit_one_step_rmse_C": 0.02670209961093939,
+          "validation_rollout_rmse_C": null
+        },
+        {
+          "order": 1,
+          "delay_steps": 1,
+          "a": [
+            1.0134279883179025
+          ],
+          "b": 0.21739387691260573,
+          "c": -0.004375246054740804,
+          "intercept": -0.09957108514706156,
+          "poles": [
+            [
+              1.0134279883179025,
+              0.0
+            ]
+          ],
+          "radius": 1.0134279883179025,
+          "steady_gain_C_per_u": -16.189608731098723,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 244,
+          "rank": 4,
+          "fit_one_step_rmse_C": 0.021341891898388147,
+          "validation_rollout_rmse_C": null
+        },
+        {
+          "order": 1,
+          "delay_steps": 3,
+          "a": [
+            0.9875992359847716
+          ],
+          "b": 0.22094160951780112,
+          "c": 0.0047151882509232175,
+          "intercept": 0.10860175403513307,
+          "poles": [
+            [
+              0.9875992359847716,
+              0.0
+            ]
+          ],
+          "radius": 0.9875992359847716,
+          "steady_gain_C_per_u": 17.81677397025542,
+          "status": "FITTED",
+          "n": 244,
+          "rank": 4,
+          "fit_one_step_rmse_C": 0.018116769101015104,
+          "validation_rollout_rmse_C": 0.06326964070736688
+        },
+        {
+          "order": 1,
+          "delay_steps": 5,
+          "a": [
+            0.9623111958448958
+          ],
+          "b": 0.21334242490248778,
+          "c": 0.012571381683981253,
+          "intercept": 0.2895332713554819,
+          "poles": [
+            [
+              0.9623111958448958,
+              0.0
+            ]
+          ],
+          "radius": 0.9623111958448958,
+          "steady_gain_C_per_u": 5.660631311741809,
+          "status": "FITTED",
+          "n": 244,
+          "rank": 4,
+          "fit_one_step_rmse_C": 0.022518195774185894,
+          "validation_rollout_rmse_C": 0.07339749323036406
+        },
+        {
+          "order": 1,
+          "delay_steps": 10,
+          "a": [
+            0.9487350002076812
+          ],
+          "b": 0.11843452237829316,
+          "c": 0.00922722955377677,
+          "intercept": 0.22095883111538706,
+          "poles": [
+            [
+              0.9487350002076812,
+              0.0
+            ]
+          ],
+          "radius": 0.9487350002076812,
+          "steady_gain_C_per_u": 2.310241350981895,
+          "status": "FITTED",
+          "n": 244,
+          "rank": 4,
+          "fit_one_step_rmse_C": 0.03962911590921681,
+          "validation_rollout_rmse_C": 0.17365878201529425
+        },
+        {
+          "order": 2,
+          "delay_steps": 0,
+          "a": [
+            1.8423999643769142,
+            -0.8494470991313341
+          ],
+          "b": 0.05060721437728184,
+          "c": 0.003538621912791019,
+          "intercept": 0.08009002574537954,
+          "poles": [
+            [
+              0.9211999821884572,
+              0.028942908411566354
+            ],
+            [
+              0.9211999821884572,
+              -0.028942908411566354
+            ]
+          ],
+          "radius": 0.9216545443556031,
+          "steady_gain_C_per_u": 7.181246867110305,
+          "status": "FITTED",
+          "n": 244,
+          "rank": 5,
+          "fit_one_step_rmse_C": 0.0033885924341107527,
+          "validation_rollout_rmse_C": 0.048872945628808714
+        },
+        {
+          "order": 2,
+          "delay_steps": 1,
+          "a": [
+            1.797872003399602,
+            -0.8068213786532782
+          ],
+          "b": 0.055808841101015985,
+          "c": 0.003980345755157391,
+          "intercept": 0.09048734773074026,
+          "poles": [
+            [
+              0.9344966048829089,
+              0.0
+            ],
+            [
+              0.8633753985166931,
+              0.0
+            ]
+          ],
+          "radius": 0.9344966048829089,
+          "steady_gain_C_per_u": 6.236060006321837,
+          "status": "FITTED",
+          "n": 244,
+          "rank": 5,
+          "fit_one_step_rmse_C": 0.0038797250484246147,
+          "validation_rollout_rmse_C": 0.053297805603194845
+        },
+        {
+          "order": 2,
+          "delay_steps": 3,
+          "a": [
+            1.8978215107209264,
+            -0.9139893884645708
+          ],
+          "b": 0.018653961474901202,
+          "c": 0.005759671981566448,
+          "intercept": 0.1319552430907405,
+          "poles": [
+            [
+              0.9489107553604632,
+              0.11643782386237747
+            ],
+            [
+              0.9489107553604632,
+              -0.11643782386237747
+            ]
+          ],
+          "radius": 0.9560279224293455,
+          "steady_gain_C_per_u": 1.1537668561499435,
+          "status": "FITTED",
+          "n": 244,
+          "rank": 5,
+          "fit_one_step_rmse_C": 0.006802162466029159,
+          "validation_rollout_rmse_C": 0.11319702829193933
+        },
+        {
+          "order": 2,
+          "delay_steps": 5,
+          "a": [
+            2.044580995640735,
+            -1.0588571226339147
+          ],
+          "b": -0.021783227457322127,
+          "c": 0.0046913950797111996,
+          "intercept": 0.10779951325454652,
+          "poles": [
+            [
+              1.0222904978203675,
+              0.11738509573238037
+            ],
+            [
+              1.0222904978203675,
+              -0.11738509573238037
+            ]
+          ],
+          "radius": 1.029007834097445,
+          "steady_gain_C_per_u": -1.5258499358914972,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 244,
+          "rank": 5,
+          "fit_one_step_rmse_C": 0.006719469545116058,
+          "validation_rollout_rmse_C": null
+        },
+        {
+          "order": 2,
+          "delay_steps": 10,
+          "a": [
+            2.0042972803783186,
+            -1.0137786647466933
+          ],
+          "b": -0.022845843028021375,
+          "c": 0.0031546529241625906,
+          "intercept": 0.07264641340045722,
+          "poles": [
+            [
+              1.002148640189159,
+              0.09734869138161271
+            ],
+            [
+              1.002148640189159,
+              -0.09734869138161271
+            ]
+          ],
+          "radius": 1.0068657630224067,
+          "steady_gain_C_per_u": -2.4095471864028517,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 244,
+          "rank": 5,
+          "fit_one_step_rmse_C": 0.006376602234567866,
+          "validation_rollout_rmse_C": null
+        }
+      ],
+      "refits": [
+        {
+          "order": 2,
+          "delay_steps": 0,
+          "a": [
+            1.8419415430711275,
+            -0.8494623058007951
+          ],
+          "b": 0.050836908756875944,
+          "c": 0.0025381121738052444,
+          "intercept": 0.058095722467206595,
+          "poles": [
+            [
+              0.9209707715355635,
+              0.03570915538042917
+            ],
+            [
+              0.9209707715355635,
+              -0.03570915538042917
+            ]
+          ],
+          "radius": 0.9216627939766228,
+          "steady_gain_C_per_u": 6.759541629512714,
+          "status": "FITTED",
+          "n": 349,
+          "rank": 5,
+          "fit_one_step_rmse_C": 0.0033906953419120985,
+          "tau_s": 735.5117467727322,
+          "validation_rollout_rmse_C": 0.048872945628808714
+        }
+      ],
+      "selected": {
+        "order": 2,
+        "delay_steps": 0,
+        "a": [
+          1.8419415430711275,
+          -0.8494623058007951
+        ],
+        "b": 0.050836908756875944,
+        "c": 0.0025381121738052444,
+        "intercept": 0.058095722467206595,
+        "poles": [
+          [
+            0.9209707715355635,
+            0.03570915538042917
+          ],
+          [
+            0.9209707715355635,
+            -0.03570915538042917
+          ]
+        ],
+        "radius": 0.9216627939766228,
+        "steady_gain_C_per_u": 6.759541629512714,
+        "status": "FITTED",
+        "n": 349,
+        "rank": 5,
+        "fit_one_step_rmse_C": 0.0033906953419120985,
+        "tau_s": 735.5117467727322,
+        "validation_rollout_rmse_C": 0.048872945628808714
+      },
+      "offline_fit_count": 11,
+      "fit_wall_seconds": 0.025618346873670816
+    }
+  },
+  "trials": [
+    {
+      "budget_h": 2,
+      "method": "auto_pi",
+      "q": 0.5,
+      "trace": "outputs/boptest_delayed_dynamics/bestest_hydronic/delayed_bank_trial_2_auto_pi_0.5.csv",
+      "sha256": "ffd52d7982f2355ee709800875f55d8fe33aaa4e083113a2a0d45d4b9cc69e96",
+      "scored_hours": 2,
+      "warmup_hours": 24,
+      "wall_seconds": 4.410432565957308,
+      "initial_state": {
+        "T": 21.997068273589775,
+        "outdoor": 6.600000000000023,
+        "supply_C": 40.91666593655145,
+        "aux": 1.0,
+        "gas_thermal_W": 1724.995510955692,
+        "pump_W": 12.248233915608973
+      },
+      "initial_u": 0.34861109894252423,
+      "metrics": {
+        "n": 120,
+        "mae_C": 0.04592818866151968,
+        "rmse_C": 0.05489921976150313,
+        "max_abs_error_C": 0.0980968815883898,
+        "within_0_5_pct": 100.0,
+        "requested_TV_u": 0.010323114187880178,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "gas_thermal_kWh": 3.5112744237687137,
+        "pump_kWh": 0.024496467831217943
+      },
+      "first_30min_mae_C": 0.00851775192390581,
+      "after_30min_mae_C": 0.058398334240724305
+    },
+    {
+      "budget_h": 2,
+      "method": "auto_pi",
+      "q": 1.0,
+      "trace": "outputs/boptest_delayed_dynamics/bestest_hydronic/delayed_bank_trial_2_auto_pi_1.0.csv",
+      "sha256": "5d8808b10d729355f9c93655389d74a371c309b937e43f0fcc09433dad16c87b",
+      "scored_hours": 2,
+      "warmup_hours": 24,
+      "wall_seconds": 3.5624608299694955,
+      "initial_state": {
+        "T": 21.997068273589775,
+        "outdoor": 6.600000000000023,
+        "supply_C": 40.91666593655145,
+        "aux": 1.0,
+        "gas_thermal_W": 1724.995510955692,
+        "pump_W": 12.248233915608973
+      },
+      "initial_u": 0.34861109894252423,
+      "metrics": {
+        "n": 120,
+        "mae_C": 0.054350451951880055,
+        "rmse_C": 0.0660162006775071,
+        "max_abs_error_C": 0.12207595304312235,
+        "within_0_5_pct": 100.0,
+        "requested_TV_u": 0.006498791473199705,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "gas_thermal_kWh": 3.4848205342612184,
+        "pump_kWh": 0.024496467831217943
+      },
+      "first_30min_mae_C": 0.008870452674758174,
+      "after_30min_mae_C": 0.06951045171092068
+    },
+    {
+      "budget_h": 2,
+      "method": "proposed",
+      "q": 0.5,
+      "trace": "outputs/boptest_delayed_dynamics/bestest_hydronic/delayed_bank_trial_2_proposed_0.5.csv",
+      "sha256": "90fd039c1c644e28726e8925ef0a9752939d5d89aa3798a73f7ac3b3e617881e",
+      "scored_hours": 2,
+      "warmup_hours": 24,
+      "wall_seconds": 2.6812785929068923,
+      "initial_state": {
+        "T": 21.997068273589775,
+        "outdoor": 6.600000000000023,
+        "supply_C": 40.91666593655145,
+        "aux": 1.0,
+        "gas_thermal_W": 1724.995510955692,
+        "pump_W": 12.248233915608973
+      },
+      "initial_u": 0.34861109894252423,
+      "metrics": {
+        "n": 120,
+        "mae_C": 0.020857399151263206,
+        "rmse_C": 0.02363665678814536,
+        "max_abs_error_C": 0.038360597176790634,
+        "within_0_5_pct": 100.0,
+        "requested_TV_u": 0.018823440434127203,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "gas_thermal_kWh": 3.5813837265606083,
+        "pump_kWh": 0.024496467831217943
+      },
+      "first_30min_mae_C": 0.006401988555537249,
+      "after_30min_mae_C": 0.025675869349838523
+    },
+    {
+      "budget_h": 2,
+      "method": "proposed",
+      "q": 1.0,
+      "trace": "outputs/boptest_delayed_dynamics/bestest_hydronic/delayed_bank_trial_2_proposed_1.0.csv",
+      "sha256": "f29bd759a80f8ba1d2e46e3b142cd7177badd748a0b39e519809005c33bc6535",
+      "scored_hours": 2,
+      "warmup_hours": 24,
+      "wall_seconds": 2.3593921968713403,
+      "initial_state": {
+        "T": 21.997068273589775,
+        "outdoor": 6.600000000000023,
+        "supply_C": 40.91666593655145,
+        "aux": 1.0,
+        "gas_thermal_W": 1724.995510955692,
+        "pump_W": 12.248233915608973
+      },
+      "initial_u": 0.34861109894252423,
+      "metrics": {
+        "n": 120,
+        "mae_C": 0.024847094967468307,
+        "rmse_C": 0.02887916593292403,
+        "max_abs_error_C": 0.05047563303719471,
+        "within_0_5_pct": 100.0,
+        "requested_TV_u": 0.016805571359045035,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "gas_thermal_kWh": 3.5682241823695757,
+        "pump_kWh": 0.024496467831217943
+      },
+      "first_30min_mae_C": 0.006572401433432636,
+      "after_30min_mae_C": 0.03093865947881353
+    },
+    {
+      "budget_h": 6,
+      "method": "auto_pi",
+      "q": 0.5,
+      "trace": "outputs/boptest_delayed_dynamics/bestest_hydronic/delayed_bank_trial_6_auto_pi_0.5.csv",
+      "sha256": "a2376699740e44d361c4dd8addfdb3f6090a4167a68b8b523876e07d72402e10",
+      "scored_hours": 2,
+      "warmup_hours": 24,
+      "wall_seconds": 2.6237758831121027,
+      "initial_state": {
+        "T": 21.997068273589775,
+        "outdoor": 6.600000000000023,
+        "supply_C": 40.91666593655145,
+        "aux": 1.0,
+        "gas_thermal_W": 1724.995510955692,
+        "pump_W": 12.248233915608973
+      },
+      "initial_u": 0.34861109894252423,
+      "metrics": {
+        "n": 120,
+        "mae_C": 0.007573352390667291,
+        "rmse_C": 0.007762261693654401,
+        "max_abs_error_C": 0.009238803271273355,
+        "within_0_5_pct": 100.0,
+        "requested_TV_u": 0.023166230322556325,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "gas_thermal_kWh": 3.618016640269903,
+        "pump_kWh": 0.024496467831217943
+      },
+      "first_30min_mae_C": 0.00496548729619235,
+      "after_30min_mae_C": 0.00844264075549227
+    },
+    {
+      "budget_h": 6,
+      "method": "auto_pi",
+      "q": 1.0,
+      "trace": "outputs/boptest_delayed_dynamics/bestest_hydronic/delayed_bank_trial_6_auto_pi_1.0.csv",
+      "sha256": "b5a34e0d9f056c93716d5ec0bf1a8a4060053d3169751ad728256b03f6ecba9f",
+      "scored_hours": 2,
+      "warmup_hours": 24,
+      "wall_seconds": 3.3279841667972505,
+      "initial_state": {
+        "T": 21.997068273589775,
+        "outdoor": 6.600000000000023,
+        "supply_C": 40.91666593655145,
+        "aux": 1.0,
+        "gas_thermal_W": 1724.995510955692,
+        "pump_W": 12.248233915608973
+      },
+      "initial_u": 0.34861109894252423,
+      "metrics": {
+        "n": 120,
+        "mae_C": 0.014212294180619266,
+        "rmse_C": 0.015020753932458627,
+        "max_abs_error_C": 0.018639445999838244,
+        "within_0_5_pct": 100.0,
+        "requested_TV_u": 0.022430381234778363,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "gas_thermal_kWh": 3.6044181713797987,
+        "pump_kWh": 0.024496467831217943
+      },
+      "first_30min_mae_C": 0.0065948310556052546,
+      "after_30min_mae_C": 0.016751448555623938
+    },
+    {
+      "budget_h": 6,
+      "method": "proposed",
+      "q": 0.5,
+      "trace": "outputs/boptest_delayed_dynamics/bestest_hydronic/delayed_bank_trial_6_proposed_0.5.csv",
+      "sha256": "c0934800c11786328ebb880d2f7485dd31d36e12d525f772175a285ea452cffd",
+      "scored_hours": 2,
+      "warmup_hours": 24,
+      "wall_seconds": 2.2503436128608882,
+      "initial_state": {
+        "T": 21.997068273589775,
+        "outdoor": 6.600000000000023,
+        "supply_C": 40.91666593655145,
+        "aux": 1.0,
+        "gas_thermal_W": 1724.995510955692,
+        "pump_W": 12.248233915608973
+      },
+      "initial_u": 0.34861109894252423,
+      "metrics": {
+        "n": 120,
+        "mae_C": 0.002661586776482731,
+        "rmse_C": 0.0028919934090977347,
+        "max_abs_error_C": 0.0060293680799077265,
+        "within_0_5_pct": 100.0,
+        "requested_TV_u": 0.11684265345719119,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "gas_thermal_kWh": 3.628585390710813,
+        "pump_kWh": 0.024496467831217943
+      },
+      "first_30min_mae_C": 0.0032937566530658086,
+      "after_30min_mae_C": 0.0024508634842883717
+    },
+    {
+      "budget_h": 6,
+      "method": "proposed",
+      "q": 1.0,
+      "trace": "outputs/boptest_delayed_dynamics/bestest_hydronic/delayed_bank_trial_6_proposed_1.0.csv",
+      "sha256": "51de2a0810e7afd2d9e911e2f3def553938a7513e2c634c6cee94b494d6ea68a",
+      "scored_hours": 2,
+      "warmup_hours": 24,
+      "wall_seconds": 3.83994419593364,
+      "initial_state": {
+        "T": 21.997068273589775,
+        "outdoor": 6.600000000000023,
+        "supply_C": 40.91666593655145,
+        "aux": 1.0,
+        "gas_thermal_W": 1724.995510955692,
+        "pump_W": 12.248233915608973
+      },
+      "initial_u": 0.34861109894252423,
+      "metrics": {
+        "n": 120,
+        "mae_C": 0.004388242784044394,
+        "rmse_C": 0.004460973402865424,
+        "max_abs_error_C": 0.00587243698362272,
+        "within_0_5_pct": 100.0,
+        "requested_TV_u": 0.05802542332301014,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "gas_thermal_kWh": 3.62271885443727,
+        "pump_kWh": 0.024496467831217943
+      },
+      "first_30min_mae_C": 0.0036719130912539794,
+      "after_30min_mae_C": 0.004627019348307866
+    }
+  ],
+  "evaluations": [
+    {
+      "day": 20,
+      "budget_h": 2,
+      "method": "auto_pi",
+      "q": 0.5,
+      "active_adaptation_h": 6,
+      "trace": "outputs/boptest_delayed_dynamics/bestest_hydronic/delayed_bank_eval_20_2_auto_pi.csv",
+      "sha256": "2163030929d1bb3d685718c553b12bd86837a6acf519e9e555f4e9d36017eaed",
+      "scored_hours": 24,
+      "warmup_hours": 24,
+      "wall_seconds": 9.282799504697323,
+      "initial_state": {
+        "T": 21.97906901323813,
+        "outdoor": 6.600000000000023,
+        "supply_C": 30.971595597257988,
+        "aux": 1.0,
+        "gas_thermal_W": 789.1527037683303,
+        "pump_W": 12.248233915608973
+      },
+      "initial_u": 0.18285992662096645,
+      "metrics": {
+        "n": 1440,
+        "mae_C": 0.19819609823240414,
+        "rmse_C": 0.2618154569081112,
+        "max_abs_error_C": 0.5043601113438285,
+        "within_0_5_pct": 97.5,
+        "requested_TV_u": 0.23839147121283427,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "gas_thermal_kWh": 35.620483582514886,
+        "pump_kWh": 0.2939576139746153
+      },
+      "first_30min_mae_C": 0.03607475398495694,
+      "after_30min_mae_C": 0.20164548853554132
+    },
+    {
+      "day": 20,
+      "budget_h": 2,
+      "method": "proposed",
+      "q": 0.5,
+      "active_adaptation_h": 6,
+      "trace": "outputs/boptest_delayed_dynamics/bestest_hydronic/delayed_bank_eval_20_2_proposed.csv",
+      "sha256": "b5ba8c9c9ef5bd7e1a0c98c0da76b2deb8722089de6488fcc0370002f04e5175",
+      "scored_hours": 24,
+      "warmup_hours": 24,
+      "wall_seconds": 10.63530500093475,
+      "initial_state": {
+        "T": 21.97906901323813,
+        "outdoor": 6.600000000000023,
+        "supply_C": 30.971595597257988,
+        "aux": 1.0,
+        "gas_thermal_W": 789.1527037683303,
+        "pump_W": 12.248233915608973
+      },
+      "initial_u": 0.18285992662096645,
+      "metrics": {
+        "n": 1440,
+        "mae_C": 0.05459611698799047,
+        "rmse_C": 0.07077801184582504,
+        "max_abs_error_C": 0.1426603206781465,
+        "within_0_5_pct": 100.0,
+        "requested_TV_u": 0.35385312732491664,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "gas_thermal_kWh": 36.3256803360011,
+        "pump_kWh": 0.2939576139746153
+      },
+      "first_30min_mae_C": 0.030989564043198924,
+      "after_30min_mae_C": 0.0550983840719222
+    },
+    {
+      "day": 20,
+      "budget_h": 6,
+      "method": "auto_pi",
+      "q": 0.5,
+      "active_adaptation_h": 10,
+      "trace": "outputs/boptest_delayed_dynamics/bestest_hydronic/delayed_bank_eval_20_6_auto_pi.csv",
+      "sha256": "a04658cb41de3a2f597426b2153b54c2c9c1035d690a2895a0317263daa88fee",
+      "scored_hours": 24,
+      "warmup_hours": 24,
+      "wall_seconds": 12.947919298894703,
+      "initial_state": {
+        "T": 21.97906901323813,
+        "outdoor": 6.600000000000023,
+        "supply_C": 30.971595597257988,
+        "aux": 1.0,
+        "gas_thermal_W": 789.1527037683303,
+        "pump_W": 12.248233915608973
+      },
+      "initial_u": 0.18285992662096645,
+      "metrics": {
+        "n": 1440,
+        "mae_C": 0.010914878029427576,
+        "rmse_C": 0.014945146294143227,
+        "max_abs_error_C": 0.048934548415957124,
+        "within_0_5_pct": 100.0,
+        "requested_TV_u": 0.3984587454772223,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "gas_thermal_kWh": 36.480741753567266,
+        "pump_kWh": 0.2939576139746153
+      },
+      "first_30min_mae_C": 0.022256205803970867,
+      "after_30min_mae_C": 0.010673573183160697
+    },
+    {
+      "day": 20,
+      "budget_h": 6,
+      "method": "proposed",
+      "q": 0.5,
+      "active_adaptation_h": 10,
+      "trace": "outputs/boptest_delayed_dynamics/bestest_hydronic/delayed_bank_eval_20_6_proposed.csv",
+      "sha256": "fc58c797204aff62646117775dc7641186ce49fed0bd8b7515a8f1187f338603",
+      "scored_hours": 24,
+      "warmup_hours": 24,
+      "wall_seconds": 19.480039436835796,
+      "initial_state": {
+        "T": 21.97906901323813,
+        "outdoor": 6.600000000000023,
+        "supply_C": 30.971595597257988,
+        "aux": 1.0,
+        "gas_thermal_W": 789.1527037683303,
+        "pump_W": 12.248233915608973
+      },
+      "initial_u": 0.18285992662096645,
+      "metrics": {
+        "n": 1440,
+        "mae_C": 0.04966064275243822,
+        "rmse_C": 0.05790188476169536,
+        "max_abs_error_C": 0.10275716640177279,
+        "within_0_5_pct": 100.0,
+        "requested_TV_u": 64.19163821434286,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "gas_thermal_kWh": 36.480821767865486,
+        "pump_kWh": 0.2939576139746153
+      },
+      "first_30min_mae_C": 0.020051516507796425,
+      "after_30min_mae_C": 0.05029062416189868
+    },
+    {
+      "day": 50,
+      "budget_h": 2,
+      "method": "auto_pi",
+      "q": 0.5,
+      "active_adaptation_h": 6,
+      "trace": "outputs/boptest_delayed_dynamics/bestest_hydronic/delayed_bank_eval_50_2_auto_pi.csv",
+      "sha256": "003e7cb99096eecee9d71e2d5907476325b27948a86251504ee1dd387606b982",
+      "scored_hours": 24,
+      "warmup_hours": 24,
+      "wall_seconds": 10.129733857698739,
+      "initial_state": {
+        "T": 21.99892721550748,
+        "outdoor": 10.199999999999989,
+        "supply_C": 37.199830517448845,
+        "aux": 1.0,
+        "gas_thermal_W": 1316.417582275104,
+        "pump_W": 12.248233915608973
+      },
+      "initial_u": 0.28666384195748074,
+      "metrics": {
+        "n": 1440,
+        "mae_C": 0.5957235415562047,
+        "rmse_C": 0.8486789866025407,
+        "max_abs_error_C": 1.7354372412669932,
+        "within_0_5_pct": 57.56944444444444,
+        "requested_TV_u": 0.5949986034849575,
+        "saturation_pct": 9.375,
+        "outside_20_30_n": 0,
+        "gas_thermal_kWh": 20.042124438176707,
+        "pump_kWh": 0.2939576139746153
+      },
+      "first_30min_mae_C": 0.0006309169751375521,
+      "after_30min_mae_C": 0.6083850867600572
+    },
+    {
+      "day": 50,
+      "budget_h": 2,
+      "method": "proposed",
+      "q": 0.5,
+      "active_adaptation_h": 6,
+      "trace": "outputs/boptest_delayed_dynamics/bestest_hydronic/delayed_bank_eval_50_2_proposed.csv",
+      "sha256": "caa986388d841a68b8348cd2d2bb8866696c87f7cafa3254ad8d2ca64c2e55c1",
+      "scored_hours": 24,
+      "warmup_hours": 24,
+      "wall_seconds": 6.699550370220095,
+      "initial_state": {
+        "T": 21.99892721550748,
+        "outdoor": 10.199999999999989,
+        "supply_C": 37.199830517448845,
+        "aux": 1.0,
+        "gas_thermal_W": 1316.417582275104,
+        "pump_W": 12.248233915608973
+      },
+      "initial_u": 0.28666384195748074,
+      "metrics": {
+        "n": 1440,
+        "mae_C": 0.41583243143788023,
+        "rmse_C": 0.6647351231883984,
+        "max_abs_error_C": 1.5795534543411804,
+        "within_0_5_pct": 72.91666666666667,
+        "requested_TV_u": 0.7045212457670961,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "gas_thermal_kWh": 20.586455943746053,
+        "pump_kWh": 0.2939576139746153
+      },
+      "first_30min_mae_C": 0.000545503197315611,
+      "after_30min_mae_C": 0.42466832352810513
+    },
+    {
+      "day": 50,
+      "budget_h": 6,
+      "method": "auto_pi",
+      "q": 0.5,
+      "active_adaptation_h": 10,
+      "trace": "outputs/boptest_delayed_dynamics/bestest_hydronic/delayed_bank_eval_50_6_auto_pi.csv",
+      "sha256": "75b194d23f211380c0e83bb0a63812e263f5fc08af05da9eb9ce8bb32d3e1972",
+      "scored_hours": 24,
+      "warmup_hours": 24,
+      "wall_seconds": 7.1845331359654665,
+      "initial_state": {
+        "T": 21.99892721550748,
+        "outdoor": 10.199999999999989,
+        "supply_C": 37.199830517448845,
+        "aux": 1.0,
+        "gas_thermal_W": 1316.417582275104,
+        "pump_W": 12.248233915608973
+      },
+      "initial_u": 0.28666384195748074,
+      "metrics": {
+        "n": 1440,
+        "mae_C": 0.3288414675583316,
+        "rmse_C": 0.6162344861449494,
+        "max_abs_error_C": 1.533755943305664,
+        "within_0_5_pct": 75.20833333333333,
+        "requested_TV_u": 0.7198265183899651,
+        "saturation_pct": 28.680555555555557,
+        "outside_20_30_n": 0,
+        "gas_thermal_kWh": 21.067578618853048,
+        "pump_kWh": 0.2939576139746153
+      },
+      "first_30min_mae_C": 0.0005787939754687462,
+      "after_30min_mae_C": 0.33582577976222233
+    },
+    {
+      "day": 50,
+      "budget_h": 6,
+      "method": "proposed",
+      "q": 0.5,
+      "active_adaptation_h": 10,
+      "trace": "outputs/boptest_delayed_dynamics/bestest_hydronic/delayed_bank_eval_50_6_proposed.csv",
+      "sha256": "0618d6a251d4d7ba265487bebc1ab0d7e9e1db5ae76a710d81f78cdeb11b7ecf",
+      "scored_hours": 24,
+      "warmup_hours": 24,
+      "wall_seconds": 8.714501662179828,
+      "initial_state": {
+        "T": 21.99892721550748,
+        "outdoor": 10.199999999999989,
+        "supply_C": 37.199830517448845,
+        "aux": 1.0,
+        "gas_thermal_W": 1316.417582275104,
+        "pump_W": 12.248233915608973
+      },
+      "initial_u": 0.28666384195748074,
+      "metrics": {
+        "n": 1440,
+        "mae_C": 0.34379066422414184,
+        "rmse_C": 0.6108150399010159,
+        "max_abs_error_C": 1.521234671415641,
+        "within_0_5_pct": 75.48611111111111,
+        "requested_TV_u": 30.782380375186072,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "gas_thermal_kWh": 21.003670644089137,
+        "pump_kWh": 0.2939576139746153
+      },
+      "first_30min_mae_C": 0.0007300876857963582,
+      "after_30min_mae_C": 0.35108982542708533
+    }
+  ],
+  "skips": [],
+  "failures": [],
+  "selection_sha256": "aad304266b16b5b0575c2e3cd1d8678f57a1c52f6e2e19de10f80980b980eae5"
+}

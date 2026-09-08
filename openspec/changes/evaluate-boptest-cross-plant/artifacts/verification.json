@@ -1,0 +1,51 @@
+{
+  "status": "PASS",
+  "plants": {
+    "air": {
+      "fit_statuses": {
+        "2": "FITTED",
+        "6": "FITTED"
+      },
+      "evaluated_episodes": 8,
+      "comparisons": [
+        {
+          "budget_h": 2,
+          "day": 10,
+          "mae_gain_C": 0.0167465839357127,
+          "nonregression": true
+        },
+        {
+          "budget_h": 2,
+          "day": 40,
+          "mae_gain_C": 0.013980615295542464,
+          "nonregression": true
+        },
+        {
+          "budget_h": 6,
+          "day": 10,
+          "mae_gain_C": 0.016764005488966543,
+          "nonregression": true
+        },
+        {
+          "budget_h": 6,
+          "day": 40,
+          "mae_gain_C": 0.013997352309569736,
+          "nonregression": true
+        }
+      ],
+      "result_sha256": "1bffc2430fe384af089f53220ddbb5908b98c993cd00f7c1d7f1ac2c30d361fb"
+    },
+    "hydronic": {
+      "fit_statuses": {
+        "2": "REJECTED_NONPHYSICAL",
+        "6": "REJECTED_NONPHYSICAL"
+      },
+      "evaluated_episodes": 0,
+      "comparisons": [],
+      "result_sha256": "a2ab02a0dc3519d2e542301612d54080c33be997508bb3fc041ce6e0e93a3453"
+    }
+  },
+  "source_freeze_matches": true,
+  "traces": 18,
+  "cross_plant_success": false
+}

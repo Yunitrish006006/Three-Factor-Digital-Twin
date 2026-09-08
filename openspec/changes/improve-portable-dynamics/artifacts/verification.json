@@ -1,0 +1,98 @@
+{
+  "status": "PASS",
+  "plants": {
+    "air": {
+      "model_status": {
+        "2": "FITTED",
+        "6": "FITTED"
+      },
+      "decisions": [
+        {
+          "budget_h": 2,
+          "pairs": [
+            {
+              "day": 20,
+              "mae_gain_C": 0.021614413137688852,
+              "max_error_delta_C": -0.014189842051621326,
+              "nonregression": true
+            },
+            {
+              "day": 50,
+              "mae_gain_C": 0.01863354063929145,
+              "max_error_delta_C": -0.007555874106685678,
+              "nonregression": true
+            }
+          ],
+          "gate": true
+        },
+        {
+          "budget_h": 6,
+          "pairs": [
+            {
+              "day": 20,
+              "mae_gain_C": 0.02169891882071736,
+              "max_error_delta_C": -0.013866059637052786,
+              "nonregression": true
+            },
+            {
+              "day": 50,
+              "mae_gain_C": 0.01871048041151061,
+              "max_error_delta_C": -0.007578132584001196,
+              "nonregression": true
+            }
+          ],
+          "gate": true
+        }
+      ],
+      "result_sha256": "c6720c0cc4a48dda3a0389a5e579ccaee0fc1f9a398d06c72baa719128d27c68"
+    },
+    "hydronic": {
+      "model_status": {
+        "2": "FITTED",
+        "6": "FITTED"
+      },
+      "decisions": [
+        {
+          "budget_h": 2,
+          "pairs": [
+            {
+              "day": 20,
+              "mae_gain_C": 0.14359998124441367,
+              "max_error_delta_C": -0.36169979066568203,
+              "nonregression": true
+            },
+            {
+              "day": 50,
+              "mae_gain_C": 0.17989111011832443,
+              "max_error_delta_C": -0.15588378692581273,
+              "nonregression": true
+            }
+          ],
+          "gate": true
+        },
+        {
+          "budget_h": 6,
+          "pairs": [
+            {
+              "day": 20,
+              "mae_gain_C": -0.038745764723010646,
+              "max_error_delta_C": 0.05382261798581567,
+              "nonregression": false
+            },
+            {
+              "day": 50,
+              "mae_gain_C": -0.014949196665810238,
+              "max_error_delta_C": -0.012521271890022945,
+              "nonregression": true
+            }
+          ],
+          "gate": false
+        }
+      ],
+      "result_sha256": "eb83dbbd9df5855725dc34c7a8136acc4ac25325921cb3010cf793960663aa39"
+    }
+  },
+  "sources_match": true,
+  "new_traces": 32,
+  "scope": "DEVELOPMENT_PLANTS_WITH_NEW_DATE_CHECKS"
+}

@@ -1,0 +1,2 @@
+# Audit benchmark-specific adaptation
+User requires algorithms not receive scenario-specific tuning. Read-only audit of controller sources, selection lineage and prior evidence. No new simulation or controller changes. Findings may weaken interpretation of exploratory reports, not alter numerical evidence or main thesis claims. Deliver audit note and offline HTML; future redesign requires separate protocol.

@@ -1,0 +1,22 @@
+{
+  "v4": {
+    "mean_mae_C": 0.14458144058215802,
+    "mean_requested_variation_C": 454.4956595246315,
+    "max_error_C": 1.3728846376170623
+  },
+  "aware1": {
+    "mean_mae_C": 0.14229868796166634,
+    "mean_requested_variation_C": 456.86671994322967,
+    "max_error_C": 1.3728876025034538
+  },
+  "smooth06": {
+    "mean_mae_C": 0.1394986911299122,
+    "mean_requested_variation_C": 232.02632908065848,
+    "max_error_C": 1.3733318347049135
+  },
+  "smooth035": {
+    "mean_mae_C": 0.1376134869595985,
+    "mean_requested_variation_C": 125.36530877987276,
+    "max_error_C": 1.374086247340074
+  }
+}

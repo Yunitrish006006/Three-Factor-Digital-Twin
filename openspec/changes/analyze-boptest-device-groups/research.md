@@ -1,0 +1,2 @@
+# DGA-001 Exploratory question
+What measured model, calibration and compensation properties co-occur with improvement, deterioration or fallback? This is post-result descriptive analysis of five development FMUs, not causal inference, independent significance or universal classification. Within-plant budget reversals are central counterexamples. Heating-only capacity, native subordinate loops and operating conditions confound device labels.

@@ -1,0 +1,14 @@
+{
+  "bestest_air": {
+    "sha256": "e8019d57cf433a7f3fce114960f300a088082a71c13465af2be6e873467e5daa",
+    "versions": {
+      "BUILDINGS_COMMIT": "v8.0.0"
+    }
+  },
+  "bestest_hydronic": {
+    "sha256": "cb43dd9b1263c5d701f1691dca0de8be4b3b34e1238b784d625d756db23f3bed",
+    "versions": {
+      "IDEAS_COMMIT": "f1fdd8b22d39dc50297c47b6433e44381e40d0ff"
+    }
+  }
+}

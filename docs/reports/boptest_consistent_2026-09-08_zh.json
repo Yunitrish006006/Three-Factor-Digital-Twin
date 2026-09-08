@@ -1,0 +1,24 @@
+{
+  "status": "NOT_SUPPORTED",
+  "counts": {
+    "BETTER": 7,
+    "WORSE": 5,
+    "TIE": 6
+  },
+  "fallback_episodes": 6,
+  "passed_budgets": 4,
+  "completed_episodes": 36,
+  "simulated_hours": 1728,
+  "aggregate_episode_wall_seconds": 1581.4636519304477,
+  "tests": 259,
+  "html_sha256": "0d9848ae3f971c9b73670f42e5f46b54ec0a3a4f970bf908e381474471da8566",
+  "plot_sha256": "a70e753afe1de96def0829220cb6c067d1a3f470fcf325f220b15b8371285735",
+  "builder_sha256": "ff2e980f1b853566ed8765bb1240b1fde57a05fd3bf9dfc17b62848dc1d6b614",
+  "results": {
+    "air": "184dc88cc432391b2a13600d72e698f72a58131b8c5897371d113e5823e4ce1f",
+    "hydronic": "7739d663de9316809cb231f6b543bf038ff51775b4729ad05829d8df043c43da",
+    "heat_pump": "a34b0a779c851ea52eb56878bcf69ce0fcec7a977f4d886c6b73415c354b4c3e",
+    "apartment": "65ff336524a875e8d5b9b5c5511f731f5d38266047b86123efc9cc35e3bc7dd9",
+    "commercial": "c64f90642e3ed4c9e10f0200416fc215f2da964c73cbe9e7a2471fb2f7cf16c2"
+  }
+}

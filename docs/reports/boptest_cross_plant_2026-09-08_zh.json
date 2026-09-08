@@ -1,0 +1,10 @@
+{
+  "status": "CROSS_PLANT_GOAL_NOT_MET",
+  "sections": 8,
+  "html_sha256": "afde84af5fd10e5303cb6e435d38dd54246962e458c6cb9d6866e77761f8c88f",
+  "plot_sha256": "26d434505e438348592d8bbc8c7e3cdaa8ed8bd777a87383485f91ac27f552df",
+  "results": {
+    "air": "1bffc2430fe384af089f53220ddbb5908b98c993cd00f7c1d7f1ac2c30d361fb",
+    "hydronic": "a2ab02a0dc3519d2e542301612d54080c33be997508bb3fc041ce6e0e93a3453"
+  }
+}

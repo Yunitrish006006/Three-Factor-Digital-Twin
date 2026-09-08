@@ -1,0 +1,2 @@
+# Startup assistance with bounded handover to PI
+User requests improved early target approach without losing subsequent PI quality, and a shared process for identifying the switching boundary. SPB-001 adds temporary sign-aligned assistance, bumpless integral transfer and three declared exit bands. Five known FMUs, existing2h calibration only; all development. New offline HTML and typed 3D links; unadopted main Chinese/English thesis unchanged. No novelty or guaranteed performance claim.

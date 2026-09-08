@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "plants": {
+    "apartment": {
+      "model_status": {
+        "2": "FITTED",
+        "6": "NO_ADMISSIBLE_MODEL"
+      },
+      "decisions": [
+        {
+          "budget_h": 2,
+          "pairs": [
+            {
+              "day": 20,
+              "mae_gain_C": -0.40634953269523577,
+              "max_error_delta_C": 0.42138040650075936,
+              "nonregression": false
+            },
+            {
+              "day": 50,
+              "mae_gain_C": -0.33594374077985445,
+              "max_error_delta_C": 0.18976822245429048,
+              "nonregression": false
+            }
+          ],
+          "gate": false
+        },
+        {
+          "budget_h": 6,
+          "pairs": [],
+          "gate": false
+        }
+      ],
+      "result_sha256": "5f645126dc4abd0be76aa30c2f413e66d9137cb58e9db5c72d13680dcb58aadd"
+    }
+  },
+  "sources_match": true,
+  "new_traces": 9,
+  "scope": "THREE_NEW_FMUS_WITH_BOUNDED_ADAPTATION",
+  "all_six_budgets_pass": false
+}

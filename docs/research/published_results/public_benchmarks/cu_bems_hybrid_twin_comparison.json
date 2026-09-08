@@ -1,0 +1,697 @@
+{
+  "dataset": "CU-BEMS",
+  "benchmark_mode": "single-zone device-response",
+  "input_dir": "/Volumes/DataExtended/school/outputs/data/normalized_public/cu_bems",
+  "created_at": "2026-05-10T16:49:37.588956+00:00",
+  "horizons": [
+    15,
+    60
+  ],
+  "counts": {
+    "zones": 33,
+    "sensor_rows": 18521554,
+    "device_rows": 35730800,
+    "auxiliary_rows": 24144627
+  },
+  "metadata": {
+    "dataset": "CU-BEMS",
+    "benchmark_mode": "single-zone device-response",
+    "source_files": [
+      "/Volumes/DataExtended/school/outputs/data/raw_public/cu-bems/2018Floor1.csv",
+      "/Volumes/DataExtended/school/outputs/data/raw_public/cu-bems/2018Floor2.csv",
+      "/Volumes/DataExtended/school/outputs/data/raw_public/cu-bems/2018Floor3.csv",
+      "/Volumes/DataExtended/school/outputs/data/raw_public/cu-bems/2018Floor4.csv",
+      "/Volumes/DataExtended/school/outputs/data/raw_public/cu-bems/2018Floor5.csv",
+      "/Volumes/DataExtended/school/outputs/data/raw_public/cu-bems/2018Floor6.csv",
+      "/Volumes/DataExtended/school/outputs/data/raw_public/cu-bems/2018Floor7.csv",
+      "/Volumes/DataExtended/school/outputs/data/raw_public/cu-bems/2019Floor1.csv",
+      "/Volumes/DataExtended/school/outputs/data/raw_public/cu-bems/2019Floor2.csv",
+      "/Volumes/DataExtended/school/outputs/data/raw_public/cu-bems/2019Floor3.csv",
+      "/Volumes/DataExtended/school/outputs/data/raw_public/cu-bems/2019Floor4.csv",
+      "/Volumes/DataExtended/school/outputs/data/raw_public/cu-bems/2019Floor5.csv",
+      "/Volumes/DataExtended/school/outputs/data/raw_public/cu-bems/2019Floor6.csv",
+      "/Volumes/DataExtended/school/outputs/data/raw_public/cu-bems/2019Floor7.csv"
+    ],
+    "raw_timestamp_range": {
+      "start": "2",
+      "end": "2019-12-31T23:59:00"
+    },
+    "counts": {
+      "sensor_rows": 18521554,
+      "device_rows": 35730800,
+      "outdoor_rows": 0,
+      "auxiliary_rows": 24144627,
+      "zones": 33
+    },
+    "zones": [
+      {
+        "floor": 1,
+        "zone": 1,
+        "sensor_name": "floor1_zone1_sensor"
+      },
+      {
+        "floor": 1,
+        "zone": 2,
+        "sensor_name": "floor1_zone2_sensor"
+      },
+      {
+        "floor": 1,
+        "zone": 3,
+        "sensor_name": "floor1_zone3_sensor"
+      },
+      {
+        "floor": 1,
+        "zone": 4,
+        "sensor_name": "floor1_zone4_sensor"
+      },
+      {
+        "floor": 2,
+        "zone": 1,
+        "sensor_name": "floor2_zone1_sensor"
+      },
+      {
+        "floor": 2,
+        "zone": 2,
+        "sensor_name": "floor2_zone2_sensor"
+      },
+      {
+        "floor": 2,
+        "zone": 3,
+        "sensor_name": "floor2_zone3_sensor"
+      },
+      {
+        "floor": 2,
+        "zone": 4,
+        "sensor_name": "floor2_zone4_sensor"
+      },
+      {
+        "floor": 3,
+        "zone": 1,
+        "sensor_name": "floor3_zone1_sensor"
+      },
+      {
+        "floor": 3,
+        "zone": 2,
+        "sensor_name": "floor3_zone2_sensor"
+      },
+      {
+        "floor": 3,
+        "zone": 3,
+        "sensor_name": "floor3_zone3_sensor"
+      },
+      {
+        "floor": 3,
+        "zone": 4,
+        "sensor_name": "floor3_zone4_sensor"
+      },
+      {
+        "floor": 3,
+        "zone": 5,
+        "sensor_name": "floor3_zone5_sensor"
+      },
+      {
+        "floor": 4,
+        "zone": 1,
+        "sensor_name": "floor4_zone1_sensor"
+      },
+      {
+        "floor": 4,
+        "zone": 2,
+        "sensor_name": "floor4_zone2_sensor"
+      },
+      {
+        "floor": 4,
+        "zone": 3,
+        "sensor_name": "floor4_zone3_sensor"
+      },
+      {
+        "floor": 4,
+        "zone": 4,
+        "sensor_name": "floor4_zone4_sensor"
+      },
+      {
+        "floor": 4,
+        "zone": 5,
+        "sensor_name": "floor4_zone5_sensor"
+      },
+      {
+        "floor": 5,
+        "zone": 1,
+        "sensor_name": "floor5_zone1_sensor"
+      },
+      {
+        "floor": 5,
+        "zone": 2,
+        "sensor_name": "floor5_zone2_sensor"
+      },
+      {
+        "floor": 5,
+        "zone": 3,
+        "sensor_name": "floor5_zone3_sensor"
+      },
+      {
+        "floor": 5,
+        "zone": 4,
+        "sensor_name": "floor5_zone4_sensor"
+      },
+      {
+        "floor": 5,
+        "zone": 5,
+        "sensor_name": "floor5_zone5_sensor"
+      },
+      {
+        "floor": 6,
+        "zone": 1,
+        "sensor_name": "floor6_zone1_sensor"
+      },
+      {
+        "floor": 6,
+        "zone": 2,
+        "sensor_name": "floor6_zone2_sensor"
+      },
+      {
+        "floor": 6,
+        "zone": 3,
+        "sensor_name": "floor6_zone3_sensor"
+      },
+      {
+        "floor": 6,
+        "zone": 4,
+        "sensor_name": "floor6_zone4_sensor"
+      },
+      {
+        "floor": 6,
+        "zone": 5,
+        "sensor_name": "floor6_zone5_sensor"
+      },
+      {
+        "floor": 7,
+        "zone": 1,
+        "sensor_name": "floor7_zone1_sensor"
+      },
+      {
+        "floor": 7,
+        "zone": 2,
+        "sensor_name": "floor7_zone2_sensor"
+      },
+      {
+        "floor": 7,
+        "zone": 3,
+        "sensor_name": "floor7_zone3_sensor"
+      },
+      {
+        "floor": 7,
+        "zone": 4,
+        "sensor_name": "floor7_zone4_sensor"
+      },
+      {
+        "floor": 7,
+        "zone": 5,
+        "sensor_name": "floor7_zone5_sensor"
+      }
+    ],
+    "pseudo_geometry": {
+      "room": {
+        "width_m": 6.0,
+        "depth_m": 4.0,
+        "height_m": 3.0
+      },
+      "sensor": {
+        "x": 3.0,
+        "y": 2.0,
+        "z": 2.8
+      },
+      "ac_main": {
+        "x": 0.3,
+        "y": 2.0,
+        "z": 2.7,
+        "orientation_deg": 0.0
+      },
+      "light_main": {
+        "x": 3.0,
+        "y": 2.0,
+        "z": 2.8,
+        "orientation_deg": 0.0
+      },
+      "target_zone": "center_zone"
+    },
+    "tasks": [
+      "C1",
+      "C2",
+      "C3"
+    ],
+    "unsupported": [
+      "full 3D field MAE",
+      "8-corner sensor calibration benchmark",
+      "window direct-input benchmark without external weather backfill"
+    ],
+    "notes": [
+      "One floor-zone with sensor data is treated as one pseudo sensor.",
+      "All AC power columns in the same zone are aggregated into ac_main.",
+      "Plug load is retained only as an auxiliary feature."
+    ]
+  },
+  "mapped_model_name": "hybrid_digital_twin_readout",
+  "mapped_model_checkpoint": "/Volumes/DataExtended/school/outputs/data/hybrid_residual_checkpoint.json",
+  "mapping_notes": [
+    "Uses DigitalTwinModel plus the trained hybrid residual checkpoint as a structured prior.",
+    "Fits a small linear readout head on the same chronological 70/30 split used by the public benchmark baselines.",
+    "CU-BEMS power values are converted to bounded device activations rather than treated as direct geometry-aware kW inputs."
+  ],
+  "tasks": [
+    {
+      "task_id": "C1",
+      "dataset": "CU-BEMS",
+      "horizon_minutes": 15,
+      "status": "ok",
+      "sample_count": 11450604,
+      "train_samples": 8015422,
+      "test_samples": 3435182,
+      "feature_names": [
+        "temperature",
+        "humidity",
+        "ac_power",
+        "plug_load",
+        "ac_active"
+      ],
+      "target_names": [
+        "temperature",
+        "humidity"
+      ],
+      "mapped_model_name": "hybrid_digital_twin_readout",
+      "mapped_feature_names": [
+        "physics_temperature",
+        "physics_humidity",
+        "hybrid_temperature",
+        "hybrid_humidity",
+        "ac_activation",
+        "plug_load_scaled"
+      ],
+      "targets": {
+        "temperature": {
+          "persistence": {
+            "mae": 0.261973,
+            "rmse": 0.573606,
+            "correlation": 0.980189
+          },
+          "linear_regression": {
+            "mae": 0.288409,
+            "rmse": 0.53361,
+            "correlation": 0.98279
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 0.282049,
+            "rmse": 0.530334,
+            "correlation": 0.982927
+          },
+          "linear_regression_vs_persistence_mae_reduction": -0.026436,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": -0.020076,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": 0.00636
+        },
+        "humidity": {
+          "persistence": {
+            "mae": 0.713036,
+            "rmse": 1.467508,
+            "correlation": 0.978489
+          },
+          "linear_regression": {
+            "mae": 0.777978,
+            "rmse": 1.452183,
+            "correlation": 0.978865
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 0.756199,
+            "rmse": 1.457133,
+            "correlation": 0.978664
+          },
+          "linear_regression_vs_persistence_mae_reduction": -0.064942,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": -0.043163,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": 0.021779
+        }
+      }
+    },
+    {
+      "task_id": "C2",
+      "dataset": "CU-BEMS",
+      "horizon_minutes": 15,
+      "status": "ok",
+      "sample_count": 11450531,
+      "train_samples": 8015371,
+      "test_samples": 3435160,
+      "feature_names": [
+        "illuminance",
+        "lighting_power",
+        "plug_load",
+        "light_active"
+      ],
+      "target_names": [
+        "illuminance"
+      ],
+      "mapped_model_name": "hybrid_digital_twin_readout",
+      "mapped_feature_names": [
+        "physics_illuminance",
+        "hybrid_illuminance",
+        "light_activation",
+        "plug_load_scaled"
+      ],
+      "targets": {
+        "illuminance": {
+          "persistence": {
+            "mae": 1.363127,
+            "rmse": 6.343855,
+            "correlation": 0.962381
+          },
+          "linear_regression": {
+            "mae": 1.793783,
+            "rmse": 6.263892,
+            "correlation": 0.962635
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 7.690802,
+            "rmse": 11.928472,
+            "correlation": 0.864044
+          },
+          "linear_regression_vs_persistence_mae_reduction": -0.430656,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": -6.327675,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": -5.897019
+        }
+      }
+    },
+    {
+      "task_id": "C3",
+      "dataset": "CU-BEMS",
+      "horizon_minutes": 15,
+      "status": "ok",
+      "sample_count": 167890,
+      "train_samples": 117522,
+      "test_samples": 50368,
+      "feature_names": [
+        "temperature",
+        "humidity",
+        "illuminance",
+        "ac_power",
+        "lighting_power",
+        "plug_load",
+        "event_direction",
+        "event_kind_ac",
+        "event_kind_light"
+      ],
+      "target_names": [
+        "temperature",
+        "humidity",
+        "illuminance"
+      ],
+      "mapped_model_name": "hybrid_digital_twin_readout",
+      "mapped_feature_names": [
+        "physics_temperature_delta",
+        "physics_humidity_delta",
+        "physics_illuminance_delta",
+        "hybrid_temperature_delta",
+        "hybrid_humidity_delta",
+        "hybrid_illuminance_delta",
+        "event_direction",
+        "event_kind_ac",
+        "event_kind_light"
+      ],
+      "targets": {
+        "temperature": {
+          "persistence": {
+            "mae": 0.571121,
+            "rmse": 1.300712,
+            "correlation": 0.0
+          },
+          "linear_regression": {
+            "mae": 0.691739,
+            "rmse": 1.123653,
+            "correlation": 0.50343
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 0.628334,
+            "rmse": 1.152742,
+            "correlation": 0.478656
+          },
+          "linear_regression_vs_persistence_mae_reduction": -0.120618,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": -0.057213,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": 0.063405
+        },
+        "humidity": {
+          "persistence": {
+            "mae": 0.991996,
+            "rmse": 2.230832,
+            "correlation": 0.0
+          },
+          "linear_regression": {
+            "mae": 1.258929,
+            "rmse": 2.240477,
+            "correlation": 0.274695
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 1.137222,
+            "rmse": 2.261134,
+            "correlation": 0.214718
+          },
+          "linear_regression_vs_persistence_mae_reduction": -0.266933,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": -0.145226,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": 0.121707
+        },
+        "illuminance": {
+          "persistence": {
+            "mae": 2.184304,
+            "rmse": 8.125616,
+            "correlation": 0.0
+          },
+          "linear_regression": {
+            "mae": 3.382856,
+            "rmse": 7.946451,
+            "correlation": 0.215241
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 2.762286,
+            "rmse": 7.950293,
+            "correlation": 0.189263
+          },
+          "linear_regression_vs_persistence_mae_reduction": -1.198552,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": -0.577982,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": 0.62057
+        }
+      }
+    },
+    {
+      "task_id": "C1",
+      "dataset": "CU-BEMS",
+      "horizon_minutes": 60,
+      "status": "ok",
+      "sample_count": 11386390,
+      "train_samples": 7970472,
+      "test_samples": 3415918,
+      "feature_names": [
+        "temperature",
+        "humidity",
+        "ac_power",
+        "plug_load",
+        "ac_active"
+      ],
+      "target_names": [
+        "temperature",
+        "humidity"
+      ],
+      "mapped_model_name": "hybrid_digital_twin_readout",
+      "mapped_feature_names": [
+        "physics_temperature",
+        "physics_humidity",
+        "hybrid_temperature",
+        "hybrid_humidity",
+        "ac_activation",
+        "plug_load_scaled"
+      ],
+      "targets": {
+        "temperature": {
+          "persistence": {
+            "mae": 0.747704,
+            "rmse": 1.527132,
+            "correlation": 0.859604
+          },
+          "linear_regression": {
+            "mae": 0.834086,
+            "rmse": 1.457104,
+            "correlation": 0.862828
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 0.824116,
+            "rmse": 1.447328,
+            "correlation": 0.86485
+          },
+          "linear_regression_vs_persistence_mae_reduction": -0.086382,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": -0.076412,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": 0.00997
+        },
+        "humidity": {
+          "persistence": {
+            "mae": 1.504325,
+            "rmse": 2.635478,
+            "correlation": 0.930628
+          },
+          "linear_regression": {
+            "mae": 1.562054,
+            "rmse": 2.558608,
+            "correlation": 0.932848
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 1.566125,
+            "rmse": 2.579017,
+            "correlation": 0.931601
+          },
+          "linear_regression_vs_persistence_mae_reduction": -0.057729,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": -0.0618,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": -0.004071
+        }
+      }
+    },
+    {
+      "task_id": "C2",
+      "dataset": "CU-BEMS",
+      "horizon_minutes": 60,
+      "status": "ok",
+      "sample_count": 11386313,
+      "train_samples": 7970419,
+      "test_samples": 3415894,
+      "feature_names": [
+        "illuminance",
+        "lighting_power",
+        "plug_load",
+        "light_active"
+      ],
+      "target_names": [
+        "illuminance"
+      ],
+      "mapped_model_name": "hybrid_digital_twin_readout",
+      "mapped_feature_names": [
+        "physics_illuminance",
+        "hybrid_illuminance",
+        "light_activation",
+        "plug_load_scaled"
+      ],
+      "targets": {
+        "illuminance": {
+          "persistence": {
+            "mae": 4.011693,
+            "rmse": 12.064926,
+            "correlation": 0.863952
+          },
+          "linear_regression": {
+            "mae": 5.64614,
+            "rmse": 11.575425,
+            "correlation": 0.865938
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 9.568262,
+            "rmse": 14.229748,
+            "correlation": 0.79255
+          },
+          "linear_regression_vs_persistence_mae_reduction": -1.634447,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": -5.556569,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": -3.922122
+        }
+      }
+    },
+    {
+      "task_id": "C3",
+      "dataset": "CU-BEMS",
+      "horizon_minutes": 60,
+      "status": "ok",
+      "sample_count": 166945,
+      "train_samples": 116861,
+      "test_samples": 50084,
+      "feature_names": [
+        "temperature",
+        "humidity",
+        "illuminance",
+        "ac_power",
+        "lighting_power",
+        "plug_load",
+        "event_direction",
+        "event_kind_ac",
+        "event_kind_light"
+      ],
+      "target_names": [
+        "temperature",
+        "humidity",
+        "illuminance"
+      ],
+      "mapped_model_name": "hybrid_digital_twin_readout",
+      "mapped_feature_names": [
+        "physics_temperature_delta",
+        "physics_humidity_delta",
+        "physics_illuminance_delta",
+        "hybrid_temperature_delta",
+        "hybrid_humidity_delta",
+        "hybrid_illuminance_delta",
+        "event_direction",
+        "event_kind_ac",
+        "event_kind_light"
+      ],
+      "targets": {
+        "temperature": {
+          "persistence": {
+            "mae": 1.195808,
+            "rmse": 2.396118,
+            "correlation": 0.0
+          },
+          "linear_regression": {
+            "mae": 1.364022,
+            "rmse": 2.069801,
+            "correlation": 0.503925
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 1.277299,
+            "rmse": 2.182915,
+            "correlation": 0.425909
+          },
+          "linear_regression_vs_persistence_mae_reduction": -0.168214,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": -0.081491,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": 0.086723
+        },
+        "humidity": {
+          "persistence": {
+            "mae": 1.763551,
+            "rmse": 3.423758,
+            "correlation": 0.0
+          },
+          "linear_regression": {
+            "mae": 1.964076,
+            "rmse": 3.252699,
+            "correlation": 0.350398
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 1.870056,
+            "rmse": 3.39439,
+            "correlation": 0.203512
+          },
+          "linear_regression_vs_persistence_mae_reduction": -0.200525,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": -0.106505,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": 0.09402
+        },
+        "illuminance": {
+          "persistence": {
+            "mae": 4.508905,
+            "rmse": 12.506799,
+            "correlation": 0.0
+          },
+          "linear_regression": {
+            "mae": 7.093012,
+            "rmse": 12.161623,
+            "correlation": 0.262625
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 5.73068,
+            "rmse": 12.095148,
+            "correlation": 0.232836
+          },
+          "linear_regression_vs_persistence_mae_reduction": -2.584107,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": -1.221775,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": 1.362332
+        }
+      }
+    }
+  ]
+}

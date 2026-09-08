@@ -1,0 +1,2 @@
+# Reproduction
+Use existing outputs/boptest-venv/bin/python with LD_LIBRARY_PATH pointing to outputs/vendor/boptest-runtime/usr/lib/x86_64-linux-gnu. Run scripts/run_boptest_more_devices.py --plant heat_pump, apartment, commercial. No network download needed. Record official FMU/doc SHA-256, source freeze, calibration/selection/evaluation hashes. Run full unittest, research OpenSpec validation, trace/model verification and offline report asset audit. Prior evidence remains immutable.

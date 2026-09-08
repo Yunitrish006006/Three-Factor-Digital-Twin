@@ -1,0 +1,349 @@
+{
+  "status": "COMPLETED",
+  "plant": "air",
+  "phase": "confirmation",
+  "config": {
+    "case": "bestest_air",
+    "measurement_kind": "zone air temperature",
+    "temperature": "zon_reaTRooAir_y",
+    "outdoor": "zon_weaSta_reaWeaTDryBul_y",
+    "actuator_input": "fcu_oveTSup_u",
+    "actuator_activate": "fcu_oveTSup_activate",
+    "actuator_output": "fcu_oveTSup_y",
+    "actuator_min": 285.15,
+    "actuator_max": 313.15,
+    "actuator_unit": "K",
+    "overrides": [
+      {
+        "input": "con_oveTSetHea_u",
+        "activate": "con_oveTSetHea_activate",
+        "value": 295.15,
+        "unit": "K"
+      },
+      {
+        "input": "con_oveTSetCoo_u",
+        "activate": "con_oveTSetCoo_activate",
+        "value": 295.15,
+        "unit": "K"
+      },
+      {
+        "input": "fcu_oveFan_u",
+        "activate": "fcu_oveFan_activate",
+        "value": 0.5,
+        "unit": "1"
+      }
+    ],
+    "power_outputs": {
+      "heat_W": "fcu_reaPHea_y",
+      "cool_W": "fcu_reaPCoo_y",
+      "fan_W": "fcu_reaPFan_y"
+    },
+    "target_C": 22,
+    "step_s": 60,
+    "startup_target_inputs": [
+      "con_oveTSetHea_u",
+      "con_oveTSetCoo_u"
+    ]
+  },
+  "model": {
+    "order": 1,
+    "delay_steps": 0,
+    "a": [
+      0.7837699264051905
+    ],
+    "b": 2.5678133990326915,
+    "c": 0.051725335530027505,
+    "intercept": 1.4368442445662981,
+    "poles": [
+      [
+        0.7837699264051905,
+        0.0
+      ]
+    ],
+    "radius": 0.7837699264051905,
+    "steady_gain_C_per_u": 11.875375873221413,
+    "status": "FITTED",
+    "n": 109,
+    "rank": 4,
+    "fit_one_step_rmse_C": 0.006655072339049254,
+    "tau_s": 246.26522075647785,
+    "validation_rollout_rmse_C": 0.06406647968555461
+  },
+  "freeze_sha256": "0bf1d69588be49653ab63ce1b6e21d73fc00205a30ca0c4fdbbfd48a04c34ab8",
+  "selection_sha256": "7dc395bc80c6f11830019935587c20ff6ab543b4accf14044f18a53e66f776c5",
+  "evaluations": [
+    {
+      "trace": "outputs/boptest_predictive_startup/bestest_air/confirmation_42_None.csv",
+      "sha256": "f5f6b6ba414d7b6861433d78bd8fbf6d8598b2da8ab0cb87cf9da5cb7873e477",
+      "scored_hours": 24,
+      "warmup_hours": 24,
+      "wall_seconds": 23.215322616044432,
+      "initial_state": {
+        "T": 20.984601655817073,
+        "outdoor": -3.1999999999999886,
+        "actuator_native": 295.22954052475876,
+        "heat_W": 337.0174137085028,
+        "cool_W": 0.0,
+        "fan_W": 21.63068516630494
+      },
+      "initial_u": 0.35998359016995657,
+      "metrics": {
+        "n": 1440,
+        "mae_C": 0.027780295817325752,
+        "rmse_C": 0.0656001076719244,
+        "max_abs_error_C": 1.0161526150216673,
+        "within_0_5_pct": 99.58333333333333,
+        "requested_TV_u": 1.0065101360163635,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "heat_kWh": 11.057117239045397,
+        "cool_kWh": 5.537118449155431,
+        "fan_kWh": 0.5191364439913185
+      },
+      "first_30min_mae_C": 0.25209606943730023,
+      "after_30min_mae_C": 0.02300761978285821,
+      "day": 42,
+      "horizon_min": null,
+      "method": "auto_pi",
+      "reused": false,
+      "windows": {
+        "early": {
+          "n": 60,
+          "mae_C": 0.13150468559302245,
+          "rmse_C": 0.27610878579011283,
+          "max_abs_error_C": 1.0161526150216673,
+          "within_0_5_pct": 90.0,
+          "requested_TV_u": 0.10543596885587658,
+          "saturation_pct": 0.0,
+          "outside_20_30_n": 0,
+          "heat_kWh": 0.8542680616538149,
+          "cool_kWh": 0.0,
+          "fan_kWh": 0.02163068516630494
+        },
+        "late": {
+          "n": 1380,
+          "mae_C": 0.023270539740121547,
+          "rmse_C": 0.03429090223313987,
+          "max_abs_error_C": 0.2285746955948298,
+          "within_0_5_pct": 100.0,
+          "requested_TV_u": 0.9007658517022972,
+          "saturation_pct": 0.0,
+          "outside_20_30_n": 0,
+          "heat_kWh": 10.202849177391583,
+          "cool_kWh": 5.537118449155431,
+          "fan_kWh": 0.49750575882501363
+        },
+        "acquisition_onset_min": 16.0,
+        "acquisition_confirmation_min": 30.0
+      },
+      "exit_code": 1,
+      "exit_min": -1.0,
+      "zero_min": 1.0
+    },
+    {
+      "trace": "outputs/boptest_predictive_startup/bestest_air/confirmation_42_None.csv",
+      "sha256": "f5f6b6ba414d7b6861433d78bd8fbf6d8598b2da8ab0cb87cf9da5cb7873e477",
+      "scored_hours": 24,
+      "warmup_hours": 24,
+      "wall_seconds": 23.215322616044432,
+      "initial_state": {
+        "T": 20.984601655817073,
+        "outdoor": -3.1999999999999886,
+        "actuator_native": 295.22954052475876,
+        "heat_W": 337.0174137085028,
+        "cool_W": 0.0,
+        "fan_W": 21.63068516630494
+      },
+      "initial_u": 0.35998359016995657,
+      "metrics": {
+        "n": 1440,
+        "mae_C": 0.027780295817325752,
+        "rmse_C": 0.0656001076719244,
+        "max_abs_error_C": 1.0161526150216673,
+        "within_0_5_pct": 99.58333333333333,
+        "requested_TV_u": 1.0065101360163635,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "heat_kWh": 11.057117239045397,
+        "cool_kWh": 5.537118449155431,
+        "fan_kWh": 0.5191364439913185
+      },
+      "first_30min_mae_C": 0.25209606943730023,
+      "after_30min_mae_C": 0.02300761978285821,
+      "day": 42,
+      "horizon_min": null,
+      "method": "selected_pi_reuse",
+      "reused": true,
+      "windows": {
+        "early": {
+          "n": 60,
+          "mae_C": 0.13150468559302245,
+          "rmse_C": 0.27610878579011283,
+          "max_abs_error_C": 1.0161526150216673,
+          "within_0_5_pct": 90.0,
+          "requested_TV_u": 0.10543596885587658,
+          "saturation_pct": 0.0,
+          "outside_20_30_n": 0,
+          "heat_kWh": 0.8542680616538149,
+          "cool_kWh": 0.0,
+          "fan_kWh": 0.02163068516630494
+        },
+        "late": {
+          "n": 1380,
+          "mae_C": 0.023270539740121547,
+          "rmse_C": 0.03429090223313987,
+          "max_abs_error_C": 0.2285746955948298,
+          "within_0_5_pct": 100.0,
+          "requested_TV_u": 0.9007658517022972,
+          "saturation_pct": 0.0,
+          "outside_20_30_n": 0,
+          "heat_kWh": 10.202849177391583,
+          "cool_kWh": 5.537118449155431,
+          "fan_kWh": 0.49750575882501363
+        },
+        "acquisition_onset_min": 16.0,
+        "acquisition_confirmation_min": 30.0
+      },
+      "exit_code": 1,
+      "exit_min": -1.0,
+      "zero_min": 1.0
+    },
+    {
+      "trace": "outputs/boptest_predictive_startup/bestest_air/confirmation_77_None.csv",
+      "sha256": "1b66262bec8e54eaca6b9d944ae39f3df1cf016a31fdfeb0f6cd87b85065029f",
+      "scored_hours": 24,
+      "warmup_hours": 24,
+      "wall_seconds": 29.540512182284147,
+      "initial_state": {
+        "T": 20.994190140466458,
+        "outdoor": -6.0,
+        "actuator_native": 298.67021257286797,
+        "heat_W": 1392.5341679653998,
+        "cool_W": 0.0,
+        "fan_W": 21.630897380357556
+      },
+      "initial_u": 0.48286473474528535,
+      "metrics": {
+        "n": 1440,
+        "mae_C": 0.029094406412474072,
+        "rmse_C": 0.0655814446219441,
+        "max_abs_error_C": 1.0062546314014753,
+        "within_0_5_pct": 99.58333333333333,
+        "requested_TV_u": 1.0621135802496653,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "heat_kWh": 17.563853147058317,
+        "cool_kWh": 4.995901489129433,
+        "fan_kWh": 0.5191415371285814
+      },
+      "first_30min_mae_C": 0.2370284547088564,
+      "after_30min_mae_C": 0.024670277725317002,
+      "day": 77,
+      "horizon_min": null,
+      "method": "auto_pi",
+      "reused": false,
+      "windows": {
+        "early": {
+          "n": 60,
+          "mae_C": 0.11888484317343757,
+          "rmse_C": 0.26991533839257603,
+          "max_abs_error_C": 1.0062546314014753,
+          "within_0_5_pct": 90.0,
+          "requested_TV_u": 0.08558669721524415,
+          "saturation_pct": 0.0,
+          "outside_20_30_n": 0,
+          "heat_kWh": 1.8057853338082752,
+          "cool_kWh": 0.0,
+          "fan_kWh": 0.021630897380357558
+        },
+        "late": {
+          "n": 1380,
+          "mae_C": 0.025190474379388702,
+          "rmse_C": 0.03633654956534994,
+          "max_abs_error_C": 0.23554489936520895,
+          "within_0_5_pct": 100.0,
+          "requested_TV_u": 0.9764724708608674,
+          "saturation_pct": 0.0,
+          "outside_20_30_n": 0,
+          "heat_kWh": 15.75806781325004,
+          "cool_kWh": 4.995901489129433,
+          "fan_kWh": 0.4975106397482238
+        },
+        "acquisition_onset_min": 15.0,
+        "acquisition_confirmation_min": 29.0
+      },
+      "exit_code": 1,
+      "exit_min": -1.0,
+      "zero_min": 1.0
+    },
+    {
+      "trace": "outputs/boptest_predictive_startup/bestest_air/confirmation_77_None.csv",
+      "sha256": "1b66262bec8e54eaca6b9d944ae39f3df1cf016a31fdfeb0f6cd87b85065029f",
+      "scored_hours": 24,
+      "warmup_hours": 24,
+      "wall_seconds": 29.540512182284147,
+      "initial_state": {
+        "T": 20.994190140466458,
+        "outdoor": -6.0,
+        "actuator_native": 298.67021257286797,
+        "heat_W": 1392.5341679653998,
+        "cool_W": 0.0,
+        "fan_W": 21.630897380357556
+      },
+      "initial_u": 0.48286473474528535,
+      "metrics": {
+        "n": 1440,
+        "mae_C": 0.029094406412474072,
+        "rmse_C": 0.0655814446219441,
+        "max_abs_error_C": 1.0062546314014753,
+        "within_0_5_pct": 99.58333333333333,
+        "requested_TV_u": 1.0621135802496653,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "heat_kWh": 17.563853147058317,
+        "cool_kWh": 4.995901489129433,
+        "fan_kWh": 0.5191415371285814
+      },
+      "first_30min_mae_C": 0.2370284547088564,
+      "after_30min_mae_C": 0.024670277725317002,
+      "day": 77,
+      "horizon_min": null,
+      "method": "selected_pi_reuse",
+      "reused": true,
+      "windows": {
+        "early": {
+          "n": 60,
+          "mae_C": 0.11888484317343757,
+          "rmse_C": 0.26991533839257603,
+          "max_abs_error_C": 1.0062546314014753,
+          "within_0_5_pct": 90.0,
+          "requested_TV_u": 0.08558669721524415,
+          "saturation_pct": 0.0,
+          "outside_20_30_n": 0,
+          "heat_kWh": 1.8057853338082752,
+          "cool_kWh": 0.0,
+          "fan_kWh": 0.021630897380357558
+        },
+        "late": {
+          "n": 1380,
+          "mae_C": 0.025190474379388702,
+          "rmse_C": 0.03633654956534994,
+          "max_abs_error_C": 0.23554489936520895,
+          "within_0_5_pct": 100.0,
+          "requested_TV_u": 0.9764724708608674,
+          "saturation_pct": 0.0,
+          "outside_20_30_n": 0,
+          "heat_kWh": 15.75806781325004,
+          "cool_kWh": 4.995901489129433,
+          "fan_kWh": 0.4975106397482238
+        },
+        "acquisition_onset_min": 15.0,
+        "acquisition_confirmation_min": 29.0
+      },
+      "exit_code": 1,
+      "exit_min": -1.0,
+      "zero_min": 1.0
+    }
+  ],
+  "failures": []
+}

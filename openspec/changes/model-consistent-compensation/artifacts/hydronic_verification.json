@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "sources_match": true,
+  "scope": "FIVE_DEVELOPMENT_PLANTS_NEW_DATES",
+  "plants": {
+    "hydronic": {
+      "model_status": {
+        "2": "FITTED",
+        "6": "FITTED"
+      },
+      "decisions": [
+        {
+          "budget_h": 2,
+          "pairs": [
+            {
+              "day": 25,
+              "mae_gain_C": -0.13542331699912857,
+              "nonregression": false,
+              "correction_nonzero_rows": 1436,
+              "max_abs_correction_u": 0.1
+            },
+            {
+              "day": 60,
+              "mae_gain_C": -0.07587451760000219,
+              "nonregression": false,
+              "correction_nonzero_rows": 1436,
+              "max_abs_correction_u": 0.1
+            }
+          ],
+          "gate": false
+        },
+        {
+          "budget_h": 6,
+          "pairs": [
+            {
+              "day": 25,
+              "mae_gain_C": -7.479422983874828e-06,
+              "nonregression": true,
+              "correction_nonzero_rows": 1438,
+              "max_abs_correction_u": 0.1
+            },
+            {
+              "day": 60,
+              "mae_gain_C": 0.005125038665833401,
+              "nonregression": true,
+              "correction_nonzero_rows": 1438,
+              "max_abs_correction_u": 0.1
+            }
+          ],
+          "gate": true
+        }
+      ],
+      "result_sha256": "7739d663de9316809cb231f6b543bf038ff51775b4729ad05829d8df043c43da"
+    }
+  },
+  "traces": 8,
+  "valid_budgets": 2,
+  "passed_budgets": 1,
+  "hypothesis": "NOT_SUPPORTED"
+}

@@ -1,0 +1,1404 @@
+{
+  "status": "PASS",
+  "plants": {
+    "air": {
+      "selection": {
+        "policy": null,
+        "decisions": [
+          {
+            "policy": "15_taper",
+            "passed": false,
+            "checks": {
+              "early_gain": false,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": false
+            }
+          },
+          {
+            "policy": "15_retain",
+            "passed": false,
+            "checks": {
+              "early_gain": true,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": false
+            }
+          },
+          {
+            "policy": "55_taper",
+            "passed": false,
+            "checks": {
+              "early_gain": false,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": false
+            }
+          },
+          {
+            "policy": "55_retain",
+            "passed": false,
+            "checks": {
+              "early_gain": false,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": false
+            }
+          }
+        ]
+      },
+      "confirmation": [
+        {
+          "day": 48,
+          "reused": true,
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          },
+          "early_gain_C": 0.0,
+          "late_gain_C": 0.0
+        },
+        {
+          "day": 83,
+          "reused": true,
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          },
+          "early_gain_C": 0.0,
+          "late_gain_C": 0.0
+        }
+      ],
+      "supported_both_dates": false,
+      "factorial_contrasts": [
+        {
+          "label": "handover_at15",
+          "a_index": 2,
+          "b_index": 1,
+          "a_policy": "15_retain",
+          "b_policy": "15_taper",
+          "a_minus_b": {
+            "early": {
+              "mae_C": -0.011019375908354806,
+              "rmse_C": -0.004070717434774579,
+              "max_abs_error_C": 0.0,
+              "requested_TV_u": -0.03206328037800943
+            },
+            "late": {
+              "mae_C": 2.0079760472906105e-05,
+              "rmse_C": 1.851027298477824e-05,
+              "max_abs_error_C": 4.791569722328859e-06,
+              "requested_TV_u": 5.9526489982641984e-05
+            }
+          },
+          "identical_pretrigger_minutes": 15,
+          "identical_entire_trajectory": false,
+          "a_acquisition_min": 18.0,
+          "b_acquisition_min": 22.0
+        },
+        {
+          "label": "handover_at55",
+          "a_index": 4,
+          "b_index": 3,
+          "a_policy": "55_retain",
+          "b_policy": "55_taper",
+          "a_minus_b": {
+            "early": {
+              "mae_C": -0.0004353146038454381,
+              "rmse_C": -2.642035331679171e-05,
+              "max_abs_error_C": 0.0,
+              "requested_TV_u": -0.0020926123724385737
+            },
+            "late": {
+              "mae_C": -0.0002325538427740536,
+              "rmse_C": -0.0002803644439453006,
+              "max_abs_error_C": -0.0031871475910634217,
+              "requested_TV_u": -0.0001971992467988959
+            }
+          },
+          "identical_pretrigger_minutes": 55,
+          "identical_entire_trajectory": false,
+          "a_acquisition_min": 20.0,
+          "b_acquisition_min": 20.0
+        },
+        {
+          "label": "duration_taper",
+          "a_index": 3,
+          "b_index": 1,
+          "a_policy": "55_taper",
+          "b_policy": "15_taper",
+          "a_minus_b": {
+            "early": {
+              "mae_C": -0.0005652317153457265,
+              "rmse_C": -0.0023366211738788667,
+              "max_abs_error_C": 0.0,
+              "requested_TV_u": -0.029925985624376372
+            },
+            "late": {
+              "mae_C": 0.00028318226056522205,
+              "rmse_C": 0.0003343399790240332,
+              "max_abs_error_C": 0.003186704122640549,
+              "requested_TV_u": 0.00022984786356011755
+            }
+          },
+          "identical_pretrigger_minutes": 15,
+          "identical_entire_trajectory": false,
+          "a_acquisition_min": 20.0,
+          "b_acquisition_min": 22.0
+        },
+        {
+          "label": "duration_retain",
+          "a_index": 4,
+          "b_index": 2,
+          "a_policy": "55_retain",
+          "b_policy": "15_retain",
+          "a_minus_b": {
+            "early": {
+              "mae_C": 0.010018829589163641,
+              "rmse_C": 0.0017076759075789205,
+              "max_abs_error_C": 0.0,
+              "requested_TV_u": 4.468238119448298e-05
+            },
+            "late": {
+              "mae_C": 3.0548657318262354e-05,
+              "rmse_C": 3.546526209395433e-05,
+              "max_abs_error_C": -5.235038145201543e-06,
+              "requested_TV_u": -2.6877873221420323e-05
+            }
+          },
+          "identical_pretrigger_minutes": 15,
+          "identical_entire_trajectory": false,
+          "a_acquisition_min": 20.0,
+          "b_acquisition_min": 18.0
+        }
+      ],
+      "withdrawal_snapshots": [
+        {
+          "day": 48,
+          "method": "auto_pi",
+          "minute": 55,
+          "trace": "outputs/boptest_handover/bestest_air/confirmation_48_None.csv",
+          "csv_data_row": 56,
+          "T": 21.998046375183492,
+          "u": 0.6553763405124873,
+          "integral": 0.15515126700658136,
+          "correction": 0.0
+        },
+        {
+          "day": 48,
+          "method": "auto_pi",
+          "minute": 60,
+          "trace": "outputs/boptest_handover/bestest_air/confirmation_48_None.csv",
+          "csv_data_row": 61,
+          "T": 21.997454699043203,
+          "u": 0.6557695150757418,
+          "integral": 0.15547627565479907,
+          "correction": 0.0
+        },
+        {
+          "day": 48,
+          "method": "auto_pi",
+          "minute": 120,
+          "trace": "outputs/boptest_handover/bestest_air/confirmation_48_None.csv",
+          "csv_data_row": 121,
+          "T": 21.99457388551525,
+          "u": 0.6640188774783413,
+          "integral": 0.16339374485297245,
+          "correction": 0.0
+        },
+        {
+          "day": 83,
+          "method": "auto_pi",
+          "minute": 55,
+          "trace": "outputs/boptest_handover/bestest_air/confirmation_83_None.csv",
+          "csv_data_row": 56,
+          "T": 21.99327525334934,
+          "u": 0.46920808625854427,
+          "integral": -0.031566659379515,
+          "correction": 0.0
+        },
+        {
+          "day": 83,
+          "method": "auto_pi",
+          "minute": 60,
+          "trace": "outputs/boptest_handover/bestest_air/confirmation_83_None.csv",
+          "csv_data_row": 61,
+          "T": 21.99294447127977,
+          "u": 0.47021824441974336,
+          "integral": -0.030594610009450875,
+          "correction": 0.0
+        },
+        {
+          "day": 83,
+          "method": "auto_pi",
+          "minute": 120,
+          "trace": "outputs/boptest_handover/bestest_air/confirmation_83_None.csv",
+          "csv_data_row": 121,
+          "T": 21.991197349719357,
+          "u": 0.4850360394884285,
+          "integral": -0.0159780975880393,
+          "correction": 0.0
+        }
+      ]
+    },
+    "hydronic": {
+      "selection": {
+        "policy": "15_retain",
+        "decisions": [
+          {
+            "policy": "15_taper",
+            "passed": true,
+            "checks": {
+              "early_gain": true,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": true
+            }
+          },
+          {
+            "policy": "15_retain",
+            "passed": true,
+            "checks": {
+              "early_gain": true,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": true
+            }
+          },
+          {
+            "policy": "55_taper",
+            "passed": true,
+            "checks": {
+              "early_gain": true,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": true
+            }
+          },
+          {
+            "policy": "55_retain",
+            "passed": true,
+            "checks": {
+              "early_gain": true,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": true
+            }
+          }
+        ]
+      },
+      "confirmation": [
+        {
+          "day": 48,
+          "reused": false,
+          "passed": true,
+          "checks": {
+            "early_gain": true,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          },
+          "early_gain_C": 0.21472749162320404,
+          "late_gain_C": 0.05531067918543525
+        },
+        {
+          "day": 83,
+          "reused": false,
+          "passed": true,
+          "checks": {
+            "early_gain": true,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          },
+          "early_gain_C": 0.2156817589147333,
+          "late_gain_C": 0.04104394780407061
+        }
+      ],
+      "supported_both_dates": true,
+      "factorial_contrasts": [
+        {
+          "label": "handover_at15",
+          "a_index": 2,
+          "b_index": 1,
+          "a_policy": "15_retain",
+          "b_policy": "15_taper",
+          "a_minus_b": {
+            "early": {
+              "mae_C": -0.1454938959555221,
+              "rmse_C": -0.13762569032369232,
+              "max_abs_error_C": 0.0,
+              "requested_TV_u": -0.08118559647248119
+            },
+            "late": {
+              "mae_C": -0.25203584719459726,
+              "rmse_C": -0.251447182496567,
+              "max_abs_error_C": -0.26539966026712136,
+              "requested_TV_u": -0.01625439303393017
+            }
+          },
+          "identical_pretrigger_minutes": 15,
+          "identical_entire_trajectory": false,
+          "a_acquisition_min": null,
+          "b_acquisition_min": null
+        },
+        {
+          "label": "handover_at55",
+          "a_index": 4,
+          "b_index": 3,
+          "a_policy": "55_retain",
+          "b_policy": "55_taper",
+          "a_minus_b": {
+            "early": {
+              "mae_C": -0.0010825710440685032,
+              "rmse_C": -0.0009362816474289826,
+              "max_abs_error_C": 0.0,
+              "requested_TV_u": -0.046738234524329514
+            },
+            "late": {
+              "mae_C": -0.19978543749766442,
+              "rmse_C": -0.19717352541869837,
+              "max_abs_error_C": -0.1557564411483554,
+              "requested_TV_u": -0.02750752911957588
+            }
+          },
+          "identical_pretrigger_minutes": 55,
+          "identical_entire_trajectory": false,
+          "a_acquisition_min": null,
+          "b_acquisition_min": null
+        },
+        {
+          "label": "duration_taper",
+          "a_index": 3,
+          "b_index": 1,
+          "a_policy": "55_taper",
+          "b_policy": "15_taper",
+          "a_minus_b": {
+            "early": {
+              "mae_C": -0.1259948185124964,
+              "rmse_C": -0.12050217800087548,
+              "max_abs_error_C": 0.0,
+              "requested_TV_u": -0.030340752894684297
+            },
+            "late": {
+              "mae_C": -0.004185851685193143,
+              "rmse_C": -0.006545202814991935,
+              "max_abs_error_C": -0.06385842913977058,
+              "requested_TV_u": 0.014808286625295874
+            }
+          },
+          "identical_pretrigger_minutes": 15,
+          "identical_entire_trajectory": false,
+          "a_acquisition_min": null,
+          "b_acquisition_min": null
+        },
+        {
+          "label": "duration_retain",
+          "a_index": 4,
+          "b_index": 2,
+          "a_policy": "55_retain",
+          "b_policy": "15_retain",
+          "a_minus_b": {
+            "early": {
+              "mae_C": 0.0184165063989572,
+              "rmse_C": 0.016187230675387854,
+              "max_abs_error_C": 0.0,
+              "requested_TV_u": 0.0041066090534673805
+            },
+            "late": {
+              "mae_C": 0.0480645580117397,
+              "rmse_C": 0.047728454262876696,
+              "max_abs_error_C": 0.04578478997899538,
+              "requested_TV_u": 0.003555150539650165
+            }
+          },
+          "identical_pretrigger_minutes": 15,
+          "identical_entire_trajectory": false,
+          "a_acquisition_min": null,
+          "b_acquisition_min": null
+        }
+      ],
+      "withdrawal_snapshots": [
+        {
+          "day": 48,
+          "method": "auto_pi",
+          "minute": 55,
+          "trace": "outputs/boptest_handover/bestest_hydronic/confirmation_48_None.csv",
+          "csv_data_row": 56,
+          "T": 21.086648302904223,
+          "u": 0.3840267214419243,
+          "integral": -0.18227147369719385,
+          "correction": 0.0
+        },
+        {
+          "day": 48,
+          "method": "auto_pi",
+          "minute": 60,
+          "trace": "outputs/boptest_handover/bestest_hydronic/confirmation_48_None.csv",
+          "csv_data_row": 61,
+          "T": 21.096756805986956,
+          "u": 0.38619606633895287,
+          "integral": -0.1793683747467438,
+          "correction": 0.0
+        },
+        {
+          "day": 48,
+          "method": "auto_pi",
+          "minute": 120,
+          "trace": "outputs/boptest_handover/bestest_hydronic/confirmation_48_None.csv",
+          "csv_data_row": 121,
+          "T": 21.25232198457229,
+          "u": 0.4067476042780954,
+          "integral": -0.1475247019164119,
+          "correction": 0.0
+        },
+        {
+          "day": 48,
+          "method": "startup",
+          "minute": 55,
+          "trace": "outputs/boptest_handover/bestest_hydronic/confirmation_48_15_retain.csv",
+          "csv_data_row": 56,
+          "T": 21.3553143314482,
+          "u": 0.4161031130074374,
+          "integral": -0.13069320476691737,
+          "correction": 0.0
+        },
+        {
+          "day": 48,
+          "method": "startup",
+          "minute": 60,
+          "trace": "outputs/boptest_handover/bestest_hydronic/confirmation_48_15_retain.csv",
+          "csv_data_row": 61,
+          "T": 21.365561043878074,
+          "u": 0.4174023774294598,
+          "integral": -0.12865015397829554,
+          "correction": 0.0
+        },
+        {
+          "day": 48,
+          "method": "startup",
+          "minute": 120,
+          "trace": "outputs/boptest_handover/bestest_hydronic/confirmation_48_15_retain.csv",
+          "csv_data_row": 121,
+          "T": 21.500857293934473,
+          "u": 0.4294165146191329,
+          "integral": -0.10681515893468506,
+          "correction": 0.0
+        },
+        {
+          "day": 83,
+          "method": "auto_pi",
+          "minute": 55,
+          "trace": "outputs/boptest_handover/bestest_hydronic/confirmation_83_None.csv",
+          "csv_data_row": 56,
+          "T": 21.08292797055617,
+          "u": 0.37170707869058683,
+          "integral": -0.19486116720858127,
+          "correction": 0.0
+        },
+        {
+          "day": 83,
+          "method": "auto_pi",
+          "minute": 60,
+          "trace": "outputs/boptest_handover/bestest_hydronic/confirmation_83_None.csv",
+          "csv_data_row": 61,
+          "T": 21.093352703818027,
+          "u": 0.37386469913863274,
+          "integral": -0.1919468382524486,
+          "correction": 0.0
+        },
+        {
+          "day": 83,
+          "method": "auto_pi",
+          "minute": 120,
+          "trace": "outputs/boptest_handover/bestest_hydronic/confirmation_83_None.csv",
+          "csv_data_row": 121,
+          "T": 21.213816426452922,
+          "u": 0.39754526079225555,
+          "integral": -0.1595220793571412,
+          "correction": 0.0
+        },
+        {
+          "day": 83,
+          "method": "startup",
+          "minute": 55,
+          "trace": "outputs/boptest_handover/bestest_hydronic/confirmation_83_15_retain.csv",
+          "csv_data_row": 56,
+          "T": 21.353108350714024,
+          "u": 0.4039791941236617,
+          "integral": -0.14297725095067237,
+          "correction": 0.0
+        },
+        {
+          "day": 83,
+          "method": "startup",
+          "minute": 60,
+          "trace": "outputs/boptest_handover/bestest_hydronic/confirmation_83_15_retain.csv",
+          "csv_data_row": 61,
+          "T": 21.363687246042787,
+          "u": 0.4052606989879588,
+          "integral": -0.14092784729219468,
+          "correction": 0.0
+        },
+        {
+          "day": 83,
+          "method": "startup",
+          "minute": 120,
+          "trace": "outputs/boptest_handover/bestest_hydronic/confirmation_83_15_retain.csv",
+          "csv_data_row": 121,
+          "T": 21.463119315200288,
+          "u": 0.420410205732311,
+          "integral": -0.1185607848734492,
+          "correction": 0.0
+        }
+      ]
+    },
+    "heat_pump": {
+      "selection": {
+        "policy": null,
+        "decisions": [
+          {
+            "policy": "15_taper",
+            "passed": false,
+            "checks": {
+              "early_gain": false,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": true
+            }
+          },
+          {
+            "policy": "15_retain",
+            "passed": false,
+            "checks": {
+              "early_gain": false,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": true
+            }
+          },
+          {
+            "policy": "55_taper",
+            "passed": false,
+            "checks": {
+              "early_gain": false,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": true
+            }
+          },
+          {
+            "policy": "55_retain",
+            "passed": false,
+            "checks": {
+              "early_gain": false,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": true
+            }
+          }
+        ]
+      },
+      "confirmation": [
+        {
+          "day": 48,
+          "reused": true,
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          },
+          "early_gain_C": 0.0,
+          "late_gain_C": 0.0
+        },
+        {
+          "day": 83,
+          "reused": true,
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          },
+          "early_gain_C": 0.0,
+          "late_gain_C": 0.0
+        }
+      ],
+      "supported_both_dates": false,
+      "factorial_contrasts": [
+        {
+          "label": "handover_at15",
+          "a_index": 2,
+          "b_index": 1,
+          "a_policy": "15_retain",
+          "b_policy": "15_taper",
+          "a_minus_b": {
+            "early": {
+              "mae_C": -0.0004828951156943262,
+              "rmse_C": -0.00047099763289626395,
+              "max_abs_error_C": 0.0,
+              "requested_TV_u": -0.12180746031883771
+            },
+            "late": {
+              "mae_C": 0.001464783158059868,
+              "rmse_C": 0.001440812686104298,
+              "max_abs_error_C": -0.0006216863209260737,
+              "requested_TV_u": 0.033512986004540224
+            }
+          },
+          "identical_pretrigger_minutes": 15,
+          "identical_entire_trajectory": false,
+          "a_acquisition_min": null,
+          "b_acquisition_min": null
+        },
+        {
+          "label": "handover_at55",
+          "a_index": 4,
+          "b_index": 3,
+          "a_policy": "55_retain",
+          "b_policy": "55_taper",
+          "a_minus_b": {
+            "early": {
+              "mae_C": 1.3923272120797137e-06,
+              "rmse_C": 1.2795928912012755e-06,
+              "max_abs_error_C": 0.0,
+              "requested_TV_u": -0.023979342824915317
+            },
+            "late": {
+              "mae_C": 0.0023907770434182796,
+              "rmse_C": 0.0022051413792560925,
+              "max_abs_error_C": 9.79435093313441e-05,
+              "requested_TV_u": 0.02114467987691171
+            }
+          },
+          "identical_pretrigger_minutes": 55,
+          "identical_entire_trajectory": false,
+          "a_acquisition_min": null,
+          "b_acquisition_min": null
+        },
+        {
+          "label": "duration_taper",
+          "a_index": 3,
+          "b_index": 1,
+          "a_policy": "55_taper",
+          "b_policy": "15_taper",
+          "a_minus_b": {
+            "early": {
+              "mae_C": -0.0035787344515522124,
+              "rmse_C": -0.0034179828281156732,
+              "max_abs_error_C": 0.0,
+              "requested_TV_u": -0.8837285913958888
+            },
+            "late": {
+              "mae_C": -0.025227519401301968,
+              "rmse_C": -0.024456035315723268,
+              "max_abs_error_C": -0.014430646417508797,
+              "requested_TV_u": 0.028859929413666663
+            }
+          },
+          "identical_pretrigger_minutes": 15,
+          "identical_entire_trajectory": false,
+          "a_acquisition_min": null,
+          "b_acquisition_min": null
+        },
+        {
+          "label": "duration_retain",
+          "a_index": 4,
+          "b_index": 2,
+          "a_policy": "55_retain",
+          "b_policy": "15_retain",
+          "a_minus_b": {
+            "early": {
+              "mae_C": -0.0030944470086458065,
+              "rmse_C": -0.002945705602328208,
+              "max_abs_error_C": 0.0,
+              "requested_TV_u": -0.7859004739019664
+            },
+            "late": {
+              "mae_C": -0.024301525515943556,
+              "rmse_C": -0.023691706622571473,
+              "max_abs_error_C": -0.013711016587251379,
+              "requested_TV_u": 0.01649162328603815
+            }
+          },
+          "identical_pretrigger_minutes": 15,
+          "identical_entire_trajectory": false,
+          "a_acquisition_min": null,
+          "b_acquisition_min": null
+        }
+      ],
+      "withdrawal_snapshots": [
+        {
+          "day": 48,
+          "method": "auto_pi",
+          "minute": 55,
+          "trace": "outputs/boptest_handover/bestest_hydronic_heat_pump/confirmation_48_None.csv",
+          "csv_data_row": 56,
+          "T": 21.21634316636039,
+          "u": 0.9521089806125076,
+          "integral": -13.952385083737468,
+          "correction": 0.0
+        },
+        {
+          "day": 48,
+          "method": "auto_pi",
+          "minute": 60,
+          "trace": "outputs/boptest_handover/bestest_hydronic_heat_pump/confirmation_48_None.csv",
+          "csv_data_row": 61,
+          "T": 21.242073293649355,
+          "u": 0.8289335639626145,
+          "integral": -13.602611819409828,
+          "correction": 0.0
+        },
+        {
+          "day": 48,
+          "method": "auto_pi",
+          "minute": 120,
+          "trace": "outputs/boptest_handover/bestest_hydronic_heat_pump/confirmation_48_None.csv",
+          "csv_data_row": 121,
+          "T": 21.58559562838002,
+          "u": 0.8774980428567956,
+          "integral": -7.23972043211901,
+          "correction": 0.0
+        },
+        {
+          "day": 83,
+          "method": "auto_pi",
+          "minute": 55,
+          "trace": "outputs/boptest_handover/bestest_hydronic_heat_pump/confirmation_83_None.csv",
+          "csv_data_row": 56,
+          "T": 21.154789185264804,
+          "u": 0.9718838500990401,
+          "integral": -15.064041623086482,
+          "correction": 0.0
+        },
+        {
+          "day": 83,
+          "method": "auto_pi",
+          "minute": 60,
+          "trace": "outputs/boptest_handover/bestest_hydronic_heat_pump/confirmation_83_None.csv",
+          "csv_data_row": 61,
+          "T": 21.18370938432895,
+          "u": 0.8172325243789373,
+          "integral": -14.687107160388784,
+          "correction": 0.0
+        },
+        {
+          "day": 83,
+          "method": "auto_pi",
+          "minute": 120,
+          "trace": "outputs/boptest_handover/bestest_hydronic_heat_pump/confirmation_83_None.csv",
+          "csv_data_row": 121,
+          "T": 21.552318765937116,
+          "u": 0.8909268252674067,
+          "integral": -7.837957811429684,
+          "correction": 0.0
+        }
+      ]
+    },
+    "apartment": {
+      "selection": {
+        "policy": null,
+        "decisions": [
+          {
+            "policy": "15_taper",
+            "passed": false,
+            "checks": {
+              "early_gain": false,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": true
+            }
+          },
+          {
+            "policy": "15_retain",
+            "passed": false,
+            "checks": {
+              "early_gain": false,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": true
+            }
+          },
+          {
+            "policy": "55_taper",
+            "passed": false,
+            "checks": {
+              "early_gain": false,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": true
+            }
+          },
+          {
+            "policy": "55_retain",
+            "passed": false,
+            "checks": {
+              "early_gain": false,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": true
+            }
+          }
+        ]
+      },
+      "confirmation": [
+        {
+          "day": 48,
+          "reused": true,
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          },
+          "early_gain_C": 0.0,
+          "late_gain_C": 0.0
+        },
+        {
+          "day": 83,
+          "reused": true,
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          },
+          "early_gain_C": 0.0,
+          "late_gain_C": 0.0
+        }
+      ],
+      "supported_both_dates": false,
+      "factorial_contrasts": [
+        {
+          "label": "handover_at15",
+          "a_index": 2,
+          "b_index": 1,
+          "a_policy": "15_retain",
+          "b_policy": "15_taper",
+          "a_minus_b": {
+            "early": {
+              "mae_C": 3.800260055686344e-05,
+              "rmse_C": 3.770836386385312e-05,
+              "max_abs_error_C": 0.0,
+              "requested_TV_u": -0.04894324754601165
+            },
+            "late": {
+              "mae_C": 0.006670204818690628,
+              "rmse_C": 0.006016086516682062,
+              "max_abs_error_C": 2.6158489220051706e-05,
+              "requested_TV_u": -0.12441444745792118
+            }
+          },
+          "identical_pretrigger_minutes": 15,
+          "identical_entire_trajectory": false,
+          "a_acquisition_min": null,
+          "b_acquisition_min": null
+        },
+        {
+          "label": "handover_at55",
+          "a_index": 4,
+          "b_index": 3,
+          "a_policy": "55_retain",
+          "b_policy": "55_taper",
+          "a_minus_b": {
+            "early": {
+              "mae_C": -9.559847751194894e-07,
+              "rmse_C": -8.702902987156591e-07,
+              "max_abs_error_C": 0.0,
+              "requested_TV_u": -0.036448677716022004
+            },
+            "late": {
+              "mae_C": -0.01168735130054821,
+              "rmse_C": -0.010341233330279698,
+              "max_abs_error_C": -1.2962354787759978e-05,
+              "requested_TV_u": 0.16371059491153162
+            }
+          },
+          "identical_pretrigger_minutes": 55,
+          "identical_entire_trajectory": false,
+          "a_acquisition_min": null,
+          "b_acquisition_min": null
+        },
+        {
+          "label": "duration_taper",
+          "a_index": 3,
+          "b_index": 1,
+          "a_policy": "55_taper",
+          "b_policy": "15_taper",
+          "a_minus_b": {
+            "early": {
+              "mae_C": 0.00024217727301834024,
+              "rmse_C": 0.0002348012990183168,
+              "max_abs_error_C": 0.0,
+              "requested_TV_u": -0.7599123725933996
+            },
+            "late": {
+              "mae_C": -0.00027226907487487573,
+              "rmse_C": -0.00022079853352274803,
+              "max_abs_error_C": 0.0003787521771982938,
+              "requested_TV_u": 0.01614899878336118
+            }
+          },
+          "identical_pretrigger_minutes": 15,
+          "identical_entire_trajectory": false,
+          "a_acquisition_min": null,
+          "b_acquisition_min": null
+        },
+        {
+          "label": "duration_retain",
+          "a_index": 4,
+          "b_index": 2,
+          "a_policy": "55_retain",
+          "b_policy": "15_retain",
+          "a_minus_b": {
+            "early": {
+              "mae_C": 0.0002032186876863573,
+              "rmse_C": 0.00019622264485574803,
+              "max_abs_error_C": 0.0,
+              "requested_TV_u": -0.74741780276341
+            },
+            "late": {
+              "mae_C": -0.018629825194113714,
+              "rmse_C": -0.016578118380484508,
+              "max_abs_error_C": 0.0003396313331904821,
+              "requested_TV_u": 0.304274041152814
+            }
+          },
+          "identical_pretrigger_minutes": 15,
+          "identical_entire_trajectory": false,
+          "a_acquisition_min": null,
+          "b_acquisition_min": null
+        }
+      ],
+      "withdrawal_snapshots": [
+        {
+          "day": 48,
+          "method": "auto_pi",
+          "minute": 55,
+          "trace": "outputs/boptest_handover/twozone_apartment_hydronic/confirmation_48_None.csv",
+          "csv_data_row": 56,
+          "T": 23.43641437740257,
+          "u": 0.062435602482317165,
+          "integral": 13.797900372668613,
+          "correction": 0.0
+        },
+        {
+          "day": 48,
+          "method": "auto_pi",
+          "minute": 60,
+          "trace": "outputs/boptest_handover/twozone_apartment_hydronic/confirmation_48_None.csv",
+          "csv_data_row": 61,
+          "T": 23.401492758446864,
+          "u": 0.10889888975911077,
+          "integral": 13.498275870667793,
+          "correction": 0.0
+        },
+        {
+          "day": 48,
+          "method": "auto_pi",
+          "minute": 120,
+          "trace": "outputs/boptest_handover/twozone_apartment_hydronic/confirmation_48_None.csv",
+          "csv_data_row": 121,
+          "T": 22.999227098274105,
+          "u": 1.0,
+          "integral": 10.518817250088162,
+          "correction": 0.0
+        },
+        {
+          "day": 83,
+          "method": "auto_pi",
+          "minute": 55,
+          "trace": "outputs/boptest_handover/twozone_apartment_hydronic/confirmation_83_None.csv",
+          "csv_data_row": 56,
+          "T": 23.257510090318192,
+          "u": 0.03877983292007414,
+          "integral": 12.001228601532889,
+          "correction": 0.0
+        },
+        {
+          "day": 83,
+          "method": "auto_pi",
+          "minute": 60,
+          "trace": "outputs/boptest_handover/twozone_apartment_hydronic/confirmation_83_None.csv",
+          "csv_data_row": 61,
+          "T": 23.229607693002094,
+          "u": 0.05265831751610506,
+          "integral": 11.738582706920672,
+          "correction": 0.0
+        },
+        {
+          "day": 83,
+          "method": "auto_pi",
+          "minute": 120,
+          "trace": "outputs/boptest_handover/twozone_apartment_hydronic/confirmation_83_None.csv",
+          "csv_data_row": 121,
+          "T": 22.85922648255314,
+          "u": 1.0,
+          "integral": 9.090312200414427,
+          "correction": 0.0
+        }
+      ]
+    },
+    "commercial": {
+      "selection": {
+        "policy": null,
+        "decisions": [
+          {
+            "policy": "15_taper",
+            "passed": false,
+            "checks": {
+              "early_gain": false,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": true
+            }
+          },
+          {
+            "policy": "15_retain",
+            "passed": false,
+            "checks": {
+              "early_gain": false,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": true
+            }
+          },
+          {
+            "policy": "55_taper",
+            "passed": false,
+            "checks": {
+              "early_gain": false,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": true
+            }
+          },
+          {
+            "policy": "55_retain",
+            "passed": false,
+            "checks": {
+              "early_gain": false,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": true
+            }
+          }
+        ]
+      },
+      "confirmation": [
+        {
+          "day": 48,
+          "reused": true,
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          },
+          "early_gain_C": 0.0,
+          "late_gain_C": 0.0
+        },
+        {
+          "day": 83,
+          "reused": true,
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          },
+          "early_gain_C": 0.0,
+          "late_gain_C": 0.0
+        }
+      ],
+      "supported_both_dates": false,
+      "factorial_contrasts": [
+        {
+          "label": "handover_at15",
+          "a_index": 2,
+          "b_index": 1,
+          "a_policy": "15_retain",
+          "b_policy": "15_taper",
+          "a_minus_b": {
+            "early": {
+              "mae_C": -0.00012443745983337084,
+              "rmse_C": -9.292608875544062e-05,
+              "max_abs_error_C": 0.0,
+              "requested_TV_u": -0.04477725133684474
+            },
+            "late": {
+              "mae_C": -9.791174244924705e-05,
+              "rmse_C": -0.00012135652736031122,
+              "max_abs_error_C": -0.00025329081319114266,
+              "requested_TV_u": 0.0009530555336580981
+            }
+          },
+          "identical_pretrigger_minutes": 15,
+          "identical_entire_trajectory": false,
+          "a_acquisition_min": 138.0,
+          "b_acquisition_min": 138.0
+        },
+        {
+          "label": "handover_at55",
+          "a_index": 4,
+          "b_index": 3,
+          "a_policy": "55_retain",
+          "b_policy": "55_taper",
+          "a_minus_b": {
+            "early": {
+              "mae_C": -3.9433339815708734e-08,
+              "rmse_C": -2.278321276083517e-08,
+              "max_abs_error_C": 0.0,
+              "requested_TV_u": -0.02991787583743133
+            },
+            "late": {
+              "mae_C": -6.824041506567347e-05,
+              "rmse_C": -7.614964339647257e-05,
+              "max_abs_error_C": -1.062557424802435e-05,
+              "requested_TV_u": -0.04444191938541642
+            }
+          },
+          "identical_pretrigger_minutes": 55,
+          "identical_entire_trajectory": false,
+          "a_acquisition_min": 138.0,
+          "b_acquisition_min": 138.0
+        },
+        {
+          "label": "duration_taper",
+          "a_index": 3,
+          "b_index": 1,
+          "a_policy": "55_taper",
+          "b_policy": "15_taper",
+          "a_minus_b": {
+            "early": {
+              "mae_C": -0.00047396316285153173,
+              "rmse_C": -0.0003476793866765693,
+              "max_abs_error_C": 0.0,
+              "requested_TV_u": -0.7808725941202312
+            },
+            "late": {
+              "mae_C": -0.0005913179126906531,
+              "rmse_C": -0.0006548361359101362,
+              "max_abs_error_C": -0.00118343366125373,
+              "requested_TV_u": -0.000770155653950888
+            }
+          },
+          "identical_pretrigger_minutes": 15,
+          "identical_entire_trajectory": false,
+          "a_acquisition_min": 138.0,
+          "b_acquisition_min": 138.0
+        },
+        {
+          "label": "duration_retain",
+          "a_index": 4,
+          "b_index": 2,
+          "a_policy": "55_retain",
+          "b_policy": "15_retain",
+          "a_minus_b": {
+            "early": {
+              "mae_C": -0.0003495651363579766,
+              "rmse_C": -0.0002547760811338895,
+              "max_abs_error_C": 0.0,
+              "requested_TV_u": -0.7660132186208178
+            },
+            "late": {
+              "mae_C": -0.0005616465853070796,
+              "rmse_C": -0.0006096292519462976,
+              "max_abs_error_C": -0.0009407684223106116,
+              "requested_TV_u": -0.046165130573025404
+            }
+          },
+          "identical_pretrigger_minutes": 15,
+          "identical_entire_trajectory": false,
+          "a_acquisition_min": 138.0,
+          "b_acquisition_min": 138.0
+        }
+      ],
+      "withdrawal_snapshots": [
+        {
+          "day": 48,
+          "method": "auto_pi",
+          "minute": 55,
+          "trace": "outputs/boptest_handover/singlezone_commercial_hydronic/confirmation_48_None.csv",
+          "csv_data_row": 56,
+          "T": 21.57742383175139,
+          "u": 0.9911660261948713,
+          "integral": -0.08171921951088192,
+          "correction": 0.0
+        },
+        {
+          "day": 48,
+          "method": "auto_pi",
+          "minute": 60,
+          "trace": "outputs/boptest_handover/singlezone_commercial_hydronic/confirmation_48_None.csv",
+          "csv_data_row": 61,
+          "T": 21.61554920826518,
+          "u": 0.9956887956870549,
+          "integral": -0.025509991262043907,
+          "correction": 0.0
+        },
+        {
+          "day": 48,
+          "method": "auto_pi",
+          "minute": 120,
+          "trace": "outputs/boptest_handover/singlezone_commercial_hydronic/confirmation_48_None.csv",
+          "csv_data_row": 121,
+          "T": 21.8970909693424,
+          "u": 0.9985316033633624,
+          "integral": 0.3590181387068908,
+          "correction": 0.0
+        },
+        {
+          "day": 83,
+          "method": "auto_pi",
+          "minute": 55,
+          "trace": "outputs/boptest_handover/singlezone_commercial_hydronic/confirmation_83_None.csv",
+          "csv_data_row": 56,
+          "T": 21.665048039260626,
+          "u": 0.9805842640425745,
+          "integral": 0.02649089402813532,
+          "correction": 0.0
+        },
+        {
+          "day": 83,
+          "method": "auto_pi",
+          "minute": 60,
+          "trace": "outputs/boptest_handover/singlezone_commercial_hydronic/confirmation_83_None.csv",
+          "csv_data_row": 61,
+          "T": 21.71000406014406,
+          "u": 0.9858150807826805,
+          "integral": 0.09266845363947283,
+          "correction": 0.0
+        },
+        {
+          "day": 83,
+          "method": "auto_pi",
+          "minute": 120,
+          "trace": "outputs/boptest_handover/singlezone_commercial_hydronic/confirmation_83_None.csv",
+          "csv_data_row": 121,
+          "T": 22.041061393447762,
+          "u": 0.8543621930836072,
+          "integral": 0.41002900120446306,
+          "correction": 0.0
+        }
+      ]
+    }
+  },
+  "unique_episodes": 32,
+  "reused_records": 13,
+  "scored_hours": 348,
+  "warmup_hours": 768,
+  "wall_seconds": 1482.4893893650733,
+  "sources": {
+    "scripts/run_boptest_handover.py": "8e32c7c4755498885ed4f9f1f8a1eaf6c818c0a23626fbfca42f4a9b60535c26",
+    "scripts/boptest_startup_devices.json": "4678761e580d725aa08d5ffd999c2e47da6cdd9e04d82ee135b205209098762a",
+    "openspec/changes/startup-handover-ablation/protocol.md": "b559aa932851a612e84d74e4b031ef9ab14a09348468ce7c12db77eb04aab52c",
+    "scripts/boptest_handover_adapter.py": "b1cc3fd33dc532e16b8ef3e3b013aa483b18da1f03fde5524b8783b241a8bd95",
+    "scripts/select_boptest_handover.py": "7af1c021dc64a14a3bc226162c80bc646b1ff73e7fd0bd756125eeca2d29c2ed",
+    "scripts/run_boptest_cross_plant.py": "3ad0154d942737e43f9263c1cd9bcc9ebbff2292cc319c24800f73169d9f5990",
+    "digital_twin/control/handover_pi.py": "4123cada6ddd80f0b35865ae2c5e4b0324552b47861aa76da639084c31a379e1",
+    "digital_twin/control/startup_pi.py": "d0338202ac80ce906766fba2bc09ebb550075d3883155f60639dfc92a60bbadc",
+    "digital_twin/control/portable_pi.py": "2ce85a77f1d16e1dbb8fbcd847ebe722233790a9658cc3946a9cac9ed895ac30",
+    "digital_twin/control/delayed_dynamics.py": "8098ec6b1d80c1459e2201fedc6bf92bcf3307181caf18563ef34e430a2215e2",
+    "openspec/changes/model-consistent-compensation/artifacts/air.json": "184dc88cc432391b2a13600d72e698f72a58131b8c5897371d113e5823e4ce1f",
+    "outputs/boptest_cross_plant/bestest_air/identification.csv": "bf65320193556abc8b690921bf839262954230b9d5f90aaf93400bd32cd0d87f",
+    "outputs/vendor/boptest-v0.9.0/testcases/bestest_air/models/wrapped.fmu": "158008fa3b635280a67dfed8bab5804d1f9a96d218b467dfebab77e5cbf8b86a",
+    "openspec/changes/startup-pi-boundary/artifacts/air_development.json": "77e4074d74a4d972f2d10964fdce0452a3266591b101d9dce80bc3d6f00d0daa",
+    "outputs/boptest_startup/bestest_air/development_8_None.csv": "b28a488d164d730adf5dd51bf7eaa73b586c2c2c0710fafe5e4503f1253aa0b4",
+    "openspec/changes/model-consistent-compensation/artifacts/hydronic.json": "7739d663de9316809cb231f6b543bf038ff51775b4729ad05829d8df043c43da",
+    "outputs/boptest_cross_plant/bestest_hydronic/identification.csv": "d68b7f3ea41493243c7902e4d2c61050c7e02e50dde2c443a4fb3e40d6dc22ef",
+    "outputs/vendor/boptest-v0.9.0/testcases/bestest_hydronic/models/wrapped.fmu": "365b3085d97cc4620c06b6036156126a056d7f160fcc4f181d6b2fac4b05743b",
+    "openspec/changes/startup-pi-boundary/artifacts/hydronic_development.json": "1b20e07caf0bd0d30a4c6d976a22686b87830a4b1155463d4e2c354c43e63345",
+    "outputs/boptest_startup/bestest_hydronic/development_8_None.csv": "16fe6841b9916209efd802f2e8fc9101c3ed1c52d05d062338de6097f06fb3cc",
+    "openspec/changes/model-consistent-compensation/artifacts/heat_pump.json": "a34b0a779c851ea52eb56878bcf69ce0fcec7a977f4d886c6b73415c354b4c3e",
+    "outputs/boptest_more_devices/bestest_hydronic_heat_pump/identification.csv": "4b6b24afb8971366157b0c1b7a9f19a0481a84c1fe9cfc8276183b9c12fcef58",
+    "outputs/vendor/boptest-v0.9.0/testcases/bestest_hydronic_heat_pump/models/wrapped.fmu": "674b9500c1c89fdbec64f2c053af8ddcd06afebe63bd7c1b7fc708692a11863e",
+    "openspec/changes/startup-pi-boundary/artifacts/heat_pump_development.json": "920cbb28d031e3aa3d299fd9da5c6feabe7cc7a0828aaf1af8921e52c8e23a43",
+    "outputs/boptest_startup/bestest_hydronic_heat_pump/development_8_None.csv": "c737bf0dc00846255ab7cae627bff34bc28038eeac17669488a4d0fbe4e10a8d",
+    "openspec/changes/model-consistent-compensation/artifacts/apartment.json": "65ff336524a875e8d5b9b5c5511f731f5d38266047b86123efc9cc35e3bc7dd9",
+    "outputs/boptest_more_devices/twozone_apartment_hydronic/identification.csv": "8a2b8190ade78aec0fb800ebca130a30ff78a374db400cb3983ba94b7e4def41",
+    "outputs/vendor/boptest-v0.9.0/testcases/twozone_apartment_hydronic/models/wrapped.fmu": "88916efe9fbd0543d78c323eb8221692cb4b2411ffa1b84c2dbc9e23a2d19d72",
+    "openspec/changes/startup-pi-boundary/artifacts/apartment_development.json": "1ddf1b9ec4c9a812cad823b878e7af0776d1e08926dc18929ecc271ce0b85300",
+    "outputs/boptest_startup/twozone_apartment_hydronic/development_8_None.csv": "d93c34f2d09d3b8f8952e4d7d648a737b8c06b3040c60b51841aa12689e77c5b",
+    "openspec/changes/model-consistent-compensation/artifacts/commercial.json": "c64f90642e3ed4c9e10f0200416fc215f2da964c73cbe9e7a2471fb2f7cf16c2",
+    "outputs/boptest_more_devices/singlezone_commercial_hydronic/identification.csv": "45e5317667aca94c4a1d53d0d0c2bdad971dda371db11dd2155533a028fcd8ab",
+    "outputs/vendor/boptest-v0.9.0/testcases/singlezone_commercial_hydronic/models/wrapped.fmu": "5de84fd8ade869dcaa2748e552aca6e2650f4c33aadcb3e4fe0737c05395ee51",
+    "openspec/changes/startup-pi-boundary/artifacts/commercial_development.json": "dab3e01f657baf73109bae84d3f66bbc48e6933b20892fafa5eb5534f23151f0",
+    "outputs/boptest_startup/singlezone_commercial_hydronic/development_8_None.csv": "3dd47c17aa348fe9778591cafee48f1002941a7f50b992525570892f34430560"
+  },
+  "aggregate_simulated_hours": 1116
+}

@@ -87,6 +87,17 @@ def predict_baseline(row: dict[str, float], model: dict) -> float:
     return float(row[model["source"]]) + float(model["offset_c"])
 
 
+def row_unit_concordant(row: dict) -> bool:
+    """Audit each row with the frozen E14B regime cutoffs, without renormalizing."""
+    temperature_raw = row["target"] / row["temperature_scale"] >= 1000.0
+    power_raw = row["power_100w"] * 100.0 / row["power_scale"] >= 100000.0
+    return (
+        temperature_raw == power_raw
+        and row["temperature_scale"] == (0.001 if temperature_raw else 1.0)
+        and row["power_scale"] == (0.000001 if power_raw else 1.0)
+    )
+
+
 def predict_ridge(row: dict[str, float], model: dict) -> float:
     coefficients = model["coefficients"]
     prediction = float(coefficients[0])
@@ -148,7 +159,7 @@ def main() -> None:
         rows = parsed["rows"]
         unit_sections = parsed["unit_sections"]
         unit_ok = all(section["concordant"] for section in unit_sections) and all(
-            row["unit_concordant"] for row in rows
+            row["unit_concordant"] and row_unit_concordant(row) for row in rows
         )
         actual = [float(row["target"]) for row in rows]
         baseline = [predict_baseline(row, baseline_model) for row in rows]

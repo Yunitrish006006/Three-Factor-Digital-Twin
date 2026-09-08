@@ -1,0 +1,13 @@
+{
+  "selected": "smooth035",
+  "sources": {
+    "scripts/run_boptest_jitter.py": "c4829122579ccba0021f3769b7a9be17d24562c1e918559e229a61b064b8c3bd",
+    "scripts/run_boptest_transfer.py": "6e639265a7ae4141ec1fe0b32faec9a01bffcda9793ec8aed9614f1f12be94e7",
+    "scripts/run_boptest_rapid_pi.py": "c33a23274e37ffe0d0bc194ea58644ff93acb3ada8822b3d7ce5ba8042d51f58",
+    "openspec/changes/reduce-boptest-command-jitter/protocol.md": "21b06964055eaec6294fe2006ae93e128948538367d8cf708b66f0d1c7f8aecd",
+    "openspec/changes/pilot-boptest-rapid-pi/artifacts/result.json": "645b74c526f157e54c6d9f44f5ec4ea8bbe74dabeb9a0b6d058498fe9dc3a6bb",
+    "openspec/changes/pilot-boptest-rapid-pi/artifacts/result_v2.json": "3f636ec19b8e37510ad5d016ff4de23acfd505738daabcbaec0236e84a9fb2f2",
+    "outputs/vendor/boptest-v0.9.0/testcases/bestest_air/models/wrapped.fmu": "158008fa3b635280a67dfed8bab5804d1f9a96d218b467dfebab77e5cbf8b86a"
+  },
+  "development_sha256": "d7fd41785a74428d7064c5d43b36293b724b0f16e7feb0e3f5b4f59f9dc05dea"
+}

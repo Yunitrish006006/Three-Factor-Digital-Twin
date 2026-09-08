@@ -1,0 +1,2068 @@
+{
+  "summary": {
+    "PASS": 110,
+    "FAIL": 0,
+    "MISSING": 0,
+    "TOTAL": 110
+  },
+  "source_files_checked": [
+    "docs/thesis/thesis_draft_zh.md",
+    "docs/papers/thesis/thesis_draft_zh.tex",
+    "docs/papers/ieee/paper.tex",
+    "scripts/build_thesis_docx.py"
+  ],
+  "results": [
+    {
+      "result_name": "validation_scenario_count",
+      "category": "controlled_simulation",
+      "thesis_value": 8.0,
+      "computed_value": 8.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/validation_summary.json",
+      "suggested_script": "python3 scripts/run_demo.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "window_matrix_case_count",
+      "category": "controlled_simulation",
+      "thesis_value": 48.0,
+      "computed_value": 48.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/window_matrix_summary.json",
+      "suggested_script": "python3 scripts/run_window_matrix.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "window_matrix_target_zone_temperature_in_domain_count",
+      "category": "controlled_simulation",
+      "thesis_value": 34.0,
+      "computed_value": 34.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/window_matrix_summary.json",
+      "suggested_script": "python3 scripts/run_window_matrix.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "window_matrix_target_zone_temperature_out_of_domain_count",
+      "category": "controlled_simulation",
+      "thesis_value": 14.0,
+      "computed_value": 14.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/window_matrix_summary.json",
+      "suggested_script": "python3 scripts/run_window_matrix.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "hybrid_default_train_samples",
+      "category": "controlled_simulation",
+      "thesis_value": 576.0,
+      "computed_value": 576.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/hybrid_residual_summary.json",
+      "suggested_script": "python3 scripts/run_hybrid_residual_experiment.py --fourier-denoise",
+      "missing_reason": []
+    },
+    {
+      "result_name": "hybrid_default_test_samples",
+      "category": "controlled_simulation",
+      "thesis_value": 192.0,
+      "computed_value": 192.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/hybrid_residual_summary.json",
+      "suggested_script": "python3 scripts/run_hybrid_residual_experiment.py --fourier-denoise",
+      "missing_reason": []
+    },
+    {
+      "result_name": "hybrid_loo_fold_count",
+      "category": "controlled_simulation",
+      "thesis_value": 8.0,
+      "computed_value": 8.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/submission_readiness_summary.json",
+      "suggested_script": "python3 scripts/run_submission_readiness_experiments.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "real_bedroom_snapshot_count",
+      "category": "real_bedroom_snapshot",
+      "thesis_value": 28.0,
+      "computed_value": 28.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/bedroom_01_weekly/weekly_simulation_summary.json",
+      "suggested_script": "python3 scripts/run_bedroom_weekly_simulation.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "e8_completed_real_intervention_trial_count",
+      "category": "intervention_readiness",
+      "thesis_value": 0.0,
+      "computed_value": 0.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/e8_intervention_summary.json",
+      "suggested_script": "python3 scripts/analyze_e8_intervention_trials.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "e8_not_evaluated_status_flag",
+      "category": "intervention_readiness",
+      "thesis_value": 1.0,
+      "computed_value": 1.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/e8_intervention_summary.json",
+      "suggested_script": "python3 scripts/analyze_e8_intervention_trials.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "e8_non_null_efficacy_estimate_count",
+      "category": "intervention_readiness",
+      "thesis_value": 0.0,
+      "computed_value": 0.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/e8_intervention_summary.json",
+      "suggested_script": "python3 scripts/analyze_e8_intervention_trials.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "base_model_average_field_mae.temperature",
+      "category": "controlled_simulation",
+      "thesis_value": 0.0474,
+      "computed_value": 0.0474375,
+      "absolute_error": 3.750000000000281e-05,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/validation_summary.json",
+      "suggested_script": "python3 scripts/run_demo.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "base_model_average_field_mae.humidity",
+      "category": "controlled_simulation",
+      "thesis_value": 0.1765,
+      "computed_value": 0.1764875,
+      "absolute_error": 1.2499999999998623e-05,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/validation_summary.json",
+      "suggested_script": "python3 scripts/run_demo.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "base_model_average_field_mae.illuminance",
+      "category": "controlled_simulation",
+      "thesis_value": 2.0269,
+      "computed_value": 2.0268875,
+      "absolute_error": 1.2499999999970868e-05,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/validation_summary.json",
+      "suggested_script": "python3 scripts/run_demo.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "idw_baseline_average_field_mae.temperature",
+      "category": "controlled_simulation",
+      "thesis_value": 0.1723,
+      "computed_value": 0.1723125,
+      "absolute_error": 1.2499999999998623e-05,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/validation_summary.json",
+      "suggested_script": "python3 scripts/run_demo.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "idw_baseline_average_field_mae.humidity",
+      "category": "controlled_simulation",
+      "thesis_value": 0.4633,
+      "computed_value": 0.4632625,
+      "absolute_error": 3.7499999999968114e-05,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/validation_summary.json",
+      "suggested_script": "python3 scripts/run_demo.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "idw_baseline_average_field_mae.illuminance",
+      "category": "controlled_simulation",
+      "thesis_value": 54.9052,
+      "computed_value": 54.905175,
+      "absolute_error": 2.5000000000829914e-05,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/validation_summary.json",
+      "suggested_script": "python3 scripts/run_demo.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "hybrid_residual_default_split_field_mae.temperature",
+      "category": "controlled_simulation",
+      "thesis_value": 0.002,
+      "computed_value": 0.002,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/hybrid_residual_summary.json",
+      "suggested_script": "python3 scripts/run_hybrid_residual_experiment.py --fourier-denoise",
+      "missing_reason": []
+    },
+    {
+      "result_name": "hybrid_residual_default_split_field_mae.humidity",
+      "category": "controlled_simulation",
+      "thesis_value": 0.0051,
+      "computed_value": 0.0051,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/hybrid_residual_summary.json",
+      "suggested_script": "python3 scripts/run_hybrid_residual_experiment.py --fourier-denoise",
+      "missing_reason": []
+    },
+    {
+      "result_name": "hybrid_residual_default_split_field_mae.illuminance",
+      "category": "controlled_simulation",
+      "thesis_value": 0.137,
+      "computed_value": 0.137,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/hybrid_residual_summary.json",
+      "suggested_script": "python3 scripts/run_hybrid_residual_experiment.py --fourier-denoise",
+      "missing_reason": []
+    },
+    {
+      "result_name": "hybrid_residual_loo_average_field_mae.temperature",
+      "category": "controlled_simulation",
+      "thesis_value": 0.0017,
+      "computed_value": 0.0017,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/submission_readiness_summary.json",
+      "suggested_script": "python3 scripts/run_submission_readiness_experiments.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "hybrid_residual_loo_average_field_mae.humidity",
+      "category": "controlled_simulation",
+      "thesis_value": 0.0059,
+      "computed_value": 0.0059,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/submission_readiness_summary.json",
+      "suggested_script": "python3 scripts/run_submission_readiness_experiments.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "hybrid_residual_loo_average_field_mae.illuminance",
+      "category": "controlled_simulation",
+      "thesis_value": 0.1407,
+      "computed_value": 0.1407,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/submission_readiness_summary.json",
+      "suggested_script": "python3 scripts/run_submission_readiness_experiments.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "real_bedroom_pillow_mae_before.temperature",
+      "category": "real_bedroom_snapshot",
+      "thesis_value": 0.8967,
+      "computed_value": 0.8967,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/bedroom_01_weekly/weekly_simulation_summary.json",
+      "suggested_script": "python3 scripts/run_bedroom_weekly_simulation.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "real_bedroom_pillow_mae_before.humidity",
+      "category": "real_bedroom_snapshot",
+      "thesis_value": 4.1286,
+      "computed_value": 4.1286,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/bedroom_01_weekly/weekly_simulation_summary.json",
+      "suggested_script": "python3 scripts/run_bedroom_weekly_simulation.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "real_bedroom_pillow_mae_before.illuminance",
+      "category": "real_bedroom_snapshot",
+      "thesis_value": 309.0142,
+      "computed_value": 309.0142,
+      "absolute_error": 0.0,
+      "tolerance": 0.001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/bedroom_01_weekly/weekly_simulation_summary.json",
+      "suggested_script": "python3 scripts/run_bedroom_weekly_simulation.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "real_bedroom_pillow_mae_after.temperature",
+      "category": "real_bedroom_snapshot",
+      "thesis_value": 0.1676,
+      "computed_value": 0.1676,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/bedroom_01_weekly/weekly_simulation_summary.json",
+      "suggested_script": "python3 scripts/run_bedroom_weekly_simulation.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "real_bedroom_pillow_mae_after.humidity",
+      "category": "real_bedroom_snapshot",
+      "thesis_value": 0.3939,
+      "computed_value": 0.3939,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/bedroom_01_weekly/weekly_simulation_summary.json",
+      "suggested_script": "python3 scripts/run_bedroom_weekly_simulation.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "real_bedroom_pillow_mae_after.illuminance",
+      "category": "real_bedroom_snapshot",
+      "thesis_value": 16.645,
+      "computed_value": 16.645,
+      "absolute_error": 0.0,
+      "tolerance": 0.001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/bedroom_01_weekly/weekly_simulation_summary.json",
+      "suggested_script": "python3 scripts/run_bedroom_weekly_simulation.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "real_bedroom_bootstrap_replicates",
+      "category": "real_bedroom_snapshot",
+      "thesis_value": 20000.0,
+      "computed_value": 20000.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/bedroom_01_weekly/weekly_simulation_summary.json",
+      "suggested_script": "python3 scripts/run_bedroom_weekly_simulation.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "real_bedroom_temperature_improved_snapshots",
+      "category": "real_bedroom_snapshot",
+      "thesis_value": 26.0,
+      "computed_value": 26.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/bedroom_01_weekly/weekly_simulation_summary.json",
+      "suggested_script": "python3 scripts/run_bedroom_weekly_simulation.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "real_bedroom_bootstrap_mae_reduction.temperature",
+      "category": "real_bedroom_snapshot",
+      "thesis_value": 0.7291,
+      "computed_value": 0.7292,
+      "absolute_error": 9.999999999998899e-05,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/bedroom_01_weekly/weekly_simulation_summary.json",
+      "suggested_script": "python3 scripts/run_bedroom_weekly_simulation.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "real_bedroom_bootstrap_ci95_lower.temperature",
+      "category": "real_bedroom_snapshot",
+      "thesis_value": 0.4582,
+      "computed_value": 0.4582,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/bedroom_01_weekly/weekly_simulation_summary.json",
+      "suggested_script": "python3 scripts/run_bedroom_weekly_simulation.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "real_bedroom_bootstrap_ci95_upper.temperature",
+      "category": "real_bedroom_snapshot",
+      "thesis_value": 1.0232,
+      "computed_value": 1.0232,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/bedroom_01_weekly/weekly_simulation_summary.json",
+      "suggested_script": "python3 scripts/run_bedroom_weekly_simulation.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "real_bedroom_bootstrap_mae_reduction.humidity",
+      "category": "real_bedroom_snapshot",
+      "thesis_value": 3.7346,
+      "computed_value": 3.7346,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/bedroom_01_weekly/weekly_simulation_summary.json",
+      "suggested_script": "python3 scripts/run_bedroom_weekly_simulation.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "real_bedroom_bootstrap_ci95_lower.humidity",
+      "category": "real_bedroom_snapshot",
+      "thesis_value": 3.2005,
+      "computed_value": 3.2005,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/bedroom_01_weekly/weekly_simulation_summary.json",
+      "suggested_script": "python3 scripts/run_bedroom_weekly_simulation.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "real_bedroom_bootstrap_ci95_upper.humidity",
+      "category": "real_bedroom_snapshot",
+      "thesis_value": 4.2524,
+      "computed_value": 4.2524,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/bedroom_01_weekly/weekly_simulation_summary.json",
+      "suggested_script": "python3 scripts/run_bedroom_weekly_simulation.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "real_bedroom_bootstrap_mae_reduction.illuminance",
+      "category": "real_bedroom_snapshot",
+      "thesis_value": 292.3692,
+      "computed_value": 292.3692,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/bedroom_01_weekly/weekly_simulation_summary.json",
+      "suggested_script": "python3 scripts/run_bedroom_weekly_simulation.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "real_bedroom_bootstrap_ci95_lower.illuminance",
+      "category": "real_bedroom_snapshot",
+      "thesis_value": 288.3083,
+      "computed_value": 288.3083,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/bedroom_01_weekly/weekly_simulation_summary.json",
+      "suggested_script": "python3 scripts/run_bedroom_weekly_simulation.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "real_bedroom_bootstrap_ci95_upper.illuminance",
+      "category": "real_bedroom_snapshot",
+      "thesis_value": 297.0237,
+      "computed_value": 297.0237,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/bedroom_01_weekly/weekly_simulation_summary.json",
+      "suggested_script": "python3 scripts/run_bedroom_weekly_simulation.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "real_bedroom_leave_one_date_out_fold_count",
+      "category": "real_bedroom_snapshot",
+      "thesis_value": 7.0,
+      "computed_value": 7.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/bedroom_01_weekly/weekly_simulation_summary.json",
+      "suggested_script": "python3 scripts/run_bedroom_weekly_simulation.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "real_bedroom_leave_one_date_out_minimum_reduction.temperature",
+      "category": "real_bedroom_snapshot",
+      "thesis_value": 0.6123,
+      "computed_value": 0.6123,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/bedroom_01_weekly/weekly_simulation_summary.json",
+      "suggested_script": "python3 scripts/run_bedroom_weekly_simulation.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "real_bedroom_leave_one_date_out_minimum_reduction.humidity",
+      "category": "real_bedroom_snapshot",
+      "thesis_value": 3.5551,
+      "computed_value": 3.5551,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/bedroom_01_weekly/weekly_simulation_summary.json",
+      "suggested_script": "python3 scripts/run_bedroom_weekly_simulation.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "real_bedroom_leave_one_date_out_minimum_reduction.illuminance",
+      "category": "real_bedroom_snapshot",
+      "thesis_value": 290.5716,
+      "computed_value": 290.5716,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/bedroom_01_weekly/weekly_simulation_summary.json",
+      "suggested_script": "python3 scripts/run_bedroom_weekly_simulation.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "sml2010_public_task_count",
+      "category": "public_task_aligned_benchmark",
+      "thesis_value": 24.0,
+      "computed_value": 24.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/sml2010_hybrid_twin_comparison.json",
+      "suggested_script": "python3 scripts/run_public_dataset_benchmark.py --dataset sml2010 --horizons 15,60 && python3 scripts/run_public_dataset_model_comparison.py --dataset sml2010 --horizons 15,60",
+      "missing_reason": []
+    },
+    {
+      "result_name": "sml2010_lowest_mae_count",
+      "category": "public_task_aligned_benchmark",
+      "thesis_value": 12.0,
+      "computed_value": 12.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/sml2010_hybrid_twin_comparison.json",
+      "suggested_script": "python3 scripts/run_public_dataset_benchmark.py --dataset sml2010 --horizons 15,60 && python3 scripts/run_public_dataset_model_comparison.py --dataset sml2010 --horizons 15,60",
+      "missing_reason": []
+    },
+    {
+      "result_name": "sml2010_better_than_linear_regression_count",
+      "category": "public_task_aligned_benchmark",
+      "thesis_value": 15.0,
+      "computed_value": 15.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/sml2010_hybrid_twin_comparison.json",
+      "suggested_script": "python3 scripts/run_public_dataset_benchmark.py --dataset sml2010 --horizons 15,60 && python3 scripts/run_public_dataset_model_comparison.py --dataset sml2010 --horizons 15,60",
+      "missing_reason": []
+    },
+    {
+      "result_name": "sml2010_better_than_persistence_count",
+      "category": "public_task_aligned_benchmark",
+      "thesis_value": 14.0,
+      "computed_value": 14.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/sml2010_hybrid_twin_comparison.json",
+      "suggested_script": "python3 scripts/run_public_dataset_benchmark.py --dataset sml2010 --horizons 15,60 && python3 scripts/run_public_dataset_model_comparison.py --dataset sml2010 --horizons 15,60",
+      "missing_reason": []
+    },
+    {
+      "result_name": "cu_bems_public_task_count",
+      "category": "public_task_aligned_benchmark",
+      "thesis_value": 12.0,
+      "computed_value": 12.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/cu_bems_hybrid_twin_comparison.json",
+      "suggested_script": "python3 scripts/run_public_dataset_benchmark.py --dataset cu-bems --horizons 15,60 && python3 scripts/run_public_dataset_model_comparison.py --dataset cu-bems --horizons 15,60",
+      "missing_reason": []
+    },
+    {
+      "result_name": "cu_bems_better_than_linear_regression_count",
+      "category": "public_task_aligned_benchmark",
+      "thesis_value": 9.0,
+      "computed_value": 9.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/cu_bems_hybrid_twin_comparison.json",
+      "suggested_script": "python3 scripts/run_public_dataset_benchmark.py --dataset cu-bems --horizons 15,60 && python3 scripts/run_public_dataset_model_comparison.py --dataset cu-bems --horizons 15,60",
+      "missing_reason": []
+    },
+    {
+      "result_name": "cu_bems_better_than_persistence_count",
+      "category": "public_task_aligned_benchmark",
+      "thesis_value": 0.0,
+      "computed_value": 0.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/cu_bems_hybrid_twin_comparison.json",
+      "suggested_script": "python3 scripts/run_public_dataset_benchmark.py --dataset cu-bems --horizons 15,60 && python3 scripts/run_public_dataset_model_comparison.py --dataset cu-bems --horizons 15,60",
+      "missing_reason": []
+    },
+    {
+      "result_name": "oh2024_transfer_evaluated_case_count",
+      "category": "public_task_method_transfer",
+      "thesis_value": 6.0,
+      "computed_value": 6.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/oh2024_inspired_sml2010_comparison.json",
+      "suggested_script": "python3 scripts/run_oh2024_inspired_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "oh2024_transfer_wins_vs_raw_physics",
+      "category": "public_task_method_transfer",
+      "thesis_value": 4.0,
+      "computed_value": 4.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/oh2024_inspired_sml2010_comparison.json",
+      "suggested_script": "python3 scripts/run_oh2024_inspired_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "oh2024_transfer_15min_dining_mae",
+      "category": "public_task_method_transfer",
+      "thesis_value": 0.042169,
+      "computed_value": 0.042169,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/oh2024_inspired_sml2010_comparison.json",
+      "suggested_script": "python3 scripts/run_oh2024_inspired_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "oh2024_transfer_15min_room_mae",
+      "category": "public_task_method_transfer",
+      "thesis_value": 0.051743,
+      "computed_value": 0.051743,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/oh2024_inspired_sml2010_comparison.json",
+      "suggested_script": "python3 scripts/run_oh2024_inspired_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "oh2024_transfer_1440min_dining_mae",
+      "category": "public_task_method_transfer",
+      "thesis_value": 1.753754,
+      "computed_value": 1.753754,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/oh2024_inspired_sml2010_comparison.json",
+      "suggested_script": "python3 scripts/run_oh2024_inspired_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "oh2024_transfer_1440min_room_mae",
+      "category": "public_task_method_transfer",
+      "thesis_value": 1.772293,
+      "computed_value": 1.772293,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/oh2024_inspired_sml2010_comparison.json",
+      "suggested_script": "python3 scripts/run_oh2024_inspired_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "next_day_persistence_dining_mae",
+      "category": "public_task_next_day_followup",
+      "thesis_value": 1.517486,
+      "computed_value": 1.517486,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/next_day_temperature_improvement.json",
+      "suggested_script": "python3 scripts/run_next_day_temperature_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "next_day_persistence_room_mae",
+      "category": "public_task_next_day_followup",
+      "thesis_value": 1.499639,
+      "computed_value": 1.499639,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/next_day_temperature_improvement.json",
+      "suggested_script": "python3 scripts/run_next_day_temperature_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "next_day_selected_dining_mae",
+      "category": "public_task_next_day_followup",
+      "thesis_value": 1.628868,
+      "computed_value": 1.628868,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/next_day_temperature_improvement.json",
+      "suggested_script": "python3 scripts/run_next_day_temperature_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "next_day_selected_room_mae",
+      "category": "public_task_next_day_followup",
+      "thesis_value": 1.624972,
+      "computed_value": 1.624972,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/next_day_temperature_improvement.json",
+      "suggested_script": "python3 scripts/run_next_day_temperature_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "next_day_bias_corrected_dining_mae",
+      "category": "public_task_next_day_followup",
+      "thesis_value": 1.501763,
+      "computed_value": 1.501763,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/next_day_temperature_improvement.json",
+      "suggested_script": "python3 scripts/run_next_day_temperature_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "next_day_bias_corrected_room_mae",
+      "category": "public_task_next_day_followup",
+      "thesis_value": 1.488394,
+      "computed_value": 1.488394,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/next_day_temperature_improvement.json",
+      "suggested_script": "python3 scripts/run_next_day_temperature_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "next_day_adaptive_selected_dining_mae",
+      "category": "public_task_next_day_followup",
+      "thesis_value": 1.651511,
+      "computed_value": 1.651511,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/next_day_temperature_improvement.json",
+      "suggested_script": "python3 scripts/run_next_day_temperature_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "next_day_adaptive_selected_room_mae",
+      "category": "public_task_next_day_followup",
+      "thesis_value": 1.645603,
+      "computed_value": 1.645603,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/next_day_temperature_improvement.json",
+      "suggested_script": "python3 scripts/run_next_day_temperature_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "rnn_3d_complete_status",
+      "category": "controlled_synthetic_rnn_3d_field_comparison",
+      "thesis_value": 1.0,
+      "computed_value": 1.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/rnn_3d_field_comparison.json",
+      "suggested_script": "python3 scripts/run_rnn_3d_field_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "rnn_3d_parity_passed",
+      "category": "controlled_synthetic_rnn_3d_field_comparison",
+      "thesis_value": 1.0,
+      "computed_value": 1.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/rnn_3d_field_comparison.json",
+      "suggested_script": "python3 scripts/run_rnn_3d_field_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "rnn_3d_temperature_mae",
+      "category": "controlled_synthetic_rnn_3d_field_comparison",
+      "thesis_value": 0.209125,
+      "computed_value": 0.209125,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/rnn_3d_field_comparison.json",
+      "suggested_script": "python3 scripts/run_rnn_3d_field_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "rnn_3d_humidity_mae",
+      "category": "controlled_synthetic_rnn_3d_field_comparison",
+      "thesis_value": 0.224112,
+      "computed_value": 0.224112,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/rnn_3d_field_comparison.json",
+      "suggested_script": "python3 scripts/run_rnn_3d_field_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "rnn_3d_illuminance_mae",
+      "category": "controlled_synthetic_rnn_3d_field_comparison",
+      "thesis_value": 48.142175,
+      "computed_value": 48.142175,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/rnn_3d_field_comparison.json",
+      "suggested_script": "python3 scripts/run_rnn_3d_field_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "rnn_3d_lowest_mae_count",
+      "category": "controlled_synthetic_rnn_3d_field_comparison",
+      "thesis_value": 0.0,
+      "computed_value": 0.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/rnn_3d_field_comparison.json",
+      "suggested_script": "python3 scripts/run_rnn_3d_field_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "rnn_same_data_complete_status",
+      "category": "public_task_rnn_same_data_comparison",
+      "thesis_value": 1.0,
+      "computed_value": 1.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/rnn_sml2010_comparison.json",
+      "suggested_script": "python3 scripts/run_rnn_public_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "rnn_same_data_parity_passed",
+      "category": "public_task_rnn_same_data_comparison",
+      "thesis_value": 1.0,
+      "computed_value": 1.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/rnn_sml2010_comparison.json",
+      "suggested_script": "python3 scripts/run_rnn_public_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "rnn_same_data_evaluated_case_count",
+      "category": "public_task_rnn_same_data_comparison",
+      "thesis_value": 12.0,
+      "computed_value": 12.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/rnn_sml2010_comparison.json",
+      "suggested_script": "python3 scripts/run_rnn_public_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "rnn_lowest_mae_count",
+      "category": "public_task_rnn_same_data_comparison",
+      "thesis_value": 0.0,
+      "computed_value": 0.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/rnn_sml2010_comparison.json",
+      "suggested_script": "python3 scripts/run_rnn_public_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "rnn_sequence_linear_lowest_mae_count",
+      "category": "public_task_rnn_same_data_comparison",
+      "thesis_value": 7.0,
+      "computed_value": 7.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/rnn_sml2010_comparison.json",
+      "suggested_script": "python3 scripts/run_rnn_public_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "rnn_persistence_lowest_mae_count",
+      "category": "public_task_rnn_same_data_comparison",
+      "thesis_value": 5.0,
+      "computed_value": 5.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/rnn_sml2010_comparison.json",
+      "suggested_script": "python3 scripts/run_rnn_public_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "kalman_controlled_filtering_complete_status",
+      "category": "public_task_controlled_kalman_filtering",
+      "thesis_value": 1.0,
+      "computed_value": 1.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/kalman_sml2010_filtering_comparison.json",
+      "suggested_script": "python3 scripts/run_kalman_filter_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "kalman_controlled_filtering_parity_passed",
+      "category": "public_task_controlled_kalman_filtering",
+      "thesis_value": 1.0,
+      "computed_value": 1.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/kalman_sml2010_filtering_comparison.json",
+      "suggested_script": "python3 scripts/run_kalman_filter_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "kalman_controlled_filtering_case_count",
+      "category": "public_task_controlled_kalman_filtering",
+      "thesis_value": 12.0,
+      "computed_value": 12.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/kalman_sml2010_filtering_comparison.json",
+      "suggested_script": "python3 scripts/run_kalman_filter_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "kalman_lowest_mae_count",
+      "category": "public_task_controlled_kalman_filtering",
+      "thesis_value": 6.0,
+      "computed_value": 6.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/kalman_sml2010_filtering_comparison.json",
+      "suggested_script": "python3 scripts/run_kalman_filter_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "kalman_moving_average_lowest_mae_count",
+      "category": "public_task_controlled_kalman_filtering",
+      "thesis_value": 6.0,
+      "computed_value": 6.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/kalman_sml2010_filtering_comparison.json",
+      "suggested_script": "python3 scripts/run_kalman_filter_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "kalman_raw_lowest_mae_count",
+      "category": "public_task_controlled_kalman_filtering",
+      "thesis_value": 0.0,
+      "computed_value": 0.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/kalman_sml2010_filtering_comparison.json",
+      "suggested_script": "python3 scripts/run_kalman_filter_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "kalman_wins_vs_raw_count",
+      "category": "public_task_controlled_kalman_filtering",
+      "thesis_value": 12.0,
+      "computed_value": 12.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/public_benchmarks/kalman_sml2010_filtering_comparison.json",
+      "suggested_script": "python3 scripts/run_kalman_filter_comparison.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "enclosure_bmc_source_file_count",
+      "category": "public_task_equipment_enclosure_transfer",
+      "thesis_value": 124.0,
+      "computed_value": 124.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/enclosure/enclosure_bmc_baseline.json",
+      "suggested_script": "python3 scripts/run_enclosure_bmc_baseline.py /path/to/bmcdata/data/*.csv",
+      "missing_reason": []
+    },
+    {
+      "result_name": "enclosure_bmc_file_device_case_count",
+      "category": "public_task_equipment_enclosure_transfer",
+      "thesis_value": 317.0,
+      "computed_value": 317.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/enclosure/enclosure_bmc_baseline.json",
+      "suggested_script": "python3 scripts/run_enclosure_bmc_baseline.py /path/to/bmcdata/data/*.csv",
+      "missing_reason": []
+    },
+    {
+      "result_name": "enclosure_bmc_evaluated_case_count",
+      "category": "public_task_equipment_enclosure_transfer",
+      "thesis_value": 5.0,
+      "computed_value": 5.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/enclosure/enclosure_bmc_baseline.json",
+      "suggested_script": "python3 scripts/run_enclosure_bmc_baseline.py /path/to/bmcdata/data/*.csv",
+      "missing_reason": []
+    },
+    {
+      "result_name": "enclosure_thermal_balance_wins_vs_persistence",
+      "category": "public_task_equipment_enclosure_transfer",
+      "thesis_value": 0.0,
+      "computed_value": 0.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/enclosure/enclosure_bmc_baseline.json",
+      "suggested_script": "python3 scripts/run_enclosure_bmc_baseline.py /path/to/bmcdata/data/*.csv",
+      "missing_reason": []
+    },
+    {
+      "result_name": "enclosure_persistence_lowest_mae_count",
+      "category": "public_task_equipment_enclosure_transfer",
+      "thesis_value": 5.0,
+      "computed_value": 5.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/enclosure/enclosure_bmc_baseline.json",
+      "suggested_script": "python3 scripts/run_enclosure_bmc_baseline.py /path/to/bmcdata/data/*.csv",
+      "missing_reason": []
+    },
+    {
+      "result_name": "e12_development_failure_count",
+      "category": "public_bmc_correction_chain",
+      "thesis_value": 6.0,
+      "computed_value": 6.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/enclosure/bmc_cross_run_e12_result.json",
+      "suggested_script": "python3 scripts/download_bmc_cross_run_e12.py --retrieval-date 2026-08-24 && python3 scripts/run_corrected_bmc_sensitivity_e14c.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "e12_final_test_opened_flag",
+      "category": "public_bmc_correction_chain",
+      "thesis_value": 0.0,
+      "computed_value": 0.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/enclosure/bmc_cross_run_e12_result.json",
+      "suggested_script": "python3 scripts/download_bmc_cross_run_e12.py --retrieval-date 2026-08-24 && python3 scripts/run_corrected_bmc_sensitivity_e14c.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "e14a_source_correct_row_count",
+      "category": "public_bmc_correction_chain",
+      "thesis_value": 4038.0,
+      "computed_value": 4038.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/enclosure/bmc_section_parser_e14a_result.json",
+      "suggested_script": "python3 scripts/download_bmc_cross_run_e12.py --retrieval-date 2026-08-24 && python3 scripts/run_corrected_bmc_sensitivity_e14c.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "e14b_raw_unit_file_count",
+      "category": "public_bmc_correction_chain",
+      "thesis_value": 3.0,
+      "computed_value": 3.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/enclosure/bmc_unit_regimes_e14b_result.json",
+      "suggested_script": "python3 scripts/download_bmc_cross_run_e12.py --retrieval-date 2026-08-24 && python3 scripts/run_corrected_bmc_sensitivity_e14c.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "e14c_baseline_mae_c",
+      "category": "public_bmc_correction_chain",
+      "thesis_value": 4.0882,
+      "computed_value": 4.088217149907464,
+      "absolute_error": 1.714990746481959e-05,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/enclosure/bmc_corrected_e14c_result.json",
+      "suggested_script": "python3 scripts/download_bmc_cross_run_e12.py --retrieval-date 2026-08-24 && python3 scripts/run_corrected_bmc_sensitivity_e14c.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "e14c_ridge_mae_c",
+      "category": "public_bmc_correction_chain",
+      "thesis_value": 1.8054,
+      "computed_value": 1.8053695290941658,
+      "absolute_error": 3.0470905834079076e-05,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/enclosure/bmc_corrected_e14c_result.json",
+      "suggested_script": "python3 scripts/download_bmc_cross_run_e12.py --retrieval-date 2026-08-24 && python3 scripts/run_corrected_bmc_sensitivity_e14c.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "e14c_model_run_wins",
+      "category": "public_bmc_correction_chain",
+      "thesis_value": 13.0,
+      "computed_value": 13.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/enclosure/bmc_corrected_e14c_result.json",
+      "suggested_script": "python3 scripts/download_bmc_cross_run_e12.py --retrieval-date 2026-08-24 && python3 scripts/run_corrected_bmc_sensitivity_e14c.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "e14c_bootstrap_lower_c",
+      "category": "public_bmc_correction_chain",
+      "thesis_value": 1.4271,
+      "computed_value": 1.4270616425207436,
+      "absolute_error": 3.8357479256401206e-05,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/enclosure/bmc_corrected_e14c_result.json",
+      "suggested_script": "python3 scripts/download_bmc_cross_run_e12.py --retrieval-date 2026-08-24 && python3 scripts/run_corrected_bmc_sensitivity_e14c.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "e14c_bootstrap_upper_c",
+      "category": "public_bmc_correction_chain",
+      "thesis_value": 2.7939,
+      "computed_value": 2.7939127821814362,
+      "absolute_error": 1.2782181436410411e-05,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/enclosure/bmc_corrected_e14c_result.json",
+      "suggested_script": "python3 scripts/download_bmc_cross_run_e12.py --retrieval-date 2026-08-24 && python3 scripts/run_corrected_bmc_sensitivity_e14c.py",
+      "missing_reason": []
+    },
+    {
+      "result_name": "e15_row_count",
+      "category": "public_bmc_temporal_confirmation",
+      "thesis_value": 3112.0,
+      "computed_value": 3112.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/enclosure/bmc_confirmation_e15_result.json",
+      "suggested_script": "Audit preserved E15 result and attempt receipt; do not rerun confirmation.",
+      "missing_reason": []
+    },
+    {
+      "result_name": "e15_baseline_mae_c",
+      "category": "public_bmc_temporal_confirmation",
+      "thesis_value": 1.6939,
+      "computed_value": 1.693926735218509,
+      "absolute_error": 2.6735218509044145e-05,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/enclosure/bmc_confirmation_e15_result.json",
+      "suggested_script": "Audit preserved E15 result and attempt receipt; do not rerun confirmation.",
+      "missing_reason": []
+    },
+    {
+      "result_name": "e15_baseline_rmse_c",
+      "category": "public_bmc_temporal_confirmation",
+      "thesis_value": 1.9672,
+      "computed_value": 1.9671752025772797,
+      "absolute_error": 2.4797422720324036e-05,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/enclosure/bmc_confirmation_e15_result.json",
+      "suggested_script": "Audit preserved E15 result and attempt receipt; do not rerun confirmation.",
+      "missing_reason": []
+    },
+    {
+      "result_name": "e15_baseline_p95_c",
+      "category": "public_bmc_temporal_confirmation",
+      "thesis_value": 3.5,
+      "computed_value": 3.5,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/enclosure/bmc_confirmation_e15_result.json",
+      "suggested_script": "Audit preserved E15 result and attempt receipt; do not rerun confirmation.",
+      "missing_reason": []
+    },
+    {
+      "result_name": "e15_ridge_mae_c",
+      "category": "public_bmc_temporal_confirmation",
+      "thesis_value": 0.9744,
+      "computed_value": 0.9743529687836187,
+      "absolute_error": 4.7031216381387964e-05,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/enclosure/bmc_confirmation_e15_result.json",
+      "suggested_script": "Audit preserved E15 result and attempt receipt; do not rerun confirmation.",
+      "missing_reason": []
+    },
+    {
+      "result_name": "e15_ridge_rmse_c",
+      "category": "public_bmc_temporal_confirmation",
+      "thesis_value": 1.2056,
+      "computed_value": 1.205580685463812,
+      "absolute_error": 1.9314536187975406e-05,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/enclosure/bmc_confirmation_e15_result.json",
+      "suggested_script": "Audit preserved E15 result and attempt receipt; do not rerun confirmation.",
+      "missing_reason": []
+    },
+    {
+      "result_name": "e15_ridge_p95_c",
+      "category": "public_bmc_temporal_confirmation",
+      "thesis_value": 2.3888,
+      "computed_value": 2.38884224274647,
+      "absolute_error": 4.2242746470133596e-05,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/enclosure/bmc_confirmation_e15_result.json",
+      "suggested_script": "Audit preserved E15 result and attempt receipt; do not rerun confirmation.",
+      "missing_reason": []
+    },
+    {
+      "result_name": "e15_macro_mae_gain_c",
+      "category": "public_bmc_temporal_confirmation",
+      "thesis_value": 0.6134,
+      "computed_value": 0.6133758779997098,
+      "absolute_error": 2.4122000290116574e-05,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/enclosure/bmc_confirmation_e15_result.json",
+      "suggested_script": "Audit preserved E15 result and attempt receipt; do not rerun confirmation.",
+      "missing_reason": []
+    },
+    {
+      "result_name": "e15_bootstrap_lower_c",
+      "category": "public_bmc_temporal_confirmation",
+      "thesis_value": 0.2721,
+      "computed_value": 0.27206588051969094,
+      "absolute_error": 3.4119480309069417e-05,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/enclosure/bmc_confirmation_e15_result.json",
+      "suggested_script": "Audit preserved E15 result and attempt receipt; do not rerun confirmation.",
+      "missing_reason": []
+    },
+    {
+      "result_name": "e15_bootstrap_upper_c",
+      "category": "public_bmc_temporal_confirmation",
+      "thesis_value": 0.9831,
+      "computed_value": 0.9830542790090138,
+      "absolute_error": 4.5720990986208854e-05,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/enclosure/bmc_confirmation_e15_result.json",
+      "suggested_script": "Audit preserved E15 result and attempt receipt; do not rerun confirmation.",
+      "missing_reason": []
+    },
+    {
+      "result_name": "e15_ridge_run_wins",
+      "category": "public_bmc_temporal_confirmation",
+      "thesis_value": 12.0,
+      "computed_value": 12.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0001,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/enclosure/bmc_confirmation_e15_result.json",
+      "suggested_script": "Audit preserved E15 result and attempt receipt; do not rerun confirmation.",
+      "missing_reason": []
+    },
+    {
+      "result_name": "e15_supported_decision_flag",
+      "category": "public_bmc_temporal_confirmation",
+      "thesis_value": 1.0,
+      "computed_value": 1.0,
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "status": "PASS",
+      "support_level": "REPRODUCIBLE",
+      "source_file": [
+        "docs/thesis/thesis_draft_zh.md",
+        "docs/papers/thesis/thesis_draft_zh.tex",
+        "docs/papers/ieee/paper.tex",
+        "scripts/build_thesis_docx.py"
+      ],
+      "evidence_file": "outputs/data/enclosure/bmc_confirmation_e15_result.json",
+      "suggested_script": "Audit all preserved gates; do not rerun E15.",
+      "missing_reason": []
+    }
+  ],
+  "status_definitions": {
+    "PASS": "The thesis value appears in at least one checked source file and matches computed evidence within tolerance.",
+    "FAIL": "The thesis value appears in source files, evidence exists, but the computed value differs beyond tolerance.",
+    "MISSING": "The thesis value or evidence is missing, so the claim is not currently verifiable from local outputs."
+  },
+  "support_level_definitions": {
+    "REPRODUCIBLE": "Computed from an existing local output JSON.",
+    "DOCUMENT_ONLY": "Found in documents but no local evidence JSON was available.",
+    "NEEDS_DATA": "Requires public/raw data or a missing generated output before verification."
+  }
+}

@@ -1,0 +1,128 @@
+[
+  {
+    "day": 35,
+    "noise_sd_C": 0,
+    "controller": "v2",
+    "hot_n": 0,
+    "hot_and_min_supply_n": 0
+  },
+  {
+    "day": 35,
+    "noise_sd_C": 0,
+    "controller": "v4_observer",
+    "hot_n": 0,
+    "hot_and_min_supply_n": 0
+  },
+  {
+    "day": 35,
+    "noise_sd_C": 0,
+    "controller": "grid_handover",
+    "hot_n": 0,
+    "hot_and_min_supply_n": 0
+  },
+  {
+    "day": 95,
+    "noise_sd_C": 0,
+    "controller": "v2",
+    "hot_n": 0,
+    "hot_and_min_supply_n": 0
+  },
+  {
+    "day": 95,
+    "noise_sd_C": 0,
+    "controller": "v4_observer",
+    "hot_n": 0,
+    "hot_and_min_supply_n": 0
+  },
+  {
+    "day": 95,
+    "noise_sd_C": 0,
+    "controller": "grid_handover",
+    "hot_n": 0,
+    "hot_and_min_supply_n": 0
+  },
+  {
+    "day": 245,
+    "noise_sd_C": 0,
+    "controller": "v2",
+    "hot_n": 295,
+    "hot_and_min_supply_n": 295
+  },
+  {
+    "day": 245,
+    "noise_sd_C": 0,
+    "controller": "v4_observer",
+    "hot_n": 293,
+    "hot_and_min_supply_n": 293
+  },
+  {
+    "day": 245,
+    "noise_sd_C": 0,
+    "controller": "grid_handover",
+    "hot_n": 294,
+    "hot_and_min_supply_n": 294
+  },
+  {
+    "day": 305,
+    "noise_sd_C": 0,
+    "controller": "v2",
+    "hot_n": 0,
+    "hot_and_min_supply_n": 0
+  },
+  {
+    "day": 305,
+    "noise_sd_C": 0,
+    "controller": "v4_observer",
+    "hot_n": 0,
+    "hot_and_min_supply_n": 0
+  },
+  {
+    "day": 305,
+    "noise_sd_C": 0,
+    "controller": "grid_handover",
+    "hot_n": 0,
+    "hot_and_min_supply_n": 0
+  },
+  {
+    "day": 95,
+    "noise_sd_C": 0.05,
+    "controller": "v2",
+    "hot_n": 0,
+    "hot_and_min_supply_n": 0
+  },
+  {
+    "day": 95,
+    "noise_sd_C": 0.05,
+    "controller": "v4_observer",
+    "hot_n": 0,
+    "hot_and_min_supply_n": 0
+  },
+  {
+    "day": 95,
+    "noise_sd_C": 0.05,
+    "controller": "grid_handover",
+    "hot_n": 0,
+    "hot_and_min_supply_n": 0
+  },
+  {
+    "day": 245,
+    "noise_sd_C": 0.05,
+    "controller": "v2",
+    "hot_n": 295,
+    "hot_and_min_supply_n": 295
+  },
+  {
+    "day": 245,
+    "noise_sd_C": 0.05,
+    "controller": "v4_observer",
+    "hot_n": 294,
+    "hot_and_min_supply_n": 294
+  },
+  {
+    "day": 245,
+    "noise_sd_C": 0.05,
+    "controller": "grid_handover",
+    "hot_n": 294,
+    "hot_and_min_supply_n": 294
+  }
+]

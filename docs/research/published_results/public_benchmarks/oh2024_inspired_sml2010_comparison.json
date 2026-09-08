@@ -1,0 +1,562 @@
+{
+  "study_id": "E9-OH2024-TRANSFER",
+  "dataset": "SML2010",
+  "benchmark_mode": "two-point temperature response method transfer",
+  "created_at": "2026-07-26T07:52:02.507033+00:00",
+  "status": "COMPLETE",
+  "input_dir": "/Volumes/DataExtended/school/outputs/data/normalized_public/sml2010",
+  "input_provenance": {
+    "corner_sensor_timeseries.csv": {
+      "sha256": "7be1dcde9ffaa42a327b7f21a24da28e995ac39dc6f2ee2bf13ad91e91d882c8",
+      "bytes": 530746
+    },
+    "outdoor_environment.csv": {
+      "sha256": "09c4eb14a63fa69992d6cda2b1f502937b09937d0b4b0c08db5c2d2816f751c9",
+      "bytes": 278439
+    },
+    "auxiliary_features.csv": {
+      "sha256": "c625fd0fd7d8c56b0b6832e1e4d68de3875696d6ace33d32f0772d72d5e41e5d",
+      "bytes": 654379
+    }
+  },
+  "checkpoint": {
+    "path": "outputs/data/hybrid_residual_checkpoint.json",
+    "available": true,
+    "sha256": "69ef36582c98b88e80592c5b2c2890833895c9e92dd169b08f3a62702c23fa65"
+  },
+  "protocol": {
+    "task_id": "S2",
+    "targets": [
+      "dining_temperature",
+      "room_temperature"
+    ],
+    "horizons_minutes": [
+      15,
+      60,
+      1440
+    ],
+    "split": "chronological_70_30",
+    "ridge": 0.001,
+    "metrics": [
+      "mae",
+      "rmse",
+      "correlation",
+      "r2",
+      "cvrmse_pct"
+    ],
+    "decision_rule": "H-PHB-01 is supported when the transfer MAE is lower than raw physics in at least 4 of 6 default target-horizon cases."
+  },
+  "method_fidelity": {
+    "label": "Oh et al. (2024)-inspired additive residual transfer",
+    "equation": "y_hat_transfer(t+h|I_t) = y_hat_physics(t+h|I_t) + r_hat_linear(t+h|I_t)",
+    "shared_concepts": [
+      "physical or simulation prediction is an explicit target-time baseline",
+      "origin-time measurements and operating or boundary variables inform a learned discrepancy",
+      "the final prediction adds the learned discrepancy to the physical baseline"
+    ],
+    "known_differences": [
+      "ridge-linear residual head replaces the paper's CNN-LSTM structure",
+      "project pseudo-room physics replaces TRNSYS Type 56 and the calibrated RC model",
+      "SML2010 two-point temperatures replace confidential commercial-building return-air data"
+    ],
+    "reproduction_status": "METHOD_TRANSFER_NOT_PAPER_REPRODUCTION",
+    "paper_data_availability": "confidential"
+  },
+  "published_context_not_directly_comparable": {
+    "citation": "Oh, Sfarra, and Kim, Energy and Buildings 324 (2024) 114898",
+    "december": {
+      "black_box_r2": 0.72,
+      "black_box_cvrmse_pct": 3.58,
+      "hybrid_rc_r2": 0.93,
+      "hybrid_rc_cvrmse_pct": 1.73
+    },
+    "january": {
+      "black_box_r2": -2.79,
+      "black_box_cvrmse_pct": 19.82,
+      "hybrid_rc_r2": 0.88,
+      "hybrid_rc_cvrmse_pct": 3.55
+    },
+    "february": {
+      "black_box_r2": -4.6,
+      "black_box_cvrmse_pct": 18.83,
+      "hybrid_rc_r2": 0.83,
+      "hybrid_rc_cvrmse_pct": 3.27
+    },
+    "comparison_boundary": "These published values use another building, return-air target, training regime, physical model, and data source; they are literature context, not pooled head-to-head evidence."
+  },
+  "cases": [
+    {
+      "task_id": "S2",
+      "target": "dining_temperature",
+      "horizon_minutes": 15,
+      "status": "ok",
+      "sample_count": 4133,
+      "train_samples": 2893,
+      "test_samples": 1240,
+      "train_start": "2012-03-13 11:45:00",
+      "train_end": "2012-04-19 08:15:00",
+      "test_start": "2012-04-19 08:30:00",
+      "test_end": "2012-05-02 07:15:00",
+      "method_feature_contract": {
+        "direct_linear_regression": "13 origin-time SML2010 S2 features",
+        "raw_physics_prior": "mapped physics target index 0",
+        "hybrid_digital_twin_readout": [
+          "physics_dining_temperature",
+          "physics_room_temperature",
+          "physics_dining_humidity",
+          "physics_room_humidity",
+          "hybrid_dining_temperature",
+          "hybrid_room_temperature",
+          "hybrid_dining_humidity",
+          "hybrid_room_humidity",
+          "boundary_activation",
+          "motor_level",
+          "outdoor_temperature_gap",
+          "outdoor_humidity_gap"
+        ],
+        "oh2024_inspired_additive_residual": "13 origin-time SML2010 S2 features plus the two target-time physics temperature estimates; all standardization parameters are fitted on training rows only"
+      },
+      "metrics": {
+        "persistence": {
+          "mae": 0.118236,
+          "rmse": 0.134881,
+          "correlation": 0.998603,
+          "r2": 0.997208,
+          "cvrmse_pct": 0.580069
+        },
+        "direct_linear_regression": {
+          "mae": 0.042593,
+          "rmse": 0.056096,
+          "correlation": 0.999794,
+          "r2": 0.999517,
+          "cvrmse_pct": 0.241245
+        },
+        "raw_physics_prior": {
+          "mae": 0.433234,
+          "rmse": 0.4852,
+          "correlation": 0.99625,
+          "r2": 0.963873,
+          "cvrmse_pct": 2.086649
+        },
+        "hybrid_digital_twin_readout": {
+          "mae": 0.072816,
+          "rmse": 0.089597,
+          "correlation": 0.999407,
+          "r2": 0.998768,
+          "cvrmse_pct": 0.385319
+        },
+        "oh2024_inspired_additive_residual": {
+          "mae": 0.042169,
+          "rmse": 0.056573,
+          "correlation": 0.999793,
+          "r2": 0.999509,
+          "cvrmse_pct": 0.243297
+        }
+      },
+      "mae_reductions": {
+        "oh2024_inspired_vs_raw_physics": 0.391065,
+        "oh2024_inspired_vs_persistence": 0.076067,
+        "oh2024_inspired_vs_direct_linear": 0.000424,
+        "oh2024_inspired_vs_project_readout": 0.030647
+      },
+      "lowest_mae_method": "oh2024_inspired_additive_residual"
+    },
+    {
+      "task_id": "S2",
+      "target": "room_temperature",
+      "horizon_minutes": 15,
+      "status": "ok",
+      "sample_count": 4133,
+      "train_samples": 2893,
+      "test_samples": 1240,
+      "train_start": "2012-03-13 11:45:00",
+      "train_end": "2012-04-19 08:15:00",
+      "test_start": "2012-04-19 08:30:00",
+      "test_end": "2012-05-02 07:15:00",
+      "method_feature_contract": {
+        "direct_linear_regression": "13 origin-time SML2010 S2 features",
+        "raw_physics_prior": "mapped physics target index 1",
+        "hybrid_digital_twin_readout": [
+          "physics_dining_temperature",
+          "physics_room_temperature",
+          "physics_dining_humidity",
+          "physics_room_humidity",
+          "hybrid_dining_temperature",
+          "hybrid_room_temperature",
+          "hybrid_dining_humidity",
+          "hybrid_room_humidity",
+          "boundary_activation",
+          "motor_level",
+          "outdoor_temperature_gap",
+          "outdoor_humidity_gap"
+        ],
+        "oh2024_inspired_additive_residual": "13 origin-time SML2010 S2 features plus the two target-time physics temperature estimates; all standardization parameters are fitted on training rows only"
+      },
+      "metrics": {
+        "persistence": {
+          "mae": 0.115293,
+          "rmse": 0.135701,
+          "correlation": 0.998572,
+          "r2": 0.997145,
+          "cvrmse_pct": 0.591247
+        },
+        "direct_linear_regression": {
+          "mae": 0.051943,
+          "rmse": 0.067776,
+          "correlation": 0.999706,
+          "r2": 0.999288,
+          "cvrmse_pct": 0.295301
+        },
+        "raw_physics_prior": {
+          "mae": 0.157182,
+          "rmse": 0.21449,
+          "correlation": 0.997762,
+          "r2": 0.992867,
+          "cvrmse_pct": 0.934532
+        },
+        "hybrid_digital_twin_readout": {
+          "mae": 0.095087,
+          "rmse": 0.118603,
+          "correlation": 0.998916,
+          "r2": 0.997819,
+          "cvrmse_pct": 0.516751
+        },
+        "oh2024_inspired_additive_residual": {
+          "mae": 0.051743,
+          "rmse": 0.06794,
+          "correlation": 0.999707,
+          "r2": 0.999284,
+          "cvrmse_pct": 0.296012
+        }
+      },
+      "mae_reductions": {
+        "oh2024_inspired_vs_raw_physics": 0.105439,
+        "oh2024_inspired_vs_persistence": 0.06355,
+        "oh2024_inspired_vs_direct_linear": 0.0002,
+        "oh2024_inspired_vs_project_readout": 0.043344
+      },
+      "lowest_mae_method": "oh2024_inspired_additive_residual"
+    },
+    {
+      "task_id": "S2",
+      "target": "dining_temperature",
+      "horizon_minutes": 60,
+      "status": "ok",
+      "sample_count": 4127,
+      "train_samples": 2888,
+      "test_samples": 1239,
+      "train_start": "2012-03-13 11:45:00",
+      "train_end": "2012-04-19 07:45:00",
+      "test_start": "2012-04-19 08:00:00",
+      "test_end": "2012-05-02 06:30:00",
+      "method_feature_contract": {
+        "direct_linear_regression": "13 origin-time SML2010 S2 features",
+        "raw_physics_prior": "mapped physics target index 0",
+        "hybrid_digital_twin_readout": [
+          "physics_dining_temperature",
+          "physics_room_temperature",
+          "physics_dining_humidity",
+          "physics_room_humidity",
+          "hybrid_dining_temperature",
+          "hybrid_room_temperature",
+          "hybrid_dining_humidity",
+          "hybrid_room_humidity",
+          "boundary_activation",
+          "motor_level",
+          "outdoor_temperature_gap",
+          "outdoor_humidity_gap"
+        ],
+        "oh2024_inspired_additive_residual": "13 origin-time SML2010 S2 features plus the two target-time physics temperature estimates; all standardization parameters are fitted on training rows only"
+      },
+      "metrics": {
+        "persistence": {
+          "mae": 0.469776,
+          "rmse": 0.533486,
+          "correlation": 0.9781,
+          "r2": 0.956298,
+          "cvrmse_pct": 2.294055
+        },
+        "direct_linear_regression": {
+          "mae": 0.192471,
+          "rmse": 0.245954,
+          "correlation": 0.99671,
+          "r2": 0.990711,
+          "cvrmse_pct": 1.057633
+        },
+        "raw_physics_prior": {
+          "mae": 0.420894,
+          "rmse": 0.590284,
+          "correlation": 0.987495,
+          "r2": 0.946497,
+          "cvrmse_pct": 2.538294
+        },
+        "hybrid_digital_twin_readout": {
+          "mae": 0.156155,
+          "rmse": 0.20234,
+          "correlation": 0.997327,
+          "r2": 0.993713,
+          "cvrmse_pct": 0.870087
+        },
+        "oh2024_inspired_additive_residual": {
+          "mae": 0.192531,
+          "rmse": 0.245788,
+          "correlation": 0.996712,
+          "r2": 0.990724,
+          "cvrmse_pct": 1.056919
+        }
+      },
+      "mae_reductions": {
+        "oh2024_inspired_vs_raw_physics": 0.228363,
+        "oh2024_inspired_vs_persistence": 0.277245,
+        "oh2024_inspired_vs_direct_linear": -6e-05,
+        "oh2024_inspired_vs_project_readout": -0.036376
+      },
+      "lowest_mae_method": "hybrid_digital_twin_readout"
+    },
+    {
+      "task_id": "S2",
+      "target": "room_temperature",
+      "horizon_minutes": 60,
+      "status": "ok",
+      "sample_count": 4127,
+      "train_samples": 2888,
+      "test_samples": 1239,
+      "train_start": "2012-03-13 11:45:00",
+      "train_end": "2012-04-19 07:45:00",
+      "test_start": "2012-04-19 08:00:00",
+      "test_end": "2012-05-02 06:30:00",
+      "method_feature_contract": {
+        "direct_linear_regression": "13 origin-time SML2010 S2 features",
+        "raw_physics_prior": "mapped physics target index 1",
+        "hybrid_digital_twin_readout": [
+          "physics_dining_temperature",
+          "physics_room_temperature",
+          "physics_dining_humidity",
+          "physics_room_humidity",
+          "hybrid_dining_temperature",
+          "hybrid_room_temperature",
+          "hybrid_dining_humidity",
+          "hybrid_room_humidity",
+          "boundary_activation",
+          "motor_level",
+          "outdoor_temperature_gap",
+          "outdoor_humidity_gap"
+        ],
+        "oh2024_inspired_additive_residual": "13 origin-time SML2010 S2 features plus the two target-time physics temperature estimates; all standardization parameters are fitted on training rows only"
+      },
+      "metrics": {
+        "persistence": {
+          "mae": 0.458005,
+          "rmse": 0.53624,
+          "correlation": 0.977631,
+          "r2": 0.955393,
+          "cvrmse_pct": 2.336152
+        },
+        "direct_linear_regression": {
+          "mae": 0.229682,
+          "rmse": 0.29337,
+          "correlation": 0.995346,
+          "r2": 0.986649,
+          "cvrmse_pct": 1.278077
+        },
+        "raw_physics_prior": {
+          "mae": 0.420402,
+          "rmse": 0.519685,
+          "correlation": 0.980778,
+          "r2": 0.958105,
+          "cvrmse_pct": 2.26403
+        },
+        "hybrid_digital_twin_readout": {
+          "mae": 0.216737,
+          "rmse": 0.282435,
+          "correlation": 0.994383,
+          "r2": 0.987626,
+          "cvrmse_pct": 1.230441
+        },
+        "oh2024_inspired_additive_residual": {
+          "mae": 0.230486,
+          "rmse": 0.291501,
+          "correlation": 0.99536,
+          "r2": 0.986818,
+          "cvrmse_pct": 1.269938
+        }
+      },
+      "mae_reductions": {
+        "oh2024_inspired_vs_raw_physics": 0.189916,
+        "oh2024_inspired_vs_persistence": 0.227519,
+        "oh2024_inspired_vs_direct_linear": -0.000804,
+        "oh2024_inspired_vs_project_readout": -0.013749
+      },
+      "lowest_mae_method": "hybrid_digital_twin_readout"
+    },
+    {
+      "task_id": "S2",
+      "target": "dining_temperature",
+      "horizon_minutes": 1440,
+      "status": "ok",
+      "sample_count": 3945,
+      "train_samples": 2761,
+      "test_samples": 1184,
+      "train_start": "2012-03-13 11:45:00",
+      "train_end": "2012-04-18 23:00:00",
+      "test_start": "2012-04-18 23:15:00",
+      "test_end": "2012-05-01 07:30:00",
+      "method_feature_contract": {
+        "direct_linear_regression": "13 origin-time SML2010 S2 features",
+        "raw_physics_prior": "mapped physics target index 0",
+        "hybrid_digital_twin_readout": [
+          "physics_dining_temperature",
+          "physics_room_temperature",
+          "physics_dining_humidity",
+          "physics_room_humidity",
+          "hybrid_dining_temperature",
+          "hybrid_room_temperature",
+          "hybrid_dining_humidity",
+          "hybrid_room_humidity",
+          "boundary_activation",
+          "motor_level",
+          "outdoor_temperature_gap",
+          "outdoor_humidity_gap"
+        ],
+        "oh2024_inspired_additive_residual": "13 origin-time SML2010 S2 features plus the two target-time physics temperature estimates; all standardization parameters are fitted on training rows only"
+      },
+      "metrics": {
+        "persistence": {
+          "mae": 1.517486,
+          "rmse": 1.753747,
+          "correlation": 0.767434,
+          "r2": 0.54047,
+          "cvrmse_pct": 7.559783
+        },
+        "direct_linear_regression": {
+          "mae": 1.75317,
+          "rmse": 2.143331,
+          "correlation": 0.732691,
+          "r2": 0.313631,
+          "cvrmse_pct": 9.239138
+        },
+        "raw_physics_prior": {
+          "mae": 1.58693,
+          "rmse": 1.782862,
+          "correlation": 0.772693,
+          "r2": 0.525086,
+          "cvrmse_pct": 7.685285
+        },
+        "hybrid_digital_twin_readout": {
+          "mae": 1.789396,
+          "rmse": 2.207075,
+          "correlation": 0.733148,
+          "r2": 0.272197,
+          "cvrmse_pct": 9.513918
+        },
+        "oh2024_inspired_additive_residual": {
+          "mae": 1.753754,
+          "rmse": 2.155692,
+          "correlation": 0.733222,
+          "r2": 0.305691,
+          "cvrmse_pct": 9.292422
+        }
+      },
+      "mae_reductions": {
+        "oh2024_inspired_vs_raw_physics": -0.166824,
+        "oh2024_inspired_vs_persistence": -0.236268,
+        "oh2024_inspired_vs_direct_linear": -0.000584,
+        "oh2024_inspired_vs_project_readout": 0.035642
+      },
+      "lowest_mae_method": "persistence"
+    },
+    {
+      "task_id": "S2",
+      "target": "room_temperature",
+      "horizon_minutes": 1440,
+      "status": "ok",
+      "sample_count": 3945,
+      "train_samples": 2761,
+      "test_samples": 1184,
+      "train_start": "2012-03-13 11:45:00",
+      "train_end": "2012-04-18 23:00:00",
+      "test_start": "2012-04-18 23:15:00",
+      "test_end": "2012-05-01 07:30:00",
+      "method_feature_contract": {
+        "direct_linear_regression": "13 origin-time SML2010 S2 features",
+        "raw_physics_prior": "mapped physics target index 1",
+        "hybrid_digital_twin_readout": [
+          "physics_dining_temperature",
+          "physics_room_temperature",
+          "physics_dining_humidity",
+          "physics_room_humidity",
+          "hybrid_dining_temperature",
+          "hybrid_room_temperature",
+          "hybrid_dining_humidity",
+          "hybrid_room_humidity",
+          "boundary_activation",
+          "motor_level",
+          "outdoor_temperature_gap",
+          "outdoor_humidity_gap"
+        ],
+        "oh2024_inspired_additive_residual": "13 origin-time SML2010 S2 features plus the two target-time physics temperature estimates; all standardization parameters are fitted on training rows only"
+      },
+      "metrics": {
+        "persistence": {
+          "mae": 1.499639,
+          "rmse": 1.757351,
+          "correlation": 0.763405,
+          "r2": 0.533269,
+          "cvrmse_pct": 7.677853
+        },
+        "direct_linear_regression": {
+          "mae": 1.768584,
+          "rmse": 2.16607,
+          "correlation": 0.739766,
+          "r2": 0.290922,
+          "cvrmse_pct": 9.463538
+        },
+        "raw_physics_prior": {
+          "mae": 1.509248,
+          "rmse": 1.754098,
+          "correlation": 0.771406,
+          "r2": 0.534996,
+          "cvrmse_pct": 7.663637
+        },
+        "hybrid_digital_twin_readout": {
+          "mae": 1.800993,
+          "rmse": 2.213675,
+          "correlation": 0.741339,
+          "r2": 0.259412,
+          "cvrmse_pct": 9.671528
+        },
+        "oh2024_inspired_additive_residual": {
+          "mae": 1.772293,
+          "rmse": 2.179651,
+          "correlation": 0.740656,
+          "r2": 0.282003,
+          "cvrmse_pct": 9.522875
+        }
+      },
+      "mae_reductions": {
+        "oh2024_inspired_vs_raw_physics": -0.263045,
+        "oh2024_inspired_vs_persistence": -0.272654,
+        "oh2024_inspired_vs_direct_linear": -0.003709,
+        "oh2024_inspired_vs_project_readout": 0.0287
+      },
+      "lowest_mae_method": "persistence"
+    }
+  ],
+  "summary": {
+    "evaluated_cases": 6,
+    "default_cases_expected": 6,
+    "oh2024_inspired_wins_vs_raw_physics": 4,
+    "lowest_mae_counts": {
+      "persistence": 2,
+      "direct_linear_regression": 0,
+      "raw_physics_prior": 0,
+      "hybrid_digital_twin_readout": 2,
+      "oh2024_inspired_additive_residual": 2
+    }
+  },
+  "decisions": {
+    "H-PHB-01": "supported",
+    "CLM-PHB-01": "supported"
+  },
+  "claim_boundary": "This output supports only a public-task method-transfer comparison. It does not reproduce the paper's confidential data, CNN-LSTM, TRNSYS/RC models, published numerical results, or a full 3-D spatial field evaluation."
+}

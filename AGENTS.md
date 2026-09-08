@@ -1,5 +1,13 @@
 # Repository Working Rules
 
+## Presentation format preference (user reaffirmed 2026-09-08)
+
+All new professor presentations SHALL be offline-capable HTML webpages, not PPTX.
+The user's explicit format preference overrides PPTX output requirements below
+for new presentation work. Preserve historical PPTX files; do not rebuild them
+solely for a new exploratory professor briefing. Keep candidate application
+proposals visibly separate from adopted thesis methods and completed evidence.
+
 This repository contains one research project expressed in multiple synchronized artifacts. Any AI assistant editing this repository must treat the following outputs as one coupled deliverable, not as independent documents.
 
 ## Current Submission Target
@@ -147,3 +155,10 @@ If you are an AI assistant making thesis-related edits in this repository, assum
 must always stay synchronized in scope, claims, metrics, and progress.
 
 If you cannot update all of them in the same round, you must explicitly state that the work is incomplete.
+
+## Algorithm generality constraint (user reaffirmed 2026-09-08)
+
+Do not continue single-scenario manual tuning or add case-specific controller exceptions. Existing BOPTEST results are single-FMU exploratory development, not proof of generality. See `docs/research/boptest_generality_audit_2026-09-08_zh.md`. Any resumed improvement SHALL first separate device settings from control logic and specify a shared calibration/selection procedure and held-out-plant evaluation. Per-device automatic identification may use the same predeclared procedure/budget; researchers must not manually choose per-test-device gains, smoothing or exceptions. Freeze algorithms and shared hyperparameters before unseen plants; do not relabel opened dates as unseen. Preserve prior results and source hashes.
+
+### Clarification: bounded cross-scenario adjustment is authorized
+The user explicitly allows adjustable parameters and slight per-scenario adaptation, provided the same algorithm and a documented small-data/limited-trial procedure apply across scenarios. Do not interpret the constraint above as forbidding such adaptation. Expose adjustable parameters and count their data/time/trial cost; do not introduce result-driven case exceptions.

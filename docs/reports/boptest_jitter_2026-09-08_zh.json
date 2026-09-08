@@ -1,0 +1,37 @@
+{
+  "status": "EXPLORATORY",
+  "sections": 8,
+  "summary": {
+    "0": {
+      "v4": {
+        "mae_C": 0.07342670731371854,
+        "command_total_variation_C": 24.94257960681443
+      },
+      "smooth035": {
+        "mae_C": 0.07733980662841557,
+        "command_total_variation_C": 24.949371703400953
+      },
+      "grid": {
+        "mae_C": 0.08548400242554594,
+        "command_total_variation_C": 25.017185919601754
+      }
+    },
+    "0.05": {
+      "v4": {
+        "mae_C": 0.10727616197903705,
+        "command_total_variation_C": 460.21617066277093
+      },
+      "smooth035": {
+        "mae_C": 0.09660588048605401,
+        "command_total_variation_C": 137.35949922193228
+      },
+      "grid": {
+        "mae_C": 0.11426038347019918,
+        "command_total_variation_C": 610.2726387474551
+      }
+    }
+  },
+  "html_sha256": "3fb5e6f0ee8469944d7545835aa4e7998522fbbd2995d00f81b27793099587c4",
+  "plot_sha256": "29e966677e0dd1889cf82dcbd6ce627c90cbe035a44b974918d4b517db872ca2",
+  "transfer_sha256": "3e1ec290b8655f95796a25656d18f45d7d5840356c566b1857c9ce1b484b7e63"
+}

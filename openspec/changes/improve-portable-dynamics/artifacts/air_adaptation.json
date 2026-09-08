@@ -1,0 +1,998 @@
+{
+  "status": "RUNNING",
+  "plant": "air",
+  "config": {
+    "target_C": 22,
+    "step_s": 60,
+    "case": "bestest_air",
+    "measurement_kind": "zone air temperature",
+    "supply_min_C": 12,
+    "supply_max_C": 40,
+    "temperature": "zon_reaTRooAir_y",
+    "outdoor": "zon_weaSta_reaWeaTDryBul_y",
+    "supply": "fcu_oveTSup_y",
+    "supply_input": "fcu_oveTSup_u",
+    "supply_activate": "fcu_oveTSup_activate",
+    "aux_input": "fcu_oveFan_u",
+    "aux_activate": "fcu_oveFan_activate",
+    "aux_output": "fcu_oveFan_y",
+    "aux_value": 0.5,
+    "target_inputs": [
+      "con_oveTSetHea_u",
+      "con_oveTSetCoo_u"
+    ],
+    "target_activates": [
+      "con_oveTSetHea_activate",
+      "con_oveTSetCoo_activate"
+    ],
+    "power_outputs": {
+      "heat_W": "fcu_reaPHea_y",
+      "cool_W": "fcu_reaPCoo_y",
+      "fan_W": "fcu_reaPFan_y"
+    }
+  },
+  "sources": {
+    "scripts/run_boptest_delayed_dynamics.py": "1ca9c2280b9bfbb477526fd132bc2993f9bc460df9cf54612bd0343bbccf28f4",
+    "scripts/boptest_cross_plant_devices.json": "83c008c20b47f4c5da77dd832b45558dd064a75a9c705190f80f730d104fc100",
+    "openspec/changes/improve-portable-dynamics/protocol.md": "636890acd83b5038782f021d5b8735280c97e43cb9c377a70ab8dc40618b78e0",
+    "digital_twin/control/delayed_dynamics.py": "8098ec6b1d80c1459e2201fedc6bf92bcf3307181caf18563ef34e430a2215e2",
+    "digital_twin/control/portable_pi.py": "2ce85a77f1d16e1dbb8fbcd847ebe722233790a9658cc3946a9cac9ed895ac30",
+    "scripts/run_boptest_cross_plant.py": "3ad0154d942737e43f9263c1cd9bcc9ebbff2292cc319c24800f73169d9f5990",
+    "openspec/changes/evaluate-boptest-cross-plant/artifacts/air.json": "1bffc2430fe384af089f53220ddbb5908b98c993cd00f7c1d7f1ac2c30d361fb",
+    "outputs/boptest_cross_plant/bestest_air/identification.csv": "bf65320193556abc8b690921bf839262954230b9d5f90aaf93400bd32cd0d87f",
+    "outputs/vendor/boptest-v0.9.0/testcases/bestest_air/models/wrapped.fmu": "158008fa3b635280a67dfed8bab5804d1f9a96d218b467dfebab77e5cbf8b86a",
+    "openspec/changes/evaluate-boptest-cross-plant/artifacts/hydronic.json": "a2ab02a0dc3519d2e542301612d54080c33be997508bb3fc041ce6e0e93a3453",
+    "outputs/boptest_cross_plant/bestest_hydronic/identification.csv": "d68b7f3ea41493243c7902e4d2c61050c7e02e50dde2c443a4fb3e40d6dc22ef",
+    "outputs/vendor/boptest-v0.9.0/testcases/bestest_hydronic/models/wrapped.fmu": "365b3085d97cc4620c06b6036156126a056d7f160fcc4f181d6b2fac4b05743b"
+  },
+  "freeze_sha256": "66eee5b97a5ec56e59ba2d8d74f5afb93978ca5cdc25ffc8e1cd76848599415c",
+  "calibration_trace": "outputs/boptest_cross_plant/bestest_air/identification.csv",
+  "banks": {
+    "2": {
+      "status": "FITTED",
+      "input_rows": 120,
+      "start_s": 86400.0,
+      "end_s": 93600.0,
+      "training_end_index_exclusive": 87,
+      "validation_starts": [
+        87,
+        97,
+        107
+      ],
+      "validation_points": 30,
+      "candidates": [
+        {
+          "order": 1,
+          "delay_steps": 0,
+          "a": [
+            0.7840758156455051
+          ],
+          "b": 2.5666381521399404,
+          "c": 0.0441611962781524,
+          "intercept": 1.2308707353102568,
+          "poles": [
+            [
+              0.7840758156455051,
+              0.0
+            ]
+          ],
+          "radius": 0.7840758156455051,
+          "steady_gain_C_per_u": 11.886756269627242,
+          "status": "FITTED",
+          "n": 76,
+          "rank": 4,
+          "fit_one_step_rmse_C": 0.006356124752914626,
+          "validation_rollout_rmse_C": 0.06406647968555461
+        },
+        {
+          "order": 1,
+          "delay_steps": 1,
+          "a": [
+            0.7396572656470538
+          ],
+          "b": 2.5458522357817266,
+          "c": 0.09452232019810268,
+          "intercept": 2.6205677514429544,
+          "poles": [
+            [
+              0.7396572656470538,
+              0.0
+            ]
+          ],
+          "radius": 0.7396572656470538,
+          "steady_gain_C_per_u": 9.778848801404687,
+          "status": "FITTED",
+          "n": 76,
+          "rank": 4,
+          "fit_one_step_rmse_C": 0.20810832706336807,
+          "validation_rollout_rmse_C": 0.22694951591181303
+        },
+        {
+          "order": 1,
+          "delay_steps": 3,
+          "a": [
+            0.8766865175306631
+          ],
+          "b": 0.845191913415102,
+          "c": 0.09995482712318944,
+          "intercept": 2.775207787147649,
+          "poles": [
+            [
+              0.8766865175306631,
+              0.0
+            ]
+          ],
+          "radius": 0.8766865175306631,
+          "steady_gain_C_per_u": 6.854010579299526,
+          "status": "FITTED",
+          "n": 76,
+          "rank": 4,
+          "fit_one_step_rmse_C": 0.33232725916726485,
+          "validation_rollout_rmse_C": 0.8766694540741461
+        },
+        {
+          "order": 1,
+          "delay_steps": 5,
+          "a": [
+            1.116098559368205
+          ],
+          "b": -1.5300646821191957,
+          "c": 0.03189997908502854,
+          "intercept": 0.8839025270420398,
+          "poles": [
+            [
+              1.116098559368205,
+              0.0
+            ]
+          ],
+          "radius": 1.116098559368205,
+          "steady_gain_C_per_u": 13.17901523021158,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 76,
+          "rank": 4,
+          "fit_one_step_rmse_C": 0.3107447651194274,
+          "validation_rollout_rmse_C": null
+        },
+        {
+          "order": 1,
+          "delay_steps": 10,
+          "a": [
+            1.0238995486791875
+          ],
+          "b": -1.203568878441887,
+          "c": 0.08170608709396807,
+          "intercept": 2.2351525451191145,
+          "poles": [
+            [
+              1.0238995486791875,
+              0.0
+            ]
+          ],
+          "radius": 1.0238995486791875,
+          "steady_gain_C_per_u": 50.359481452885845,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 76,
+          "rank": 4,
+          "fit_one_step_rmse_C": 0.2737196204398382,
+          "validation_rollout_rmse_C": null
+        },
+        {
+          "order": 2,
+          "delay_steps": 0,
+          "a": [
+            0.7668331417471553,
+            0.015245830439760607
+          ],
+          "b": 2.59796343212801,
+          "c": 0.044260952675519744,
+          "intercept": 1.2339094343575798,
+          "poles": [
+            [
+              0.7862243380035249,
+              0.0
+            ],
+            [
+              -0.019391196256369585,
+              0.0
+            ]
+          ],
+          "radius": 0.7862243380035249,
+          "steady_gain_C_per_u": 11.921582135508022,
+          "status": "FITTED",
+          "n": 76,
+          "rank": 5,
+          "fit_one_step_rmse_C": 0.005497379382611296,
+          "validation_rollout_rmse_C": 0.06411247216243719
+        },
+        {
+          "order": 2,
+          "delay_steps": 1,
+          "a": [
+            -4.849845961302739,
+            4.383009741077383
+          ],
+          "b": 16.89167891460067,
+          "c": 0.3366476446338037,
+          "intercept": 9.377368884981783,
+          "poles": [
+            [
+              -5.628555481917472,
+              0.0
+            ],
+            [
+              0.7787095206147332,
+              0.0
+            ]
+          ],
+          "radius": 5.628555481917472,
+          "steady_gain_C_per_u": 11.51572253377104,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 76,
+          "rank": 5,
+          "fit_one_step_rmse_C": 0.2051100595897043,
+          "validation_rollout_rmse_C": null
+        },
+        {
+          "order": 2,
+          "delay_steps": 3,
+          "a": [
+            1.679067963579603,
+            -0.7653048726301211
+          ],
+          "b": 0.38969633274328785,
+          "c": 0.06243975627587948,
+          "intercept": 1.7228536761574784,
+          "poles": [
+            [
+              0.8395339817898017,
+              0.24594220062909558
+            ],
+            [
+              0.8395339817898017,
+              -0.24594220062909558
+            ]
+          ],
+          "radius": 0.8748170509484376,
+          "steady_gain_C_per_u": 4.518904225973609,
+          "status": "FITTED",
+          "n": 76,
+          "rank": 5,
+          "fit_one_step_rmse_C": 0.20750587127129833,
+          "validation_rollout_rmse_C": 0.5482773739263277
+        },
+        {
+          "order": 2,
+          "delay_steps": 5,
+          "a": [
+            1.7391663843724716,
+            -0.8123492315183628
+          ],
+          "b": 0.2662503554160902,
+          "c": 0.058303835153699815,
+          "intercept": 1.6090630252902112,
+          "poles": [
+            [
+              0.8695831921862358,
+              0.2370111883130391
+            ],
+            [
+              0.8695831921862358,
+              -0.2370111883130391
+            ]
+          ],
+          "radius": 0.9013041836796071,
+          "steady_gain_C_per_u": 3.638152460580221,
+          "status": "FITTED",
+          "n": 76,
+          "rank": 5,
+          "fit_one_step_rmse_C": 0.2083853715739945,
+          "validation_rollout_rmse_C": 0.6664746243148725
+        },
+        {
+          "order": 2,
+          "delay_steps": 10,
+          "a": [
+            1.6588140823846547,
+            -0.6903325893081977
+          ],
+          "b": -0.27209816780344714,
+          "c": 0.05545265484066007,
+          "intercept": 1.5230315553194198,
+          "poles": [
+            [
+              0.8294070411923271,
+              0.04915841056001127
+            ],
+            [
+              0.8294070411923271,
+              -0.04915841056001127
+            ]
+          ],
+          "radius": 0.8308625574113911,
+          "steady_gain_C_per_u": -8.632965021582306,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 76,
+          "rank": 5,
+          "fit_one_step_rmse_C": 0.20647107781879231,
+          "validation_rollout_rmse_C": null
+        }
+      ],
+      "refits": [
+        {
+          "order": 1,
+          "delay_steps": 0,
+          "a": [
+            0.7837699264051905
+          ],
+          "b": 2.5678133990326915,
+          "c": 0.051725335530027505,
+          "intercept": 1.4368442445662981,
+          "poles": [
+            [
+              0.7837699264051905,
+              0.0
+            ]
+          ],
+          "radius": 0.7837699264051905,
+          "steady_gain_C_per_u": 11.875375873221413,
+          "status": "FITTED",
+          "n": 109,
+          "rank": 4,
+          "fit_one_step_rmse_C": 0.006655072339049254,
+          "tau_s": 246.26522075647785,
+          "validation_rollout_rmse_C": 0.06406647968555461
+        }
+      ],
+      "selected": {
+        "order": 1,
+        "delay_steps": 0,
+        "a": [
+          0.7837699264051905
+        ],
+        "b": 2.5678133990326915,
+        "c": 0.051725335530027505,
+        "intercept": 1.4368442445662981,
+        "poles": [
+          [
+            0.7837699264051905,
+            0.0
+          ]
+        ],
+        "radius": 0.7837699264051905,
+        "steady_gain_C_per_u": 11.875375873221413,
+        "status": "FITTED",
+        "n": 109,
+        "rank": 4,
+        "fit_one_step_rmse_C": 0.006655072339049254,
+        "tau_s": 246.26522075647785,
+        "validation_rollout_rmse_C": 0.06406647968555461
+      },
+      "offline_fit_count": 11,
+      "fit_wall_seconds": 0.11084133386611938
+    },
+    "6": {
+      "status": "FITTED",
+      "input_rows": 360,
+      "start_s": 86400.0,
+      "end_s": 108000.0,
+      "training_end_index_exclusive": 255,
+      "validation_starts": [
+        255,
+        265,
+        275,
+        285,
+        295,
+        305,
+        315,
+        325,
+        335,
+        345
+      ],
+      "validation_points": 100,
+      "candidates": [
+        {
+          "order": 1,
+          "delay_steps": 0,
+          "a": [
+            0.7836763515388634
+          ],
+          "b": 2.5691910012932118,
+          "c": 0.05079937162536525,
+          "intercept": 1.413783811328049,
+          "poles": [
+            [
+              0.7836763515388634,
+              0.0
+            ]
+          ],
+          "radius": 0.7836763515388634,
+          "steady_gain_C_per_u": 11.876607202077478,
+          "status": "FITTED",
+          "n": 244,
+          "rank": 4,
+          "fit_one_step_rmse_C": 0.010246772824370634,
+          "validation_rollout_rmse_C": 0.10210858467498424
+        },
+        {
+          "order": 1,
+          "delay_steps": 1,
+          "a": [
+            0.741638487600365
+          ],
+          "b": 2.5920157752588984,
+          "c": 0.06628340728309384,
+          "intercept": 1.8487747872110603,
+          "poles": [
+            [
+              0.741638487600365,
+              0.0
+            ]
+          ],
+          "radius": 0.741638487600365,
+          "steady_gain_C_per_u": 10.032515103292761,
+          "status": "FITTED",
+          "n": 244,
+          "rank": 4,
+          "fit_one_step_rmse_C": 0.20407827741633577,
+          "validation_rollout_rmse_C": 0.30097895345856196
+        },
+        {
+          "order": 1,
+          "delay_steps": 3,
+          "a": [
+            0.9073327966630393
+          ],
+          "b": 0.7150862775864996,
+          "c": 0.03989713567239322,
+          "intercept": 1.1279149954701462,
+          "poles": [
+            [
+              0.9073327966630393,
+              0.0
+            ]
+          ],
+          "radius": 0.9073327966630393,
+          "steady_gain_C_per_u": 7.716713700598804,
+          "status": "FITTED",
+          "n": 244,
+          "rank": 4,
+          "fit_one_step_rmse_C": 0.3271752675055533,
+          "validation_rollout_rmse_C": 1.318926562427752
+        },
+        {
+          "order": 1,
+          "delay_steps": 5,
+          "a": [
+            1.1401284479354146
+          ],
+          "b": -1.6158426745512886,
+          "c": -0.01605533740168061,
+          "intercept": -0.43261279789749635,
+          "poles": [
+            [
+              1.1401284479354146,
+              0.0
+            ]
+          ],
+          "radius": 1.1401284479354146,
+          "steady_gain_C_per_u": 11.531153726158681,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 244,
+          "rank": 4,
+          "fit_one_step_rmse_C": 0.3015040326740875,
+          "validation_rollout_rmse_C": null
+        },
+        {
+          "order": 1,
+          "delay_steps": 10,
+          "a": [
+            1.0363157789050164
+          ],
+          "b": -1.2129571487356812,
+          "c": 0.001324492657188816,
+          "intercept": 0.03652649345470358,
+          "poles": [
+            [
+              1.0363157789050164,
+              0.0
+            ]
+          ],
+          "radius": 1.0363157789050164,
+          "steady_gain_C_per_u": 33.40027903320375,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 244,
+          "rank": 4,
+          "fit_one_step_rmse_C": 0.2709301207895988,
+          "validation_rollout_rmse_C": null
+        },
+        {
+          "order": 2,
+          "delay_steps": 0,
+          "a": [
+            0.7703818749900408,
+            0.011783433630921923
+          ],
+          "b": 2.5929940866190666,
+          "c": 0.051178616801529984,
+          "intercept": 1.4244000138303037,
+          "poles": [
+            [
+              0.785385255244804,
+              0.0
+            ],
+            [
+              -0.015003380254763042,
+              0.0
+            ]
+          ],
+          "radius": 0.785385255244804,
+          "steady_gain_C_per_u": 11.90349466470976,
+          "status": "FITTED",
+          "n": 244,
+          "rank": 5,
+          "fit_one_step_rmse_C": 0.009966549581587216,
+          "validation_rollout_rmse_C": 0.10052935112917794
+        },
+        {
+          "order": 2,
+          "delay_steps": 1,
+          "a": [
+            -0.38246058330010674,
+            0.880934879720026
+          ],
+          "b": 5.478698814620526,
+          "c": 0.1233548703859864,
+          "intercept": 3.4383232934575156,
+          "poles": [
+            [
+              -1.1490945326386135,
+              0.0
+            ],
+            [
+              0.7666339493385069,
+              0.0
+            ]
+          ],
+          "radius": 1.1490945326386135,
+          "steady_gain_C_per_u": 10.9240638625528,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 244,
+          "rank": 5,
+          "fit_one_step_rmse_C": 0.2037484295230339,
+          "validation_rollout_rmse_C": null
+        },
+        {
+          "order": 2,
+          "delay_steps": 3,
+          "a": [
+            1.7034288869049428,
+            -0.7816710837680199
+          ],
+          "b": 0.3699459947997346,
+          "c": 0.02359713147970141,
+          "intercept": 0.6592428011016667,
+          "poles": [
+            [
+              0.8517144434524714,
+              0.2371783940043162
+            ],
+            [
+              0.8517144434524714,
+              -0.2371783940043162
+            ]
+          ],
+          "radius": 0.8841216453452656,
+          "steady_gain_C_per_u": 4.728215843007778,
+          "status": "FITTED",
+          "n": 244,
+          "rank": 5,
+          "fit_one_step_rmse_C": 0.20346341560951064,
+          "validation_rollout_rmse_C": 0.9114498615250164
+        },
+        {
+          "order": 2,
+          "delay_steps": 5,
+          "a": [
+            1.7593655736112974,
+            -0.8243184221183331
+          ],
+          "b": 0.24499032373674337,
+          "c": 0.020683731873137053,
+          "intercept": 0.5786452486634625,
+          "poles": [
+            [
+              0.8796827868056487,
+              0.22467001739480175
+            ],
+            [
+              0.8796827868056487,
+              -0.22467001739480175
+            ]
+          ],
+          "radius": 0.9079198324292365,
+          "steady_gain_C_per_u": 3.7718180090316777,
+          "status": "FITTED",
+          "n": 244,
+          "rank": 5,
+          "fit_one_step_rmse_C": 0.20424127484809212,
+          "validation_rollout_rmse_C": 1.068231076481809
+        },
+        {
+          "order": 2,
+          "delay_steps": 10,
+          "a": [
+            1.6830332794317422,
+            -0.7089643926154374
+          ],
+          "b": -0.26287684936549394,
+          "c": 0.011104228159787746,
+          "intercept": 0.3095084639838926,
+          "poles": [
+            [
+              0.8415166397158711,
+              0.028533098267562153
+            ],
+            [
+              0.8415166397158711,
+              -0.028533098267562153
+            ]
+          ],
+          "radius": 0.8420002331445268,
+          "steady_gain_C_per_u": -10.137507306504052,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 244,
+          "rank": 5,
+          "fit_one_step_rmse_C": 0.20246795858013564,
+          "validation_rollout_rmse_C": null
+        }
+      ],
+      "refits": [
+        {
+          "order": 2,
+          "delay_steps": 0,
+          "a": [
+            0.7698384190939525,
+            0.01294352110111445
+          ],
+          "b": 2.5863161675681736,
+          "c": 0.05552940102617103,
+          "intercept": 1.5489089263152873,
+          "poles": [
+            [
+              0.7862997259891467,
+              0.0
+            ],
+            [
+              -0.0164613068951942,
+              0.0
+            ]
+          ],
+          "radius": 0.7862997259891467,
+          "steady_gain_C_per_u": 11.90654299136428,
+          "status": "FITTED",
+          "n": 349,
+          "rank": 5,
+          "fit_one_step_rmse_C": 0.01235671813486135,
+          "tau_s": 249.5661412571193,
+          "validation_rollout_rmse_C": 0.10052935112917794
+        }
+      ],
+      "selected": {
+        "order": 2,
+        "delay_steps": 0,
+        "a": [
+          0.7698384190939525,
+          0.01294352110111445
+        ],
+        "b": 2.5863161675681736,
+        "c": 0.05552940102617103,
+        "intercept": 1.5489089263152873,
+        "poles": [
+          [
+            0.7862997259891467,
+            0.0
+          ],
+          [
+            -0.0164613068951942,
+            0.0
+          ]
+        ],
+        "radius": 0.7862997259891467,
+        "steady_gain_C_per_u": 11.90654299136428,
+        "status": "FITTED",
+        "n": 349,
+        "rank": 5,
+        "fit_one_step_rmse_C": 0.01235671813486135,
+        "tau_s": 249.5661412571193,
+        "validation_rollout_rmse_C": 0.10052935112917794
+      },
+      "offline_fit_count": 11,
+      "fit_wall_seconds": 0.014005290810018778
+    }
+  },
+  "trials": [
+    {
+      "budget_h": 2,
+      "method": "auto_pi",
+      "q": 0.5,
+      "trace": "outputs/boptest_delayed_dynamics/bestest_air/delayed_bank_trial_2_auto_pi_0.5.csv",
+      "sha256": "ee3692c982a2b54d015337688e79d753f1b54ee63c334ebc926a58c6919361fb",
+      "scored_hours": 2,
+      "warmup_hours": 24,
+      "wall_seconds": 2.0956608839333057,
+      "initial_state": {
+        "T": 21.99813939139267,
+        "outdoor": -18.900000000000006,
+        "supply_C": 34.701250677779285,
+        "aux": 0.5,
+        "heat_W": 3906.702062532393,
+        "cool_W": 0.0,
+        "fan_W": 21.630867458151755
+      },
+      "initial_u": 0.8107589527778316,
+      "metrics": {
+        "n": 120,
+        "mae_C": 0.002903431088836802,
+        "rmse_C": 0.00314556630086666,
+        "max_abs_error_C": 0.004633632784134534,
+        "within_0_5_pct": 100.0,
+        "requested_TV_u": 0.009692629669860064,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "heat_kWh": 7.914144586541036,
+        "cool_kWh": 0.0,
+        "fan_kWh": 0.04326173491630351
+      },
+      "first_30min_mae_C": 0.003431699158987082,
+      "after_30min_mae_C": 0.0027273417321200416
+    },
+    {
+      "budget_h": 2,
+      "method": "auto_pi",
+      "q": 1.0,
+      "trace": "outputs/boptest_delayed_dynamics/bestest_air/delayed_bank_trial_2_auto_pi_1.0.csv",
+      "sha256": "88f06e921833ed82289b4cf6a18694f10f343d6ce3da66f32fd6f5f74ab03eec",
+      "scored_hours": 2,
+      "warmup_hours": 24,
+      "wall_seconds": 3.4287136970087886,
+      "initial_state": {
+        "T": 21.99813939139267,
+        "outdoor": -18.900000000000006,
+        "supply_C": 34.701250677779285,
+        "aux": 0.5,
+        "heat_W": 3906.702062532393,
+        "cool_W": 0.0,
+        "fan_W": 21.630867458151755
+      },
+      "initial_u": 0.8107589527778316,
+      "metrics": {
+        "n": 120,
+        "mae_C": 0.003934773052390975,
+        "rmse_C": 0.004268167102484546,
+        "max_abs_error_C": 0.006327536577487081,
+        "within_0_5_pct": 100.0,
+        "requested_TV_u": 0.009656250554525903,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "heat_kWh": 7.913254508267505,
+        "cool_kWh": 0.0,
+        "fan_kWh": 0.04326173491630351
+      },
+      "first_30min_mae_C": 0.004366544525741271,
+      "after_30min_mae_C": 0.0037908492279408773
+    },
+    {
+      "budget_h": 2,
+      "method": "proposed",
+      "q": 0.5,
+      "trace": "outputs/boptest_delayed_dynamics/bestest_air/delayed_bank_trial_2_proposed_0.5.csv",
+      "sha256": "7e0de65ba49dab84f835e74e9e80cc7486dfb70bd99f388d5f9ce4b1aeb310a4",
+      "scored_hours": 2,
+      "warmup_hours": 24,
+      "wall_seconds": 2.5840629800222814,
+      "initial_state": {
+        "T": 21.99813939139267,
+        "outdoor": -18.900000000000006,
+        "supply_C": 34.701250677779285,
+        "aux": 0.5,
+        "heat_W": 3906.702062532393,
+        "cool_W": 0.0,
+        "fan_W": 21.630867458151755
+      },
+      "initial_u": 0.8107589527778316,
+      "metrics": {
+        "n": 120,
+        "mae_C": 0.0007383731046090247,
+        "rmse_C": 0.0011085622360892018,
+        "max_abs_error_C": 0.002984238228975755,
+        "within_0_5_pct": 100.0,
+        "requested_TV_u": 0.009764606871978887,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "heat_kWh": 7.916078471168508,
+        "cool_kWh": 0.0,
+        "fan_kWh": 0.04326173491630351
+      },
+      "first_30min_mae_C": 0.0019643475686147364,
+      "after_30min_mae_C": 0.00032971494994045415
+    },
+    {
+      "budget_h": 2,
+      "method": "proposed",
+      "q": 1.0,
+      "trace": "outputs/boptest_delayed_dynamics/bestest_air/delayed_bank_trial_2_proposed_1.0.csv",
+      "sha256": "a82b1e2c5d7bcbd15f7d92ad81afe2678de3e7d51b740384c6fd3ad0eae59243",
+      "scored_hours": 2,
+      "warmup_hours": 24,
+      "wall_seconds": 2.390376412309706,
+      "initial_state": {
+        "T": 21.99813939139267,
+        "outdoor": -18.900000000000006,
+        "supply_C": 34.701250677779285,
+        "aux": 0.5,
+        "heat_W": 3906.702062532393,
+        "cool_W": 0.0,
+        "fan_W": 21.630867458151755
+      },
+      "initial_u": 0.8107589527778316,
+      "metrics": {
+        "n": 120,
+        "mae_C": 0.0009953397820230711,
+        "rmse_C": 0.00145241441775434,
+        "max_abs_error_C": 0.0035541889262731274,
+        "within_0_5_pct": 100.0,
+        "requested_TV_u": 0.009751520680125969,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "heat_kWh": 7.915895230208041,
+        "cool_kWh": 0.0,
+        "fan_kWh": 0.04326173491630351
+      },
+      "first_30min_mae_C": 0.0026529870954864992,
+      "after_30min_mae_C": 0.00044279067753526155
+    },
+    {
+      "budget_h": 6,
+      "method": "auto_pi",
+      "q": 0.5,
+      "trace": "outputs/boptest_delayed_dynamics/bestest_air/delayed_bank_trial_6_auto_pi_0.5.csv",
+      "sha256": "35f3eab462b19a335a2b59477169da0b3a2bb919866cb9be848ee3c78748f792",
+      "scored_hours": 2,
+      "warmup_hours": 24,
+      "wall_seconds": 3.3313996181823313,
+      "initial_state": {
+        "T": 21.99813939139267,
+        "outdoor": -18.900000000000006,
+        "supply_C": 34.701250677779285,
+        "aux": 0.5,
+        "heat_W": 3906.702062532393,
+        "cool_W": 0.0,
+        "fan_W": 21.630867458151755
+      },
+      "initial_u": 0.8107589527778316,
+      "metrics": {
+        "n": 120,
+        "mae_C": 0.002911026685876076,
+        "rmse_C": 0.0031532330219533854,
+        "max_abs_error_C": 0.0046440292460943056,
+        "within_0_5_pct": 100.0,
+        "requested_TV_u": 0.009692467485207912,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "heat_kWh": 7.914137922396058,
+        "cool_kWh": 0.0,
+        "fan_kWh": 0.04326173491630351
+      },
+      "first_30min_mae_C": 0.003434840229431302,
+      "after_30min_mae_C": 0.0027364221713576677
+    },
+    {
+      "budget_h": 6,
+      "method": "auto_pi",
+      "q": 1.0,
+      "trace": "outputs/boptest_delayed_dynamics/bestest_air/delayed_bank_trial_6_auto_pi_1.0.csv",
+      "sha256": "b90e16c27f958b2e203407cd79462d3e84ace71f7d1b6d0dfe7267ae7b6d5363",
+      "scored_hours": 2,
+      "warmup_hours": 24,
+      "wall_seconds": 2.5968692172318697,
+      "initial_state": {
+        "T": 21.99813939139267,
+        "outdoor": -18.900000000000006,
+        "supply_C": 34.701250677779285,
+        "aux": 0.5,
+        "heat_W": 3906.702062532393,
+        "cool_W": 0.0,
+        "fan_W": 21.630867458151755
+      },
+      "initial_u": 0.8107589527778316,
+      "metrics": {
+        "n": 120,
+        "mae_C": 0.003996093175689926,
+        "rmse_C": 0.004334062438825238,
+        "max_abs_error_C": 0.006425101622596685,
+        "within_0_5_pct": 100.0,
+        "requested_TV_u": 0.009654236667090643,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "heat_kWh": 7.913201127326891,
+        "cool_kWh": 0.0,
+        "fan_kWh": 0.04326173491630351
+      },
+      "first_30min_mae_C": 0.004412487206280957,
+      "after_30min_mae_C": 0.0038572951654929155
+    },
+    {
+      "budget_h": 6,
+      "method": "proposed",
+      "q": 0.5,
+      "trace": "outputs/boptest_delayed_dynamics/bestest_air/delayed_bank_trial_6_proposed_0.5.csv",
+      "sha256": "e181082ff9c8e0f0ecea25b7cbbbb99b8329d0aeef56f4dfb7a1d73928d154e0",
+      "scored_hours": 2,
+      "warmup_hours": 24,
+      "wall_seconds": 4.367371554952115,
+      "initial_state": {
+        "T": 21.99813939139267,
+        "outdoor": -18.900000000000006,
+        "supply_C": 34.701250677779285,
+        "aux": 0.5,
+        "heat_W": 3906.702062532393,
+        "cool_W": 0.0,
+        "fan_W": 21.630867458151755
+      },
+      "initial_u": 0.8107589527778316,
+      "metrics": {
+        "n": 120,
+        "mae_C": 0.000740245561580366,
+        "rmse_C": 0.001110826899983257,
+        "max_abs_error_C": 0.0029842965390685094,
+        "within_0_5_pct": 100.0,
+        "requested_TV_u": 0.009764572564195717,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "heat_kWh": 7.916076636909057,
+        "cool_kWh": 0.0,
+        "fan_kWh": 0.04326173491630351
+      },
+      "first_30min_mae_C": 0.0019698703856647626,
+      "after_30min_mae_C": 0.0003303706202189005
+    },
+    {
+      "budget_h": 6,
+      "method": "proposed",
+      "q": 1.0,
+      "trace": "outputs/boptest_delayed_dynamics/bestest_air/delayed_bank_trial_6_proposed_1.0.csv",
+      "sha256": "fa6e54dcf2dbb010a8e67fb3ba364d27edccbd55c05ee9daf6ef4fb9f0932b30",
+      "scored_hours": 2,
+      "warmup_hours": 24,
+      "wall_seconds": 2.436185921076685,
+      "initial_state": {
+        "T": 21.99813939139267,
+        "outdoor": -18.900000000000006,
+        "supply_C": 34.701250677779285,
+        "aux": 0.5,
+        "heat_W": 3906.702062532393,
+        "cool_W": 0.0,
+        "fan_W": 21.630867458151755
+      },
+      "initial_u": 0.8107589527778316,
+      "metrics": {
+        "n": 120,
+        "mae_C": 0.00101057660057459,
+        "rmse_C": 0.001472682669029811,
+        "max_abs_error_C": 0.003586504197016893,
+        "within_0_5_pct": 100.0,
+        "requested_TV_u": 0.009750952256534995,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "heat_kWh": 7.915883887519762,
+        "cool_kWh": 0.0,
+        "fan_kWh": 0.04326173491630351
+      },
+      "first_30min_mae_C": 0.0026922351622166237,
+      "after_30min_mae_C": 0.0004500237466939123
+    }
+  ],
+  "evaluations": [],
+  "skips": [],
+  "failures": []
+}

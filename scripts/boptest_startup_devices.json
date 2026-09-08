@@ -1,0 +1,214 @@
+{
+  "air": {
+    "case": "bestest_air",
+    "measurement_kind": "zone air temperature",
+    "temperature": "zon_reaTRooAir_y",
+    "outdoor": "zon_weaSta_reaWeaTDryBul_y",
+    "actuator_input": "fcu_oveTSup_u",
+    "actuator_activate": "fcu_oveTSup_activate",
+    "actuator_output": "fcu_oveTSup_y",
+    "actuator_min": 285.15,
+    "actuator_max": 313.15,
+    "actuator_unit": "K",
+    "overrides": [
+      {
+        "input": "con_oveTSetHea_u",
+        "activate": "con_oveTSetHea_activate",
+        "value": 295.15,
+        "unit": "K"
+      },
+      {
+        "input": "con_oveTSetCoo_u",
+        "activate": "con_oveTSetCoo_activate",
+        "value": 295.15,
+        "unit": "K"
+      },
+      {
+        "input": "fcu_oveFan_u",
+        "activate": "fcu_oveFan_activate",
+        "value": 0.5,
+        "unit": "1"
+      }
+    ],
+    "power_outputs": {
+      "heat_W": "fcu_reaPHea_y",
+      "cool_W": "fcu_reaPCoo_y",
+      "fan_W": "fcu_reaPFan_y"
+    },
+    "target_C": 22,
+    "step_s": 60,
+    "startup_target_inputs": [
+      "con_oveTSetHea_u",
+      "con_oveTSetCoo_u"
+    ]
+  },
+  "hydronic": {
+    "case": "bestest_hydronic",
+    "measurement_kind": "operative zone temperature (not air temperature)",
+    "temperature": "reaTRoo_y",
+    "outdoor": "weaSta_reaWeaTDryBul_y",
+    "actuator_input": "oveTSetSup_u",
+    "actuator_activate": "oveTSetSup_activate",
+    "actuator_output": "oveTSetSup_y",
+    "actuator_min": 293.15,
+    "actuator_max": 353.15,
+    "actuator_unit": "K",
+    "overrides": [
+      {
+        "input": "oveTSetHea_u",
+        "activate": "oveTSetHea_activate",
+        "value": 295.15,
+        "unit": "K"
+      },
+      {
+        "input": "oveTSetCoo_u",
+        "activate": "oveTSetCoo_activate",
+        "value": 295.15,
+        "unit": "K"
+      },
+      {
+        "input": "ovePum_u",
+        "activate": "ovePum_activate",
+        "value": 1,
+        "unit": "1"
+      }
+    ],
+    "power_outputs": {
+      "gas_thermal_W": "reaQHea_y",
+      "pump_W": "reaPPum_y"
+    },
+    "target_C": 22,
+    "step_s": 60,
+    "startup_target_inputs": [
+      "oveTSetHea_u",
+      "oveTSetCoo_u"
+    ]
+  },
+  "heat_pump": {
+    "case": "bestest_hydronic_heat_pump",
+    "measurement_kind": "zone operative temperature",
+    "temperature": "reaTZon_y",
+    "outdoor": "weaSta_reaWeaTDryBul_y",
+    "actuator_input": "oveHeaPumY_u",
+    "actuator_activate": "oveHeaPumY_activate",
+    "actuator_output": "oveHeaPumY_y",
+    "actuator_min": 0,
+    "actuator_max": 1,
+    "actuator_unit": "1",
+    "overrides": [
+      {
+        "input": "oveFan_u",
+        "activate": "oveFan_activate",
+        "value": 1,
+        "unit": "1"
+      },
+      {
+        "input": "ovePum_u",
+        "activate": "ovePum_activate",
+        "value": 1,
+        "unit": "1"
+      },
+      {
+        "input": "oveTSet_u",
+        "activate": "oveTSet_activate",
+        "value": 295.15,
+        "unit": "K"
+      }
+    ],
+    "power_outputs": {
+      "heat_pump_W": "reaPHeaPum_y",
+      "fan_W": "reaPFan_y",
+      "pump_W": "reaPPumEmi_y"
+    },
+    "target_C": 22,
+    "step_s": 60,
+    "startup_target_inputs": [
+      "oveTSet_u"
+    ]
+  },
+  "apartment": {
+    "case": "twozone_apartment_hydronic",
+    "measurement_kind": "day-zone air temperature; night zone native control",
+    "temperature": "dayZon_reaTRooAir_y",
+    "outdoor": "weatherStation_reaWeaTDryBul_y",
+    "actuator_input": "hydronicSystem_oveTHea_u",
+    "actuator_activate": "hydronicSystem_oveTHea_activate",
+    "actuator_output": "hydronicSystem_oveTHea_y",
+    "actuator_min": 273.15,
+    "actuator_max": 318.15,
+    "actuator_unit": "K",
+    "overrides": [
+      {
+        "input": "hydronicSystem_oveMDayZ_u",
+        "activate": "hydronicSystem_oveMDayZ_activate",
+        "value": 1,
+        "unit": "1"
+      },
+      {
+        "input": "thermostatDayZon_oveTsetZon_u",
+        "activate": "thermostatDayZon_oveTsetZon_activate",
+        "value": 295.15,
+        "unit": "K"
+      },
+      {
+        "input": "thermostatNigZon_oveTsetZon_u",
+        "activate": "thermostatNigZon_oveTsetZon_activate",
+        "value": 295.15,
+        "unit": "K"
+      }
+    ],
+    "power_outputs": {
+      "heat_pump_W": "hydronicSystem_reaPeleHeaPum_y",
+      "pump_W": "hydronicSystem_reaPPum_y"
+    },
+    "target_C": 22,
+    "step_s": 60,
+    "startup_target_inputs": [
+      "thermostatDayZon_oveTsetZon_u",
+      "thermostatNigZon_oveTsetZon_u"
+    ]
+  },
+  "commercial": {
+    "case": "singlezone_commercial_hydronic",
+    "measurement_kind": "zone air temperature; AHU native control",
+    "temperature": "reaTZon_y",
+    "outdoor": "weaSta_reaWeaTDryBul_y",
+    "actuator_input": "oveValRad_u",
+    "actuator_activate": "oveValRad_activate",
+    "actuator_output": "oveValRad_y",
+    "actuator_min": 0,
+    "actuator_max": 1,
+    "actuator_unit": "1",
+    "overrides": [
+      {
+        "input": "ovePum_u",
+        "activate": "ovePum_activate",
+        "value": 25000,
+        "unit": "Pa"
+      },
+      {
+        "input": "dh_oveTSupSetHea_u",
+        "activate": "dh_oveTSupSetHea_activate",
+        "value": 318.15,
+        "unit": "K"
+      },
+      {
+        "input": "oveTZonSet_u",
+        "activate": "oveTZonSet_activate",
+        "value": 295.15,
+        "unit": "K"
+      }
+    ],
+    "power_outputs": {
+      "district_heat_W": "reaQHea_y",
+      "pump_W": "reaPPum_y",
+      "supply_fan_W": "ahu_reaPFanSup_y",
+      "extract_fan_W": "ahu_reaPFanExt_y"
+    },
+    "target_C": 22,
+    "step_s": 60,
+    "startup_target_inputs": [
+      "oveTZonSet_u"
+    ]
+  }
+}

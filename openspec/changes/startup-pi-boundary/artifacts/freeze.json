@@ -1,0 +1,29 @@
+{
+  "sources": {
+    "scripts/run_boptest_startup.py": "47f3d25c0bb23b55fc360cdd3cba9965775b50c7d9b00bef299fd5a228443e8e",
+    "scripts/boptest_startup_devices.json": "4678761e580d725aa08d5ffd999c2e47da6cdd9e04d82ee135b205209098762a",
+    "openspec/changes/startup-pi-boundary/protocol.md": "7a32b3283c9299f8446d445a95fca0953efd9901c2500d9b61150889848a7fd3",
+    "scripts/boptest_startup_adapter.py": "34e3b197d6f9359da44d06d6f5f15986ead66e0297b8afaf9d982ed8ae990977",
+    "scripts/select_boptest_startup.py": "a141844826386e573596f481adf8cc7064915954d83dcff5e9533168ade2321f",
+    "scripts/run_boptest_cross_plant.py": "3ad0154d942737e43f9263c1cd9bcc9ebbff2292cc319c24800f73169d9f5990",
+    "digital_twin/control/startup_pi.py": "d0338202ac80ce906766fba2bc09ebb550075d3883155f60639dfc92a60bbadc",
+    "digital_twin/control/portable_pi.py": "2ce85a77f1d16e1dbb8fbcd847ebe722233790a9658cc3946a9cac9ed895ac30",
+    "digital_twin/control/delayed_dynamics.py": "8098ec6b1d80c1459e2201fedc6bf92bcf3307181caf18563ef34e430a2215e2",
+    "openspec/changes/model-consistent-compensation/artifacts/air.json": "184dc88cc432391b2a13600d72e698f72a58131b8c5897371d113e5823e4ce1f",
+    "outputs/boptest_cross_plant/bestest_air/identification.csv": "bf65320193556abc8b690921bf839262954230b9d5f90aaf93400bd32cd0d87f",
+    "outputs/vendor/boptest-v0.9.0/testcases/bestest_air/models/wrapped.fmu": "158008fa3b635280a67dfed8bab5804d1f9a96d218b467dfebab77e5cbf8b86a",
+    "openspec/changes/model-consistent-compensation/artifacts/hydronic.json": "7739d663de9316809cb231f6b543bf038ff51775b4729ad05829d8df043c43da",
+    "outputs/boptest_cross_plant/bestest_hydronic/identification.csv": "d68b7f3ea41493243c7902e4d2c61050c7e02e50dde2c443a4fb3e40d6dc22ef",
+    "outputs/vendor/boptest-v0.9.0/testcases/bestest_hydronic/models/wrapped.fmu": "365b3085d97cc4620c06b6036156126a056d7f160fcc4f181d6b2fac4b05743b",
+    "openspec/changes/model-consistent-compensation/artifacts/heat_pump.json": "a34b0a779c851ea52eb56878bcf69ce0fcec7a977f4d886c6b73415c354b4c3e",
+    "outputs/boptest_more_devices/bestest_hydronic_heat_pump/identification.csv": "4b6b24afb8971366157b0c1b7a9f19a0481a84c1fe9cfc8276183b9c12fcef58",
+    "outputs/vendor/boptest-v0.9.0/testcases/bestest_hydronic_heat_pump/models/wrapped.fmu": "674b9500c1c89fdbec64f2c053af8ddcd06afebe63bd7c1b7fc708692a11863e",
+    "openspec/changes/model-consistent-compensation/artifacts/apartment.json": "65ff336524a875e8d5b9b5c5511f731f5d38266047b86123efc9cc35e3bc7dd9",
+    "outputs/boptest_more_devices/twozone_apartment_hydronic/identification.csv": "8a2b8190ade78aec0fb800ebca130a30ff78a374db400cb3983ba94b7e4def41",
+    "outputs/vendor/boptest-v0.9.0/testcases/twozone_apartment_hydronic/models/wrapped.fmu": "88916efe9fbd0543d78c323eb8221692cb4b2411ffa1b84c2dbc9e23a2d19d72",
+    "openspec/changes/model-consistent-compensation/artifacts/commercial.json": "c64f90642e3ed4c9e10f0200416fc215f2da964c73cbe9e7a2471fb2f7cf16c2",
+    "outputs/boptest_more_devices/singlezone_commercial_hydronic/identification.csv": "45e5317667aca94c4a1d53d0d0c2bdad971dda371db11dd2155533a028fcd8ab",
+    "outputs/vendor/boptest-v0.9.0/testcases/singlezone_commercial_hydronic/models/wrapped.fmu": "5de84fd8ade869dcaa2748e552aca6e2650f4c33aadcb3e4fe0737c05395ee51"
+  },
+  "before_any_simulation": true
+}

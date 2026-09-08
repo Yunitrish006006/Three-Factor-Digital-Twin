@@ -1,0 +1,2 @@
+# Questions
+RQ-BCP-01: Can identical identification/control rules operate air and hydronic plants via configuration only? RQ-BCP-02: Do2h/6h data plus two trials produce better control than matched auto-PI? RQ-BCP-03: What fails when thermal dynamics change? A new hydronic FMU is not a new industrial domain. Air measures air T, hydronic operative T; never aggregate their raw MAE as interchangeable outcomes. Hypothesis exploratory, adverse/invalid fits retained.

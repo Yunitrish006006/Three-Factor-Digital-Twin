@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "live_url": "http://127.0.0.1:18775/",
+  "live_static_paper_graph_equal": true,
+  "new_nodes": 87,
+  "numeric_comparisons": 400,
+  "factorial_comparisons": 160,
+  "all_endpoint_values_verified": true,
+  "explicit_fallback_result_nodes": 8,
+  "full_workspace_validators": "PASS",
+  "full_python_tests": {
+    "passed": 274,
+    "seconds": 595.041
+  },
+  "offline_html_visual_check": "PASS",
+  "sources": {
+    "openspec/changes/startup-handover-ablation/artifacts/verification.json": "7cd914acaea2ad2ce6eea8136ed01faa873ced31d163182bbe988722b8ad0e9f",
+    "docs/reports/boptest_handover_2026-09-08_zh.html": "b7d5a0526ec6a069b95574ec44c674f19cbb27e9f7d61a055fef33a2121f16f5",
+    "docs/research/boptest_graph_sources.json": "067bbfc216e5d95e00895580f00d97e871103da4f8ed3a5733f566f8e93a574a"
+  },
+  "scope": "Local viewer only; unadopted extension, no remote deployment or thesis adoption."
+}

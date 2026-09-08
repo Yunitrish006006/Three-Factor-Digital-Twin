@@ -1,0 +1,843 @@
+{
+  "status": "RUNNING",
+  "plant": "apartment",
+  "config": {
+    "case": "twozone_apartment_hydronic",
+    "measurement_kind": "day-zone air temperature; night zone native control",
+    "temperature": "dayZon_reaTRooAir_y",
+    "outdoor": "weatherStation_reaWeaTDryBul_y",
+    "actuator_input": "hydronicSystem_oveTHea_u",
+    "actuator_activate": "hydronicSystem_oveTHea_activate",
+    "actuator_output": "hydronicSystem_oveTHea_y",
+    "actuator_min": 273.15,
+    "actuator_max": 318.15,
+    "actuator_unit": "K",
+    "overrides": [
+      {
+        "input": "hydronicSystem_oveMDayZ_u",
+        "activate": "hydronicSystem_oveMDayZ_activate",
+        "value": 1,
+        "unit": "1"
+      },
+      {
+        "input": "thermostatDayZon_oveTsetZon_u",
+        "activate": "thermostatDayZon_oveTsetZon_activate",
+        "value": 295.15,
+        "unit": "K"
+      },
+      {
+        "input": "thermostatNigZon_oveTsetZon_u",
+        "activate": "thermostatNigZon_oveTsetZon_activate",
+        "value": 295.15,
+        "unit": "K"
+      }
+    ],
+    "power_outputs": {
+      "heat_pump_W": "hydronicSystem_reaPeleHeaPum_y",
+      "pump_W": "hydronicSystem_reaPPum_y"
+    },
+    "target_C": 22,
+    "step_s": 60
+  },
+  "sources": {
+    "scripts/run_boptest_more_devices.py": "a80e94d841f97201a0ea40eac46fa22d2ace8a63b2180884e8cfd9ea7dd132fd",
+    "scripts/boptest_more_devices.json": "d91bbf73cf58819656f09c6e848d84fb1972b36dfa3b67b03599c86ee6b9dc2b",
+    "openspec/changes/evaluate-more-boptest-devices/protocol.md": "0df5f9894135eefaf8e0fe6a68f7573742e6bf293acb40d05a5f1359f1ac64d8",
+    "digital_twin/control/delayed_dynamics.py": "8098ec6b1d80c1459e2201fedc6bf92bcf3307181caf18563ef34e430a2215e2",
+    "digital_twin/control/portable_pi.py": "2ce85a77f1d16e1dbb8fbcd847ebe722233790a9658cc3946a9cac9ed895ac30",
+    "scripts/run_boptest_cross_plant.py": "3ad0154d942737e43f9263c1cd9bcc9ebbff2292cc319c24800f73169d9f5990",
+    "scripts/boptest_native_adapter.py": "db8528791878ba2536102e5ca651c37caef684f4d868dcb13041eaa8a4dbef15",
+    "openspec/changes/improve-portable-dynamics/artifacts/freeze.json": "66eee5b97a5ec56e59ba2d8d74f5afb93978ca5cdc25ffc8e1cd76848599415c",
+    "openspec/changes/improve-portable-dynamics/artifacts/air.json": "c6720c0cc4a48dda3a0389a5e579ccaee0fc1f9a398d06c72baa719128d27c68",
+    "openspec/changes/improve-portable-dynamics/artifacts/hydronic.json": "eb83dbbd9df5855725dc34c7a8136acc4ac25325921cb3010cf793960663aa39",
+    "outputs/vendor/boptest-v0.9.0/testcases/bestest_hydronic_heat_pump/models/wrapped.fmu": "674b9500c1c89fdbec64f2c053af8ddcd06afebe63bd7c1b7fc708692a11863e",
+    "outputs/vendor/boptest-v0.9.0/testcases/bestest_hydronic_heat_pump/doc/index.html": "9e4fefe4be681e861f40a14d7d2ae889ed4e5176527e79dbc36c370e84e45c1d",
+    "outputs/vendor/boptest-v0.9.0/testcases/twozone_apartment_hydronic/models/wrapped.fmu": "88916efe9fbd0543d78c323eb8221692cb4b2411ffa1b84c2dbc9e23a2d19d72",
+    "outputs/vendor/boptest-v0.9.0/testcases/twozone_apartment_hydronic/doc/index.html": "afdccf9c902f0d7775fc3f6361a3a5f000e55d4da7585a39ae3d8868b40bd105",
+    "outputs/vendor/boptest-v0.9.0/testcases/singlezone_commercial_hydronic/models/wrapped.fmu": "5de84fd8ade869dcaa2748e552aca6e2650f4c33aadcb3e4fe0737c05395ee51",
+    "outputs/vendor/boptest-v0.9.0/testcases/singlezone_commercial_hydronic/doc/index.html": "d158ffd44a45e0583e7155810e89e0d1f291421ae7f5c64cc2f2fe3aa103c26c"
+  },
+  "freeze_sha256": "42be00eaf6dae11cd1a5c1e53a50b82c23a9d2dcd2b56b092373c32bb9ec5982",
+  "banks": {
+    "2": {
+      "status": "FITTED",
+      "input_rows": 120,
+      "start_s": 86400,
+      "end_s": 93600,
+      "training_end_index_exclusive": 87,
+      "validation_starts": [
+        87,
+        97,
+        107
+      ],
+      "validation_points": 30,
+      "candidates": [
+        {
+          "order": 1,
+          "delay_steps": 0,
+          "a": [
+            0.971410142991131
+          ],
+          "b": -0.003599933146728231,
+          "c": -0.01196845746179983,
+          "intercept": -0.1716526318603957,
+          "poles": [
+            [
+              0.971410142991131,
+              0.0
+            ]
+          ],
+          "radius": 0.971410142991131,
+          "steady_gain_C_per_u": -0.12591644461920476,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 76,
+          "rank": 4,
+          "fit_one_step_rmse_C": 0.0004927321986376004,
+          "validation_rollout_rmse_C": null
+        },
+        {
+          "order": 1,
+          "delay_steps": 1,
+          "a": [
+            0.9680486098242439
+          ],
+          "b": -0.003829535146475542,
+          "c": -0.012499852335995565,
+          "intercept": -0.17589655326478684,
+          "poles": [
+            [
+              0.9680486098242439,
+              0.0
+            ]
+          ],
+          "radius": 0.9680486098242439,
+          "steady_gain_C_per_u": -0.11985503996571942,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 76,
+          "rank": 4,
+          "fit_one_step_rmse_C": 0.00045568710953908226,
+          "validation_rollout_rmse_C": null
+        },
+        {
+          "order": 1,
+          "delay_steps": 3,
+          "a": [
+            0.9608780784877579
+          ],
+          "b": -0.004091664025016326,
+          "c": -0.013668157354442349,
+          "intercept": -0.18567793280791361,
+          "poles": [
+            [
+              0.9608780784877579,
+              0.0
+            ]
+          ],
+          "radius": 0.9608780784877579,
+          "steady_gain_C_per_u": -0.10458750150439187,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 76,
+          "rank": 4,
+          "fit_one_step_rmse_C": 0.0004269139347788052,
+          "validation_rollout_rmse_C": null
+        },
+        {
+          "order": 1,
+          "delay_steps": 5,
+          "a": [
+            0.9549561116835882
+          ],
+          "b": -0.0039962057618634465,
+          "c": -0.014682231430539167,
+          "intercept": -0.19478411420923242,
+          "poles": [
+            [
+              0.9549561116835882,
+              0.0
+            ]
+          ],
+          "radius": 0.9549561116835882,
+          "steady_gain_C_per_u": -0.08871804613740289,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 76,
+          "rank": 4,
+          "fit_one_step_rmse_C": 0.0004814304742012311,
+          "validation_rollout_rmse_C": null
+        },
+        {
+          "order": 1,
+          "delay_steps": 10,
+          "a": [
+            0.9697280576922849
+          ],
+          "b": -0.00034230737093318936,
+          "c": -0.012900240808537217,
+          "intercept": -0.18733745507319136,
+          "poles": [
+            [
+              0.9697280576922849,
+              0.0
+            ]
+          ],
+          "radius": 0.9697280576922849,
+          "steady_gain_C_per_u": -0.011307743898743778,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 76,
+          "rank": 4,
+          "fit_one_step_rmse_C": 0.000711574395814264,
+          "validation_rollout_rmse_C": null
+        },
+        {
+          "order": 2,
+          "delay_steps": 0,
+          "a": [
+            1.894976045679652,
+            -0.9033701208682479
+          ],
+          "b": -0.0005276144476499752,
+          "c": -0.00188490821939975,
+          "intercept": -0.020751690047661135,
+          "poles": [
+            [
+              0.9474880228398259,
+              0.07507707668339994
+            ],
+            [
+              0.9474880228398259,
+              -0.07507707668339994
+            ]
+          ],
+          "radius": 0.9504578480228608,
+          "steady_gain_C_per_u": -0.06285557798753011,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 76,
+          "rank": 5,
+          "fit_one_step_rmse_C": 4.857670334314119e-05,
+          "validation_rollout_rmse_C": null
+        },
+        {
+          "order": 2,
+          "delay_steps": 1,
+          "a": [
+            1.890436129189748,
+            -0.8993597844694953
+          ],
+          "b": -0.0005145823910107481,
+          "c": -0.0020105982087135587,
+          "intercept": -0.02220840287204912,
+          "poles": [
+            [
+              0.9452180645948738,
+              0.0769583967674484
+            ],
+            [
+              0.9452180645948738,
+              -0.0769583967674484
+            ]
+          ],
+          "radius": 0.9483458148109765,
+          "steady_gain_C_per_u": -0.057664978630295384,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 76,
+          "rank": 5,
+          "fit_one_step_rmse_C": 5.4201821143543927e-05,
+          "validation_rollout_rmse_C": null
+        },
+        {
+          "order": 2,
+          "delay_steps": 3,
+          "a": [
+            1.9184329140588647,
+            -0.9270424339169462
+          ],
+          "b": -0.00030360765079557423,
+          "c": -0.0017765865362917273,
+          "intercept": -0.01851569164363178,
+          "poles": [
+            [
+              0.9592164570294325,
+              0.08334400086898408
+            ],
+            [
+              0.9592164570294325,
+              -0.08334400086898408
+            ]
+          ],
+          "radius": 0.962830428433245,
+          "steady_gain_C_per_u": -0.03526417916448483,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 76,
+          "rank": 5,
+          "fit_one_step_rmse_C": 6.928287498750275e-05,
+          "validation_rollout_rmse_C": null
+        },
+        {
+          "order": 2,
+          "delay_steps": 5,
+          "a": [
+            1.9817522208862457,
+            -0.9877273038524725
+          ],
+          "b": 0.00011247499714821672,
+          "c": -0.0009235365198536511,
+          "intercept": -0.007297092319431566,
+          "poles": [
+            [
+              0.990876110443123,
+              0.07675830642725658
+            ],
+            [
+              0.990876110443123,
+              -0.07675830642725658
+            ]
+          ],
+          "radius": 0.9938447081171548,
+          "steady_gain_C_per_u": 0.018824005923258783,
+          "status": "FITTED",
+          "n": 76,
+          "rank": 5,
+          "fit_one_step_rmse_C": 7.316044832681501e-05,
+          "validation_rollout_rmse_C": 0.002747571549554429
+        },
+        {
+          "order": 2,
+          "delay_steps": 10,
+          "a": [
+            1.9779737483364572,
+            -0.9810171089847912
+          ],
+          "b": 0.0005039471974944087,
+          "c": -0.0005672945054510383,
+          "intercept": -0.00563414068218162,
+          "poles": [
+            [
+              0.9889868741682284,
+              0.054056190281480586
+            ],
+            [
+              0.9889868741682284,
+              -0.054056190281480586
+            ]
+          ],
+          "radius": 0.9904630780522771,
+          "steady_gain_C_per_u": 0.1655890496482174,
+          "status": "FITTED",
+          "n": 76,
+          "rank": 5,
+          "fit_one_step_rmse_C": 5.3376110280003965e-05,
+          "validation_rollout_rmse_C": 0.001139976364374411
+        }
+      ],
+      "refits": [
+        {
+          "order": 2,
+          "delay_steps": 10,
+          "a": [
+            1.9887240371048687,
+            -0.991493473961417
+          ],
+          "b": 0.0005149061547287267,
+          "c": -0.00042096076011970693,
+          "intercept": -0.0033977549209935768,
+          "poles": [
+            [
+              0.9943620185524343,
+              0.05232255748475109
+            ],
+            [
+              0.9943620185524343,
+              -0.05232255748475109
+            ]
+          ],
+          "radius": 0.9957376531805036,
+          "steady_gain_C_per_u": 0.18592449707283956,
+          "status": "FITTED",
+          "n": 109,
+          "rank": 5,
+          "fit_one_step_rmse_C": 4.9207192238797457e-05,
+          "tau_s": 14046.730850111975,
+          "validation_rollout_rmse_C": 0.001139976364374411
+        }
+      ],
+      "selected": {
+        "order": 2,
+        "delay_steps": 10,
+        "a": [
+          1.9887240371048687,
+          -0.991493473961417
+        ],
+        "b": 0.0005149061547287267,
+        "c": -0.00042096076011970693,
+        "intercept": -0.0033977549209935768,
+        "poles": [
+          [
+            0.9943620185524343,
+            0.05232255748475109
+          ],
+          [
+            0.9943620185524343,
+            -0.05232255748475109
+          ]
+        ],
+        "radius": 0.9957376531805036,
+        "steady_gain_C_per_u": 0.18592449707283956,
+        "status": "FITTED",
+        "n": 109,
+        "rank": 5,
+        "fit_one_step_rmse_C": 4.9207192238797457e-05,
+        "tau_s": 14046.730850111975,
+        "validation_rollout_rmse_C": 0.001139976364374411
+      },
+      "offline_fit_count": 11,
+      "fit_wall_seconds": 0.013506868854165077
+    },
+    "6": {
+      "status": "NO_ADMISSIBLE_MODEL",
+      "input_rows": 360,
+      "start_s": 86400,
+      "end_s": 108000,
+      "training_end_index_exclusive": 255,
+      "validation_starts": [
+        255,
+        265,
+        275,
+        285,
+        295,
+        305,
+        315,
+        325,
+        335,
+        345
+      ],
+      "validation_points": 100,
+      "candidates": [
+        {
+          "order": 1,
+          "delay_steps": 0,
+          "a": [
+            1.0075567350828971
+          ],
+          "b": -0.0033056615445532112,
+          "c": 0.0014820025922187257,
+          "intercept": 0.017094940692944594,
+          "poles": [
+            [
+              1.0075567350828971,
+              0.0
+            ]
+          ],
+          "radius": 1.0075567350828971,
+          "steady_gain_C_per_u": 0.437445736589972,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 244,
+          "rank": 4,
+          "fit_one_step_rmse_C": 0.0008655827431897687,
+          "validation_rollout_rmse_C": null
+        },
+        {
+          "order": 1,
+          "delay_steps": 1,
+          "a": [
+            1.0071775416434101
+          ],
+          "b": -0.0033337363625890607,
+          "c": 0.001437731490421433,
+          "intercept": 0.0169062919345809,
+          "poles": [
+            [
+              1.0071775416434101,
+              0.0
+            ]
+          ],
+          "radius": 1.0071775416434101,
+          "steady_gain_C_per_u": 0.46446771446458285,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 244,
+          "rank": 4,
+          "fit_one_step_rmse_C": 0.0008635191795385287,
+          "validation_rollout_rmse_C": null
+        },
+        {
+          "order": 1,
+          "delay_steps": 3,
+          "a": [
+            1.0064261336892433
+          ],
+          "b": -0.0031117112971362024,
+          "c": 0.0013437597571792502,
+          "intercept": 0.016311534924634954,
+          "poles": [
+            [
+              1.0064261336892433,
+              0.0
+            ]
+          ],
+          "radius": 1.0064261336892433,
+          "steady_gain_C_per_u": 0.4842276005469519,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 244,
+          "rank": 4,
+          "fit_one_step_rmse_C": 0.0008821454710282004,
+          "validation_rollout_rmse_C": null
+        },
+        {
+          "order": 1,
+          "delay_steps": 5,
+          "a": [
+            1.0059573832468058
+          ],
+          "b": -0.0024926739224011784,
+          "c": 0.001272418117374631,
+          "intercept": 0.015521778425455747,
+          "poles": [
+            [
+              1.0059573832468058,
+              0.0
+            ]
+          ],
+          "radius": 1.0059573832468058,
+          "steady_gain_C_per_u": 0.41841758690573966,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 244,
+          "rank": 4,
+          "fit_one_step_rmse_C": 0.0009240682790201155,
+          "validation_rollout_rmse_C": null
+        },
+        {
+          "order": 1,
+          "delay_steps": 10,
+          "a": [
+            1.0072945217377873
+          ],
+          "b": 0.00041122302350203366,
+          "c": 0.0013612852307598512,
+          "intercept": 0.013876096950058982,
+          "poles": [
+            [
+              1.0072945217377873,
+              0.0
+            ]
+          ],
+          "radius": 1.0072945217377873,
+          "steady_gain_C_per_u": -0.056374226890270565,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 244,
+          "rank": 4,
+          "fit_one_step_rmse_C": 0.0009899549920166166,
+          "validation_rollout_rmse_C": null
+        },
+        {
+          "order": 2,
+          "delay_steps": 0,
+          "a": [
+            1.9801312125581156,
+            -0.9811549019609183
+          ],
+          "b": -0.00026193075509646686,
+          "c": -4.249628790418415e-05,
+          "intercept": 0.0010370971566646063,
+          "poles": [
+            [
+              0.9900656062790578,
+              0.030413767017582187
+            ],
+            [
+              0.9900656062790578,
+              -0.030413767017582187
+            ]
+          ],
+          "radius": 0.9905326354850293,
+          "steady_gain_C_per_u": -0.2558693626986492,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 244,
+          "rank": 5,
+          "fit_one_step_rmse_C": 8.987816054960239e-05,
+          "validation_rollout_rmse_C": null
+        },
+        {
+          "order": 2,
+          "delay_steps": 1,
+          "a": [
+            1.9863467287957237,
+            -0.9874588412141664
+          ],
+          "b": -0.00016395453215006494,
+          "c": -5.818128740396667e-05,
+          "intercept": 0.000849505370507502,
+          "poles": [
+            [
+              0.993173364397862,
+              0.032642142466422996
+            ],
+            [
+              0.993173364397862,
+              -0.032642142466422996
+            ]
+          ],
+          "radius": 0.99370963626915,
+          "steady_gain_C_per_u": -0.147426221873915,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 244,
+          "rank": 5,
+          "fit_one_step_rmse_C": 9.37588720782737e-05,
+          "validation_rollout_rmse_C": null
+        },
+        {
+          "order": 2,
+          "delay_steps": 3,
+          "a": [
+            2.003051716162604,
+            -1.004299733816881
+          ],
+          "b": 7.703057306304779e-05,
+          "c": -8.768931833400734e-05,
+          "intercept": 0.00042161070243831015,
+          "poles": [
+            [
+              1.001525858081302,
+              0.03529432548431835
+            ],
+            [
+              1.001525858081302,
+              -0.03529432548431835
+            ]
+          ],
+          "radius": 1.002147560899532,
+          "steady_gain_C_per_u": 0.06172234246771846,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 244,
+          "rank": 5,
+          "fit_one_step_rmse_C": 9.556899235725578e-05,
+          "validation_rollout_rmse_C": null
+        },
+        {
+          "order": 2,
+          "delay_steps": 5,
+          "a": [
+            2.015750344504874,
+            -1.0169930520946997
+          ],
+          "b": 0.0003064908480133961,
+          "c": -9.833552802562588e-05,
+          "intercept": 0.00011931488053659591,
+          "poles": [
+            [
+              1.007875172252437,
+              0.034361159058156406
+            ],
+            [
+              1.007875172252437,
+              -0.034361159058156406
+            ]
+          ],
+          "radius": 1.008460734037126,
+          "steady_gain_C_per_u": 0.24663150891064556,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 244,
+          "rank": 5,
+          "fit_one_step_rmse_C": 8.711171612484841e-05,
+          "validation_rollout_rmse_C": null
+        },
+        {
+          "order": 2,
+          "delay_steps": 10,
+          "a": [
+            1.9996212047039876,
+            -1.0003967305698724
+          ],
+          "b": 0.000541509461496976,
+          "c": -3.82414250863534e-05,
+          "intercept": 0.000391937567169524,
+          "poles": [
+            [
+              0.9998106023519938,
+              0.02784762098305301
+            ],
+            [
+              0.9998106023519938,
+              -0.02784762098305301
+            ]
+          ],
+          "radius": 1.0001983456144448,
+          "steady_gain_C_per_u": 0.698248098893724,
+          "status": "REJECTED_POLE_OR_GAIN",
+          "n": 244,
+          "rank": 5,
+          "fit_one_step_rmse_C": 5.939893236040324e-05,
+          "validation_rollout_rmse_C": null
+        }
+      ],
+      "refits": [],
+      "offline_fit_count": 10,
+      "fit_wall_seconds": 0.011161849834024906
+    }
+  },
+  "trials": [
+    {
+      "budget_h": 2,
+      "method": "auto_pi",
+      "q": 0.5,
+      "trace": "outputs/boptest_more_devices/twozone_apartment_hydronic/trial_2_auto_pi_0.5.csv",
+      "sha256": "cef4628242dadbf72886cf653fb814a834eb6bcc1a00a9cdcee9d59560e9e8dd",
+      "scored_hours": 2,
+      "warmup_hours": 24,
+      "wall_seconds": 35.10474061407149,
+      "initial_state": {
+        "T": 23.679892297860704,
+        "outdoor": 4.100000000000023,
+        "actuator_native": 312.2363636363636,
+        "heat_pump_W": 420.82544389855866,
+        "pump_W": 3.8833526078683507
+      },
+      "initial_u": 0.8685858585858581,
+      "metrics": {
+        "n": 120,
+        "mae_C": 1.455876458209525,
+        "rmse_C": 1.4683181001242955,
+        "max_abs_error_C": 1.6795938927094767,
+        "within_0_5_pct": 0.0,
+        "requested_TV_u": 2.810135735428398,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "heat_pump_kWh": 0.04697918298133694,
+        "pump_kWh": 0.007766705215736701
+      },
+      "first_30min_mae_C": 1.6685333352882954,
+      "after_30min_mae_C": 1.3849908325166016
+    },
+    {
+      "budget_h": 2,
+      "method": "auto_pi",
+      "q": 1.0,
+      "trace": "outputs/boptest_more_devices/twozone_apartment_hydronic/trial_2_auto_pi_1.0.csv",
+      "sha256": "d29b0c06f0bd2703f33351614630a3ac0a474b01ed0a30fb0e37841292c391f7",
+      "scored_hours": 2,
+      "warmup_hours": 24,
+      "wall_seconds": 33.598075815010816,
+      "initial_state": {
+        "T": 23.679892297860704,
+        "outdoor": 4.100000000000023,
+        "actuator_native": 312.2363636363636,
+        "heat_pump_W": 420.82544389855866,
+        "pump_W": 3.8833526078683507
+      },
+      "initial_u": 0.8685858585858581,
+      "metrics": {
+        "n": 120,
+        "mae_C": 1.4558763753558286,
+        "rmse_C": 1.4683180389226136,
+        "max_abs_error_C": 1.6795938927094767,
+        "within_0_5_pct": 0.0,
+        "requested_TV_u": 1.7059700413721013,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "heat_pump_kWh": 0.006996912934664849,
+        "pump_kWh": 0.007766705215736701
+      },
+      "first_30min_mae_C": 1.6685333352882954,
+      "after_30min_mae_C": 1.3849907220450064
+    },
+    {
+      "budget_h": 2,
+      "method": "proposed",
+      "q": 0.5,
+      "trace": "outputs/boptest_more_devices/twozone_apartment_hydronic/trial_2_proposed_0.5.csv",
+      "sha256": "57943eeeaa37528758740af0f1fcb561c7a2a710ce1c81f0bde047f10b1b2820",
+      "scored_hours": 2,
+      "warmup_hours": 24,
+      "wall_seconds": 41.70796898705885,
+      "initial_state": {
+        "T": 23.679892297860704,
+        "outdoor": 4.100000000000023,
+        "actuator_native": 312.2363636363636,
+        "heat_pump_W": 420.82544389855866,
+        "pump_W": 3.8833526078683507
+      },
+      "initial_u": 0.8685858585858581,
+      "metrics": {
+        "n": 120,
+        "mae_C": 1.6300484819378918,
+        "rmse_C": 1.6304887223762004,
+        "max_abs_error_C": 1.6795938927094767,
+        "within_0_5_pct": 0.0,
+        "requested_TV_u": 3.8218897815147423,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "heat_pump_kWh": 1.133671885872801,
+        "pump_kWh": 0.007766705215736701
+      },
+      "first_30min_mae_C": 1.6755001922896176,
+      "after_30min_mae_C": 1.61489791182065
+    },
+    {
+      "budget_h": 2,
+      "method": "proposed",
+      "q": 1.0,
+      "trace": "outputs/boptest_more_devices/twozone_apartment_hydronic/trial_2_proposed_1.0.csv",
+      "sha256": "26825b165da1dbfe3ec4182a41cb259b13e6b3e060aef84a44f1216331ab7c3a",
+      "scored_hours": 2,
+      "warmup_hours": 24,
+      "wall_seconds": 34.12099266983569,
+      "initial_state": {
+        "T": 23.679892297860704,
+        "outdoor": 4.100000000000023,
+        "actuator_native": 312.2363636363636,
+        "heat_pump_W": 420.82544389855866,
+        "pump_W": 3.8833526078683507
+      },
+      "initial_u": 0.8685858585858581,
+      "metrics": {
+        "n": 120,
+        "mae_C": 1.6652669534867917,
+        "rmse_C": 1.665394669266591,
+        "max_abs_error_C": 1.6915947509045282,
+        "within_0_5_pct": 0.0,
+        "requested_TV_u": 4.113002235674703,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "heat_pump_kWh": 1.0612912316228256,
+        "pump_kWh": 0.007766705215736701
+      },
+      "first_30min_mae_C": 1.6821332510463927,
+      "after_30min_mae_C": 1.6596448543002578
+    }
+  ],
+  "evaluations": [],
+  "skips": [
+    {
+      "budget_h": 6,
+      "reason": "NO_ADMISSIBLE_MODEL"
+    }
+  ],
+  "failures": [],
+  "identification": {
+    "trace": "outputs/boptest_more_devices/twozone_apartment_hydronic/identification.csv",
+    "sha256": "8a2b8190ade78aec0fb800ebca130a30ff78a374db400cb3983ba94b7e4def41",
+    "scored_hours": 6,
+    "warmup_hours": 24,
+    "wall_seconds": 47.18627791898325,
+    "initial_state": {
+      "T": 23.622108185842194,
+      "outdoor": 3.8999999999999773,
+      "actuator_native": 312.42727272727274,
+      "heat_pump_W": 423.0232317238485,
+      "pump_W": 3.8833526078683507
+    },
+    "initial_u": 0.8728282828282835,
+    "metrics": {
+      "n": 360,
+      "mae_C": 1.696749489962725,
+      "rmse_C": 1.697456717833594,
+      "max_abs_error_C": 1.759755849082751,
+      "within_0_5_pct": 0.0,
+      "requested_TV_u": 5.784747474747464,
+      "saturation_pct": 33.333333333333336,
+      "outside_20_30_n": 0,
+      "heat_pump_kWh": 4.105796782828806,
+      "pump_kWh": 0.023300115647210067
+    },
+    "first_30min_mae_C": 1.613242174980125,
+    "after_30min_mae_C": 1.7043410640520522
+  },
+  "calibration_trace": "outputs/boptest_more_devices/twozone_apartment_hydronic/identification.csv"
+}

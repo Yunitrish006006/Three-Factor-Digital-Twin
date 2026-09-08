@@ -1,0 +1,15 @@
+{
+  "status": "GENERALITY_GATE_NOT_MET",
+  "html_sha256": "da6842fc5525ae752786999e78f5ac0e906f58e04d30b07cadb3f289abf9aed9",
+  "plot_sha256": "7ee820aa9d7bc4e02c7fd2d07dffee826c701611730f06aabde96d94beddc17b",
+  "builder_sha256": "aa269cc24f4e5753d41e475ba13e7e798d0b13748fa93ff3331d78dc263c6da5",
+  "results": {
+    "heat_pump": "6c0469e59d0e104a98599afd97314063d0db89d106e62e7f21ec0915b3c30ebb",
+    "apartment": "5f645126dc4abd0be76aa30c2f413e66d9137cb58e9db5c72d13680dcb58aadd",
+    "commercial": "9b31ead9096f8f75eff7a5c0f567d28affbb2bf9ac9807eeccbf589ba571bb73"
+  },
+  "completed_episodes": 43,
+  "simulated_hours": 1570,
+  "offline_fit_count": 66,
+  "tests": 253
+}

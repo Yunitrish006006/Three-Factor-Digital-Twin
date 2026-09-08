@@ -1,0 +1,639 @@
+{
+  "e11f_accessed": false,
+  "evaluation": {
+    "bootstrap": {
+      "ci_95_lower_c": 0.485446734305332,
+      "ci_95_upper_c": 0.927061631077556,
+      "day_blocks": 9,
+      "replicates": 20000,
+      "seed": 20260823,
+      "unit": "calendar_day"
+    },
+    "candidate_count": 8,
+    "chronology": {
+      "calibration_days": [
+        "2024-09-16",
+        "2024-09-18"
+      ],
+      "selection_day": "2024-09-19",
+      "test_days": [
+        "2024-09-21",
+        "2024-09-22",
+        "2024-09-24",
+        "2024-09-25",
+        "2024-09-26",
+        "2024-09-27",
+        "2024-09-28",
+        "2024-09-29",
+        "2024-10-01"
+      ]
+    },
+    "day_mae_improvement_c": {
+      "2024-09-21": 1.2650082984843145,
+      "2024-09-22": 1.3178183834809085,
+      "2024-09-24": 0.4598067678032984,
+      "2024-09-25": 0.4842868027441114,
+      "2024-09-26": 0.4772887926612377,
+      "2024-09-27": 0.4791703722159181,
+      "2024-09-28": 0.5143541848609051,
+      "2024-09-29": 0.502444554036528,
+      "2024-10-01": 0.514102825476107
+    },
+    "development_decision": "candidate_forwarded_to_e11f",
+    "gates": {
+      "absolute_mae_at_most_1_25": true,
+      "absolute_p95_at_most_4_00": true,
+      "absolute_rmse_at_most_1_90": true,
+      "bootstrap_lower_above_zero": true,
+      "lower_mae": true,
+      "lower_p95": true,
+      "lower_rmse": true,
+      "sensor_wins_at_least_26": true
+    },
+    "metrics": {
+      "baseline_local_idw_k3_p2": {
+        "mae_c": 1.0958375256012536,
+        "n": 45864,
+        "p95_absolute_error_c": 3.5060719347924354,
+        "rmse_c": 1.7435271840120836
+      },
+      "commissioning_sensor_map_v1": {
+        "mae_c": 0.40391323762977654,
+        "n": 45864,
+        "p95_absolute_error_c": 1.2899743142115023,
+        "rmse_c": 0.6830395608965151
+      }
+    },
+    "per_sensor_mae": {
+      "Temperature mod 1 ch 1": {
+        "baseline_mae_c": 0.4161505931301981,
+        "model_mae_c": 0.11424952816336319
+      },
+      "Temperature mod 1 ch 2": {
+        "baseline_mae_c": 4.249162900318949,
+        "model_mae_c": 0.7928909513076016
+      },
+      "Temperature mod 1 ch 3": {
+        "baseline_mae_c": 1.9263927429394878,
+        "model_mae_c": 0.23483844355927294
+      },
+      "Temperature mod 1 ch 4": {
+        "baseline_mae_c": 0.09637779865791901,
+        "model_mae_c": 0.09637779865791901
+      },
+      "Temperature mod 1 ch 5": {
+        "baseline_mae_c": 2.3010708436502143,
+        "model_mae_c": 0.429264041187561
+      },
+      "Temperature mod 1 ch 6": {
+        "baseline_mae_c": 0.09457726862566089,
+        "model_mae_c": 0.06923345360753762
+      },
+      "Temperature mod 1 ch 7": {
+        "baseline_mae_c": 1.2001008831171198,
+        "model_mae_c": 0.12597670792365617
+      },
+      "Temperature mod 1 ch 8": {
+        "baseline_mae_c": 0.43571805441245876,
+        "model_mae_c": 0.12114340399123713
+      },
+      "Temperature mod 2 ch 1": {
+        "baseline_mae_c": 0.4081259008473983,
+        "model_mae_c": 0.2199487521322547
+      },
+      "Temperature mod 2 ch 2": {
+        "baseline_mae_c": 0.7874079270114704,
+        "model_mae_c": 0.657887835315023
+      },
+      "Temperature mod 2 ch 3": {
+        "baseline_mae_c": 2.5927753603444934,
+        "model_mae_c": 1.2154579964446783
+      },
+      "Temperature mod 2 ch 4": {
+        "baseline_mae_c": 0.44264201890858446,
+        "model_mae_c": 0.17750963538768003
+      },
+      "Temperature mod 2 ch 5": {
+        "baseline_mae_c": 1.646051055449713,
+        "model_mae_c": 0.5644537909288626
+      },
+      "Temperature mod 2 ch 6": {
+        "baseline_mae_c": 2.6563934320798825,
+        "model_mae_c": 1.657160026847768
+      },
+      "Temperature mod 2 ch 7": {
+        "baseline_mae_c": 0.5283024489628244,
+        "model_mae_c": 0.17694659925731462
+      },
+      "Temperature mod 2 ch 8": {
+        "baseline_mae_c": 1.8723103731882786,
+        "model_mae_c": 0.5168765537285133
+      },
+      "Temperature mod 3 ch 3": {
+        "baseline_mae_c": 0.5399062295635337,
+        "model_mae_c": 0.3098092951019443
+      },
+      "Temperature mod 3 ch 4": {
+        "baseline_mae_c": 1.485826221904316,
+        "model_mae_c": 0.3068584190742555
+      },
+      "Temperature mod 3 ch 5": {
+        "baseline_mae_c": 0.35913468939700405,
+        "model_mae_c": 0.25882238808869823
+      },
+      "Temperature mod 3 ch 6": {
+        "baseline_mae_c": 0.3921592723850269,
+        "model_mae_c": 0.1885105228933982
+      },
+      "Temperature mod 3 ch 7": {
+        "baseline_mae_c": 1.4644609701149354,
+        "model_mae_c": 0.7052443296483861
+      },
+      "Temperature mod 3 ch 8": {
+        "baseline_mae_c": 1.2719772119121033,
+        "model_mae_c": 0.45145033609454566
+      },
+      "Temperature mod 4 ch 1": {
+        "baseline_mae_c": 0.6456215780783072,
+        "model_mae_c": 0.19499442658921573
+      },
+      "Temperature mod 4 ch 2": {
+        "baseline_mae_c": 0.5360211154534185,
+        "model_mae_c": 0.1203468445753939
+      },
+      "Temperature mod 4 ch 3": {
+        "baseline_mae_c": 0.6856225437509768,
+        "model_mae_c": 0.09892835822154664
+      },
+      "Temperature mod 4 ch 4": {
+        "baseline_mae_c": 1.7354752458810343,
+        "model_mae_c": 0.3364106088879862
+      },
+      "Temperature mod 4 ch 5": {
+        "baseline_mae_c": 0.8952020373617577,
+        "model_mae_c": 0.085524851141617
+      },
+      "Temperature mod 4 ch 6": {
+        "baseline_mae_c": 1.1761274772664487,
+        "model_mae_c": 0.7063097123065901
+      },
+      "Temperature mod 4 ch 7": {
+        "baseline_mae_c": 0.3343733162207978,
+        "model_mae_c": 0.3343733162207978
+      },
+      "Temperature mod 4 ch 8": {
+        "baseline_mae_c": 0.3915408475522886,
+        "model_mae_c": 0.24453112535610164
+      },
+      "Temperature mod 5 ch 1": {
+        "baseline_mae_c": 0.14106832372338665,
+        "model_mae_c": 0.14106832372338665
+      },
+      "Temperature mod 5 ch 2": {
+        "baseline_mae_c": 0.2929421496568585,
+        "model_mae_c": 0.15233360655593994
+      },
+      "Temperature mod 5 ch 3": {
+        "baseline_mae_c": 0.2686553105250112,
+        "model_mae_c": 0.20129349114047157
+      },
+      "Temperature mod 5 ch 4": {
+        "baseline_mae_c": 0.850225898769358,
+        "model_mae_c": 0.4900609561816006
+      },
+      "Temperature mod 6 ch 1": {
+        "baseline_mae_c": 1.2017238184461099,
+        "model_mae_c": 0.5463252684924439
+      },
+      "Temperature mod 6 ch 2": {
+        "baseline_mae_c": 0.7421754445250186,
+        "model_mae_c": 0.5551637311485207
+      },
+      "Temperature mod 6 ch 3": {
+        "baseline_mae_c": 0.3949948331848256,
+        "model_mae_c": 0.35994623192982234
+      },
+      "Temperature mod 6 ch 4": {
+        "baseline_mae_c": 2.2057317975504853,
+        "model_mae_c": 1.3799764376603296
+      },
+      "Temperature mod 7 ch 1": {
+        "baseline_mae_c": 2.0410154815418227,
+        "model_mae_c": 0.2828665224567833
+      },
+      "Temperature mod 7 ch 2": {
+        "baseline_mae_c": 0.823711075801632,
+        "model_mae_c": 0.3087196003715068
+      },
+      "Temperature mod 7 ch 3": {
+        "baseline_mae_c": 1.362706291668057,
+        "model_mae_c": 0.39588113495717586
+      },
+      "Temperature mod 7 ch 4": {
+        "baseline_mae_c": 2.1332172913735,
+        "model_mae_c": 0.6383906231920342
+      }
+    },
+    "selected_models": {
+      "Temperature mod 1 ch 1": {
+        "model_id": "local_median_l100",
+        "parameters": {
+          "base": "local",
+          "calibration": "median_offset",
+          "offset_c": -0.3541968048458308,
+          "shrinkage": 1.0
+        }
+      },
+      "Temperature mod 1 ch 2": {
+        "model_id": "e11g_huber_affine",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "huber_affine",
+          "intercept_c": 9.969381804602566,
+          "slope": 0.5
+        }
+      },
+      "Temperature mod 1 ch 3": {
+        "model_id": "e11g_huber_affine",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "huber_affine",
+          "intercept_c": 4.488887038165576,
+          "slope": 0.781531036316068
+        }
+      },
+      "Temperature mod 1 ch 4": {
+        "model_id": "baseline_local_idw_k3_p2",
+        "parameters": null
+      },
+      "Temperature mod 1 ch 5": {
+        "model_id": "e11g_median_l100",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "median_offset",
+          "offset_c": -1.679527074678159,
+          "shrinkage": 1.0
+        }
+      },
+      "Temperature mod 1 ch 6": {
+        "model_id": "e11g_huber_affine",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "huber_affine",
+          "intercept_c": 0.6076823370985096,
+          "slope": 0.971726748516222
+        }
+      },
+      "Temperature mod 1 ch 7": {
+        "model_id": "e11g_huber_affine",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "huber_affine",
+          "intercept_c": 2.5908701909780483,
+          "slope": 0.8622436356782933
+        }
+      },
+      "Temperature mod 1 ch 8": {
+        "model_id": "e11g_huber_affine",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "huber_affine",
+          "intercept_c": -3.5112576490696483,
+          "slope": 1.148903011298718
+        }
+      },
+      "Temperature mod 2 ch 1": {
+        "model_id": "e11g_huber_affine",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "huber_affine",
+          "intercept_c": 2.87911506548258,
+          "slope": 0.9010865165856626
+        }
+      },
+      "Temperature mod 2 ch 2": {
+        "model_id": "e11g_huber_affine",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "huber_affine",
+          "intercept_c": 12.574130622208829,
+          "slope": 0.5
+        }
+      },
+      "Temperature mod 2 ch 3": {
+        "model_id": "e11g_huber_affine",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "huber_affine",
+          "intercept_c": 12.904704716600433,
+          "slope": 0.5
+        }
+      },
+      "Temperature mod 2 ch 4": {
+        "model_id": "e11g_median_l100",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "median_offset",
+          "offset_c": 0.1999369970497007,
+          "shrinkage": 1.0
+        }
+      },
+      "Temperature mod 2 ch 5": {
+        "model_id": "e11g_huber_affine",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "huber_affine",
+          "intercept_c": -4.093096013823708,
+          "slope": 1.1741169641360363
+        }
+      },
+      "Temperature mod 2 ch 6": {
+        "model_id": "e11g_huber_affine",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "huber_affine",
+          "intercept_c": -10.200997938454964,
+          "slope": 1.5
+        }
+      },
+      "Temperature mod 2 ch 7": {
+        "model_id": "e11g_huber_affine",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "huber_affine",
+          "intercept_c": 2.175754889479723,
+          "slope": 0.9100566934367907
+        }
+      },
+      "Temperature mod 2 ch 8": {
+        "model_id": "e11g_huber_affine",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "huber_affine",
+          "intercept_c": 11.355605474688307,
+          "slope": 0.5
+        }
+      },
+      "Temperature mod 3 ch 3": {
+        "model_id": "e11g_median_l050",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "median_offset",
+          "offset_c": 0.04742036328866206,
+          "shrinkage": 0.5
+        }
+      },
+      "Temperature mod 3 ch 4": {
+        "model_id": "e11g_huber_affine",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "huber_affine",
+          "intercept_c": 11.555780409805521,
+          "slope": 0.5
+        }
+      },
+      "Temperature mod 3 ch 5": {
+        "model_id": "e11g_huber_affine",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "huber_affine",
+          "intercept_c": -12.528016250600142,
+          "slope": 1.4720375083290935
+        }
+      },
+      "Temperature mod 3 ch 6": {
+        "model_id": "e11g_median_l050",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "median_offset",
+          "offset_c": -0.05109366761574208,
+          "shrinkage": 0.5
+        }
+      },
+      "Temperature mod 3 ch 7": {
+        "model_id": "e11g_median_l075",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "median_offset",
+          "offset_c": 0.7769630841404425,
+          "shrinkage": 0.75
+        }
+      },
+      "Temperature mod 3 ch 8": {
+        "model_id": "e11g_huber_affine",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "huber_affine",
+          "intercept_c": 12.332683358168593,
+          "slope": 0.5
+        }
+      },
+      "Temperature mod 4 ch 1": {
+        "model_id": "local_median_l100",
+        "parameters": {
+          "base": "local",
+          "calibration": "median_offset",
+          "offset_c": -0.8163779241795126,
+          "shrinkage": 1.0
+        }
+      },
+      "Temperature mod 4 ch 2": {
+        "model_id": "e11g_median_l100",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "median_offset",
+          "offset_c": -0.14696513214100548,
+          "shrinkage": 1.0
+        }
+      },
+      "Temperature mod 4 ch 3": {
+        "model_id": "e11g_huber_affine",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "huber_affine",
+          "intercept_c": -1.154049090657555,
+          "slope": 1.0498551663066233
+        }
+      },
+      "Temperature mod 4 ch 4": {
+        "model_id": "local_huber_affine",
+        "parameters": {
+          "base": "local",
+          "calibration": "huber_affine",
+          "intercept_c": 7.886730836576266,
+          "slope": 0.6398133558762755
+        }
+      },
+      "Temperature mod 4 ch 5": {
+        "model_id": "e11g_huber_affine",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "huber_affine",
+          "intercept_c": 1.866040917048732,
+          "slope": 0.9195578695878583
+        }
+      },
+      "Temperature mod 4 ch 6": {
+        "model_id": "e11g_huber_affine",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "huber_affine",
+          "intercept_c": 5.884529116736974,
+          "slope": 0.7683475441315362
+        }
+      },
+      "Temperature mod 4 ch 7": {
+        "model_id": "baseline_local_idw_k3_p2",
+        "parameters": null
+      },
+      "Temperature mod 4 ch 8": {
+        "model_id": "e11g_huber_affine",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "huber_affine",
+          "intercept_c": -2.8966735862455373,
+          "slope": 1.1062564056921078
+        }
+      },
+      "Temperature mod 5 ch 1": {
+        "model_id": "baseline_local_idw_k3_p2",
+        "parameters": null
+      },
+      "Temperature mod 5 ch 2": {
+        "model_id": "e11g_median_l100",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "median_offset",
+          "offset_c": -0.14291768620136125,
+          "shrinkage": 1.0
+        }
+      },
+      "Temperature mod 5 ch 3": {
+        "model_id": "e11g_huber_affine",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "huber_affine",
+          "intercept_c": -0.9842740179503195,
+          "slope": 1.0327448095518523
+        }
+      },
+      "Temperature mod 5 ch 4": {
+        "model_id": "e11g_huber_affine",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "huber_affine",
+          "intercept_c": 13.13724222297479,
+          "slope": 0.5
+        }
+      },
+      "Temperature mod 6 ch 1": {
+        "model_id": "local_median_l075",
+        "parameters": {
+          "base": "local",
+          "calibration": "median_offset",
+          "offset_c": 0.6580418989907351,
+          "shrinkage": 0.75
+        }
+      },
+      "Temperature mod 6 ch 2": {
+        "model_id": "local_median_l050",
+        "parameters": {
+          "base": "local",
+          "calibration": "median_offset",
+          "offset_c": -0.20151757883344779,
+          "shrinkage": 0.5
+        }
+      },
+      "Temperature mod 6 ch 3": {
+        "model_id": "e11g_huber_affine",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "huber_affine",
+          "intercept_c": 12.788029124255083,
+          "slope": 0.5
+        }
+      },
+      "Temperature mod 6 ch 4": {
+        "model_id": "e11g_huber_affine",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "huber_affine",
+          "intercept_c": 13.344246839027448,
+          "slope": 0.5
+        }
+      },
+      "Temperature mod 7 ch 1": {
+        "model_id": "e11g_median_l100",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "median_offset",
+          "offset_c": 2.076637940275017,
+          "shrinkage": 1.0
+        }
+      },
+      "Temperature mod 7 ch 2": {
+        "model_id": "e11g_median_l050",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "median_offset",
+          "offset_c": -0.4965793633519038,
+          "shrinkage": 0.5
+        }
+      },
+      "Temperature mod 7 ch 3": {
+        "model_id": "e11g_median_l075",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "median_offset",
+          "offset_c": -0.9860005005578545,
+          "shrinkage": 0.75
+        }
+      },
+      "Temperature mod 7 ch 4": {
+        "model_id": "e11g_median_l075",
+        "parameters": {
+          "base": "e11g",
+          "calibration": "median_offset",
+          "offset_c": 1.4983726572268958,
+          "shrinkage": 0.75
+        }
+      }
+    },
+    "selection_counts": {
+      "baseline_local_idw_k3_p2": 3,
+      "e11g_huber_affine": 23,
+      "e11g_median_l050": 3,
+      "e11g_median_l075": 3,
+      "e11g_median_l100": 5,
+      "local_huber_affine": 1,
+      "local_median_l050": 1,
+      "local_median_l075": 1,
+      "local_median_l100": 2
+    },
+    "sensor_count": 42,
+    "sensor_wins": 39,
+    "test_measurement_count": 45864
+  },
+  "experiment": "E11H",
+  "generated_at_utc": "2026-09-07T04:11:00.820913+00:00",
+  "inputs": {
+    "e11g_result": "outputs/data/enclosure/aau_tail_safe_development.json",
+    "e11g_result_sha256": "bc6e8625c3f8f92084b27b27355fee80598f28d0631e2124052ac30267df4894",
+    "frozen_metadata": "outputs/data/enclosure/aau_local_idw_confirmation.json",
+    "frozen_metadata_sha256": "9fabf234d60798c5d93acd489c0e886707bcb53d9b1ab9be0311760535605b26",
+    "manifest": "outputs/data/enclosure/aau_temperature_ranges_e11h_manifest.json",
+    "manifest_sha256": "d632d142a0bc0abb76eb003267b65c14d9a81f940c594ceca1ed4da67346c984"
+  },
+  "interpretation_limit": "Commissioning-assisted development evidence; not zero-shot transfer or E11F confirmation.",
+  "parse": {
+    "boundary_records_discarded": 22,
+    "eligible_minute_snapshots": 1502,
+    "fragments": 11,
+    "malformed_rows": 0,
+    "nonfinite_values": 0,
+    "rows_accepted": 89589,
+    "rows_seen": 89589
+  },
+  "purpose": "new_split_commissioning_calibration_development",
+  "sensor_count": 42
+}

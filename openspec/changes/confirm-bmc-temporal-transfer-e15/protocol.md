@@ -42,3 +42,22 @@ are loaded. Preserve null, adverse, failed, and missing results.
 ## Pre-execution integrity amendment (2026-09-07)
 
 The full E14C JSON container could not be reconstructed byte-for-byte because it includes serialization-sensitive surrounding evidence. Before any E15 file was downloaded or outcome loaded, the gate was narrowed to a canonical hash of the actual baseline and ridge model objects. The model family, coefficients, means, scales, feature order, thresholds, filenames, and decision rules are unchanged. E15 remains `NOT_EVALUATED`.
+
+## Pre-outcome execution-record amendment (2026-09-07)
+
+After downloading the fixed files, but before parsing any confirmation outcomes,
+read-only methodology review identified that a parser exception or empty dataset
+could terminate the evaluator before writing its result. An external execution
+wrapper now creates an exclusive attempt receipt before invoking the unchanged
+evaluator, captures its complete output, and records success or failure with
+input and result hashes. A failed or interrupted attempt must not be rerun.
+This wrapper changes only failure preservation.
+
+The same review also found that the evaluator's row-concordance flag merely
+repeated the section-median flag. Before outcome access, the evaluator was
+corrected to independently apply the existing E14B cutoffs (raw CPU temperature
+>= 1000 and raw summed power >= 100000) to every accepted row and require its
+regime to agree with the section's applied scales. This enforces the already
+registered every-row gate; it does not rescale, exclude, or replace any row.
+No model, parser, numerical threshold, file, metric, bootstrap, or hypothesis
+rule is changed. P95 retains E15's tested linear interpolation convention.

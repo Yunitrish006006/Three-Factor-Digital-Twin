@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "scope": "UNADOPTED_CONTROL_RESEARCH_EXTENSION",
+  "updated": "2026-09-08",
+  "rounds": [
+    {
+      "id": "cross-plant",
+      "change": "evaluate-boptest-cross-plant",
+      "label": "首輪跨設備：一階辨識拒絕",
+      "report": "docs/reports/boptest_cross_plant_2026-09-08_zh.html",
+      "plants": [
+        "air",
+        "hydronic"
+      ],
+      "method": "proposed",
+      "methodLabel": "原始一階補償 PI",
+      "scope": "首輪探索，已成開發資料"
+    },
+    {
+      "id": "delayed",
+      "change": "improve-portable-dynamics",
+      "label": "延遲／二階模型庫",
+      "report": "docs/reports/boptest_delayed_dynamics_2026-09-08_zh.html",
+      "plants": [
+        "air",
+        "hydronic"
+      ],
+      "method": "proposed",
+      "methodLabel": "延遲辨識＋舊補償 PI",
+      "scope": "兩設備開發與新日期檢查"
+    },
+    {
+      "id": "more-devices",
+      "change": "evaluate-more-boptest-devices",
+      "label": "新增三設備：固定方法負結果",
+      "report": "docs/reports/boptest_more_devices_2026-09-08_zh.html",
+      "plants": [
+        "heat_pump",
+        "apartment",
+        "commercial"
+      ],
+      "method": "proposed",
+      "methodLabel": "延遲辨識＋舊補償 PI",
+      "scope": "固定算法新增 FMU 檢查；之後成開發資料"
+    },
+    {
+      "id": "consistent",
+      "change": "model-consistent-compensation",
+      "label": "完整模型＋有限補償",
+      "report": "docs/reports/boptest_consistent_2026-09-08_zh.html",
+      "plants": [
+        "air",
+        "hydronic",
+        "heat_pump",
+        "apartment",
+        "commercial"
+      ],
+      "method": "consistent",
+      "methodLabel": "完整 ARX＋正則化有限補償",
+      "scope": "五設備開發；固定 q、無額外試調；不是未見設備驗證"
+    }
+  ],
+  "literature": [
+    {
+      "id": "dob-overview-2019",
+      "title": "Disturbance Observer-based Robust Control and Its Applications: 35th Anniversary Overview",
+      "authors": [
+        "Emre Sariyildiz",
+        "Roberto Oboe",
+        "Kouhei Ohnishi"
+      ],
+      "url": "https://arxiv.org/abs/1902.09032",
+      "point": "擾動觀測器的既有方法與分析框架",
+      "summary": "摘要介紹擾動觀測控制的歷史、線性與非線性分析及設計。用來界定相關研究，不支持本研究方法新穎或控溫有效。",
+      "sourceSection": "Abstract, paragraphs 1–2",
+      "verified": "ABSTRACT_VERIFIED"
+    },
+    {
+      "id": "dob-guide-2019",
+      "title": "A Guide to Design Disturbance Observer",
+      "authors": [
+        "Emre Sariyildiz",
+        "Kouhei Ohnishi"
+      ],
+      "url": "https://arxiv.org/abs/1912.06331",
+      "point": "觀測器頻寬與穩健性的限制",
+      "summary": "摘要指出頻寬限制，以及高階觀測器的性能與穩健性取捨。本研究的限幅與可信度分數是工程設計，沒有套用或證明該文的穩定性條件。",
+      "sourceSection": "Abstract, paragraphs 1–3",
+      "verified": "ABSTRACT_VERIFIED"
+    },
+    {
+      "id": "dob-shim-2021",
+      "title": "Disturbance Observer",
+      "authors": [
+        "Hyungbo Shim"
+      ],
+      "url": "https://arxiv.org/abs/2101.02859",
+      "point": "基準控制器、名義模型與擾動補償的角色",
+      "summary": "摘要描述內迴路補償與外迴路基準控制器及名義模型的關係；設計保證有成立條件，不能轉移成這次 ARX 實作的保證。",
+      "sourceSection": "Abstract, paragraphs 1–2",
+      "verified": "ABSTRACT_VERIFIED"
+    }
+  ],
+  "deviceGroupAnalysis": "openspec/changes/analyze-boptest-device-groups/artifacts/device_groups.json",
+  "startupBoundaryStudy": {
+    "change": "startup-pi-boundary",
+    "report": "docs/reports/boptest_startup_2026-09-08_zh.html",
+    "verification": "openspec/changes/startup-pi-boundary/artifacts/verification.json"
+  },
+  "predictiveStartupStudy": {
+    "change": "predictive-startup-boundary",
+    "report": "docs/reports/boptest_predictive_startup_2026-09-08_zh.html",
+    "verification": "openspec/changes/predictive-startup-boundary/artifacts/verification.json"
+  },
+  "handoverAblationStudy": {
+    "change": "startup-handover-ablation",
+    "report": "docs/reports/boptest_handover_2026-09-08_zh.html",
+    "verification": "openspec/changes/startup-handover-ablation/artifacts/verification.json"
+  }
+}

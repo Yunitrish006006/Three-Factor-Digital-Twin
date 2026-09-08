@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "live_url": "http://127.0.0.1:18775/",
+  "live_static_paper_graph_equal": true,
+  "startup_nodes": 73,
+  "startup_numeric_comparisons": 200,
+  "explicit_reuse_nodes": 8,
+  "all_canonical_metric_pointers_verified": true,
+  "full_workspace_validators": "PASS",
+  "full_python_tests": {
+    "passed": 266,
+    "seconds": 418.003
+  },
+  "offline_report_visual_check": "PASS",
+  "sources": {
+    "docs/reports/boptest_startup_2026-09-08_zh.html": "b8a46b0021c1fe4cd987180d0e3c35f49863cf8d3a8a7a4d01314f4158c84e40",
+    "openspec/changes/startup-pi-boundary/artifacts/verification.json": "3cc4caf2b575b4eeb5024146495db8e11f4e2ef6426f4ede591d8d8959a01140",
+    "docs/research/boptest_graph_sources.json": "108e7ebd126ec028b1326eebabda2fd22e21c8bb55374fc3025c4b8e48a8a648"
+  },
+  "scope": "Local viewer synchronized; no remote deployment or thesis adoption."
+}

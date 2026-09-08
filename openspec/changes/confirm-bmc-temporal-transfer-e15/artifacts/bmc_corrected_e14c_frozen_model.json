@@ -1,0 +1,222 @@
+{
+  "study_id": "E14C",
+  "manifest_sha256": "9f0ef4e25805af89ac1f59ae1e13f39bf036a510dcbe07f4a2d3ccd4f78cad74",
+  "e14b_result_sha256": "db1525cf0dc11d5c84342415e3658f6905ef27e379b2be85c56fe5f914dd7ef4",
+  "created_before_retrospective_test_load": true,
+  "retrospective_test_filenames": [
+    "202307301643.csv",
+    "202307301734.csv",
+    "202307301819.csv",
+    "202307301853.csv",
+    "202307302018.csv",
+    "202307311829.csv",
+    "202308011635.csv",
+    "202308011759.csv",
+    "202308051600.csv",
+    "202308051718.csv",
+    "202401042141.csv",
+    "202401042237.csv",
+    "202401042338.csv",
+    "202401050043.csv"
+  ],
+  "selection": {
+    "baseline_candidates": [
+      {
+        "source": "inlet",
+        "validation": {
+          "count": 238,
+          "mae_c": 3.130252100840336,
+          "rmse_c": 3.8383842013679303,
+          "p95_c": 7.5
+        }
+      },
+      {
+        "source": "outlet",
+        "validation": {
+          "count": 238,
+          "mae_c": 3.3172268907563027,
+          "rmse_c": 4.212202162625095,
+          "p95_c": 7.0
+        }
+      }
+    ],
+    "selected_baseline_source": "inlet",
+    "model_candidates": [
+      {
+        "feature_set": "thermal_pair",
+        "ridge_lambda": 0.01,
+        "feature_count": 2,
+        "validation": {
+          "count": 238,
+          "mae_c": 2.4516449349392957,
+          "rmse_c": 3.0001793353508,
+          "p95_c": 5.255664535798836
+        }
+      },
+      {
+        "feature_set": "thermal_pair",
+        "ridge_lambda": 0.1,
+        "feature_count": 2,
+        "validation": {
+          "count": 238,
+          "mae_c": 2.4525749640616192,
+          "rmse_c": 3.0011139954275086,
+          "p95_c": 5.2563493904165455
+        }
+      },
+      {
+        "feature_set": "thermal_pair",
+        "ridge_lambda": 1.0,
+        "feature_count": 2,
+        "validation": {
+          "count": 238,
+          "mae_c": 2.461306713443319,
+          "rmse_c": 3.009914383066276,
+          "p95_c": 5.262941498020197
+        }
+      },
+      {
+        "feature_set": "thermal_pair",
+        "ridge_lambda": 10.0,
+        "feature_count": 2,
+        "validation": {
+          "count": 238,
+          "mae_c": 2.5103146332198287,
+          "rmse_c": 3.059149560819584,
+          "p95_c": 5.263962182035172
+        }
+      },
+      {
+        "feature_set": "load_aware",
+        "ridge_lambda": 0.01,
+        "feature_count": 4,
+        "validation": {
+          "count": 238,
+          "mae_c": 1.8040603431449989,
+          "rmse_c": 2.3931850734329605,
+          "p95_c": 5.227167063162938
+        }
+      },
+      {
+        "feature_set": "load_aware",
+        "ridge_lambda": 0.1,
+        "feature_count": 4,
+        "validation": {
+          "count": 238,
+          "mae_c": 1.803557338847318,
+          "rmse_c": 2.387771513667982,
+          "p95_c": 5.22213755518203
+        }
+      },
+      {
+        "feature_set": "load_aware",
+        "ridge_lambda": 1.0,
+        "feature_count": 4,
+        "validation": {
+          "count": 238,
+          "mae_c": 1.8019723030381833,
+          "rmse_c": 2.34295708183974,
+          "p95_c": 5.196996476559761
+        }
+      },
+      {
+        "feature_set": "load_aware",
+        "ridge_lambda": 10.0,
+        "feature_count": 4,
+        "validation": {
+          "count": 238,
+          "mae_c": 1.8625327125800597,
+          "rmse_c": 2.3120575523625746,
+          "p95_c": 4.8218588497840855
+        }
+      },
+      {
+        "feature_set": "load_aware_interactions",
+        "ridge_lambda": 0.01,
+        "feature_count": 6,
+        "validation": {
+          "count": 238,
+          "mae_c": 6.499309112768237,
+          "rmse_c": 17.360117619636387,
+          "p95_c": 58.40161126475484
+        }
+      },
+      {
+        "feature_set": "load_aware_interactions",
+        "ridge_lambda": 0.1,
+        "feature_count": 6,
+        "validation": {
+          "count": 238,
+          "mae_c": 6.479966288040985,
+          "rmse_c": 17.294416621106308,
+          "p95_c": 58.174115693961355
+        }
+      },
+      {
+        "feature_set": "load_aware_interactions",
+        "ridge_lambda": 1.0,
+        "feature_count": 6,
+        "validation": {
+          "count": 238,
+          "mae_c": 6.290477116269797,
+          "rmse_c": 16.650361751997757,
+          "p95_c": 55.94317034876346
+        }
+      },
+      {
+        "feature_set": "load_aware_interactions",
+        "ridge_lambda": 10.0,
+        "feature_count": 6,
+        "validation": {
+          "count": 238,
+          "mae_c": 4.719505919459638,
+          "rmse_c": 11.300169596345437,
+          "p95_c": 37.318949298023526
+        }
+      }
+    ],
+    "selected_feature_set": "load_aware",
+    "selected_ridge_lambda": 1.0
+  },
+  "frozen_models": {
+    "baseline": {
+      "kind": "offset",
+      "source": "inlet",
+      "offset_c": 8.0
+    },
+    "ridge": {
+      "kind": "ridge",
+      "feature_set": "load_aware",
+      "feature_names": [
+        "inlet",
+        "outlet",
+        "fan_krpm",
+        "power_100w"
+      ],
+      "ridge_lambda": 1.0,
+      "means": [
+        38.5571608040201,
+        37.34987437185929,
+        3.6869544597989954,
+        2.893718592964824
+      ],
+      "scales": [
+        4.860897871779525,
+        4.115681188152093,
+        2.9812449294725623,
+        0.47654376610242793
+      ],
+      "coefficients": [
+        46.27512562814071,
+        1.34650515617085,
+        3.6742108321011067,
+        -2.4679570145723306,
+        1.9689409984165074
+      ]
+    }
+  },
+  "development_file_counts": {
+    "train": 12,
+    "selection": 5
+  }
+}

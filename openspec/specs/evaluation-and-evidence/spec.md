@@ -573,7 +573,7 @@ The project SHALL report the BMC data-quality, parser, unit-normalization, and r
 - **AND** the load-aware ridge result SHALL remain 1.8054/2.8001/7.1146 degrees C with 13/14 run wins and bootstrap interval [1.4271, 2.7939] degrees C
 - **AND** E14C SHALL be labeled retrospective candidate-eligibility evidence, not unseen confirmation
 
-### Requirement: EVD-042 Preserve E15 as an unexecuted confirmation protocol
+### Requirement: EVD-042 Preserve E15 confirmation status and scope
 
 The project SHALL distinguish the preregistered E15 protocol from empirical evidence until its untouched files are intentionally downloaded and evaluated once.
 
@@ -583,3 +583,10 @@ The project SHALL distinguish the preregistered E15 protocol from empirical evid
 - **THEN** it SHALL be labeled `NOT_EVALUATED` or protocol-only
 - **AND** no E15 metrics, supported hypothesis, or cross-time confirmation claim SHALL be stated
 - **AND** the scope SHALL remain same-server temporal and workload transfer, excluding NTC hardware, PC enclosures, spatial fields, cross-server transfer, and control
+
+#### Scenario: Reporting the completed E15 confirmation
+
+- **WHEN** the 2026-09-07 E15 result is reported
+- **THEN** it SHALL retain all 14 files and 3,112 rows, baseline MAE/RMSE/P95 1.6939/1.9672/3.5000 and ridge 0.9744/1.2056/2.3888 degrees C
+- **AND** H-ENC-08 SHALL be supported only for same-server temporal/workload transfer, with 12/14 run wins, macro gain 0.6134 and bootstrap CI [0.2721, 0.9831] degrees C
+- **AND** both adverse runs SHALL remain visible and the consumed confirmation set SHALL not be reused for model or threshold selection

@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "scope": "Derived result snapshots only; no raw datasets or FMUs",
+  "files": {
+    "outputs/data/public_benchmarks/sml2010_hybrid_twin_comparison.json": {
+      "path": "docs/research/published_results/public_benchmarks/sml2010_hybrid_twin_comparison.json",
+      "sha256": "2fd39c6f027ed8aea91abc937e9665fc48f28e89291863b670af1a411ba161bb",
+      "bytes": 26630
+    },
+    "outputs/data/public_benchmarks/cu_bems_hybrid_twin_comparison.json": {
+      "path": "docs/research/published_results/public_benchmarks/cu_bems_hybrid_twin_comparison.json",
+      "sha256": "b7ed09bb2e0305d3546d4d4fc29ce2f99c86ca006f154bc54fb442212d28539c",
+      "bytes": 19765
+    },
+    "outputs/data/public_benchmarks/rnn_sml2010_comparison.json": {
+      "path": "docs/research/published_results/public_benchmarks/rnn_sml2010_comparison.json",
+      "sha256": "c22e2b89d56d0367102c91afb940296126172dbfe976c4a25df20ddaae1e4913",
+      "bytes": 29869
+    },
+    "outputs/data/public_benchmarks/gru_lstm_sml2010_comparison.json": {
+      "path": "docs/research/published_results/public_benchmarks/gru_lstm_sml2010_comparison.json",
+      "sha256": "3980ab555aa76517117fa8e74f04ac614fa9b2eec609325c7fdbf7946da2e1dd",
+      "bytes": 35095
+    },
+    "outputs/data/public_benchmarks/oh2024_inspired_sml2010_comparison.json": {
+      "path": "docs/research/published_results/public_benchmarks/oh2024_inspired_sml2010_comparison.json",
+      "sha256": "ec7e9d2408e6764daba4647738b12e7a1cdcb9ee9835778748233103d274b272",
+      "bytes": 19073
+    },
+    "outputs/data/public_benchmarks/next_day_temperature_improvement.json": {
+      "path": "docs/research/published_results/public_benchmarks/next_day_temperature_improvement.json",
+      "sha256": "8ce43f4e00da4880a3d1ea9b9825dfbb8da6cc79a09613e5e74687b626df4129",
+      "bytes": 39463
+    },
+    "outputs/data/enclosure/aau_spatial_baseline.json": {
+      "path": "docs/research/published_results/enclosure/aau_spatial_baseline.json",
+      "sha256": "eac36eee701c758c1a1cd99b006a9e29d6445aaaaf47b18f50dc7d914c944061",
+      "bytes": 38577
+    },
+    "outputs/data/enclosure/aau_local_idw_confirmation.json": {
+      "path": "docs/research/published_results/enclosure/aau_local_idw_confirmation.json",
+      "sha256": "9fabf234d60798c5d93acd489c0e886707bcb53d9b1ab9be0311760535605b26",
+      "bytes": 38174
+    },
+    "outputs/data/enclosure/aau_role_conditioned_confirmation.json": {
+      "path": "docs/research/published_results/enclosure/aau_role_conditioned_confirmation.json",
+      "sha256": "18307afccb4835960c6e15ed77d9ad0ff7a4e0b4b776f9f2ba81cdadb75af2a1",
+      "bytes": 23709
+    },
+    "outputs/data/enclosure/aau_hierarchical_development.json": {
+      "path": "docs/research/published_results/enclosure/aau_hierarchical_development.json",
+      "sha256": "53b56517a5412bd362d9a6b337c8c69d40480d952cfaad693d10862acce82987",
+      "bytes": 100899
+    },
+    "outputs/data/enclosure/aau_tail_safe_development.json": {
+      "path": "docs/research/published_results/enclosure/aau_tail_safe_development.json",
+      "sha256": "bc6e8625c3f8f92084b27b27355fee80598f28d0631e2124052ac30267df4894",
+      "bytes": 40226
+    },
+    "outputs/data/enclosure/aau_commissioning_development.json": {
+      "path": "docs/research/published_results/enclosure/aau_commissioning_development.json",
+      "sha256": "1e54d171cf1f78747a714a9a6cb0ae9e22dbacedd01707e6ae5adeb0a4998bea",
+      "bytes": 19304
+    },
+    "outputs/data/enclosure/aau_commissioning_confirmation_e11f.json": {
+      "path": "docs/research/published_results/enclosure/aau_commissioning_confirmation_e11f.json",
+      "sha256": "667cffc2087f193f97b3043410d9a535b01905bda49433eb841d6ca53d3549f8",
+      "bytes": 9306
+    },
+    "outputs/data/thesis_result_verification_report.json": {
+      "path": "docs/research/published_results/thesis_result_verification_report.json",
+      "sha256": "85ca18fcf6faa875ccc026583a24eb044ca3bfde4646d5163125a8566923a1fe",
+      "bytes": 77387
+    }
+  }
+}

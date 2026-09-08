@@ -1,0 +1,4 @@
+# Reproduction
+From school run local libgfortran4 LD_LIBRARY_PATH with outputs/boptest-venv/bin/python scripts/run_boptest_jitter.py --phase development then --phase transfer. Same FMPy0.3.22 and FMU/license provenance as prior pilot. Run full unittest suite, OpenSpec and new CSV verifier; build offline HTML. No new datasets/downloads or identification required.
+
+After both phases run `python3 scripts/verify_boptest_jitter.py` then `python3 scripts/build_boptest_jitter_report.py`. Same system matplotlib3.6.3 as previous reports. Noise seed differs intentionally from prior round:52000+day; within each case every method shares the exact sequence. Queue starts with measured heat-equivalent handover and is checked against recorded initial_applied. Sample-time transport delay does not model a continuous first-order actuator. Scientific plot and HTML embed all noisy/delayed days; full clean cases stay in tables.

@@ -1,0 +1,631 @@
+{
+  "study_id": "E15",
+  "status": "completed",
+  "hypothesis_decision": "h_enc_08_supported",
+  "manifest_sha256": "2df847e0ec9e74dfb87432e857742d5d497abb95f2eee2eff61fa76a3f57f3d8",
+  "frozen_model_sha256": "f2656902840da05cd08b167af2e220f255fa998889a30c4f6d75f1da8685d98b",
+  "frozen_model_content_sha256": "cff6dfbf05fa0f81bff5ebf5cd4d812575b4ec89c5946e8eb1c15384aa8c7935",
+  "confirmation_previously_unopened": true,
+  "file_count": 14,
+  "row_count": 3112,
+  "aggregate": {
+    "baseline": {
+      "count": 3112,
+      "mae_c": 1.693926735218509,
+      "rmse_c": 1.9671752025772797,
+      "p95_c": 3.5
+    },
+    "ridge": {
+      "count": 3112,
+      "mae_c": 0.9743529687836187,
+      "rmse_c": 1.205580685463812,
+      "p95_c": 2.38884224274647
+    },
+    "mae_gain_c": 0.7195737664348903,
+    "rmse_gain_c": 0.7615945171134677,
+    "p95_gain_c": 1.11115775725353
+  },
+  "macro_run_mae_gain_c": 0.6133758779997098,
+  "run_block_bootstrap": {
+    "seed": 20260824,
+    "replicates": 20000,
+    "lower_95_c": 0.27206588051969094,
+    "upper_95_c": 0.9830542790090138
+  },
+  "ridge_run_wins": 12,
+  "prediction_extrema": {
+    "minimum_c": 38.12006533275361,
+    "maximum_c": 56.19003021685626
+  },
+  "gates": {
+    "all_14_files_evaluable": true,
+    "all_unit_regimes_concordant": true,
+    "all_predictions_finite": true,
+    "predictions_within_minus50_to_200_c": true,
+    "aggregate_mae_gain_ge_0_2_c": true,
+    "aggregate_rmse_gain_ge_0_2_c": true,
+    "aggregate_p95_gain_ge_0_2_c": true,
+    "macro_mae_gain_ge_0_2_c": true,
+    "bootstrap_lower_bound_gt_0_c": true,
+    "ridge_wins_at_least_9_of_14_runs": true
+  },
+  "per_run": [
+    {
+      "filename": "202308022155.csv",
+      "row_count": 77,
+      "unit_concordant": true,
+      "predictions_finite": true,
+      "baseline": {
+        "count": 77,
+        "mae_c": 2.8376623376623376,
+        "rmse_c": 3.0221047108127945,
+        "p95_c": 4.0
+      },
+      "ridge": {
+        "count": 77,
+        "mae_c": 1.426046182346403,
+        "rmse_c": 1.6474438062758903,
+        "p95_c": 2.687411145001397
+      },
+      "mae_gain_c": 1.4116161553159345,
+      "ridge_win": true
+    },
+    {
+      "filename": "202308022222.csv",
+      "row_count": 136,
+      "unit_concordant": true,
+      "predictions_finite": true,
+      "baseline": {
+        "count": 136,
+        "mae_c": 2.275735294117647,
+        "rmse_c": 2.577119344859112,
+        "p95_c": 4.0
+      },
+      "ridge": {
+        "count": 136,
+        "mae_c": 1.0299991668780617,
+        "rmse_c": 1.2781147427529922,
+        "p95_c": 2.233498573377453
+      },
+      "mae_gain_c": 1.2457361272395855,
+      "ridge_win": true
+    },
+    {
+      "filename": "202308051737.csv",
+      "row_count": 78,
+      "unit_concordant": true,
+      "predictions_finite": true,
+      "baseline": {
+        "count": 78,
+        "mae_c": 1.6025641025641026,
+        "rmse_c": 2.092416098247461,
+        "p95_c": 4.5
+      },
+      "ridge": {
+        "count": 78,
+        "mae_c": 1.1761803630931649,
+        "rmse_c": 1.4308120803157762,
+        "p95_c": 2.7153502148462865
+      },
+      "mae_gain_c": 0.4263837394709378,
+      "ridge_win": true
+    },
+    {
+      "filename": "202308051757.csv",
+      "row_count": 96,
+      "unit_concordant": true,
+      "predictions_finite": true,
+      "baseline": {
+        "count": 96,
+        "mae_c": 0.71875,
+        "rmse_c": 0.8720187306856813,
+        "p95_c": 1.5
+      },
+      "ridge": {
+        "count": 96,
+        "mae_c": 1.2724535497941158,
+        "rmse_c": 1.4057787236490067,
+        "p95_c": 2.4106125389759523
+      },
+      "mae_gain_c": -0.5537035497941158,
+      "ridge_win": false
+    },
+    {
+      "filename": "202308051827.csv",
+      "row_count": 156,
+      "unit_concordant": true,
+      "predictions_finite": true,
+      "baseline": {
+        "count": 156,
+        "mae_c": 1.9006410256410255,
+        "rmse_c": 2.0727938534679127,
+        "p95_c": 3.5
+      },
+      "ridge": {
+        "count": 156,
+        "mae_c": 1.6007767683182588,
+        "rmse_c": 1.9097897147646474,
+        "p95_c": 3.1608288269994134
+      },
+      "mae_gain_c": 0.2998642573227668,
+      "ridge_win": true
+    },
+    {
+      "filename": "202308052003.csv",
+      "row_count": 401,
+      "unit_concordant": true,
+      "predictions_finite": true,
+      "baseline": {
+        "count": 401,
+        "mae_c": 1.8204488778054864,
+        "rmse_c": 2.0716588941150724,
+        "p95_c": 3.5
+      },
+      "ridge": {
+        "count": 401,
+        "mae_c": 1.2236656890103021,
+        "rmse_c": 1.5808727627312662,
+        "p95_c": 3.0516488447093977
+      },
+      "mae_gain_c": 0.5967831887951842,
+      "ridge_win": true
+    },
+    {
+      "filename": "202309212229.csv",
+      "row_count": 165,
+      "unit_concordant": true,
+      "predictions_finite": true,
+      "baseline": {
+        "count": 165,
+        "mae_c": 1.1424242424242423,
+        "rmse_c": 1.319435140849709,
+        "p95_c": 2.0
+      },
+      "ridge": {
+        "count": 165,
+        "mae_c": 0.8499887961858614,
+        "rmse_c": 0.9520606657783859,
+        "p95_c": 1.4178121936843666
+      },
+      "mae_gain_c": 0.2924354462383809,
+      "ridge_win": true
+    },
+    {
+      "filename": "202309221110.csv",
+      "row_count": 431,
+      "unit_concordant": true,
+      "predictions_finite": true,
+      "baseline": {
+        "count": 431,
+        "mae_c": 1.9408352668213458,
+        "rmse_c": 2.1173518022030122,
+        "p95_c": 3.0
+      },
+      "ridge": {
+        "count": 431,
+        "mae_c": 1.1590966723447464,
+        "rmse_c": 1.2958507890158546,
+        "p95_c": 1.9875014608608161
+      },
+      "mae_gain_c": 0.7817385944765993,
+      "ridge_win": true
+    },
+    {
+      "filename": "202309222035.csv",
+      "row_count": 150,
+      "unit_concordant": true,
+      "predictions_finite": true,
+      "baseline": {
+        "count": 150,
+        "mae_c": 1.17,
+        "rmse_c": 1.3533908033774527,
+        "p95_c": 2.5
+      },
+      "ridge": {
+        "count": 150,
+        "mae_c": 0.8666619912431993,
+        "rmse_c": 1.0055087696622862,
+        "p95_c": 1.8678717023019913
+      },
+      "mae_gain_c": 0.3033380087568006,
+      "ridge_win": true
+    },
+    {
+      "filename": "202310252044.csv",
+      "row_count": 106,
+      "unit_concordant": true,
+      "predictions_finite": true,
+      "baseline": {
+        "count": 106,
+        "mae_c": 1.070754716981132,
+        "rmse_c": 1.5863509806982388,
+        "p95_c": 3.875
+      },
+      "ridge": {
+        "count": 106,
+        "mae_c": 0.5836618192989066,
+        "rmse_c": 0.7232397401683734,
+        "p95_c": 1.3250384393845938
+      },
+      "mae_gain_c": 0.4870928976822254,
+      "ridge_win": true
+    },
+    {
+      "filename": "202310252102.csv",
+      "row_count": 83,
+      "unit_concordant": true,
+      "predictions_finite": true,
+      "baseline": {
+        "count": 83,
+        "mae_c": 1.1566265060240963,
+        "rmse_c": 1.3240136132958646,
+        "p95_c": 2.0
+      },
+      "ridge": {
+        "count": 83,
+        "mae_c": 0.8171398774441909,
+        "rmse_c": 1.0448702460812833,
+        "p95_c": 2.1523317990925905
+      },
+      "mae_gain_c": 0.3394866285799054,
+      "ridge_win": true
+    },
+    {
+      "filename": "202310252230.csv",
+      "row_count": 419,
+      "unit_concordant": true,
+      "predictions_finite": true,
+      "baseline": {
+        "count": 419,
+        "mae_c": 0.9474940334128878,
+        "rmse_c": 1.04092853720628,
+        "p95_c": 1.5
+      },
+      "ridge": {
+        "count": 419,
+        "mae_c": 1.2485672069667189,
+        "rmse_c": 1.2968817681414615,
+        "p95_c": 1.8183953513588225
+      },
+      "mae_gain_c": -0.301073173553831,
+      "ridge_win": false
+    },
+    {
+      "filename": "202405241724.csv",
+      "row_count": 419,
+      "unit_concordant": true,
+      "predictions_finite": true,
+      "baseline": {
+        "count": 419,
+        "mae_c": 1.505966587112172,
+        "rmse_c": 1.657052621078003,
+        "p95_c": 2.5
+      },
+      "ridge": {
+        "count": 419,
+        "mae_c": 0.5089457689790647,
+        "rmse_c": 0.6136181741234873,
+        "p95_c": 1.1292615900367793
+      },
+      "mae_gain_c": 0.9970208181331072,
+      "ridge_win": true
+    },
+    {
+      "filename": "202405241940.csv",
+      "row_count": 395,
+      "unit_concordant": true,
+      "predictions_finite": true,
+      "baseline": {
+        "count": 395,
+        "mae_c": 2.7468354430379747,
+        "rmse_c": 2.810243468888484,
+        "p95_c": 3.5
+      },
+      "ridge": {
+        "count": 395,
+        "mae_c": 0.48629228970551674,
+        "rmse_c": 0.5907713996117407,
+        "p95_c": 1.1028150481908363
+      },
+      "mae_gain_c": 2.260543153332458,
+      "ridge_win": true
+    }
+  ],
+  "parse_report": [
+    {
+      "filename": "202308022155.csv",
+      "accepted_rows": 77,
+      "total_data_rows": 217,
+      "invalid_rows": 0,
+      "rejected_non_bmc_rows": 140,
+      "section_count": 4,
+      "bmc_section_count": 1,
+      "unit_sections": [
+        {
+          "section_index": 0,
+          "accepted_rows": 77,
+          "temperature_raw_median": 56.5,
+          "summed_power_raw_median": 290.0,
+          "temperature_scale": 1.0,
+          "power_scale": 1.0,
+          "concordant": true,
+          "regime": "normalized"
+        }
+      ]
+    },
+    {
+      "filename": "202308022222.csv",
+      "accepted_rows": 136,
+      "total_data_rows": 349,
+      "invalid_rows": 0,
+      "rejected_non_bmc_rows": 213,
+      "section_count": 4,
+      "bmc_section_count": 1,
+      "unit_sections": [
+        {
+          "section_index": 0,
+          "accepted_rows": 136,
+          "temperature_raw_median": 55.25,
+          "summed_power_raw_median": 257.0,
+          "temperature_scale": 1.0,
+          "power_scale": 1.0,
+          "concordant": true,
+          "regime": "normalized"
+        }
+      ]
+    },
+    {
+      "filename": "202308051737.csv",
+      "accepted_rows": 78,
+      "total_data_rows": 218,
+      "invalid_rows": 0,
+      "rejected_non_bmc_rows": 140,
+      "section_count": 4,
+      "bmc_section_count": 1,
+      "unit_sections": [
+        {
+          "section_index": 0,
+          "accepted_rows": 78,
+          "temperature_raw_median": 49.0,
+          "summed_power_raw_median": 284.5,
+          "temperature_scale": 1.0,
+          "power_scale": 1.0,
+          "concordant": true,
+          "regime": "normalized"
+        }
+      ]
+    },
+    {
+      "filename": "202308051757.csv",
+      "accepted_rows": 96,
+      "total_data_rows": 252,
+      "invalid_rows": 0,
+      "rejected_non_bmc_rows": 156,
+      "section_count": 4,
+      "bmc_section_count": 1,
+      "unit_sections": [
+        {
+          "section_index": 0,
+          "accepted_rows": 96,
+          "temperature_raw_median": 50.0,
+          "summed_power_raw_median": 264.5,
+          "temperature_scale": 1.0,
+          "power_scale": 1.0,
+          "concordant": true,
+          "regime": "normalized"
+        }
+      ]
+    },
+    {
+      "filename": "202308051827.csv",
+      "accepted_rows": 156,
+      "total_data_rows": 385,
+      "invalid_rows": 0,
+      "rejected_non_bmc_rows": 229,
+      "section_count": 4,
+      "bmc_section_count": 1,
+      "unit_sections": [
+        {
+          "section_index": 0,
+          "accepted_rows": 156,
+          "temperature_raw_median": 51.75,
+          "summed_power_raw_median": 274.0,
+          "temperature_scale": 1.0,
+          "power_scale": 1.0,
+          "concordant": true,
+          "regime": "normalized"
+        }
+      ]
+    },
+    {
+      "filename": "202308052003.csv",
+      "accepted_rows": 401,
+      "total_data_rows": 920,
+      "invalid_rows": 0,
+      "rejected_non_bmc_rows": 519,
+      "section_count": 4,
+      "bmc_section_count": 1,
+      "unit_sections": [
+        {
+          "section_index": 0,
+          "accepted_rows": 401,
+          "temperature_raw_median": 50.5,
+          "summed_power_raw_median": 266.0,
+          "temperature_scale": 1.0,
+          "power_scale": 1.0,
+          "concordant": true,
+          "regime": "normalized"
+        }
+      ]
+    },
+    {
+      "filename": "202309212229.csv",
+      "accepted_rows": 165,
+      "total_data_rows": 402,
+      "invalid_rows": 0,
+      "rejected_non_bmc_rows": 237,
+      "section_count": 4,
+      "bmc_section_count": 1,
+      "unit_sections": [
+        {
+          "section_index": 0,
+          "accepted_rows": 165,
+          "temperature_raw_median": 54.5,
+          "summed_power_raw_median": 258.0,
+          "temperature_scale": 1.0,
+          "power_scale": 1.0,
+          "concordant": true,
+          "regime": "normalized"
+        }
+      ]
+    },
+    {
+      "filename": "202309221110.csv",
+      "accepted_rows": 431,
+      "total_data_rows": 984,
+      "invalid_rows": 0,
+      "rejected_non_bmc_rows": 553,
+      "section_count": 4,
+      "bmc_section_count": 1,
+      "unit_sections": [
+        {
+          "section_index": 0,
+          "accepted_rows": 431,
+          "temperature_raw_median": 53.0,
+          "summed_power_raw_median": 266.0,
+          "temperature_scale": 1.0,
+          "power_scale": 1.0,
+          "concordant": true,
+          "regime": "normalized"
+        }
+      ]
+    },
+    {
+      "filename": "202309222035.csv",
+      "accepted_rows": 150,
+      "total_data_rows": 797,
+      "invalid_rows": 0,
+      "rejected_non_bmc_rows": 647,
+      "section_count": 10,
+      "bmc_section_count": 1,
+      "unit_sections": [
+        {
+          "section_index": 0,
+          "accepted_rows": 150,
+          "temperature_raw_median": 50.5,
+          "summed_power_raw_median": 246.0,
+          "temperature_scale": 1.0,
+          "power_scale": 1.0,
+          "concordant": true,
+          "regime": "normalized"
+        }
+      ]
+    },
+    {
+      "filename": "202310252044.csv",
+      "accepted_rows": 106,
+      "total_data_rows": 281,
+      "invalid_rows": 0,
+      "rejected_non_bmc_rows": 175,
+      "section_count": 4,
+      "bmc_section_count": 1,
+      "unit_sections": [
+        {
+          "section_index": 0,
+          "accepted_rows": 106,
+          "temperature_raw_median": 48.0,
+          "summed_power_raw_median": 259.0,
+          "temperature_scale": 1.0,
+          "power_scale": 1.0,
+          "concordant": true,
+          "regime": "normalized"
+        }
+      ]
+    },
+    {
+      "filename": "202310252102.csv",
+      "accepted_rows": 83,
+      "total_data_rows": 230,
+      "invalid_rows": 0,
+      "rejected_non_bmc_rows": 147,
+      "section_count": 4,
+      "bmc_section_count": 1,
+      "unit_sections": [
+        {
+          "section_index": 0,
+          "accepted_rows": 83,
+          "temperature_raw_median": 51.0,
+          "summed_power_raw_median": 264.0,
+          "temperature_scale": 1.0,
+          "power_scale": 1.0,
+          "concordant": true,
+          "regime": "normalized"
+        }
+      ]
+    },
+    {
+      "filename": "202310252230.csv",
+      "accepted_rows": 419,
+      "total_data_rows": 982,
+      "invalid_rows": 0,
+      "rejected_non_bmc_rows": 563,
+      "section_count": 4,
+      "bmc_section_count": 1,
+      "unit_sections": [
+        {
+          "section_index": 0,
+          "accepted_rows": 419,
+          "temperature_raw_median": 52.0,
+          "summed_power_raw_median": 269.0,
+          "temperature_scale": 1.0,
+          "power_scale": 1.0,
+          "concordant": true,
+          "regime": "normalized"
+        }
+      ]
+    },
+    {
+      "filename": "202405241724.csv",
+      "accepted_rows": 419,
+      "total_data_rows": 1530,
+      "invalid_rows": 0,
+      "rejected_non_bmc_rows": 1111,
+      "section_count": 3,
+      "bmc_section_count": 1,
+      "unit_sections": [
+        {
+          "section_index": 0,
+          "accepted_rows": 419,
+          "temperature_raw_median": 53.0,
+          "summed_power_raw_median": 266.0,
+          "temperature_scale": 1.0,
+          "power_scale": 1.0,
+          "concordant": true,
+          "regime": "normalized"
+        }
+      ]
+    },
+    {
+      "filename": "202405241940.csv",
+      "accepted_rows": 395,
+      "total_data_rows": 1340,
+      "invalid_rows": 0,
+      "rejected_non_bmc_rows": 945,
+      "section_count": 3,
+      "bmc_section_count": 1,
+      "unit_sections": [
+        {
+          "section_index": 0,
+          "accepted_rows": 395,
+          "temperature_raw_median": 40.0,
+          "summed_power_raw_median": 259.0,
+          "temperature_scale": 1.0,
+          "power_scale": 1.0,
+          "concordant": true,
+          "regime": "normalized"
+        }
+      ]
+    }
+  ],
+  "claim_boundary": "Same-server temporal/workload confirmation only; not cross-server, desktop-enclosure, NTC, spatial-field, or deployment evidence."
+}

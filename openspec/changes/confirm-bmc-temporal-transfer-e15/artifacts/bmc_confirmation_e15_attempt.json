@@ -1,0 +1,16 @@
+{
+  "study_id": "E15",
+  "started_at_utc": "2026-09-07T08:14:41.479493+00:00",
+  "status": "completed",
+  "input_sha256": {
+    "scripts/run_bmc_confirmation_e15.py": "d79775ce5d674905014e97e00a803ac68838c7ffc6121f8b22e5cbcd075d2db8",
+    "digital_twin/enclosure/bmc_virtual_sensor.py": "616dfcae3281562531554337f43441f10d0938dc23ab6b0f623e865565e4608a",
+    "outputs/data/enclosure/bmc_confirmation_e15_manifest.json": "2df847e0ec9e74dfb87432e857742d5d497abb95f2eee2eff61fa76a3f57f3d8",
+    "outputs/data/enclosure/bmc_corrected_e14c_frozen_model.json": "f2656902840da05cd08b167af2e220f255fa998889a30c4f6d75f1da8685d98b"
+  },
+  "log": "outputs/data/enclosure/bmc_confirmation_e15_execution.log",
+  "execution_policy": "One attempt; evaluator, models, gates, and files unchanged.",
+  "exit_code": 0,
+  "result_sha256": "2a4b1aad5c3d63b9593c33a1786d184daa0366773e9f149abb437bcf4e341657",
+  "finished_at_utc": "2026-09-07T08:14:41.654854+00:00"
+}

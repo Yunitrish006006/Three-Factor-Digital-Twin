@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "live_url": "http://127.0.0.1:18775/",
+  "live_static_paper_graph_equal": true,
+  "predictive_startup_nodes": 72,
+  "numeric_comparisons": 200,
+  "explicit_fallback_result_nodes": 8,
+  "canonical_endpoints_verified": true,
+  "all_workspace_validators": "PASS",
+  "python_tests": {
+    "passed": 270,
+    "seconds": 332.114
+  },
+  "offline_html_browser_check": "PASS",
+  "sources": {
+    "openspec/changes/predictive-startup-boundary/artifacts/verification.json": "40e9710049c3cc955e3b6273210c2fa57b14856163a289c64b17f8b9cdf6830d",
+    "docs/reports/boptest_predictive_startup_2026-09-08_zh.html": "4e1db760075373690e867b2f1d9c79cf28027f72dfdc9997eedbacfbfe474be0",
+    "docs/research/boptest_graph_sources.json": "2e4ad1b68b40514dbd056dd5cf046e37923aeafc7b9a7a75b329aa27503bcf24"
+  },
+  "scope": "Local graph only; unadopted extension, no deployment or thesis-method update."
+}

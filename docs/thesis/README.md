@@ -6,6 +6,7 @@
 ## 1. 主線文件（每天主要維護）
 
 - 主論文草稿：[thesis_draft_zh.md](thesis_draft_zh.md)
+- 目前成果、證據邊界與同步待辦：[thesis_sync_status_zh.md](thesis_sync_status_zh.md)（2026-09-08 盤點）
 - 論文對應與寫作說明：[thesis_guide_zh.md](thesis_guide_zh.md)
 - 學術架構總覽（方法與流程）：[project_academic_architecture_zh.md](project_academic_architecture_zh.md)
 - 系統架構圖（Mermaid）：[system_architecture_diagrams_zh.md](system_architecture_diagrams_zh.md)
@@ -18,6 +19,7 @@
 
 ## 3. 研究定位與支援筆記（文獻/定位線）
 
+- 主稿實際使用論文清單：[used_papers_inventory_zh.md](used_papers_inventory_zh.md)（中英文合併；逐篇用途與引用位置）
 - 研究問題定義：[problem_statement_zh.md](problem_statement_zh.md)
 - 研究計畫草案：[research_proposal_zh.md](research_proposal_zh.md)
 - 相似研究與資料集比對：[similar_work_and_datasets_zh.md](similar_work_and_datasets_zh.md)

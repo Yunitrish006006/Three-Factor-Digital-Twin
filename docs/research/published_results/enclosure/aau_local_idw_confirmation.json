@@ -1,0 +1,1246 @@
+{
+  "schema_version": "aau-local-idw-confirmation-v1",
+  "generated_at": "2026-09-07T03:59:40.490082+00:00",
+  "experiment_id": "E11C",
+  "source": {
+    "doi": "10.5281/zenodo.19398358",
+    "url": "https://zenodo.org/api/records/19398358/files/AAU_temperature_and_power_use.csv/content",
+    "record_id": 19398358,
+    "version": "v4",
+    "file": "AAU_temperature_and_power_use.csv",
+    "bytes": 706160545,
+    "md5": "fdb84fef0733db5a0a9564e028725494",
+    "license": null,
+    "license_note": "Zenodo record is public but REST rights metadata was null on 2026-08-23"
+  },
+  "sampling": {
+    "strategy": "eleven_gap_centered_disjoint_byte_ranges",
+    "range_count": 11,
+    "range_size_bytes": 4194304,
+    "offsets": [
+      31907556,
+      95722669,
+      159537782,
+      223352894,
+      287168007,
+      350983120,
+      414798233,
+      478613346,
+      542428459,
+      606243571,
+      670058684
+    ],
+    "e11b_offsets": [
+      0,
+      63815113,
+      127630226,
+      191445338,
+      255260451,
+      319075564,
+      382890677,
+      446705790,
+      510520903,
+      574336015,
+      638151128,
+      701966241
+    ],
+    "overlap_check": "passed"
+  },
+  "room_design": "docs/templates/room_design_aau_server_room.json",
+  "parsing": {
+    "fragments": 11,
+    "boundary_records_discarded": 22,
+    "rows_seen": 89587,
+    "rows_accepted": 89587,
+    "rows_malformed": 0,
+    "rows_missing_or_nonfinite": 0,
+    "eligible_minutes": 1505
+  },
+  "evaluation": {
+    "settings": {
+      "neighbor_count": 3,
+      "distance_power": 2.0,
+      "tie_break": "sensor_name"
+    },
+    "sensor_count": 42,
+    "snapshot_count": 1505,
+    "macro_metrics": {
+      "nearest_neighbor": {
+        "mae_c": 1.301080954659077,
+        "rmse_c": 2.2176065617605007,
+        "p95_absolute_error_c": 5.745036274999993
+      },
+      "local_idw_k3_p2": {
+        "mae_c": 1.2227765078344954,
+        "rmse_c": 1.8863105300573015,
+        "p95_absolute_error_c": 4.025780097042827
+      },
+      "global_idw_p2": {
+        "mae_c": 1.8442944096457334,
+        "rmse_c": 2.284962650185528,
+        "p95_absolute_error_c": 4.5071201919511
+      }
+    },
+    "pairwise_sensor_results": {
+      "local_idw_wins": 21,
+      "nearest_neighbor_wins": 21,
+      "ties": 0
+    },
+    "bootstrap": {
+      "unit": "calendar_day",
+      "block_count": 11,
+      "seed": 20260823,
+      "replicates": 20000,
+      "paired_mae_improvement_c": 0.07830444682458149,
+      "ci95_lower_c": 0.05463577789723198,
+      "ci95_upper_c": 0.10627987649360901
+    },
+    "per_sensor": {
+      "gradient_1": {
+        "csv_column": "Temperature mod 4 ch 1",
+        "source_label": "Gradient 1",
+        "position_m": {
+          "x": 0.17,
+          "y": 3.67,
+          "z": 0.3
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 0.3700659392026576,
+            "rmse_c": 0.43077536553183293,
+            "p95_absolute_error_c": 0.8313090999999999
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 0.6981374288778524,
+            "rmse_c": 0.7178171005797834,
+            "p95_absolute_error_c": 1.005203342975522
+          },
+          "global_idw_p2": {
+            "mae_c": 3.0231940783997415,
+            "rmse_c": 3.1824989764645535,
+            "p95_absolute_error_c": 4.48374665737255
+          }
+        },
+        "pairwise_winner": "nearest_neighbor"
+      },
+      "gradient_2": {
+        "csv_column": "Temperature mod 4 ch 2",
+        "source_label": "Gradient 2",
+        "position_m": {
+          "x": 0.17,
+          "y": 3.67,
+          "z": 0.84
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 0.38590844750830505,
+            "rmse_c": 0.43913593800396666,
+            "p95_absolute_error_c": 0.7941849000000004
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 0.6019295036565218,
+            "rmse_c": 0.6812583221548456,
+            "p95_absolute_error_c": 1.2152773116888995
+          },
+          "global_idw_p2": {
+            "mae_c": 2.8289050823263606,
+            "rmse_c": 3.0321396025236442,
+            "p95_absolute_error_c": 4.60299577826132
+          }
+        },
+        "pairwise_winner": "nearest_neighbor"
+      },
+      "gradient_3": {
+        "csv_column": "Temperature mod 4 ch 3",
+        "source_label": "Gradient 3",
+        "position_m": {
+          "x": 0.17,
+          "y": 3.67,
+          "z": 1.33
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 0.38590844750830505,
+            "rmse_c": 0.43913593800396666,
+            "p95_absolute_error_c": 0.7941849000000004
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 0.7989415478348304,
+            "rmse_c": 0.8974147758753676,
+            "p95_absolute_error_c": 1.5048935892632613
+          },
+          "global_idw_p2": {
+            "mae_c": 2.8359877174057107,
+            "rmse_c": 3.0502487429509446,
+            "p95_absolute_error_c": 4.620430888626211
+          }
+        },
+        "pairwise_winner": "nearest_neighbor"
+      },
+      "gradient_4": {
+        "csv_column": "Temperature mod 4 ch 5",
+        "source_label": "Gradient 4",
+        "position_m": {
+          "x": 0.17,
+          "y": 3.67,
+          "z": 1.84
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 0.32241100099667735,
+            "rmse_c": 0.3750297969859742,
+            "p95_absolute_error_c": 0.6725001999999995
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 0.9877808370499419,
+            "rmse_c": 1.068450939173493,
+            "p95_absolute_error_c": 1.7405626568873116
+          },
+          "global_idw_p2": {
+            "mae_c": 2.566608175478265,
+            "rmse_c": 2.7584047381035073,
+            "p95_absolute_error_c": 4.236204846773132
+          }
+        },
+        "pairwise_winner": "nearest_neighbor"
+      },
+      "gradient_5": {
+        "csv_column": "Temperature mod 4 ch 4",
+        "source_label": "Gradient 5",
+        "position_m": {
+          "x": 0.17,
+          "y": 3.67,
+          "z": 2.3
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 0.32241100099667735,
+            "rmse_c": 0.3750297969859742,
+            "p95_absolute_error_c": 0.6725001999999995
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 1.9150000650553005,
+            "rmse_c": 2.103001139837011,
+            "p95_absolute_error_c": 3.4029615479918953
+          },
+          "global_idw_p2": {
+            "mae_c": 2.302488751795409,
+            "rmse_c": 2.4691018618085563,
+            "p95_absolute_error_c": 3.801535291758068
+          }
+        },
+        "pairwise_winner": "nearest_neighbor"
+      },
+      "rack_1_back_1": {
+        "csv_column": "Temperature mod 7 ch 3",
+        "source_label": "Rack 1 back 1",
+        "position_m": {
+          "x": 0.785,
+          "y": 1.207284,
+          "z": 0.83
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 1.5176162714285717,
+            "rmse_c": 1.5578029622144547,
+            "p95_absolute_error_c": 2.0565756999999976
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 1.2748786050825403,
+            "rmse_c": 1.299736328462871,
+            "p95_absolute_error_c": 1.618609361530052
+          },
+          "global_idw_p2": {
+            "mae_c": 2.1019991307524397,
+            "rmse_c": 2.158729602805606,
+            "p95_absolute_error_c": 2.9672315327737575
+          }
+        },
+        "pairwise_winner": "local_idw_k3_p2"
+      },
+      "rack_1_back_2": {
+        "csv_column": "Temperature mod 7 ch 2",
+        "source_label": "Rack 1 back 2",
+        "position_m": {
+          "x": 0.785,
+          "y": 1.207284,
+          "z": 1.8
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 2.509563390697673,
+            "rmse_c": 2.547915611738022,
+            "p95_absolute_error_c": 3.268579999999999
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 0.8034156957043855,
+            "rmse_c": 0.8642685816054458,
+            "p95_absolute_error_c": 1.3046612667728126
+          },
+          "global_idw_p2": {
+            "mae_c": 0.5694448074402643,
+            "rmse_c": 0.7408559316556931,
+            "p95_absolute_error_c": 1.407286766091128
+          }
+        },
+        "pairwise_winner": "local_idw_k3_p2"
+      },
+      "rack_1_front": {
+        "csv_column": "Temperature mod 2 ch 7",
+        "source_label": "Rack 1 front",
+        "position_m": {
+          "x": 1.835,
+          "y": 1.15,
+          "z": 1.19
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 0.08601743953488389,
+            "rmse_c": 0.10398753790807926,
+            "p95_absolute_error_c": 0.19286880000000012
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 0.44464965245467664,
+            "rmse_c": 0.46766597146588434,
+            "p95_absolute_error_c": 0.6913325283480097
+          },
+          "global_idw_p2": {
+            "mae_c": 2.1597426914624127,
+            "rmse_c": 2.230841097930275,
+            "p95_absolute_error_c": 3.1675379795406995
+          }
+        },
+        "pairwise_winner": "nearest_neighbor"
+      },
+      "rack_2_back_1": {
+        "csv_column": "Temperature mod 6 ch 1",
+        "source_label": "Rack 2 back 1",
+        "position_m": {
+          "x": 1.035,
+          "y": 1.81,
+          "z": 0.78
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 0.4280349684385378,
+            "rmse_c": 0.5090218955931723,
+            "p95_absolute_error_c": 0.891623999999998
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 1.04372084914189,
+            "rmse_c": 1.0890646913628546,
+            "p95_absolute_error_c": 1.5206848383577687
+          },
+          "global_idw_p2": {
+            "mae_c": 0.7134326271100712,
+            "rmse_c": 0.8776688334736932,
+            "p95_absolute_error_c": 1.5356331222618806
+          }
+        },
+        "pairwise_winner": "nearest_neighbor"
+      },
+      "rack_2_back_2": {
+        "csv_column": "Temperature mod 7 ch 4",
+        "source_label": "Rack 2 back 2",
+        "position_m": {
+          "x": 1.035,
+          "y": 1.81,
+          "z": 1.76
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 1.4101926345514941,
+            "rmse_c": 1.5022893641034378,
+            "p95_absolute_error_c": 2.1518943
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 2.108157463452877,
+            "rmse_c": 2.1439296665269607,
+            "p95_absolute_error_c": 2.7631685930856795
+          },
+          "global_idw_p2": {
+            "mae_c": 2.287962111181662,
+            "rmse_c": 2.4916042271139016,
+            "p95_absolute_error_c": 3.576609681272543
+          }
+        },
+        "pairwise_winner": "nearest_neighbor"
+      },
+      "rack_2_front": {
+        "csv_column": "Temperature mod 1 ch 1",
+        "source_label": "Rack 2 front",
+        "position_m": {
+          "x": 1.835,
+          "y": 1.77,
+          "z": 1.19
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 0.20295093421926902,
+            "rmse_c": 0.2363638363420356,
+            "p95_absolute_error_c": 0.41042640000000075
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 0.3720684772991266,
+            "rmse_c": 0.38646602753847104,
+            "p95_absolute_error_c": 0.5420064906901096
+          },
+          "global_idw_p2": {
+            "mae_c": 2.2204177133327776,
+            "rmse_c": 2.3099781989264336,
+            "p95_absolute_error_c": 3.3264233169545663
+          }
+        },
+        "pairwise_winner": "nearest_neighbor"
+      },
+      "rack_3_back_1": {
+        "csv_column": "Temperature mod 6 ch 3",
+        "source_label": "Rack 3 back 1",
+        "position_m": {
+          "x": 1.035,
+          "y": 2.41,
+          "z": 0.78
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 0.4280349684385378,
+            "rmse_c": 0.5090218955931723,
+            "p95_absolute_error_c": 0.891623999999998
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 0.44179099936473387,
+            "rmse_c": 0.5105859801829556,
+            "p95_absolute_error_c": 0.8528093485435682
+          },
+          "global_idw_p2": {
+            "mae_c": 1.1736979742675953,
+            "rmse_c": 1.4149484279510713,
+            "p95_absolute_error_c": 2.5847515317941654
+          }
+        },
+        "pairwise_winner": "nearest_neighbor"
+      },
+      "rack_3_back_2": {
+        "csv_column": "Temperature mod 6 ch 2",
+        "source_label": "Rack 3 back 2",
+        "position_m": {
+          "x": 1.035,
+          "y": 2.41,
+          "z": 1.76
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 0.7978178116279061,
+            "rmse_c": 0.8699784299600035,
+            "p95_absolute_error_c": 1.3508540000000022
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 0.6448371999494817,
+            "rmse_c": 0.7123966434084135,
+            "p95_absolute_error_c": 1.0991325529112572
+          },
+          "global_idw_p2": {
+            "mae_c": 0.9071063128841647,
+            "rmse_c": 1.0408310116695405,
+            "p95_absolute_error_c": 1.8834222652866834
+          }
+        },
+        "pairwise_winner": "local_idw_k3_p2"
+      },
+      "rack_3_front": {
+        "csv_column": "Temperature mod 1 ch 8",
+        "source_label": "Rack 3 front",
+        "position_m": {
+          "x": 1.835,
+          "y": 2.36,
+          "z": 1.19
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 0.20295093421926902,
+            "rmse_c": 0.2363638363420356,
+            "p95_absolute_error_c": 0.41042640000000075
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 0.3873788434572471,
+            "rmse_c": 0.46504211148358904,
+            "p95_absolute_error_c": 0.8180487845849931
+          },
+          "global_idw_p2": {
+            "mae_c": 2.6188754536031262,
+            "rmse_c": 2.770514636304082,
+            "p95_absolute_error_c": 4.178995580114348
+          }
+        },
+        "pairwise_winner": "nearest_neighbor"
+      },
+      "rack_4_back_1": {
+        "csv_column": "Temperature mod 5 ch 4",
+        "source_label": "Rack 4 back 1",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.01,
+          "z": 0.76
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 0.9489285880398649,
+            "rmse_c": 1.1448155359131187,
+            "p95_absolute_error_c": 2.3416860999999987
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 0.9765684168208639,
+            "rmse_c": 1.0606630796541192,
+            "p95_absolute_error_c": 1.7814294724693314
+          },
+          "global_idw_p2": {
+            "mae_c": 1.2344954185670833,
+            "rmse_c": 1.33905718422236,
+            "p95_absolute_error_c": 2.2142594537535687
+          }
+        },
+        "pairwise_winner": "nearest_neighbor"
+      },
+      "rack_4_back_2": {
+        "csv_column": "Temperature mod 6 ch 4",
+        "source_label": "Rack 4 back 2",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.01,
+          "z": 1.76
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 2.8003657272425233,
+            "rmse_c": 3.8664660267451256,
+            "p95_absolute_error_c": 7.191984800000003
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 2.8738750888105526,
+            "rmse_c": 4.052561776883191,
+            "p95_absolute_error_c": 7.594431545094018
+          },
+          "global_idw_p2": {
+            "mae_c": 1.827494953400209,
+            "rmse_c": 2.0005424083760692,
+            "p95_absolute_error_c": 3.438721075119131
+          }
+        },
+        "pairwise_winner": "nearest_neighbor"
+      },
+      "rack_4_front": {
+        "csv_column": "Temperature mod 1 ch 6",
+        "source_label": "Rack 4 front",
+        "position_m": {
+          "x": 1.835,
+          "y": 2.96,
+          "z": 1.19
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 0.15021885980066427,
+            "rmse_c": 0.1904418481267887,
+            "p95_absolute_error_c": 0.3802570000000016
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 0.0923971022430996,
+            "rmse_c": 0.1171712061330401,
+            "p95_absolute_error_c": 0.2367008393569392
+          },
+          "global_idw_p2": {
+            "mae_c": 3.0695292961356704,
+            "rmse_c": 3.278875318428357,
+            "p95_absolute_error_c": 5.052418136170593
+          }
+        },
+        "pairwise_winner": "local_idw_k3_p2"
+      },
+      "rack_5_back_l1": {
+        "csv_column": "Temperature mod 2 ch 8",
+        "source_label": "Rack 5 back L1",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.74,
+          "z": 0.3
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 4.646732353156139,
+            "rmse_c": 5.39839201818991,
+            "p95_absolute_error_c": 9.209083399999997
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 2.2116334067348844,
+            "rmse_c": 2.5449647712521815,
+            "p95_absolute_error_c": 4.21688252645223
+          },
+          "global_idw_p2": {
+            "mae_c": 2.3015665392187006,
+            "rmse_c": 2.6509149448823814,
+            "p95_absolute_error_c": 4.431006599931244
+          }
+        },
+        "pairwise_winner": "local_idw_k3_p2"
+      },
+      "rack_5_back_l2": {
+        "csv_column": "Temperature mod 2 ch 6",
+        "source_label": "Rack 5 back L2",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.61,
+          "z": 0.53
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 3.479684462790694,
+            "rmse_c": 4.328381850784349,
+            "p95_absolute_error_c": 8.072128500000005
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 3.2688712836681564,
+            "rmse_c": 3.9355767517370674,
+            "p95_absolute_error_c": 6.969797672096129
+          },
+          "global_idw_p2": {
+            "mae_c": 2.7763527244190507,
+            "rmse_c": 3.318099225921693,
+            "p95_absolute_error_c": 5.9406032014985035
+          }
+        },
+        "pairwise_winner": "local_idw_k3_p2"
+      },
+      "rack_5_back_l3": {
+        "csv_column": "Temperature mod 2 ch 2",
+        "source_label": "Rack 5 back L3",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.74,
+          "z": 0.76
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 1.6440848315614607,
+            "rmse_c": 2.0670633405003906,
+            "p95_absolute_error_c": 3.9252126000000027
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 1.1350549218016994,
+            "rmse_c": 1.5801209794223288,
+            "p95_absolute_error_c": 3.4545525378534903
+          },
+          "global_idw_p2": {
+            "mae_c": 0.5173918926347416,
+            "rmse_c": 0.7600138073360251,
+            "p95_absolute_error_c": 1.6962903902368096
+          }
+        },
+        "pairwise_winner": "local_idw_k3_p2"
+      },
+      "rack_5_back_l4": {
+        "csv_column": "Temperature mod 2 ch 5",
+        "source_label": "Rack 5 back L4",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.61,
+          "z": 0.93
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 2.190628403654487,
+            "rmse_c": 3.059165163123815,
+            "p95_absolute_error_c": 6.362482900000002
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 1.8806635904365305,
+            "rmse_c": 2.405970764612957,
+            "p95_absolute_error_c": 4.726236449311734
+          },
+          "global_idw_p2": {
+            "mae_c": 1.5710503637914635,
+            "rmse_c": 1.9776293679266244,
+            "p95_absolute_error_c": 3.85583083756185
+          }
+        },
+        "pairwise_winner": "local_idw_k3_p2"
+      },
+      "rack_5_back_l5": {
+        "csv_column": "Temperature mod 2 ch 1",
+        "source_label": "Rack 5 back L5",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.74,
+          "z": 1.15
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 0.4505083647840538,
+            "rmse_c": 0.6602687619348497,
+            "p95_absolute_error_c": 1.435141200000001
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 0.40671130712608,
+            "rmse_c": 0.5176972124757552,
+            "p95_absolute_error_c": 1.1489678621398325
+          },
+          "global_idw_p2": {
+            "mae_c": 0.9432429067971486,
+            "rmse_c": 1.0153443566922742,
+            "p95_absolute_error_c": 1.7270731842486406
+          }
+        },
+        "pairwise_winner": "local_idw_k3_p2"
+      },
+      "rack_5_back_l6": {
+        "csv_column": "Temperature mod 2 ch 4",
+        "source_label": "Rack 5 back L6",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.61,
+          "z": 1.34
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 0.5057064345514949,
+            "rmse_c": 0.5824151616720468,
+            "p95_absolute_error_c": 1.0153491999999997
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 0.4798505746215931,
+            "rmse_c": 0.540705252202257,
+            "p95_absolute_error_c": 0.9990331575690756
+          },
+          "global_idw_p2": {
+            "mae_c": 0.7913523935548487,
+            "rmse_c": 0.9465635279220468,
+            "p95_absolute_error_c": 1.7050418551787405
+          }
+        },
+        "pairwise_winner": "local_idw_k3_p2"
+      },
+      "rack_5_back_l7": {
+        "csv_column": "Temperature mod 3 ch 3",
+        "source_label": "Rack 5 back L7",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.74,
+          "z": 1.56
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 0.4501609043189368,
+            "rmse_c": 0.5586842840266242,
+            "p95_absolute_error_c": 1.1140577999999997
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 0.502708126909431,
+            "rmse_c": 0.5463972461366663,
+            "p95_absolute_error_c": 0.8275122105903293
+          },
+          "global_idw_p2": {
+            "mae_c": 1.3794387539209594,
+            "rmse_c": 1.5102833163156795,
+            "p95_absolute_error_c": 2.6620502003819495
+          }
+        },
+        "pairwise_winner": "nearest_neighbor"
+      },
+      "rack_5_back_l8": {
+        "csv_column": "Temperature mod 3 ch 6",
+        "source_label": "Rack 5 back L8",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.61,
+          "z": 1.73
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 0.4718815099667773,
+            "rmse_c": 0.5704090541691413,
+            "p95_absolute_error_c": 1.2128053000000008
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 0.46174687567300443,
+            "rmse_c": 0.6075338264192119,
+            "p95_absolute_error_c": 1.247399311824874
+          },
+          "global_idw_p2": {
+            "mae_c": 0.9536986450911804,
+            "rmse_c": 1.2320760207587684,
+            "p95_absolute_error_c": 2.3365670827734335
+          }
+        },
+        "pairwise_winner": "local_idw_k3_p2"
+      },
+      "rack_5_back_l9": {
+        "csv_column": "Temperature mod 3 ch 7",
+        "source_label": "Rack 5 back L9",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.74,
+          "z": 1.92
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 1.5061374196013297,
+            "rmse_c": 1.548880217772604,
+            "p95_absolute_error_c": 1.864674199999999
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 1.3948648555321292,
+            "rmse_c": 1.430131675014821,
+            "p95_absolute_error_c": 1.716555381512399
+          },
+          "global_idw_p2": {
+            "mae_c": 2.9302465955976222,
+            "rmse_c": 3.048573207577163,
+            "p95_absolute_error_c": 4.623225309894764
+          }
+        },
+        "pairwise_winner": "local_idw_k3_p2"
+      },
+      "rack_5_back_r1": {
+        "csv_column": "Temperature mod 3 ch 4",
+        "source_label": "Rack 5 back R1",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.47,
+          "z": 0.3
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 1.0280179986710976,
+            "rmse_c": 1.056984238953251,
+            "p95_absolute_error_c": 1.4732080999999992
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 1.7355387984026613,
+            "rmse_c": 1.9007611338543466,
+            "p95_absolute_error_c": 3.0098632705396544
+          },
+          "global_idw_p2": {
+            "mae_c": 1.9924060212274197,
+            "rmse_c": 2.2095527413779816,
+            "p95_absolute_error_c": 3.5363022565693223
+          }
+        },
+        "pairwise_winner": "nearest_neighbor"
+      },
+      "rack_5_back_r2": {
+        "csv_column": "Temperature mod 3 ch 8",
+        "source_label": "Rack 5 back R2",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.41,
+          "z": 0.53
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 3.479684462790694,
+            "rmse_c": 4.328381850784349,
+            "p95_absolute_error_c": 8.072128500000005
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 1.6797970950178334,
+            "rmse_c": 2.2441517713723838,
+            "p95_absolute_error_c": 4.285063601831505
+          },
+          "global_idw_p2": {
+            "mae_c": 1.4800697698992866,
+            "rmse_c": 1.9622308296086939,
+            "p95_absolute_error_c": 3.8095974709034763
+          }
+        },
+        "pairwise_winner": "local_idw_k3_p2"
+      },
+      "rack_5_back_r3": {
+        "csv_column": "Temperature mod 3 ch 5",
+        "source_label": "Rack 5 back R3",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.47,
+          "z": 0.76
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 0.6799525411960136,
+            "rmse_c": 0.977785586799851,
+            "p95_absolute_error_c": 2.1974448000000004
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 0.4444095121730938,
+            "rmse_c": 0.5914642651472501,
+            "p95_absolute_error_c": 1.2703069018203244
+          },
+          "global_idw_p2": {
+            "mae_c": 0.45748676762371154,
+            "rmse_c": 0.6666048805952601,
+            "p95_absolute_error_c": 1.5360159766798165
+          }
+        },
+        "pairwise_winner": "local_idw_k3_p2"
+      },
+      "rack_5_back_r4": {
+        "csv_column": "Temperature mod 4 ch 6",
+        "source_label": "Rack 5 back R4",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.41,
+          "z": 0.93
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 0.6799525411960136,
+            "rmse_c": 0.977785586799851,
+            "p95_absolute_error_c": 2.1974448000000004
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 1.413435354553196,
+            "rmse_c": 2.109473597889192,
+            "p95_absolute_error_c": 4.4741112820512825
+          },
+          "global_idw_p2": {
+            "mae_c": 0.9387155753825411,
+            "rmse_c": 1.5270774078344265,
+            "p95_absolute_error_c": 3.352539109167828
+          }
+        },
+        "pairwise_winner": "nearest_neighbor"
+      },
+      "rack_5_back_r5": {
+        "csv_column": "Temperature mod 4 ch 8",
+        "source_label": "Rack 5 back R5",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.47,
+          "z": 1.15
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 0.2533686013289044,
+            "rmse_c": 0.37648545982993,
+            "p95_absolute_error_c": 0.831828200000001
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 0.43612203626699364,
+            "rmse_c": 0.674939412633311,
+            "p95_absolute_error_c": 1.4209114146343764
+          },
+          "global_idw_p2": {
+            "mae_c": 0.6906918860541601,
+            "rmse_c": 1.0214332530132657,
+            "p95_absolute_error_c": 2.019152538874583
+          }
+        },
+        "pairwise_winner": "nearest_neighbor"
+      },
+      "rack_5_back_r6": {
+        "csv_column": "Temperature mod 4 ch 7",
+        "source_label": "Rack 5 back R6",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.41,
+          "z": 1.34
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 0.2533686013289044,
+            "rmse_c": 0.37648545982993,
+            "p95_absolute_error_c": 0.831828200000001
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 0.33994712958188,
+            "rmse_c": 0.4216594079866986,
+            "p95_absolute_error_c": 0.7637620195799328
+          },
+          "global_idw_p2": {
+            "mae_c": 0.5171372815938763,
+            "rmse_c": 0.7549726122674892,
+            "p95_absolute_error_c": 1.6063064725438907
+          }
+        },
+        "pairwise_winner": "nearest_neighbor"
+      },
+      "rack_5_back_r7": {
+        "csv_column": "Temperature mod 5 ch 1",
+        "source_label": "Rack 5 back R7",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.47,
+          "z": 1.56
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 0.3154425325581397,
+            "rmse_c": 0.3603336565910021,
+            "p95_absolute_error_c": 0.6361661999999952
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 0.18141365421941763,
+            "rmse_c": 0.2511906051962794,
+            "p95_absolute_error_c": 0.552614580067376
+          },
+          "global_idw_p2": {
+            "mae_c": 0.5800153488672147,
+            "rmse_c": 0.7907477553133714,
+            "p95_absolute_error_c": 1.5420367757740194
+          }
+        },
+        "pairwise_winner": "local_idw_k3_p2"
+      },
+      "rack_5_back_r8": {
+        "csv_column": "Temperature mod 5 ch 2",
+        "source_label": "Rack 5 back R8",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.41,
+          "z": 1.73
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 0.3154425325581397,
+            "rmse_c": 0.3603336565910021,
+            "p95_absolute_error_c": 0.6361661999999952
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 0.30075679395534893,
+            "rmse_c": 0.3802027504204445,
+            "p95_absolute_error_c": 0.8466605000059815
+          },
+          "global_idw_p2": {
+            "mae_c": 0.6400237826190709,
+            "rmse_c": 0.843631639391471,
+            "p95_absolute_error_c": 1.5251164886252324
+          }
+        },
+        "pairwise_winner": "local_idw_k3_p2"
+      },
+      "rack_5_back_r9": {
+        "csv_column": "Temperature mod 5 ch 3",
+        "source_label": "Rack 5 back R9",
+        "position_m": {
+          "x": 1.035,
+          "y": 3.47,
+          "z": 1.92
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 0.8796105794019916,
+            "rmse_c": 1.0203693107758716,
+            "p95_absolute_error_c": 1.9123186000000028
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 0.3413398081213971,
+            "rmse_c": 0.4742290219071126,
+            "p95_absolute_error_c": 0.9111668409238589
+          },
+          "global_idw_p2": {
+            "mae_c": 1.5653555781516242,
+            "rmse_c": 1.9437215170046243,
+            "p95_absolute_error_c": 3.4577648194852
+          }
+        },
+        "pairwise_winner": "local_idw_k3_p2"
+      },
+      "rack_5_front_1": {
+        "csv_column": "Temperature mod 1 ch 3",
+        "source_label": "Rack 5 front 1",
+        "position_m": {
+          "x": 1.835,
+          "y": 3.56,
+          "z": 0.36
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 0.5241801392026569,
+            "rmse_c": 0.6003114247402768,
+            "p95_absolute_error_c": 1.1148149999999992
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 2.0642382111748945,
+            "rmse_c": 2.206542454955752,
+            "p95_absolute_error_c": 3.2676826755558865
+          },
+          "global_idw_p2": {
+            "mae_c": 3.41711299811751,
+            "rmse_c": 3.5970021725720254,
+            "p95_absolute_error_c": 5.092479601602111
+          }
+        },
+        "pairwise_winner": "nearest_neighbor"
+      },
+      "rack_5_front_2": {
+        "csv_column": "Temperature mod 1 ch 4",
+        "source_label": "Rack 5 front 2",
+        "position_m": {
+          "x": 1.835,
+          "y": 3.56,
+          "z": 0.89
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 0.5241801392026569,
+            "rmse_c": 0.6003114247402768,
+            "p95_absolute_error_c": 1.1148149999999992
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 0.10830220719016702,
+            "rmse_c": 0.13626646295024283,
+            "p95_absolute_error_c": 0.26603738508910196
+          },
+          "global_idw_p2": {
+            "mae_c": 3.113373027224084,
+            "rmse_c": 3.312282544701054,
+            "p95_absolute_error_c": 4.906150048959585
+          }
+        },
+        "pairwise_winner": "local_idw_k3_p2"
+      },
+      "rack_5_front_3": {
+        "csv_column": "Temperature mod 1 ch 5",
+        "source_label": "Rack 5 front 3",
+        "position_m": {
+          "x": 1.835,
+          "y": 3.56,
+          "z": 1.54
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 4.307325374750835,
+            "rmse_c": 4.451002113166759,
+            "p95_absolute_error_c": 6.406301199999997
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 2.46642917167412,
+            "rmse_c": 2.556761133506055,
+            "p95_absolute_error_c": 3.7253057392454547
+          },
+          "global_idw_p2": {
+            "mae_c": 3.427612827498415,
+            "rmse_c": 3.6923797752789267,
+            "p95_absolute_error_c": 5.784882506277193
+          }
+        },
+        "pairwise_winner": "local_idw_k3_p2"
+      },
+      "rack_5_front_4": {
+        "csv_column": "Temperature mod 7 ch 1",
+        "source_label": "Rack 5 front 4",
+        "position_m": {
+          "x": 1.835,
+          "y": 3.56,
+          "z": 1.91
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 4.307325374750835,
+            "rmse_c": 4.451002113166759,
+            "p95_absolute_error_c": 6.406301199999997
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 2.0792449603524954,
+            "rmse_c": 2.113235557515575,
+            "p95_absolute_error_c": 2.657569935736353
+          },
+          "global_idw_p2": {
+            "mae_c": 1.378302299066105,
+            "rmse_c": 1.4622285351692201,
+            "p95_absolute_error_c": 1.9512301444674827
+          }
+        },
+        "pairwise_winner": "local_idw_k3_p2"
+      },
+      "rack_6_back_1": {
+        "csv_column": "Temperature mod 1 ch 2",
+        "source_label": "Rack 6 back 1",
+        "position_m": {
+          "x": 1.035,
+          "y": 4.22,
+          "z": 0.74
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 3.920554074086382,
+            "rmse_c": 4.317084409142496,
+            "p95_absolute_error_c": 7.424734599999999
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 4.806688104148081,
+            "rmse_c": 5.280729596666244,
+            "p95_absolute_error_c": 8.548717858085666
+          },
+          "global_idw_p2": {
+            "mae_c": 3.572741506975356,
+            "rmse_c": 3.858131943032095,
+            "p95_absolute_error_c": 5.851482456800062
+          }
+        },
+        "pairwise_winner": "nearest_neighbor"
+      },
+      "rack_6_back_2": {
+        "csv_column": "Temperature mod 2 ch 3",
+        "source_label": "Rack 6 back 2",
+        "position_m": {
+          "x": 1.035,
+          "y": 4.22,
+          "z": 1.76
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 4.373684902325586,
+            "rmse_c": 5.396685517648216,
+            "p95_absolute_error_c": 9.828087899999995
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 3.3875542139550885,
+            "rmse_c": 4.587307245383228,
+            "p95_absolute_error_c": 8.557970961330513
+          },
+          "global_idw_p2": {
+            "mae_c": 1.6949858241102733,
+            "rmse_c": 1.959710293065296,
+            "p95_absolute_error_c": 3.5900886869870177
+          }
+        },
+        "pairwise_winner": "local_idw_k3_p2"
+      },
+      "rack_6_front": {
+        "csv_column": "Temperature mod 1 ch 7",
+        "source_label": "Rack 6 front",
+        "position_m": {
+          "x": 1.835,
+          "y": 4.16,
+          "z": 1.19
+        },
+        "metrics": {
+          "nearest_neighbor": {
+            "mae_c": 0.18838765149501657,
+            "rmse_c": 0.22493940565047907,
+            "p95_absolute_error_c": 0.43316940000000126
+          },
+          "local_idw_k3_p2": {
+            "mae_c": 1.3637635595024122,
+            "rmse_c": 1.4498382178929194,
+            "p95_absolute_error_c": 2.1811717425518604
+          },
+          "global_idw_p2": {
+            "mae_c": 3.388611600141964,
+            "rmse_c": 3.599403859735768,
+            "p95_absolute_error_c": 5.3467533214719705
+          }
+        },
+        "pairwise_winner": "nearest_neighbor"
+      }
+    },
+    "hypothesis": {
+      "id": "H-ENC-03",
+      "decision": "not_supported",
+      "conditions": {
+        "local_mae_lower": true,
+        "local_rmse_lower": true,
+        "local_sensor_wins_at_least_26": false,
+        "bootstrap_ci95_lower_above_zero": true
+      },
+      "required_local_sensor_wins": 26
+    }
+  }
+}

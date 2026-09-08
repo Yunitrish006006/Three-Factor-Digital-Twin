@@ -1,0 +1,31 @@
+{
+  "status": "GENERALITY_NOT_ESTABLISHED",
+  "benchmark_specific_selection": "CONFIRMED",
+  "within_round_hash_audit": [
+    {
+      "change": "improve-boptest-transfer",
+      "source_hashes_match": true,
+      "development_hash_match": true,
+      "transfer_selection_hash_match": true,
+      "same_sources": true,
+      "selected": "v4_observer"
+    },
+    {
+      "change": "reduce-boptest-command-jitter",
+      "source_hashes_match": true,
+      "development_hash_match": true,
+      "transfer_selection_hash_match": true,
+      "same_sources": true,
+      "selected": "smooth035"
+    }
+  ],
+  "scenario_identity_branching": "NOT_FOUND_IN_INSPECTED_CONTROLLER_CLASSES",
+  "static_inspection_limits": "Does not prove absence of all leakage or universally valid behavior",
+  "calibrated_single_plant": "bestest_air v0.9.0",
+  "sources": {
+    "scripts/run_boptest_rapid_pi.py": "c33a23274e37ffe0d0bc194ea58644ff93acb3ada8822b3d7ce5ba8042d51f58",
+    "scripts/run_boptest_rapid_pi_v2.py": "e52cc333ce66a2588db76fa1c98d8d10e7373b8b37ac8b533100940dbc9e63e5",
+    "scripts/run_boptest_transfer.py": "6e639265a7ae4141ec1fe0b32faec9a01bffcda9793ec8aed9614f1f12be94e7",
+    "scripts/run_boptest_jitter.py": "c4829122579ccba0021f3769b7a9be17d24562c1e918559e229a61b064b8c3bd"
+  }
+}

@@ -1,0 +1,3 @@
+# BOPTEST rapid PI development pilot
+Existing h=0 spatial estimators do not identify an actuator-to-future-temperature response. Add an isolated dynamical identification and closed-loop development pilot, without adopting results into the thesis. Claim-neutral until an independent protocol confirms performance. No new neural-network claim or semiconductor validation.
+Affected exploratory artifacts: runner, tests, evidence JSON, offline HTML professor report. Main Chinese thesis/build source, English paper, main presentation and generated documents remain at their existing accepted evidence level; adoption would require a separate synchronized change. Preserve E15 frozen evidence.

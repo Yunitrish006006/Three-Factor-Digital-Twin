@@ -1,0 +1,2 @@
+# Design
+Generic FMU adapter converts temperature observations K to C and primary native bounds to normalized u. A list declares constant overrides and readbacks; all other FMU controls stay native. No branching on device names. Frozen controller and bank are imported. New runner retains both successful and rejected calibrations and freezes bounded selection before test dates. Controller parameters are not tuned against new FMU evaluations.

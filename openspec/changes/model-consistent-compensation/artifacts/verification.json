@@ -1,0 +1,241 @@
+{
+  "status": "PASS",
+  "sources_match": true,
+  "scope": "FIVE_DEVELOPMENT_PLANTS_NEW_DATES",
+  "plants": {
+    "air": {
+      "model_status": {
+        "2": "FITTED",
+        "6": "FITTED"
+      },
+      "decisions": [
+        {
+          "budget_h": 2,
+          "pairs": [
+            {
+              "day": 25,
+              "mae_gain_C": 0.003384667930327722,
+              "nonregression": true,
+              "correction_nonzero_rows": 1439,
+              "max_abs_correction_u": 0.1
+            },
+            {
+              "day": 60,
+              "mae_gain_C": 0.004161182167175072,
+              "nonregression": true,
+              "correction_nonzero_rows": 1439,
+              "max_abs_correction_u": 0.1
+            }
+          ],
+          "gate": true
+        },
+        {
+          "budget_h": 6,
+          "pairs": [
+            {
+              "day": 25,
+              "mae_gain_C": 0.002318220528666535,
+              "nonregression": true,
+              "correction_nonzero_rows": 1438,
+              "max_abs_correction_u": 0.1
+            },
+            {
+              "day": 60,
+              "mae_gain_C": 0.003958864028070271,
+              "nonregression": true,
+              "correction_nonzero_rows": 1438,
+              "max_abs_correction_u": 0.1
+            }
+          ],
+          "gate": true
+        }
+      ],
+      "result_sha256": "184dc88cc432391b2a13600d72e698f72a58131b8c5897371d113e5823e4ce1f"
+    },
+    "hydronic": {
+      "model_status": {
+        "2": "FITTED",
+        "6": "FITTED"
+      },
+      "decisions": [
+        {
+          "budget_h": 2,
+          "pairs": [
+            {
+              "day": 25,
+              "mae_gain_C": -0.13542331699912857,
+              "nonregression": false,
+              "correction_nonzero_rows": 1436,
+              "max_abs_correction_u": 0.1
+            },
+            {
+              "day": 60,
+              "mae_gain_C": -0.07587451760000219,
+              "nonregression": false,
+              "correction_nonzero_rows": 1436,
+              "max_abs_correction_u": 0.1
+            }
+          ],
+          "gate": false
+        },
+        {
+          "budget_h": 6,
+          "pairs": [
+            {
+              "day": 25,
+              "mae_gain_C": -7.479422983874828e-06,
+              "nonregression": true,
+              "correction_nonzero_rows": 1438,
+              "max_abs_correction_u": 0.1
+            },
+            {
+              "day": 60,
+              "mae_gain_C": 0.005125038665833401,
+              "nonregression": true,
+              "correction_nonzero_rows": 1438,
+              "max_abs_correction_u": 0.1
+            }
+          ],
+          "gate": true
+        }
+      ],
+      "result_sha256": "7739d663de9316809cb231f6b543bf038ff51775b4729ad05829d8df043c43da"
+    },
+    "heat_pump": {
+      "model_status": {
+        "2": "FITTED",
+        "6": "FITTED"
+      },
+      "decisions": [
+        {
+          "budget_h": 2,
+          "pairs": [
+            {
+              "day": 25,
+              "mae_gain_C": 0.0,
+              "nonregression": true,
+              "correction_nonzero_rows": 0,
+              "max_abs_correction_u": 0.0
+            },
+            {
+              "day": 60,
+              "mae_gain_C": 0.0,
+              "nonregression": true,
+              "correction_nonzero_rows": 0,
+              "max_abs_correction_u": 0.0
+            }
+          ],
+          "gate": false
+        },
+        {
+          "budget_h": 6,
+          "pairs": [
+            {
+              "day": 25,
+              "mae_gain_C": 0.0,
+              "nonregression": true,
+              "correction_nonzero_rows": 0,
+              "max_abs_correction_u": 0.0
+            },
+            {
+              "day": 60,
+              "mae_gain_C": 0.0,
+              "nonregression": true,
+              "correction_nonzero_rows": 0,
+              "max_abs_correction_u": 0.0
+            }
+          ],
+          "gate": false
+        }
+      ],
+      "result_sha256": "a34b0a779c851ea52eb56878bcf69ce0fcec7a977f4d886c6b73415c354b4c3e"
+    },
+    "apartment": {
+      "model_status": {
+        "2": "FITTED",
+        "6": "NO_ADMISSIBLE_MODEL"
+      },
+      "decisions": [
+        {
+          "budget_h": 2,
+          "pairs": [
+            {
+              "day": 25,
+              "mae_gain_C": 0.0,
+              "nonregression": true,
+              "correction_nonzero_rows": 0,
+              "max_abs_correction_u": 0.0
+            },
+            {
+              "day": 60,
+              "mae_gain_C": 0.0,
+              "nonregression": true,
+              "correction_nonzero_rows": 0,
+              "max_abs_correction_u": 0.0
+            }
+          ],
+          "gate": false
+        },
+        {
+          "budget_h": 6,
+          "pairs": [],
+          "gate": false
+        }
+      ],
+      "result_sha256": "65ff336524a875e8d5b9b5c5511f731f5d38266047b86123efc9cc35e3bc7dd9"
+    },
+    "commercial": {
+      "model_status": {
+        "2": "FITTED",
+        "6": "FITTED"
+      },
+      "decisions": [
+        {
+          "budget_h": 2,
+          "pairs": [
+            {
+              "day": 25,
+              "mae_gain_C": 0.001300264935993193,
+              "nonregression": true,
+              "correction_nonzero_rows": 1438,
+              "max_abs_correction_u": 0.1
+            },
+            {
+              "day": 60,
+              "mae_gain_C": 0.0005925403922108323,
+              "nonregression": true,
+              "correction_nonzero_rows": 1438,
+              "max_abs_correction_u": 0.1
+            }
+          ],
+          "gate": true
+        },
+        {
+          "budget_h": 6,
+          "pairs": [
+            {
+              "day": 25,
+              "mae_gain_C": -0.00122803099654551,
+              "nonregression": false,
+              "correction_nonzero_rows": 1438,
+              "max_abs_correction_u": 0.1
+            },
+            {
+              "day": 60,
+              "mae_gain_C": -0.0008825371019160165,
+              "nonregression": true,
+              "correction_nonzero_rows": 1438,
+              "max_abs_correction_u": 0.1
+            }
+          ],
+          "gate": false
+        }
+      ],
+      "result_sha256": "c64f90642e3ed4c9e10f0200416fc215f2da964c73cbe9e7a2471fb2f7cf16c2"
+    }
+  },
+  "traces": 36,
+  "valid_budgets": 9,
+  "passed_budgets": 4,
+  "hypothesis": "NOT_SUPPORTED"
+}

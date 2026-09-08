@@ -1,0 +1,28 @@
+{
+  "repository_unittest": {
+    "status": "PASS",
+    "tests": 229,
+    "seconds": 253.813,
+    "log": "outputs/boptest_tests_20260908.log",
+    "log_sha256": "cfe78c6e9ca5d22f63722a079e97a08f19c5eb795fc2f75b8232653028a344ca"
+  },
+  "targeted_boptest_tests": {
+    "status": "PASS",
+    "tests": 5
+  },
+  "csv_audit": {
+    "status": "PASS",
+    "traces": 26,
+    "evaluation_episodes": 16
+  },
+  "html_static": {
+    "status": "PASS",
+    "sections": 7,
+    "links": 12,
+    "offline_runtime_assets": true
+  },
+  "calibration_retry_identical": true,
+  "figure_visual_inspection": "PASS",
+  "browser_rendering": "NOT_EVALUATED",
+  "main_thesis_adoption": "NOT_ADOPTED_EXPLORATORY_PILOT"
+}

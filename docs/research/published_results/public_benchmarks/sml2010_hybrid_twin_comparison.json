@@ -1,0 +1,832 @@
+{
+  "dataset": "SML2010",
+  "benchmark_mode": "two-point boundary-response",
+  "input_dir": "/Volumes/DataExtended/school/outputs/data/normalized_public/sml2010",
+  "created_at": "2026-05-10T16:49:42.194822+00:00",
+  "horizons": [
+    15,
+    60
+  ],
+  "counts": {
+    "records": 4137,
+    "sensor_rows": 8274,
+    "outdoor_rows": 4137,
+    "auxiliary_rows": 4137
+  },
+  "metadata": {
+    "dataset": "SML2010",
+    "benchmark_mode": "two-point boundary-response",
+    "source_files": [
+      "/Volumes/DataExtended/school/outputs/data/raw_public/sml2010/NEW-DATA-1.T15.txt",
+      "/Volumes/DataExtended/school/outputs/data/raw_public/sml2010/NEW-DATA-2.T15.txt"
+    ],
+    "raw_timestamp_range": {
+      "start": "2012-03-13T11:45:00",
+      "end": "2012-05-02T07:30:00"
+    },
+    "counts": {
+      "sensor_rows": 8274,
+      "device_rows": 0,
+      "outdoor_rows": 4137,
+      "auxiliary_rows": 4137,
+      "points": 2
+    },
+    "pseudo_geometry": {
+      "room": {
+        "width_m": 6.0,
+        "depth_m": 4.0,
+        "height_m": 3.0
+      },
+      "dining_room_sensor": {
+        "x": 1.8,
+        "y": 2.0,
+        "z": 1.2
+      },
+      "room_sensor": {
+        "x": 4.2,
+        "y": 2.0,
+        "z": 1.2
+      },
+      "target_points": [
+        "dining_room",
+        "room"
+      ]
+    },
+    "tasks": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "unsupported": [
+      "explicit window on/off benchmark",
+      "full 3D field MAE",
+      "non-networked appliance coefficient learning from explicit appliance states"
+    ],
+    "notes": [
+      "Date and Time are normalized into one timestamp column.",
+      "Facade sunlight is retained as auxiliary features and also reduced to one scalar sunlight input.",
+      "Enthalpic motors are retained as auxiliary HVAC or ventilation features only."
+    ]
+  },
+  "mapped_model_name": "hybrid_digital_twin_readout",
+  "mapped_model_checkpoint": "/Volumes/DataExtended/school/outputs/data/hybrid_residual_checkpoint.json",
+  "mapping_notes": [
+    "Uses a pseudo single-room boundary-coupling mapping with window and HVAC proxy devices.",
+    "Fits a small linear readout head on the same chronological 70/30 split used by the public benchmark baselines.",
+    "Enthalpic motor features modulate a generic HVAC proxy rather than being claimed as explicit window states."
+  ],
+  "tasks": [
+    {
+      "task_id": "S1",
+      "dataset": "SML2010",
+      "horizon_minutes": 15,
+      "status": "ok",
+      "sample_count": 4133,
+      "train_samples": 2893,
+      "test_samples": 1240,
+      "feature_names": [
+        "dining_illuminance",
+        "room_illuminance",
+        "outdoor_temperature",
+        "outdoor_humidity",
+        "sunlight_illuminance",
+        "rain_ratio",
+        "wind_speed",
+        "sun_irradiance"
+      ],
+      "target_names": [
+        "dining_illuminance",
+        "room_illuminance"
+      ],
+      "mapped_model_name": "hybrid_digital_twin_readout",
+      "mapped_feature_names": [
+        "physics_dining_illuminance",
+        "physics_room_illuminance",
+        "hybrid_dining_illuminance",
+        "hybrid_room_illuminance",
+        "boundary_activation",
+        "sunlight_scaled",
+        "rain_ratio",
+        "wind_scaled",
+        "sun_irradiance_scaled"
+      ],
+      "targets": {
+        "dining_illuminance": {
+          "persistence": {
+            "mae": 3.418143,
+            "rmse": 8.07426,
+            "correlation": 0.963034
+          },
+          "linear_regression": {
+            "mae": 4.022864,
+            "rmse": 8.193912,
+            "correlation": 0.966246
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 5.345956,
+            "rmse": 9.987042,
+            "correlation": 0.957343
+          },
+          "linear_regression_vs_persistence_mae_reduction": -0.604721,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": -1.927813,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": -1.323092
+        },
+        "room_illuminance": {
+          "persistence": {
+            "mae": 4.311997,
+            "rmse": 9.785927,
+            "correlation": 0.974138
+          },
+          "linear_regression": {
+            "mae": 5.399408,
+            "rmse": 10.088271,
+            "correlation": 0.975938
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 8.045127,
+            "rmse": 13.115834,
+            "correlation": 0.958844
+          },
+          "linear_regression_vs_persistence_mae_reduction": -1.087411,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": -3.73313,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": -2.645719
+        }
+      }
+    },
+    {
+      "task_id": "S2",
+      "dataset": "SML2010",
+      "horizon_minutes": 15,
+      "status": "ok",
+      "sample_count": 4133,
+      "train_samples": 2893,
+      "test_samples": 1240,
+      "feature_names": [
+        "dining_temperature",
+        "room_temperature",
+        "dining_humidity",
+        "room_humidity",
+        "outdoor_temperature",
+        "outdoor_humidity",
+        "sunlight_illuminance",
+        "rain_ratio",
+        "wind_speed",
+        "forecast_temperature",
+        "enthalpic_motor_1",
+        "enthalpic_motor_2",
+        "enthalpic_motor_turbo"
+      ],
+      "target_names": [
+        "dining_temperature",
+        "room_temperature",
+        "dining_humidity",
+        "room_humidity"
+      ],
+      "mapped_model_name": "hybrid_digital_twin_readout",
+      "mapped_feature_names": [
+        "physics_dining_temperature",
+        "physics_room_temperature",
+        "physics_dining_humidity",
+        "physics_room_humidity",
+        "hybrid_dining_temperature",
+        "hybrid_room_temperature",
+        "hybrid_dining_humidity",
+        "hybrid_room_humidity",
+        "boundary_activation",
+        "motor_level",
+        "outdoor_temperature_gap",
+        "outdoor_humidity_gap"
+      ],
+      "targets": {
+        "dining_temperature": {
+          "persistence": {
+            "mae": 0.118236,
+            "rmse": 0.134881,
+            "correlation": 0.998603
+          },
+          "linear_regression": {
+            "mae": 0.042593,
+            "rmse": 0.056096,
+            "correlation": 0.999794
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 0.072803,
+            "rmse": 0.089381,
+            "correlation": 0.99941
+          },
+          "linear_regression_vs_persistence_mae_reduction": 0.075643,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": 0.045433,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": -0.03021
+        },
+        "room_temperature": {
+          "persistence": {
+            "mae": 0.115293,
+            "rmse": 0.135701,
+            "correlation": 0.998572
+          },
+          "linear_regression": {
+            "mae": 0.051943,
+            "rmse": 0.067776,
+            "correlation": 0.999706
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 0.095048,
+            "rmse": 0.118706,
+            "correlation": 0.998914
+          },
+          "linear_regression_vs_persistence_mae_reduction": 0.06335,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": 0.020245,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": -0.043105
+        },
+        "dining_humidity": {
+          "persistence": {
+            "mae": 0.197984,
+            "rmse": 0.303684,
+            "correlation": 0.998479
+          },
+          "linear_regression": {
+            "mae": 0.208507,
+            "rmse": 0.315618,
+            "correlation": 0.998417
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 0.83211,
+            "rmse": 1.026264,
+            "correlation": 0.98827
+          },
+          "linear_regression_vs_persistence_mae_reduction": -0.010523,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": -0.634126,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": -0.623603
+        },
+        "room_humidity": {
+          "persistence": {
+            "mae": 0.154325,
+            "rmse": 0.214484,
+            "correlation": 0.999454
+          },
+          "linear_regression": {
+            "mae": 0.154211,
+            "rmse": 0.21063,
+            "correlation": 0.99955
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 0.703228,
+            "rmse": 0.878735,
+            "correlation": 0.993447
+          },
+          "linear_regression_vs_persistence_mae_reduction": 0.000114,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": -0.548903,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": -0.549017
+        }
+      }
+    },
+    {
+      "task_id": "S3",
+      "dataset": "SML2010",
+      "horizon_minutes": 15,
+      "status": "ok",
+      "sample_count": 1294,
+      "train_samples": 905,
+      "test_samples": 389,
+      "feature_names": [
+        "dining_temperature",
+        "room_temperature",
+        "dining_humidity",
+        "room_humidity",
+        "dining_illuminance",
+        "room_illuminance",
+        "delta_outdoor_temperature",
+        "delta_outdoor_humidity",
+        "delta_sunlight",
+        "delta_rain",
+        "delta_wind"
+      ],
+      "target_names": [
+        "dining_temperature",
+        "room_temperature",
+        "dining_humidity",
+        "room_humidity",
+        "dining_illuminance",
+        "room_illuminance"
+      ],
+      "mapped_model_name": "hybrid_digital_twin_readout",
+      "mapped_feature_names": [
+        "physics_dining_temperature_delta",
+        "physics_room_temperature_delta",
+        "physics_dining_humidity_delta",
+        "physics_room_humidity_delta",
+        "physics_dining_illuminance_delta",
+        "physics_room_illuminance_delta",
+        "hybrid_dining_temperature_delta",
+        "hybrid_room_temperature_delta",
+        "hybrid_dining_humidity_delta",
+        "hybrid_room_humidity_delta",
+        "hybrid_dining_illuminance_delta",
+        "hybrid_room_illuminance_delta",
+        "delta_outdoor_temperature",
+        "delta_outdoor_humidity",
+        "delta_sunlight",
+        "delta_rain",
+        "delta_wind"
+      ],
+      "targets": {
+        "dining_temperature": {
+          "persistence": {
+            "mae": 0.233167,
+            "rmse": 0.282796,
+            "correlation": 0.0
+          },
+          "linear_regression": {
+            "mae": 0.092903,
+            "rmse": 0.11494,
+            "correlation": 0.908502
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 0.071385,
+            "rmse": 0.08954,
+            "correlation": 0.950243
+          },
+          "linear_regression_vs_persistence_mae_reduction": 0.140264,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": 0.161782,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": 0.021518
+        },
+        "room_temperature": {
+          "persistence": {
+            "mae": 0.220143,
+            "rmse": 0.28013,
+            "correlation": 0.0
+          },
+          "linear_regression": {
+            "mae": 0.095708,
+            "rmse": 0.118229,
+            "correlation": 0.895097
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 0.076208,
+            "rmse": 0.096776,
+            "correlation": 0.935034
+          },
+          "linear_regression_vs_persistence_mae_reduction": 0.124435,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": 0.143935,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": 0.0195
+        },
+        "dining_humidity": {
+          "persistence": {
+            "mae": 0.38577,
+            "rmse": 0.595345,
+            "correlation": 0.0
+          },
+          "linear_regression": {
+            "mae": 0.393154,
+            "rmse": 0.574233,
+            "correlation": 0.337344
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 0.335138,
+            "rmse": 0.474633,
+            "correlation": 0.612093
+          },
+          "linear_regression_vs_persistence_mae_reduction": -0.007384,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": 0.050632,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": 0.058016
+        },
+        "room_humidity": {
+          "persistence": {
+            "mae": 0.298604,
+            "rmse": 0.392175,
+            "correlation": 0.0
+          },
+          "linear_regression": {
+            "mae": 0.295427,
+            "rmse": 0.403445,
+            "correlation": 0.327997
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 0.22553,
+            "rmse": 0.300719,
+            "correlation": 0.669703
+          },
+          "linear_regression_vs_persistence_mae_reduction": 0.003177,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": 0.073074,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": 0.069897
+        },
+        "dining_illuminance": {
+          "persistence": {
+            "mae": 8.472607,
+            "rmse": 14.449238,
+            "correlation": 0.0
+          },
+          "linear_regression": {
+            "mae": 9.812653,
+            "rmse": 13.622609,
+            "correlation": 0.526218
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 9.433218,
+            "rmse": 13.546276,
+            "correlation": 0.36648
+          },
+          "linear_regression_vs_persistence_mae_reduction": -1.340046,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": -0.960611,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": 0.379435
+        },
+        "room_illuminance": {
+          "persistence": {
+            "mae": 12.414609,
+            "rmse": 19.115935,
+            "correlation": 0.0
+          },
+          "linear_regression": {
+            "mae": 13.829848,
+            "rmse": 18.215159,
+            "correlation": 0.511803
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 14.435044,
+            "rmse": 18.465866,
+            "correlation": 0.399398
+          },
+          "linear_regression_vs_persistence_mae_reduction": -1.415239,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": -2.020435,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": -0.605196
+        }
+      }
+    },
+    {
+      "task_id": "S1",
+      "dataset": "SML2010",
+      "horizon_minutes": 60,
+      "status": "ok",
+      "sample_count": 4127,
+      "train_samples": 2888,
+      "test_samples": 1239,
+      "feature_names": [
+        "dining_illuminance",
+        "room_illuminance",
+        "outdoor_temperature",
+        "outdoor_humidity",
+        "sunlight_illuminance",
+        "rain_ratio",
+        "wind_speed",
+        "sun_irradiance"
+      ],
+      "target_names": [
+        "dining_illuminance",
+        "room_illuminance"
+      ],
+      "mapped_model_name": "hybrid_digital_twin_readout",
+      "mapped_feature_names": [
+        "physics_dining_illuminance",
+        "physics_room_illuminance",
+        "hybrid_dining_illuminance",
+        "hybrid_room_illuminance",
+        "boundary_activation",
+        "sunlight_scaled",
+        "rain_ratio",
+        "wind_scaled",
+        "sun_irradiance_scaled"
+      ],
+      "targets": {
+        "dining_illuminance": {
+          "persistence": {
+            "mae": 7.524185,
+            "rmse": 14.178679,
+            "correlation": 0.886011
+          },
+          "linear_regression": {
+            "mae": 9.089619,
+            "rmse": 15.291059,
+            "correlation": 0.9189
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 7.74054,
+            "rmse": 12.697818,
+            "correlation": 0.928063
+          },
+          "linear_regression_vs_persistence_mae_reduction": -1.565434,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": -0.216355,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": 1.349079
+        },
+        "room_illuminance": {
+          "persistence": {
+            "mae": 11.095341,
+            "rmse": 19.753015,
+            "correlation": 0.894689
+          },
+          "linear_regression": {
+            "mae": 14.886315,
+            "rmse": 23.247285,
+            "correlation": 0.898946
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 13.109013,
+            "rmse": 18.875059,
+            "correlation": 0.899763
+          },
+          "linear_regression_vs_persistence_mae_reduction": -3.790974,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": -2.013672,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": 1.777302
+        }
+      }
+    },
+    {
+      "task_id": "S2",
+      "dataset": "SML2010",
+      "horizon_minutes": 60,
+      "status": "ok",
+      "sample_count": 4127,
+      "train_samples": 2888,
+      "test_samples": 1239,
+      "feature_names": [
+        "dining_temperature",
+        "room_temperature",
+        "dining_humidity",
+        "room_humidity",
+        "outdoor_temperature",
+        "outdoor_humidity",
+        "sunlight_illuminance",
+        "rain_ratio",
+        "wind_speed",
+        "forecast_temperature",
+        "enthalpic_motor_1",
+        "enthalpic_motor_2",
+        "enthalpic_motor_turbo"
+      ],
+      "target_names": [
+        "dining_temperature",
+        "room_temperature",
+        "dining_humidity",
+        "room_humidity"
+      ],
+      "mapped_model_name": "hybrid_digital_twin_readout",
+      "mapped_feature_names": [
+        "physics_dining_temperature",
+        "physics_room_temperature",
+        "physics_dining_humidity",
+        "physics_room_humidity",
+        "hybrid_dining_temperature",
+        "hybrid_room_temperature",
+        "hybrid_dining_humidity",
+        "hybrid_room_humidity",
+        "boundary_activation",
+        "motor_level",
+        "outdoor_temperature_gap",
+        "outdoor_humidity_gap"
+      ],
+      "targets": {
+        "dining_temperature": {
+          "persistence": {
+            "mae": 0.469776,
+            "rmse": 0.533486,
+            "correlation": 0.9781
+          },
+          "linear_regression": {
+            "mae": 0.192471,
+            "rmse": 0.245954,
+            "correlation": 0.99671
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 0.15604,
+            "rmse": 0.202209,
+            "correlation": 0.997332
+          },
+          "linear_regression_vs_persistence_mae_reduction": 0.277305,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": 0.313736,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": 0.036431
+        },
+        "room_temperature": {
+          "persistence": {
+            "mae": 0.458005,
+            "rmse": 0.53624,
+            "correlation": 0.977631
+          },
+          "linear_regression": {
+            "mae": 0.229682,
+            "rmse": 0.29337,
+            "correlation": 0.995346
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 0.216464,
+            "rmse": 0.282189,
+            "correlation": 0.994397
+          },
+          "linear_regression_vs_persistence_mae_reduction": 0.228323,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": 0.241541,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": 0.013218
+        },
+        "dining_humidity": {
+          "persistence": {
+            "mae": 0.56425,
+            "rmse": 0.847311,
+            "correlation": 0.98817
+          },
+          "linear_regression": {
+            "mae": 0.686321,
+            "rmse": 0.92975,
+            "correlation": 0.987345
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 1.098587,
+            "rmse": 1.321326,
+            "correlation": 0.9795
+          },
+          "linear_regression_vs_persistence_mae_reduction": -0.122071,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": -0.534337,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": -0.412266
+        },
+        "room_humidity": {
+          "persistence": {
+            "mae": 0.478952,
+            "rmse": 0.623064,
+            "correlation": 0.995403
+          },
+          "linear_regression": {
+            "mae": 0.514152,
+            "rmse": 0.640031,
+            "correlation": 0.996681
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 0.666667,
+            "rmse": 0.8364,
+            "correlation": 0.992385
+          },
+          "linear_regression_vs_persistence_mae_reduction": -0.0352,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": -0.187715,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": -0.152515
+        }
+      }
+    },
+    {
+      "task_id": "S3",
+      "dataset": "SML2010",
+      "horizon_minutes": 60,
+      "status": "ok",
+      "sample_count": 1289,
+      "train_samples": 902,
+      "test_samples": 387,
+      "feature_names": [
+        "dining_temperature",
+        "room_temperature",
+        "dining_humidity",
+        "room_humidity",
+        "dining_illuminance",
+        "room_illuminance",
+        "delta_outdoor_temperature",
+        "delta_outdoor_humidity",
+        "delta_sunlight",
+        "delta_rain",
+        "delta_wind"
+      ],
+      "target_names": [
+        "dining_temperature",
+        "room_temperature",
+        "dining_humidity",
+        "room_humidity",
+        "dining_illuminance",
+        "room_illuminance"
+      ],
+      "mapped_model_name": "hybrid_digital_twin_readout",
+      "mapped_feature_names": [
+        "physics_dining_temperature_delta",
+        "physics_room_temperature_delta",
+        "physics_dining_humidity_delta",
+        "physics_room_humidity_delta",
+        "physics_dining_illuminance_delta",
+        "physics_room_illuminance_delta",
+        "hybrid_dining_temperature_delta",
+        "hybrid_room_temperature_delta",
+        "hybrid_dining_humidity_delta",
+        "hybrid_room_humidity_delta",
+        "hybrid_dining_illuminance_delta",
+        "hybrid_room_illuminance_delta",
+        "delta_outdoor_temperature",
+        "delta_outdoor_humidity",
+        "delta_sunlight",
+        "delta_rain",
+        "delta_wind"
+      ],
+      "targets": {
+        "dining_temperature": {
+          "persistence": {
+            "mae": 0.563401,
+            "rmse": 0.692966,
+            "correlation": 0.0
+          },
+          "linear_regression": {
+            "mae": 0.211799,
+            "rmse": 0.25643,
+            "correlation": 0.906192
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 0.190027,
+            "rmse": 0.243259,
+            "correlation": 0.936685
+          },
+          "linear_regression_vs_persistence_mae_reduction": 0.351602,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": 0.373374,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": 0.021772
+        },
+        "room_temperature": {
+          "persistence": {
+            "mae": 0.532738,
+            "rmse": 0.689322,
+            "correlation": 0.0
+          },
+          "linear_regression": {
+            "mae": 0.243147,
+            "rmse": 0.295298,
+            "correlation": 0.884816
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 0.214834,
+            "rmse": 0.275046,
+            "correlation": 0.913926
+          },
+          "linear_regression_vs_persistence_mae_reduction": 0.289591,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": 0.317904,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": 0.028313
+        },
+        "dining_humidity": {
+          "persistence": {
+            "mae": 0.889043,
+            "rmse": 1.281021,
+            "correlation": 0.0
+          },
+          "linear_regression": {
+            "mae": 0.808994,
+            "rmse": 1.154547,
+            "correlation": 0.433809
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 0.758814,
+            "rmse": 1.058474,
+            "correlation": 0.569113
+          },
+          "linear_regression_vs_persistence_mae_reduction": 0.080049,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": 0.130229,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": 0.05018
+        },
+        "room_humidity": {
+          "persistence": {
+            "mae": 0.699235,
+            "rmse": 0.863001,
+            "correlation": 0.0
+          },
+          "linear_regression": {
+            "mae": 0.573192,
+            "rmse": 0.737227,
+            "correlation": 0.505038
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 0.495581,
+            "rmse": 0.638739,
+            "correlation": 0.654992
+          },
+          "linear_regression_vs_persistence_mae_reduction": 0.126043,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": 0.203654,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": 0.077611
+        },
+        "dining_illuminance": {
+          "persistence": {
+            "mae": 15.208888,
+            "rmse": 21.930527,
+            "correlation": 0.0
+          },
+          "linear_regression": {
+            "mae": 17.169939,
+            "rmse": 22.762582,
+            "correlation": 0.714557
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 14.451489,
+            "rmse": 19.337203,
+            "correlation": 0.472634
+          },
+          "linear_regression_vs_persistence_mae_reduction": -1.961051,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": 0.757399,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": 2.71845
+        },
+        "room_illuminance": {
+          "persistence": {
+            "mae": 23.248001,
+            "rmse": 31.351689,
+            "correlation": 0.0
+          },
+          "linear_regression": {
+            "mae": 25.616869,
+            "rmse": 32.01084,
+            "correlation": 0.716419
+          },
+          "hybrid_digital_twin_readout": {
+            "mae": 20.539009,
+            "rmse": 26.01157,
+            "correlation": 0.592283
+          },
+          "linear_regression_vs_persistence_mae_reduction": -2.368868,
+          "hybrid_digital_twin_readout_vs_persistence_mae_reduction": 2.708992,
+          "hybrid_digital_twin_readout_vs_linear_regression_mae_reduction": 5.07786
+        }
+      }
+    }
+  ]
+}

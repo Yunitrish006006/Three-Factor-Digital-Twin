@@ -13,6 +13,13 @@ SPEC.loader.exec_module(MODULE)
 
 
 class BmcConfirmationE15Tests(unittest.TestCase):
+    def test_row_unit_audit_detects_mixed_units_hidden_by_section_median(self):
+        normal = {"target": 61.0, "power_100w": 2.0, "temperature_scale": 1.0, "power_scale": 1.0}
+        self.assertTrue(MODULE.row_unit_concordant(normal))
+        self.assertFalse(MODULE.row_unit_concordant({**normal, "target": 61000.0}))
+        self.assertFalse(MODULE.row_unit_concordant({**normal, "target": 61000.0, "power_100w": 2000000.0}))
+        self.assertTrue(MODULE.row_unit_concordant({**normal, "temperature_scale": 0.001, "power_scale": 0.000001}))
+
     def test_frozen_model_content_hash_ignores_container_metadata(self):
         model = {"frozen_models": {"ridge": {"coefficients": [1.0, 2.0]}}}
         expected = hashlib.sha256(

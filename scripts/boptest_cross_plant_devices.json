@@ -1,0 +1,61 @@
+{
+  "air": {
+    "target_C": 22,
+    "step_s": 60,
+    "case": "bestest_air",
+    "measurement_kind": "zone air temperature",
+    "supply_min_C": 12,
+    "supply_max_C": 40,
+    "temperature": "zon_reaTRooAir_y",
+    "outdoor": "zon_weaSta_reaWeaTDryBul_y",
+    "supply": "fcu_oveTSup_y",
+    "supply_input": "fcu_oveTSup_u",
+    "supply_activate": "fcu_oveTSup_activate",
+    "aux_input": "fcu_oveFan_u",
+    "aux_activate": "fcu_oveFan_activate",
+    "aux_output": "fcu_oveFan_y",
+    "aux_value": 0.5,
+    "target_inputs": [
+      "con_oveTSetHea_u",
+      "con_oveTSetCoo_u"
+    ],
+    "target_activates": [
+      "con_oveTSetHea_activate",
+      "con_oveTSetCoo_activate"
+    ],
+    "power_outputs": {
+      "heat_W": "fcu_reaPHea_y",
+      "cool_W": "fcu_reaPCoo_y",
+      "fan_W": "fcu_reaPFan_y"
+    }
+  },
+  "hydronic": {
+    "target_C": 22,
+    "step_s": 60,
+    "case": "bestest_hydronic",
+    "measurement_kind": "operative zone temperature (not air temperature)",
+    "supply_min_C": 20,
+    "supply_max_C": 80,
+    "temperature": "reaTRoo_y",
+    "outdoor": "weaSta_reaWeaTDryBul_y",
+    "supply": "oveTSetSup_y",
+    "supply_input": "oveTSetSup_u",
+    "supply_activate": "oveTSetSup_activate",
+    "aux_input": "ovePum_u",
+    "aux_activate": "ovePum_activate",
+    "aux_output": "ovePum_y",
+    "aux_value": 1,
+    "target_inputs": [
+      "oveTSetHea_u",
+      "oveTSetCoo_u"
+    ],
+    "target_activates": [
+      "oveTSetHea_activate",
+      "oveTSetCoo_activate"
+    ],
+    "power_outputs": {
+      "gas_thermal_W": "reaQHea_y",
+      "pump_W": "reaPPum_y"
+    }
+  }
+}

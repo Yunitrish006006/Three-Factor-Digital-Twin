@@ -1,0 +1,43 @@
+{
+  "selected": [
+    {
+      "budget_h": 2,
+      "method": "auto_pi",
+      "q": 0.5,
+      "trial_sha256": "ee3692c982a2b54d015337688e79d753f1b54ee63c334ebc926a58c6919361fb"
+    },
+    {
+      "budget_h": 2,
+      "method": "proposed",
+      "q": 0.5,
+      "trial_sha256": "7e0de65ba49dab84f835e74e9e80cc7486dfb70bd99f388d5f9ce4b1aeb310a4"
+    },
+    {
+      "budget_h": 6,
+      "method": "auto_pi",
+      "q": 0.5,
+      "trial_sha256": "35f3eab462b19a335a2b59477169da0b3a2bb919866cb9be848ee3c78748f792"
+    },
+    {
+      "budget_h": 6,
+      "method": "proposed",
+      "q": 0.5,
+      "trial_sha256": "e181082ff9c8e0f0ecea25b7cbbbb99b8329d0aeef56f4dfb7a1d73928d154e0"
+    }
+  ],
+  "sources": {
+    "scripts/run_boptest_delayed_dynamics.py": "1ca9c2280b9bfbb477526fd132bc2993f9bc460df9cf54612bd0343bbccf28f4",
+    "scripts/boptest_cross_plant_devices.json": "83c008c20b47f4c5da77dd832b45558dd064a75a9c705190f80f730d104fc100",
+    "openspec/changes/improve-portable-dynamics/protocol.md": "636890acd83b5038782f021d5b8735280c97e43cb9c377a70ab8dc40618b78e0",
+    "digital_twin/control/delayed_dynamics.py": "8098ec6b1d80c1459e2201fedc6bf92bcf3307181caf18563ef34e430a2215e2",
+    "digital_twin/control/portable_pi.py": "2ce85a77f1d16e1dbb8fbcd847ebe722233790a9658cc3946a9cac9ed895ac30",
+    "scripts/run_boptest_cross_plant.py": "3ad0154d942737e43f9263c1cd9bcc9ebbff2292cc319c24800f73169d9f5990",
+    "openspec/changes/evaluate-boptest-cross-plant/artifacts/air.json": "1bffc2430fe384af089f53220ddbb5908b98c993cd00f7c1d7f1ac2c30d361fb",
+    "outputs/boptest_cross_plant/bestest_air/identification.csv": "bf65320193556abc8b690921bf839262954230b9d5f90aaf93400bd32cd0d87f",
+    "outputs/vendor/boptest-v0.9.0/testcases/bestest_air/models/wrapped.fmu": "158008fa3b635280a67dfed8bab5804d1f9a96d218b467dfebab77e5cbf8b86a",
+    "openspec/changes/evaluate-boptest-cross-plant/artifacts/hydronic.json": "a2ab02a0dc3519d2e542301612d54080c33be997508bb3fc041ce6e0e93a3453",
+    "outputs/boptest_cross_plant/bestest_hydronic/identification.csv": "d68b7f3ea41493243c7902e4d2c61050c7e02e50dde2c443a4fb3e40d6dc22ef",
+    "outputs/vendor/boptest-v0.9.0/testcases/bestest_hydronic/models/wrapped.fmu": "365b3085d97cc4620c06b6036156126a056d7f160fcc4f181d6b2fac4b05743b"
+  },
+  "adaptation_sha256": "b8e4ef0944486e745b3249d2d24a143695aa2b2000c72a9b4d18b70a0ccf7bcb"
+}

@@ -1,0 +1,11 @@
+{
+  "static_html": "PASS",
+  "sections": 8,
+  "links": 5,
+  "figure_visual": "PASS",
+  "browser_rendering": "NOT_EVALUATED",
+  "repository_tests": 234,
+  "repository_test_seconds": 254.927,
+  "repository_test_log_sha256": "2567987aa26048b054173f5b5cb72172754980a783578e3e32a7ab48af9b612b",
+  "report_sha256": "fdd822a856e688d4dded8707f92a7dec2d5b21439b4078567f515728fd769125"
+}

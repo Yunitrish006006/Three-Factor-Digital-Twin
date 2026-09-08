@@ -1,0 +1,12 @@
+{
+  "selected": [],
+  "sources": {
+    "scripts/run_boptest_cross_plant.py": "3ad0154d942737e43f9263c1cd9bcc9ebbff2292cc319c24800f73169d9f5990",
+    "scripts/boptest_cross_plant_devices.json": "83c008c20b47f4c5da77dd832b45558dd064a75a9c705190f80f730d104fc100",
+    "digital_twin/control/portable_pi.py": "2ce85a77f1d16e1dbb8fbcd847ebe722233790a9658cc3946a9cac9ed895ac30",
+    "openspec/changes/evaluate-boptest-cross-plant/protocol.md": "c3980b61ad10121a8e3061ded6131d66ef6c0a903b7dc54c4ef0266bc23a4b6f",
+    "outputs/vendor/boptest-v0.9.0/testcases/bestest_air/models/wrapped.fmu": "158008fa3b635280a67dfed8bab5804d1f9a96d218b467dfebab77e5cbf8b86a",
+    "outputs/vendor/boptest-v0.9.0/testcases/bestest_hydronic/models/wrapped.fmu": "365b3085d97cc4620c06b6036156126a056d7f160fcc4f181d6b2fac4b05743b"
+  },
+  "pre_evaluation_result_sha256": "50ef699612118731b341d486ff7439f76dd47529901163c8e171c11e36a9b2bd"
+}

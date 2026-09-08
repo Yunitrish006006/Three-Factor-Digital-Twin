@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "plants": {
+    "heat_pump": {
+      "model_status": {
+        "2": "FITTED",
+        "6": "FITTED"
+      },
+      "decisions": [
+        {
+          "budget_h": 2,
+          "pairs": [
+            {
+              "day": 20,
+              "mae_gain_C": -0.018298129644882144,
+              "max_error_delta_C": 0.00010782334226178136,
+              "nonregression": true
+            },
+            {
+              "day": 50,
+              "mae_gain_C": -0.04662702971395555,
+              "max_error_delta_C": -0.024099885354416983,
+              "nonregression": false
+            }
+          ],
+          "gate": false
+        },
+        {
+          "budget_h": 6,
+          "pairs": [
+            {
+              "day": 20,
+              "mae_gain_C": -0.062337098864494005,
+              "max_error_delta_C": 0.02172373452958709,
+              "nonregression": false
+            },
+            {
+              "day": 50,
+              "mae_gain_C": -0.17364965500511942,
+              "max_error_delta_C": 0.0943903940525388,
+              "nonregression": false
+            }
+          ],
+          "gate": false
+        }
+      ],
+      "result_sha256": "6c0469e59d0e104a98599afd97314063d0db89d106e62e7f21ec0915b3c30ebb"
+    }
+  },
+  "sources_match": true,
+  "new_traces": 17,
+  "scope": "THREE_NEW_FMUS_WITH_BOUNDED_ADAPTATION",
+  "all_six_budgets_pass": false
+}

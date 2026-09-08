@@ -1,0 +1,2 @@
+# Audit protocol
+Inspect current four runner sources and prior protocols/selections. Check recorded source/development/selection hashes against current files. Trace dates promoted from transfer into later development. Classify physical settings, identified gains, selected hyperparameters and manually chosen design rules. No new accuracy claims, no new tuning, no simulation. Static inspection cannot prove universal absence of leakage or generalization.

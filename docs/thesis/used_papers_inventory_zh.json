@@ -1,0 +1,1139 @@
+{
+  "scope": "Existing Chinese/IEEE manuscript citations; no external full-text verification performed.",
+  "source_sha256": {
+    "docs/thesis/thesis_draft_zh.md": "244fe2aec31cd0c8f388f1506cf118bec0918914a9461d449cbf0f9ec6099acd",
+    "docs/papers/ieee/paper.tex": "494dd7611739652c6af73ba48aa21441052233e29d8539ba3a578c6951eba98a",
+    "docs/papers/ieee/references.bib": "586c4c5002eab35072c473bea397f66ff717f43ab18d5648e5f07d84ade50d73"
+  },
+  "summary": {
+    "used_external_papers": 36,
+    "dataset_records": 6,
+    "website_records": 1,
+    "english_only_papers": 2
+  },
+  "records": [
+    {
+      "id": "zh-1",
+      "zh_number": 1,
+      "title": "Identifying suitable models for the heat dynamics of buildings",
+      "reference": "Per Bacher, Henrik Madsen, Identifying suitable models for the heat dynamics of buildings, Energy and Buildings, vol. 43, no. 7, pp. 1511-1522, 2011. DOI: 10.1016/j.enbuild.2011.02.005",
+      "kind": "paper",
+      "bib_key": "bacher2011heatdynamics",
+      "doi": "10.1016/j.enbuild.2011.02.005",
+      "purpose": "簡化熱動態與 grey-box 建模依據。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 362,
+          "section": "2.1 室內環境建模",
+          "context": "室內環境建模的主要目的，在於描述空間中熱舒適、能源使用與設備控制之間的關係。高精度方法如 computational fluid dynamics（CFD）雖可細緻描述空氣流動、傳熱與邊界交換，但通常需要大量幾何細節、材料參數與邊界條件，計算成本亦相對較高。相較之下，reduced-order model、grey-box thermal model 與控制導向動態模型著重於以較少參數捕捉主要動態，並保留參數辨識與即時推估能力，因此更適合用於建築控制、預測與數位孿生原型 [1][2][3]。基於此，本研究不追求 CFD 等級的高解析流場，而採用偏向控制導向與可解釋性的簡化空間模型。"
+        },
+        {
+          "path": "docs/papers/ieee/paper.tex",
+          "line": 60,
+          "section": "Related Work",
+          "context": "Digital twins increasingly represent physical systems in manufacturing, infrastructure, and smart buildings \\cite{tao2019digitaltwin,fuller2020digitaltwin}. Building reviews emphasize BIM/BMS connectivity, while sparse-sensor spatial estimation remains less explored \\cite{cespedes2024bdtreview}. Reduced-order and grey-box models are interpretable alternatives to CFD \\cite{bacher2011heatdynamics,hietaharju2018dynamicmodel}; zonal and hybrid models retain dominant non-uniformity at lower cost \\cite{teshome2004zonalreview,huljak2025hybrid}. Public BMC telemetry exposes temperatures, fan speeds, and power \\cite{bmcdata2026}. Hybrid forecasting can learn simulation--measurement residuals \\cite{oh2024hybridmodeling}, and data assimilation shows that finite observations and sensor placement matter \\cite{qian2025dafield,chen2007zonalnetwork}. This work couples sparse sensing with appliance-aware influence bases and residual calibration; IDW \\cite{shepard1968two} is the geometry-free baseline. Local APIs, a web demo, and an MCP-compatible layer expose the estimator but remain secondary \\cite{mcp2025}."
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1570
+      }
+    },
+    {
+      "id": "zh-2",
+      "zh_number": 2,
+      "title": "A Dynamic Model for Indoor Temperature Prediction in Buildings",
+      "reference": "Petri Hietaharju, Mika Ruusunen, Kauko Leiviska, A Dynamic Model for Indoor Temperature Prediction in Buildings, Energies, vol. 11, no. 6, 1477, 2018. DOI: 10.3390/en11061477",
+      "kind": "paper",
+      "bib_key": "hietaharju2018dynamicmodel",
+      "doi": "10.3390/en11061477",
+      "purpose": "室內溫度動態預測與低參數模型依據。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 362,
+          "section": "2.1 室內環境建模",
+          "context": "室內環境建模的主要目的，在於描述空間中熱舒適、能源使用與設備控制之間的關係。高精度方法如 computational fluid dynamics（CFD）雖可細緻描述空氣流動、傳熱與邊界交換，但通常需要大量幾何細節、材料參數與邊界條件，計算成本亦相對較高。相較之下，reduced-order model、grey-box thermal model 與控制導向動態模型著重於以較少參數捕捉主要動態，並保留參數辨識與即時推估能力，因此更適合用於建築控制、預測與數位孿生原型 [1][2][3]。基於此，本研究不追求 CFD 等級的高解析流場，而採用偏向控制導向與可解釋性的簡化空間模型。"
+        },
+        {
+          "path": "docs/papers/ieee/paper.tex",
+          "line": 60,
+          "section": "Related Work",
+          "context": "Digital twins increasingly represent physical systems in manufacturing, infrastructure, and smart buildings \\cite{tao2019digitaltwin,fuller2020digitaltwin}. Building reviews emphasize BIM/BMS connectivity, while sparse-sensor spatial estimation remains less explored \\cite{cespedes2024bdtreview}. Reduced-order and grey-box models are interpretable alternatives to CFD \\cite{bacher2011heatdynamics,hietaharju2018dynamicmodel}; zonal and hybrid models retain dominant non-uniformity at lower cost \\cite{teshome2004zonalreview,huljak2025hybrid}. Public BMC telemetry exposes temperatures, fan speeds, and power \\cite{bmcdata2026}. Hybrid forecasting can learn simulation--measurement residuals \\cite{oh2024hybridmodeling}, and data assimilation shows that finite observations and sensor placement matter \\cite{qian2025dafield,chen2007zonalnetwork}. This work couples sparse sensing with appliance-aware influence bases and residual calibration; IDW \\cite{shepard1968two} is the geometry-free baseline. Local APIs, a web demo, and an MCP-compatible layer expose the estimator but remain secondary \\cite{mcp2025}."
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1571
+      }
+    },
+    {
+      "id": "zh-3",
+      "zh_number": 3,
+      "title": "Physics informed neural networks for control oriented thermal modeling of buildings",
+      "reference": "Gargya Gokhale, Bert Claessens, Chris Develder, Physics informed neural networks for control oriented thermal modeling of buildings, Applied Energy, vol. 314, 118852, 2022. DOI: 10.1016/j.apenergy.2022.118852",
+      "kind": "paper",
+      "bib_key": "gokhale2022pinnthermal",
+      "doi": "10.1016/j.apenergy.2022.118852",
+      "purpose": "物理導向與神經網路結合的建模背景。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 362,
+          "section": "2.1 室內環境建模",
+          "context": "室內環境建模的主要目的，在於描述空間中熱舒適、能源使用與設備控制之間的關係。高精度方法如 computational fluid dynamics（CFD）雖可細緻描述空氣流動、傳熱與邊界交換，但通常需要大量幾何細節、材料參數與邊界條件，計算成本亦相對較高。相較之下，reduced-order model、grey-box thermal model 與控制導向動態模型著重於以較少參數捕捉主要動態，並保留參數辨識與即時推估能力，因此更適合用於建築控制、預測與數位孿生原型 [1][2][3]。基於此，本研究不追求 CFD 等級的高解析流場，而採用偏向控制導向與可解釋性的簡化空間模型。"
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1572
+      }
+    },
+    {
+      "id": "zh-4",
+      "zh_number": 4,
+      "title": "Zonal Models for Indoor Air Flow - A Critical Review",
+      "reference": "E. J. Teshome, F. Haghighat, Zonal Models for Indoor Air Flow - A Critical Review, International Journal of Ventilation, vol. 3, no. 2, pp. 119-129, 2004. DOI: 10.1080/14733315.2004.11683908",
+      "kind": "paper",
+      "bib_key": "teshome2004zonalreview",
+      "doi": "10.1080/14733315.2004.11683908",
+      "purpose": "zonal model 的方法背景與適用範圍。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 366,
+          "section": "2.2 空間插值與場估計",
+          "context": "在感測器數量有限的情況下，最直接的方法是使用空間插值估計未量測位置。本研究採用 inverse distance weighting（IDW）作為 baseline。IDW 的優點是實作簡單且不依賴設備先驗，但其估計完全由量測點距離決定，無法反映冷氣出風方向、窗戶位置、照明熱源或設備作用範圍等結構資訊。相較之下，zonal model、reduced-order model 與 hybrid spatial model 提供了介於 well-mixed room model 與 CFD 之間的折衷途徑，可在維持較低計算成本的同時保留主要空間差異 [4][5][6]。因此，本研究不是把同一個 bulk/local 物理假設套用到所有環境量，而是將主模型拆成變數專屬 nominal model：溫度採熱交換與熱源近似，濕度採水氣交換與除濕近似，照度採燈具光束幾何、窗戶日照 envelope、遮蔽與反射近似；三者再共用稀疏感測 residual correction 框架。"
+        },
+        {
+          "path": "docs/papers/ieee/paper.tex",
+          "line": 60,
+          "section": "Related Work",
+          "context": "Digital twins increasingly represent physical systems in manufacturing, infrastructure, and smart buildings \\cite{tao2019digitaltwin,fuller2020digitaltwin}. Building reviews emphasize BIM/BMS connectivity, while sparse-sensor spatial estimation remains less explored \\cite{cespedes2024bdtreview}. Reduced-order and grey-box models are interpretable alternatives to CFD \\cite{bacher2011heatdynamics,hietaharju2018dynamicmodel}; zonal and hybrid models retain dominant non-uniformity at lower cost \\cite{teshome2004zonalreview,huljak2025hybrid}. Public BMC telemetry exposes temperatures, fan speeds, and power \\cite{bmcdata2026}. Hybrid forecasting can learn simulation--measurement residuals \\cite{oh2024hybridmodeling}, and data assimilation shows that finite observations and sensor placement matter \\cite{qian2025dafield,chen2007zonalnetwork}. This work couples sparse sensing with appliance-aware influence bases and residual calibration; IDW \\cite{shepard1968two} is the geometry-free baseline. Local APIs, a web demo, and an MCP-compatible layer expose the estimator but remain secondary \\cite{mcp2025}."
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1573
+      }
+    },
+    {
+      "id": "zh-5",
+      "zh_number": 5,
+      "title": "Hybrid models for simulating indoor temperature distribution in air-conditioned spaces",
+      "reference": "Boris Huljak, Juan A. Acero, Zin H. Kyaw, Francisco Chinesta, Hybrid models for simulating indoor temperature distribution in air-conditioned spaces, Frontiers in Built Environment, vol. 11, 1690062, 2025. DOI: 10.3389/fbuil.2025.1690062",
+      "kind": "paper",
+      "bib_key": "huljak2025hybrid",
+      "doi": "10.3389/fbuil.2025.1690062",
+      "purpose": "hybrid 空間溫度模型的相似研究及差異定位。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 366,
+          "section": "2.2 空間插值與場估計",
+          "context": "在感測器數量有限的情況下，最直接的方法是使用空間插值估計未量測位置。本研究採用 inverse distance weighting（IDW）作為 baseline。IDW 的優點是實作簡單且不依賴設備先驗，但其估計完全由量測點距離決定，無法反映冷氣出風方向、窗戶位置、照明熱源或設備作用範圍等結構資訊。相較之下，zonal model、reduced-order model 與 hybrid spatial model 提供了介於 well-mixed room model 與 CFD 之間的折衷途徑，可在維持較低計算成本的同時保留主要空間差異 [4][5][6]。因此，本研究不是把同一個 bulk/local 物理假設套用到所有環境量，而是將主模型拆成變數專屬 nominal model：溫度採熱交換與熱源近似，濕度採水氣交換與除濕近似，照度採燈具光束幾何、窗戶日照 envelope、遮蔽與反射近似；三者再共用稀疏感測 residual correction 框架。"
+        },
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 382,
+          "section": "2.5 非連網裝置影響學習",
+          "context": "既有智慧家庭與智慧建築研究，常預設設備可由網路介面直接讀取或控制。然而在一般居住空間中，傳統冷氣、手動窗戶與一般照明往往不具備可直接讀取的連網能力。此時，若系統仍希望掌握設備對環境的作用，就必須從感測到的環境變化反推設備影響。近期研究顯示，有限感測器搭配 data assimilation、hybrid model 或感測配置分析，確實能對室內溫濕度場進行重建，並評估量測點配置對重建品質的影響 [5][8][9]。本研究延續此方向，將裝置啟用前後的感測器差異視為學習訊號，並利用裝置空間影響基底與最小平方法估計其對溫度、濕度與照度的影響係數，以支援後續的場估計與控制推薦。"
+        },
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 390,
+          "section": "2.7 與相似研究之差異定位",
+          "context": "若從研究方法的相似性來看，本研究最接近的文獻不是一般性的 building digital twin 平台論文，而是有限感測器室內場重建、控制導向簡化熱模型，以及 hybrid thermal surrogate 這三類研究。Qian 等人以資料同化方法重建實際住宅房間中的溫濕度分布，重點在於以有限量測重建連續場並分析量測配置 [8]；Huljak 等人聚焦於空調房間中的 hybrid 溫度模型，強調以 physics-based 與 surrogate model 共同描述空調空間中的溫度分布 [5]；Megri 等人則以 DOMA 動態 zonal model 處理時間變化與熱舒適預測 [6]。這三類工作與本研究皆有明顯關聯，但關注點不同。"
+        },
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 399,
+          "section": "2.7 與相似研究之差異定位",
+          "context": "| Huljak et al. (2025) [5] | 使用 hybrid 溫度模型處理空調房間 | 主變數偏溫度，且依賴較強的建物邊界條件與物理模擬流程 |"
+        },
+        {
+          "path": "docs/papers/ieee/paper.tex",
+          "line": 60,
+          "section": "Related Work",
+          "context": "Digital twins increasingly represent physical systems in manufacturing, infrastructure, and smart buildings \\cite{tao2019digitaltwin,fuller2020digitaltwin}. Building reviews emphasize BIM/BMS connectivity, while sparse-sensor spatial estimation remains less explored \\cite{cespedes2024bdtreview}. Reduced-order and grey-box models are interpretable alternatives to CFD \\cite{bacher2011heatdynamics,hietaharju2018dynamicmodel}; zonal and hybrid models retain dominant non-uniformity at lower cost \\cite{teshome2004zonalreview,huljak2025hybrid}. Public BMC telemetry exposes temperatures, fan speeds, and power \\cite{bmcdata2026}. Hybrid forecasting can learn simulation--measurement residuals \\cite{oh2024hybridmodeling}, and data assimilation shows that finite observations and sensor placement matter \\cite{qian2025dafield,chen2007zonalnetwork}. This work couples sparse sensing with appliance-aware influence bases and residual calibration; IDW \\cite{shepard1968two} is the geometry-free baseline. Local APIs, a web demo, and an MCP-compatible layer expose the estimator but remain secondary \\cite{mcp2025}."
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1574
+      }
+    },
+    {
+      "id": "zh-6",
+      "zh_number": 6,
+      "title": "A new dynamic zOnal model with air-diffuser (DOMA) - Application to thermal comfort prediction",
+      "reference": "Ahmed Megri, Yao Yu, Rui Miao, Xiaoou Hu, A new dynamic zOnal model with air-diffuser (DOMA) - Application to thermal comfort prediction, Indoor and Built Environment, vol. 31, no. 7, pp. 1738-1757, 2022. DOI: 10.1177/1420326X211060486",
+      "kind": "paper",
+      "bib_key": "megri2022doma",
+      "doi": "10.1177/1420326X211060486",
+      "purpose": "動態 zonal／送風模型的相似研究及差異定位。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 366,
+          "section": "2.2 空間插值與場估計",
+          "context": "在感測器數量有限的情況下，最直接的方法是使用空間插值估計未量測位置。本研究採用 inverse distance weighting（IDW）作為 baseline。IDW 的優點是實作簡單且不依賴設備先驗，但其估計完全由量測點距離決定，無法反映冷氣出風方向、窗戶位置、照明熱源或設備作用範圍等結構資訊。相較之下，zonal model、reduced-order model 與 hybrid spatial model 提供了介於 well-mixed room model 與 CFD 之間的折衷途徑，可在維持較低計算成本的同時保留主要空間差異 [4][5][6]。因此，本研究不是把同一個 bulk/local 物理假設套用到所有環境量，而是將主模型拆成變數專屬 nominal model：溫度採熱交換與熱源近似，濕度採水氣交換與除濕近似，照度採燈具光束幾何、窗戶日照 envelope、遮蔽與反射近似；三者再共用稀疏感測 residual correction 框架。"
+        },
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 390,
+          "section": "2.7 與相似研究之差異定位",
+          "context": "若從研究方法的相似性來看，本研究最接近的文獻不是一般性的 building digital twin 平台論文，而是有限感測器室內場重建、控制導向簡化熱模型，以及 hybrid thermal surrogate 這三類研究。Qian 等人以資料同化方法重建實際住宅房間中的溫濕度分布，重點在於以有限量測重建連續場並分析量測配置 [8]；Huljak 等人聚焦於空調房間中的 hybrid 溫度模型，強調以 physics-based 與 surrogate model 共同描述空調空間中的溫度分布 [5]；Megri 等人則以 DOMA 動態 zonal model 處理時間變化與熱舒適預測 [6]。這三類工作與本研究皆有明顯關聯，但關注點不同。"
+        },
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 401,
+          "section": "2.7 與相似研究之差異定位",
+          "context": "| Megri et al. (2022) [6] | 強調動態 zonal / transient prediction | 目標偏熱舒適分析，不處理照度與非連網裝置學習 |"
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1575
+      }
+    },
+    {
+      "id": "zh-7",
+      "zh_number": 7,
+      "title": "A review of building digital twins to improve energy efficiency in the building operational stage",
+      "reference": "Andres Sebastian Cespedes-Cubides, Muhyiddine Jradi, A review of building digital twins to improve energy efficiency in the building operational stage, Energy Informatics, vol. 7, article 11, 2024. DOI: 10.1186/s42162-024-00313-7",
+      "kind": "paper",
+      "bib_key": "cespedes2024bdtreview",
+      "doi": "10.1186/s42162-024-00313-7",
+      "purpose": "建築數位孿生研究背景與本研究定位。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 370,
+          "section": "2.3 數位孿生與智慧建築",
+          "context": "數位孿生通常被視為實體系統在數位空間中的動態對應模型，其核心價值在於將感測資料、系統狀態與分析模型整合為可更新、可查詢且可推估的數位映射。在智慧建築領域中，數位孿生常與 BIM、IoT 感測、設備監控與能源管理系統結合，用於營運最佳化與狀態預測。近年的建築數位孿生回顧指出，多數研究著重於平台架構、資料整合與建築尺度的決策支援，但對於少量感測器條件下之單房間空間場重建與設備影響推估，討論仍相對有限 [7]。因此，本研究的定位並非建構完整 BIM/BMS 平台，而是針對單房間、低成本感測器與非連網裝置場景提出一個可運作的簡化數位孿生原型。"
+        },
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 403,
+          "section": "2.7 與相似研究之差異定位",
+          "context": "| Cespedes-Cubides & Jradi (2024) [7] | 界定 building digital twin 的整體脈絡 | 屬綜述，不提供本研究這種單房間三因子可執行原型 |"
+        },
+        {
+          "path": "docs/papers/ieee/paper.tex",
+          "line": 60,
+          "section": "Related Work",
+          "context": "Digital twins increasingly represent physical systems in manufacturing, infrastructure, and smart buildings \\cite{tao2019digitaltwin,fuller2020digitaltwin}. Building reviews emphasize BIM/BMS connectivity, while sparse-sensor spatial estimation remains less explored \\cite{cespedes2024bdtreview}. Reduced-order and grey-box models are interpretable alternatives to CFD \\cite{bacher2011heatdynamics,hietaharju2018dynamicmodel}; zonal and hybrid models retain dominant non-uniformity at lower cost \\cite{teshome2004zonalreview,huljak2025hybrid}. Public BMC telemetry exposes temperatures, fan speeds, and power \\cite{bmcdata2026}. Hybrid forecasting can learn simulation--measurement residuals \\cite{oh2024hybridmodeling}, and data assimilation shows that finite observations and sensor placement matter \\cite{qian2025dafield,chen2007zonalnetwork}. This work couples sparse sensing with appliance-aware influence bases and residual calibration; IDW \\cite{shepard1968two} is the geometry-free baseline. Local APIs, a web demo, and an MCP-compatible layer expose the estimator but remain secondary \\cite{mcp2025}."
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1576
+      }
+    },
+    {
+      "id": "zh-8",
+      "zh_number": 8,
+      "title": "Estimating indoor air temperature and humidity distributions by data assimilation with finite observations: Validation using an actual residential room",
+      "reference": "Weixin Qian, Chenxi Li, Hu Gao, Lei Zhuang, Yanyu Lu, Site Hu, Jing Liu, Estimating indoor air temperature and humidity distributions by data assimilation with finite observations: Validation using an actual residential room, Building and Environment, vol. 269, 112495, 2025. DOI: 10.1016/j.buildenv.2024.112495",
+      "kind": "paper",
+      "bib_key": "qian2025dafield",
+      "doi": "10.1016/j.buildenv.2024.112495",
+      "purpose": "有限觀測、資料同化與室內溫濕度場重建的相似研究。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 382,
+          "section": "2.5 非連網裝置影響學習",
+          "context": "既有智慧家庭與智慧建築研究，常預設設備可由網路介面直接讀取或控制。然而在一般居住空間中，傳統冷氣、手動窗戶與一般照明往往不具備可直接讀取的連網能力。此時，若系統仍希望掌握設備對環境的作用，就必須從感測到的環境變化反推設備影響。近期研究顯示，有限感測器搭配 data assimilation、hybrid model 或感測配置分析，確實能對室內溫濕度場進行重建，並評估量測點配置對重建品質的影響 [5][8][9]。本研究延續此方向，將裝置啟用前後的感測器差異視為學習訊號，並利用裝置空間影響基底與最小平方法估計其對溫度、濕度與照度的影響係數，以支援後續的場估計與控制推薦。"
+        },
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 390,
+          "section": "2.7 與相似研究之差異定位",
+          "context": "若從研究方法的相似性來看，本研究最接近的文獻不是一般性的 building digital twin 平台論文，而是有限感測器室內場重建、控制導向簡化熱模型，以及 hybrid thermal surrogate 這三類研究。Qian 等人以資料同化方法重建實際住宅房間中的溫濕度分布，重點在於以有限量測重建連續場並分析量測配置 [8]；Huljak 等人聚焦於空調房間中的 hybrid 溫度模型，強調以 physics-based 與 surrogate model 共同描述空調空間中的溫度分布 [5]；Megri 等人則以 DOMA 動態 zonal model 處理時間變化與熱舒適預測 [6]。這三類工作與本研究皆有明顯關聯，但關注點不同。"
+        },
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 398,
+          "section": "2.7 與相似研究之差異定位",
+          "context": "| Qian et al. (2025) [8] | 有限觀測下重建室內溫濕度分布 | 未把照度、非連網家電影響學習與 MCP 工具化整合在同一系統 |"
+        },
+        {
+          "path": "docs/papers/ieee/paper.tex",
+          "line": 60,
+          "section": "Related Work",
+          "context": "Digital twins increasingly represent physical systems in manufacturing, infrastructure, and smart buildings \\cite{tao2019digitaltwin,fuller2020digitaltwin}. Building reviews emphasize BIM/BMS connectivity, while sparse-sensor spatial estimation remains less explored \\cite{cespedes2024bdtreview}. Reduced-order and grey-box models are interpretable alternatives to CFD \\cite{bacher2011heatdynamics,hietaharju2018dynamicmodel}; zonal and hybrid models retain dominant non-uniformity at lower cost \\cite{teshome2004zonalreview,huljak2025hybrid}. Public BMC telemetry exposes temperatures, fan speeds, and power \\cite{bmcdata2026}. Hybrid forecasting can learn simulation--measurement residuals \\cite{oh2024hybridmodeling}, and data assimilation shows that finite observations and sensor placement matter \\cite{qian2025dafield,chen2007zonalnetwork}. This work couples sparse sensing with appliance-aware influence bases and residual calibration; IDW \\cite{shepard1968two} is the geometry-free baseline. Local APIs, a web demo, and an MCP-compatible layer expose the estimator but remain secondary \\cite{mcp2025}."
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1577
+      }
+    },
+    {
+      "id": "zh-9",
+      "zh_number": 9,
+      "title": "Application of zonal model on indoor air sensor network design",
+      "reference": "Y. Lisa Chen, Jin Wen, Application of zonal model on indoor air sensor network design, Proceedings of SPIE, vol. 6529, 652911, 2007. DOI: 10.1117/12.716356",
+      "kind": "paper",
+      "bib_key": "chen2007zonalnetwork",
+      "doi": "10.1117/12.716356",
+      "purpose": "感測器配置與 zonal model 的方法背景。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 382,
+          "section": "2.5 非連網裝置影響學習",
+          "context": "既有智慧家庭與智慧建築研究，常預設設備可由網路介面直接讀取或控制。然而在一般居住空間中，傳統冷氣、手動窗戶與一般照明往往不具備可直接讀取的連網能力。此時，若系統仍希望掌握設備對環境的作用，就必須從感測到的環境變化反推設備影響。近期研究顯示，有限感測器搭配 data assimilation、hybrid model 或感測配置分析，確實能對室內溫濕度場進行重建，並評估量測點配置對重建品質的影響 [5][8][9]。本研究延續此方向，將裝置啟用前後的感測器差異視為學習訊號，並利用裝置空間影響基底與最小平方法估計其對溫度、濕度與照度的影響係數，以支援後續的場估計與控制推薦。"
+        },
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 402,
+          "section": "2.7 與相似研究之差異定位",
+          "context": "| Chen & Wen (2007) [9] | 討論感測器配置與 zonal model | 重點在感測器設計，不是建立可互動的單房間數位孿生原型 |"
+        },
+        {
+          "path": "docs/papers/ieee/paper.tex",
+          "line": 60,
+          "section": "Related Work",
+          "context": "Digital twins increasingly represent physical systems in manufacturing, infrastructure, and smart buildings \\cite{tao2019digitaltwin,fuller2020digitaltwin}. Building reviews emphasize BIM/BMS connectivity, while sparse-sensor spatial estimation remains less explored \\cite{cespedes2024bdtreview}. Reduced-order and grey-box models are interpretable alternatives to CFD \\cite{bacher2011heatdynamics,hietaharju2018dynamicmodel}; zonal and hybrid models retain dominant non-uniformity at lower cost \\cite{teshome2004zonalreview,huljak2025hybrid}. Public BMC telemetry exposes temperatures, fan speeds, and power \\cite{bmcdata2026}. Hybrid forecasting can learn simulation--measurement residuals \\cite{oh2024hybridmodeling}, and data assimilation shows that finite observations and sensor placement matter \\cite{qian2025dafield,chen2007zonalnetwork}. This work couples sparse sensing with appliance-aware influence bases and residual calibration; IDW \\cite{shepard1968two} is the geometry-free baseline. Local APIs, a web demo, and an MCP-compatible layer expose the estimator but remain secondary \\cite{mcp2025}."
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1578
+      }
+    },
+    {
+      "id": "zh-10",
+      "zh_number": 10,
+      "title": "A Two-Dimensional Interpolation Function for Irregularly-Spaced Data",
+      "reference": "D. Shepard, A Two-Dimensional Interpolation Function for Irregularly-Spaced Data, Proceedings of the 1968 ACM National Conference, pp. 517-524, 1968.",
+      "kind": "paper",
+      "bib_key": "shepard1968two",
+      "doi": null,
+      "purpose": "IDW baseline 的文獻依據；中文列入書目但未找到編號引用，英文有明確引用。",
+      "citations": [
+        {
+          "path": "docs/papers/ieee/paper.tex",
+          "line": 60,
+          "section": "Related Work",
+          "context": "Digital twins increasingly represent physical systems in manufacturing, infrastructure, and smart buildings \\cite{tao2019digitaltwin,fuller2020digitaltwin}. Building reviews emphasize BIM/BMS connectivity, while sparse-sensor spatial estimation remains less explored \\cite{cespedes2024bdtreview}. Reduced-order and grey-box models are interpretable alternatives to CFD \\cite{bacher2011heatdynamics,hietaharju2018dynamicmodel}; zonal and hybrid models retain dominant non-uniformity at lower cost \\cite{teshome2004zonalreview,huljak2025hybrid}. Public BMC telemetry exposes temperatures, fan speeds, and power \\cite{bmcdata2026}. Hybrid forecasting can learn simulation--measurement residuals \\cite{oh2024hybridmodeling}, and data assimilation shows that finite observations and sensor placement matter \\cite{qian2025dafield,chen2007zonalnetwork}. This work couples sparse sensing with appliance-aware influence bases and residual calibration; IDW \\cite{shepard1968two} is the geometry-free baseline. Local APIs, a web demo, and an MCP-compatible layer expose the estimator but remain secondary \\cite{mcp2025}."
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1579
+      }
+    },
+    {
+      "id": "zh-11",
+      "zh_number": 11,
+      "title": "Model Context Protocol Documentation",
+      "reference": "Model Context Protocol, Model Context Protocol Documentation, https://modelcontextprotocol.io/ , accessed 2026-04-10.",
+      "kind": "website",
+      "bib_key": "mcp2025",
+      "doi": null,
+      "purpose": "MCP 服務介面文件；屬網站文件。",
+      "citations": [
+        {
+          "path": "docs/papers/ieee/paper.tex",
+          "line": 60,
+          "section": "Related Work",
+          "context": "Digital twins increasingly represent physical systems in manufacturing, infrastructure, and smart buildings \\cite{tao2019digitaltwin,fuller2020digitaltwin}. Building reviews emphasize BIM/BMS connectivity, while sparse-sensor spatial estimation remains less explored \\cite{cespedes2024bdtreview}. Reduced-order and grey-box models are interpretable alternatives to CFD \\cite{bacher2011heatdynamics,hietaharju2018dynamicmodel}; zonal and hybrid models retain dominant non-uniformity at lower cost \\cite{teshome2004zonalreview,huljak2025hybrid}. Public BMC telemetry exposes temperatures, fan speeds, and power \\cite{bmcdata2026}. Hybrid forecasting can learn simulation--measurement residuals \\cite{oh2024hybridmodeling}, and data assimilation shows that finite observations and sensor placement matter \\cite{qian2025dafield,chen2007zonalnetwork}. This work couples sparse sensing with appliance-aware influence bases and residual calibration; IDW \\cite{shepard1968two} is the geometry-free baseline. Local APIs, a web demo, and an MCP-compatible layer expose the estimator but remain secondary \\cite{mcp2025}."
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1580
+      }
+    },
+    {
+      "id": "zh-12",
+      "zh_number": 12,
+      "title": "CU-BEMS, smart building electricity consumption and indoor environmental sensor datasets",
+      "reference": "Gopal Chitalia, Manisa Pipattanasomporn, CU-BEMS, smart building electricity consumption and indoor environmental sensor datasets, Scientific Data, vol. 7, article 290, 2020. DOI: 10.1038/s41597-020-00582-3",
+      "kind": "paper",
+      "bib_key": "chitalia2020cubems",
+      "doi": "10.1038/s41597-020-00582-3",
+      "purpose": "CU-BEMS 資料集描述論文；公開 task-aligned benchmark 的資料來源。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 411,
+          "section": "2.8 公開資料與訓練資料適用性",
+          "context": "| CU-BEMS [12] | 溫度、濕度、照度、AC/lighting power、zone-level series | 可用於驗證裝置狀態與環境量測的時間關聯 | 多區商辦資料，不是單房間 8 角落感測器拓樸 |"
+        },
+        {
+          "path": "docs/papers/ieee/paper.tex",
+          "line": 229,
+          "section": "E5 Window Matrix and E9 Public Benchmarks",
+          "context": "SML2010 \\cite{romeu2014sml2010} and CU-BEMS \\cite{chitalia2020cubems} support only aligned time-series or zone tasks, not matched 3-D truth. Table~\\ref{tab:benchmark} retains favorable and adverse cases: persistence remains strong in high-inertia tasks, the registered RNN wins 0/12 cases, and the controlled Kalman/MA comparison splits 6/6 by variable. E11A screens 317 public BMC file-device cases inside 20--30$^\\circ$C; only 5 meet the minimum, persistence wins all 5, and thermal balance wins 0."
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1581
+      }
+    },
+    {
+      "id": "zh-13",
+      "zh_number": 13,
+      "title": "Appliances Energy Prediction",
+      "reference": "Luis Candanedo, Appliances Energy Prediction [Dataset], UCI Machine Learning Repository, 2017. DOI: 10.24432/C5VC8G",
+      "kind": "dataset",
+      "bib_key": null,
+      "doi": "10.24432/C5VC8G",
+      "purpose": "候選公開資料的適用性盤點；不能據此認定已投入實驗。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 412,
+          "section": "2.8 公開資料與訓練資料適用性",
+          "context": "| Appliances Energy Prediction [13] | 多房間溫溼度、室外氣象、燈光用電 | 可用於室內外條件與用電關聯分析 | 缺空間幾何與單房間場分布標記 |"
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1582
+      }
+    },
+    {
+      "id": "zh-14",
+      "zh_number": 14,
+      "title": "SML2010 [Dataset]",
+      "reference": "Pablo Romeu-Guallart, Francisco Zamora-Martinez, SML2010 [Dataset], UCI Machine Learning Repository, 2014. DOI: 10.24432/C5RS3S",
+      "kind": "dataset",
+      "bib_key": "romeu2014sml2010",
+      "doi": "10.24432/C5RS3S",
+      "purpose": "SML2010 公開比較的資料集來源。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 413,
+          "section": "2.8 公開資料與訓練資料適用性",
+          "context": "| SML2010 [14] | 兩處室內溫度/濕度/照度、日照與室外條件 | 可用於窗戶日照與室內響應的時序比對 | 量測點有限，且非完整單房間空間場 |"
+        },
+        {
+          "path": "docs/papers/ieee/paper.tex",
+          "line": 229,
+          "section": "E5 Window Matrix and E9 Public Benchmarks",
+          "context": "SML2010 \\cite{romeu2014sml2010} and CU-BEMS \\cite{chitalia2020cubems} support only aligned time-series or zone tasks, not matched 3-D truth. Table~\\ref{tab:benchmark} retains favorable and adverse cases: persistence remains strong in high-inertia tasks, the registered RNN wins 0/12 cases, and the controlled Kalman/MA comparison splits 6/6 by variable. E11A screens 317 public BMC file-device cases inside 20--30$^\\circ$C; only 5 meet the minimum, persistence wins all 5, and thermal balance wins 0."
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1583
+      }
+    },
+    {
+      "id": "zh-15",
+      "zh_number": 15,
+      "title": "Occupancy Detection",
+      "reference": "Luis Candanedo, Occupancy Detection [Dataset], UCI Machine Learning Repository, 2016. DOI: 10.24432/C5X01N",
+      "kind": "dataset",
+      "bib_key": null,
+      "doi": "10.24432/C5X01N",
+      "purpose": "候選公開資料的適用性盤點；不能據此認定已投入實驗。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 414,
+          "section": "2.8 公開資料與訓練資料適用性",
+          "context": "| Occupancy Detection [15] | 溫度、濕度、照度、CO2 | 可用於感測器前處理與環境變化偵測 | 不含裝置資訊與空間拓樸 |"
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1584
+      }
+    },
+    {
+      "id": "zh-16",
+      "zh_number": 16,
+      "title": "Dataset of room-level indoor environmental quality measurements and occupancy ground truth for five residential apartments in Denmark [Dataset]",
+      "reference": "Kamilla Heimar Andersen, Hicham Johra, Anna Marszal-Pomianowska, Per Kvols Heiselberg, Henrik N. Knudsen, Dataset of room-level indoor environmental quality measurements and occupancy ground truth for five residential apartments in Denmark [Dataset], Zenodo, 2024. DOI: 10.5281/zenodo.10761326",
+      "kind": "dataset",
+      "bib_key": "andersen2024denmarkieq",
+      "doi": "10.5281/zenodo.10761326",
+      "purpose": "住宅 IEQ 候選資料適用性盤點；不能據此認定已投入實驗。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 415,
+          "section": "2.8 公開資料與訓練資料適用性",
+          "context": "| Denmark IEQ dataset [16] | 房間層級 operative temperature、RH、CO2、occupancy | 可用於真實住宅 IEQ 波動比對 | 缺照度與設備狀態 |"
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1585
+      }
+    },
+    {
+      "id": "zh-17",
+      "zh_number": 17,
+      "title": "Development of the ASHRAE Global Thermal Comfort Database II",
+      "reference": "V. Foldvary Licina, T. Cheung, H. Zhang, R. de Dear, T. Parkinson, E. Arens, et al., Development of the ASHRAE Global Thermal Comfort Database II, Building and Environment, vol. 142, pp. 502-512, 2018. DOI: 10.1016/j.buildenv.2018.06.022",
+      "kind": "paper",
+      "bib_key": "licina2018ashraeglobal",
+      "doi": "10.1016/j.buildenv.2018.06.022",
+      "purpose": "熱舒適資料庫描述論文；主稿用於候選資料適用性與舒適目標參考。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 416,
+          "section": "2.8 公開資料與訓練資料適用性",
+          "context": "| ASHRAE Global Thermal Comfort Database II [17] | 大規模熱舒適與環境量測 | 可用於舒適目標與控制評分合理性參考 | 不是空間場重建資料，也不對應單房間幾何 |"
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1586
+      }
+    },
+    {
+      "id": "zh-18",
+      "zh_number": 18,
+      "title": "Influence of indoor temperature and daylight illuminance on visual perception",
+      "reference": "G. Chinazzo, J. Wienold, M. Andersen, Influence of indoor temperature and daylight illuminance on visual perception, Lighting Research and Technology, vol. 52, no. 8, pp. 998-1020, 2020. DOI: 10.1177/1477153519859609",
+      "kind": "paper",
+      "bib_key": null,
+      "doi": "10.1177/1477153519859609",
+      "purpose": "室溫與日光照度聯合實驗的文獻背景。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 374,
+          "section": "2.4 房間尺度室內因子實驗研究",
+          "context": "若將文獻範圍收斂到房間尺度的實驗研究，可以發現溫度、濕度與照度並不是彼此孤立的環境因子。Chinazzo 等人以 office-like test room 為實驗場域，控制不同室溫與日光照度條件，研究 visual perception 與 thermal perception 之間的交互作用，指出日照與室溫會共同影響受試者的感知結果 [18][19]。Lan 等人則在教室條件下同時調整熱環境與照明參數，分析其對學習表現與主觀感受的影響，顯示 thermal and visual environments 可在同一受控場域中被聯合操控與評估 [20]。這類研究雖不以數位孿生為主，但提供了重要前提：房間內三因子至少在實驗設計層級上具備共同量測與共同分析的必要性。"
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1587
+      }
+    },
+    {
+      "id": "zh-19",
+      "zh_number": 19,
+      "title": "Daylight affects human thermal perception",
+      "reference": "G. Chinazzo, J. Wienold, M. Andersen, Daylight affects human thermal perception, Scientific Reports, vol. 9, article 13695, 2019. DOI: 10.1038/s41598-019-48963-y",
+      "kind": "paper",
+      "bib_key": null,
+      "doi": "10.1038/s41598-019-48963-y",
+      "purpose": "日光與熱感知交互作用的文獻背景。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 374,
+          "section": "2.4 房間尺度室內因子實驗研究",
+          "context": "若將文獻範圍收斂到房間尺度的實驗研究，可以發現溫度、濕度與照度並不是彼此孤立的環境因子。Chinazzo 等人以 office-like test room 為實驗場域，控制不同室溫與日光照度條件，研究 visual perception 與 thermal perception 之間的交互作用，指出日照與室溫會共同影響受試者的感知結果 [18][19]。Lan 等人則在教室條件下同時調整熱環境與照明參數，分析其對學習表現與主觀感受的影響，顯示 thermal and visual environments 可在同一受控場域中被聯合操控與評估 [20]。這類研究雖不以數位孿生為主，但提供了重要前提：房間內三因子至少在實驗設計層級上具備共同量測與共同分析的必要性。"
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1588
+      }
+    },
+    {
+      "id": "zh-20",
+      "zh_number": 20,
+      "title": "Experimental study on the impact of indoor lighting and thermal environment on university students' learning performance in summer",
+      "reference": "Lan et al., Experimental study on the impact of indoor lighting and thermal environment on university students' learning performance in summer, Energy and Buildings, vol. 331, 115774, 2025. DOI: 10.1016/j.enbuild.2025.115774",
+      "kind": "paper",
+      "bib_key": null,
+      "doi": "10.1016/j.enbuild.2025.115774",
+      "purpose": "熱環境、照明與學習表現的房間尺度實驗背景。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 374,
+          "section": "2.4 房間尺度室內因子實驗研究",
+          "context": "若將文獻範圍收斂到房間尺度的實驗研究，可以發現溫度、濕度與照度並不是彼此孤立的環境因子。Chinazzo 等人以 office-like test room 為實驗場域，控制不同室溫與日光照度條件，研究 visual perception 與 thermal perception 之間的交互作用，指出日照與室溫會共同影響受試者的感知結果 [18][19]。Lan 等人則在教室條件下同時調整熱環境與照明參數，分析其對學習表現與主觀感受的影響，顯示 thermal and visual environments 可在同一受控場域中被聯合操控與評估 [20]。這類研究雖不以數位孿生為主，但提供了重要前提：房間內三因子至少在實驗設計層級上具備共同量測與共同分析的必要性。"
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1589
+      }
+    },
+    {
+      "id": "zh-21",
+      "zh_number": 21,
+      "title": "Studying the Indoor Environment and Comfort of a University Laboratory: Air-Conditioning Operation and Natural Ventilation Used as a Countermeasure against COVID-19",
+      "reference": "K. Kuwahara et al., Studying the Indoor Environment and Comfort of a University Laboratory: Air-Conditioning Operation and Natural Ventilation Used as a Countermeasure against COVID-19, Buildings, vol. 12, no. 7, 953, 2022. DOI: 10.3390/buildings12070953",
+      "kind": "paper",
+      "bib_key": null,
+      "doi": "10.3390/buildings12070953",
+      "purpose": "冷氣與自然通風操作的現地量測背景。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 376,
+          "section": "2.4 房間尺度室內因子實驗研究",
+          "context": "另一類與本研究更接近的工作，是冷氣、開窗或通風策略對房間環境的實驗或現地量測。Kuwahara 等人在大學實驗室中比較空調運轉與自然通風策略，量測溫度、相對濕度與 CO2 變化，用於評估室內環境與舒適 [21]。Zhou 等人則對綠建築辦公室進行長期 field study，追蹤 thermal environment、relative humidity、CO2 與 visual environment，並結合使用者滿意度調查 [22]。Wang 等人針對寒冷地區住宅建築的冬季室內環境品質進行實測，指出低能耗住宅中的室溫與相對濕度仍可能出現不理想分布 [23]。這些研究共同說明，房間尺度的 IEQ 實驗並不罕見，而且冷氣、通風與外氣條件確實會使房間內部環境產生可量測差異。"
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1590
+      }
+    },
+    {
+      "id": "zh-22",
+      "zh_number": 22,
+      "title": "Indoor environmental quality and energy use evaluation of a three-star green office building in China with field study",
+      "reference": "Yan Zhou, Jianmin Cai, Yiwen Xu, Indoor environmental quality and energy use evaluation of a three-star green office building in China with field study, Journal of Building Physics, vol. 45, no. 2, pp. 163-190, 2021. DOI: 10.1177/1744259120944604",
+      "kind": "paper",
+      "bib_key": null,
+      "doi": "10.1177/1744259120944604",
+      "purpose": "綠建築辦公室 IEQ 與能源使用的現地研究背景。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 376,
+          "section": "2.4 房間尺度室內因子實驗研究",
+          "context": "另一類與本研究更接近的工作，是冷氣、開窗或通風策略對房間環境的實驗或現地量測。Kuwahara 等人在大學實驗室中比較空調運轉與自然通風策略，量測溫度、相對濕度與 CO2 變化，用於評估室內環境與舒適 [21]。Zhou 等人則對綠建築辦公室進行長期 field study，追蹤 thermal environment、relative humidity、CO2 與 visual environment，並結合使用者滿意度調查 [22]。Wang 等人針對寒冷地區住宅建築的冬季室內環境品質進行實測，指出低能耗住宅中的室溫與相對濕度仍可能出現不理想分布 [23]。這些研究共同說明，房間尺度的 IEQ 實驗並不罕見，而且冷氣、通風與外氣條件確實會使房間內部環境產生可量測差異。"
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1591
+      }
+    },
+    {
+      "id": "zh-23",
+      "zh_number": 23,
+      "title": "Indoor environment quality in a low-energy residential building in winter in Harbin",
+      "reference": "Z. Wang, Q. Xue, Y. Ji, Z. Yu, Indoor environment quality in a low-energy residential building in winter in Harbin, Building and Environment, vol. 135, pp. 194-201, 2018. DOI: 10.1016/j.buildenv.2018.03.012",
+      "kind": "paper",
+      "bib_key": null,
+      "doi": "10.1016/j.buildenv.2018.03.012",
+      "purpose": "住宅冬季 IEQ 的現地量測背景。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 376,
+          "section": "2.4 房間尺度室內因子實驗研究",
+          "context": "另一類與本研究更接近的工作，是冷氣、開窗或通風策略對房間環境的實驗或現地量測。Kuwahara 等人在大學實驗室中比較空調運轉與自然通風策略，量測溫度、相對濕度與 CO2 變化，用於評估室內環境與舒適 [21]。Zhou 等人則對綠建築辦公室進行長期 field study，追蹤 thermal environment、relative humidity、CO2 與 visual environment，並結合使用者滿意度調查 [22]。Wang 等人針對寒冷地區住宅建築的冬季室內環境品質進行實測，指出低能耗住宅中的室溫與相對濕度仍可能出現不理想分布 [23]。這些研究共同說明，房間尺度的 IEQ 實驗並不罕見，而且冷氣、通風與外氣條件確實會使房間內部環境產生可量測差異。"
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1592
+      }
+    },
+    {
+      "id": "zh-24",
+      "zh_number": 24,
+      "title": "Comparative study on indoor environment quality of green office buildings with different levels of energy use intensity",
+      "reference": "Y. Geng, B. Lin, Y. Zhu, Comparative study on indoor environment quality of green office buildings with different levels of energy use intensity, Building and Environment, vol. 168, 106482, 2020. DOI: 10.1016/j.buildenv.2019.106482",
+      "kind": "paper",
+      "bib_key": null,
+      "doi": "10.1016/j.buildenv.2019.106482",
+      "purpose": "辦公室能源使用與 IEQ 的比較背景。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 378,
+          "section": "2.4 房間尺度室內因子實驗研究",
+          "context": "然而，現有房間尺度實驗研究多半聚焦於舒適評估、單一場域量測，或多因子對認知與滿意度的影響，較少進一步處理有限感測器下的空間場重建、非連網裝置影響學習，以及可被外部 AI 系統查詢的工具化服務。Geng 等人對綠建築辦公室進行大規模與長期 IEQ 比較，Lee 等人則分析研究機構中不同工作型態與 IEQ 的關係 [24][25]；這些研究證明房間內溫度、濕度、照度與舒適度之間具有實際研究基礎，但尚未形成單房間、三因子、8 顆角落感測器、設備影響學習與控制推薦整合於同一原型的做法。基於此，本研究並非宣稱房間室內因子實驗是全新問題，而是主張：本研究將既有 IEQ 實驗研究常見的環境因子量測，進一步推展為可估場、可校正、可學習與可服務化的單房間數位孿生方法。"
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1593
+      }
+    },
+    {
+      "id": "zh-25",
+      "zh_number": 25,
+      "title": "A Comparative Field Study of Indoor Environment Quality and Work Productivity between Job Types in a Research Institute in Korea",
+      "reference": "J. Lee et al., A Comparative Field Study of Indoor Environment Quality and Work Productivity between Job Types in a Research Institute in Korea, International Journal of Environmental Research and Public Health, vol. 19, no. 21, 14332, 2022. DOI: 10.3390/ijerph192114332",
+      "kind": "paper",
+      "bib_key": null,
+      "doi": "10.3390/ijerph192114332",
+      "purpose": "工作型態、IEQ 與生產力的比較背景。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 378,
+          "section": "2.4 房間尺度室內因子實驗研究",
+          "context": "然而，現有房間尺度實驗研究多半聚焦於舒適評估、單一場域量測，或多因子對認知與滿意度的影響，較少進一步處理有限感測器下的空間場重建、非連網裝置影響學習，以及可被外部 AI 系統查詢的工具化服務。Geng 等人對綠建築辦公室進行大規模與長期 IEQ 比較，Lee 等人則分析研究機構中不同工作型態與 IEQ 的關係 [24][25]；這些研究證明房間內溫度、濕度、照度與舒適度之間具有實際研究基礎，但尚未形成單房間、三因子、8 顆角落感測器、設備影響學習與控制推薦整合於同一原型的做法。基於此，本研究並非宣稱房間室內因子實驗是全新問題，而是主張：本研究將既有 IEQ 實驗研究常見的環境因子量測，進一步推展為可估場、可校正、可學習與可服務化的單房間數位孿生方法。"
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1594
+      }
+    },
+    {
+      "id": "zh-26",
+      "zh_number": 26,
+      "title": "Hybrid modeling based on integrating simulation and operational data to improve indoor air temperature predictions, a controlled variable in digital twin models",
+      "reference": "Ju-Hong Oh, Stefano Sfarra, Eui-Jong Kim, Hybrid modeling based on integrating simulation and operational data to improve indoor air temperature predictions, a controlled variable in digital twin models, Energy and Buildings, vol. 324, 114898, 2024. DOI: 10.1016/j.enbuild.2024.114898",
+      "kind": "paper",
+      "bib_key": "oh2024hybridmodeling",
+      "doi": "10.1016/j.enbuild.2024.114898",
+      "purpose": "物理基線加 learned residual 的方法啟發，並有本地移植比較。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 392,
+          "section": "2.7 與相似研究之差異定位",
+          "context": "Oh、Sfarra 與 Kim 進一步把建築物理模擬與 operational data 整合為 next-day indoor air temperature hybrid predictor：物理模擬先提供 forecast day 的基線輸出，再由資料驅動模型學習歷史 simulation--measurement gap 並預測同一目標時刻的修正量 [26]。此研究直接支持「物理基線加上 learned residual」的建模邏輯，但其任務是次日溫度時序預測；本研究目前則以指定 elapsed time 的三因子空間場估測為主，兩者不能視為相同驗證任務。"
+        },
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 400,
+          "section": "2.7 與相似研究之差異定位",
+          "context": "| Oh et al. (2024) [26] | 以 forecast-day simulation 加上 learned simulation--measurement residual 預測次日室溫 | 屬 next-day 單變數時序預測，不直接驗證本研究三因子 3D spatial field |"
+        },
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 886,
+          "section": "3.8 Hybrid Residual Neural Network 延伸",
+          "context": "若將此架構推廣為從預測起點 $t$ 出發的 $h$-step forecast，較完整的時間對齊寫法如下。Oh 等人的 next-day temperature study 即屬這類概念：forecast-day 的物理模擬結果提供目標日基線，再以歷史 simulation--measurement gap 學習同一目標時刻的修正量 [26]。"
+        },
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 1318,
+          "section": "5.9.3 Oh et al. (2024) 方法移植比較",
+          "context": "為回答新增文獻中的方法能否直接拿來比較，本研究另建立一個 focused transfer benchmark。其核心保留 Oh、Sfarra 與 Kim [26] 的加法邏輯：先用本研究 mapped physics model 產生目標時刻的 temperature baseline，再用 origin-time 的室內量測、外部邊界與操作特徵，學習 measured - physics residual，最後以 physics + predicted residual 得到輸出。為避免偽稱重現，residual learner 固定為 ridge-linear head（ridge = 0.001），不是原文的 CNN--LSTM；資料也改用 SML2010 S2 兩點溫度，而不是原文機密的商辦 return-air BEMS data。所有方法使用相同 chronological 70/30 split，並比較 persistence、direct linear regression、raw physics prior、本研究 hybrid digital-twin readout 與 Oh2024-inspired additive residual。"
+        },
+        {
+          "path": "docs/papers/ieee/paper.tex",
+          "line": 60,
+          "section": "Related Work",
+          "context": "Digital twins increasingly represent physical systems in manufacturing, infrastructure, and smart buildings \\cite{tao2019digitaltwin,fuller2020digitaltwin}. Building reviews emphasize BIM/BMS connectivity, while sparse-sensor spatial estimation remains less explored \\cite{cespedes2024bdtreview}. Reduced-order and grey-box models are interpretable alternatives to CFD \\cite{bacher2011heatdynamics,hietaharju2018dynamicmodel}; zonal and hybrid models retain dominant non-uniformity at lower cost \\cite{teshome2004zonalreview,huljak2025hybrid}. Public BMC telemetry exposes temperatures, fan speeds, and power \\cite{bmcdata2026}. Hybrid forecasting can learn simulation--measurement residuals \\cite{oh2024hybridmodeling}, and data assimilation shows that finite observations and sensor placement matter \\cite{qian2025dafield,chen2007zonalnetwork}. This work couples sparse sensing with appliance-aware influence bases and residual calibration; IDW \\cite{shepard1968two} is the geometry-free baseline. Local APIs, a web demo, and an MCP-compatible layer expose the estimator but remain secondary \\cite{mcp2025}."
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1595
+      }
+    },
+    {
+      "id": "zh-27",
+      "zh_number": 27,
+      "title": "Finding Structure in Time",
+      "reference": "Jeffrey L. Elman, Finding Structure in Time, Cognitive Science, vol. 14, no. 2, pp. 179-211, 1990. DOI: 10.1207/s15516709cog1402_1",
+      "kind": "paper",
+      "bib_key": "elman1990structure",
+      "doi": "10.1207/s15516709cog1402_1",
+      "purpose": "Vanilla Elman RNN 的方法依據；本地同資料 RNN 比較。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 1348,
+          "section": "5.9.3.2 Vanilla RNN 同資料公平比較",
+          "context": "依教授建議，本研究另在 SML2010 S2 的 dining/room 溫度與濕度上加入固定 vanilla Elman RNN [27]，比較 15、60 與 1,440 分鐘 horizon。四種方法先共用同一 eligible-endpoint index：每個案例具有相同四筆 origin-history、chronological 70/30 split、target 與 test rows；sequence linear regression 與 RNN 取得相同 raw history，physics-structured readout 只能從相同 origin records 衍生特徵，且主要比較不載入額外 synthetic learned checkpoint。每個 horizon 另保存各方法相同的 endpoint 與 input-content hash。"
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1596
+      }
+    },
+    {
+      "id": "zh-28",
+      "zh_number": 28,
+      "title": "A New Approach to Linear Filtering and Prediction Problems",
+      "reference": "R. E. Kalman, A New Approach to Linear Filtering and Prediction Problems, Journal of Basic Engineering, vol. 82, no. 1, pp. 35-45, 1960. DOI: 10.1115/1.3662552",
+      "kind": "paper",
+      "bib_key": null,
+      "doi": "10.1115/1.3662552",
+      "purpose": "Kalman 狀態估測架構依據；本地受控濾波比較。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 438,
+          "section": "2.9 動態精準環境應用與 Kalman Filter 方向",
+          "context": "Kalman filter 可作為動態狀態估測的參考。原始 Kalman 架構要求明確的 state transition、observation model、process noise 與 measurement noise [28]。Speetjens 等人以 extended Kalman filter 進行溫室模型線上參數調整，支持其作為 time-varying model adaptation 的可能性 [32]；但 van Mourik 等人比較 moving average、EKF 與 UKF 時，沒有得到普遍改善，並指出基礎 climate model 的準確性會主導 filtering 成效 [31]。本研究因此先執行可稽核的 scalar random-walk controlled filtering：保留 normalized SML2010 溫濕度序列作 task reference，以固定 seed 注入三種受控 measurement noise，並讓未濾波、causal MA(3) 與 linear Kalman 使用相同 corrupted observations 與 test rows。此結果只定位 Kalman 作為 temporal filtering comparator；實體 sensing node、online parameter adaptation 與 EKF/UKF 仍需另行驗證。"
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1597
+      }
+    },
+    {
+      "id": "zh-29",
+      "zh_number": 29,
+      "title": "Reaching Natural Growth: The Significance of Light and Temperature Fluctuations in Plant Performance in Indoor Growth Facilities",
+      "reference": "Camilo Chiang, Daniel Bånkestad, Günter Hoch, Reaching Natural Growth: The Significance of Light and Temperature Fluctuations in Plant Performance in Indoor Growth Facilities, Plants, vol. 9, no. 10, 1312, 2020. DOI: 10.3390/plants9101312",
+      "kind": "paper",
+      "bib_key": "chiang2020naturalgrowth",
+      "doi": "10.3390/plants9101312",
+      "purpose": "植物生長環境的動態溫濕度／光照設定值候選應用。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 436,
+          "section": "2.9 動態精準環境應用與 Kalman Filter 方向",
+          "context": "現階段最符合「封閉環境、動態設定值、空間不均與稀疏感測」的候選，是小型植物生長室或植物工廠模組。Chiang、Bånkestad 與 Hoch 比較固定、正弦波與追蹤自然變化的溫度、濕度與光照設定，顯示環境波動方式會影響植物表現 [29]；Kim 等人也在人工光植物工廠中使用日夜溫差與光週期處理幼苗 [30]。不過，本研究目前只涵蓋 20–30 °C，文獻中任何超出此區間的處理都只能視為 out-of-domain 方法參考。另一方面，現有照度變數採 lux，不能代替植物 PPFD/PAR；系統也缺少 CO2、基質水分、氣流與生物量或品質等 endpoint。因此，封閉植物生長目前只是候選研究方向，不是已驗證部署或植物效益主張。"
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1598
+      }
+    },
+    {
+      "id": "zh-30",
+      "zh_number": 30,
+      "title": "Preventing Overgrowth of Cucumber and Tomato Seedlings Using Difference between Day and Night Temperature in a Plant Factory with Artificial Lighting",
+      "reference": "Young Ho Kim et al., Preventing Overgrowth of Cucumber and Tomato Seedlings Using Difference between Day and Night Temperature in a Plant Factory with Artificial Lighting, Plants, vol. 12, no. 17, 3164, 2023. DOI: 10.3390/plants12173164",
+      "kind": "paper",
+      "bib_key": null,
+      "doi": "10.3390/plants12173164",
+      "purpose": "植物工廠日夜溫差及光週期的候選應用。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 436,
+          "section": "2.9 動態精準環境應用與 Kalman Filter 方向",
+          "context": "現階段最符合「封閉環境、動態設定值、空間不均與稀疏感測」的候選，是小型植物生長室或植物工廠模組。Chiang、Bånkestad 與 Hoch 比較固定、正弦波與追蹤自然變化的溫度、濕度與光照設定，顯示環境波動方式會影響植物表現 [29]；Kim 等人也在人工光植物工廠中使用日夜溫差與光週期處理幼苗 [30]。不過，本研究目前只涵蓋 20–30 °C，文獻中任何超出此區間的處理都只能視為 out-of-domain 方法參考。另一方面，現有照度變數採 lux，不能代替植物 PPFD/PAR；系統也缺少 CO2、基質水分、氣流與生物量或品質等 endpoint。因此，封閉植物生長目前只是候選研究方向，不是已驗證部署或植物效益主張。"
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1599
+      }
+    },
+    {
+      "id": "zh-31",
+      "zh_number": 31,
+      "title": "Improving climate monitoring in greenhouse cultivation via model based filtering",
+      "reference": "Simon van Mourik, Peter J. M. van Beveren, Irineo L. López-Cruz, Eldert J. van Henten, Improving climate monitoring in greenhouse cultivation via model based filtering, Biosystems Engineering, vol. 181, pp. 40-51, 2019. DOI: 10.1016/j.biosystemseng.2019.03.001",
+      "kind": "paper",
+      "bib_key": "vanmourik2019filtering",
+      "doi": "10.1016/j.biosystemseng.2019.03.001",
+      "purpose": "模型濾波的限制與負向結果背景，約束 Kalman 效益主張。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 438,
+          "section": "2.9 動態精準環境應用與 Kalman Filter 方向",
+          "context": "Kalman filter 可作為動態狀態估測的參考。原始 Kalman 架構要求明確的 state transition、observation model、process noise 與 measurement noise [28]。Speetjens 等人以 extended Kalman filter 進行溫室模型線上參數調整，支持其作為 time-varying model adaptation 的可能性 [32]；但 van Mourik 等人比較 moving average、EKF 與 UKF 時，沒有得到普遍改善，並指出基礎 climate model 的準確性會主導 filtering 成效 [31]。本研究因此先執行可稽核的 scalar random-walk controlled filtering：保留 normalized SML2010 溫濕度序列作 task reference，以固定 seed 注入三種受控 measurement noise，並讓未濾波、causal MA(3) 與 linear Kalman 使用相同 corrupted observations 與 test rows。此結果只定位 Kalman 作為 temporal filtering comparator；實體 sensing node、online parameter adaptation 與 EKF/UKF 仍需另行驗證。"
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1600
+      }
+    },
+    {
+      "id": "zh-32",
+      "zh_number": 32,
+      "title": "Towards an adaptive model for greenhouse control",
+      "reference": "S. L. Speetjens, J. D. Stigter, G. van Straten, Towards an adaptive model for greenhouse control, Computers and Electronics in Agriculture, vol. 67, no. 1-2, pp. 1-8, 2009. DOI: 10.1016/j.compag.2009.01.012",
+      "kind": "paper",
+      "bib_key": "speetjens2009adaptive",
+      "doi": "10.1016/j.compag.2009.01.012",
+      "purpose": "溫室 EKF 線上參數調整的候選方法背景。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 438,
+          "section": "2.9 動態精準環境應用與 Kalman Filter 方向",
+          "context": "Kalman filter 可作為動態狀態估測的參考。原始 Kalman 架構要求明確的 state transition、observation model、process noise 與 measurement noise [28]。Speetjens 等人以 extended Kalman filter 進行溫室模型線上參數調整，支持其作為 time-varying model adaptation 的可能性 [32]；但 van Mourik 等人比較 moving average、EKF 與 UKF 時，沒有得到普遍改善，並指出基礎 climate model 的準確性會主導 filtering 成效 [31]。本研究因此先執行可稽核的 scalar random-walk controlled filtering：保留 normalized SML2010 溫濕度序列作 task reference，以固定 seed 注入三種受控 measurement noise，並讓未濾波、causal MA(3) 與 linear Kalman 使用相同 corrupted observations 與 test rows。此結果只定位 Kalman 作為 temporal filtering comparator；實體 sensing node、online parameter adaptation 與 EKF/UKF 仍需另行驗證。"
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1601
+      }
+    },
+    {
+      "id": "zh-33",
+      "zh_number": 33,
+      "title": "Model and data driven transient thermal system modelings for contained data centers",
+      "reference": "Yewan Wang, Yiru Zhang, David Nörtershäuser, Stéphane Le Masson, Jean-Marc Menaud, Model and data driven transient thermal system modelings for contained data centers, Energy and Buildings, vol. 258, 111790, 2022. DOI: 10.1016/j.enbuild.2021.111790",
+      "kind": "paper",
+      "bib_key": "wang2022contained",
+      "doi": "10.1016/j.enbuild.2021.111790",
+      "purpose": "E11A thermal-balance 與 data-driven 模型分工的設計參考。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 1391,
+          "section": "5.9.3.4 機箱 BMC 公開資料轉移比較",
+          "context": "為把機箱／設備櫃方向由規劃推進為可否證的第一階段實驗，本研究使用 Zhang et al. [34] 對應的公開 BMC dataset [35]，執行 E11A next-observation outlet-air temporal comparison。資料欄位包含 inlet/outlet temperature、PSU power 與 fan RPM；比較方法為 persistence、一般 linear readout，以及以 inlet-outlet temperature difference、power 與 fan-modulated difference 為特徵的 thermal-balance readout。所有方法共用 chronological 60/20/20 split、ridge=0.001、相同 endpoints 與 20–30 °C air-state 範圍。此設計參考 contained data-center lumped thermal model 與 data-driven model 的分工 [33]，但不宣稱重現原文模型。"
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1602
+      }
+    },
+    {
+      "id": "zh-34",
+      "zh_number": 34,
+      "title": "Thermal Elasticity-Aware Host Resource Provision for Carbon Efficiency on Virtualized Servers",
+      "reference": "Da Zhang, Haojun Xia, Xiaotong Wang, Yanchang Feng, Haohao Liu, Bibo Tu, Thermal Elasticity-Aware Host Resource Provision for Carbon Efficiency on Virtualized Servers, IEEE Transactions on Computers, vol. 74, no. 11, pp. 3682-3695, 2025. DOI: 10.1109/TC.2025.3603698",
+      "kind": "paper",
+      "bib_key": "zhang2025teap",
+      "doi": "10.1109/TC.2025.3603698",
+      "purpose": "BMC 公開資料所對應的伺服器研究背景。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 1391,
+          "section": "5.9.3.4 機箱 BMC 公開資料轉移比較",
+          "context": "為把機箱／設備櫃方向由規劃推進為可否證的第一階段實驗，本研究使用 Zhang et al. [34] 對應的公開 BMC dataset [35]，執行 E11A next-observation outlet-air temporal comparison。資料欄位包含 inlet/outlet temperature、PSU power 與 fan RPM；比較方法為 persistence、一般 linear readout，以及以 inlet-outlet temperature difference、power 與 fan-modulated difference 為特徵的 thermal-balance readout。所有方法共用 chronological 60/20/20 split、ridge=0.001、相同 endpoints 與 20–30 °C air-state 範圍。此設計參考 contained data-center lumped thermal model 與 data-driven model 的分工 [33]，但不宣稱重現原文模型。"
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1603
+      }
+    },
+    {
+      "id": "zh-35",
+      "zh_number": 35,
+      "title": "bmcdata: A dataset collected from server's Baseboard Management Controller",
+      "reference": "arealuser, bmcdata: A dataset collected from server's Baseboard Management Controller (BMC), GitHub dataset, commit 24904fa9a9bac49a3f6f3198bb04e1be5e2707ea, 2026. Available: https://github.com/arealuser/bmcdata",
+      "kind": "dataset",
+      "bib_key": "bmcdata2026",
+      "doi": null,
+      "purpose": "E11A 與 BMC 後續實驗的資料來源。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 1391,
+          "section": "5.9.3.4 機箱 BMC 公開資料轉移比較",
+          "context": "為把機箱／設備櫃方向由規劃推進為可否證的第一階段實驗，本研究使用 Zhang et al. [34] 對應的公開 BMC dataset [35]，執行 E11A next-observation outlet-air temporal comparison。資料欄位包含 inlet/outlet temperature、PSU power 與 fan RPM；比較方法為 persistence、一般 linear readout，以及以 inlet-outlet temperature difference、power 與 fan-modulated difference 為特徵的 thermal-balance readout。所有方法共用 chronological 60/20/20 split、ridge=0.001、相同 endpoints 與 20–30 °C air-state 範圍。此設計參考 contained data-center lumped thermal model 與 data-driven model 的分工 [33]，但不宣稱重現原文模型。"
+        },
+        {
+          "path": "docs/papers/ieee/paper.tex",
+          "line": 60,
+          "section": "Related Work",
+          "context": "Digital twins increasingly represent physical systems in manufacturing, infrastructure, and smart buildings \\cite{tao2019digitaltwin,fuller2020digitaltwin}. Building reviews emphasize BIM/BMS connectivity, while sparse-sensor spatial estimation remains less explored \\cite{cespedes2024bdtreview}. Reduced-order and grey-box models are interpretable alternatives to CFD \\cite{bacher2011heatdynamics,hietaharju2018dynamicmodel}; zonal and hybrid models retain dominant non-uniformity at lower cost \\cite{teshome2004zonalreview,huljak2025hybrid}. Public BMC telemetry exposes temperatures, fan speeds, and power \\cite{bmcdata2026}. Hybrid forecasting can learn simulation--measurement residuals \\cite{oh2024hybridmodeling}, and data assimilation shows that finite observations and sensor placement matter \\cite{qian2025dafield,chen2007zonalnetwork}. This work couples sparse sensing with appliance-aware influence bases and residual calibration; IDW \\cite{shepard1968two} is the geometry-free baseline. Local APIs, a web demo, and an MCP-compatible layer expose the estimator but remain secondary \\cite{mcp2025}."
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1604
+      }
+    },
+    {
+      "id": "zh-36",
+      "zh_number": 36,
+      "title": "Data from the AAU Server Room",
+      "reference": "Simon Pommerencke Melgaard, Thomas Juul, Jesper Ellerbaek Nielsen, Rasmus Lund Jensen, Data from the AAU Server Room, version 4, Zenodo, 2026. DOI: 10.5281/zenodo.19398358",
+      "kind": "dataset",
+      "bib_key": "melgaard2026aau",
+      "doi": "10.5281/zenodo.19398358",
+      "purpose": "AAU 空間估測及 commissioning 系列的資料來源。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 1407,
+          "section": "5.9.3.5 AAU 伺服器機房空間轉移比較",
+          "context": "E11B 依預註冊協定使用 AAU Server Room v4 資料集 [36] 的 12 個固定 4 MiB 位元組區段，並以設備與量測研究 [37] 交叉確認量測背景。42 個高信心 PT100 位置經一分鐘中位數彙整後形成 1,641 個可評估快照；六個位置語意不明的冷卻單元通道於分析前排除。"
+        },
+        {
+          "path": "docs/papers/ieee/paper.tex",
+          "line": 256,
+          "section": "Bounded AAU Enclosure Transfer",
+          "context": "On 42 mapped AAU locations~\\cite{melgaard2026aau,sarikaya2025energy}, E11B (1,641 snapshots) rejects global IDW: nearest-neighbor MAE is 1.175 vs. 1.687~$^\\circ$C with 30/42 vs. 6/42 wins (H-ENC-02 unsupported). E11C (1,505 snapshots) lowers MAE from 1.301 to 1.223~$^\\circ$C but wins only 21/42 (H-ENC-03 unsupported). E11D role conditioning lowers global-mean MAE/RMSE from 2.3972/2.9748 to 1.6517/2.3648~$^\\circ$C, wins 30/42, and gives CI $[0.6867,0.8124]~^\\circ$C; H-ENC-04 is predictive, not causal. E11E reaches MAE 1.0187~$^\\circ$C but P95 3.7699~$^\\circ$C and 25/42 wins; E11G reaches 0.8945/1.5415/3.1013~$^\\circ$C but 21/42, so both yield \\texttt{no\\_candidate\\_forwarded}. Two-day E11H commissioning reaches MAE 0.4039~$^\\circ$C. Its frozen no-refit E11F map confirms MAE/RMSE/P95 0.3966/0.6723/1.2756~$^\\circ$C, 39/42 wins, and CI $[0.5851,0.9274]~^\\circ$C. The decision is \\texttt{h\\_enc\\_05\\_supported\\_within\\_campaign}: dates overlap development, while NTC hardware and cross-enclosure validity remain untested."
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1605
+      }
+    },
+    {
+      "id": "zh-37",
+      "zh_number": 37,
+      "title": "Energy efficiency enhancement in two European data centers through CFD modeling",
+      "reference": "Onur Muhammed Sarikaya et al., Energy efficiency enhancement in two European data centers through CFD modeling, Scientific Reports, vol. 15, 24952, 2025. DOI: 10.1038/s41598-025-11048-0",
+      "kind": "paper",
+      "bib_key": "sarikaya2025energy",
+      "doi": "10.1038/s41598-025-11048-0",
+      "purpose": "交叉確認 AAU 機房設備及量測背景。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 1407,
+          "section": "5.9.3.5 AAU 伺服器機房空間轉移比較",
+          "context": "E11B 依預註冊協定使用 AAU Server Room v4 資料集 [36] 的 12 個固定 4 MiB 位元組區段，並以設備與量測研究 [37] 交叉確認量測背景。42 個高信心 PT100 位置經一分鐘中位數彙整後形成 1,641 個可評估快照；六個位置語意不明的冷卻單元通道於分析前排除。"
+        },
+        {
+          "path": "docs/papers/ieee/paper.tex",
+          "line": 256,
+          "section": "Bounded AAU Enclosure Transfer",
+          "context": "On 42 mapped AAU locations~\\cite{melgaard2026aau,sarikaya2025energy}, E11B (1,641 snapshots) rejects global IDW: nearest-neighbor MAE is 1.175 vs. 1.687~$^\\circ$C with 30/42 vs. 6/42 wins (H-ENC-02 unsupported). E11C (1,505 snapshots) lowers MAE from 1.301 to 1.223~$^\\circ$C but wins only 21/42 (H-ENC-03 unsupported). E11D role conditioning lowers global-mean MAE/RMSE from 2.3972/2.9748 to 1.6517/2.3648~$^\\circ$C, wins 30/42, and gives CI $[0.6867,0.8124]~^\\circ$C; H-ENC-04 is predictive, not causal. E11E reaches MAE 1.0187~$^\\circ$C but P95 3.7699~$^\\circ$C and 25/42 wins; E11G reaches 0.8945/1.5415/3.1013~$^\\circ$C but 21/42, so both yield \\texttt{no\\_candidate\\_forwarded}. Two-day E11H commissioning reaches MAE 0.4039~$^\\circ$C. Its frozen no-refit E11F map confirms MAE/RMSE/P95 0.3966/0.6723/1.2756~$^\\circ$C, 39/42 wins, and CI $[0.5851,0.9274]~^\\circ$C. The decision is \\texttt{h\\_enc\\_05\\_supported\\_within\\_campaign}: dates overlap development, while NTC hardware and cross-enclosure validity remain untested."
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1606
+      }
+    },
+    {
+      "id": "zh-38",
+      "zh_number": 38,
+      "title": "Fast inverse distance weighting-based spatiotemporal interpolation: A web-based application of interpolating daily fine particulate matter PM2.5 in the contiguous U.S. using parallel programming and k-d tree",
+      "reference": "L. Li, T. Losser, C. Yorke, R. Piltner, Fast inverse distance weighting-based spatiotemporal interpolation, International Journal of Environmental Research and Public Health, vol. 11, pp. 9101-9141, 2014. DOI: 10.3390/ijerph110909101",
+      "kind": "paper",
+      "bib_key": "li2014fast",
+      "doi": "10.3390/ijerph110909101",
+      "purpose": "E11C 局部 IDW／時空插值的方法依據。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 1419,
+          "section": "5.9.3.6 E11C 局部鄰域獨立確認",
+          "context": "由於 E11B 已揭露全域 IDW 的弱點，E11C 不重用 discovery rows，而在相鄰 E11B ranges 的 11 個空隙各固定一個 4 MiB range。方法在下載前固定為最近鄰、三最近點 local IDW（k=3, p=2）與全域 IDW；局部 IDW 的使用依據為 local-neighborhood interpolation 文獻 [38], [39]，資料中心 IDW 與 rack cooling 文獻 [40], [41] 只作方法與邊界參考，不視為同任務重現。11 個 ranges 形成 89,587 筆合格列、1,505 個一分鐘快照與 11 個 calendar-day bootstrap blocks。"
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1607
+      }
+    },
+    {
+      "id": "zh-39",
+      "zh_number": 39,
+      "title": "Fast k-nearest-neighbors calculation for interpolation of radar reflectivity field",
+      "reference": "F. Gao, Fast k-nearest-neighbors calculation for interpolation of radar reflectivity field, Journal of Atmospheric and Oceanic Technology, vol. 26, pp. 1410-1414, 2009. DOI: 10.1175/2009JTECHA1234.1",
+      "kind": "paper",
+      "bib_key": "gao2009fast",
+      "doi": "10.1175/2009JTECHA1234.1",
+      "purpose": "E11C 最近鄰搜尋／局部插值的方法依據。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 1419,
+          "section": "5.9.3.6 E11C 局部鄰域獨立確認",
+          "context": "由於 E11B 已揭露全域 IDW 的弱點，E11C 不重用 discovery rows，而在相鄰 E11B ranges 的 11 個空隙各固定一個 4 MiB range。方法在下載前固定為最近鄰、三最近點 local IDW（k=3, p=2）與全域 IDW；局部 IDW 的使用依據為 local-neighborhood interpolation 文獻 [38], [39]，資料中心 IDW 與 rack cooling 文獻 [40], [41] 只作方法與邊界參考，不視為同任務重現。11 個 ranges 形成 89,587 筆合格列、1,505 個一分鐘快照與 11 個 calendar-day bootstrap blocks。"
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1608
+      }
+    },
+    {
+      "id": "zh-40",
+      "zh_number": 40,
+      "title": "Inverse distance weighting and kriging spatial interpolation for data center thermal monitoring",
+      "reference": "E. Oktavia, Widyawan, I. W. Mustika, Inverse distance weighting and kriging spatial interpolation for data center thermal monitoring, ICITISEE, pp. 69-74, 2016. DOI: 10.1109/ICITISEE.2016.7803050",
+      "kind": "paper",
+      "bib_key": "oktavia2016idw",
+      "doi": "10.1109/ICITISEE.2016.7803050",
+      "purpose": "資料中心 IDW／kriging 的相關方法與研究邊界。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 1419,
+          "section": "5.9.3.6 E11C 局部鄰域獨立確認",
+          "context": "由於 E11B 已揭露全域 IDW 的弱點，E11C 不重用 discovery rows，而在相鄰 E11B ranges 的 11 個空隙各固定一個 4 MiB range。方法在下載前固定為最近鄰、三最近點 local IDW（k=3, p=2）與全域 IDW；局部 IDW 的使用依據為 local-neighborhood interpolation 文獻 [38], [39]，資料中心 IDW 與 rack cooling 文獻 [40], [41] 只作方法與邊界參考，不視為同任務重現。11 個 ranges 形成 89,587 筆合格列、1,505 個一分鐘快照與 11 個 calendar-day bootstrap blocks。"
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1609
+      }
+    },
+    {
+      "id": "zh-41",
+      "zh_number": 41,
+      "title": "A time-varying state-space model for real-time temperature predictions in rack-based cooling data centers",
+      "reference": "X. Tong et al., A time-varying state-space model for real-time temperature predictions in rack-based cooling data centers, Applied Thermal Engineering, vol. 230, 120737, 2023. DOI: 10.1016/j.applthermaleng.2023.120737",
+      "kind": "paper",
+      "bib_key": "tong2023state",
+      "doi": "10.1016/j.applthermaleng.2023.120737",
+      "purpose": "機架冷卻的動態 state-space 溫度預測方法參考。",
+      "citations": [
+        {
+          "path": "docs/thesis/thesis_draft_zh.md",
+          "line": 1419,
+          "section": "5.9.3.6 E11C 局部鄰域獨立確認",
+          "context": "由於 E11B 已揭露全域 IDW 的弱點，E11C 不重用 discovery rows，而在相鄰 E11B ranges 的 11 個空隙各固定一個 4 MiB range。方法在下載前固定為最近鄰、三最近點 local IDW（k=3, p=2）與全域 IDW；局部 IDW 的使用依據為 local-neighborhood interpolation 文獻 [38], [39]，資料中心 IDW 與 rack cooling 文獻 [40], [41] 只作方法與邊界參考，不視為同任務重現。11 個 ranges 形成 89,587 筆合格列、1,505 個一分鐘快照與 11 個 calendar-day bootstrap blocks。"
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/thesis/thesis_draft_zh.md",
+        "line": 1610
+      }
+    },
+    {
+      "id": "tao2019digitaltwin",
+      "zh_number": null,
+      "title": "Digital Twin in Industry: State-of-the-Art",
+      "reference": "F. Tao and H. Zhang and A. Liu and A. Y. C. Nee, Digital Twin in Industry: State-of-the-Art, IEEE Transactions on Industrial Informatics, 2019.",
+      "kind": "paper",
+      "bib_key": "tao2019digitaltwin",
+      "doi": null,
+      "purpose": "英文稿 Related Work 的數位孿生定義、技術及研究挑戰背景。",
+      "citations": [
+        {
+          "path": "docs/papers/ieee/paper.tex",
+          "line": 60,
+          "section": "Related Work",
+          "context": "Digital twins increasingly represent physical systems in manufacturing, infrastructure, and smart buildings \\cite{tao2019digitaltwin,fuller2020digitaltwin}. Building reviews emphasize BIM/BMS connectivity, while sparse-sensor spatial estimation remains less explored \\cite{cespedes2024bdtreview}. Reduced-order and grey-box models are interpretable alternatives to CFD \\cite{bacher2011heatdynamics,hietaharju2018dynamicmodel}; zonal and hybrid models retain dominant non-uniformity at lower cost \\cite{teshome2004zonalreview,huljak2025hybrid}. Public BMC telemetry exposes temperatures, fan speeds, and power \\cite{bmcdata2026}. Hybrid forecasting can learn simulation--measurement residuals \\cite{oh2024hybridmodeling}, and data assimilation shows that finite observations and sensor placement matter \\cite{qian2025dafield,chen2007zonalnetwork}. This work couples sparse sensing with appliance-aware influence bases and residual calibration; IDW \\cite{shepard1968two} is the geometry-free baseline. Local APIs, a web demo, and an MCP-compatible layer expose the estimator but remain secondary \\cite{mcp2025}."
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/papers/ieee/references.bib",
+        "line": 1
+      }
+    },
+    {
+      "id": "fuller2020digitaltwin",
+      "zh_number": null,
+      "title": "Digital Twin: Enabling Technologies, Challenges and Open Research",
+      "reference": "A. Fuller and Z. Fan and C. Day and C. Barlow, Digital Twin: Enabling Technologies, Challenges and Open Research, IEEE Access, 2020.",
+      "kind": "paper",
+      "bib_key": "fuller2020digitaltwin",
+      "doi": null,
+      "purpose": "英文稿 Related Work 的數位孿生定義、技術及研究挑戰背景。",
+      "citations": [
+        {
+          "path": "docs/papers/ieee/paper.tex",
+          "line": 60,
+          "section": "Related Work",
+          "context": "Digital twins increasingly represent physical systems in manufacturing, infrastructure, and smart buildings \\cite{tao2019digitaltwin,fuller2020digitaltwin}. Building reviews emphasize BIM/BMS connectivity, while sparse-sensor spatial estimation remains less explored \\cite{cespedes2024bdtreview}. Reduced-order and grey-box models are interpretable alternatives to CFD \\cite{bacher2011heatdynamics,hietaharju2018dynamicmodel}; zonal and hybrid models retain dominant non-uniformity at lower cost \\cite{teshome2004zonalreview,huljak2025hybrid}. Public BMC telemetry exposes temperatures, fan speeds, and power \\cite{bmcdata2026}. Hybrid forecasting can learn simulation--measurement residuals \\cite{oh2024hybridmodeling}, and data assimilation shows that finite observations and sensor placement matter \\cite{qian2025dafield,chen2007zonalnetwork}. This work couples sparse sensing with appliance-aware influence bases and residual calibration; IDW \\cite{shepard1968two} is the geometry-free baseline. Local APIs, a web demo, and an MCP-compatible layer expose the estimator but remain secondary \\cite{mcp2025}."
+        }
+      ],
+      "bibliography_location": {
+        "path": "docs/papers/ieee/references.bib",
+        "line": 11
+      }
+    }
+  ],
+  "bib_only_not_used": [
+    {
+      "title": "ANSI/ASHRAE Standard 55: Thermal Environmental Conditions for Human Occupancy",
+      "organization": "ASHRAE",
+      "year": "2023",
+      "key": "ashrae55",
+      "type": "standard",
+      "line": 28
+    },
+    {
+      "title": "ISO 7730: Ergonomics of the Thermal Environment -- Analytical Determination and Interpretation of Thermal Comfort Using Calculation of the PMV and PPD Indices and Local Thermal Comfort Criteria",
+      "organization": "International Organization for Standardization",
+      "year": "2005",
+      "key": "iso7730",
+      "type": "standard",
+      "line": 34
+    },
+    {
+      "author": "{IEEE}",
+      "title": "IEEE Article Templates and Conference Templates",
+      "howpublished": "\\url{https://www.ieee.org/conferences/publishing/templates.html}",
+      "note": "Accessed: 2026-04-10",
+      "key": "ieeeauthorcenter",
+      "type": "misc",
+      "line": 47
+    }
+  ]
+}

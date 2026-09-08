@@ -1,0 +1,15 @@
+{
+  "source": "https://archive.ubuntu.com/ubuntu/pool/universe/g/gcc-7/libgfortran4_7.5.0-6ubuntu2_amd64.deb",
+  "files": [
+    {
+      "path": "outputs/vendor/libgfortran4_7.5.0-6ubuntu2_amd64.deb",
+      "sha256": "9191a744ea8e1cb877c26bfb1cb6efa06305be49c7053eecfee5f1037a8005d5"
+    },
+    {
+      "path": "outputs/vendor/boptest-runtime/usr/lib/x86_64-linux-gnu/libgfortran.so.4.0.0",
+      "sha256": "3f198ada9cdcda0c6b2fba24d6654c839ea91d0e8246c8ddba5b1b2851dff4b2"
+    }
+  ],
+  "installation": "Extracted locally with dpkg-deb; no system installation",
+  "notice": "outputs/vendor/boptest-runtime/usr/share/doc/libgfortran4/copyright"
+}

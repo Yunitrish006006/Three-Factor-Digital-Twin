@@ -1,0 +1,37 @@
+{
+  "selected": [
+    {
+      "budget_h": 2,
+      "method": "auto_pi",
+      "q": 0.5,
+      "trial_trace_sha256": "495032ff52fd498aaf33eb93c1e25367ffdc3cdf5d5ec584b4fb761290fbd8e4"
+    },
+    {
+      "budget_h": 2,
+      "method": "proposed",
+      "q": 0.5,
+      "trial_trace_sha256": "e6db4e996223ce8a7ff4fb65155457b641f58cb7e64da77293e58a34c940c38e"
+    },
+    {
+      "budget_h": 6,
+      "method": "auto_pi",
+      "q": 0.5,
+      "trial_trace_sha256": "54b758a6dc6b5e0547a23f39045c5efab862a9f64900ae0ab5db850f6570cf25"
+    },
+    {
+      "budget_h": 6,
+      "method": "proposed",
+      "q": 0.5,
+      "trial_trace_sha256": "7243ba1738396c3aef5ec09f57c4a5a9c86535f3d2f815779a151b271ce6a073"
+    }
+  ],
+  "sources": {
+    "scripts/run_boptest_cross_plant.py": "3ad0154d942737e43f9263c1cd9bcc9ebbff2292cc319c24800f73169d9f5990",
+    "scripts/boptest_cross_plant_devices.json": "83c008c20b47f4c5da77dd832b45558dd064a75a9c705190f80f730d104fc100",
+    "digital_twin/control/portable_pi.py": "2ce85a77f1d16e1dbb8fbcd847ebe722233790a9658cc3946a9cac9ed895ac30",
+    "openspec/changes/evaluate-boptest-cross-plant/protocol.md": "c3980b61ad10121a8e3061ded6131d66ef6c0a903b7dc54c4ef0266bc23a4b6f",
+    "outputs/vendor/boptest-v0.9.0/testcases/bestest_air/models/wrapped.fmu": "158008fa3b635280a67dfed8bab5804d1f9a96d218b467dfebab77e5cbf8b86a",
+    "outputs/vendor/boptest-v0.9.0/testcases/bestest_hydronic/models/wrapped.fmu": "365b3085d97cc4620c06b6036156126a056d7f160fcc4f181d6b2fac4b05743b"
+  },
+  "pre_evaluation_result_sha256": "270e023dd7b2cd2dba251731c15f30fd543652c45bdb999a3c59a1317297e89a"
+}

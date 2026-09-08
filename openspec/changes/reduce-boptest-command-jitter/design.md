@@ -1,0 +1,4 @@
+# Design
+BPJ-001: separate FMI adapter with explicit queue delay and applied-supply feedback. Filtering affects requested actuator commands, not truth used for scoring. First output fixed for handover; integral back-calculation handles filter mismatch. All algorithms have access to actual previous command. Legacy v4 ignores it by its original design. Preserve historical hashes.
+
+Decision interpretation: the protocol intentionally permits up to+0.02 C MAE and+0.2 C maximum-error difference while requiring20% jitter reduction. Passing it is an exploratory engineering tradeoff, not a statistical equivalence claim or an industrial precision specification. Distinguish mean tracking, worst excursion and action variation in the report. The adapter models only a fixed discrete queue delay; actual actuator dynamics, delay jitter and unknown delay remain untested.

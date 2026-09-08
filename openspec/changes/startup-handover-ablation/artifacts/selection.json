@@ -1,0 +1,276 @@
+{
+  "selections": {
+    "air": {
+      "policy": null,
+      "decisions": [
+        {
+          "policy": "15_taper",
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": false
+          }
+        },
+        {
+          "policy": "15_retain",
+          "passed": false,
+          "checks": {
+            "early_gain": true,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": false
+          }
+        },
+        {
+          "policy": "55_taper",
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": false
+          }
+        },
+        {
+          "policy": "55_retain",
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": false
+          }
+        }
+      ]
+    },
+    "hydronic": {
+      "policy": "15_retain",
+      "decisions": [
+        {
+          "policy": "15_taper",
+          "passed": true,
+          "checks": {
+            "early_gain": true,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          }
+        },
+        {
+          "policy": "15_retain",
+          "passed": true,
+          "checks": {
+            "early_gain": true,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          }
+        },
+        {
+          "policy": "55_taper",
+          "passed": true,
+          "checks": {
+            "early_gain": true,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          }
+        },
+        {
+          "policy": "55_retain",
+          "passed": true,
+          "checks": {
+            "early_gain": true,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          }
+        }
+      ]
+    },
+    "heat_pump": {
+      "policy": null,
+      "decisions": [
+        {
+          "policy": "15_taper",
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          }
+        },
+        {
+          "policy": "15_retain",
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          }
+        },
+        {
+          "policy": "55_taper",
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          }
+        },
+        {
+          "policy": "55_retain",
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          }
+        }
+      ]
+    },
+    "apartment": {
+      "policy": null,
+      "decisions": [
+        {
+          "policy": "15_taper",
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          }
+        },
+        {
+          "policy": "15_retain",
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          }
+        },
+        {
+          "policy": "55_taper",
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          }
+        },
+        {
+          "policy": "55_retain",
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          }
+        }
+      ]
+    },
+    "commercial": {
+      "policy": null,
+      "decisions": [
+        {
+          "policy": "15_taper",
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          }
+        },
+        {
+          "policy": "15_retain",
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          }
+        },
+        {
+          "policy": "55_taper",
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          }
+        },
+        {
+          "policy": "55_retain",
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          }
+        }
+      ]
+    }
+  },
+  "development_sources": {
+    "openspec/changes/startup-handover-ablation/artifacts/air_development.json": "2c4e7b3d4ba8c7f723ef22e94733f7c5327cf132dbce56b61ecdfff36a0f5407",
+    "openspec/changes/startup-handover-ablation/artifacts/hydronic_development.json": "6a145e3e696451d9567a2fde175f8866b29b975edf0aa2863ec1b9b7939e3160",
+    "openspec/changes/startup-handover-ablation/artifacts/heat_pump_development.json": "135b6bdda4414c0bff10f0201244fcc5afd734599144ff68212f4e2943d53719",
+    "openspec/changes/startup-handover-ablation/artifacts/apartment_development.json": "b9c2b49be3b5a5a093ebf8d823f854fa01c24b2678eadefd1cfffe295df2ce49",
+    "openspec/changes/startup-handover-ablation/artifacts/commercial_development.json": "33802b743d925db373b4e1ac778a2fec5c371a6b4cc2636505a202d07fd5711b"
+  }
+}

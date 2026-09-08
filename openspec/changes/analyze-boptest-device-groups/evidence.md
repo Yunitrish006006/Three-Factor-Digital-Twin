@@ -1,0 +1,15 @@
+# DGA-001 Actual descriptive evidence
+
+All ten plant/budget entries from MCC-001 were analyzed with no new simulations, fitted models or changed controls. Groups: both improve = air2h,air6h,commercial2h; both worsen = hydronic2h,commercial6h; mixed = hydronic6h; exact fallback = heat_pump2h,heat_pump6h,apartment2h; rejected = apartment6h. All 18 paired outcomes preserved.
+
+The improving budgets have two-date average compensation-bound occupancy approximately23–27%; worsening budgets approximately66–88%. This is post-result association, not a threshold or causal finding. Hydronic6h day25 is a counterexample to interpreting high occupancy as necessarily large deterioration:54.6% occupancy but only0.00000748°C MAE loss. Compensation at its±0.1 bound and actuator saturation at0/1 are different measures.
+
+Improving budgets have identified dominant-pole scales approximately4–19min, but commercial6h also has approximately19min and worsens. Heat-pump80.8/192.3min and apartment234.1min identified scales accompany small/zero ten-step input responses and exact compensation fallback. These are model-derived scales, not independent physical time constants. Model-induced weak-response gating mechanically explains fallback, not an inability of these devices to benefit from other methods.
+
+Commercial2h versus6h is the key within-plant counterexample: calibration validation scores0.01894 versus0.00517°C, similar19min scales and0.22°C ten-step unit response, but improvement switches to deterioration and compensation clips much more persistently. Those validation scores are on different chronological segments, not a same-test prediction comparison. Conversely, hydronic improves from both-date deterioration at2h to a mixed/gate-passing result at6h. More data is not a universal success or failure rule.
+
+All numeric features, innovation summaries, calibration ranges, control saturation and consumed input hashes reside in artifacts/device_groups.json. scripts/analyze_boptest_device_groups.py is read-only with respect to experimental evidence. scripts/build_boptest_device_groups_report.py generates the offline HTML. No causal mechanism, significance, universal classifier or modified controller is inferred from five heterogeneous development FMUs.
+
+ResearchWorkspace derives group/feature nodes with exact JSON-pointer locators and DESCRIPTIVE_ONLY argument edges to the original study. Paper-first hierarchy and original negative/fallback results remain unchanged. No adopted Chinese/English thesis claim changed; this is a separate unadopted analysis with an HTML report and 3D links.
+
+Verification complete:259 tests passed in243.447s. All descriptive input hashes and all ten graph feature JSON pointers match. Offline report links/hash manifest pass; live local paper graph matches generated asset with236 control-research nodes,160 original metric comparisons and ten group features. See artifacts/verification.json and artifacts/graph-sync-verification.json. No remote deployment was performed.

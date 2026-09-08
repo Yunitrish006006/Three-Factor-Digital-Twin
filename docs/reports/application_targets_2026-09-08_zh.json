@@ -1,0 +1,14 @@
+{
+  "status": "PROPOSAL_ONLY",
+  "date": "2026-09-08",
+  "slides": 13,
+  "preferred_application": "APP-FIL-01",
+  "applications": [
+    "APP-FIL-01",
+    "APP-WOOD-01",
+    "APP-PC-01"
+  ],
+  "evidence_file": "openspec/changes/confirm-bmc-temporal-transfer-e15/artifacts/bmc_confirmation_e15_result.json",
+  "evidence_sha256": "2a4b1aad5c3d63b9593c33a1786d184daa0366773e9f149abb437bcf4e341657",
+  "html_sha256": "7c43993c80adc38e866ab32c3f8daba3754f6ab8f578d5f3bf284b14dc205d3f"
+}

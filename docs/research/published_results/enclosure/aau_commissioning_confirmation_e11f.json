@@ -1,0 +1,291 @@
+{
+  "evaluation": {
+    "bootstrap": {
+      "ci_95_lower_c": 0.5851030648955248,
+      "ci_95_upper_c": 0.9273938768586832,
+      "day_blocks": 13,
+      "replicates": 20000,
+      "seed": 20260823,
+      "unit": "calendar_day"
+    },
+    "calendar_overlap": {
+      "calendar_day_disjoint": false,
+      "claim_limit": "unseen bytes within one AAU campaign",
+      "e11f_days": [
+        "2024-09-17",
+        "2024-09-18",
+        "2024-09-19",
+        "2024-09-20",
+        "2024-09-22",
+        "2024-09-23",
+        "2024-09-25",
+        "2024-09-26",
+        "2024-09-27",
+        "2024-09-28",
+        "2024-09-29",
+        "2024-09-30",
+        "2024-10-02"
+      ],
+      "overlap_with_e11g": [
+        "2024-09-17",
+        "2024-09-19",
+        "2024-09-20",
+        "2024-09-22",
+        "2024-09-23",
+        "2024-09-25",
+        "2024-09-26",
+        "2024-09-27",
+        "2024-09-29",
+        "2024-09-30",
+        "2024-10-02"
+      ],
+      "overlap_with_e11h": [
+        "2024-09-18",
+        "2024-09-19",
+        "2024-09-22",
+        "2024-09-25",
+        "2024-09-26",
+        "2024-09-27",
+        "2024-09-28",
+        "2024-09-29"
+      ]
+    },
+    "confirmation_decision": "h_enc_05_supported_within_campaign",
+    "day_blocks": 13,
+    "day_mae_improvement_c": {
+      "2024-09-17": 0.9534719712058926,
+      "2024-09-18": 0.9330541689063604,
+      "2024-09-19": 1.2061445871404408,
+      "2024-09-20": 1.2683266855844084,
+      "2024-09-22": 1.2792861280370174,
+      "2024-09-23": 0.49350943488281623,
+      "2024-09-25": 0.47395048338769397,
+      "2024-09-26": 0.470364045010847,
+      "2024-09-27": 0.5949266289287247,
+      "2024-09-28": 0.532624980085298,
+      "2024-09-29": 0.5085369341522797,
+      "2024-09-30": 0.4942631375598745,
+      "2024-10-02": 0.5093383304791931
+    },
+    "frozen_model_count": 42,
+    "gates": {
+      "absolute_mae_at_most_1_25": true,
+      "absolute_p95_at_most_4_00": true,
+      "absolute_rmse_at_most_1_90": true,
+      "bootstrap_lower_above_zero": true,
+      "lower_mae": true,
+      "lower_p95": true,
+      "lower_rmse": true,
+      "sensor_wins_at_least_26": true
+    },
+    "measurement_count": 63210,
+    "metrics": {
+      "baseline_local_idw_k3_p2": {
+        "mae_c": 1.139855054056188,
+        "n": 63210,
+        "p95_absolute_error_c": 3.5734929487248035,
+        "rmse_c": 1.784969531801367
+      },
+      "frozen_commissioning_sensor_map_v1": {
+        "mae_c": 0.3965785782815439,
+        "n": 63210,
+        "p95_absolute_error_c": 1.2756333707887082,
+        "rmse_c": 0.6723091414856733
+      }
+    },
+    "per_sensor_mae": {
+      "Temperature mod 1 ch 1": {
+        "baseline_mae_c": 0.3848100491708037,
+        "model_mae_c": 0.09533852082837066
+      },
+      "Temperature mod 1 ch 2": {
+        "baseline_mae_c": 4.5020803948539925,
+        "model_mae_c": 0.797157040937748
+      },
+      "Temperature mod 1 ch 3": {
+        "baseline_mae_c": 1.9817172001440362,
+        "model_mae_c": 0.2503448629073878
+      },
+      "Temperature mod 1 ch 4": {
+        "baseline_mae_c": 0.11302980729594976,
+        "model_mae_c": 0.11302980729594976
+      },
+      "Temperature mod 1 ch 5": {
+        "baseline_mae_c": 2.3681453461307287,
+        "model_mae_c": 0.4099521109853357
+      },
+      "Temperature mod 1 ch 6": {
+        "baseline_mae_c": 0.08715565124441295,
+        "model_mae_c": 0.06335474215338252
+      },
+      "Temperature mod 1 ch 7": {
+        "baseline_mae_c": 1.3146410247515694,
+        "model_mae_c": 0.14059128511654004
+      },
+      "Temperature mod 1 ch 8": {
+        "baseline_mae_c": 0.40355178974482836,
+        "model_mae_c": 0.11532254031557775
+      },
+      "Temperature mod 2 ch 1": {
+        "baseline_mae_c": 0.394461551048151,
+        "model_mae_c": 0.2243198119243138
+      },
+      "Temperature mod 2 ch 2": {
+        "baseline_mae_c": 0.9718793115033046,
+        "model_mae_c": 0.7218610103831369
+      },
+      "Temperature mod 2 ch 3": {
+        "baseline_mae_c": 2.919522405899943,
+        "model_mae_c": 1.2124956850297166
+      },
+      "Temperature mod 2 ch 4": {
+        "baseline_mae_c": 0.44167440627623106,
+        "model_mae_c": 0.20210077829855103
+      },
+      "Temperature mod 2 ch 5": {
+        "baseline_mae_c": 1.6986157597118314,
+        "model_mae_c": 0.5424424590941358
+      },
+      "Temperature mod 2 ch 6": {
+        "baseline_mae_c": 2.902521714605649,
+        "model_mae_c": 1.6175954193707072
+      },
+      "Temperature mod 2 ch 7": {
+        "baseline_mae_c": 0.45970605279246046,
+        "model_mae_c": 0.1475111069477066
+      },
+      "Temperature mod 2 ch 8": {
+        "baseline_mae_c": 2.012140062950366,
+        "model_mae_c": 0.5205498154014043
+      },
+      "Temperature mod 3 ch 3": {
+        "baseline_mae_c": 0.5151908171026615,
+        "model_mae_c": 0.31866528388224996
+      },
+      "Temperature mod 3 ch 4": {
+        "baseline_mae_c": 1.5994672192406327,
+        "model_mae_c": 0.30143794058566714
+      },
+      "Temperature mod 3 ch 5": {
+        "baseline_mae_c": 0.4224960545532208,
+        "model_mae_c": 0.28377766002758464
+      },
+      "Temperature mod 3 ch 6": {
+        "baseline_mae_c": 0.36069149184999805,
+        "model_mae_c": 0.17739401940005706
+      },
+      "Temperature mod 3 ch 7": {
+        "baseline_mae_c": 1.4128102432907443,
+        "model_mae_c": 0.6529084790361968
+      },
+      "Temperature mod 3 ch 8": {
+        "baseline_mae_c": 1.4455932657947723,
+        "model_mae_c": 0.4556909286078954
+      },
+      "Temperature mod 4 ch 1": {
+        "baseline_mae_c": 0.679757733007932,
+        "model_mae_c": 0.17651612070077102
+      },
+      "Temperature mod 4 ch 2": {
+        "baseline_mae_c": 0.5746123223427172,
+        "model_mae_c": 0.14953613050148964
+      },
+      "Temperature mod 4 ch 3": {
+        "baseline_mae_c": 0.7283854334439444,
+        "model_mae_c": 0.09765108358921258
+      },
+      "Temperature mod 4 ch 4": {
+        "baseline_mae_c": 1.795349499919158,
+        "model_mae_c": 0.3160734320155622
+      },
+      "Temperature mod 4 ch 5": {
+        "baseline_mae_c": 0.9244786049099077,
+        "model_mae_c": 0.08692595407266301
+      },
+      "Temperature mod 4 ch 6": {
+        "baseline_mae_c": 1.2490341891785879,
+        "model_mae_c": 0.7106288315082754
+      },
+      "Temperature mod 4 ch 7": {
+        "baseline_mae_c": 0.3265064185563171,
+        "model_mae_c": 0.3265064185563171
+      },
+      "Temperature mod 4 ch 8": {
+        "baseline_mae_c": 0.39549151960912116,
+        "model_mae_c": 0.25171296139175864
+      },
+      "Temperature mod 5 ch 1": {
+        "baseline_mae_c": 0.164283543410014,
+        "model_mae_c": 0.164283543410014
+      },
+      "Temperature mod 5 ch 2": {
+        "baseline_mae_c": 0.2738226486709196,
+        "model_mae_c": 0.14900555034768054
+      },
+      "Temperature mod 5 ch 3": {
+        "baseline_mae_c": 0.2810197311937843,
+        "model_mae_c": 0.21171937412125894
+      },
+      "Temperature mod 5 ch 4": {
+        "baseline_mae_c": 0.928384053908973,
+        "model_mae_c": 0.512205857630199
+      },
+      "Temperature mod 6 ch 1": {
+        "baseline_mae_c": 1.0708062761892332,
+        "model_mae_c": 0.4256913608192334
+      },
+      "Temperature mod 6 ch 2": {
+        "baseline_mae_c": 0.6556858985769437,
+        "model_mae_c": 0.48534275306633723
+      },
+      "Temperature mod 6 ch 3": {
+        "baseline_mae_c": 0.4333997092103308,
+        "model_mae_c": 0.40234420355551526
+      },
+      "Temperature mod 6 ch 4": {
+        "baseline_mae_c": 2.449082570684236,
+        "model_mae_c": 1.3673565752023717
+      },
+      "Temperature mod 7 ch 1": {
+        "baseline_mae_c": 2.07165355556593,
+        "model_mae_c": 0.24319755227194945
+      },
+      "Temperature mod 7 ch 2": {
+        "baseline_mae_c": 0.7760495465561712,
+        "model_mae_c": 0.2765264021814035
+      },
+      "Temperature mod 7 ch 3": {
+        "baseline_mae_c": 1.301773234095209,
+        "model_mae_c": 0.3432755793278511
+      },
+      "Temperature mod 7 ch 4": {
+        "baseline_mae_c": 2.082434161374554,
+        "model_mae_c": 0.5959592950256188
+      }
+    },
+    "sensor_count": 42,
+    "sensor_wins": 39
+  },
+  "experiment": "E11F",
+  "generated_at_utc": "2026-09-07T04:11:40.479839+00:00",
+  "inputs": {
+    "e11g_result_sha256": "bc6e8625c3f8f92084b27b27355fee80598f28d0631e2124052ac30267df4894",
+    "e11h_result_sha256": "1e54d171cf1f78747a714a9a6cb0ae9e22dbacedd01707e6ae5adeb0a4998bea",
+    "e11h_selected_models_sha256": "dd7947f8cdac872a6447282c232a1b8d7a827d38752c23a18f7c38f9bd7bc2af",
+    "frozen_metadata_sha256": "9fabf234d60798c5d93acd489c0e886707bcb53d9b1ab9be0311760535605b26",
+    "manifest": "outputs/data/enclosure/aau_temperature_ranges_e11f_manifest.json",
+    "manifest_sha256": "b1e0eff61873c7f75b3f6feb9915bf723dcf3fd38b10d7c9835a7255d518871a"
+  },
+  "interpretation_limit": "Calibration-assisted unseen-byte confirmation within one campaign; not cross-enclosure or NTC hardware validation.",
+  "parse": {
+    "boundary_records_discarded": 22,
+    "eligible_minute_snapshots": 1505,
+    "fragments": 11,
+    "malformed_rows": 0,
+    "nonfinite_values": 0,
+    "rows_accepted": 89585,
+    "rows_seen": 89585
+  },
+  "purpose": "one_time_frozen_commissioning_confirmation",
+  "refit_performed": false
+}

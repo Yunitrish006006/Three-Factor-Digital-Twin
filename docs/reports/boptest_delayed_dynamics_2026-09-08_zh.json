@@ -1,0 +1,13 @@
+{
+  "status": "IDENTIFICATION_RECOVERED_CONTROL_MIXED",
+  "html_sha256": "c7f1776419aba9fa1a0a1ef19d2bda922b5258be5b9c39b6405c51c052f7adc3",
+  "plot_sha256": "8a6173482038864fa64dcd8509a2d423d3479907a1aa14d50b4eae370720132d",
+  "builder_sha256": "f753a63dd68d9940e86f224a4130fceb9ddb5da229277507475fd0b28f8b4f2f",
+  "results": {
+    "air": "c6720c0cc4a48dda3a0389a5e579ccaee0fc1f9a398d06c72baa719128d27c68",
+    "hydronic": "eb83dbbd9df5855725dc34c7a8136acc4ac25325921cb3010cf793960663aa39"
+  },
+  "offline_fit_count": 44,
+  "offline_fit_seconds": 0.6644380073994398,
+  "aggregate_run_wall_seconds": 283.2150430553593
+}

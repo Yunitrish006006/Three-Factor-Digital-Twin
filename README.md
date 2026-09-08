@@ -12,6 +12,8 @@
 
 ## 從哪裡開始
 
+目前接續研究的應用方向是**電腦機箱稀疏測溫與虛擬感測**，先以公開伺服器資料驗證方法，再銜接桌機機箱 NTC 多點量測。2026-09-07 的 E15 已完成一次性凍結確認：14 檔、3,112 rows，MAE 1.6939→0.9744°C，12/14 runs 勝出，10 個閘門全部通過。這只支持同一伺服器的時間／工作負載轉移；桌機機箱、NTC、完整空間場及跨伺服器仍未驗證。完整紀錄見 [`E15 evidence`](openspec/changes/confirm-bmc-temporal-transfer-e15/evidence.md)。
+
 | 需求 | 入口 |
 | --- | --- |
 | 查看教授版進度與完整實驗 | [`docs/reports/`](docs/reports/) |
@@ -100,3 +102,5 @@ cd docs/papers/ieee && tectonic --keep-logs --keep-intermediates paper.tex
 - 模擬、真實房間快照、公開 task-aligned benchmark 與真實介入證據分開陳述。
 - 不新增 `final_v2`、`new_updated`、`agent_version` 等平行版本；需要保留的歷史材料移至 `docs/archive/`。
 - 任何研究方法、數字或結論變更，都要遵守 [`AGENTS.md`](AGENTS.md) 的同步範圍。
+
+- [本週研究進度與報告入口（2026-09-08）](docs/reports/weekly_progress_2026-09-08_zh.html)

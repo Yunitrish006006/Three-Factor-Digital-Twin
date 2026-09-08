@@ -1,0 +1,2 @@
+# Reproduction
+Use existing BOPTEST venv with libgfortran4 LD_LIBRARY_PATH. Run run_boptest_handover.py --plant NAME --phase development for5plants; createfirstfreeze beforeparallelruns. Run select_boptest_handover.py once; then all5confirmation runs. No overwrites. Verify source/hash/replay/factorialprefix/windows/gates and fullPython tests. BuildofflineHTML, validateOpenSpec and canonicalgraphpointers.

@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "apiMatchesGeneratedPaperGraph": true,
+  "groupFeatures": 10,
+  "groups": {
+    "BOTH_IMPROVE": 3,
+    "BOTH_WORSEN": 2,
+    "MIXED": 1,
+    "EXACT_FALLBACK": 3,
+    "REJECTED": 1
+  },
+  "controlNodes": 236,
+  "localURL": "http://127.0.0.1:18775/",
+  "scope": "DESCRIPTIVE_LOCAL_SYNC_NOT_CAUSAL"
+}

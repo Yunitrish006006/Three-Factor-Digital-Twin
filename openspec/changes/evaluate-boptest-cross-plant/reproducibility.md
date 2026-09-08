@@ -1,0 +1,2 @@
+# Reproduce
+Same local FMPy0.3.22/libgfortran4 as prior studies. With LD_LIBRARY_PATH to outputs/vendor/boptest-runtime/usr/lib/x86_64-linux-gnu run outputs/boptest-venv/bin/python scripts/run_boptest_cross_plant.py --plant air then --plant hydronic. Frozen JSON checks every invocation. Full trace files outputs/boptest_cross_plant; summaries artifacts in this change. Run full unittest/OpenSpec/trace audits. No external datasets needed; preserve upstream revisedBSD/dependency licenses, FMU hashes and library_versions.json.

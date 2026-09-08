@@ -5,6 +5,8 @@ context: |
   Impacts of Non-Networked Appliances in a Single Room.
 
   Research focus:
+  - Active application direction is computer-enclosure sparse temperature sensing; the current stage uses public-server virtual-sensing evidence, while desktop-PC NTC measurements remain unperformed.
+  - E15 frozen same-server temporal/workload confirmation is completed: 14 files, 3112 rows, MAE 1.6939 to 0.9744 C, 12/14 run wins, all 10 gates passed; H-ENC-08 is supported within that scope only.
   - Sparse IoT sensing and indoor spatial intelligence in one rectangular room.
   - Temperature, humidity, and illuminance field estimation.
   - Environmental-impact learning for non-networked air conditioners, windows,

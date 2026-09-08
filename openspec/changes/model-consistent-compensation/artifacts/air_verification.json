@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "sources_match": true,
+  "scope": "FIVE_DEVELOPMENT_PLANTS_NEW_DATES",
+  "plants": {
+    "air": {
+      "model_status": {
+        "2": "FITTED",
+        "6": "FITTED"
+      },
+      "decisions": [
+        {
+          "budget_h": 2,
+          "pairs": [
+            {
+              "day": 25,
+              "mae_gain_C": 0.003384667930327722,
+              "nonregression": true,
+              "correction_nonzero_rows": 1439,
+              "max_abs_correction_u": 0.1
+            },
+            {
+              "day": 60,
+              "mae_gain_C": 0.004161182167175072,
+              "nonregression": true,
+              "correction_nonzero_rows": 1439,
+              "max_abs_correction_u": 0.1
+            }
+          ],
+          "gate": true
+        },
+        {
+          "budget_h": 6,
+          "pairs": [
+            {
+              "day": 25,
+              "mae_gain_C": 0.002318220528666535,
+              "nonregression": true,
+              "correction_nonzero_rows": 1438,
+              "max_abs_correction_u": 0.1
+            },
+            {
+              "day": 60,
+              "mae_gain_C": 0.003958864028070271,
+              "nonregression": true,
+              "correction_nonzero_rows": 1438,
+              "max_abs_correction_u": 0.1
+            }
+          ],
+          "gate": true
+        }
+      ],
+      "result_sha256": "184dc88cc432391b2a13600d72e698f72a58131b8c5897371d113e5823e4ce1f"
+    }
+  },
+  "traces": 8,
+  "valid_budgets": 2,
+  "passed_budgets": 2,
+  "hypothesis": "NOT_SUPPORTED"
+}

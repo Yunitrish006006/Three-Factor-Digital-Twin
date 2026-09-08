@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "localURL": "http://127.0.0.1:18775/",
+  "controlNodes": 220,
+  "controlMetricComparisons": 160,
+  "latestMAE": {
+    "BETTER": 7,
+    "WORSE": 5,
+    "TIE": 6
+  },
+  "apiAndFlutterAssetMatch": true,
+  "workspaceValidators": "ALL_PASS",
+  "scope": "LOCAL_SYNC_NOT_REMOTE_DEPLOYMENT"
+}

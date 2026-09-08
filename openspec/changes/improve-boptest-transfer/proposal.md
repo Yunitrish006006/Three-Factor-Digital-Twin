@@ -1,0 +1,2 @@
+# Continued BOPTEST algorithm development
+User authorized continued runs and algorithm improvement. Prior v2 has a startup excursion and unmodelled disturbances. Add bumpless heat-equivalent handover and a causal disturbance-observer candidate; retain all old files. This remains exploratory extension, not adopted thesis claims. Affected: new runner, tests, artifacts, offline HTML; no original spatial-network weights or E15 data change. Full thesis adoption and synchronized document builds remain a separate decision after stronger evidence.

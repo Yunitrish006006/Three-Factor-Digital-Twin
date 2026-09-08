@@ -1,0 +1,785 @@
+{
+  "bootstrap": {
+    "ci_95_lower_c": 0.6867242409093933,
+    "ci_95_upper_c": 0.8123564083881182,
+    "day_blocks": 13,
+    "replicates": 20000,
+    "seed": 20260823,
+    "unit": "calendar_day"
+  },
+  "conditions": {
+    "bootstrap_ci_lower_above_zero": true,
+    "role_mae_lower": true,
+    "role_rmse_lower": true,
+    "role_sensor_wins_at_least_26_of_42": true
+  },
+  "decision": "supported",
+  "evaluation": {
+    "global": {
+      "mae_c": 2.3971981856332856,
+      "n": 63210,
+      "p95_absolute_error_c": 5.723173551649229,
+      "rmse_c": 2.974759777503405
+    },
+    "paired_mae_improvement_c": 0.745533912067389,
+    "per_role": {
+      "gradient": {
+        "global": {
+          "mae_c": 2.409508193681001,
+          "n": 7525,
+          "p95_absolute_error_c": 4.500050077479661,
+          "rmse_c": 2.6145105967879982
+        },
+        "role_conditioned": {
+          "mae_c": 0.5737246184145789,
+          "n": 7525,
+          "p95_absolute_error_c": 1.370936214999987,
+          "rmse_c": 0.7023830898393982
+        }
+      },
+      "rack_back": {
+        "global": {
+          "mae_c": 2.2338438195468875,
+          "n": 42140,
+          "p95_absolute_error_c": 6.642315655569092,
+          "rmse_c": 2.9830048858048106
+        },
+        "role_conditioned": {
+          "mae_c": 2.0372107850866104,
+          "n": 42140,
+          "p95_absolute_error_c": 5.779345347685174,
+          "rmse_c": 2.7068702636161515
+        }
+      },
+      "rack_front": {
+        "global": {
+          "mae_c": 2.898572875653257,
+          "n": 13545,
+          "p95_absolute_error_c": 5.083410903414635,
+          "rmse_c": 3.1328897621065495
+        },
+        "role_conditioned": {
+          "mae_c": 1.051041601696637,
+          "n": 13545,
+          "p95_absolute_error_c": 4.306792348333326,
+          "rmse_c": 1.7400898684867192
+        }
+      }
+    },
+    "per_sensor": {
+      "Temperature mod 1 ch 1": {
+        "global": {
+          "mae_c": 3.0027270781340847,
+          "n": 1505,
+          "p95_absolute_error_c": 5.034043301138198,
+          "rmse_c": 3.219462864358604
+        },
+        "role": "rack_front",
+        "role_conditioned": {
+          "mae_c": 0.5469150386514914,
+          "n": 1505,
+          "p95_absolute_error_c": 1.0305116133333456,
+          "rmse_c": 0.6123134682900652
+        },
+        "winner": "role_conditioned"
+      },
+      "Temperature mod 1 ch 2": {
+        "global": {
+          "mae_c": 2.9063769260096994,
+          "n": 1505,
+          "p95_absolute_error_c": 4.744492153170724,
+          "rmse_c": 3.109882890957596
+        },
+        "role": "rack_back",
+        "role_conditioned": {
+          "mae_c": 4.197883912128833,
+          "n": 1505,
+          "p95_absolute_error_c": 6.7310738909876555,
+          "rmse_c": 4.479448071919739
+        },
+        "winner": "global"
+      },
+      "Temperature mod 1 ch 3": {
+        "global": {
+          "mae_c": 3.7071915536227027,
+          "n": 1505,
+          "p95_absolute_error_c": 5.580234194471551,
+          "rmse_c": 3.8942081668006328
+        },
+        "role": "rack_front",
+        "role_conditioned": {
+          "mae_c": 1.303640528858393,
+          "n": 1505,
+          "p95_absolute_error_c": 2.036033056249998,
+          "rmse_c": 1.3712155133872517
+        },
+        "winner": "role_conditioned"
+      },
+      "Temperature mod 1 ch 4": {
+        "global": {
+          "mae_c": 3.16115735442899,
+          "n": 1505,
+          "p95_absolute_error_c": 4.957124480325202,
+          "rmse_c": 3.343233478615742
+        },
+        "role": "rack_front",
+        "role_conditioned": {
+          "mae_c": 0.7039875587139667,
+          "n": 1505,
+          "p95_absolute_error_c": 1.0072354925000035,
+          "rmse_c": 0.7293063848599198
+        },
+        "winner": "role_conditioned"
+      },
+      "Temperature mod 1 ch 5": {
+        "global": {
+          "mae_c": 2.523634378962598,
+          "n": 1505,
+          "p95_absolute_error_c": 4.359941594308954,
+          "rmse_c": 2.72713209940843
+        },
+        "role": "rack_front",
+        "role_conditioned": {
+          "mae_c": 0.15046773801696148,
+          "n": 1505,
+          "p95_absolute_error_c": 0.36034165166667187,
+          "rmse_c": 0.18583671340652558
+        },
+        "winner": "role_conditioned"
+      },
+      "Temperature mod 1 ch 6": {
+        "global": {
+          "mae_c": 3.0040241532689436,
+          "n": 1505,
+          "p95_absolute_error_c": 5.023294285691067,
+          "rmse_c": 3.2163671920852064
+        },
+        "role": "rack_front",
+        "role_conditioned": {
+          "mae_c": 0.5314505965623595,
+          "n": 1505,
+          "p95_absolute_error_c": 0.9332442633333229,
+          "rmse_c": 0.5722631235551723
+        },
+        "winner": "role_conditioned"
+      },
+      "Temperature mod 1 ch 7": {
+        "global": {
+          "mae_c": 2.9919899728370125,
+          "n": 1505,
+          "p95_absolute_error_c": 4.70745787520326,
+          "rmse_c": 3.1582578180228724
+        },
+        "role": "rack_front",
+        "role_conditioned": {
+          "mae_c": 0.5182635110450964,
+          "n": 1505,
+          "p95_absolute_error_c": 0.8300172204166785,
+          "rmse_c": 0.5559930221075937
+        },
+        "winner": "role_conditioned"
+      },
+      "Temperature mod 1 ch 8": {
+        "global": {
+          "mae_c": 3.045688968613097,
+          "n": 1505,
+          "p95_absolute_error_c": 5.175900588943081,
+          "rmse_c": 3.276664562593368
+        },
+        "role": "rack_front",
+        "role_conditioned": {
+          "mae_c": 0.5800151807480558,
+          "n": 1505,
+          "p95_absolute_error_c": 1.1013644158333378,
+          "rmse_c": 0.6658037959114785
+        },
+        "winner": "role_conditioned"
+      },
+      "Temperature mod 2 ch 1": {
+        "global": {
+          "mae_c": 2.518921118563056,
+          "n": 1505,
+          "p95_absolute_error_c": 4.901972196829265,
+          "rmse_c": 2.903042606454961
+        },
+        "role": "rack_back",
+        "role_conditioned": {
+          "mae_c": 1.2950821638698826,
+          "n": 1505,
+          "p95_absolute_error_c": 3.1383813603703703,
+          "rmse_c": 1.6549139891202531
+        },
+        "winner": "role_conditioned"
+      },
+      "Temperature mod 2 ch 2": {
+        "global": {
+          "mae_c": 0.9199527329718803,
+          "n": 1505,
+          "p95_absolute_error_c": 2.9623573834959296,
+          "rmse_c": 1.297462859180262
+        },
+        "role": "rack_back",
+        "role_conditioned": {
+          "mae_c": 0.6518582473503526,
+          "n": 1505,
+          "p95_absolute_error_c": 1.562856580617282,
+          "rmse_c": 0.7883674569783102
+        },
+        "winner": "role_conditioned"
+      },
+      "Temperature mod 2 ch 3": {
+        "global": {
+          "mae_c": 1.4252147219823086,
+          "n": 1505,
+          "p95_absolute_error_c": 2.364987801300809,
+          "rmse_c": 1.673158220053085
+        },
+        "role": "rack_back",
+        "role_conditioned": {
+          "mae_c": 1.3563058513899768,
+          "n": 1505,
+          "p95_absolute_error_c": 2.205384581358012,
+          "rmse_c": 1.4079369054553073
+        },
+        "winner": "role_conditioned"
+      },
+      "Temperature mod 2 ch 4": {
+        "global": {
+          "mae_c": 2.865422221646992,
+          "n": 1505,
+          "p95_absolute_error_c": 6.008278239430909,
+          "rmse_c": 3.4369339318241394
+        },
+        "role": "rack_back",
+        "role_conditioned": {
+          "mae_c": 1.645172015128555,
+          "n": 1505,
+          "p95_absolute_error_c": 4.038065999876533,
+          "rmse_c": 2.2055201084888356
+        },
+        "winner": "role_conditioned"
+      },
+      "Temperature mod 2 ch 5": {
+        "global": {
+          "mae_c": 2.461256432788971,
+          "n": 1505,
+          "p95_absolute_error_c": 5.803252971626023,
+          "rmse_c": 3.0880158928239334
+        },
+        "role": "rack_back",
+        "role_conditioned": {
+          "mae_c": 1.2372643080954648,
+          "n": 1505,
+          "p95_absolute_error_c": 3.8531184707407595,
+          "rmse_c": 1.898842364016681
+        },
+        "winner": "role_conditioned"
+      },
+      "Temperature mod 2 ch 6": {
+        "global": {
+          "mae_c": 2.324223406103374,
+          "n": 1505,
+          "p95_absolute_error_c": 5.527099206504055,
+          "rmse_c": 2.9221424274558543
+        },
+        "role": "rack_back",
+        "role_conditioned": {
+          "mae_c": 1.1098973657554208,
+          "n": 1505,
+          "p95_absolute_error_c": 3.5864224732098737,
+          "rmse_c": 1.7344242059883601
+        },
+        "winner": "role_conditioned"
+      },
+      "Temperature mod 2 ch 7": {
+        "global": {
+          "mae_c": 2.947009948898564,
+          "n": 1505,
+          "p95_absolute_error_c": 4.9234173064227615,
+          "rmse_c": 3.1535224763548357
+        },
+        "role": "rack_front",
+        "role_conditioned": {
+          "mae_c": 0.4876119022216563,
+          "n": 1505,
+          "p95_absolute_error_c": 0.9287279112499824,
+          "rmse_c": 0.5454826102654868
+        },
+        "winner": "role_conditioned"
+      },
+      "Temperature mod 2 ch 8": {
+        "global": {
+          "mae_c": 2.102259767117625,
+          "n": 1505,
+          "p95_absolute_error_c": 4.231011539024402,
+          "rmse_c": 2.430502348625046
+        },
+        "role": "rack_back",
+        "role_conditioned": {
+          "mae_c": 3.383839380904756,
+          "n": 1505,
+          "p95_absolute_error_c": 6.148358305185183,
+          "rmse_c": 3.7624091344173203
+        },
+        "winner": "global"
+      },
+      "Temperature mod 3 ch 3": {
+        "global": {
+          "mae_c": 3.863998463287284,
+          "n": 1505,
+          "p95_absolute_error_c": 7.579902463414655,
+          "rmse_c": 4.4065044314749
+        },
+        "role": "rack_back",
+        "role_conditioned": {
+          "mae_c": 2.656076358517495,
+          "n": 1505,
+          "p95_absolute_error_c": 5.803451802469141,
+          "rmse_c": 3.1616649759340842
+        },
+        "winner": "role_conditioned"
+      },
+      "Temperature mod 3 ch 4": {
+        "global": {
+          "mae_c": 1.9620729007557647,
+          "n": 1505,
+          "p95_absolute_error_c": 3.797866478130067,
+          "rmse_c": 2.226467384788508
+        },
+        "role": "rack_back",
+        "role_conditioned": {
+          "mae_c": 3.241921812489048,
+          "n": 1505,
+          "p95_absolute_error_c": 5.75377394135802,
+          "rmse_c": 3.5608105753364674
+        },
+        "winner": "global"
+      },
+      "Temperature mod 3 ch 5": {
+        "global": {
+          "mae_c": 0.7715249098343749,
+          "n": 1505,
+          "p95_absolute_error_c": 2.861648672926825,
+          "rmse_c": 1.1841607651607384
+        },
+        "role": "rack_back",
+        "role_conditioned": {
+          "mae_c": 0.7577752138807705,
+          "n": 1505,
+          "p95_absolute_error_c": 1.5676462486419651,
+          "rmse_c": 0.8522414373200246
+        },
+        "winner": "role_conditioned"
+      },
+      "Temperature mod 3 ch 6": {
+        "global": {
+          "mae_c": 3.9624521836491673,
+          "n": 1505,
+          "p95_absolute_error_c": 8.292166566747964,
+          "rmse_c": 4.71686429909018
+        },
+        "role": "rack_back",
+        "role_conditioned": {
+          "mae_c": 2.7557455569085354,
+          "n": 1505,
+          "p95_absolute_error_c": 6.405100029876534,
+          "rmse_c": 3.4914285994186494
+        },
+        "winner": "role_conditioned"
+      },
+      "Temperature mod 3 ch 7": {
+        "global": {
+          "mae_c": 5.478358143203753,
+          "n": 1505,
+          "p95_absolute_error_c": 9.808110880406497,
+          "rmse_c": 5.995791435443911
+        },
+        "role": "rack_back",
+        "role_conditioned": {
+          "mae_c": 4.290366404852698,
+          "n": 1505,
+          "p95_absolute_error_c": 7.988865149259258,
+          "rmse_c": 4.747787224533733
+        },
+        "winner": "role_conditioned"
+      },
+      "Temperature mod 3 ch 8": {
+        "global": {
+          "mae_c": 0.962721475797268,
+          "n": 1505,
+          "p95_absolute_error_c": 2.946693658455281,
+          "rmse_c": 1.3814492875837985
+        },
+        "role": "rack_back",
+        "role_conditioned": {
+          "mae_c": 2.2075126311709057,
+          "n": 1505,
+          "p95_absolute_error_c": 4.869223103456784,
+          "rmse_c": 2.6296808269140066
+        },
+        "winner": "global"
+      },
+      "Temperature mod 4 ch 1": {
+        "global": {
+          "mae_c": 3.152739599455425,
+          "n": 1505,
+          "p95_absolute_error_c": 4.860305408943094,
+          "rmse_c": 3.325213227435203
+        },
+        "role": "gradient",
+        "role_conditioned": {
+          "mae_c": 0.9069192749032933,
+          "n": 1505,
+          "p95_absolute_error_c": 1.554239825000009,
+          "rmse_c": 0.9660156835344995
+        },
+        "winner": "role_conditioned"
+      },
+      "Temperature mod 4 ch 2": {
+        "global": {
+          "mae_c": 2.7878566181260678,
+          "n": 1505,
+          "p95_absolute_error_c": 4.525667765934956,
+          "rmse_c": 2.9696497681254566
+        },
+        "role": "gradient",
+        "role_conditioned": {
+          "mae_c": 0.46167516078117693,
+          "n": 1505,
+          "p95_absolute_error_c": 0.9938919541666668,
+          "rmse_c": 0.5331639397659306
+        },
+        "winner": "role_conditioned"
+      },
+      "Temperature mod 4 ch 3": {
+        "global": {
+          "mae_c": 2.4198822201978714,
+          "n": 1505,
+          "p95_absolute_error_c": 3.8833341958536534,
+          "rmse_c": 2.5783495759003148
+        },
+        "role": "gradient",
+        "role_conditioned": {
+          "mae_c": 0.11877543834706582,
+          "n": 1505,
+          "p95_absolute_error_c": 0.35119897833334407,
+          "rmse_c": 0.1595521840689456
+        },
+        "winner": "role_conditioned"
+      },
+      "Temperature mod 4 ch 4": {
+        "global": {
+          "mae_c": 1.6958973142673142,
+          "n": 1505,
+          "p95_absolute_error_c": 2.7124636370731627,
+          "rmse_c": 1.7907132863924704
+        },
+        "role": "gradient",
+        "role_conditioned": {
+          "mae_c": 0.8707751802369476,
+          "n": 1505,
+          "p95_absolute_error_c": 1.5557667158333253,
+          "rmse_c": 0.9524284203330488
+        },
+        "winner": "role_conditioned"
+      },
+      "Temperature mod 4 ch 5": {
+        "global": {
+          "mae_c": 1.9911652163583724,
+          "n": 1505,
+          "p95_absolute_error_c": 3.149321353495928,
+          "rmse_c": 2.1090104174086384
+        },
+        "role": "gradient",
+        "role_conditioned": {
+          "mae_c": 0.5104780378044069,
+          "n": 1505,
+          "p95_absolute_error_c": 0.8968884500000044,
+          "rmse_c": 0.5627460720974236
+        },
+        "winner": "role_conditioned"
+      },
+      "Temperature mod 4 ch 6": {
+        "global": {
+          "mae_c": 0.5829256031067578,
+          "n": 1505,
+          "p95_absolute_error_c": 1.27213526747967,
+          "rmse_c": 0.7037599318872125
+        },
+        "role": "rack_back",
+        "role_conditioned": {
+          "mae_c": 0.9437806588685367,
+          "n": 1505,
+          "p95_absolute_error_c": 2.7927044045678957,
+          "rmse_c": 1.2737543833016776
+        },
+        "winner": "global"
+      },
+      "Temperature mod 4 ch 7": {
+        "global": {
+          "mae_c": 2.429196703298466,
+          "n": 1505,
+          "p95_absolute_error_c": 5.68246201390243,
+          "rmse_c": 3.141508797660838
+        },
+        "role": "rack_back",
+        "role_conditioned": {
+          "mae_c": 1.222117968532047,
+          "n": 1505,
+          "p95_absolute_error_c": 3.852869357777775,
+          "rmse_c": 1.9845824014795412
+        },
+        "winner": "role_conditioned"
+      },
+      "Temperature mod 4 ch 8": {
+        "global": {
+          "mae_c": 2.241811588159901,
+          "n": 1505,
+          "p95_absolute_error_c": 5.359171243983755,
+          "rmse_c": 2.9092695148473298
+        },
+        "role": "rack_back",
+        "role_conditioned": {
+          "mae_c": 1.0881719463138393,
+          "n": 1505,
+          "p95_absolute_error_c": 3.383544837901223,
+          "rmse_c": 1.7516185949791179
+        },
+        "winner": "role_conditioned"
+      },
+      "Temperature mod 5 ch 1": {
+        "global": {
+          "mae_c": 3.2015765017171307,
+          "n": 1505,
+          "p95_absolute_error_c": 6.965393136910562,
+          "rmse_c": 3.891070528617203
+        },
+        "role": "rack_back",
+        "role_conditioned": {
+          "mae_c": 1.9854763480390676,
+          "n": 1505,
+          "p95_absolute_error_c": 5.067551061358039,
+          "rmse_c": 2.6791295649608933
+        },
+        "winner": "role_conditioned"
+      },
+      "Temperature mod 5 ch 2": {
+        "global": {
+          "mae_c": 3.4929015802989256,
+          "n": 1505,
+          "p95_absolute_error_c": 7.3551779708130045,
+          "rmse_c": 4.195082099056979
+        },
+        "role": "rack_back",
+        "role_conditioned": {
+          "mae_c": 2.2803980325292836,
+          "n": 1505,
+          "p95_absolute_error_c": 5.537495493827169,
+          "rmse_c": 2.9762326832765953
+        },
+        "winner": "role_conditioned"
+      },
+      "Temperature mod 5 ch 3": {
+        "global": {
+          "mae_c": 4.352066818118863,
+          "n": 1505,
+          "p95_absolute_error_c": 9.107986130406491,
+          "rmse_c": 5.186090840001542
+        },
+        "role": "rack_back",
+        "role_conditioned": {
+          "mae_c": 3.1501702485939056,
+          "n": 1505,
+          "p95_absolute_error_c": 7.236885435185185,
+          "rmse_c": 3.9684586836660354
+        },
+        "winner": "role_conditioned"
+      },
+      "Temperature mod 5 ch 4": {
+        "global": {
+          "mae_c": 1.0968261445366343,
+          "n": 1505,
+          "p95_absolute_error_c": 1.6988777958536643,
+          "rmse_c": 1.141028017301329
+        },
+        "role": "rack_back",
+        "role_conditioned": {
+          "mae_c": 1.1981830536361737,
+          "n": 1505,
+          "p95_absolute_error_c": 3.624715664567896,
+          "rmse_c": 1.9015077211473752
+        },
+        "winner": "global"
+      },
+      "Temperature mod 6 ch 1": {
+        "global": {
+          "mae_c": 1.0446342639375776,
+          "n": 1505,
+          "p95_absolute_error_c": 2.906090983658538,
+          "rmse_c": 1.4971320719004175
+        },
+        "role": "rack_back",
+        "role_conditioned": {
+          "mae_c": 2.0660149565779395,
+          "n": 1505,
+          "p95_absolute_error_c": 4.910789367777785,
+          "rmse_c": 2.684548884066836
+        },
+        "winner": "global"
+      },
+      "Temperature mod 6 ch 2": {
+        "global": {
+          "mae_c": 1.2218241190487171,
+          "n": 1505,
+          "p95_absolute_error_c": 2.375005510771261,
+          "rmse_c": 1.3575831091520845
+        },
+        "role": "rack_back",
+        "role_conditioned": {
+          "mae_c": 1.2429993020820782,
+          "n": 1505,
+          "p95_absolute_error_c": 3.1870835176543366,
+          "rmse_c": 1.5961439471365007
+        },
+        "winner": "global"
+      },
+      "Temperature mod 6 ch 3": {
+        "global": {
+          "mae_c": 1.1257617803580555,
+          "n": 1505,
+          "p95_absolute_error_c": 3.059366238373982,
+          "rmse_c": 1.5269370035265672
+        },
+        "role": "rack_back",
+        "role_conditioned": {
+          "mae_c": 2.2757771978380847,
+          "n": 1505,
+          "p95_absolute_error_c": 5.036171457530862,
+          "rmse_c": 2.754668647922272
+        },
+        "winner": "global"
+      },
+      "Temperature mod 6 ch 4": {
+        "global": {
+          "mae_c": 1.6318912394208862,
+          "n": 1505,
+          "p95_absolute_error_c": 2.6272723193495877,
+          "rmse_c": 1.9090064175226025
+        },
+        "role": "rack_back",
+        "role_conditioned": {
+          "mae_c": 1.5075042201359823,
+          "n": 1505,
+          "p95_absolute_error_c": 2.1170214864197483,
+          "rmse_c": 1.5390743662130726
+        },
+        "winner": "role_conditioned"
+      },
+      "Temperature mod 7 ch 1": {
+        "global": {
+          "mae_c": 1.703732472113312,
+          "n": 1505,
+          "p95_absolute_error_c": 2.615794684390258,
+          "rmse_c": 1.786023899064943
+        },
+        "role": "rack_front",
+        "role_conditioned": {
+          "mae_c": 4.637022360451767,
+          "n": 1505,
+          "p95_absolute_error_c": 6.836844637083317,
+          "rmse_c": 4.8012678120549594
+        },
+        "winner": "global"
+      },
+      "Temperature mod 7 ch 2": {
+        "global": {
+          "mae_c": 0.9170639866901213,
+          "n": 1505,
+          "p95_absolute_error_c": 2.1201651868292704,
+          "rmse_c": 1.1457544684439043
+        },
+        "role": "rack_back",
+        "role_conditioned": {
+          "mae_c": 1.6290116283259772,
+          "n": 1505,
+          "p95_absolute_error_c": 4.0791811406172735,
+          "rmse_c": 2.2375064167994596
+        },
+        "winner": "global"
+      },
+      "Temperature mod 7 ch 3": {
+        "global": {
+          "mae_c": 2.4528255396968524,
+          "n": 1505,
+          "p95_absolute_error_c": 4.219756343739844,
+          "rmse_c": 2.6555855745905776
+        },
+        "role": "rack_back",
+        "role_conditioned": {
+          "mae_c": 3.7387331259849628,
+          "n": 1505,
+          "p95_absolute_error_c": 6.294753374074076,
+          "rmse_c": 4.022340053813998
+        },
+        "winner": "global"
+      },
+      "Temperature mod 7 ch 4": {
+        "global": {
+          "mae_c": 2.231565675212675,
+          "n": 1505,
+          "p95_absolute_error_c": 3.6870395591056995,
+          "rmse_c": 2.589014858711634
+        },
+        "role": "rack_back",
+        "role_conditioned": {
+          "mae_c": 1.9268620725243968,
+          "n": 1505,
+          "p95_absolute_error_c": 2.7179483141975256,
+          "rmse_c": 2.0355045661372295
+        },
+        "winner": "role_conditioned"
+      }
+    },
+    "per_sensor_wins": {
+      "global": 12,
+      "role_conditioned": 30,
+      "ties": 0
+    },
+    "role_conditioned": {
+      "mae_c": 1.6516642735658966,
+      "n": 63210,
+      "p95_absolute_error_c": 5.488586829876542,
+      "rmse_c": 2.3648116317389936
+    }
+  },
+  "experiment": "E11D",
+  "generated_at_utc": "2026-09-07T04:01:39.686445+00:00",
+  "hypothesis": "H-ENC-04",
+  "inputs": {
+    "frozen_role_metadata": "outputs/data/enclosure/aau_local_idw_confirmation.json",
+    "frozen_role_metadata_sha256": "0b667ca8bb959e332aeff0155b9dceb1318dca3f91a26c1aa5552fb6bfef7055",
+    "frozen_role_metadata_stable_sha256": "3c6ca841e100358669be193390947d94bce7096ca83da71a2e6b8b90736cd643",
+    "manifest": "outputs/data/enclosure/aau_temperature_ranges_e11d_manifest.json",
+    "manifest_sha256": "b96d4d605af8edb40e1292327dd9b5f65a747d5e743ae97edad0023ba505088d",
+    "reconstructed_role_metadata_sha256": "9fabf234d60798c5d93acd489c0e886707bcb53d9b1ab9be0311760535605b26"
+  },
+  "models": {
+    "global": "leave-one-sensor-out arithmetic mean of all other eligible sensors",
+    "role_conditioned": "leave-one-sensor-out arithmetic mean of other sensors with the same frozen role"
+  },
+  "parse": {
+    "boundary_records_discarded": 22,
+    "eligible_minute_snapshots": 1505,
+    "fragments": 11,
+    "malformed_rows": 0,
+    "nonfinite_values": 0,
+    "rows_accepted": 89584,
+    "rows_seen": 89584
+  },
+  "preregistration": "openspec/changes/evaluate-aau-role-conditioned-transfer/protocol.md",
+  "role_counts": {
+    "gradient": 5,
+    "rack_back": 28,
+    "rack_front": 9
+  }
+}

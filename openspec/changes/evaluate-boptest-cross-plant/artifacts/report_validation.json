@@ -1,0 +1,12 @@
+{
+  "static_html": "PASS",
+  "sections": 8,
+  "links": 4,
+  "plot_visual": "PASS",
+  "browser_viewport": "NOT_EVALUATED",
+  "repository_tests": 245,
+  "seconds": 219.763,
+  "log_sha256": "44ed22df8fc81e059044d7cf3b02ced53d03b94a7228e53d20854eb7d2dd6e77",
+  "html_sha256": "afde84af5fd10e5303cb6e435d38dd54246962e458c6cb9d6866e77761f8c88f",
+  "cross_plant_goal": "NOT_MET"
+}

@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "sources_match": true,
+  "scope": "FIVE_DEVELOPMENT_PLANTS_NEW_DATES",
+  "plants": {
+    "apartment": {
+      "model_status": {
+        "2": "FITTED",
+        "6": "NO_ADMISSIBLE_MODEL"
+      },
+      "decisions": [
+        {
+          "budget_h": 2,
+          "pairs": [
+            {
+              "day": 25,
+              "mae_gain_C": 0.0,
+              "nonregression": true,
+              "correction_nonzero_rows": 0,
+              "max_abs_correction_u": 0.0
+            },
+            {
+              "day": 60,
+              "mae_gain_C": 0.0,
+              "nonregression": true,
+              "correction_nonzero_rows": 0,
+              "max_abs_correction_u": 0.0
+            }
+          ],
+          "gate": false
+        },
+        {
+          "budget_h": 6,
+          "pairs": [],
+          "gate": false
+        }
+      ],
+      "result_sha256": "65ff336524a875e8d5b9b5c5511f731f5d38266047b86123efc9cc35e3bc7dd9"
+    }
+  },
+  "traces": 4,
+  "valid_budgets": 1,
+  "passed_budgets": 0,
+  "hypothesis": "NOT_SUPPORTED"
+}

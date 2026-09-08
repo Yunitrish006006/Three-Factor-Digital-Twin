@@ -1,0 +1,94 @@
+{
+  "study_id": "E15",
+  "retrieval_date": "2026-09-07",
+  "source_repository": "https://github.com/arealuser/bmcdata",
+  "source_license": "MIT",
+  "source_note": "Mutable master URLs are frozen by complete-file SHA-256.",
+  "confirmation_file_count": 14,
+  "files": [
+    {
+      "filename": "202308022155.csv",
+      "url": "https://raw.githubusercontent.com/arealuser/bmcdata/master/data/202308022155.csv",
+      "bytes": 88342,
+      "sha256": "a7a69674222de7f982995b705deba4775e08b95cfd1a922b32eefe81da780f06"
+    },
+    {
+      "filename": "202308022222.csv",
+      "url": "https://raw.githubusercontent.com/arealuser/bmcdata/master/data/202308022222.csv",
+      "bytes": 146614,
+      "sha256": "346d792e8d4cfc529076309d106d66aeb3853100072a96d80363b5953138336c"
+    },
+    {
+      "filename": "202308051737.csv",
+      "url": "https://raw.githubusercontent.com/arealuser/bmcdata/master/data/202308051737.csv",
+      "bytes": 89953,
+      "sha256": "cd65480d4eccce7543f45fec506595c10ad3068e44631998d9c1455c787c0ecd"
+    },
+    {
+      "filename": "202308051757.csv",
+      "url": "https://raw.githubusercontent.com/arealuser/bmcdata/master/data/202308051757.csv",
+      "bytes": 104544,
+      "sha256": "1643b2578423327308e6768d88d30ee198d9de9f8ae489fc22a4f2073abd420f"
+    },
+    {
+      "filename": "202308051827.csv",
+      "url": "https://raw.githubusercontent.com/arealuser/bmcdata/master/data/202308051827.csv",
+      "bytes": 147026,
+      "sha256": "4c62832238ccf725e13b9374b058687ee0ae9699c3d485f2ea3ea4bd252f85ab"
+    },
+    {
+      "filename": "202308052003.csv",
+      "url": "https://raw.githubusercontent.com/arealuser/bmcdata/master/data/202308052003.csv",
+      "bytes": 422836,
+      "sha256": "5327afdeba9b02281d934ee8aa946497b0c294851c8a2b54f97f660c20182ddb"
+    },
+    {
+      "filename": "202309212229.csv",
+      "url": "https://raw.githubusercontent.com/arealuser/bmcdata/master/data/202309212229.csv",
+      "bytes": 169791,
+      "sha256": "73a596701e8fc124c4415c3e1677bf40516d1d5e56d54c8df5c055f88b79ead2"
+    },
+    {
+      "filename": "202309221110.csv",
+      "url": "https://raw.githubusercontent.com/arealuser/bmcdata/master/data/202309221110.csv",
+      "bytes": 442819,
+      "sha256": "8b6a7230aad7efccd9b6ec829963459a7694e44d5d658af12e1005903470adee"
+    },
+    {
+      "filename": "202309222035.csv",
+      "url": "https://raw.githubusercontent.com/arealuser/bmcdata/master/data/202309222035.csv",
+      "bytes": 199647,
+      "sha256": "38955bda39af82eb817563a22de990703cf7e42218da4acec3c7b25b80509d06"
+    },
+    {
+      "filename": "202310252044.csv",
+      "url": "https://raw.githubusercontent.com/arealuser/bmcdata/master/data/202310252044.csv",
+      "bytes": 118861,
+      "sha256": "f9b939f910dc36eb7daae93b7139a5f0271735d886ccb4140ff7b5382714913e"
+    },
+    {
+      "filename": "202310252102.csv",
+      "url": "https://raw.githubusercontent.com/arealuser/bmcdata/master/data/202310252102.csv",
+      "bytes": 95087,
+      "sha256": "9c67c273eed18618d353875c9dd35f8ce1893a03f4d771bc5f6a11263c0e180a"
+    },
+    {
+      "filename": "202310252230.csv",
+      "url": "https://raw.githubusercontent.com/arealuser/bmcdata/master/data/202310252230.csv",
+      "bytes": 453262,
+      "sha256": "8998bb2069d6268348870d178bf05666a9d3f935c883393f98b3659e4114d2d5"
+    },
+    {
+      "filename": "202405241724.csv",
+      "url": "https://raw.githubusercontent.com/arealuser/bmcdata/master/data/202405241724.csv",
+      "bytes": 539227,
+      "sha256": "26bdfcb2374af4938cd20f5818701b76a9f82aaa4d5ba445c1e15369b77ff32f"
+    },
+    {
+      "filename": "202405241940.csv",
+      "url": "https://raw.githubusercontent.com/arealuser/bmcdata/master/data/202405241940.csv",
+      "bytes": 489604,
+      "sha256": "20c34debfa9948621c22441c1fd31bb9beb46f941003fd2a0e82c34bb1cb30b0"
+    }
+  ]
+}

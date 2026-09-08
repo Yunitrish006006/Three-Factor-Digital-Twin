@@ -771,19 +771,35 @@ def _build_specs(tolerance_override: Optional[float]) -> List[ResultSpec]:
             )
         )
 
-    e15_status_path = ROOT / "openspec" / "changes" / "confirm-bmc-temporal-transfer-e15" / "evidence.md"
-    specs.append(
-        ResultSpec(
-            result_name="e15_not_evaluated_status_flag",
-            thesis_value=1.0,
-            evidence_file=e15_status_path,
-            compute=lambda: _e15_not_evaluated_status_flag(e15_status_path),
-            tolerance=0.0 if tolerance_override is None else tolerance_override,
-            thesis_patterns=["E15 尚未執行", "E15 unused-file confirmation remains"],
-            suggested_script="Do not execute E15 without an explicit decision to consume the untouched confirmation set.",
-            category="public_bmc_confirmation_readiness",
-        )
-    )
+    e15_path = DATA / "enclosure" / "bmc_confirmation_e15_result.json"
+    e15_specs = [
+        ("row_count", 3112.0, ["row_count"], ["3,112", "3112"]),
+        ("baseline_mae_c", 1.6939, ["aggregate", "baseline", "mae_c"], ["1.6939"]),
+        ("baseline_rmse_c", 1.9672, ["aggregate", "baseline", "rmse_c"], ["1.9672"]),
+        ("baseline_p95_c", 3.5000, ["aggregate", "baseline", "p95_c"], ["3.5000"]),
+        ("ridge_mae_c", 0.9744, ["aggregate", "ridge", "mae_c"], ["0.9744"]),
+        ("ridge_rmse_c", 1.2056, ["aggregate", "ridge", "rmse_c"], ["1.2056"]),
+        ("ridge_p95_c", 2.3888, ["aggregate", "ridge", "p95_c"], ["2.3888"]),
+        ("macro_mae_gain_c", 0.6134, ["macro_run_mae_gain_c"], ["0.6134"]),
+        ("bootstrap_lower_c", 0.2721, ["run_block_bootstrap", "lower_95_c"], ["0.2721"]),
+        ("bootstrap_upper_c", 0.9831, ["run_block_bootstrap", "upper_95_c"], ["0.9831"]),
+        ("ridge_run_wins", 12.0, ["ridge_run_wins"], ["12/14"]),
+    ]
+    for name, value, keys, patterns in e15_specs:
+        specs.append(ResultSpec(
+            result_name="e15_" + name, thesis_value=value, evidence_file=e15_path,
+            compute=lambda keys=keys: _json_metric(e15_path, keys),
+            tolerance=tol4, thesis_patterns=patterns,
+            suggested_script="Audit preserved E15 result and attempt receipt; do not rerun confirmation.",
+            category="public_bmc_temporal_confirmation", needs_public_data=True,
+        ))
+    specs.append(ResultSpec(
+        result_name="e15_supported_decision_flag", thesis_value=1.0,
+        evidence_file=e15_path, compute=lambda: _e15_supported_decision_flag(e15_path),
+        tolerance=0.0, thesis_patterns=["H-ENC-08"],
+        suggested_script="Audit all preserved gates; do not rerun E15.",
+        category="public_bmc_temporal_confirmation", needs_public_data=True,
+    ))
     return specs
 
 
@@ -892,10 +908,17 @@ def _json_metric(path: Path, keys: Sequence[object]) -> float:
     return float(node)
 
 
-def _e15_not_evaluated_status_flag(path: Path) -> float:
-    result_path = DATA / "enclosure" / "bmc_confirmation_e15_result.json"
-    text = path.read_text(encoding="utf-8")
-    return 1.0 if "NOT_EVALUATED" in text and not result_path.exists() else 0.0
+def _e15_supported_decision_flag(path: Path) -> float:
+    result = _read_json(path)
+    return float(
+        result.get("status") == "completed"
+        and result.get("hypothesis_decision") == "h_enc_08_supported"
+        and len(result.get("gates", {})) == 10
+        and all(value is True for value in result["gates"].values())
+        and len(result.get("per_run", [])) == 14
+        and sum(run["row_count"] for run in result["per_run"]) == result["row_count"]
+        and sum(run["ridge_win"] for run in result["per_run"]) == result["ridge_run_wins"]
+    )
 
 
 def _window_temperature_domain_count(in_domain: bool) -> float:

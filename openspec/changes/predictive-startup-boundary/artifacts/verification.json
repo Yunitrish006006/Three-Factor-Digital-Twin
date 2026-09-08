@@ -1,0 +1,929 @@
+{
+  "status": "PASS",
+  "plants": {
+    "air": {
+      "selection": {
+        "horizon_min": null,
+        "decisions": [
+          {
+            "horizon_min": 3,
+            "passed": false,
+            "checks": {
+              "early_gain": false,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": true
+            }
+          },
+          {
+            "horizon_min": 10,
+            "passed": false,
+            "checks": {
+              "early_gain": false,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": true
+            }
+          },
+          {
+            "horizon_min": 30,
+            "passed": false,
+            "checks": {
+              "early_gain": false,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": true
+            }
+          }
+        ]
+      },
+      "confirmation": [
+        {
+          "day": 42,
+          "reused": true,
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          },
+          "early_gain_C": 0.0,
+          "late_gain_C": 0.0
+        },
+        {
+          "day": 77,
+          "reused": true,
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          },
+          "early_gain_C": 0.0,
+          "late_gain_C": 0.0
+        }
+      ],
+      "supported_both_dates": false,
+      "development_horizons_identical": false,
+      "horizon_distinguished": true,
+      "posthoc_withdrawal_snapshots": [
+        {
+          "day": 42,
+          "method": "auto_pi",
+          "minute": 55,
+          "trace": "outputs/boptest_predictive_startup/bestest_air/confirmation_42_None.csv",
+          "csv_data_row": 56,
+          "T": 21.989306640910115,
+          "u": 0.46419182140097404,
+          "integral": -0.037040140744436165,
+          "correction": 0.0
+        },
+        {
+          "day": 42,
+          "method": "auto_pi",
+          "minute": 60,
+          "trace": "outputs/boptest_predictive_startup/bestest_air/confirmation_42_None.csv",
+          "csv_data_row": 61,
+          "T": 21.989133701769788,
+          "u": 0.465727874484023,
+          "integral": -0.03552401166024978,
+          "correction": 0.0
+        },
+        {
+          "day": 42,
+          "method": "auto_pi",
+          "minute": 120,
+          "trace": "outputs/boptest_predictive_startup/bestest_air/confirmation_42_None.csv",
+          "csv_data_row": 121,
+          "T": 21.988837034834035,
+          "u": 0.4854624592559132,
+          "integral": -0.015823605337953395,
+          "correction": 0.0
+        },
+        {
+          "day": 77,
+          "method": "auto_pi",
+          "minute": 55,
+          "trace": "outputs/boptest_predictive_startup/bestest_air/confirmation_77_None.csv",
+          "csv_data_row": 56,
+          "T": 21.99867419971423,
+          "u": 0.5671376640638377,
+          "integral": 0.06698492106225024,
+          "correction": 0.0
+        },
+        {
+          "day": 77,
+          "method": "auto_pi",
+          "minute": 60,
+          "trace": "outputs/boptest_predictive_startup/bestest_air/confirmation_77_None.csv",
+          "csv_data_row": 61,
+          "T": 21.998321136627,
+          "u": 0.5673952006393446,
+          "integral": 0.0672017818917398,
+          "correction": 0.0
+        },
+        {
+          "day": 77,
+          "method": "auto_pi",
+          "minute": 120,
+          "trace": "outputs/boptest_predictive_startup/bestest_air/confirmation_77_None.csv",
+          "csv_data_row": 121,
+          "T": 21.99772539211756,
+          "u": 0.5715225162384652,
+          "integral": 0.07126046286652986,
+          "correction": 0.0
+        }
+      ],
+      "old_development_candidates": [
+        {
+          "band_C": 0.05,
+          "early_mae_C": 0.12489133174641344,
+          "acquisition_onset_min": 20.0
+        },
+        {
+          "band_C": 0.1,
+          "early_mae_C": 0.12256864873462234,
+          "acquisition_onset_min": 20.0
+        },
+        {
+          "band_C": 0.2,
+          "early_mae_C": 0.11743875340710683,
+          "acquisition_onset_min": 19.0
+        }
+      ]
+    },
+    "hydronic": {
+      "selection": {
+        "horizon_min": 3,
+        "decisions": [
+          {
+            "horizon_min": 3,
+            "passed": true,
+            "checks": {
+              "early_gain": true,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": true
+            }
+          },
+          {
+            "horizon_min": 10,
+            "passed": true,
+            "checks": {
+              "early_gain": true,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": true
+            }
+          },
+          {
+            "horizon_min": 30,
+            "passed": true,
+            "checks": {
+              "early_gain": true,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": true
+            }
+          }
+        ]
+      },
+      "confirmation": [
+        {
+          "day": 42,
+          "reused": false,
+          "passed": true,
+          "checks": {
+            "early_gain": true,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          },
+          "early_gain_C": 0.1641511161325505,
+          "late_gain_C": -0.00343861078396146
+        },
+        {
+          "day": 77,
+          "reused": false,
+          "passed": false,
+          "checks": {
+            "early_gain": true,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": false
+          },
+          "early_gain_C": 0.15380286809582255,
+          "late_gain_C": -0.003919968698194498
+        }
+      ],
+      "supported_both_dates": false,
+      "development_horizons_identical": true,
+      "horizon_distinguished": false,
+      "posthoc_withdrawal_snapshots": [
+        {
+          "day": 42,
+          "method": "auto_pi",
+          "minute": 55,
+          "trace": "outputs/boptest_predictive_startup/bestest_hydronic/confirmation_42_None.csv",
+          "csv_data_row": 56,
+          "T": 21.02600437189153,
+          "u": 0.38811021856633204,
+          "integral": -0.18258998642842778,
+          "correction": 0.0
+        },
+        {
+          "day": 42,
+          "method": "auto_pi",
+          "minute": 60,
+          "trace": "outputs/boptest_predictive_startup/bestest_hydronic/confirmation_42_None.csv",
+          "csv_data_row": 61,
+          "T": 21.03124565822543,
+          "u": 0.3908362340452199,
+          "integral": -0.17948351747772867,
+          "correction": 0.0
+        },
+        {
+          "day": 42,
+          "method": "auto_pi",
+          "minute": 120,
+          "trace": "outputs/boptest_predictive_startup/bestest_hydronic/confirmation_42_None.csv",
+          "csv_data_row": 121,
+          "T": 21.073493964775082,
+          "u": 0.4240309676197295,
+          "integral": -0.14322207205406773,
+          "correction": 0.0
+        },
+        {
+          "day": 42,
+          "method": "startup",
+          "minute": 55,
+          "trace": "outputs/boptest_predictive_startup/bestest_hydronic/confirmation_42_3.csv",
+          "csv_data_row": 56,
+          "T": 21.189307603731436,
+          "u": 0.3804491803251802,
+          "integral": -0.18842042179819402,
+          "correction": 0.010023220322677339
+        },
+        {
+          "day": 42,
+          "method": "startup",
+          "minute": 60,
+          "trace": "outputs/boptest_predictive_startup/bestest_hydronic/confirmation_42_3.csv",
+          "csv_data_row": 61,
+          "T": 21.16323453566241,
+          "u": 0.37495267165126134,
+          "integral": -0.18578629693743,
+          "correction": 0.0
+        },
+        {
+          "day": 42,
+          "method": "startup",
+          "minute": 120,
+          "trace": "outputs/boptest_predictive_startup/bestest_hydronic/confirmation_42_3.csv",
+          "csv_data_row": 121,
+          "T": 21.056017548788418,
+          "u": 0.4186260686611858,
+          "integral": -0.1498955456932087,
+          "correction": 0.0
+        },
+        {
+          "day": 77,
+          "method": "auto_pi",
+          "minute": 55,
+          "trace": "outputs/boptest_predictive_startup/bestest_hydronic/confirmation_77_None.csv",
+          "csv_data_row": 56,
+          "T": 21.107345590021623,
+          "u": 0.2608577210529117,
+          "integral": -0.30393810343914585,
+          "correction": 0.0
+        },
+        {
+          "day": 77,
+          "method": "auto_pi",
+          "minute": 60,
+          "trace": "outputs/boptest_predictive_startup/bestest_hydronic/confirmation_77_None.csv",
+          "csv_data_row": 61,
+          "T": 21.1211794068264,
+          "u": 0.26268325444138846,
+          "integral": -0.3011084036501925,
+          "correction": 0.0
+        },
+        {
+          "day": 77,
+          "method": "auto_pi",
+          "minute": 120,
+          "trace": "outputs/boptest_predictive_startup/bestest_hydronic/confirmation_77_None.csv",
+          "csv_data_row": 121,
+          "T": 21.310046883139478,
+          "u": 0.2790974935817728,
+          "integral": -0.27098468891584726,
+          "correction": 0.0
+        },
+        {
+          "day": 77,
+          "method": "startup",
+          "minute": 55,
+          "trace": "outputs/boptest_predictive_startup/bestest_hydronic/confirmation_77_3.csv",
+          "csv_data_row": 56,
+          "T": 21.253135113913004,
+          "u": 0.25124979305447753,
+          "integral": -0.30942414185005157,
+          "correction": 0.006460651984271263
+        },
+        {
+          "day": 77,
+          "method": "startup",
+          "minute": 60,
+          "trace": "outputs/boptest_predictive_startup/bestest_hydronic/confirmation_77_3.csv",
+          "csv_data_row": 61,
+          "T": 21.238320599370468,
+          "u": 0.24827478633213934,
+          "integral": -0.30701384968502016,
+          "correction": 0.0
+        },
+        {
+          "day": 77,
+          "method": "startup",
+          "minute": 120,
+          "trace": "outputs/boptest_predictive_startup/bestest_hydronic/confirmation_77_3.csv",
+          "csv_data_row": 121,
+          "T": 21.294952791986248,
+          "u": 0.2739327177946916,
+          "integral": -0.27724511165240756,
+          "correction": 0.0
+        }
+      ],
+      "old_development_candidates": [
+        {
+          "band_C": 0.05,
+          "early_mae_C": 0.7478192942282457,
+          "acquisition_onset_min": null
+        },
+        {
+          "band_C": 0.1,
+          "early_mae_C": 0.7478192942282457,
+          "acquisition_onset_min": null
+        },
+        {
+          "band_C": 0.2,
+          "early_mae_C": 0.7478192942282457,
+          "acquisition_onset_min": null
+        }
+      ]
+    },
+    "heat_pump": {
+      "selection": {
+        "horizon_min": null,
+        "decisions": [
+          {
+            "horizon_min": 3,
+            "passed": false,
+            "checks": {
+              "early_gain": false,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": true
+            }
+          },
+          {
+            "horizon_min": 10,
+            "passed": false,
+            "checks": {
+              "early_gain": false,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": true
+            }
+          },
+          {
+            "horizon_min": 30,
+            "passed": false,
+            "checks": {
+              "early_gain": false,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": true
+            }
+          }
+        ]
+      },
+      "confirmation": [
+        {
+          "day": 42,
+          "reused": true,
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          },
+          "early_gain_C": 0.0,
+          "late_gain_C": 0.0
+        },
+        {
+          "day": 77,
+          "reused": true,
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          },
+          "early_gain_C": 0.0,
+          "late_gain_C": 0.0
+        }
+      ],
+      "supported_both_dates": false,
+      "development_horizons_identical": true,
+      "horizon_distinguished": false,
+      "posthoc_withdrawal_snapshots": [
+        {
+          "day": 42,
+          "method": "auto_pi",
+          "minute": 55,
+          "trace": "outputs/boptest_predictive_startup/bestest_hydronic_heat_pump/confirmation_42_None.csv",
+          "csv_data_row": 56,
+          "T": 20.803760152642155,
+          "u": 0.9729849679810982,
+          "integral": -21.51524896443594,
+          "correction": 0.0
+        },
+        {
+          "day": 42,
+          "method": "auto_pi",
+          "minute": 60,
+          "trace": "outputs/boptest_predictive_startup/bestest_hydronic_heat_pump/confirmation_42_None.csv",
+          "csv_data_row": 61,
+          "T": 20.814883116149815,
+          "u": 0.7685323875321544,
+          "integral": -21.51524896443594,
+          "correction": 0.0
+        },
+        {
+          "day": 42,
+          "method": "auto_pi",
+          "minute": 120,
+          "trace": "outputs/boptest_predictive_startup/bestest_hydronic_heat_pump/confirmation_42_None.csv",
+          "csv_data_row": 121,
+          "T": 20.90345473026889,
+          "u": 0.9569038545693367,
+          "integral": -19.698831603990715,
+          "correction": 0.0
+        },
+        {
+          "day": 77,
+          "method": "auto_pi",
+          "minute": 55,
+          "trace": "outputs/boptest_predictive_startup/bestest_hydronic_heat_pump/confirmation_77_None.csv",
+          "csv_data_row": 56,
+          "T": 21.31047086438457,
+          "u": 0.6164224508176481,
+          "integral": -12.557898648430902,
+          "correction": 0.0
+        },
+        {
+          "day": 77,
+          "method": "auto_pi",
+          "minute": 60,
+          "trace": "outputs/boptest_predictive_startup/bestest_hydronic_heat_pump/confirmation_77_None.csv",
+          "csv_data_row": 61,
+          "T": 21.363665661304253,
+          "u": 0.38708063477702126,
+          "integral": -11.809460263251124,
+          "correction": 0.0
+        },
+        {
+          "day": 77,
+          "method": "auto_pi",
+          "minute": 120,
+          "trace": "outputs/boptest_predictive_startup/bestest_hydronic_heat_pump/confirmation_77_None.csv",
+          "csv_data_row": 121,
+          "T": 21.664321475453562,
+          "u": 0.8221900712068262,
+          "integral": -5.847958783237511,
+          "correction": 0.0
+        }
+      ],
+      "old_development_candidates": [
+        {
+          "band_C": 0.05,
+          "early_mae_C": 0.9563949855628796,
+          "acquisition_onset_min": null
+        },
+        {
+          "band_C": 0.1,
+          "early_mae_C": 0.9563949855628796,
+          "acquisition_onset_min": null
+        },
+        {
+          "band_C": 0.2,
+          "early_mae_C": 0.9563949855628796,
+          "acquisition_onset_min": null
+        }
+      ]
+    },
+    "apartment": {
+      "selection": {
+        "horizon_min": null,
+        "decisions": [
+          {
+            "horizon_min": 3,
+            "passed": false,
+            "checks": {
+              "early_gain": false,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": true
+            }
+          },
+          {
+            "horizon_min": 10,
+            "passed": false,
+            "checks": {
+              "early_gain": false,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": true
+            }
+          },
+          {
+            "horizon_min": 30,
+            "passed": false,
+            "checks": {
+              "early_gain": false,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": true
+            }
+          }
+        ]
+      },
+      "confirmation": [
+        {
+          "day": 42,
+          "reused": true,
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          },
+          "early_gain_C": 0.0,
+          "late_gain_C": 0.0
+        },
+        {
+          "day": 77,
+          "reused": true,
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          },
+          "early_gain_C": 0.0,
+          "late_gain_C": 0.0
+        }
+      ],
+      "supported_both_dates": false,
+      "development_horizons_identical": true,
+      "horizon_distinguished": false,
+      "posthoc_withdrawal_snapshots": [
+        {
+          "day": 42,
+          "method": "auto_pi",
+          "minute": 55,
+          "trace": "outputs/boptest_predictive_startup/twozone_apartment_hydronic/confirmation_42_None.csv",
+          "csv_data_row": 56,
+          "T": 23.275510452615492,
+          "u": 0.06498208848918985,
+          "integral": 12.20582194491412,
+          "correction": 0.0
+        },
+        {
+          "day": 42,
+          "method": "auto_pi",
+          "minute": 60,
+          "trace": "outputs/boptest_predictive_startup/twozone_apartment_hydronic/confirmation_42_None.csv",
+          "csv_data_row": 61,
+          "T": 23.24207166456489,
+          "u": 0.13061903108863326,
+          "integral": 11.940066570128904,
+          "correction": 0.0
+        },
+        {
+          "day": 42,
+          "method": "auto_pi",
+          "minute": 120,
+          "trace": "outputs/boptest_predictive_startup/twozone_apartment_hydronic/confirmation_42_None.csv",
+          "csv_data_row": 121,
+          "T": 22.85390006770558,
+          "u": 1.0,
+          "integral": 9.342064104470369,
+          "correction": 0.0
+        },
+        {
+          "day": 77,
+          "method": "auto_pi",
+          "minute": 55,
+          "trace": "outputs/boptest_predictive_startup/twozone_apartment_hydronic/confirmation_77_None.csv",
+          "csv_data_row": 56,
+          "T": 22.902879770294135,
+          "u": 0.03657933687318682,
+          "integral": 8.48449392470795,
+          "correction": 0.0
+        },
+        {
+          "day": 77,
+          "method": "auto_pi",
+          "minute": 60,
+          "trace": "outputs/boptest_predictive_startup/twozone_apartment_hydronic/confirmation_77_None.csv",
+          "csv_data_row": 61,
+          "T": 22.88109159740361,
+          "u": 0.06414841455955056,
+          "integral": 8.296133133918167,
+          "correction": 0.0
+        },
+        {
+          "day": 77,
+          "method": "auto_pi",
+          "minute": 120,
+          "trace": "outputs/boptest_predictive_startup/twozone_apartment_hydronic/confirmation_77_None.csv",
+          "csv_data_row": 121,
+          "T": 22.59586724119032,
+          "u": 1.0,
+          "integral": 6.451052055980112,
+          "correction": 0.0
+        }
+      ],
+      "old_development_candidates": [
+        {
+          "band_C": 0.05,
+          "early_mae_C": 1.6158445544764959,
+          "acquisition_onset_min": null
+        },
+        {
+          "band_C": 0.1,
+          "early_mae_C": 1.6158445544764959,
+          "acquisition_onset_min": null
+        },
+        {
+          "band_C": 0.2,
+          "early_mae_C": 1.6158445544764959,
+          "acquisition_onset_min": null
+        }
+      ]
+    },
+    "commercial": {
+      "selection": {
+        "horizon_min": null,
+        "decisions": [
+          {
+            "horizon_min": 3,
+            "passed": false,
+            "checks": {
+              "early_gain": false,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": true
+            }
+          },
+          {
+            "horizon_min": 10,
+            "passed": false,
+            "checks": {
+              "early_gain": false,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": true
+            }
+          },
+          {
+            "horizon_min": 30,
+            "passed": false,
+            "checks": {
+              "early_gain": false,
+              "early_peak": true,
+              "late_mae": true,
+              "late_peak": true,
+              "late_tv": true,
+              "acquisition": true
+            }
+          }
+        ]
+      },
+      "confirmation": [
+        {
+          "day": 42,
+          "reused": true,
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          },
+          "early_gain_C": 0.0,
+          "late_gain_C": 0.0
+        },
+        {
+          "day": 77,
+          "reused": true,
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          },
+          "early_gain_C": 0.0,
+          "late_gain_C": 0.0
+        }
+      ],
+      "supported_both_dates": false,
+      "development_horizons_identical": true,
+      "horizon_distinguished": false,
+      "posthoc_withdrawal_snapshots": [
+        {
+          "day": 42,
+          "method": "auto_pi",
+          "minute": 55,
+          "trace": "outputs/boptest_predictive_startup/singlezone_commercial_hydronic/confirmation_42_None.csv",
+          "csv_data_row": 56,
+          "T": 21.407487663884524,
+          "u": 0.9900214178254982,
+          "integral": -0.3132457817092926,
+          "correction": 0.0
+        },
+        {
+          "day": 42,
+          "method": "auto_pi",
+          "minute": 60,
+          "trace": "outputs/boptest_predictive_startup/singlezone_commercial_hydronic/confirmation_42_None.csv",
+          "csv_data_row": 61,
+          "T": 21.435701864826854,
+          "u": 0.9922377255355583,
+          "integral": -0.2727795662814631,
+          "correction": 0.0
+        },
+        {
+          "day": 42,
+          "method": "auto_pi",
+          "minute": 120,
+          "trace": "outputs/boptest_predictive_startup/singlezone_commercial_hydronic/confirmation_42_None.csv",
+          "csv_data_row": 121,
+          "T": 21.627327659891137,
+          "u": 0.9909197377347156,
+          "integral": -0.014311037620790057,
+          "correction": 0.0
+        },
+        {
+          "day": 77,
+          "method": "auto_pi",
+          "minute": 55,
+          "trace": "outputs/boptest_predictive_startup/singlezone_commercial_hydronic/confirmation_77_None.csv",
+          "csv_data_row": 56,
+          "T": 21.628974477392035,
+          "u": 0.9830836815420548,
+          "integral": -0.0199145082595974,
+          "correction": 0.0
+        },
+        {
+          "day": 77,
+          "method": "auto_pi",
+          "minute": 60,
+          "trace": "outputs/boptest_predictive_startup/singlezone_commercial_hydronic/confirmation_77_None.csv",
+          "csv_data_row": 61,
+          "T": 21.67222443858776,
+          "u": 0.997921683062927,
+          "integral": 0.05355733612342425,
+          "correction": 0.0
+        },
+        {
+          "day": 77,
+          "method": "auto_pi",
+          "minute": 120,
+          "trace": "outputs/boptest_predictive_startup/singlezone_commercial_hydronic/confirmation_77_None.csv",
+          "csv_data_row": 121,
+          "T": 21.989904139487237,
+          "u": 0.95286934495623,
+          "integral": 0.4391824170955407,
+          "correction": 0.0
+        }
+      ],
+      "old_development_candidates": [
+        {
+          "band_C": 0.05,
+          "early_mae_C": 0.7162573389901695,
+          "acquisition_onset_min": 138.0
+        },
+        {
+          "band_C": 0.1,
+          "early_mae_C": 0.7162573389901695,
+          "acquisition_onset_min": 138.0
+        },
+        {
+          "band_C": 0.2,
+          "early_mae_C": 0.7162573389901695,
+          "acquisition_onset_min": 138.0
+        }
+      ]
+    }
+  },
+  "unique_episodes": 27,
+  "reused_records": 13,
+  "scored_hours": 333,
+  "warmup_hours": 648,
+  "wall_seconds": 846.6741235624067,
+  "sources": {
+    "scripts/run_boptest_predictive_startup.py": "02e0fe5278d10e4dd233a50b9ed3d301d4d5ecb0df94e56f0473914d0c35ff1d",
+    "scripts/boptest_startup_devices.json": "4678761e580d725aa08d5ffd999c2e47da6cdd9e04d82ee135b205209098762a",
+    "openspec/changes/predictive-startup-boundary/protocol.md": "e0e9a89cb6c297360ef59880a82c2dd1216c619edc9a104d871c1fca46ff85aa",
+    "scripts/boptest_predictive_startup_adapter.py": "62d54be493590efdd5000d6e19e9d501b8d0d1af70500b6bc97552bde257b191",
+    "scripts/select_boptest_predictive_startup.py": "9821dddf3587c3f0b8f0858f161d716237b21787cad114f386cb20f66ebf55f9",
+    "scripts/run_boptest_cross_plant.py": "3ad0154d942737e43f9263c1cd9bcc9ebbff2292cc319c24800f73169d9f5990",
+    "digital_twin/control/predictive_startup_pi.py": "97036550cef6064fa2bbae2c070821818c5ce1de9cc84575fa65d44534336517",
+    "digital_twin/control/startup_pi.py": "d0338202ac80ce906766fba2bc09ebb550075d3883155f60639dfc92a60bbadc",
+    "digital_twin/control/portable_pi.py": "2ce85a77f1d16e1dbb8fbcd847ebe722233790a9658cc3946a9cac9ed895ac30",
+    "digital_twin/control/delayed_dynamics.py": "8098ec6b1d80c1459e2201fedc6bf92bcf3307181caf18563ef34e430a2215e2",
+    "openspec/changes/model-consistent-compensation/artifacts/air.json": "184dc88cc432391b2a13600d72e698f72a58131b8c5897371d113e5823e4ce1f",
+    "outputs/boptest_cross_plant/bestest_air/identification.csv": "bf65320193556abc8b690921bf839262954230b9d5f90aaf93400bd32cd0d87f",
+    "outputs/vendor/boptest-v0.9.0/testcases/bestest_air/models/wrapped.fmu": "158008fa3b635280a67dfed8bab5804d1f9a96d218b467dfebab77e5cbf8b86a",
+    "openspec/changes/startup-pi-boundary/artifacts/air_development.json": "77e4074d74a4d972f2d10964fdce0452a3266591b101d9dce80bc3d6f00d0daa",
+    "outputs/boptest_startup/bestest_air/development_8_None.csv": "b28a488d164d730adf5dd51bf7eaa73b586c2c2c0710fafe5e4503f1253aa0b4",
+    "openspec/changes/model-consistent-compensation/artifacts/hydronic.json": "7739d663de9316809cb231f6b543bf038ff51775b4729ad05829d8df043c43da",
+    "outputs/boptest_cross_plant/bestest_hydronic/identification.csv": "d68b7f3ea41493243c7902e4d2c61050c7e02e50dde2c443a4fb3e40d6dc22ef",
+    "outputs/vendor/boptest-v0.9.0/testcases/bestest_hydronic/models/wrapped.fmu": "365b3085d97cc4620c06b6036156126a056d7f160fcc4f181d6b2fac4b05743b",
+    "openspec/changes/startup-pi-boundary/artifacts/hydronic_development.json": "1b20e07caf0bd0d30a4c6d976a22686b87830a4b1155463d4e2c354c43e63345",
+    "outputs/boptest_startup/bestest_hydronic/development_8_None.csv": "16fe6841b9916209efd802f2e8fc9101c3ed1c52d05d062338de6097f06fb3cc",
+    "openspec/changes/model-consistent-compensation/artifacts/heat_pump.json": "a34b0a779c851ea52eb56878bcf69ce0fcec7a977f4d886c6b73415c354b4c3e",
+    "outputs/boptest_more_devices/bestest_hydronic_heat_pump/identification.csv": "4b6b24afb8971366157b0c1b7a9f19a0481a84c1fe9cfc8276183b9c12fcef58",
+    "outputs/vendor/boptest-v0.9.0/testcases/bestest_hydronic_heat_pump/models/wrapped.fmu": "674b9500c1c89fdbec64f2c053af8ddcd06afebe63bd7c1b7fc708692a11863e",
+    "openspec/changes/startup-pi-boundary/artifacts/heat_pump_development.json": "920cbb28d031e3aa3d299fd9da5c6feabe7cc7a0828aaf1af8921e52c8e23a43",
+    "outputs/boptest_startup/bestest_hydronic_heat_pump/development_8_None.csv": "c737bf0dc00846255ab7cae627bff34bc28038eeac17669488a4d0fbe4e10a8d",
+    "openspec/changes/model-consistent-compensation/artifacts/apartment.json": "65ff336524a875e8d5b9b5c5511f731f5d38266047b86123efc9cc35e3bc7dd9",
+    "outputs/boptest_more_devices/twozone_apartment_hydronic/identification.csv": "8a2b8190ade78aec0fb800ebca130a30ff78a374db400cb3983ba94b7e4def41",
+    "outputs/vendor/boptest-v0.9.0/testcases/twozone_apartment_hydronic/models/wrapped.fmu": "88916efe9fbd0543d78c323eb8221692cb4b2411ffa1b84c2dbc9e23a2d19d72",
+    "openspec/changes/startup-pi-boundary/artifacts/apartment_development.json": "1ddf1b9ec4c9a812cad823b878e7af0776d1e08926dc18929ecc271ce0b85300",
+    "outputs/boptest_startup/twozone_apartment_hydronic/development_8_None.csv": "d93c34f2d09d3b8f8952e4d7d648a737b8c06b3040c60b51841aa12689e77c5b",
+    "openspec/changes/model-consistent-compensation/artifacts/commercial.json": "c64f90642e3ed4c9e10f0200416fc215f2da964c73cbe9e7a2471fb2f7cf16c2",
+    "outputs/boptest_more_devices/singlezone_commercial_hydronic/identification.csv": "45e5317667aca94c4a1d53d0d0c2bdad971dda371db11dd2155533a028fcd8ab",
+    "outputs/vendor/boptest-v0.9.0/testcases/singlezone_commercial_hydronic/models/wrapped.fmu": "5de84fd8ade869dcaa2748e552aca6e2650f4c33aadcb3e4fe0737c05395ee51",
+    "openspec/changes/startup-pi-boundary/artifacts/commercial_development.json": "dab3e01f657baf73109bae84d3f66bbc48e6933b20892fafa5eb5534f23151f0",
+    "outputs/boptest_startup/singlezone_commercial_hydronic/development_8_None.csv": "3dd47c17aa348fe9778591cafee48f1002941a7f50b992525570892f34430560"
+  },
+  "aggregate_simulated_hours": 981
+}

@@ -1,0 +1,68 @@
+{
+  "status": "COMPLETED_DEVELOPMENT_ONLY",
+  "scope": "ADAPTIVE_DEVELOPMENT_REUSED_EVALUATION_DATES",
+  "v1_sha256": "645b74c526f157e54c6d9f44f5ec4ea8bbe74dabeb9a0b6d058498fe9dc3a6bb",
+  "protocol_sha256": "d3e0acb6021de291cc5a676d5f093aea611606fd6e10ef3484739568dfd5b10a",
+  "runner_sha256": "e52cc333ce66a2588db76fa1c98d8d10e7373b8b37ac8b533100940dbc9e63e5",
+  "base_runner_sha256": "c33a23274e37ffe0d0bc194ea58644ff93acb3ada8822b3d7ce5ba8042d51f58",
+  "calibration_hours": 2,
+  "response_s": 180.0,
+  "kp": 3.227185031291436,
+  "ti": 250.5407617068066,
+  "environment_feedforward_used": false,
+  "environment_feedforward_reason": "rank-deficient night calibration; solar not identifiable",
+  "evaluations": [
+    {
+      "day": 3,
+      "controller": "auto_2h_v2",
+      "calibration_hours": 2,
+      "within_exploratory_grid_margin": true,
+      "trace": "outputs/boptest_rapid_pi/v2/day3_auto_2h_v2.csv",
+      "sha256": "b4918088ebf8d1ca90b1e829755fb5d401d2a00e7c77038030028e2ccac92d7d",
+      "wall_seconds_including_warmup": 12.629857806954533,
+      "common_warmup_hours": 24,
+      "scored_hours": 24,
+      "metrics": {
+        "n": 1440,
+        "mae_C": 0.03922570258795422,
+        "rmse_C": 0.10736308252632581,
+        "max_abs_error_C": 1.4961827094923024,
+        "within_0_5_C_pct": 99.23611111111111,
+        "iae_C_h": 0.9414168621109014,
+        "outside_20_30_C_n": 0,
+        "saturation_pct": 0.0,
+        "command_total_variation_C": 43.66674410134014,
+        "heat_kWh": 52.37648554332694,
+        "cool_kWh": 0.9913820689274238,
+        "fan_kWh": 0.5191375557292941
+      }
+    },
+    {
+      "day": 180,
+      "controller": "auto_2h_v2",
+      "calibration_hours": 2,
+      "within_exploratory_grid_margin": true,
+      "trace": "outputs/boptest_rapid_pi/v2/day180_auto_2h_v2.csv",
+      "sha256": "4d0c217dd99bbb6265d4369eed9942efdf6cc3a3623ae57f9ef26c8de2918f96",
+      "wall_seconds_including_warmup": 8.933293744921684,
+      "common_warmup_hours": 24,
+      "scored_hours": 24,
+      "metrics": {
+        "n": 1440,
+        "mae_C": 0.041211622744797796,
+        "rmse_C": 0.07692716335233858,
+        "max_abs_error_C": 0.4358996040390366,
+        "within_0_5_C_pct": 100.0,
+        "iae_C_h": 0.989078945875147,
+        "outside_20_30_C_n": 0,
+        "saturation_pct": 12.569444444444445,
+        "command_total_variation_C": 20.818761599537623,
+        "heat_kWh": 0.0,
+        "cool_kWh": 11.600623076053344,
+        "fan_kWh": 0.5191337311223635
+      }
+    }
+  ],
+  "failures": [],
+  "within_exploratory_grid_margin_both_dates": true
+}

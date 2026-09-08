@@ -1,0 +1,216 @@
+{
+  "selections": {
+    "air": {
+      "band_C": null,
+      "decisions": [
+        {
+          "band_C": 0.05,
+          "passed": false,
+          "checks": {
+            "early_gain": true,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": false
+          }
+        },
+        {
+          "band_C": 0.1,
+          "passed": false,
+          "checks": {
+            "early_gain": true,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": false
+          }
+        },
+        {
+          "band_C": 0.2,
+          "passed": false,
+          "checks": {
+            "early_gain": true,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": false
+          }
+        }
+      ]
+    },
+    "hydronic": {
+      "band_C": 0.2,
+      "decisions": [
+        {
+          "band_C": 0.05,
+          "passed": true,
+          "checks": {
+            "early_gain": true,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          }
+        },
+        {
+          "band_C": 0.1,
+          "passed": true,
+          "checks": {
+            "early_gain": true,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          }
+        },
+        {
+          "band_C": 0.2,
+          "passed": true,
+          "checks": {
+            "early_gain": true,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          }
+        }
+      ]
+    },
+    "heat_pump": {
+      "band_C": null,
+      "decisions": [
+        {
+          "band_C": 0.05,
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          }
+        },
+        {
+          "band_C": 0.1,
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          }
+        },
+        {
+          "band_C": 0.2,
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          }
+        }
+      ]
+    },
+    "apartment": {
+      "band_C": null,
+      "decisions": [
+        {
+          "band_C": 0.05,
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          }
+        },
+        {
+          "band_C": 0.1,
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          }
+        },
+        {
+          "band_C": 0.2,
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          }
+        }
+      ]
+    },
+    "commercial": {
+      "band_C": null,
+      "decisions": [
+        {
+          "band_C": 0.05,
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          }
+        },
+        {
+          "band_C": 0.1,
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          }
+        },
+        {
+          "band_C": 0.2,
+          "passed": false,
+          "checks": {
+            "early_gain": false,
+            "early_peak": true,
+            "late_mae": true,
+            "late_peak": true,
+            "late_tv": true,
+            "acquisition": true
+          }
+        }
+      ]
+    }
+  },
+  "development_sources": {
+    "openspec/changes/startup-pi-boundary/artifacts/air_development.json": "77e4074d74a4d972f2d10964fdce0452a3266591b101d9dce80bc3d6f00d0daa",
+    "openspec/changes/startup-pi-boundary/artifacts/hydronic_development.json": "1b20e07caf0bd0d30a4c6d976a22686b87830a4b1155463d4e2c354c43e63345",
+    "openspec/changes/startup-pi-boundary/artifacts/heat_pump_development.json": "920cbb28d031e3aa3d299fd9da5c6feabe7cc7a0828aaf1af8921e52c8e23a43",
+    "openspec/changes/startup-pi-boundary/artifacts/apartment_development.json": "1ddf1b9ec4c9a812cad823b878e7af0776d1e08926dc18929ecc271ce0b85300",
+    "openspec/changes/startup-pi-boundary/artifacts/commercial_development.json": "dab3e01f657baf73109bae84d3f66bbc48e6933b20892fafa5eb5534f23151f0"
+  }
+}

@@ -1,0 +1,2 @@
+# Design
+BCP-001: isolated normalized control core accepts target,dt,gains and measurements, never FMU identity. JSON adapter defines engineering-unit conversion and auxiliary hardware. Core uses actual previous applied u. SISO limited thermal model is a hypothesis, not general physical truth. Shared fixed adaptation recipe across devices; before-run freeze must cover core,runner,config,protocol andFMUs. No main source/manuscript adoption.

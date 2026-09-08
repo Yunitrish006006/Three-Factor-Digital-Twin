@@ -1,0 +1,333 @@
+{
+  "status": "COMPLETED",
+  "plant": "apartment",
+  "phase": "confirmation",
+  "config": {
+    "case": "twozone_apartment_hydronic",
+    "measurement_kind": "day-zone air temperature; night zone native control",
+    "temperature": "dayZon_reaTRooAir_y",
+    "outdoor": "weatherStation_reaWeaTDryBul_y",
+    "actuator_input": "hydronicSystem_oveTHea_u",
+    "actuator_activate": "hydronicSystem_oveTHea_activate",
+    "actuator_output": "hydronicSystem_oveTHea_y",
+    "actuator_min": 273.15,
+    "actuator_max": 318.15,
+    "actuator_unit": "K",
+    "overrides": [
+      {
+        "input": "hydronicSystem_oveMDayZ_u",
+        "activate": "hydronicSystem_oveMDayZ_activate",
+        "value": 1,
+        "unit": "1"
+      },
+      {
+        "input": "thermostatDayZon_oveTsetZon_u",
+        "activate": "thermostatDayZon_oveTsetZon_activate",
+        "value": 295.15,
+        "unit": "K"
+      },
+      {
+        "input": "thermostatNigZon_oveTsetZon_u",
+        "activate": "thermostatNigZon_oveTsetZon_activate",
+        "value": 295.15,
+        "unit": "K"
+      }
+    ],
+    "power_outputs": {
+      "heat_pump_W": "hydronicSystem_reaPeleHeaPum_y",
+      "pump_W": "hydronicSystem_reaPPum_y"
+    },
+    "target_C": 22,
+    "step_s": 60,
+    "startup_target_inputs": [
+      "thermostatDayZon_oveTsetZon_u",
+      "thermostatNigZon_oveTsetZon_u"
+    ]
+  },
+  "model": {
+    "order": 2,
+    "delay_steps": 10,
+    "a": [
+      1.9887240371048687,
+      -0.991493473961417
+    ],
+    "b": 0.0005149061547287267,
+    "c": -0.00042096076011970693,
+    "intercept": -0.0033977549209935768,
+    "poles": [
+      [
+        0.9943620185524343,
+        0.05232255748475109
+      ],
+      [
+        0.9943620185524343,
+        -0.05232255748475109
+      ]
+    ],
+    "radius": 0.9957376531805036,
+    "steady_gain_C_per_u": 0.18592449707283956,
+    "status": "FITTED",
+    "n": 109,
+    "rank": 5,
+    "fit_one_step_rmse_C": 4.9207192238797457e-05,
+    "tau_s": 14046.730850111975,
+    "validation_rollout_rmse_C": 0.001139976364374411
+  },
+  "freeze_sha256": "2a0cff324913890ea9a64a5dc582d29ad74c5ea7d112af0efb9cf0f37f61a931",
+  "selection_sha256": "2d7c08c9333402a04ec636f64a24b54a759b318d6e9e4b11a66e22471f45f597",
+  "evaluations": [
+    {
+      "trace": "outputs/boptest_startup/twozone_apartment_hydronic/confirmation_35_None.csv",
+      "sha256": "d7f2b348136dc338c136a6038448a4569a13a447fe25c4eadf74c97436ef52ad",
+      "scored_hours": 24,
+      "warmup_hours": 24,
+      "wall_seconds": 176.33803395181894,
+      "initial_state": {
+        "T": 23.739858200196068,
+        "outdoor": -0.10000000000002274,
+        "actuator_native": 316.17499999999995,
+        "heat_pump_W": 730.6027711751233,
+        "pump_W": 3.8833526078683303
+      },
+      "initial_u": 0.9561111111111106,
+      "metrics": {
+        "n": 1440,
+        "mae_C": 0.4400224312594497,
+        "rmse_C": 0.5941113357105734,
+        "max_abs_error_C": 1.7396955143713626,
+        "within_0_5_pct": 72.08333333333333,
+        "requested_TV_u": 20.80327682590173,
+        "saturation_pct": 55.833333333333336,
+        "outside_20_30_n": 0,
+        "heat_pump_kWh": 10.048867924903336,
+        "pump_kWh": 0.1897233860077386
+      },
+      "first_30min_mae_C": 1.7288121351829224,
+      "after_30min_mae_C": 0.41260137372916306,
+      "day": 35,
+      "band_C": null,
+      "method": "auto_pi",
+      "reused": false,
+      "windows": {
+        "early": {
+          "n": 60,
+          "mae_C": 1.676149832629727,
+          "rmse_C": 1.6773494271975593,
+          "max_abs_error_C": 1.7396955143713626,
+          "within_0_5_pct": 0.0,
+          "requested_TV_u": 1.9543081529522608,
+          "saturation_pct": 0.0,
+          "outside_20_30_n": 0,
+          "heat_pump_kWh": 0.012174164375831159,
+          "pump_kWh": 0.0038833526078683412
+        },
+        "late": {
+          "n": 1380,
+          "mae_C": 0.386277761634655,
+          "rmse_C": 0.49597236951244955,
+          "max_abs_error_C": 1.5293129788573765,
+          "within_0_5_pct": 75.21739130434783,
+          "requested_TV_u": 18.847303602036483,
+          "saturation_pct": 58.26086956521739,
+          "outside_20_30_n": 0,
+          "heat_pump_kWh": 10.036693760527506,
+          "pump_kWh": 0.1858400333998703
+        },
+        "acquisition_onset_min": 987.0,
+        "acquisition_confirmation_min": 1001.0
+      },
+      "exit_code": 1,
+      "exit_min": -1.0
+    },
+    {
+      "trace": "outputs/boptest_startup/twozone_apartment_hydronic/confirmation_35_None.csv",
+      "sha256": "d7f2b348136dc338c136a6038448a4569a13a447fe25c4eadf74c97436ef52ad",
+      "scored_hours": 24,
+      "warmup_hours": 24,
+      "wall_seconds": 176.33803395181894,
+      "initial_state": {
+        "T": 23.739858200196068,
+        "outdoor": -0.10000000000002274,
+        "actuator_native": 316.17499999999995,
+        "heat_pump_W": 730.6027711751233,
+        "pump_W": 3.8833526078683303
+      },
+      "initial_u": 0.9561111111111106,
+      "metrics": {
+        "n": 1440,
+        "mae_C": 0.4400224312594497,
+        "rmse_C": 0.5941113357105734,
+        "max_abs_error_C": 1.7396955143713626,
+        "within_0_5_pct": 72.08333333333333,
+        "requested_TV_u": 20.80327682590173,
+        "saturation_pct": 55.833333333333336,
+        "outside_20_30_n": 0,
+        "heat_pump_kWh": 10.048867924903336,
+        "pump_kWh": 0.1897233860077386
+      },
+      "first_30min_mae_C": 1.7288121351829224,
+      "after_30min_mae_C": 0.41260137372916306,
+      "day": 35,
+      "band_C": null,
+      "method": "selected_pi_reuse",
+      "reused": true,
+      "windows": {
+        "early": {
+          "n": 60,
+          "mae_C": 1.676149832629727,
+          "rmse_C": 1.6773494271975593,
+          "max_abs_error_C": 1.7396955143713626,
+          "within_0_5_pct": 0.0,
+          "requested_TV_u": 1.9543081529522608,
+          "saturation_pct": 0.0,
+          "outside_20_30_n": 0,
+          "heat_pump_kWh": 0.012174164375831159,
+          "pump_kWh": 0.0038833526078683412
+        },
+        "late": {
+          "n": 1380,
+          "mae_C": 0.386277761634655,
+          "rmse_C": 0.49597236951244955,
+          "max_abs_error_C": 1.5293129788573765,
+          "within_0_5_pct": 75.21739130434783,
+          "requested_TV_u": 18.847303602036483,
+          "saturation_pct": 58.26086956521739,
+          "outside_20_30_n": 0,
+          "heat_pump_kWh": 10.036693760527506,
+          "pump_kWh": 0.1858400333998703
+        },
+        "acquisition_onset_min": 987.0,
+        "acquisition_confirmation_min": 1001.0
+      },
+      "exit_code": 1,
+      "exit_min": -1.0
+    },
+    {
+      "trace": "outputs/boptest_startup/twozone_apartment_hydronic/confirmation_70_None.csv",
+      "sha256": "111b6257dec42bf5852608cb549f100f5551f99bc48c8c54b7f32c28d12a23ff",
+      "scored_hours": 24,
+      "warmup_hours": 24,
+      "wall_seconds": 75.45327072171494,
+      "initial_state": {
+        "T": 23.56888233457579,
+        "outdoor": 6.199999999999989,
+        "actuator_native": 310.2318181818182,
+        "heat_pump_W": 301.66621079510315,
+        "pump_W": 3.8833526078683507
+      },
+      "initial_u": 0.8240404040404049,
+      "metrics": {
+        "n": 1440,
+        "mae_C": 0.5867651089003881,
+        "rmse_C": 0.6675591516412895,
+        "max_abs_error_C": 1.5687951683071901,
+        "within_0_5_pct": 44.236111111111114,
+        "requested_TV_u": 15.686075287253539,
+        "saturation_pct": 67.08333333333333,
+        "outside_20_30_n": 0,
+        "heat_pump_kWh": 6.932229606653313,
+        "pump_kWh": 0.17082960622373045
+      },
+      "first_30min_mae_C": 1.56022020758957,
+      "after_30min_mae_C": 0.56605329828998,
+      "day": 70,
+      "band_C": null,
+      "method": "auto_pi",
+      "reused": false,
+      "windows": {
+        "early": {
+          "n": 60,
+          "mae_C": 1.5188751343493303,
+          "rmse_C": 1.5196942717371713,
+          "max_abs_error_C": 1.5687951683071901,
+          "within_0_5_pct": 0.0,
+          "requested_TV_u": 1.9304083727767942,
+          "saturation_pct": 0.0,
+          "outside_20_30_n": 0,
+          "heat_pump_kWh": 0.005013751366260969,
+          "pump_kWh": 0.0038833526078683503
+        },
+        "late": {
+          "n": 1380,
+          "mae_C": 0.5462385860547818,
+          "rmse_C": 0.6038202519397765,
+          "max_abs_error_C": 1.4026327639656415,
+          "within_0_5_pct": 46.15942028985507,
+          "requested_TV_u": 13.749698439073903,
+          "saturation_pct": 70.0,
+          "outside_20_30_n": 0,
+          "heat_pump_kWh": 6.927215855287053,
+          "pump_kWh": 0.16694625361586207
+        },
+        "acquisition_onset_min": 1405.0,
+        "acquisition_confirmation_min": 1419.0
+      },
+      "exit_code": 1,
+      "exit_min": -1.0
+    },
+    {
+      "trace": "outputs/boptest_startup/twozone_apartment_hydronic/confirmation_70_None.csv",
+      "sha256": "111b6257dec42bf5852608cb549f100f5551f99bc48c8c54b7f32c28d12a23ff",
+      "scored_hours": 24,
+      "warmup_hours": 24,
+      "wall_seconds": 75.45327072171494,
+      "initial_state": {
+        "T": 23.56888233457579,
+        "outdoor": 6.199999999999989,
+        "actuator_native": 310.2318181818182,
+        "heat_pump_W": 301.66621079510315,
+        "pump_W": 3.8833526078683507
+      },
+      "initial_u": 0.8240404040404049,
+      "metrics": {
+        "n": 1440,
+        "mae_C": 0.5867651089003881,
+        "rmse_C": 0.6675591516412895,
+        "max_abs_error_C": 1.5687951683071901,
+        "within_0_5_pct": 44.236111111111114,
+        "requested_TV_u": 15.686075287253539,
+        "saturation_pct": 67.08333333333333,
+        "outside_20_30_n": 0,
+        "heat_pump_kWh": 6.932229606653313,
+        "pump_kWh": 0.17082960622373045
+      },
+      "first_30min_mae_C": 1.56022020758957,
+      "after_30min_mae_C": 0.56605329828998,
+      "day": 70,
+      "band_C": null,
+      "method": "selected_pi_reuse",
+      "reused": true,
+      "windows": {
+        "early": {
+          "n": 60,
+          "mae_C": 1.5188751343493303,
+          "rmse_C": 1.5196942717371713,
+          "max_abs_error_C": 1.5687951683071901,
+          "within_0_5_pct": 0.0,
+          "requested_TV_u": 1.9304083727767942,
+          "saturation_pct": 0.0,
+          "outside_20_30_n": 0,
+          "heat_pump_kWh": 0.005013751366260969,
+          "pump_kWh": 0.0038833526078683503
+        },
+        "late": {
+          "n": 1380,
+          "mae_C": 0.5462385860547818,
+          "rmse_C": 0.6038202519397765,
+          "max_abs_error_C": 1.4026327639656415,
+          "within_0_5_pct": 46.15942028985507,
+          "requested_TV_u": 13.749698439073903,
+          "saturation_pct": 70.0,
+          "outside_20_30_n": 0,
+          "heat_pump_kWh": 6.927215855287053,
+          "pump_kWh": 0.16694625361586207
+        },
+        "acquisition_onset_min": 1405.0,
+        "acquisition_confirmation_min": 1419.0
+      },
+      "exit_code": 1,
+      "exit_min": -1.0
+    }
+  ],
+  "failures": []
+}

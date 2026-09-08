@@ -1,0 +1,366 @@
+{
+  "status": "COMPLETED",
+  "plant": "commercial",
+  "phase": "development",
+  "config": {
+    "case": "singlezone_commercial_hydronic",
+    "measurement_kind": "zone air temperature; AHU native control",
+    "temperature": "reaTZon_y",
+    "outdoor": "weaSta_reaWeaTDryBul_y",
+    "actuator_input": "oveValRad_u",
+    "actuator_activate": "oveValRad_activate",
+    "actuator_output": "oveValRad_y",
+    "actuator_min": 0,
+    "actuator_max": 1,
+    "actuator_unit": "1",
+    "overrides": [
+      {
+        "input": "ovePum_u",
+        "activate": "ovePum_activate",
+        "value": 25000,
+        "unit": "Pa"
+      },
+      {
+        "input": "dh_oveTSupSetHea_u",
+        "activate": "dh_oveTSupSetHea_activate",
+        "value": 318.15,
+        "unit": "K"
+      },
+      {
+        "input": "oveTZonSet_u",
+        "activate": "oveTZonSet_activate",
+        "value": 295.15,
+        "unit": "K"
+      }
+    ],
+    "power_outputs": {
+      "district_heat_W": "reaQHea_y",
+      "pump_W": "reaPPum_y",
+      "supply_fan_W": "ahu_reaPFanSup_y",
+      "extract_fan_W": "ahu_reaPFanExt_y"
+    },
+    "target_C": 22,
+    "step_s": 60,
+    "startup_target_inputs": [
+      "oveTZonSet_u"
+    ]
+  },
+  "model": {
+    "order": 2,
+    "delay_steps": 1,
+    "a": [
+      1.8954981492277463,
+      -0.9005142272600991
+    ],
+    "b": 0.006698108490496105,
+    "c": 7.939180009813872e-06,
+    "intercept": 0.0018702270551669592,
+    "poles": [
+      [
+        0.9477490746138731,
+        0.047811283486707865
+      ],
+      [
+        0.9477490746138731,
+        -0.047811283486707865
+      ]
+    ],
+    "radius": 0.9489542809114143,
+    "steady_gain_C_per_u": 1.335327809355134,
+    "status": "FITTED",
+    "n": 109,
+    "rank": 5,
+    "fit_one_step_rmse_C": 0.0002444497926828954,
+    "tau_s": 1145.1549212742345,
+    "validation_rollout_rmse_C": 0.018936734265113508
+  },
+  "freeze_sha256": "2a0cff324913890ea9a64a5dc582d29ad74c5ea7d112af0efb9cf0f37f61a931",
+  "selection_sha256": null,
+  "evaluations": [
+    {
+      "trace": "outputs/boptest_startup/singlezone_commercial_hydronic/development_8_None.csv",
+      "sha256": "3dd47c17aa348fe9778591cafee48f1002941a7f50b992525570892f34430560",
+      "scored_hours": 3,
+      "warmup_hours": 24,
+      "wall_seconds": 32.40916896611452,
+      "initial_state": {
+        "T": 20.999294056621466,
+        "outdoor": 1.8000000000000114,
+        "actuator_native": 0.13357710920559718,
+        "district_heat_W": 98478.89217943962,
+        "pump_W": 63.75840604886192,
+        "supply_fan_W": 515.920362256459,
+        "extract_fan_W": 268.1672530134142
+      },
+      "initial_u": 0.13357710920559718,
+      "metrics": {
+        "n": 180,
+        "mae_C": 0.35497170376366305,
+        "rmse_C": 0.4634335596105414,
+        "max_abs_error_C": 1.0010721136363259,
+        "within_0_5_pct": 71.66666666666667,
+        "requested_TV_u": 2.4287520225919508,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "district_heat_kWh": 553.4811933003738,
+        "pump_kWh": 0.3294141362433281,
+        "supply_fan_kWh": 1.547761086769377,
+        "extract_fan_kWh": 0.8045017590403096
+      },
+      "first_30min_mae_C": 0.8874958033802651,
+      "after_30min_mae_C": 0.2484668838403426,
+      "day": 8,
+      "band_C": null,
+      "method": "auto_pi",
+      "reused": false,
+      "windows": {
+        "early": {
+          "n": 60,
+          "mae_C": 0.7218197997424691,
+          "rmse_C": 0.7457542928905603,
+          "max_abs_error_C": 1.0010721136363259,
+          "within_0_5_pct": 15.0,
+          "requested_TV_u": 1.7439259443556554,
+          "saturation_pct": 0.0,
+          "outside_20_30_n": 0,
+          "district_heat_kWh": 190.905209721179,
+          "pump_kWh": 0.10758371616061352,
+          "supply_fan_kWh": 0.5159203622564591,
+          "extract_fan_kWh": 0.2681672530134336
+        },
+        "late": {
+          "n": 120,
+          "mae_C": 0.17154765577426,
+          "rmse_C": 0.2099553847311281,
+          "max_abs_error_C": 0.4253860424773279,
+          "within_0_5_pct": 100.0,
+          "requested_TV_u": 0.6752727464992307,
+          "saturation_pct": 0.0,
+          "outside_20_30_n": 0,
+          "district_heat_kWh": 362.5759835791948,
+          "pump_kWh": 0.2218304200827146,
+          "supply_fan_kWh": 1.0318407245129182,
+          "extract_fan_kWh": 0.536334506026876
+        },
+        "acquisition_onset_min": 139.0,
+        "acquisition_confirmation_min": 153.0
+      },
+      "exit_code": 1,
+      "exit_min": -1.0
+    },
+    {
+      "trace": "outputs/boptest_startup/singlezone_commercial_hydronic/development_8_0.05.csv",
+      "sha256": "ad8c7d86ac6f9b3bfb99d2862fe88413b1ee82570f9cf36ceda5de3e0deb6a8b",
+      "scored_hours": 3,
+      "warmup_hours": 24,
+      "wall_seconds": 19.85909212194383,
+      "initial_state": {
+        "T": 20.999294056621466,
+        "outdoor": 1.8000000000000114,
+        "actuator_native": 0.13357710920559718,
+        "district_heat_W": 98478.89217943962,
+        "pump_W": 63.75840604886192,
+        "supply_fan_W": 515.920362256459,
+        "extract_fan_W": 268.1672530134142
+      },
+      "initial_u": 0.13357710920559718,
+      "metrics": {
+        "n": 180,
+        "mae_C": 0.35170230534821423,
+        "rmse_C": 0.45994207386033414,
+        "max_abs_error_C": 1.0010398379133676,
+        "within_0_5_pct": 72.22222222222223,
+        "requested_TV_u": 2.4597495258663007,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "district_heat_kWh": 554.2433581225449,
+        "pump_kWh": 0.3299490705907654,
+        "supply_fan_kWh": 1.547761086769377,
+        "extract_fan_kWh": 0.8045017590403167
+      },
+      "first_30min_mae_C": 0.8820596935325511,
+      "after_30min_mae_C": 0.24563082771134684,
+      "day": 8,
+      "band_C": 0.05,
+      "method": "startup",
+      "reused": false,
+      "windows": {
+        "early": {
+          "n": 60,
+          "mae_C": 0.7162573389901695,
+          "rmse_C": 0.7404967810598247,
+          "max_abs_error_C": 1.0010398379133676,
+          "within_0_5_pct": 16.666666666666668,
+          "requested_TV_u": 1.783631056682879,
+          "saturation_pct": 0.0,
+          "outside_20_30_n": 0,
+          "district_heat_kWh": 191.7202869896674,
+          "pump_kWh": 0.10812729842784949,
+          "supply_fan_kWh": 0.5159203622564591,
+          "extract_fan_kWh": 0.2681672530134382
+        },
+        "late": {
+          "n": 120,
+          "mae_C": 0.16942478852723658,
+          "rmse_C": 0.2077313784203931,
+          "max_abs_error_C": 0.42125398212732534,
+          "within_0_5_pct": 100.0,
+          "requested_TV_u": 0.666668600151007,
+          "saturation_pct": 0.0,
+          "outside_20_30_n": 0,
+          "district_heat_kWh": 362.5230711328775,
+          "pump_kWh": 0.22182177216291593,
+          "supply_fan_kWh": 1.0318407245129182,
+          "extract_fan_kWh": 0.5363345060268786
+        },
+        "acquisition_onset_min": 138.0,
+        "acquisition_confirmation_min": 152.0
+      },
+      "exit_code": 4,
+      "exit_min": 60.0
+    },
+    {
+      "trace": "outputs/boptest_startup/singlezone_commercial_hydronic/development_8_0.1.csv",
+      "sha256": "e05047f7bffc495e18332e48630576ed9de00b5e618640c8d9ce5baad8385ce2",
+      "scored_hours": 3,
+      "warmup_hours": 24,
+      "wall_seconds": 34.650789285078645,
+      "initial_state": {
+        "T": 20.999294056621466,
+        "outdoor": 1.8000000000000114,
+        "actuator_native": 0.13357710920559718,
+        "district_heat_W": 98478.89217943962,
+        "pump_W": 63.75840604886192,
+        "supply_fan_W": 515.920362256459,
+        "extract_fan_W": 268.1672530134142
+      },
+      "initial_u": 0.13357710920559718,
+      "metrics": {
+        "n": 180,
+        "mae_C": 0.35170230534821423,
+        "rmse_C": 0.45994207386033414,
+        "max_abs_error_C": 1.0010398379133676,
+        "within_0_5_pct": 72.22222222222223,
+        "requested_TV_u": 2.4597495258663007,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "district_heat_kWh": 554.2433581225449,
+        "pump_kWh": 0.3299490705907654,
+        "supply_fan_kWh": 1.547761086769377,
+        "extract_fan_kWh": 0.8045017590403167
+      },
+      "first_30min_mae_C": 0.8820596935325511,
+      "after_30min_mae_C": 0.24563082771134684,
+      "day": 8,
+      "band_C": 0.1,
+      "method": "startup",
+      "reused": false,
+      "windows": {
+        "early": {
+          "n": 60,
+          "mae_C": 0.7162573389901695,
+          "rmse_C": 0.7404967810598247,
+          "max_abs_error_C": 1.0010398379133676,
+          "within_0_5_pct": 16.666666666666668,
+          "requested_TV_u": 1.783631056682879,
+          "saturation_pct": 0.0,
+          "outside_20_30_n": 0,
+          "district_heat_kWh": 191.7202869896674,
+          "pump_kWh": 0.10812729842784949,
+          "supply_fan_kWh": 0.5159203622564591,
+          "extract_fan_kWh": 0.2681672530134382
+        },
+        "late": {
+          "n": 120,
+          "mae_C": 0.16942478852723658,
+          "rmse_C": 0.2077313784203931,
+          "max_abs_error_C": 0.42125398212732534,
+          "within_0_5_pct": 100.0,
+          "requested_TV_u": 0.666668600151007,
+          "saturation_pct": 0.0,
+          "outside_20_30_n": 0,
+          "district_heat_kWh": 362.5230711328775,
+          "pump_kWh": 0.22182177216291593,
+          "supply_fan_kWh": 1.0318407245129182,
+          "extract_fan_kWh": 0.5363345060268786
+        },
+        "acquisition_onset_min": 138.0,
+        "acquisition_confirmation_min": 152.0
+      },
+      "exit_code": 4,
+      "exit_min": 60.0
+    },
+    {
+      "trace": "outputs/boptest_startup/singlezone_commercial_hydronic/development_8_0.2.csv",
+      "sha256": "fa2363641f9c80104c592676aa4d8c9c52351aef822e5815a9391c72eb0bdf5d",
+      "scored_hours": 3,
+      "warmup_hours": 24,
+      "wall_seconds": 23.931394345127046,
+      "initial_state": {
+        "T": 20.999294056621466,
+        "outdoor": 1.8000000000000114,
+        "actuator_native": 0.13357710920559718,
+        "district_heat_W": 98478.89217943962,
+        "pump_W": 63.75840604886192,
+        "supply_fan_W": 515.920362256459,
+        "extract_fan_W": 268.1672530134142
+      },
+      "initial_u": 0.13357710920559718,
+      "metrics": {
+        "n": 180,
+        "mae_C": 0.35170230534821423,
+        "rmse_C": 0.45994207386033414,
+        "max_abs_error_C": 1.0010398379133676,
+        "within_0_5_pct": 72.22222222222223,
+        "requested_TV_u": 2.4597495258663007,
+        "saturation_pct": 0.0,
+        "outside_20_30_n": 0,
+        "district_heat_kWh": 554.2433581225449,
+        "pump_kWh": 0.3299490705907654,
+        "supply_fan_kWh": 1.547761086769377,
+        "extract_fan_kWh": 0.8045017590403167
+      },
+      "first_30min_mae_C": 0.8820596935325511,
+      "after_30min_mae_C": 0.24563082771134684,
+      "day": 8,
+      "band_C": 0.2,
+      "method": "startup",
+      "reused": false,
+      "windows": {
+        "early": {
+          "n": 60,
+          "mae_C": 0.7162573389901695,
+          "rmse_C": 0.7404967810598247,
+          "max_abs_error_C": 1.0010398379133676,
+          "within_0_5_pct": 16.666666666666668,
+          "requested_TV_u": 1.783631056682879,
+          "saturation_pct": 0.0,
+          "outside_20_30_n": 0,
+          "district_heat_kWh": 191.7202869896674,
+          "pump_kWh": 0.10812729842784949,
+          "supply_fan_kWh": 0.5159203622564591,
+          "extract_fan_kWh": 0.2681672530134382
+        },
+        "late": {
+          "n": 120,
+          "mae_C": 0.16942478852723658,
+          "rmse_C": 0.2077313784203931,
+          "max_abs_error_C": 0.42125398212732534,
+          "within_0_5_pct": 100.0,
+          "requested_TV_u": 0.666668600151007,
+          "saturation_pct": 0.0,
+          "outside_20_30_n": 0,
+          "district_heat_kWh": 362.5230711328775,
+          "pump_kWh": 0.22182177216291593,
+          "supply_fan_kWh": 1.0318407245129182,
+          "extract_fan_kWh": 0.5363345060268786
+        },
+        "acquisition_onset_min": 138.0,
+        "acquisition_confirmation_min": 152.0
+      },
+      "exit_code": 4,
+      "exit_min": 60.0
+    }
+  ],
+  "failures": []
+}

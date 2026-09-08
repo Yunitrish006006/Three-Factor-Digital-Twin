@@ -1,0 +1,2 @@
+# SHA-001
+H-SHA-01: an automatically selected combination improves firsthour control and preserves laterPI quality on both new dates. Development factorial contrasts compare handover modes at fixed duration and durations at fixed mode; no pooled air/operative MAE, no population significance claims. Actual early crossing can truncate intended duration. Known devices and repeated development day limit generality. Retain adverse and identical outcomes. No cost or novelty superiority assumed.

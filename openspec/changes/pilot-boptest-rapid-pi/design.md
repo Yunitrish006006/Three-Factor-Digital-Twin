@@ -1,0 +1,2 @@
+# Design
+BPI-P1 / RQ-BPI-01 / BPI-001: isolated FMI adapter reads actual room/outdoor/solar outputs and sends bounded physical actuator overrides; model fitting uses only time-aligned development transitions. Fresh FMU lifecycle prevents cross-controller state leakage. Lightweight RC-like regression is primary; existing spatial estimators and model weights remain unchanged. Single-zone approximation may fail; report fit and fallback. HTML report consumes JSON only and labels simulation/development throughout.

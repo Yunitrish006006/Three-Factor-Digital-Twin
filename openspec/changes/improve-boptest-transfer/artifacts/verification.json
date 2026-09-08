@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "traces": 26,
+  "selection": "v4_observer",
+  "comparisons": [
+    {
+      "day": 35,
+      "noise_sd_C": 0,
+      "mae_gain_vs_v2_C": 0.016142862391637574,
+      "mae_gap_vs_grid_C": -0.004135648731885647,
+      "nonregression_vs_v2": true,
+      "within_exploratory_grid_margin": true
+    },
+    {
+      "day": 95,
+      "noise_sd_C": 0,
+      "mae_gain_vs_v2_C": 0.022064607215493796,
+      "mae_gap_vs_grid_C": -0.012221804844839016,
+      "nonregression_vs_v2": true,
+      "within_exploratory_grid_margin": true
+    },
+    {
+      "day": 245,
+      "noise_sd_C": 0,
+      "mae_gain_vs_v2_C": 0.020848190582099302,
+      "mae_gap_vs_grid_C": -0.01185424791087794,
+      "nonregression_vs_v2": true,
+      "within_exploratory_grid_margin": true
+    },
+    {
+      "day": 305,
+      "noise_sd_C": 0,
+      "mae_gain_vs_v2_C": 0.026417942890111908,
+      "mae_gap_vs_grid_C": -0.013045715093573622,
+      "nonregression_vs_v2": true,
+      "within_exploratory_grid_margin": true
+    },
+    {
+      "day": 95,
+      "noise_sd_C": 0.05,
+      "mae_gain_vs_v2_C": 0.003224089140304146,
+      "mae_gap_vs_grid_C": -0.0040673751676125955,
+      "nonregression_vs_v2": true,
+      "within_exploratory_grid_margin": true
+    },
+    {
+      "day": 245,
+      "noise_sd_C": 0.05,
+      "mae_gain_vs_v2_C": 0.00963987913134351,
+      "mae_gap_vs_grid_C": -0.006929691286041539,
+      "nonregression_vs_v2": true,
+      "within_exploratory_grid_margin": true
+    }
+  ],
+  "macro_mae_gain_vs_v2_C": 0.01638959522516504,
+  "protocol_improvement_gate": true,
+  "within_exploratory_grid_margin_all": true,
+  "transfer_sha256": "ba96011f411eedc670f374ec29696dd03731e1ef42cbd85076e76654e4d4016e",
+  "verifier_sha256": "eaac08039ec8225f396e360271ed1c50225731c67b9609ee6b07f98ad2769534"
+}
