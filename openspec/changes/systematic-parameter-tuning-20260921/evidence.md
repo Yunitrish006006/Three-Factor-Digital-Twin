@@ -40,6 +40,10 @@ GitHub Actions run [35566560483](https://github.com/Yunitrish006006/Three-Factor
 
 locked 的 saturation 比例較高，且能源分項仍需分開解讀；因此我只報 tracking metrics，不宣稱節能或因果改善。完整 JSON 與四條 CSV trace 位於 [`boptest_linux_holdout.json`](artifacts/boptest_linux_holdout.json) 與 `artifacts/traces/`。這仍是官方 FMU 的自訂 FMPy runner，不是官方 REST/KPI 等價性或真實介入證據。
 
+## 預測操作後結果的 trace replay
+
+為了直接檢查「模型提出操作後，溫度是否朝預期方向變化」，我以固定 seed `20260921` 從兩條既有 locked trace 各抽最多 100 個狀態。預期結果預先定義為：操作後一個時間步的溫度誤差小於 persistence（不變）的誤差。200 個抽樣中有 111 個符合，符合率為 55.5%。這是對既有 trace 的離線 replay，不是新 FMU 執行；目前結果不足以支持操作有效或因果改善，下一步仍需多 testcase／seed 與明確的 action-outcome 對照。完整抽樣與 hash 保存在 [`action_conditioned_replay.json`](artifacts/action_conditioned_replay.json)，程式為 [`evaluate_action_conditioned_replay.py`](../../scripts/evaluate_action_conditioned_replay.py)。
+
 ## Gate decision
 
 兩個新日期的 locked-vs-fixed 結果足以支持「在同一 FMU 上繼續做多 testcase／多 seed」的研究假說，但不足以支持真實裝置介入。因此本輪決策是 **不進入 E8 intervention**；E8 仍為 `NOT_EVALUATED`，下一個 gate 是跨 testcase／seed 的獨立確認，而不是直接部署控制器。
