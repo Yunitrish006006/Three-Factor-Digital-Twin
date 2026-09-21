@@ -11,7 +11,7 @@ import json
 import platform
 from pathlib import Path
 
-from scripts.run_boptest_rapid_pi import PI, episode, sha
+from run_boptest_rapid_pi import PI, episode, sha
 
 ROOT = Path(__file__).resolve().parents[1]
 CHANGE = ROOT / "openspec/changes/systematic-parameter-tuning-20260921"
