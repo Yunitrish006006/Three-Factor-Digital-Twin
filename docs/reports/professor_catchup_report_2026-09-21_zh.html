@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>我的研究進度與探索過程｜2026-09-21</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #667085;
+      --paper: #f4f7fb;
+      --card: #ffffff;
+      --navy: #173b66;
+      --blue: #2f80ed;
+      --teal: #238c91;
+      --green: #1f8a62;
+      --orange: #c96d1a;
+      --red: #bd3f4c;
+      --line: #dce4ef;
+      --soft-blue: #edf5ff;
+      --soft-green: #eaf7f1;
+      --soft-orange: #fff4e5;
+      --soft-red: #fdecef;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    a { color: #155e91; text-underline-offset: .18em; }
+    a:focus-visible, summary:focus-visible { outline: 3px solid var(--teal); outline-offset: 4px; }
+    code { overflow-wrap: anywhere; font-size: .9em; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
+      line-height: 1.68;
+    }
+    header {
+      padding: 56px max(24px, calc((100vw - 1120px) / 2));
+      color: #fff;
+      background:
+        radial-gradient(circle at 82% 18%, rgba(97, 216, 208, .24), transparent 29%),
+        linear-gradient(120deg, #102d50, #19537e 60%, #267f83);
+    }
+    header .eyebrow {
+      margin: 0 0 8px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      opacity: .78;
+    }
+    header h1 {
+      max-width: 900px;
+      margin: 0 0 14px;
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1.14;
+    }
+    header h1 span { display: block; }
+    header p {
+      max-width: 900px;
+      margin: 0;
+      font-size: 18px;
+      opacity: .92;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px max(18px, calc((100vw - 1120px) / 2));
+      overflow-x: auto;
+      background: rgba(255, 255, 255, .96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+    nav a {
+      flex: 0 0 auto;
+      padding: 8px 14px;
+      color: var(--navy);
+      background: #edf3fa;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 750;
+      text-decoration: none;
+    }
+    main { max-width: 1120px; margin: auto; padding: 30px 20px 72px; }
+    section { margin: 0 0 34px; scroll-margin-top: 76px; }
+    h2 { margin: 0 0 14px; color: var(--navy); font-size: 29px; line-height: 1.25; }
+    h3 { margin: 0 0 8px; font-size: 19px; line-height: 1.35; }
+    p { margin: 8px 0 0; }
+    ul, ol { margin: 10px 0 0; padding-left: 23px; }
+    li + li { margin-top: 7px; }
+    .lead { max-width: 900px; color: #3d4a5f; font-size: 18px; }
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+    .card {
+      min-width: 0;
+      grid-column: span 6;
+      padding: 22px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(26, 50, 75, .055);
+    }
+    .third { grid-column: span 4; }
+    .wide { grid-column: 1 / -1; }
+    .metric { margin-top: 8px; color: var(--navy); font-size: clamp(26px, 2.8vw, 34px); font-weight: 850; line-height: 1.2; }
+    .metric span { display: inline-block; }
+    .label { margin-top: 5px; color: var(--muted); font-size: 14px; }
+    .tag {
+      display: inline-block;
+      margin: 2px 4px 2px 0;
+      padding: 4px 9px;
+      color: #1e5f9f;
+      background: #e8f3ff;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .tag.good { color: #157653; background: var(--soft-green); }
+    .tag.warn { color: #985814; background: var(--soft-orange); }
+    .tag.bad { color: #982d3a; background: var(--soft-red); }
+    .callout {
+      padding: 18px 20px;
+      background: #fff7e9;
+      border-left: 5px solid var(--orange);
+      border-radius: 10px;
+    }
+    .callout strong { color: #8b4a10; }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 15px; background: #fff; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th, td { padding: 12px 11px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+    th { color: #42526a; background: #f8fafc; }
+    tr:last-child td { border-bottom: 0; }
+    .status-good { color: var(--green); font-weight: 800; }
+    .status-mixed { color: var(--orange); font-weight: 800; }
+    .status-no { color: var(--red); font-weight: 800; }
+    .timeline { position: relative; margin-left: 7px; padding-left: 27px; border-left: 3px solid #cbd9e8; }
+    .timeline article { position: relative; margin: 0 0 20px; padding: 19px 21px; background: #fff; border: 1px solid var(--line); border-radius: 15px; }
+    .timeline article::before {
+      position: absolute;
+      top: 22px;
+      left: -36px;
+      width: 15px;
+      height: 15px;
+      content: "";
+      background: var(--teal);
+      border: 4px solid var(--paper);
+      border-radius: 50%;
+    }
+    .timeline time { color: var(--teal); font-size: 13px; font-weight: 850; letter-spacing: .04em; }
+    .talk-track { counter-reset: talk; list-style: none; padding: 0; }
+    .talk-track li { position: relative; margin: 12px 0; padding: 16px 18px 16px 58px; background: #fff; border: 1px solid var(--line); border-radius: 14px; }
+    .talk-track li::before {
+      position: absolute;
+      top: 15px;
+      left: 16px;
+      width: 29px;
+      height: 29px;
+      counter-increment: talk;
+      content: counter(talk);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: var(--navy);
+      border-radius: 50%;
+      font-weight: 800;
+    }
+    .quote {
+      margin: 12px 0 0;
+      padding: 16px 18px;
+      color: #24425d;
+      background: var(--soft-blue);
+      border-radius: 12px;
+      font-size: 17px;
+    }
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .flow div {
+      position: relative;
+      min-height: 124px;
+      padding: 16px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+    }
+    .flow div:not(:last-child)::after {
+      position: absolute;
+      top: 50%;
+      right: -11px;
+      z-index: 2;
+      width: 20px;
+      height: 20px;
+      content: "→";
+      display: grid;
+      place-items: center;
+      color: var(--teal);
+      background: var(--paper);
+      font-weight: 900;
+      transform: translateY(-50%);
+    }
+    .flow strong { display: block; margin-bottom: 5px; color: var(--navy); }
+    details { margin-top: 15px; padding: 16px 20px; background: #fff; border: 1px solid var(--line); border-radius: 14px; }
+    summary { cursor: pointer; color: var(--navy); font-weight: 750; }
+    .source { margin-top: 13px; color: var(--muted); font-size: 13px; }
+    footer { padding: 24px; color: var(--muted); text-align: center; border-top: 1px solid var(--line); }
+
+    @media (max-width: 780px) {
+      .card, .third { grid-column: 1 / -1; }
+      .flow { grid-template-columns: 1fr; }
+      .flow div { min-height: auto; }
+      .flow div:not(:last-child)::after { top: auto; right: 50%; bottom: -16px; content: "↓"; transform: translateX(50%); }
+      header { padding-top: 42px; padding-bottom: 42px; }
+      main { padding-left: 15px; padding-right: 15px; }
+      th, td { min-width: 135px; }
+    }
+    @media print {
+      body { background: #fff; }
+      nav { display: none; }
+      header { padding: 30px 24px; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      main { max-width: none; padding: 24px 0; }
+      section { break-inside: auto; }
+      article, .callout, tr { break-inside: avoid; }
+      h2, h3 { break-after: avoid; }
+      .table-wrap { overflow: visible; }
+      th, td { min-width: 0; }
+      .card { box-shadow: none; }
+      a { color: inherit; text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">PROFESSOR CATCH-UP BRIEFING · RESEARCH ONLY</p>
+    <h1><span>稀疏感測空間數位孿生</span><span>我的研究進度與探索過程</span></h1>
+    <p>2026-09-21｜今天我想補報前幾次累積的進度，從我完成的比較、遇到的問題，談到我如何找到模擬平台，以及我如何把參數調教整理成可重現的研究流程。</p>
+  </header>
+
+  <nav aria-label="報告章節">
+    <a href="#overview">我的研究重點</a>
+    <a href="#timeline">我的推進過程</a>
+    <a href="#research-questions">研究卡點</a>
+    <a href="#journey">API 尋找過程</a>
+    <a href="#problems">碰到的問題</a>
+    <a href="#core">主論文證據</a>
+    <a href="#enclosure">機箱研究</a>
+    <a href="#control">控制探索</a>
+    <a href="#tuning">系統性參數調教</a>
+    <a href="#limits">限制</a>
+    <a href="#applications">應用方向</a>
+    <a href="#talk">我的報告講稿</a>
+    <a href="#questions">想與教授討論</a>
+  </nav>
+
+  <main>
+    <section id="overview">
+      <h2>這段時間，我主要推進了三件事</h2>
+      <p class="lead">我的研究原本聚焦在少量感測器下的空間估測。這幾輪我先補齊模型比較，再用公開伺服器資料確認虛擬感測的效果，接著追問：這些估測與模型資訊，能不能進一步幫助控制？</p>
+      <div class="grid">
+        <article class="card third">
+          <span class="tag good">我已完成的比較</span>
+          <h3>我發現，複雜模型未必更好</h3>
+          <div class="metric">0/24 · 0/12</div>
+          <div class="label">Pure RNN 在 3-D 場／時序任務取得最低 MAE 的次數</div>
+          <p>我後續加入 GRU 與 LSTM，兩者也各為 0/12。這讓我保留物理結構與簡單基準，並重新檢查增加模型複雜度是否真的有幫助。</p>
+        </article>
+        <article class="card third">
+          <span class="tag good">我已完成的確認</span>
+          <h3>我用新檔案完成 E15 確認</h3>
+          <div class="metric"><span>1.6939 →</span> <span>0.9744°C</span></div>
+          <div class="label">14 個先前未開啟檔案、3,112 筆資料的 MAE</div>
+          <p>我固定模型後，以先前未開啟的資料做一次確認。Load-aware ridge 在 12/14 runs 勝出，十項門檻全通過；我也保留了兩個退步 runs。</p>
+        </article>
+        <article class="card third">
+          <span class="tag warn">探索性結果</span>
+          <h3>我找到改善，也遇到轉移失敗</h3>
+          <div class="metric">約 22%</div>
+          <div class="label">水暖系統啟動前段 MAE 在兩個新日期的改善</div>
+          <p>我測試的啟動交接策略在水暖模型兩日通過；其餘四種已知設備均回退純 PI，所以我目前還不能說它具有通用優勢。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="timeline">
+      <h2>我是怎麼一步步推進研究的</h2>
+      <div class="timeline">
+        <article>
+          <time>8/17 報告所彙整的研究（含較早成果）</time>
+          <h3>補齊公平 baseline 與真實保留點證據</h3>
+          <p>我先補齊 Pure RNN 的完整 3-D 場比較、SML2010 時序比較與 Kalman 受控去噪，也整理了真實臥室 7 天、28 筆 snapshots 的 pillow 保留點結果，檢查模擬與實際量測各能支持什麼。</p>
+        </article>
+        <article>
+          <time>9/7 整合與確認</time>
+          <h3>模型擴充與公開機櫃資料證據</h3>
+          <p>接著，我比較 GRU／LSTM，並把估測研究延伸到 AAU 與 BMC 公開資料。在 BMC 的過程中，我先處理解析與單位問題，再透過 E15 完成一次性確認。</p>
+        </article>
+        <article>
+          <time>2026-09-08 的延伸研究</time>
+          <h3>以 BOPTEST 檢查低資料 PI 與跨設備控制</h3>
+          <p>為了檢查控制效果，我開始使用 BOPTEST，從單一 air model 推進到五種已知 FMU，逐步比較命令平滑、動態模型、持續補償與啟動交接。過程中出現的改善、退步與回退結果，我都保留下來。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="research-questions">
+      <h2>往下做時，我卡在幾個問題</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>估測準，是否就有控制上的價值？</h3>
+          <p>我原本能比較估測誤差，但當我想往控溫或節能延伸時，就發現還缺少動態響應與介入證據。即使溫度估得準，我仍需要驗證改變控制動作後，環境究竟會怎麼反應。</p>
+        </article>
+        <article class="card">
+          <h3>環境條件化 PID 是否已有先例？</h3>
+          <p>我查文獻後找到既有自動調參研究，例如 <a href="https://arxiv.org/abs/1906.12086">Fiducioso 等人（2019）的 contextual Bayesian optimization</a>。因此，我需要進一步釐清自己的方法差異，並比較相同控制品質下的資料與試調成本；目前還沒有建立新穎性主張。</p>
+        </article>
+        <article class="card">
+          <h3>只維持固定設定值，是否已經足夠？</h3>
+          <p>我也問自己：如果一般開關控制或 PI 就能維持固定目標，加入模型或神經網路的價值在哪裡？所以我需要先找出簡單策略的不足。目前這些 BOPTEST 實驗尚未驗證神經網路的效益。</p>
+        </article>
+        <article class="card">
+          <h3>資料與模擬能回答哪些應用問題？</h3>
+          <p>我當時沒有找到能直接量測半導體環境調參工時的公開資料，因此先用 BOPTEST 做 HVAC 控制模擬。若要延伸到線材、木材或桌機機箱，我仍需要各自的材料或實機證據，才能評估品質、耗電與效能。</p>
+        </article>
+      </div>
+      <p class="source">依據：<a href="https://github.com/Yunitrish006006/Three-Factor-Digital-Twin/blob/d4fa57b756eab74452f3580f35e30a2e959dded4/docs/research/environment_pid_feasibility_zh.md">環境參數 PID 啟動條件</a>與 <a href="https://github.com/Yunitrish006006/Three-Factor-Digital-Twin/blob/d4fa57b756eab74452f3580f35e30a2e959dded4/docs/research/application_goals_2026-09-08_zh.md">候選應用及固定設定質疑</a>。</p>
+    </section>
+
+    <section id="journey">
+      <h2>我如何找到可以模擬環境的 API</h2>
+      <p class="lead">當我發現 BMC／AAU 紀錄不足以驗證新控制動作時，我開始找能接收控制指令、回傳下一步環境狀態，而且可以重設、重複比較的模擬平台。</p>
+      <p>我的查找範圍從機箱溫控，擴展到精密環境的快速調適。我查了 APMonitor 的 TCLab 建模教材、IBPSA BOPTEST 官方介紹與案例頁、UCI SECOM，以及 OpenHumidistat 作者論文。當時我沒有取得可直接使用的 EUV／半導體環境調參資料，因此先選擇一般 HVAC 模擬來檢查方法。以下依我 9/8 留存的筆記整理；完整搜尋字串與逐次點閱時間沒有留存。</p>
+
+      <div class="flow" aria-label="模擬環境尋找流程">
+        <div><strong>1. 我釐清需求</strong>我要觀察控制動作之後的環境反應，因此需要可互動的動態模型。</div>
+        <div><strong>2. 我比較候選</strong>我查了 TCLab、BOPTEST、SECOM 與 OpenHumidistat，確認資料和控制介面。</div>
+        <div><strong>3. 我選 BOPTEST</strong>它提供多種 HVAC 模型、天氣、控制點與 REST API，符合這輪比較需求。</div>
+        <div><strong>4. 我遇到連線問題</strong>HTTPS 連線失敗，HTTP testcases 端點回 404，當時沒有取得可用 session。</div>
+        <div><strong>5. 我轉向本地執行</strong>我固定官方 v0.9.0 FMU，以 FMPy 讀取量測、送入有限制的控制指令。</div>
+      </div>
+
+      <div class="table-wrap" style="margin-top:18px">
+        <table>
+          <thead>
+            <tr>
+              <th>候選來源</th>
+              <th>我為什麼查它</th>
+              <th>我最後怎麼選</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="https://apmonitor.com/do/index.php/Main/TCLabA">TCLab／TCLabModel</a></td>
+              <td>我在建模教材中找到加熱輸入與溫度反應，適合用來做初步熱動態辨識。</td>
+              <td><span class="status-mixed">我保留作小型實驗候選</span>。已讀到的步階資料與 <a href="https://github.com/jckantor/TCLab">TCLabModel 離線模擬器</a>用途不同；這輪我想比較多種設備，因此優先選 BOPTEST。</td>
+            </tr>
+            <tr>
+              <td><a href="https://ibpsa.github.io/project1-boptest/">IBPSA BOPTEST</a>／<a href="https://ibpsa.github.io/project1-boptest/docs-userguide/getting_started.html">API 使用說明</a></td>
+              <td>我在官方介紹和 API 文件中確認，它有動態模型、天氣、量測／控制點、模擬步進與 KPI。</td>
+              <td><span class="status-good">我選為主要模擬平台</span>，因為我能重設案例，讓不同控制器在相同條件下比較。</td>
+            </tr>
+            <tr>
+              <td><a href="https://archive.ics.uci.edu/dataset/179/secom">UCI SECOM</a></td>
+              <td>它來自半導體製程，所以我查了是否能支援精密環境控制問題。</td>
+              <td><span class="status-no">我排除為控制主資料</span>，因為其中是製程特徵與 pass/fail，缺少我需要的具名設定值、PID 係數及連續控制動作。</td>
+            </tr>
+            <tr>
+              <td><a href="https://arxiv.org/abs/2112.08500">OpenHumidistat</a></td>
+              <td>我從作者論文找到開源濕度控制實驗腔，想確認它能否成為實測平台。</td>
+              <td><span class="status-mixed">我保留為硬體備案</span>；這次尚未建立該裝置，也沒有取得現成的完整溫濕度雙變數模擬 API。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout" style="margin-top:16px">
+        <strong>我選 BOPTEST 的關鍵理由：</strong>我可以讓控制器讀取量測、送出動作，再觀察環境往前演化的結果。這樣就能把固定 PI、自動辨識 PI、observer、smoothing 與 handover 放在相同模型、日期、warmup 與限制下比較。
+      </div>
+      <details>
+        <summary>我在 API 文件中確認了什麼？實驗最後怎麼執行？</summary>
+        <p>我確認官方 API 的基本循環是：選案例取得 <code>testid</code> → 初始化與 warmup → 讀取量測／致動器名稱及單位 → 設定步長 → 提交動作並前進一步 → 取得新量測，反覆執行後讀取結果。這些介面可在 <a href="https://ibpsa.github.io/project1-boptest/docs-userguide/api.html">BOPTEST 官方 API 文件</a>查到。</p>
+        <div class="table-wrap" style="margin-top:12px"><table>
+          <thead><tr><th>用途</th><th>官方介面摘要</th></tr></thead>
+          <tbody>
+            <tr><td>建立與重設案例</td><td><code>POST /testcases/{name}/select</code>；<code>PUT /initialize/{testid}</code></td></tr>
+            <tr><td>檢查可觀測與可控制的量</td><td><code>GET /measurements/{testid}</code>、<code>GET /inputs/{testid}</code></td></tr>
+            <tr><td>控制一步並取得環境反應</td><td><code>PUT /step/{testid}</code>；<code>POST /advance/{testid}</code>，送入指令及 override 啟用旗標</td></tr>
+            <tr><td>取回完整軌跡與官方指標</td><td><code>PUT /results/{testid}</code>、<code>GET /kpi/{testid}</code></td></tr>
+          </tbody>
+        </table></div>
+        <p>實際執行時，我採用固定的官方 v0.9.0 FMU（可執行的動態模型），透過 FMPy 直接呼叫 FMI 介面。我把起始 pilot 設為每步 60 秒、目標 22°C、每回合共用 24 小時 warmup，再用自訂程式計算 MAE 等指標。我尚未驗證這條路徑與官方 REST 服務或 KPI 完全等價；控制器也沒有沿用原空間估測網路的權重。</p>
+      </details>
+      <p class="source">過程依據：<a href="https://github.com/Yunitrish006006/Three-Factor-Digital-Twin/blob/d4fa57b756eab74452f3580f35e30a2e959dded4/docs/research/precision_environment_pid_data_review_2026-09-08_zh.md">9/8 文獻與平台初查</a>。該筆記的「尚未執行」描述查找當時；後續執行結果見本頁控制探索。</p>
+    </section>
+
+    <section id="problems">
+      <h2>實際執行時，我遇到了什麼、怎麼處理</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>階段</th>
+              <th>我遇到的問題</th>
+              <th>我的處理方式</th>
+              <th>我從結果得到的判斷</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>BMC 資料品質</td>
+              <td>我在 E12 發現 6 個開發檔案未達每檔 30 筆門檻；後來 E13 雖算出結果，卻使用有問題的解析與單位流程。</td>
+              <td>我先讓 E12 在開啟最終測試前停止，並將 E13 標為解析失效。E14 修正後，我把結果保留為回溯比較，再用另 14 個未開啟檔案完成 E15。</td>
+              <td>我必須分別確認資料可用性、解析正確性與模型效果；修過的舊測試資料，不能再被我當成獨立確認。</td>
+            </tr>
+            <tr>
+              <td>API 連線</td>
+              <td>9/8 我嘗試連線 <code>api.boptest.net</code>，HTTPS 出現 SSL 錯誤，HTTP <code>/testcases</code> 回 404。</td>
+              <td>我改用固定版本的官方 FMU，在本地執行控制比較。</td>
+              <td>我只能確認當時的嘗試失敗，尚未確定服務整體狀態。我的結果實際來自 <strong>官方 FMU＋自訂本地執行程式</strong>。</td>
+            </tr>
+            <tr>
+              <td>本地相依套件</td>
+              <td>我第一次載入 FMU 時失敗，因為模型需要 <code>libgfortran.so.4</code>，當時執行環境只有較新版本。</td>
+              <td>我從 Ubuntu 官方套件取得相容 library，放在專案的本地 runtime 路徑，並保留來源與雜湊。</td>
+              <td>這讓我發現，重現模擬除了固定 Python 套件，也必須確認 FMU 所需的原生函式庫。</td>
+            </tr>
+            <tr>
+              <td>資料可辨識性</td>
+              <td>我第二次執行時，夜間日照值全部為 0，造成矩陣 condition number 為無限大，結果無法寫成 JSON。</td>
+              <td>我將該診斷值記為 null，另存 matrix rank 與 <code>solar_identifiable</code>。這次只修輸出，沒有改動擬合係數、控制器或協定。</td>
+              <td>我學到有這個資料欄位，並不代表這段資料足以辨識它的影響；還要檢查輸入是否真的有變化。</td>
+            </tr>
+            <tr>
+              <td>模型轉移</td>
+              <td>我把相同一階辨識流程套到 hydronic 的 2h／6h 資料，得到的係數都未通過預設模型條件，因此停止該設備的後續評估。</td>
+              <td>我保留原門檻，在下一輪改用所有設備共用、事先固定的 ARX 候選庫，再重新比較。</td>
+              <td>這提醒我，air model 的成功還不足以代表跨設備通用；我需要檢查不同儲熱、延遲與致動介面的適用條件。</td>
+            </tr>
+            <tr>
+              <td>跨設備結果</td>
+              <td>我新增三種 FMU 後，固定的控制器在 10 組有效比較中沒有一組改善；後續一致補償也只有部分組合通過。</td>
+              <td>我保留全部退步、拒絕與 fallback，並把五種已用於改進方法的 FMU 都列為開發設備。</td>
+              <td>我的跨設備改善假設在這一輪沒有得到支持，後續還需要未參與開發的設備來驗證。</td>
+            </tr>
+            <tr>
+              <td>雜訊與延遲</td>
+              <td>我加入 observer 後，有雜訊時的溫度追蹤改善，指令卻變得更頻繁；再加平滑，指令變動大降，但部分誤差指標略退步。</td>
+              <td>我同時比較 MAE、最大誤差，以及發出與實際施加的指令變動量。</td>
+              <td>這讓我開始用多個指標判斷取捨，因為平均誤差下降，未必代表整體控制品質都變好。</td>
+            </tr>
+            <tr>
+              <td>啟動輔助撤離</td>
+              <td>我嘗試預測式提早撤離輔助，在一個 hydronic 日期有改善，另一日期的達標時間卻延遲 5 分鐘。</td>
+              <td>我接著分開比較輔助時間與積分交接方式，最後選出 15 分鐘後把輔助量轉入積分的策略。</td>
+              <td>我從開發資料看到交接時的積分狀態值得進一步研究，但目前尚未確認真實設備上是否也有相同機制。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="quote">這些問題改變了我往下做的方式：我先固定可重現的模擬環境，辨識未通過時就停止該輪評估；遇到退步後，再用新的比較與消融實驗釐清原因。到目前為止，我對方法在哪些條件下有效，也有了更具體的認識。</p>
+      <p class="source">執行依據：<a href="https://github.com/Yunitrish006006/Three-Factor-Digital-Twin/blob/d4fa57b756eab74452f3580f35e30a2e959dded4/openspec/changes/pilot-boptest-rapid-pi/evidence.md">首次執行與失敗紀錄</a>、<a href="https://github.com/Yunitrish006006/Three-Factor-Digital-Twin/blob/d4fa57b756eab74452f3580f35e30a2e959dded4/openspec/changes/evaluate-boptest-cross-plant/evidence.md">跨設備辨識拒絕</a>、<a href="https://github.com/Yunitrish006006/Three-Factor-Digital-Twin/blob/d4fa57b756eab74452f3580f35e30a2e959dded4/openspec/changes/startup-handover-ablation/evidence.md">啟動交接比較</a>。</p>
+    </section>
+
+    <section id="core">
+      <h2>目前，我的主論文有哪些證據</h2>
+      <p class="lead">我把受控模擬、真實保留點與公開資料分開驗證，因為它們回答的問題不同。以下是我目前完成的比較，以及我能從中得到的結論。</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>問題</th>
+              <th>完成結果</th>
+              <th>我的判讀</th>
+              <th>我還沒驗證的範圍</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>受控 3-D 場重建</td>
+              <td>LOO hybrid 平均 MAE：0.0017°C、0.0059%RH、0.1407 lux；Pure RNN lowest-MAE 0/24。</td>
+              <td>在這組<span class="status-good">受控真值下</span>，我使用的物理啟發結構加 residual 優於 standalone recurrent baseline。</td>
+              <td>不代表任意真實房間或所有 RNN 架構。</td>
+            </tr>
+            <tr>
+              <td>真實臥室保留點</td>
+              <td>7 天、28 筆；pillow 點校正後溫度／濕度／照度 MAE 分別下降 81.31%／90.46%／94.61%。</td>
+              <td>我的校正在這個<span class="status-good">單房間、單一保留點</span>上改善了估測誤差。</td>
+              <td>不是完整真實 3-D 場，也不是跨房間驗證。</td>
+            </tr>
+            <tr>
+              <td>時序模型公平比較</td>
+              <td>Vanilla RNN、GRU、LSTM 的最低 MAE 次數皆為 0/12；Sequence LR 7/12、Persistence 5/12。</td>
+              <td>我保留這項<span class="status-mixed">負向結果</span>：在這組設定下，增加 recurrent complexity 沒有帶來優勢。</td>
+              <td>不同 history、容量、seed 或完整 3-D 任務需另做 protocol。</td>
+            </tr>
+            <tr>
+              <td>Kalman 受控去噪</td>
+              <td>12 個案例中，Kalman 與 causal MA(3) 各取得 6/12 最低 MAE；溫度由 MA(3) 勝出，濕度由 Kalman 勝出。</td>
+              <td>我觀察到<span class="status-mixed">方法依變數而異</span>，目前無法認定 Kalman 普遍最佳。</td>
+              <td>不是實體感測器去噪、forecast 或線上參數適應。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="source">結果來源：<a href="professor_two_week_report_2026-08-04_2026-08-17_zh.md">8/17 模型、臥室與 Kalman 彙整</a>及 <a href="professor_weekly_report_2026-09-01_2026-09-07_zh.md">9/7 GRU／LSTM 比較</a>。這些是累積成果，不全是本週新實驗。</p>
+    </section>
+
+    <section id="enclosure">
+      <h2>我把估測方法延伸到公開機櫃與伺服器資料</h2>
+      <div class="grid">
+        <article class="card">
+          <span class="tag warn">AAU：混合結果</span>
+          <h3>我開始檢查距離以外的資訊</h3>
+          <ul>
+            <li>我先比較全域 3-D IDW 與最近鄰，MAE 分別為 1.687°C 與 1.175°C，IDW 反而較差。</li>
+            <li>改用 local IDW 後，aggregate MAE 從 1.301°C 降至 1.223°C，但只在 21/42 感測器勝出，還沒有通過預設廣度門檻。</li>
+            <li>我再加入角色條件，模型在 30/42 感測器勝出。這支持角色資訊具有預測價值，但我尚未驗證氣流因果。</li>
+            <li>我也完成 commissioning-assisted frozen map 的確認，MAE 約 0.40°C；證據仍限於同一 AAU campaign 中先前未讀取的資料片段。</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag good">BMC E15：支持 H-ENC-08</span>
+          <h3>我以 E15 檢查固定模型能否轉移</h3>
+          <p>我把目標定為同台伺服器兩個 CPU 溫度的最大值 <code>max(Cpu1_Temp, Cpu2_Temp)</code>，固定模型後再開啟這 14 檔做確認，沒有在確認資料上重訓。</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>指標</th><th>Baseline</th><th>Load-aware ridge</th></tr></thead>
+              <tbody>
+                <tr><td>MAE</td><td>1.6939°C</td><td><strong>0.9744°C</strong></td></tr>
+                <tr><td>RMSE</td><td>1.9672°C</td><td><strong>1.2056°C</strong></td></tr>
+                <tr><td>P95</td><td>3.5000°C</td><td><strong>2.3888°C</strong></td></tr>
+                <tr><td>逐 run 勝出</td><td>2/14</td><td><strong>12/14</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>逐 run 等權 MAE 改善為 0.6134°C，20,000 次 run-block bootstrap 95% CI 為 [0.2721, 0.9831]°C。</p>
+          <p class="label">兩個退步 run：202308051757（改善 −0.5537°C）、202310252230（改善 −0.3011°C）。逐 run 等權改善與表中合併全部列的 MAE 差值是不同統計量。</p>
+        </article>
+      </div>
+      <div class="callout" style="margin-top:16px">
+        <strong>我目前能確認的範圍：</strong>E15 支持同一台 Phytium S2500 伺服器的時間／工作負載轉移。我還沒有完成桌機機箱、NTC 硬體、跨伺服器、完整空間熱場與真實控制效益的驗證。
+      </div>
+      <p class="source">結果來源：<a href="../../openspec/changes/confirm-bmc-temporal-transfer-e15/artifacts/bmc_confirmation_e15_result.json">E15 封存數值</a>、<a href="professor_weekly_report_2026-09-01_2026-09-07_zh.md">9/7 AAU 與模型比較週報</a>。該週報尚保留 E15 執行前狀態，本頁以封存確認結果更新。</p>
+    </section>
+
+    <section id="control">
+      <h2>有了模擬環境後，我怎麼嘗試改善控制</h2>
+      <p class="lead">我先從單一模型檢查快速辨識的可行性，再往多種設備推進。結果讓我逐步看到資料量、模型適配、雜訊與交接方式的影響。目前我把這些保留為探索性研究，還沒有納入主論文的已驗證控制主張。</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>我的嘗試</th>
+              <th>我得到的結果</th>
+              <th>我的判讀</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>單一 air model 快速 PI</td>
+              <td>2 小時辨識前綴的 v2 在兩個已看過的開發日期達到 0.0392／0.0412°C MAE；54 小時試驗網格為 0.0252／0.0338°C，誤差仍較低。</td>
+              <td>我確認了<span class="status-mixed">這組模擬下的可行性</span>，但仍未完成獨立確認或人工作業時間比較。</td>
+            </tr>
+            <tr>
+              <td>跨設備 frozen transfer</td>
+              <td>新增 heat-pump、apartment、commercial 後，已完成的 10 組 paired comparisons 全數未改善；一個 6 小時 bank 被拒絕。</td>
+              <td>我的<span class="status-no">跨設備改善假設未獲支持</span>。</td>
+            </tr>
+            <tr>
+              <td>動態模型與一致補償</td>
+              <td>ARX 候選庫讓 hydronic 通過辨識模型門檻；四個設備／資料預算組合中三個通過控制門檻。後續一致補償為 7 改善、5 退步、6 持平，9 個可評估組合中 4 個通過。</td>
+              <td>我對失敗型態有了更多認識，但<span class="status-no">仍未證明普遍優勢</span>。</td>
+            </tr>
+            <tr>
+              <td>命令平滑</td>
+              <td>在 noisy＋60 秒 delay 下，macro command variation 降低 70.15%，macro MAE 由 0.1073 降至 0.0966°C；乾淨案例 MAE 與所有案例最大誤差則略升。</td>
+              <td>我需要在追蹤誤差與指令活動之間做<span class="status-mixed">取捨</span>。</td>
+            </tr>
+            <tr>
+              <td>啟動交接 ablation</td>
+              <td>Hydronic 在兩個新日期的前段 MAE 約改善 22%；後段改善 18.4%／4.1%，達標時間提前 61／11 分鐘。其餘四設備回退純 PI。</td>
+              <td>我取得了<span class="status-good">hydronic 條件下的支持</span>，尚未得到跨設備通用結論。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>這裡我使用的「2 小時」是已收集 6 小時辨識軌跡的前綴，還要另外計入 warmup、候選試調與開發成本。我已使用這五種 FMU 開發方法，回退純 PI 後相同的結果只算持平。最新交接策略中，我只比較了 15／55 分鐘兩種時間，尚未找到通用最佳值；第 83 日後段最大誤差仍約 2.65°C。</p>
+      <p class="source">結果來源：<a href="https://github.com/Yunitrish006006/Three-Factor-Digital-Twin/blob/d4fa57b756eab74452f3580f35e30a2e959dded4/openspec/changes/evaluate-more-boptest-devices/evidence.md">新增三設備</a>、<a href="https://github.com/Yunitrish006006/Three-Factor-Digital-Twin/blob/d4fa57b756eab74452f3580f35e30a2e959dded4/openspec/changes/model-consistent-compensation/evidence.md">一致補償</a>、<a href="https://github.com/Yunitrish006006/Three-Factor-Digital-Twin/blob/d4fa57b756eab74452f3580f35e30a2e959dded4/openspec/changes/reduce-boptest-command-jitter/evidence.md">命令平滑</a>。本頁彙整既有結果，未重跑模擬。</p>
+    </section>
+
+    <section id="tuning">
+      <h2>教授提醒後，我把參數調教改成有系統的流程</h2>
+      <p class="lead">我之前已經做過一些 PI、動態模型與交接策略的探索，但如果只報「哪組分數最好」，就無法知道我是否把 validation 看過後又回頭調參。因此這週我先固定 protocol，再開始下一個 pilot。</p>
+      <div class="grid">
+        <article class="card third"><span class="tag">第一層</span><h3>先分清楚什麼能調</h3><p>我把物理／量測常數、動態模型參數、控制器參數與實驗設計參數分開。sample time、單位和致動器界限不能為了分數事後修改。</p></article>
+        <article class="card third"><span class="tag">第二層</span><h3>固定 calibration 與 validation</h3><p>我規定 calibration 只用來辨識與搜尋，validation 和 holdout 只在參數鎖定後讀取；資料不足時直接標記 <code>NO_INDEPENDENT_VALIDATION</code>。</p></article>
+        <article class="card third"><span class="tag">第三層</span><h3>預先寫死停止規則</h3><p>我會固定粗網格、local refinement 預算、IAE／ITAE 主指標、tie margin 與飽和檢查。不能無限試到滿意，也不能把 tie 硬說成勝出。</p></article>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>階段</th><th>我會做什麼</th><th>通過條件</th><th>沒有通過時</th></tr></thead>
+          <tbody>
+            <tr><td>API smoke test</td><td>reset → input → advance → response，固定 seed 重跑 3 次</td><td>欄位、單位、時間戳與 trace hash 可重建</td><td><span class="status-no">PILOT_BLOCKED</span>，不進入調參</td></tr>
+            <tr><td>Calibration</td><td>用階躍回應估計最低階模型，固定候選數與搜尋範圍</td><td>參數 JSON、搜尋預算與失敗原因完整</td><td>只報辨識失敗，不挑選漂亮案例</td></tr>
+            <tr><td>Validation</td><td>鎖定一組參數後讀取一次，計算 IAE／ITAE、overshoot、settling、飽和比例</td><td>與 baseline 的比較可重算，tie margin 事前已登記</td><td>開新 run id，不覆寫原結果</td></tr>
+            <tr><td>Holdout</td><td>在不同初始狀態／日期的 trace 做 stress 檢查</td><td>結果與 calibration 分離且保留 hash</td><td>維持 <span class="status-mixed">NOT_EVALUATED</span>，不外推到真實設備</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>今天完成的是研究設計，不是新的改善百分比。我把 BOPTEST 保留為主閉迴路平台，先用 TCLab 做較小的介面與調教 pilot；OpenHumidistat 是硬體備案，SECOM 沒有連續致動器與時間控制循環，所以不列入主控制 API。</p>
+      <p class="source">方法文件：<a href="../research/systematic_parameter_tuning_protocol_2026-09-21_zh.md">系統性參數調教 protocol</a>；候選比較：<a href="../research/api_candidate_comparison_2026-09-21_zh.md">API candidate comparison</a>。兩份文件目前均為 pilot-ready／exploratory，尚未產生控制結果。</p>
+    </section>
+
+    <section id="limits">
+      <h2>目前，我還有哪些沒有完成的驗證</h2>
+      <div class="grid">
+        <article class="card third">
+          <span class="tag bad">尚未完成</span>
+          <h3>我還沒有完成真實介入</h3>
+          <p>E8 目前仍是 0 trials。我的證據現階段包含模型式推薦與模擬控制；真實房間或機箱的節能與控制效益，還需要實際介入來驗證。</p>
+        </article>
+        <article class="card third">
+          <span class="tag warn">範圍不同</span>
+          <h3>我需要分別確認不同任務</h3>
+          <p>我原本的室內研究範圍是 20–30°C。延伸到機箱空氣、CPU 目標溫度與 CPU/GPU 遙測時，我仍需依量測目標分別確認適用範圍。</p>
+        </article>
+        <article class="card third">
+          <span class="tag warn">尚未採納</span>
+          <h3>我尚未把控制探索納入主論文</h3>
+          <p>目前我用 BOPTEST 判斷方法的可行性與限制。是否正式納入論文，我想先與教授確認研究問題，再補足需要的獨立驗證。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="applications">
+      <h2>接下來，我想先探索線材應用</h2>
+      <p class="lead">在 9/8 的方向討論中，我把 3D 列印線材列為優先探索，也保留木材與機箱兩個候選。目前這些仍是構想，我還沒有開始相應的應用實驗，也沒有更改正式論文題目。</p>
+      <div class="grid">
+        <article class="card third"><span class="tag warn">優先探索／尚未評估</span><h3>3D 列印線材</h3><p>我想先從 20–30°C 防潮保存／供料開始，在相同乾燥前處理下，比較暴露環境、密封＋乾燥劑及主動管理，再觀察合格率、尺寸、表面缺陷與每合格件耗電。若要做加熱乾燥，我還需另建溫域與量測協定。</p></article>
+        <article class="card third"><span class="tag warn">候選／尚未評估</span><h3>木材溫濕度管理</h3><p>我考慮先用小試片做調濕，但需要先固定木種、厚度，取得重量／全乾參考與含水率真值，才有辦法比較達標時間、均勻性、變形與耗電。</p></article>
+        <article class="card third"><span class="tag warn">候選／尚未評估</span><h3>桌機機箱控溫</h3><p>我可以延續 BMC／AAU 的估測研究，但仍需補入口溫度、NTC/reference、負載、PWM/RPM 與功率同步量測，再規劃真實風扇介入。</p></article>
+      </div>
+      <p class="callout" style="margin-top:16px">我接下來最想釐清的是：主動方法是否比簡單策略多提供可量測的價值？如果密封＋乾燥劑就能維持線材品質，我會重新評估是否需要更複雜的控制，或把問題收斂到乾燥終點估測。目前的 HVAC 模擬還不能替我回答材料品質或真實機箱控制效果。</p>
+      <p class="source">方向依據：<a href="https://github.com/Yunitrish006006/Three-Factor-Digital-Twin/blob/d4fa57b756eab74452f3580f35e30a2e959dded4/docs/research/application_goals_2026-09-08_zh.md">三個候選應用與線材優先探索</a>。</p>
+    </section>
+
+    <section id="talk">
+      <h2>我的報告講稿（約 15 分鐘）</h2>
+      <ol class="talk-track">
+        <li><strong>1 分鐘｜我的研究主線：</strong>老師，今天我想補報前幾次累積的進度。我的研究原本是用少量感測器估計未量測位置，這段時間除了補齊模型比較，也用公開機櫃與伺服器資料檢查方法能延伸到哪裡。</li>
+        <li><strong>2 分鐘｜我完成的比較：</strong>我加入 Pure RNN、GRU 與 LSTM 後，發現在這些固定設定下，它們都沒有取得最低 MAE。Kalman 也只在濕度案例勝過移動平均。這讓我重新確認，增加模型複雜度需要有實際比較支持。</li>
+        <li><strong>2 分鐘｜我取得的實測與公開資料證據：</strong>在真實臥室的 pillow 保留點，我看到校正後誤差改善；到了 AAU，我發現單純空間距離不一定足夠，加入測點角色資訊有預測價值。不過這些結果仍各有房間、測點與資料範圍的限制。</li>
+        <li><strong>2 分鐘｜我完成的 E15 確認：</strong>我先固定模型，再用另 14 個先前未開啟的檔案、3,112 筆資料做一次確認。MAE 從 1.6939 降到 0.9744°C，12/14 runs 改善，十項門檻全通過。我也保留兩個退步 run，因此目前的結論只限同伺服器的時間與工作負載轉移。</li>
+        <li><strong>4 分鐘｜我遇到的問題與 API 尋找：</strong>當我想往控制推進時，遇到三個問題：一般 PID 是否已經足夠、方法的新意在哪裡，以及現有資料能不能驗證新的控制動作。我查了 TCLab、BOPTEST、SECOM 和 OpenHumidistat，最後選擇能互動、重設並比較多種設備的 BOPTEST。公開連線當時失敗後，我改成本地 FMU 執行，再處理相容函式庫與夜間資料不可辨識的問題。</li>
+        <li><strong>2 分鐘｜我怎麼根據結果調整：</strong>我把控制器移到其他設備後，沒有得到普遍改善，因此繼續檢查動態模型、雜訊與啟動交接。最後的短時輔助與積分交接，在 hydronic 兩個新日期得到約 22% 的前段改善；其他設備仍回退純 PI，所以我還沒有把它當成通用方法。</li>
+        <li><strong>2 分鐘｜我接下來的方向：</strong>我想優先探索線材保存，木材與機箱先保留為候選。下一步先比較簡單策略是否足夠，再確認品質和耗電能否量測。我也想請老師一起判斷，控制探索是否值得納入主論文，或先把估測與虛擬感測的成果收束。</li>
+      </ol>
+      <p class="quote">這段時間，我完成了模型比較與 E15 確認，也建立了能反覆比較控制策略的模擬流程。我同時碰到跨設備失敗，對方法的限制有了更清楚的認識。接下來，我想先確認應用與簡單基準，讓研究上的改善能連到實際可量測的價值。</p>
+    </section>
+
+    <section id="questions">
+      <h2>我想請教授一起討論的三件事</h2>
+      <div class="grid">
+        <article class="card third">
+          <span class="tag">問題 1</span>
+          <h3>我先做線材可行性檢查，是否合適？</h3>
+          <p>我打算先確認可用印表機、材料、參考量測與品質判準，再比較簡單保存策略。想請老師判斷這個起點是否能回答有價值的研究問題。</p>
+        </article>
+        <article class="card third">
+          <span class="tag">問題 2</span>
+          <h3>我是否應把控制探索納入主論文？</h3>
+          <p>我目前只有 BOPTEST 模擬證據，跨設備結果也有改善與失敗。想請老師建議，是繼續補控制驗證，還是先把主論文集中在估測與虛擬感測。</p>
+        </article>
+        <article class="card third">
+          <span class="tag">問題 3</span>
+          <h3>我的下一個問題應該怎麼收斂？</h3>
+          <p>我正在比較稀疏目標點估測、有限資料調適，以及材料品質／乾燥終點估測的價值。若簡單策略已足夠，我也想討論是否以目前已驗證的成果收束論文。</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    我的研究進度與探索過程｜2026-09-21。內容可離線閱讀，來源連結需連網。
+  </footer>
+</body>
+</html>

@@ -1,0 +1,4 @@
+schema: research-first
+created: 2026-09-21
+# Systematic parameter-tuning pilot
+Define a reproducible calibration/validation/holdout protocol for dynamic API candidates. Do not rerun one-shot E15 or claim real intervention. Candidate comparison and pilot outputs remain exploratory until independently validated.
