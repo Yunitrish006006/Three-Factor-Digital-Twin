@@ -1,0 +1,21 @@
+{
+  "status": "PILOT_BLOCKED",
+  "scope": "INDEPENDENT_HOLDOUT_EXECUTION_ATTEMPT",
+  "date": "2026-09-21",
+  "actions": [
+    "Checked the tracked school checkout for the pinned BOPTEST FMU and outputs/boptest-venv.",
+    "Checked the local .venv interpreter for FMPy availability.",
+    "Did not run E15 or consume an existing one-shot study."
+  ],
+  "blockers": [
+    "Pinned FMU and prior runtime environment are not present in the current checkout.",
+    ".venv/bin/python is available but FMPy is not installed.",
+    "System python cannot be used in this macOS workspace until the Xcode license prompt is resolved."
+  ],
+  "required_before_retry": [
+    "Restore the exact pinned FMU and dependency manifest, or provide an equivalent isolated runtime.",
+    "Select a date or initial state not used for parameter selection.",
+    "Run the locked controller once and preserve trace, metrics, and SHA-256."
+  ],
+  "interpretation": "No numeric holdout claim is made. The protocol remains PILOT_INCOMPLETE rather than being filled with synthetic or hand-entered values."
+}

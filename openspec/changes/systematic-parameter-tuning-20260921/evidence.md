@@ -18,3 +18,7 @@
 ## 下一步
 
 建立一個不同初始狀態或日期的 holdout run，沿用已鎖定參數，只讀取一次；若平台或依賴不可用，保存 `PILOT_BLOCKED` artifact，而不是手動補數字。
+
+## 2026-09-21 執行嘗試
+
+這次檢查發現目前 checkout 沒有 pinned FMU 或 `outputs/boptest-venv`；`.venv/bin/python` 也沒有 FMPy，系統 Python 受 macOS Xcode license prompt 阻擋。因此已保存 [`holdout_attempt_20260921.json`](artifacts/holdout_attempt_20260921.json)；沒有產生數值，也沒有把既有 development evaluation 改標成 holdout。
