@@ -611,11 +611,12 @@
           </tbody>
         </table>
       </div>
-      <p>今天完成的是研究設計，不是新的改善百分比。我把 BOPTEST 保留為主閉迴路平台，先用 TCLab 做較小的介面與調教 pilot；OpenHumidistat 是硬體備案，SECOM 沒有連續致動器與時間控制循環，所以不列入主控制 API。</p>
+      <p>我先完成研究設計，再用 TCLab 和 Linux BOPTEST runner 執行受控 pilot；OpenHumidistat 是硬體備案，SECOM 沒有連續致動器與時間控制循環，所以不列入主控制 API。</p>
       <p>我也回頭稽核了既有 BOPTEST development artifact：它已經有 calibration、固定 grid、baseline、trace hash 與 day 3／day 180 指標，但沒有獨立 sealed holdout。因此我把目前狀態記為 <span class="status-mixed">PARTIAL_PROTOCOL_CONFORMANCE</span>，不把原本的開發評估改稱泛化驗證。</p>
       <p>我接著嘗試建立 holdout，已恢復 pinned FMU 與 FMPy 0.3.22；但實際執行 day 270 時發現 FMU 只有 Linux x86-64 的 shared library，沒有 macOS ARM 可載入的 library，所以在第一個 transition 前停止。我把這次記為 <span class="status-no">PILOT_BLOCKED</span>，沒有補造數字或重跑 E15。</p>
       <p>為了確認 protocol 和 gate 本身沒有邏輯漏洞，我另外跑了一個 deterministic toy dynamic API。它完整通過 calibration／validation／holdout 與 hash 檢查，但我把它標成 <span class="status-mixed">PASS_CONTRACT_TEST_NOT_RESEARCH_EVIDENCE</span>，不把 toy 結果當成 BOPTEST 或實體設備結果。</p>
       <p>在 BOPTEST binary 受平台限制後，我改用第二候選 TCLab。`tclab==1.0.0` 的 `TCLabModel(synced=False)` 已跑通 reset、輸入 Q1/Q2、時間推進與 T1/T2 回應；固定 seed 下 holdout 重跑 hash 一致。這是 <span class="status-good">simulation pilot 通過</span>，但不是 TCLab 硬體、BOPTEST 或真實介入證據。</p>
+      <p>後來我用 GitHub Ubuntu runner 恢復 BOPTEST 的 Linux x86-64 runtime，跑了預先鎖定參數的 day 240 validation 與 day 270 holdout，並在相同日期跑 fixed PI baseline。locked PI 的 MAE 是 0.2996／0.3820°C，fixed PI 是 0.4150／0.5366°C；IAE 也分別較低，但 locked 的飽和比例較高。我把這看成單一 FMU 的探索性支持，不把它寫成跨設備或節能因果結論。</p>
       <p class="source">方法文件：<a href="../research/systematic_parameter_tuning_protocol_2026-09-21_zh.md">系統性參數調教 protocol</a>；候選比較：<a href="../research/api_candidate_comparison_2026-09-21_zh.md">API candidate comparison</a>。兩份文件目前均為 pilot-ready／exploratory，尚未產生控制結果。</p>
     </section>
 

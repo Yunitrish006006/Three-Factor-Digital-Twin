@@ -1,6 +1,6 @@
 # 系統性參數調教 Protocol（2026-09-21）
 
-**狀態：PILOT_READY；尚未產生控制結果。** 這份 protocol 回應教授要求的「參數調教要有系統性」，先固定方法，再開始任何平台比較。
+**狀態：PILOT_EXECUTED_EXPLORATORY；尚未產生真實介入結果。** 這份 protocol 回應教授要求的「參數調教要有系統性」，先固定方法，再開始平台比較。
 
 ## 1. 參數分層
 
@@ -37,4 +37,3 @@
 ## 5. 證據邊界
 
 TCLab／BOPTEST 的成功只代表平台內 pilot 可重現；不能直接支持 3D 列印線材、桌機機箱、半導體或真實濕度介入。E15 仍只支持既有同伺服器 Phytium S2500 的 temporal/workload 邊界；E8 與真實 intervention 保持 `NOT_EVALUATED`。
-

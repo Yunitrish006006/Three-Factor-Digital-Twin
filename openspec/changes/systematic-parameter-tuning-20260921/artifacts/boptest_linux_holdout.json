@@ -1,0 +1,203 @@
+{
+  "status": "PASS_BOPTEST_LINUX_HOLDOUT_NOT_CAUSAL_EVIDENCE",
+  "run_id": "boptest-linux-holdout-20260921-01",
+  "scope": "LOCKED_CONTROLLER_NEW_DATES_NO_SEARCH",
+  "workflow_run": "https://github.com/Yunitrish006006/Three-Factor-Digital-Twin/actions/runs/35566560483",
+  "source_commit": "9b1610bf7a108826bb3d22c72bffd2d71d7bb0a9",
+  "fmu_sha256": "158008fa3b635280a67dfed8bab5804d1f9a96d218b467dfebab77e5cbf8b86a",
+  "protocol_sha256": "734480038bd2cd1df2680f5afedde0366e0626c67a50b9cc31baf5540f79462b",
+  "locked_parameters": {
+    "kp": 3.227185031291436,
+    "ti": 250.5407617068066
+  },
+  "parameters": {
+    "selected": {
+      "kp": 3.227185031291436,
+      "ti": 250.5407617068066
+    },
+    "search_performed": false
+  },
+  "metrics": {
+    "locked": {
+      "validation": {
+        "n": 1440,
+        "mae_C": 0.2996202395833825,
+        "rmse_C": 0.5764697288442744,
+        "max_abs_error_C": 1.5054280102498296,
+        "within_0_5_C_pct": 76.66666666666667,
+        "iae_C_h": 7.190885750001181,
+        "outside_20_30_C_n": 0,
+        "saturation_pct": 28.194444444444443,
+        "command_total_variation_C": 20.195944744087665,
+        "heat_kWh": 0.0,
+        "cool_kWh": 13.01600844664608,
+        "fan_kWh": 0.519133803428263
+      },
+      "holdout": {
+        "n": 1440,
+        "mae_C": 0.38199048850756306,
+        "rmse_C": 0.7403479948528928,
+        "max_abs_error_C": 1.913598612637827,
+        "within_0_5_C_pct": 75.48611111111111,
+        "iae_C_h": 9.167771724181513,
+        "outside_20_30_C_n": 0,
+        "saturation_pct": 27.708333333333332,
+        "command_total_variation_C": 26.442203266035612,
+        "heat_kWh": 3.3085589119133645,
+        "cool_kWh": 11.393868868303048,
+        "fan_kWh": 0.5191340109979549
+      }
+    },
+    "fixed": {
+      "validation": {
+        "n": 1440,
+        "mae_C": 0.4149822203048836,
+        "rmse_C": 0.624139272570763,
+        "max_abs_error_C": 1.5470508802292784,
+        "within_0_5_C_pct": 75.34722222222223,
+        "iae_C_h": 9.959573287317207,
+        "outside_20_30_C_n": 0,
+        "saturation_pct": 25.416666666666668,
+        "command_total_variation_C": 19.509201216055125,
+        "heat_kWh": 0.0,
+        "cool_kWh": 13.016063232113245,
+        "fan_kWh": 0.5191338034386018
+      },
+      "holdout": {
+        "n": 1440,
+        "mae_C": 0.5366447990233084,
+        "rmse_C": 0.7976615881011497,
+        "max_abs_error_C": 1.9506429557696947,
+        "within_0_5_C_pct": 65.20833333333333,
+        "iae_C_h": 12.879475176559403,
+        "outside_20_30_C_n": 0,
+        "saturation_pct": 24.930555555555557,
+        "command_total_variation_C": 26.859879506979656,
+        "heat_kWh": 3.2700342291681475,
+        "cool_kWh": 11.431101648454613,
+        "fan_kWh": 0.5191340109863498
+      }
+    }
+  },
+  "calibration": {
+    "status": "EXISTING_DEVELOPMENT_ONLY",
+    "trace_sha256": "33a06f402b3b06f41ea42bc230db7800befb6c8e02ff107b9d25cf9db22ebe2b",
+    "metrics": {
+      "n": 360,
+      "mae_C": 2.2664833037907677,
+      "rmse_C": 2.7256885113904965,
+      "max_abs_error_C": 6.431304720452033,
+      "within_0_5_C_pct": 11.38888888888889,
+      "iae_C_h": 13.598899822744606,
+      "outside_20_30_C_n": 159,
+      "saturation_pct": 0.0,
+      "command_total_variation_C": 280,
+      "heat_kWh": 8.154511181097947,
+      "cool_kWh": 0.4614822842495076,
+      "fan_kWh": 0.12978353018577807
+    }
+  },
+  "splits": {
+    "calibration": {
+      "status": "PASS",
+      "trace_sha256": "33a06f402b3b06f41ea42bc230db7800befb6c8e02ff107b9d25cf9db22ebe2b",
+      "metrics": {
+        "n": 360,
+        "mae_C": 2.2664833037907677,
+        "rmse_C": 2.7256885113904965,
+        "max_abs_error_C": 6.431304720452033,
+        "within_0_5_C_pct": 11.38888888888889,
+        "iae_C_h": 13.598899822744606,
+        "outside_20_30_C_n": 159,
+        "saturation_pct": 0.0,
+        "command_total_variation_C": 280,
+        "heat_kWh": 8.154511181097947,
+        "cool_kWh": 0.4614822842495076,
+        "fan_kWh": 0.12978353018577807
+      }
+    },
+    "validation": {
+      "status": "PASS",
+      "trace_sha256": "c246f2ec3da690c8e7451a9d0f0655ae59fb63d2746f450a97c4181a26dcccec",
+      "metrics": {
+        "n": 1440,
+        "mae_C": 0.2996202395833825,
+        "rmse_C": 0.5764697288442744,
+        "max_abs_error_C": 1.5054280102498296,
+        "within_0_5_C_pct": 76.66666666666667,
+        "iae_C_h": 7.190885750001181,
+        "outside_20_30_C_n": 0,
+        "saturation_pct": 28.194444444444443,
+        "command_total_variation_C": 20.195944744087665,
+        "heat_kWh": 0.0,
+        "cool_kWh": 13.01600844664608,
+        "fan_kWh": 0.519133803428263
+      },
+      "baseline_trace_sha256": "b51f3b2a5e8800e69e3ec9803ab46b2cb9c97c1ef992a86388896e2df8b83600",
+      "baseline_metrics": {
+        "n": 1440,
+        "mae_C": 0.4149822203048836,
+        "rmse_C": 0.624139272570763,
+        "max_abs_error_C": 1.5470508802292784,
+        "within_0_5_C_pct": 75.34722222222223,
+        "iae_C_h": 9.959573287317207,
+        "outside_20_30_C_n": 0,
+        "saturation_pct": 25.416666666666668,
+        "command_total_variation_C": 19.509201216055125,
+        "heat_kWh": 0.0,
+        "cool_kWh": 13.016063232113245,
+        "fan_kWh": 0.5191338034386018
+      },
+            "day": 240,
+            "trace_path": "openspec/changes/systematic-parameter-tuning-20260921/artifacts/traces/validation_day240_locked.csv",
+            "baseline_trace_path": "openspec/changes/systematic-parameter-tuning-20260921/artifacts/traces/validation_day240_fixed.csv"
+    },
+    "holdout": {
+      "status": "PASS",
+      "trace_sha256": "592b8a40f8f515818933bff42ff264e6890c19040f11830139e7b9ccd185586a",
+      "metrics": {
+        "n": 1440,
+        "mae_C": 0.38199048850756306,
+        "rmse_C": 0.7403479948528928,
+        "max_abs_error_C": 1.913598612637827,
+        "within_0_5_C_pct": 75.48611111111111,
+        "iae_C_h": 9.167771724181513,
+        "outside_20_30_C_n": 0,
+        "saturation_pct": 27.708333333333332,
+        "command_total_variation_C": 26.442203266035612,
+        "heat_kWh": 3.3085589119133645,
+        "cool_kWh": 11.393868868303048,
+        "fan_kWh": 0.5191340109979549
+      },
+      "baseline_trace_sha256": "f41b7afae0b4ab2ce87a8efea5db163dfe3c55c236368c3f0beed477223d0991",
+      "baseline_metrics": {
+        "n": 1440,
+        "mae_C": 0.5366447990233084,
+        "rmse_C": 0.7976615881011497,
+        "max_abs_error_C": 1.9506429557696947,
+        "within_0_5_C_pct": 65.20833333333333,
+        "iae_C_h": 12.879475176559403,
+        "outside_20_30_C_n": 0,
+        "saturation_pct": 24.930555555555557,
+        "command_total_variation_C": 26.859879506979656,
+        "heat_kWh": 3.2700342291681475,
+        "cool_kWh": 11.431101648454613,
+        "fan_kWh": 0.5191340109863498
+      },
+      "day": 270,
+      "trace_path": "openspec/changes/systematic-parameter-tuning-20260921/artifacts/traces/holdout_day270_locked.csv",
+      "baseline_trace_path": "openspec/changes/systematic-parameter-tuning-20260921/artifacts/traces/holdout_day270_fixed.csv"
+    }
+  },
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "packages": {
+      "FMPy": "0.3.22",
+      "numpy": "2.5.3",
+      "msgpack": "1.2.2"
+    }
+  },
+  "boundary": "Custom local FMPy runner on official FMU; not official REST/KPI equivalence, hardware intervention, or causal evidence.",
+  "interpretation": "The locked controller beats fixed PI on MAE and IAE on both new dates, but this is a two-date development holdout for one FMU and does not establish generality or causal benefit."
+}
