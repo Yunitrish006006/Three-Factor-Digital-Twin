@@ -52,3 +52,5 @@ jobs:
             openspec/changes/systematic-parameter-tuning-20260921/artifacts/boptest_linux_holdout.json
             outputs/boptest_rapid_pi/v1/validation_day240_locked.csv
             outputs/boptest_rapid_pi/v1/holdout_day270_locked.csv
+            outputs/boptest_rapid_pi/v1/validation_day240_fixed.csv
+            outputs/boptest_rapid_pi/v1/holdout_day270_fixed.csv

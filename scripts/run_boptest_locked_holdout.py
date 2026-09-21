@@ -22,11 +22,12 @@ LOCKED = {"kp": 3.227185031291436, "ti": 250.5407617068066}
 def main():
     if platform.system() != "Linux" or platform.machine().lower() not in {"x86_64", "amd64"}:
         raise SystemExit("This script requires Linux x86-64 for the pinned FMU")
-    controller = PI(LOCKED["kp"], LOCKED["ti"])
-    records = {}
+    controllers = {"locked": PI(LOCKED["kp"], LOCKED["ti"]), "fixed": PI()}
+    records = {"locked": {}, "fixed": {}}
     for split, day in (("validation", 240), ("holdout", 270)):
-        _, record = episode(f"{split}_day{day}_locked", day * 86400, 24, controller)
-        records[split] = record
+        for name, controller in controllers.items():
+            _, record = episode(f"{split}_day{day}_{name}", day * 86400, 24, controller)
+            records[name][split] = record
     prior = json.loads((ROOT / "openspec/changes/pilot-boptest-rapid-pi/artifacts/result.json").read_text())
     artifact = {
         "status": "PASS_BOPTEST_LINUX_HOLDOUT_NOT_CAUSAL_EVIDENCE",
@@ -37,18 +38,18 @@ def main():
         "protocol_sha256": sha(CHANGE / "../pilot-boptest-rapid-pi/protocol.md"),
         "locked_parameters": LOCKED,
         "parameters": {"selected": LOCKED, "search_performed": False},
-        "metrics": {"validation": records["validation"]["metrics"], "holdout": records["holdout"]["metrics"]},
+        "metrics": {"locked": {split: records["locked"][split]["metrics"] for split in ("validation", "holdout")}, "fixed": {split: records["fixed"][split]["metrics"] for split in ("validation", "holdout")}},
         "calibration": {"status": "EXISTING_DEVELOPMENT_ONLY", "trace_sha256": prior["identification"]["sha256"], "metrics": prior["identification"]["metrics"]},
         "splits": {
             "calibration": {"status": "PASS", "trace_sha256": prior["identification"]["sha256"], "metrics": prior["identification"]["metrics"]},
-            "validation": {"status": "PASS", "trace_sha256": records["validation"]["sha256"], "metrics": records["validation"]["metrics"], "day": 240},
-            "holdout": {"status": "PASS", "trace_sha256": records["holdout"]["sha256"], "metrics": records["holdout"]["metrics"], "day": 270},
+            "validation": {"status": "PASS", "trace_sha256": records["locked"]["validation"]["sha256"], "metrics": records["locked"]["validation"]["metrics"], "baseline_trace_sha256": records["fixed"]["validation"]["sha256"], "baseline_metrics": records["fixed"]["validation"]["metrics"], "day": 240},
+            "holdout": {"status": "PASS", "trace_sha256": records["locked"]["holdout"]["sha256"], "metrics": records["locked"]["holdout"]["metrics"], "baseline_trace_sha256": records["fixed"]["holdout"]["sha256"], "baseline_metrics": records["fixed"]["holdout"]["metrics"], "day": 270},
         },
         "environment": {"python": platform.python_version(), "platform": platform.platform(), "packages": {name: importlib.metadata.version(name) for name in ("FMPy", "numpy", "msgpack")}},
         "boundary": "Custom local FMPy runner on official FMU; not official REST/KPI equivalence, hardware intervention, or causal evidence.",
     }
     OUT.write_text(json.dumps(artifact, indent=2) + "\n")
-    print(json.dumps({"status": artifact["status"], "validation": records["validation"]["metrics"], "holdout": records["holdout"]["metrics"], "output": str(OUT)}, indent=2))
+    print(json.dumps({"status": artifact["status"], "locked": artifact["metrics"]["locked"], "fixed": artifact["metrics"]["fixed"], "output": str(OUT)}, indent=2))
 
 
 if __name__ == "__main__":
