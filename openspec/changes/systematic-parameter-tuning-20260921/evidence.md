@@ -21,4 +21,4 @@
 
 ## 2026-09-21 執行嘗試
 
-這次檢查發現目前 checkout 沒有 pinned FMU 或 `outputs/boptest-venv`；`.venv/bin/python` 也沒有 FMPy，系統 Python 受 macOS Xcode license prompt 阻擋。因此已保存 [`holdout_attempt_20260921.json`](artifacts/holdout_attempt_20260921.json)；沒有產生數值，也沒有把既有 development evaluation 改標成 holdout。
+這次檢查發現目前 checkout 沒有 pinned FMU 或 `outputs/boptest-venv`；`.venv/bin/python` 也沒有 FMPy，系統 Python 受 macOS Xcode license prompt 阻擋。我另外嘗試從官方 tag 取得來源，但升級權限後的 clone 仍沒有取得 commit；空的暫存 checkout 不被當成 FMU。已保存 [`holdout_attempt_20260921.json`](artifacts/holdout_attempt_20260921.json)；沒有產生數值，也沒有把既有 development evaluation 改標成 holdout。

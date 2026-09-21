@@ -5,12 +5,14 @@
   "actions": [
     "Checked the tracked school checkout for the pinned BOPTEST FMU and outputs/boptest-venv.",
     "Checked the local .venv interpreter for FMPy availability.",
+    "Attempted a read-only clone of the official project1-boptest v0.9.0 tag into /private/tmp with and without network escalation.",
     "Did not run E15 or consume an existing one-shot study."
   ],
   "blockers": [
     "Pinned FMU and prior runtime environment are not present in the current checkout.",
     ".venv/bin/python is available but FMPy is not installed.",
-    "System python cannot be used in this macOS workspace until the Xcode license prompt is resolved."
+    "System python cannot be used in this macOS workspace until the Xcode license prompt is resolved.",
+    "The official clone did not resolve a commit; the temporary checkout remained empty, so no FMU was treated as recovered."
   ],
   "required_before_retry": [
     "Restore the exact pinned FMU and dependency manifest, or provide an equivalent isolated runtime.",
