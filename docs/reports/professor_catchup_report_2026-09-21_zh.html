@@ -601,6 +601,7 @@
         <article class="card third"><span class="tag">第三層</span><h3>用固定規則決定是否繼續</h3><p>我預先固定粗網格、搜尋預算、IAE／ITAE、tie margin 與飽和檢查；不無限試到滿意，也不把持平硬說成勝出。</p></article>
       </div>
       <p class="callout" style="margin-top:16px"><strong>一句話：</strong>我現在不是問「哪組參數分數最高」，而是問「在沒有看 holdout 答案的前提下，鎖定的參數能不能讓預測操作後的溫度仍然準確」。</p>
+      <div class="callout" style="margin-top:16px"><strong>具體示範（使用我的 DigitalTwinModel）：</strong>我先把 8 顆感測器觀測送進模型，讓模型校正 `ac_main` 的有效功率與空間 residual；接著固定目標為 25°C／58% RH／500 lux，只比較 AC activation 35%、60%、85% 三個候選。模型預測的 zone temperature 分別是 27.509°C、26.559°C、25.609°C，comfort penalty 分別是 3.898、2.907、2.308，因此這次 dry run 排名第一的是 85%。真正介入時，才把 85% 送到 actuator，再用介入後實測溫度和 25.609°C 比較 MAE；這一步目前尚未有實體證據。</div>
       <div class="table-wrap">
         <table>
           <thead><tr><th>階段</th><th>我會做什麼</th><th>通過條件</th><th>沒有通過時</th></tr></thead>
@@ -622,7 +623,7 @@
       <p>兩個日期的 locked PI tracking metrics 都較低，但飽和比例較高；我把這看成單一 FMU 的探索性支持，不把它寫成跨設備或節能因果結論。</p>
       <p>我另外從兩條 locked trace 各隨機抽取最多 100 個狀態，在系統已選出的操作下，用既有 development calibration 固定的一階 RC predictor 預測下一步溫度，再和實際 `next_T` 比較。200 個抽樣的 MAE 為 1.6073°C、RMSE 為 1.6568°C，沒有樣本落在 0.5°C 內；這表示目前 frozen predictor 還不夠準，不能把操作後溫度結果寫成已被準確預測。</p>
       <p>因此我的 gate decision 是：我先不進入真實裝置介入。這兩個日期支持我繼續做多 testcase／多 seed 的獨立確認，但還不足以把 E8 寫成已完成；E8 仍是 <span class="status-no">NOT_EVALUATED</span>。</p>
-      <p class="source">方法文件：<a href="../research/systematic_parameter_tuning_protocol_2026-09-21_zh.md">系統性參數調教 protocol</a>；候選比較：<a href="../research/api_candidate_comparison_2026-09-21_zh.md">API candidate comparison</a>；完整 trace 與 hash：<a href="../../openspec/changes/systematic-parameter-tuning-20260921/artifacts/boptest_linux_holdout.json">BOPTEST holdout artifact</a>；操作後溫度預測抽樣：<a href="../../openspec/changes/systematic-parameter-tuning-20260921/artifacts/action_conditioned_replay.json">action-conditioned replay</a>。這些結果仍是 exploratory simulation evidence。</p>
+      <p class="source">方法文件：<a href="../research/systematic_parameter_tuning_protocol_2026-09-21_zh.md">系統性參數調教 protocol</a>；候選比較：<a href="../research/api_candidate_comparison_2026-09-21_zh.md">API candidate comparison</a>；完整 trace 與 hash：<a href="../../openspec/changes/systematic-parameter-tuning-20260921/artifacts/boptest_linux_holdout.json">BOPTEST holdout artifact</a>；操作後溫度預測抽樣：<a href="../../openspec/changes/systematic-parameter-tuning-20260921/artifacts/action_conditioned_replay.json">action-conditioned replay</a>；模型動作排序示範：<a href="../../openspec/changes/systematic-parameter-tuning-20260921/artifacts/model_action_tuning_demo.json">DigitalTwinModel demo</a>。這些結果仍是 exploratory simulation evidence。</p>
     </section>
 
     <section id="limits">
@@ -666,7 +667,7 @@
         <li><strong>2 分鐘｜我取得的實測與公開資料證據：</strong>在真實臥室的 pillow 保留點，我看到校正後誤差改善；到了 AAU，我發現單純空間距離不一定足夠，加入測點角色資訊有預測價值。不過這些結果仍各有房間、測點與資料範圍的限制。</li>
         <li><strong>2 分鐘｜我完成的 E15 確認：</strong>我先固定模型，再用另 14 個先前未開啟的檔案、3,112 筆資料做一次確認。MAE 從 1.6939 降到 0.9744°C，12/14 runs 改善，十項門檻全通過。我也保留兩個退步 run，因此目前的結論只限同伺服器的時間與工作負載轉移。</li>
         <li><strong>4 分鐘｜我遇到的問題與 API 尋找：</strong>當我想往控制推進時，遇到三個問題：一般 PID 是否已經足夠、方法的新意在哪裡，以及現有資料能不能驗證新的控制動作。我查了 TCLab、BOPTEST、SECOM 和 OpenHumidistat；BOPTEST 公開服務當時連線失敗，我改用固定 v0.9.0 FMU，後來再用 Ubuntu runner 補上 Linux runtime。</li>
-        <li><strong>2 分鐘｜我怎麼把調參標準化：</strong>我先分開可調參數與必須固定的 protocol，再用 calibration 搜尋、鎖定後只讀一次 validation／holdout，並以同日期 fixed PI 作 baseline。接著我檢查「已選操作之後的溫度預測」：200 個抽樣的 MAE 是 1.6073°C、RMSE 是 1.6568°C，代表目前 predictor 還不夠準，不能把操作效果說成已驗證。</li>
+        <li><strong>2 分鐘｜我怎麼把調參標準化：</strong>我先分開可調參數與必須固定的 protocol，再用 calibration 搜尋、鎖定後只讀一次 validation／holdout，並以同日期 fixed PI 作 baseline。以我的 DigitalTwinModel 做一個具體 dry run：AC 35%／60%／85% 三個候選的預測 zone temperature 是 27.509／26.559／25.609°C，模型因此選 85%；但真正介入後仍要拿實測溫度驗證。另一個 BOPTEST replay 中，200 個抽樣的預測 MAE 是 1.6073°C、RMSE 是 1.6568°C，代表目前 predictor 還不夠準。</li>
         <li><strong>2 分鐘｜我的下一個 gate：</strong>我暫時不進入真實裝置介入。我要先補多 testcase／多 seed 的獨立確認，再和老師討論是否進入 E8 intervention；目前 E8 仍是 NOT_EVALUATED。</li>
       </ol>
       <p class="quote">這週，我把參數調教標準化，完成 TCLab API 模擬試驗與 Linux BOPTEST locked／holdout 驗證，也首次量化已選操作之後的溫度預測準確度。抽樣 MAE 為 1.6073°C，表示 predictor 還需要改善；目前證據仍限於單一 FMU 與兩個日期，接下來要補多 testcase／多 seed，再評估 E8 intervention。</p>

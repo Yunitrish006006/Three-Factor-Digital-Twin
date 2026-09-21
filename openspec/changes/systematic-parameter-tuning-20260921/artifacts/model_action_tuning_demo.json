@@ -1,0 +1,58 @@
+{
+  "status": "DEMO_MODEL_NATIVE_ACTION_RANKING_NOT_CONTROL_EVIDENCE",
+  "scenario": "idle",
+  "target_zone": "center_zone",
+  "target": {
+    "temperature_C": 25.0,
+    "humidity_pct": 58.0,
+    "illuminance_lux": 500.0
+  },
+  "calibration_inputs": {
+    "observed_sensor_count": 8,
+    "model": "DigitalTwinModel"
+  },
+  "candidate_actions": [
+    0.35,
+    0.6,
+    0.85
+  ],
+  "baseline_zone": {
+    "temperature": 28.84000000021001,
+    "humidity": 67.6000000007875,
+    "illuminance": 90.00000000787503
+  },
+  "ranked_actions": [
+    {
+      "name": "ac_0.85",
+      "improvement": 2.9771029852309483,
+      "resulting_zone_values": {
+        "temperature": 25.60850424250593,
+        "humidity": 65.77196020050835,
+        "illuminance": 90.00000000787503
+      },
+      "resulting_penalty": 2.3078970149790634
+    },
+    {
+      "name": "ac_0.60",
+      "improvement": 2.3778344066294177,
+      "resulting_zone_values": {
+        "temperature": 26.55894417124243,
+        "humidity": 66.30961896529635,
+        "illuminance": 90.00000000787503
+      },
+      "resulting_penalty": 2.907165593580594
+    },
+    {
+      "name": "ac_0.35",
+      "improvement": 1.387070070533837,
+      "resulting_zone_values": {
+        "temperature": 27.50938409997891,
+        "humidity": 66.84727773008437,
+        "illuminance": 90.00000000787503
+      },
+      "resulting_penalty": 3.8979299296761747
+    }
+  ],
+  "next_step": "Execute the top-ranked action through a real actuator/simulator, then compare observed post-action temperature with this predicted zone value.",
+  "boundary": "Synthetic repository validation fixture; static model ranking only, not hardware, BOPTEST, or causal intervention evidence."
+}
