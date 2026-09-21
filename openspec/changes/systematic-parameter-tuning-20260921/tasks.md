@@ -3,7 +3,7 @@
 - [x] 登記候選 API 類型、介面與證據邊界。
 - [x] 固定參數分層、資料切分、搜尋預算、評分與停止規則。
 - [x] 稽核既有 BOPTEST development artifacts 與新 protocol 的符合程度。
-- [ ] 建立 TCLab 最小 reset/input/advance/response smoke test。
+- [x] 建立 TCLab 最小 reset/input/advance/response smoke test；結果限於 simulation pilot。
 - [ ] 建立 BOPTEST testcase 欄位、單位與步長清單。
 - [x] 用 deterministic toy API 驗證 calibration/validation/holdout pipeline 與 gate；明確標為非研究證據。
 - [ ] 產生第一個含獨立 holdout 的 calibration/validation/holdout pilot artifact。

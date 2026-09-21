@@ -24,3 +24,7 @@
 這次先恢復了 pinned FMU（SHA-256 與既有 artifact 一致）與隔離 FMPy 0.3.22，但在 macOS ARM 實際執行 day 270 時發現 FMU 只有 `binaries/linux64/wrapped.so`，沒有 macOS library；FMPy 在第一個 transition 前即因缺少 `darwin64/wrapped.dylib` 失敗。已保存 [`holdout_attempt_20260921.json`](artifacts/holdout_attempt_20260921.json)；沒有產生數值，也沒有把既有 development evaluation 改標成 holdout。
 
 另外執行了 [`contract_test_run.json`](artifacts/contract_test_run.json)：它用 deterministic toy dynamic API 完整跑過 calibration／validation／holdout，trace hash 與 gate 均為 `PASS`。這只驗證 pipeline contract，不是 BOPTEST、TCLab 或真實介入證據，故 artifact 狀態明確為 `PASS_CONTRACT_TEST_NOT_RESEARCH_EVIDENCE`。
+
+## TCLab simulation smoke test
+
+已在隔離 `.venv` 安裝 `tclab==1.0.0`，以 `TCLabModel(synced=False)` 建立 `reset → input(Q1/Q2) → advance(update(t)) → response(T1/T2)` 循環。固定 seed 17 下，calibration／validation／holdout 三段 trace hash 彼此不同，holdout 重跑 hash 一致，且 `validate_parameter_tuning_artifact.mjs` 回報 `PASS`。artifact 狀態是 `PASS_TCLAB_SIMULATION_PILOT_NOT_HARDWARE_EVIDENCE`；它只能支持 TCLab 模擬介面與 protocol 可重現，不能支持 TCLab 硬體、BOPTEST、室內／機箱或因果介入。

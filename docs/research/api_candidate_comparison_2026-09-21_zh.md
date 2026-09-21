@@ -16,7 +16,7 @@
 | 候選 | 類型 | 目前確認的介面／資料 | 可回答 | 不能回答／風險 | 本輪決策 |
 |---|---|---|---|---|---|
 | IBPSA BOPTEST | 互動式建築動態模擬 | 官方 REST RTE；選 testcase、initialize/warmup、讀 measurements/inputs、step/advance、results/KPI；支援控制 override | 可重設的閉迴路控制比較、跨 testcase 的策略與調教成本 | 仍是模擬；本地 FMU runner 不等同於公開 REST/KPI 服務；設備語意、量測點與時步需逐案確認 | **主平台**，先做 API smoke test，再做小型 PI pilot |
-| APMonitor TCLab／TCLabModel | 小型熱動態模型／實驗平台 | 官方 Apps 提供 TCLab 控制與 simulation studio；Python `tclab` 可做輸入—溫度回應；亦有辨識資料 | 快速檢查階躍回應、低維參數辨識、簡單 baseline 調教 | 不代表 3D 空間或機箱流場；硬體與模擬模式要分開；不能把辨識資料當任意反事實 API | **第一個輕量 pilot**，只做介面與調教流程驗證 |
+| APMonitor TCLab／TCLabModel | 小型熱動態模型／實驗平台 | 官方 Apps 提供 TCLab 控制與 simulation studio；本地 `tclab==1.0.0` 的 `TCLabModel(synced=False)` 已完成 reset/input/advance/response smoke test | 快速檢查階躍回應、低維參數辨識、簡單 baseline 調教 | 不代表 3D 空間或機箱流場；硬體與模擬模式要分開；不能把辨識資料當任意反事實 API | **第一個輕量 simulation pilot 已通過**，但仍非硬體／因果證據 |
 | OpenHumidistat | 開源濕度控制硬體 | 文獻確認為可負擔、可重現的濕度控制實驗裝置；未確認標準可呼叫的雙變數 simulator API | 未來可做真實濕度介入與硬體可行性 | 目前沒有本地設備、完整 simulator、同步資料規格或校準流程 | **硬體備案**，不列入今日 API 主比較 |
 | UCI SECOM | 靜態製程資料集 | 1567 筆製程紀錄與 pass/fail 標籤 | 製程分類、缺失值與資料品質研究 | 沒有 setpoint、連續致動器、時間序列控制循環或任意 action→response；不能作主要控制 API | **排除**於閉迴路控制主線 |
 
@@ -35,4 +35,3 @@
 2. 再對 BOPTEST 逐一記錄 testcase 的輸入／量測名稱、單位、步長、warmup、reset 與 KPI；缺一項就標記 `PILOT_BLOCKED`。
 3. 參數調教只在 calibration split 選參數；validation split 僅在最後一次讀取。若沒有獨立 split 或可重設機制，不宣稱泛化。
 4. 所有輸出都保留候選版本、設定檔、seed、環境、輸入 hash、trace hash 與 status（`PASS`、`PILOT_BLOCKED`、`NOT_EVALUATED`）。
-

@@ -1,0 +1,104 @@
+{
+  "status": "PASS_TCLAB_SIMULATION_PILOT_NOT_HARDWARE_EVIDENCE",
+  "run_id": "tclab-simulation-20260921-01",
+  "platform": "tclab.TCLabModel 1.0.0",
+  "scope": "LOCAL_SIMULATION_RESET_INPUT_ADVANCE_RESPONSE",
+  "parameters": {
+    "selected": {
+      "kp": 10.0,
+      "ti": 300.0
+    },
+    "candidates": [
+      {
+        "kp": 2.0,
+        "ti": 300.0
+      },
+      {
+        "kp": 2.0,
+        "ti": 900.0
+      },
+      {
+        "kp": 2.0,
+        "ti": 1800.0
+      },
+      {
+        "kp": 5.0,
+        "ti": 300.0
+      },
+      {
+        "kp": 5.0,
+        "ti": 900.0
+      },
+      {
+        "kp": 5.0,
+        "ti": 1800.0
+      },
+      {
+        "kp": 10.0,
+        "ti": 300.0
+      },
+      {
+        "kp": 10.0,
+        "ti": 900.0
+      },
+      {
+        "kp": 10.0,
+        "ti": 1800.0
+      }
+    ],
+    "target_C": 32.0,
+    "dt_s": 30.0
+  },
+  "metrics": {
+    "calibration_selection": {
+      "n": 40,
+      "mae_C": 0.9728375000000028,
+      "max_abs_error_C": 4.926800000000004,
+      "within_0_5_C_pct": 2.5
+    }
+  },
+  "splits": {
+    "calibration": {
+      "status": "PASS",
+      "trace_sha256": "8c19440361db7742b3509f119ab287cf191dc8b07855830668f661a6e94140ce",
+      "metrics": {
+        "n": 40,
+        "mae_C": 14.277815,
+        "max_abs_error_C": 33.42689999999999,
+        "within_0_5_C_pct": 0.0
+      },
+      "initial_C": 21.0,
+      "n": 40
+    },
+    "validation": {
+      "status": "PASS",
+      "trace_sha256": "fba5566240a86633a0126f287eca9460f540037b3ceefca260ea0cf4a672c370",
+      "metrics": {
+        "n": 40,
+        "mae_C": 0.706940000000003,
+        "max_abs_error_C": 2.993000000000002,
+        "within_0_5_C_pct": 70.0
+      },
+      "initial_C": 23.0,
+      "n": 40
+    },
+    "holdout": {
+      "status": "PASS",
+      "trace_sha256": "f7d3366282fd0ab88eaa05753c24165d4bc26c725a2f859eab8e0de41b67c5cb",
+      "metrics": {
+        "n": 40,
+        "mae_C": 1.2387350000000033,
+        "max_abs_error_C": 6.860600000000002,
+        "within_0_5_C_pct": 2.5
+      },
+      "initial_C": 19.0,
+      "n": 40
+    }
+  },
+  "reproducibility": {
+    "seed": 17,
+    "repeatability_holdout": true,
+    "distinct_split_hashes": true
+  },
+  "boundary": "TCLabModel simulation only; no TCLab hardware, BOPTEST, room, enclosure, semiconductor, or causal intervention claim."
+}
