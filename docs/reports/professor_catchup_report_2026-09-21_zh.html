@@ -236,9 +236,9 @@
 </head>
 <body>
   <header>
-    <p class="eyebrow">PROFESSOR CATCH-UP BRIEFING · RESEARCH ONLY</p>
+    <p class="eyebrow">PROFESSOR WEEKLY REPORT · RESEARCH ONLY</p>
     <h1><span>稀疏感測空間數位孿生</span><span>我的研究進度與探索過程</span></h1>
-    <p>2026-09-21｜今天我想補報前幾次累積的進度，從我完成的比較、遇到的問題，談到我如何找到模擬平台，以及我如何把參數調教整理成可重現的研究流程。</p>
+    <p>2026-09-21｜本週我完成了系統性參數調教、TCLab API 模擬試驗，以及 Linux BOPTEST 的 locked／holdout 驗證；報告中的 GRU／LSTM 與 E15 內容是前一輪背景。</p>
   </header>
 
   <nav aria-label="報告章節">
@@ -259,29 +259,29 @@
 
   <main>
     <section id="overview">
-      <h2>這段時間，我主要推進了三件事</h2>
-      <p class="lead">我的研究原本聚焦在少量感測器下的空間估測。這幾輪我先補齊模型比較，再用公開伺服器資料確認虛擬感測的效果，接著追問：這些估測與模型資訊，能不能進一步幫助控制？</p>
+      <h2>這週，我完成了三件事</h2>
+      <p class="lead">本週我延續少量感測器下的空間估測，完成系統性參數調教、TCLab API 模擬試驗，以及 Linux BOPTEST 的 locked／holdout 驗證。前一輪的 GRU／LSTM 比較與 E15 確認保留作為背景，不列為本週新結果。</p>
       <div class="grid">
         <article class="card third">
-          <span class="tag good">我已完成的比較</span>
-          <h3>前一輪模型比較：複雜模型未必更好</h3>
-          <div class="metric">0/24 · 0/12</div>
-          <div class="label">Pure RNN 在 3-D 場／時序任務取得最低 MAE 的次數</div>
-          <p><span class="status-mixed">前一輪（9/7）</span>我加入 GRU 與 LSTM，兩者也各為 0/12。這是累積背景，不是本週新跑的結果；它讓我保留物理結構與簡單基準，並重新檢查增加模型複雜度是否真的有幫助。</p>
+          <span class="tag good">本週完成</span>
+          <h3>我把參數調教整理成固定流程</h3>
+          <div class="metric">4 層</div>
+          <div class="label">物理／量測、動態模型、控制器、實驗設計</div>
+          <p>我把可調參數分層，固定 calibration／validation／holdout、停止規則與 fixed PI baseline，讓每次比較都能重現。</p>
         </article>
         <article class="card third">
-          <span class="tag good">我已完成的確認</span>
-          <h3>我用新檔案完成 E15 確認</h3>
-          <div class="metric"><span>1.6939 →</span> <span>0.9744°C</span></div>
-          <div class="label">14 個先前未開啟檔案、3,112 筆資料的 MAE</div>
-          <p>我固定模型後，以先前未開啟的資料做一次確認。Load-aware ridge 在 12/14 runs 勝出，十項門檻全通過；我也保留了兩個退步 runs。</p>
+          <span class="tag good">本週完成</span>
+          <h3>我跑通 TCLab API 模擬試驗</h3>
+          <div class="metric">1.0.0</div>
+          <div class="label">reset、輸入、時間推進與溫度回應</div>
+          <p>固定 seed 下重跑 hash 一致，確認 API pilot 可重現；這是模擬證據，不是硬體介入證據。</p>
         </article>
         <article class="card third">
-          <span class="tag warn">探索性結果</span>
-          <h3>我找到改善，也遇到轉移失敗</h3>
-          <div class="metric">約 22%</div>
-          <div class="label">水暖系統啟動前段 MAE 在兩個新日期的改善</div>
-          <p>我測試的啟動交接策略在水暖模型兩日通過；其餘四種已知設備均回退純 PI，所以我目前還不能說它具有通用優勢。</p>
+          <span class="tag warn">本週完成／探索性</span>
+          <h3>我完成 BOPTEST locked／holdout 驗證</h3>
+          <div class="metric">2 日期</div>
+          <div class="label">day 240 validation、day 270 holdout</div>
+          <p>兩個日期的 locked PI MAE 都低於 fixed PI，但飽和比例較高；結果仍限於單一 FMU，E8 仍是 NOT_EVALUATED。</p>
         </article>
       </div>
     </section>
@@ -659,7 +659,7 @@
     <section id="talk">
       <h2>我的報告講稿（約 15 分鐘）</h2>
       <ol class="talk-track">
-        <li><strong>1 分鐘｜我的研究主線：</strong>老師，今天我想補報前幾次累積的進度。我的研究原本是用少量感測器估計未量測位置，這段時間除了補齊模型比較，也用公開機櫃與伺服器資料檢查方法能延伸到哪裡。</li>
+        <li><strong>1 分鐘｜這週我完成了什麼：</strong>老師，本週我延續少量感測器估計未量測位置的主線，完成系統性參數調教、TCLab API 模擬試驗，以及 Linux BOPTEST 的 locked／holdout 驗證。前一輪的模型比較與 E15 確認只作為背景。</li>
         <li><strong>2 分鐘｜前一輪已完成的比較：</strong>在 9/7 前一輪，我加入 Pure RNN、GRU 與 LSTM，發現在固定設定下它們都沒有取得最低 MAE。這是累積背景，不是本週新結果；它讓我重新確認，增加模型複雜度需要有實際比較支持。</li>
         <li><strong>2 分鐘｜我取得的實測與公開資料證據：</strong>在真實臥室的 pillow 保留點，我看到校正後誤差改善；到了 AAU，我發現單純空間距離不一定足夠，加入測點角色資訊有預測價值。不過這些結果仍各有房間、測點與資料範圍的限制。</li>
         <li><strong>2 分鐘｜我完成的 E15 確認：</strong>我先固定模型，再用另 14 個先前未開啟的檔案、3,112 筆資料做一次確認。MAE 從 1.6939 降到 0.9744°C，12/14 runs 改善，十項門檻全通過。我也保留兩個退步 run，因此目前的結論只限同伺服器的時間與工作負載轉移。</li>
@@ -667,7 +667,7 @@
         <li><strong>2 分鐘｜我怎麼系統性調教：</strong>我把物理常數、動態模型、控制器參數和實驗設計分層，固定 calibration／validation／holdout，再以 fixed PI 作同日期 baseline。day 240 和 day 270 的 locked PI MAE 都較低，但我保留飽和代價與單一 FMU 限制。</li>
         <li><strong>2 分鐘｜我的下一個 gate：</strong>我暫時不進入真實裝置介入。我要先補多 testcase／多 seed 的獨立確認，再和老師討論是否進入 E8 intervention；目前 E8 仍是 NOT_EVALUATED。</li>
       </ol>
-      <p class="quote">這段時間，我完成了模型比較與 E15 確認，也建立了能反覆比較控制策略的模擬流程。我同時碰到跨設備失敗，對方法的限制有了更清楚的認識。接下來，我想先確認應用與簡單基準，讓研究上的改善能連到實際可量測的價值。</p>
+      <p class="quote">這週，我完成了系統性參數調教、TCLab API 模擬試驗，以及 Linux BOPTEST 的 locked／holdout 驗證。我也確認目前證據仍限於單一 FMU 與兩個日期，尚不能宣稱通用或因果效果。接下來，我會補多 testcase／多 seed 的確認，再評估是否進入 E8 intervention。</p>
     </section>
 
     <section id="questions">
