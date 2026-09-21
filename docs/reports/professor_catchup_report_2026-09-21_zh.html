@@ -356,7 +356,7 @@
             <tr>
               <td><a href="https://apmonitor.com/do/index.php/Main/TCLabA">TCLab／TCLabModel</a></td>
               <td>我在建模教材中找到加熱輸入與溫度反應，適合用來做初步熱動態辨識。</td>
-              <td><span class="status-mixed">我保留作小型實驗候選</span>。已讀到的步階資料與 <a href="https://github.com/jckantor/TCLab">TCLabModel 離線模擬器</a>用途不同；這輪我想比較多種設備，因此優先選 BOPTEST。</td>
+              <td><span class="status-good">我已完成 simulation smoke test</span>。本地 `tclab==1.0.0` 的 `TCLabModel(synced=False)` 已通過 reset、輸入、時間推進與溫度回應；但仍不是硬體證據。</td>
             </tr>
             <tr>
               <td><a href="https://ibpsa.github.io/project1-boptest/">IBPSA BOPTEST</a>／<a href="https://ibpsa.github.io/project1-boptest/docs-userguide/getting_started.html">API 使用說明</a></td>
@@ -594,7 +594,7 @@
 
     <section id="tuning">
       <h2>教授提醒後，我把參數調教改成有系統的流程</h2>
-      <p class="lead">我之前已經做過一些 PI、動態模型與交接策略的探索，但如果只報「哪組分數最好」，就無法知道我是否把 validation 看過後又回頭調參。因此這週我先固定 protocol，再開始下一個 pilot。</p>
+      <p class="lead">我之前已經做過一些 PI、動態模型與交接策略的探索，但如果只報「哪組分數最好」，就無法知道我是否把 validation 看過後又回頭調參。因此我先固定 protocol，再用獨立 runner 執行 pilot。</p>
       <div class="grid">
         <article class="card third"><span class="tag">第一層</span><h3>先分清楚什麼能調</h3><p>我把物理／量測常數、動態模型參數、控制器參數與實驗設計參數分開。sample time、單位和致動器界限不能為了分數事後修改。</p></article>
         <article class="card third"><span class="tag">第二層</span><h3>固定 calibration 與 validation</h3><p>我規定 calibration 只用來辨識與搜尋，validation 和 holdout 只在參數鎖定後讀取；資料不足時直接標記 <code>NO_INDEPENDENT_VALIDATION</code>。</p></article>
@@ -616,9 +616,11 @@
       <p>我接著嘗試建立 holdout，已恢復 pinned FMU 與 FMPy 0.3.22；但實際執行 day 270 時發現 FMU 只有 Linux x86-64 的 shared library，沒有 macOS ARM 可載入的 library，所以在第一個 transition 前停止。我把這次記為 <span class="status-no">PILOT_BLOCKED</span>，沒有補造數字或重跑 E15。</p>
       <p>為了確認 protocol 和 gate 本身沒有邏輯漏洞，我另外跑了一個 deterministic toy dynamic API。它完整通過 calibration／validation／holdout 與 hash 檢查，但我把它標成 <span class="status-mixed">PASS_CONTRACT_TEST_NOT_RESEARCH_EVIDENCE</span>，不把 toy 結果當成 BOPTEST 或實體設備結果。</p>
       <p>在 BOPTEST binary 受平台限制後，我改用第二候選 TCLab。`tclab==1.0.0` 的 `TCLabModel(synced=False)` 已跑通 reset、輸入 Q1/Q2、時間推進與 T1/T2 回應；固定 seed 下 holdout 重跑 hash 一致。這是 <span class="status-good">simulation pilot 通過</span>，但不是 TCLab 硬體、BOPTEST 或真實介入證據。</p>
-      <p>後來我用 GitHub Ubuntu runner 恢復 BOPTEST 的 Linux x86-64 runtime，跑了預先鎖定參數的 day 240 validation 與 day 270 holdout，並在相同日期跑 fixed PI baseline。locked PI 的 MAE 是 0.2996／0.3820°C，fixed PI 是 0.4150／0.5366°C；IAE 也分別較低，但 locked 的飽和比例較高。我把這看成單一 FMU 的探索性支持，不把它寫成跨設備或節能因果結論。</p>
+      <p>後來我用 GitHub Ubuntu runner 恢復 BOPTEST 的 Linux x86-64 runtime，跑了預先鎖定參數的 day 240 validation 與 day 270 holdout，並在相同日期跑 fixed PI baseline。結果如下：</p>
+      <div class="table-wrap"><table><thead><tr><th>日期</th><th>locked PI MAE</th><th>fixed PI MAE</th><th>locked PI IAE</th><th>fixed PI IAE</th></tr></thead><tbody><tr><td>day 240 validation</td><td>0.2996°C</td><td>0.4150°C</td><td>7.1909°C·h</td><td>9.9596°C·h</td></tr><tr><td>day 270 holdout</td><td>0.3820°C</td><td>0.5366°C</td><td>9.1678°C·h</td><td>12.8795°C·h</td></tr></tbody></table></div>
+      <p>兩個日期的 locked PI tracking metrics 都較低，但飽和比例較高；我把這看成單一 FMU 的探索性支持，不把它寫成跨設備或節能因果結論。</p>
       <p>因此我的 gate decision 是：我先不進入真實裝置介入。這兩個日期支持我繼續做多 testcase／多 seed 的獨立確認，但還不足以把 E8 寫成已完成；E8 仍是 <span class="status-no">NOT_EVALUATED</span>。</p>
-      <p class="source">方法文件：<a href="../research/systematic_parameter_tuning_protocol_2026-09-21_zh.md">系統性參數調教 protocol</a>；候選比較：<a href="../research/api_candidate_comparison_2026-09-21_zh.md">API candidate comparison</a>。兩份文件目前均為 pilot-ready／exploratory，尚未產生控制結果。</p>
+      <p class="source">方法文件：<a href="../research/systematic_parameter_tuning_protocol_2026-09-21_zh.md">系統性參數調教 protocol</a>；候選比較：<a href="../research/api_candidate_comparison_2026-09-21_zh.md">API candidate comparison</a>；完整 trace 與 hash：<a href="../../openspec/changes/systematic-parameter-tuning-20260921/artifacts/boptest_linux_holdout.json">BOPTEST holdout artifact</a>。這些結果仍是 exploratory simulation evidence。</p>
     </section>
 
     <section id="limits">
@@ -661,9 +663,9 @@
         <li><strong>2 分鐘｜我完成的比較：</strong>我加入 Pure RNN、GRU 與 LSTM 後，發現在這些固定設定下，它們都沒有取得最低 MAE。Kalman 也只在濕度案例勝過移動平均。這讓我重新確認，增加模型複雜度需要有實際比較支持。</li>
         <li><strong>2 分鐘｜我取得的實測與公開資料證據：</strong>在真實臥室的 pillow 保留點，我看到校正後誤差改善；到了 AAU，我發現單純空間距離不一定足夠，加入測點角色資訊有預測價值。不過這些結果仍各有房間、測點與資料範圍的限制。</li>
         <li><strong>2 分鐘｜我完成的 E15 確認：</strong>我先固定模型，再用另 14 個先前未開啟的檔案、3,112 筆資料做一次確認。MAE 從 1.6939 降到 0.9744°C，12/14 runs 改善，十項門檻全通過。我也保留兩個退步 run，因此目前的結論只限同伺服器的時間與工作負載轉移。</li>
-        <li><strong>4 分鐘｜我遇到的問題與 API 尋找：</strong>當我想往控制推進時，遇到三個問題：一般 PID 是否已經足夠、方法的新意在哪裡，以及現有資料能不能驗證新的控制動作。我查了 TCLab、BOPTEST、SECOM 和 OpenHumidistat，最後選擇能互動、重設並比較多種設備的 BOPTEST。公開連線當時失敗後，我改成本地 FMU 執行，再處理相容函式庫與夜間資料不可辨識的問題。</li>
-        <li><strong>2 分鐘｜我怎麼根據結果調整：</strong>我把控制器移到其他設備後，沒有得到普遍改善，因此繼續檢查動態模型、雜訊與啟動交接。最後的短時輔助與積分交接，在 hydronic 兩個新日期得到約 22% 的前段改善；其他設備仍回退純 PI，所以我還沒有把它當成通用方法。</li>
-        <li><strong>2 分鐘｜我接下來的方向：</strong>我想優先探索線材保存，木材與機箱先保留為候選。下一步先比較簡單策略是否足夠，再確認品質和耗電能否量測。我也想請老師一起判斷，控制探索是否值得納入主論文，或先把估測與虛擬感測的成果收束。</li>
+        <li><strong>4 分鐘｜我遇到的問題與 API 尋找：</strong>當我想往控制推進時，遇到三個問題：一般 PID 是否已經足夠、方法的新意在哪裡，以及現有資料能不能驗證新的控制動作。我查了 TCLab、BOPTEST、SECOM 和 OpenHumidistat；BOPTEST 公開服務當時連線失敗，我改用固定 v0.9.0 FMU，後來再用 Ubuntu runner 補上 Linux runtime。</li>
+        <li><strong>2 分鐘｜我怎麼系統性調教：</strong>我把物理常數、動態模型、控制器參數和實驗設計分層，固定 calibration／validation／holdout，再以 fixed PI 作同日期 baseline。day 240 和 day 270 的 locked PI MAE 都較低，但我保留飽和代價與單一 FMU 限制。</li>
+        <li><strong>2 分鐘｜我的下一個 gate：</strong>我暫時不進入真實裝置介入。我要先補多 testcase／多 seed 的獨立確認，再和老師討論是否進入 E8 intervention；目前 E8 仍是 NOT_EVALUATED。</li>
       </ol>
       <p class="quote">這段時間，我完成了模型比較與 E15 確認，也建立了能反覆比較控制策略的模擬流程。我同時碰到跨設備失敗，對方法的限制有了更清楚的認識。接下來，我想先確認應用與簡單基準，讓研究上的改善能連到實際可量測的價值。</p>
     </section>
