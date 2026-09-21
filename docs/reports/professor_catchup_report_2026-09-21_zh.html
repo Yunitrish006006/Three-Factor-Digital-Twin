@@ -264,10 +264,10 @@
       <div class="grid">
         <article class="card third">
           <span class="tag good">我已完成的比較</span>
-          <h3>我發現，複雜模型未必更好</h3>
+          <h3>前一輪模型比較：複雜模型未必更好</h3>
           <div class="metric">0/24 · 0/12</div>
           <div class="label">Pure RNN 在 3-D 場／時序任務取得最低 MAE 的次數</div>
-          <p>我後續加入 GRU 與 LSTM，兩者也各為 0/12。這讓我保留物理結構與簡單基準，並重新檢查增加模型複雜度是否真的有幫助。</p>
+          <p><span class="status-mixed">前一輪（9/7）</span>我加入 GRU 與 LSTM，兩者也各為 0/12。這是累積背景，不是本週新跑的結果；它讓我保留物理結構與簡單基準，並重新檢查增加模型複雜度是否真的有幫助。</p>
         </article>
         <article class="card third">
           <span class="tag good">我已完成的確認</span>
@@ -493,7 +493,7 @@
             </tr>
             <tr>
               <td>時序模型公平比較</td>
-              <td>Vanilla RNN、GRU、LSTM 的最低 MAE 次數皆為 0/12；Sequence LR 7/12、Persistence 5/12。</td>
+              <td><span class="status-mixed">前一輪（9/7）</span> Vanilla RNN、GRU、LSTM 的最低 MAE 次數皆為 0/12；Sequence LR 7/12、Persistence 5/12。</td>
               <td>我保留這項<span class="status-mixed">負向結果</span>：在這組設定下，增加 recurrent complexity 沒有帶來優勢。</td>
               <td>不同 history、容量、seed 或完整 3-D 任務需另做 protocol。</td>
             </tr>
@@ -660,7 +660,7 @@
       <h2>我的報告講稿（約 15 分鐘）</h2>
       <ol class="talk-track">
         <li><strong>1 分鐘｜我的研究主線：</strong>老師，今天我想補報前幾次累積的進度。我的研究原本是用少量感測器估計未量測位置，這段時間除了補齊模型比較，也用公開機櫃與伺服器資料檢查方法能延伸到哪裡。</li>
-        <li><strong>2 分鐘｜我完成的比較：</strong>我加入 Pure RNN、GRU 與 LSTM 後，發現在這些固定設定下，它們都沒有取得最低 MAE。Kalman 也只在濕度案例勝過移動平均。這讓我重新確認，增加模型複雜度需要有實際比較支持。</li>
+        <li><strong>2 分鐘｜前一輪已完成的比較：</strong>在 9/7 前一輪，我加入 Pure RNN、GRU 與 LSTM，發現在固定設定下它們都沒有取得最低 MAE。這是累積背景，不是本週新結果；它讓我重新確認，增加模型複雜度需要有實際比較支持。</li>
         <li><strong>2 分鐘｜我取得的實測與公開資料證據：</strong>在真實臥室的 pillow 保留點，我看到校正後誤差改善；到了 AAU，我發現單純空間距離不一定足夠，加入測點角色資訊有預測價值。不過這些結果仍各有房間、測點與資料範圍的限制。</li>
         <li><strong>2 分鐘｜我完成的 E15 確認：</strong>我先固定模型，再用另 14 個先前未開啟的檔案、3,112 筆資料做一次確認。MAE 從 1.6939 降到 0.9744°C，12/14 runs 改善，十項門檻全通過。我也保留兩個退步 run，因此目前的結論只限同伺服器的時間與工作負載轉移。</li>
         <li><strong>4 分鐘｜我遇到的問題與 API 尋找：</strong>當我想往控制推進時，遇到三個問題：一般 PID 是否已經足夠、方法的新意在哪裡，以及現有資料能不能驗證新的控制動作。我查了 TCLab、BOPTEST、SECOM 和 OpenHumidistat；BOPTEST 公開服務當時連線失敗，我改用固定 v0.9.0 FMU，後來再用 Ubuntu runner 補上 Linux runtime。</li>
