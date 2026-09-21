@@ -602,6 +602,18 @@
       </div>
       <p class="callout" style="margin-top:16px"><strong>一句話：</strong>我現在不是問「哪組參數分數最高」，而是問「在沒有看 holdout 答案的前提下，鎖定的參數能不能讓預測操作後的溫度仍然準確」。</p>
       <div class="callout" style="margin-top:16px"><strong>具體示範（使用我的 DigitalTwinModel）：</strong>我先把 8 顆感測器觀測送進模型，讓模型校正 `ac_main` 的有效功率與空間 residual；接著固定目標為 25°C／58% RH／500 lux，只比較 AC activation 35%、60%、85% 三個候選。模型預測的 zone temperature 分別是 27.509°C、26.559°C、25.609°C，comfort penalty 分別是 3.898、2.907、2.308，因此這次 dry run 排名第一的是 85%。真正介入時，才把 85% 送到 actuator，再用介入後實測溫度和 25.609°C 比較 MAE；這一步目前尚未有實體證據。</div>
+      <h3 style="margin-top:22px">機箱模型版本：每個參數能調什麼、代表什麼</h3>
+      <p>因為教授目前把機箱視為主軸，我把同一套調適方法改寫成機箱模型的參數表。這週先把內容分成三類：模型中的控制輸入、要用 calibration 辨識的熱模型參數，以及不能為了分數事後改動的安全／實驗參數；這不是在宣稱我已經有一台可介入的實體機箱。</p>
+      <div class="table-wrap"><table><thead><tr><th>參數</th><th>類型</th><th>改變後的效果</th><th>意義</th></tr></thead><tbody>
+        <tr><td><code>PWM</code></td><td>操作</td><td>改變風量、降溫速度與風扇功耗</td><td>真正送給風扇的控制動作</td></tr>
+        <tr><td><code>RPM</code></td><td>觀測回應</td><td>反映命令是否真的變成轉速</td><td>不能把 PWM 直接當成 RPM</td></tr>
+        <tr><td><code>Kp/Ki/Kd</code></td><td>控制器</td><td>改變反應快慢、overshoot、振盪與穩態誤差</td><td>比較 PID 與前饋＋PID</td></tr>
+        <tr><td><code>C/G</code></td><td>熱模型</td><td>描述儲熱能力與自然散熱速度</td><td>決定升溫／降溫暫態</td></tr>
+        <tr><td><code>k_f/τ_f</code></td><td>熱模型</td><td>描述風扇增益與命令到溫度反應的延遲</td><td>是「操作後溫度」預測的核心</td></tr>
+        <tr><td><code>k_L</code></td><td>負載前饋</td><td>負載上升前先提高風扇，減少溫度尖峰</td><td>分開負載發熱與風扇作用</td></tr>
+        <tr><td><code>T_limit/ΔPWM_max/H</code></td><td>安全／實驗設計</td><td>限制超溫、抖動與評估距離</td><td>預先固定，不能看結果後修改</td></tr>
+      </tbody></table></div>
+      <p class="source">完整機箱參數調適 protocol：<a href="../research/enclosure_parameter_adaptation_protocol_2026-09-21_zh.md">enclosure parameter adaptation protocol</a>。目前是本週完成的方法設計；BMC 資料尚無可重設 PWM 介入，不把它寫成已完成的機箱控制結果。</p>
       <div class="table-wrap">
         <table>
           <thead><tr><th>階段</th><th>我會做什麼</th><th>通過條件</th><th>沒有通過時</th></tr></thead>
