@@ -1,0 +1,8 @@
+{
+  "status": "PILOT_INCOMPLETE",
+  "validator": "scripts/validate_parameter_tuning_artifact.mjs",
+  "input": "openspec/changes/systematic-parameter-tuning-20260921/artifacts/protocol_audit.json",
+  "reasons": ["independent sealed holdout is missing"],
+  "mode": "report-only",
+  "interpretation": "The gate correctly refuses to call the existing development evidence a completed tuning pilot."
+}

@@ -13,6 +13,7 @@
 - day 3／day 180 是 development evaluation dates，不是獨立 sealed holdout。
 - 本地官方 FMU runner 不等同公開 BOPTEST REST/KPI 服務。
 - 因此本輪狀態是 `PARTIAL_PROTOCOL_CONFORMANCE`，不能改寫成已完成泛化或真實介入。
+- 可執行 gate `scripts/validate_parameter_tuning_artifact.mjs --report-only` 已重現同一結論：`PILOT_INCOMPLETE`，原因只有「independent sealed holdout is missing」。
 
 ## 下一步
 
