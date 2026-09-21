@@ -7,7 +7,9 @@ from __future__ import annotations
 
 import hashlib
 import json
+import importlib.metadata
 import random
+import sys
 from pathlib import Path
 
 from tclab import TCLabModel
@@ -98,6 +100,7 @@ def main():
         "status": "PASS_TCLAB_SIMULATION_PILOT_NOT_HARDWARE_EVIDENCE",
         "run_id": "tclab-simulation-20260921-01", "platform": "tclab.TCLabModel 1.0.0",
         "scope": "LOCAL_SIMULATION_RESET_INPUT_ADVANCE_RESPONSE",
+        "environment": {"python": sys.version.split()[0], "packages": {name: importlib.metadata.version(name) for name in ("tclab", "numpy", "msgpack")}},
         "parameters": {"selected": selected["parameters"], "candidates": candidates, "target_C": TARGET, "dt_s": DT},
         "metrics": {"calibration_selection": selected["metrics"]}, "splits": splits,
         "reproducibility": {"seed": 17, "repeatability_holdout": repeatability,

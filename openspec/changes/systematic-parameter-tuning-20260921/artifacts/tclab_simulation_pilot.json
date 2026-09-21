@@ -3,6 +3,14 @@
   "run_id": "tclab-simulation-20260921-01",
   "platform": "tclab.TCLabModel 1.0.0",
   "scope": "LOCAL_SIMULATION_RESET_INPUT_ADVANCE_RESPONSE",
+  "environment": {
+    "python": "3.9.6",
+    "packages": {
+      "tclab": "1.0.0",
+      "numpy": "1.26.4",
+      "msgpack": "1.0.8"
+    }
+  },
   "parameters": {
     "selected": {
       "kp": 10.0,
