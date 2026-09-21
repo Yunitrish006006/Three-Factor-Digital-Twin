@@ -1,0 +1,19 @@
+# Evidence
+
+本輪沒有重跑 E15，也沒有重新消耗 BOPTEST。`artifacts/protocol_audit.json` 只稽核既有 `pilot-boptest-rapid-pi` 產物，將其對照 2026-09-21 新 protocol。
+
+## 已符合
+
+- 既有 `result.json` 固定了 PI grid、baseline、6 小時 development trace、指標與每條 trace 的 SHA-256。
+- `result_v2.json` 保存 2 小時 calibration、選出的 `Kp/Ti`、辨識退化原因與 day 3／day 180 的完整 metrics。
+- 既有 `verification.json` 記錄 229 個 repository tests、CSV audit 與未採納主論文的 exploratory scope。
+
+## 尚未符合
+
+- day 3／day 180 是 development evaluation dates，不是獨立 sealed holdout。
+- 本地官方 FMU runner 不等同公開 BOPTEST REST/KPI 服務。
+- 因此本輪狀態是 `PARTIAL_PROTOCOL_CONFORMANCE`，不能改寫成已完成泛化或真實介入。
+
+## 下一步
+
+建立一個不同初始狀態或日期的 holdout run，沿用已鎖定參數，只讀取一次；若平台或依賴不可用，保存 `PILOT_BLOCKED` artifact，而不是手動補數字。

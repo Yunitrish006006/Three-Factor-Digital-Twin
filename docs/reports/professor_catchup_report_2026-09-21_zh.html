@@ -612,6 +612,7 @@
         </table>
       </div>
       <p>今天完成的是研究設計，不是新的改善百分比。我把 BOPTEST 保留為主閉迴路平台，先用 TCLab 做較小的介面與調教 pilot；OpenHumidistat 是硬體備案，SECOM 沒有連續致動器與時間控制循環，所以不列入主控制 API。</p>
+      <p>我也回頭稽核了既有 BOPTEST development artifact：它已經有 calibration、固定 grid、baseline、trace hash 與 day 3／day 180 指標，但沒有獨立 sealed holdout。因此我把目前狀態記為 <span class="status-mixed">PARTIAL_PROTOCOL_CONFORMANCE</span>，不把原本的開發評估改稱泛化驗證。</p>
       <p class="source">方法文件：<a href="../research/systematic_parameter_tuning_protocol_2026-09-21_zh.md">系統性參數調教 protocol</a>；候選比較：<a href="../research/api_candidate_comparison_2026-09-21_zh.md">API candidate comparison</a>。兩份文件目前均為 pilot-ready／exploratory，尚未產生控制結果。</p>
     </section>
 

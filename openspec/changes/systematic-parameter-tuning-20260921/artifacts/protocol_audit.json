@@ -1,0 +1,36 @@
+{
+  "status": "PARTIAL_PROTOCOL_CONFORMANCE",
+  "scope": "AUDIT_EXISTING_BOPTEST_DEVELOPMENT_ARTIFACTS_NO_RERUN",
+  "audited_artifacts": [
+    "openspec/changes/pilot-boptest-rapid-pi/artifacts/result.json",
+    "openspec/changes/pilot-boptest-rapid-pi/artifacts/result_v2.json",
+    "openspec/changes/pilot-boptest-rapid-pi/artifacts/verification.json"
+  ],
+  "checks": {
+    "parameter_layers_explicit": true,
+    "calibration_search_budget_recorded": true,
+    "baseline_recorded": true,
+    "validation_metrics_recorded": true,
+    "trace_hashes_recorded": true,
+    "independent_holdout": false,
+    "validation_used_as_confirmatory_evidence": false,
+    "public_rest_equivalence": false
+  },
+  "calibration": {
+    "status": "PASS_EXISTING_DEVELOPMENT_ARTIFACT",
+    "source": "result_v2.json",
+    "hours": 2,
+    "note": "Rank-deficient night calibration is retained as a visible limitation; no feedforward was silently invented."
+  },
+  "validation": {
+    "status": "PASS_DEVELOPMENT_EVALUATION_ONLY",
+    "source": "result_v2.json",
+    "dates": [3, 180],
+    "note": "These dates are the existing development evaluation dates, not a sealed confirmatory split."
+  },
+  "holdout": {
+    "status": "NOT_EVALUATED",
+    "reason": "No independent date, seed, or initial-state holdout is present in the consumed artifact."
+  },
+  "interpretation": "Existing BOPTEST evidence demonstrates a recorded development tuning workflow, but does not yet satisfy the new independent holdout gate or support a general control claim."
+}
