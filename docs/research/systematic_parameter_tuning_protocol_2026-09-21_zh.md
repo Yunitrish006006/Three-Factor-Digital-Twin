@@ -36,4 +36,4 @@
 
 ## 5. 證據邊界
 
-TCLab／BOPTEST 的成功只代表平台內 pilot 可重現；不能直接支持 3D 列印線材、桌機機箱、半導體或真實濕度介入。E15 仍只支持既有同伺服器 Phytium S2500 的 temporal/workload 邊界；E8 與真實 intervention 保持 `NOT_EVALUATED`。
+TCLab／BOPTEST 的成功只代表平台內 pilot 可重現；不能直接支持桌機機箱、半導體或真實硬體介入。現階段研究應用主軸收斂到桌機機箱；E15 仍只支持既有同伺服器 Phytium S2500 的 temporal/workload 邊界；E8 與真實 intervention 保持 `NOT_EVALUATED`。

@@ -324,7 +324,7 @@
         </article>
         <article class="card">
           <h3>資料與模擬能回答哪些應用問題？</h3>
-          <p>我當時沒有找到能直接量測半導體環境調參工時的公開資料，因此先用 BOPTEST 做 HVAC 控制模擬。若要延伸到線材、木材或桌機機箱，我仍需要各自的材料或實機證據，才能評估品質、耗電與效能。</p>
+          <p>我當時沒有找到能直接量測半導體環境調參工時的公開資料，因此先用 BOPTEST 做控制模擬。若要延伸到桌機機箱，我仍需要入口溫度、負載、PWM/RPM、功率與實機介入證據，才能評估溫度、效能與耗電。</p>
         </article>
       </div>
       <p class="source">依據：<a href="https://github.com/Yunitrish006006/Three-Factor-Digital-Twin/blob/d4fa57b756eab74452f3580f35e30a2e959dded4/docs/research/environment_pid_feasibility_zh.md">環境參數 PID 啟動條件</a>與 <a href="https://github.com/Yunitrish006006/Three-Factor-Digital-Twin/blob/d4fa57b756eab74452f3580f35e30a2e959dded4/docs/research/application_goals_2026-09-08_zh.md">候選應用及固定設定質疑</a>。</p>
@@ -661,15 +661,13 @@
     </section>
 
     <section id="applications">
-      <h2>接下來，我想先探索線材應用</h2>
-      <p class="lead">在 9/8 的方向討論中，我把 3D 列印線材列為優先探索，也保留木材與機箱兩個候選。目前這些仍是構想，我還沒有開始相應的應用實驗，也沒有更改正式論文題目。</p>
+      <h2>接下來，我聚焦機箱模型與控制驗證</h2>
+      <p class="lead">本週我把後續應用方向收斂到桌機機箱；接下來優先補齊機箱熱模型、參數調適、操作後溫度預測，以及 PWM/RPM 與實際功率的量測協定。</p>
       <div class="grid">
-        <article class="card third"><span class="tag warn">優先探索／尚未評估</span><h3>3D 列印線材</h3><p>我想先從 20–30°C 防潮保存／供料開始，在相同乾燥前處理下，比較暴露環境、密封＋乾燥劑及主動管理，再觀察合格率、尺寸、表面缺陷與每合格件耗電。若要做加熱乾燥，我還需另建溫域與量測協定。</p></article>
-        <article class="card third"><span class="tag warn">候選／尚未評估</span><h3>木材溫濕度管理</h3><p>我考慮先用小試片做調濕，但需要先固定木種、厚度，取得重量／全乾參考與含水率真值，才有辦法比較達標時間、均勻性、變形與耗電。</p></article>
-        <article class="card third"><span class="tag warn">候選／尚未評估</span><h3>桌機機箱控溫</h3><p>我可以延續 BMC／AAU 的估測研究，但仍需補入口溫度、NTC/reference、負載、PWM/RPM 與功率同步量測，再規劃真實風扇介入。</p></article>
+        <article class="card wide"><span class="tag warn">主軸／尚未完成實體介入</span><h3>桌機機箱模型與風扇控制</h3><p>我會延續 BMC／AAU 的估測成果，建立入口溫度、CPU/GPU 溫度、負載功率、PWM/RPM 的同步資料，再用 <code>C/G/k_f/τ_f/k_L</code> 做熱模型辨識，最後比較固定風扇、原廠策略、PID 與模型預測操作。</p></article>
       </div>
-      <p class="callout" style="margin-top:16px">我接下來最想釐清的是：主動方法是否比簡單策略多提供可量測的價值？如果密封＋乾燥劑就能維持線材品質，我會重新評估是否需要更複雜的控制，或把問題收斂到乾燥終點估測。目前的 HVAC 模擬還不能替我回答材料品質或真實機箱控制效果。</p>
-      <p class="source">方向依據：<a href="https://github.com/Yunitrish006006/Three-Factor-Digital-Twin/blob/d4fa57b756eab74452f3580f35e30a2e959dded4/docs/research/application_goals_2026-09-08_zh.md">三個候選應用與線材優先探索</a>。</p>
+      <p class="callout" style="margin-top:16px">我接下來最想釐清的是：在相同負載與安全溫度限制下，模型預測的風扇操作是否比固定轉速或原廠策略更準確、更少超溫，且不增加不必要的功耗。這需要可重設的機箱模型或實體風扇介入，不能只靠觀測性 BMC trace 宣稱控制效果。</p>
+      <p class="source">目前方向：<a href="../research/application_goals_2026-09-21_zh.md">桌機機箱模型與控制驗證</a>；參數定義：<a href="../research/enclosure_parameter_adaptation_protocol_2026-09-21_zh.md">機箱模型參數調適 protocol</a>。</p>
     </section>
 
     <section id="talk">
@@ -691,8 +689,8 @@
       <div class="grid">
         <article class="card third">
           <span class="tag">問題 1</span>
-          <h3>我先做線材可行性檢查，是否合適？</h3>
-          <p>我打算先確認可用印表機、材料、參考量測與品質判準，再比較簡單保存策略。想請老師判斷這個起點是否能回答有價值的研究問題。</p>
+          <h3>我先建立機箱資料契約，是否合適？</h3>
+          <p>我打算先同步入口溫度、CPU/GPU 溫度、負載功率、PWM、RPM 與取樣時間，再固定 calibration／validation／holdout。想請老師確認這個機箱起點是否足以支撐後續控制問題。</p>
         </article>
         <article class="card third">
           <span class="tag">問題 2</span>
@@ -702,7 +700,7 @@
         <article class="card third">
           <span class="tag">問題 3</span>
           <h3>我的下一個問題應該怎麼收斂？</h3>
-          <p>我正在比較稀疏目標點估測、有限資料調適，以及材料品質／乾燥終點估測的價值。若簡單策略已足夠，我也想討論是否以目前已驗證的成果收束論文。</p>
+          <p>我正在比較稀疏目標點估測、有限資料調適，以及機箱風扇操作後的溫度預測準確度。若簡單固定策略已足夠，我也想討論是否需要更複雜的控制器。</p>
         </article>
       </div>
     </section>
