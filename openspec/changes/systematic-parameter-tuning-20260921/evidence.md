@@ -39,3 +39,7 @@ GitHub Actions run [35566560483](https://github.com/Yunitrish006006/Three-Factor
 | 270 holdout | 0.3820°C | 0.5366°C | 9.1678 | 12.8795 | holdout 仍較低；不能外推成普遍優勢 |
 
 locked 的 saturation 比例較高，且能源分項仍需分開解讀；因此我只報 tracking metrics，不宣稱節能或因果改善。完整 JSON 與四條 CSV trace 位於 [`boptest_linux_holdout.json`](artifacts/boptest_linux_holdout.json) 與 `artifacts/traces/`。這仍是官方 FMU 的自訂 FMPy runner，不是官方 REST/KPI 等價性或真實介入證據。
+
+## Gate decision
+
+兩個新日期的 locked-vs-fixed 結果足以支持「在同一 FMU 上繼續做多 testcase／多 seed」的研究假說，但不足以支持真實裝置介入。因此本輪決策是 **不進入 E8 intervention**；E8 仍為 `NOT_EVALUATED`，下一個 gate 是跨 testcase／seed 的獨立確認，而不是直接部署控制器。
