@@ -36,6 +36,8 @@ def main():
         "fmu_sha256": sha(ROOT / "outputs/vendor/boptest-v0.9.0/testcases/bestest_air/models/wrapped.fmu"),
         "protocol_sha256": sha(CHANGE / "../pilot-boptest-rapid-pi/protocol.md"),
         "locked_parameters": LOCKED,
+        "parameters": {"selected": LOCKED, "search_performed": False},
+        "metrics": {"validation": records["validation"]["metrics"], "holdout": records["holdout"]["metrics"]},
         "calibration": {"status": "EXISTING_DEVELOPMENT_ONLY", "trace_sha256": prior["identification"]["sha256"], "metrics": prior["identification"]["metrics"]},
         "splits": {
             "calibration": {"status": "PASS", "trace_sha256": prior["identification"]["sha256"], "metrics": prior["identification"]["metrics"]},
