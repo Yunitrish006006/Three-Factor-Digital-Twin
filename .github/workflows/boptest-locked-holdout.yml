@@ -1,0 +1,47 @@
+name: BOPTEST locked holdout
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: "Type RUN_LOCKED_HOLDOUT to run the pre-locked two-date evaluation"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  holdout:
+    if: inputs.confirm == 'RUN_LOCKED_HOLDOUT'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout thesis
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch pinned BOPTEST testcase
+        run: |
+          mkdir -p outputs/vendor
+          git clone --filter=blob:none --no-checkout --depth 1 --branch v0.9.0 https://github.com/ibpsa/project1-boptest.git outputs/vendor/boptest-v0.9.0
+          git -C outputs/vendor/boptest-v0.9.0 sparse-checkout init --no-cone
+          git -C outputs/vendor/boptest-v0.9.0 sparse-checkout set testcases/bestest_air license.md
+          git -C outputs/vendor/boptest-v0.9.0 read-tree -mu HEAD
+          sha256sum outputs/vendor/boptest-v0.9.0/testcases/bestest_air/models/wrapped.fmu
+      - name: Install pinned runner dependency
+        run: python -m pip install fmpy==0.3.22
+      - name: Run locked validation and holdout
+        run: python scripts/run_boptest_locked_holdout.py
+      - name: Validate holdout gate
+        run: node scripts/validate_parameter_tuning_artifact.mjs openspec/changes/systematic-parameter-tuning-20260921/artifacts/boptest_linux_holdout.json
+      - name: Upload holdout evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: boptest-linux-locked-holdout
+          path: |
+            openspec/changes/systematic-parameter-tuning-20260921/artifacts/boptest_linux_holdout.json
+            outputs/boptest_rapid_pi/v1/validation_day240_locked.csv
+            outputs/boptest_rapid_pi/v1/holdout_day270_locked.csv
