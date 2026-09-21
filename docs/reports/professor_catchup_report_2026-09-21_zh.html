@@ -238,7 +238,7 @@
   <header>
     <p class="eyebrow">PROFESSOR WEEKLY REPORT · RESEARCH ONLY</p>
     <h1><span>稀疏感測空間數位孿生</span><span>我的研究進度與探索過程</span></h1>
-    <p>2026-09-21｜本週我完成了系統性參數調教、TCLab API 模擬試驗，以及 Linux BOPTEST 的 locked／holdout 驗證；報告中的 GRU／LSTM 與 E15 內容是前一輪背景。</p>
+    <p>2026-09-21｜本週我完成了系統性參數調教、TCLab API 模擬試驗、Linux BOPTEST locked／holdout 驗證，以及已選操作後的溫度預測準確度檢查；GRU／LSTM 與 E15 內容是前一輪背景。</p>
   </header>
 
   <nav aria-label="報告章節">
@@ -260,7 +260,7 @@
   <main>
     <section id="overview">
       <h2>這週，我完成了三件事</h2>
-      <p class="lead">本週我延續少量感測器下的空間估測，完成系統性參數調教、TCLab API 模擬試驗，以及 Linux BOPTEST 的 locked／holdout 驗證。前一輪的 GRU／LSTM 比較與 E15 確認保留作為背景，不列為本週新結果。</p>
+      <p class="lead">本週我延續少量感測器下的空間估測，完成系統性參數調教、TCLab API 模擬試驗，以及 Linux BOPTEST 的 locked／holdout 驗證；我也檢查了已選操作之後的溫度預測準確度。前一輪的 GRU／LSTM 比較與 E15 確認保留作為背景，不列為本週新結果。</p>
       <div class="grid">
         <article class="card third">
           <span class="tag good">本週完成</span>
@@ -593,13 +593,14 @@
     </section>
 
     <section id="tuning">
-      <h2>教授提醒後，我把參數調教改成有系統的流程</h2>
-      <p class="lead">我之前已經做過一些 PI、動態模型與交接策略的探索，但如果只報「哪組分數最好」，就無法知道我是否把 validation 看過後又回頭調參。因此我先固定 protocol，再用獨立 runner 執行 pilot。</p>
+      <h2>這週，我把參數調教標準化</h2>
+      <p class="lead">我這週把「調參」從找一組漂亮分數，改成任何人都能重做的流程：先分清楚哪些參數可以調，再固定資料切分與搜尋預算，鎖定參數後才讀取 validation／holdout，最後用同日期的 fixed PI 做比較。這樣才能知道改善來自方法，還是只是看過答案後再調整。</p>
       <div class="grid">
-        <article class="card third"><span class="tag">第一層</span><h3>先分清楚什麼能調</h3><p>我把物理／量測常數、動態模型參數、控制器參數與實驗設計參數分開。sample time、單位和致動器界限不能為了分數事後修改。</p></article>
-        <article class="card third"><span class="tag">第二層</span><h3>固定 calibration 與 validation</h3><p>我規定 calibration 只用來辨識與搜尋，validation 和 holdout 只在參數鎖定後讀取；資料不足時直接標記 <code>NO_INDEPENDENT_VALIDATION</code>。</p></article>
-        <article class="card third"><span class="tag">第三層</span><h3>預先寫死停止規則</h3><p>我會固定粗網格、local refinement 預算、IAE／ITAE 主指標、tie margin 與飽和檢查。不能無限試到滿意，也不能把 tie 硬說成勝出。</p></article>
+        <article class="card third"><span class="tag">第一層</span><h3>先分清楚哪些參數能調</h3><p>我把物理／量測常數、動態模型、控制器參數和實驗設計分開。sample time、單位與致動器界限先固定，不能為了分數事後修改。</p></article>
+        <article class="card third"><span class="tag">第二層</span><h3>先校正，再鎖定後驗證</h3><p>calibration 只用來辨識與搜尋；參數鎖定後，validation 和 holdout 各只讀取一次。沒有獨立資料就標記 <code>NO_INDEPENDENT_VALIDATION</code>。</p></article>
+        <article class="card third"><span class="tag">第三層</span><h3>用固定規則決定是否繼續</h3><p>我預先固定粗網格、搜尋預算、IAE／ITAE、tie margin 與飽和檢查；不無限試到滿意，也不把持平硬說成勝出。</p></article>
       </div>
+      <p class="callout" style="margin-top:16px"><strong>一句話：</strong>我現在不是問「哪組參數分數最高」，而是問「在沒有看 holdout 答案的前提下，鎖定的參數能不能讓預測操作後的溫度仍然準確」。</p>
       <div class="table-wrap">
         <table>
           <thead><tr><th>階段</th><th>我會做什麼</th><th>通過條件</th><th>沒有通過時</th></tr></thead>
@@ -611,7 +612,7 @@
           </tbody>
         </table>
       </div>
-      <p>我先完成研究設計，再用 TCLab 和 Linux BOPTEST runner 執行受控 pilot；OpenHumidistat 是硬體備案，SECOM 沒有連續致動器與時間控制循環，所以不列入主控制 API。</p>
+      <p>這週我先完成研究設計，再用 TCLab 和 Linux BOPTEST runner 執行受控 pilot；OpenHumidistat 是硬體備案，SECOM 沒有連續致動器與時間控制循環，所以不列入主控制 API。</p>
       <p>我也回頭稽核了既有 BOPTEST development artifact：它已經有 calibration、固定 grid、baseline、trace hash 與 day 3／day 180 指標，但沒有獨立 sealed holdout。因此我把目前狀態記為 <span class="status-mixed">PARTIAL_PROTOCOL_CONFORMANCE</span>，不把原本的開發評估改稱泛化驗證。</p>
       <p>我接著嘗試建立 holdout，已恢復 pinned FMU 與 FMPy 0.3.22；但實際執行 day 270 時發現 FMU 只有 Linux x86-64 的 shared library，沒有 macOS ARM 可載入的 library，所以在第一個 transition 前停止。我把這次記為 <span class="status-no">PILOT_BLOCKED</span>，沒有補造數字或重跑 E15。</p>
       <p>為了確認 protocol 和 gate 本身沒有邏輯漏洞，我另外跑了一個 deterministic toy dynamic API。它完整通過 calibration／validation／holdout 與 hash 檢查，但我把它標成 <span class="status-mixed">PASS_CONTRACT_TEST_NOT_RESEARCH_EVIDENCE</span>，不把 toy 結果當成 BOPTEST 或實體設備結果。</p>
@@ -621,7 +622,7 @@
       <p>兩個日期的 locked PI tracking metrics 都較低，但飽和比例較高；我把這看成單一 FMU 的探索性支持，不把它寫成跨設備或節能因果結論。</p>
       <p>我另外從兩條 locked trace 各隨機抽取最多 100 個狀態，在系統已選出的操作下，用既有 development calibration 固定的一階 RC predictor 預測下一步溫度，再和實際 `next_T` 比較。200 個抽樣的 MAE 為 1.6073°C、RMSE 為 1.6568°C，沒有樣本落在 0.5°C 內；這表示目前 frozen predictor 還不夠準，不能把操作後溫度結果寫成已被準確預測。</p>
       <p>因此我的 gate decision 是：我先不進入真實裝置介入。這兩個日期支持我繼續做多 testcase／多 seed 的獨立確認，但還不足以把 E8 寫成已完成；E8 仍是 <span class="status-no">NOT_EVALUATED</span>。</p>
-      <p class="source">方法文件：<a href="../research/systematic_parameter_tuning_protocol_2026-09-21_zh.md">系統性參數調教 protocol</a>；候選比較：<a href="../research/api_candidate_comparison_2026-09-21_zh.md">API candidate comparison</a>；完整 trace 與 hash：<a href="../../openspec/changes/systematic-parameter-tuning-20260921/artifacts/boptest_linux_holdout.json">BOPTEST holdout artifact</a>。這些結果仍是 exploratory simulation evidence。</p>
+      <p class="source">方法文件：<a href="../research/systematic_parameter_tuning_protocol_2026-09-21_zh.md">系統性參數調教 protocol</a>；候選比較：<a href="../research/api_candidate_comparison_2026-09-21_zh.md">API candidate comparison</a>；完整 trace 與 hash：<a href="../../openspec/changes/systematic-parameter-tuning-20260921/artifacts/boptest_linux_holdout.json">BOPTEST holdout artifact</a>；操作後溫度預測抽樣：<a href="../../openspec/changes/systematic-parameter-tuning-20260921/artifacts/action_conditioned_replay.json">action-conditioned replay</a>。這些結果仍是 exploratory simulation evidence。</p>
     </section>
 
     <section id="limits">
@@ -665,10 +666,10 @@
         <li><strong>2 分鐘｜我取得的實測與公開資料證據：</strong>在真實臥室的 pillow 保留點，我看到校正後誤差改善；到了 AAU，我發現單純空間距離不一定足夠，加入測點角色資訊有預測價值。不過這些結果仍各有房間、測點與資料範圍的限制。</li>
         <li><strong>2 分鐘｜我完成的 E15 確認：</strong>我先固定模型，再用另 14 個先前未開啟的檔案、3,112 筆資料做一次確認。MAE 從 1.6939 降到 0.9744°C，12/14 runs 改善，十項門檻全通過。我也保留兩個退步 run，因此目前的結論只限同伺服器的時間與工作負載轉移。</li>
         <li><strong>4 分鐘｜我遇到的問題與 API 尋找：</strong>當我想往控制推進時，遇到三個問題：一般 PID 是否已經足夠、方法的新意在哪裡，以及現有資料能不能驗證新的控制動作。我查了 TCLab、BOPTEST、SECOM 和 OpenHumidistat；BOPTEST 公開服務當時連線失敗，我改用固定 v0.9.0 FMU，後來再用 Ubuntu runner 補上 Linux runtime。</li>
-        <li><strong>2 分鐘｜我怎麼系統性調教：</strong>我把物理常數、動態模型、控制器參數和實驗設計分層，固定 calibration／validation／holdout，再以 fixed PI 作同日期 baseline。day 240 和 day 270 的 locked PI MAE 都較低，但我保留飽和代價與單一 FMU 限制。</li>
+        <li><strong>2 分鐘｜我怎麼把調參標準化：</strong>我先分開可調參數與必須固定的 protocol，再用 calibration 搜尋、鎖定後只讀一次 validation／holdout，並以同日期 fixed PI 作 baseline。接著我檢查「已選操作之後的溫度預測」：200 個抽樣的 MAE 是 1.6073°C、RMSE 是 1.6568°C，代表目前 predictor 還不夠準，不能把操作效果說成已驗證。</li>
         <li><strong>2 分鐘｜我的下一個 gate：</strong>我暫時不進入真實裝置介入。我要先補多 testcase／多 seed 的獨立確認，再和老師討論是否進入 E8 intervention；目前 E8 仍是 NOT_EVALUATED。</li>
       </ol>
-      <p class="quote">這週，我完成了系統性參數調教、TCLab API 模擬試驗，以及 Linux BOPTEST 的 locked／holdout 驗證。我也確認目前證據仍限於單一 FMU 與兩個日期，尚不能宣稱通用或因果效果。接下來，我會補多 testcase／多 seed 的確認，再評估是否進入 E8 intervention。</p>
+      <p class="quote">這週，我把參數調教標準化，完成 TCLab API 模擬試驗與 Linux BOPTEST locked／holdout 驗證，也首次量化已選操作之後的溫度預測準確度。抽樣 MAE 為 1.6073°C，表示 predictor 還需要改善；目前證據仍限於單一 FMU 與兩個日期，接下來要補多 testcase／多 seed，再評估 E8 intervention。</p>
     </section>
 
     <section id="questions">
