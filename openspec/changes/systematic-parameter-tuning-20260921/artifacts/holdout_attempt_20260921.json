@@ -2,20 +2,22 @@
   "status": "PILOT_BLOCKED",
   "scope": "INDEPENDENT_HOLDOUT_EXECUTION_ATTEMPT",
   "date": "2026-09-21",
+  "fmu_sha256": "158008fa3b635280a67dfed8bab5804d1f9a96d218b467dfebab77e5cbf8b86a",
+  "attempt": {"split": "holdout", "day": 270, "controller": {"kp": 3.227185031291436, "ti": 250.5407617068066}},
   "actions": [
-    "Checked the tracked school checkout for the pinned BOPTEST FMU and outputs/boptest-venv.",
-    "Checked the local .venv interpreter for FMPy availability.",
+    "Restored the pinned BOPTEST v0.9.0 bestest_air FMU and verified its SHA-256 against the existing development artifact.",
+    "Installed FMPy 0.3.22 and compatible isolated dependencies in the local .venv.",
     "Attempted a read-only clone of the official project1-boptest v0.9.0 tag into /private/tmp with and without network escalation.",
     "Did not run E15 or consume an existing one-shot study."
   ],
   "blockers": [
-    "Pinned FMU and prior runtime environment are not present in the current checkout.",
-    ".venv/bin/python is available but FMPy is not installed.",
-    "System python cannot be used in this macOS workspace until the Xcode license prompt is resolved.",
-    "The official clone did not resolve a commit; the temporary checkout remained empty, so no FMU was treated as recovered."
+    "The isolated .venv can install FMPy 0.3.22 only with Python 3.9 compatibility overrides; msgpack 1.0.8 was used because msgpack 1.2.2 required a local compiler.",
+    "The pinned FMU contains only binaries/linux64/wrapped.so (ELF x86-64) and no darwin64 library, so FMPy on macOS ARM cannot instantiate it.",
+    "The day-270 attempt failed before the first FMU transition with a missing darwin64 shared-library error; no holdout metric was produced."
   ],
+  "error": "Cannot find shared library .../binaries/darwin64/wrapped.dylib",
   "required_before_retry": [
-    "Restore the exact pinned FMU and dependency manifest, or provide an equivalent isolated runtime.",
+    "Provide a Linux x86-64 runtime (or a separately verified compatible FMU build) for the pinned binary.",
     "Select a date or initial state not used for parameter selection.",
     "Run the locked controller once and preserve trace, metrics, and SHA-256."
   ],

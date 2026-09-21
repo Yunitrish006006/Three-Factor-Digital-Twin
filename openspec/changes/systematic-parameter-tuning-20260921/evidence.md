@@ -21,6 +21,6 @@
 
 ## 2026-09-21 執行嘗試
 
-這次檢查發現目前 checkout 沒有 pinned FMU 或 `outputs/boptest-venv`；`.venv/bin/python` 也沒有 FMPy，系統 Python 受 macOS Xcode license prompt 阻擋。我另外嘗試從官方 tag 取得來源，但升級權限後的 clone 仍沒有取得 commit；空的暫存 checkout 不被當成 FMU。已保存 [`holdout_attempt_20260921.json`](artifacts/holdout_attempt_20260921.json)；沒有產生數值，也沒有把既有 development evaluation 改標成 holdout。
+這次先恢復了 pinned FMU（SHA-256 與既有 artifact 一致）與隔離 FMPy 0.3.22，但在 macOS ARM 實際執行 day 270 時發現 FMU 只有 `binaries/linux64/wrapped.so`，沒有 macOS library；FMPy 在第一個 transition 前即因缺少 `darwin64/wrapped.dylib` 失敗。已保存 [`holdout_attempt_20260921.json`](artifacts/holdout_attempt_20260921.json)；沒有產生數值，也沒有把既有 development evaluation 改標成 holdout。
 
 另外執行了 [`contract_test_run.json`](artifacts/contract_test_run.json)：它用 deterministic toy dynamic API 完整跑過 calibration／validation／holdout，trace hash 與 gate 均為 `PASS`。這只驗證 pipeline contract，不是 BOPTEST、TCLab 或真實介入證據，故 artifact 狀態明確為 `PASS_CONTRACT_TEST_NOT_RESEARCH_EVIDENCE`。
