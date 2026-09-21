@@ -1,0 +1,108 @@
+{
+  "status": "PASS_CONTRACT_TEST_NOT_RESEARCH_EVIDENCE",
+  "run_id": "contract-test-20260921-01",
+  "scope": "DETERMINISTIC_TOY_DYNAMIC_API_PIPELINE",
+  "protocol": "systematic_parameter_tuning_protocol_2026-09-21_zh.md",
+  "parameters": {
+    "selected": {
+      "kp": 2.4,
+      "ti": 1800
+    },
+    "candidates": [
+      {
+        "kp": 0.6,
+        "ti": 600
+      },
+      {
+        "kp": 1.2,
+        "ti": 900
+      },
+      {
+        "kp": 2.4,
+        "ti": 1800
+      }
+    ],
+    "baseline": {
+      "kp": 1,
+      "ti": 1200
+    }
+  },
+  "metrics": {
+    "calibration": {
+      "n": 24,
+      "mae": 0.29596027375000017,
+      "max_abs_error": 1.2708666700000002,
+      "within_0_5_pct": 79.16666666666666
+    },
+    "baseline": {
+      "validation": {
+        "n": 24,
+        "mae": 0.7963002650000002,
+        "max_abs_error": 1.4108548899999995,
+        "within_0_5_pct": 25
+      },
+      "holdout": {
+        "n": 24,
+        "mae": 0.24751517833333367,
+        "max_abs_error": 0.7267009100000017,
+        "within_0_5_pct": 83.33333333333334
+      }
+    },
+    "selected": {
+      "validation": {
+        "n": 24,
+        "mae": 0.39037432083333323,
+        "max_abs_error": 1.2893048900000004,
+        "within_0_5_pct": 70.83333333333334
+      },
+      "holdout": {
+        "n": 24,
+        "mae": 0.12849466958333355,
+        "max_abs_error": 0.6618742399999995,
+        "within_0_5_pct": 91.66666666666666
+      }
+    }
+  },
+  "splits": {
+    "calibration": {
+      "status": "PASS",
+      "trace_sha256": "850d05f07cd8c187552e6cd9298bf3fe3e25e28213343c462c9110dd251259a0",
+      "metrics": {
+        "n": 24,
+        "mae": 0.29596027375000017,
+        "max_abs_error": 1.2708666700000002,
+        "within_0_5_pct": 79.16666666666666
+      },
+      "initial_state": 20.72913333
+    },
+    "validation": {
+      "status": "PASS",
+      "trace_sha256": "86b1a8bafc67355da862cebba23874aaadb2d0131d00a2b3c17bc646efa6cff0",
+      "metrics": {
+        "n": 24,
+        "mae": 0.39037432083333323,
+        "max_abs_error": 1.2893048900000004,
+        "within_0_5_pct": 70.83333333333334
+      },
+      "initial_state": 23.28930489
+    },
+    "holdout": {
+      "status": "PASS",
+      "trace_sha256": "d1fd683801a304a3f487613759acee58444fd71f48d4e89b0d229485f05e2b97",
+      "metrics": {
+        "n": 24,
+        "mae": 0.12849466958333355,
+        "max_abs_error": 0.6618742399999995,
+        "within_0_5_pct": 91.66666666666666
+      },
+      "initial_state": 21.33812576
+    }
+  },
+  "reproducibility": {
+    "dt_s": 60,
+    "horizon_steps": 24,
+    "seed": 17,
+    "trace_hashes_distinct": true
+  },
+  "boundary": "Synthetic contract test only; no claim about BOPTEST, TCLab, real rooms, enclosures, semiconductors, or intervention."
+}
