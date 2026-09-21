@@ -205,6 +205,24 @@
       transform: translateY(-50%);
     }
     .flow strong { display: block; margin-bottom: 5px; color: var(--navy); }
+    .architecture-figure {
+      margin: 18px 0 0;
+      padding: 12px;
+      overflow-x: auto;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+    }
+    .architecture-figure svg { display: block; width: 100%; min-width: 760px; height: auto; }
+    .architecture-figure .box { stroke: #b9cbe0; stroke-width: 2; }
+    .architecture-figure .box.input { fill: #edf5ff; }
+    .architecture-figure .box.model { fill: #eaf7f1; }
+    .architecture-figure .box.control { fill: #fff4e5; }
+    .architecture-figure .box.verify { fill: #fdecef; }
+    .architecture-figure .title { fill: var(--navy); font-size: 22px; font-weight: 800; }
+    .architecture-figure .detail { fill: #42526a; font-size: 15px; }
+    .architecture-figure .arrow { stroke: var(--teal); stroke-width: 3; fill: none; }
+    .architecture-figure figcaption { margin-top: 8px; color: var(--muted); font-size: 13px; }
     details { margin-top: 15px; padding: 16px 20px; background: #fff; border: 1px solid var(--line); border-radius: 14px; }
     summary { cursor: pointer; color: var(--navy); font-weight: 750; }
     .source { margin-top: 13px; color: var(--muted); font-size: 13px; }
@@ -251,6 +269,7 @@
     <a href="#enclosure">機箱研究</a>
     <a href="#control">控制探索</a>
     <a href="#tuning">系統性參數調教</a>
+    <a href="#architecture">模型流程架構</a>
     <a href="#limits">限制</a>
     <a href="#applications">應用方向</a>
     <a href="#talk">我的報告講稿</a>
@@ -334,6 +353,8 @@
       <h2>我如何找到可以模擬環境的 API</h2>
       <p class="lead">當我發現 BMC／AAU 紀錄不足以驗證新控制動作時，我開始找能接收控制指令、回傳下一步環境狀態，而且可以重設、重複比較的模擬平台。</p>
       <p>我的查找範圍從機箱溫控，擴展到精密環境的快速調適。我查了 APMonitor 的 TCLab 建模教材、IBPSA BOPTEST 官方介紹與案例頁、UCI SECOM，以及 OpenHumidistat 作者論文。當時我沒有取得可直接使用的 EUV／半導體環境調參資料，因此先選擇一般 HVAC 模擬來檢查方法。以下依我 9/8 留存的筆記整理；完整搜尋字串與逐次點閱時間沒有留存。</p>
+
+      <div class="callout" style="margin-top:16px"><strong>TCLab 是什麼？</strong>TCLab（Temperature Control Laboratory）是 APMonitor 教材提供的雙加熱器、雙溫度感測器熱系統模型／教學平台；它讓我可以輸入加熱功率，推進時間，再讀取 T1／T2 的溫度反應。這週我使用的是本地 <code>tclab==1.0.0</code> 的 <code>TCLabModel(synced=False)</code>，已通過 reset、Q1／Q2 輸入、時間推進與溫度回應測試。它適合用來檢查調參流程、資料切分與控制器介面是否能重現，但目前不是 TCLab 硬體量測，也不是桌機機箱或 BOPTEST 的實體控制證據。</div>
 
       <div class="flow" aria-label="模擬環境尋找流程">
         <div><strong>1. 我釐清需求</strong>我要觀察控制動作之後的環境反應，因此需要可互動的動態模型。</div>
@@ -637,6 +658,76 @@
       <p>我另外從兩條 locked trace 各隨機抽取最多 100 個狀態，在系統已選出的操作下，用既有 development calibration 固定的一階 RC predictor 預測下一步溫度，再和實際 `next_T` 比較。200 個抽樣的 MAE 為 1.6073°C、RMSE 為 1.6568°C，沒有樣本落在 0.5°C 內；這表示目前 frozen predictor 還不夠準，不能把操作後溫度結果寫成已被準確預測。</p>
       <p>因此我的 gate decision 是：我先不進入真實裝置介入。這兩個日期支持我繼續做多 testcase／多 seed 的獨立確認，但還不足以把 E8 寫成已完成；E8 仍是 <span class="status-no">NOT_EVALUATED</span>。</p>
       <p class="source">方法文件：<a href="../research/systematic_parameter_tuning_protocol_2026-09-21_zh.md">系統性參數調教 protocol</a>；候選比較：<a href="../research/api_candidate_comparison_2026-09-21_zh.md">API candidate comparison</a>；完整 trace 與 hash：<a href="../../openspec/changes/systematic-parameter-tuning-20260921/artifacts/boptest_linux_holdout.json">BOPTEST holdout artifact</a>；操作後溫度預測抽樣：<a href="../../openspec/changes/systematic-parameter-tuning-20260921/artifacts/action_conditioned_replay.json">action-conditioned replay</a>；模型動作排序示範：<a href="../../openspec/changes/systematic-parameter-tuning-20260921/artifacts/model_action_tuning_demo.json">DigitalTwinModel demo</a>。這些結果仍是 exploratory simulation evidence。</p>
+    </section>
+
+    <section id="architecture">
+      <h2>我的模型流程架構：從資料到控制驗證</h2>
+      <p class="lead">我把模型流程拆成六個可檢查的階段。每一階段都有固定輸入、輸出與證據狀態，避免把「模型提出動作」直接寫成「實體控制已有效」。目前這張架構圖是以桌機機箱為應用主軸，TCLab／BOPTEST 只提供可重現的動態模擬環境。</p>
+
+      <figure class="architecture-figure">
+        <svg viewBox="0 0 1000 560" role="img" aria-labelledby="architecture-title architecture-desc">
+          <title id="architecture-title">桌機機箱模型流程架構</title>
+          <desc id="architecture-desc">流程由資料契約開始，經過狀態特徵、熱模型辨識、候選操作預測、動作選擇，最後進入 validation 與 holdout 的獨立驗證。</desc>
+          <defs>
+            <marker id="architecture-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#238c91"></path>
+            </marker>
+          </defs>
+          <path class="arrow" d="M 310 140 H 340" marker-end="url(#architecture-arrow)"></path>
+          <path class="arrow" d="M 630 140 H 660" marker-end="url(#architecture-arrow)"></path>
+          <path class="arrow" d="M 820 220 V 310" marker-end="url(#architecture-arrow)"></path>
+          <path class="arrow" d="M 660 410 H 630" marker-end="url(#architecture-arrow)"></path>
+          <path class="arrow" d="M 340 410 H 310" marker-end="url(#architecture-arrow)"></path>
+
+          <rect class="box input" x="30" y="60" width="280" height="160" rx="18"></rect>
+          <text class="title" x="55" y="105">1. 資料契約</text>
+          <text class="detail" x="55" y="140"><tspan x="55" dy="0">入口／CPU／GPU 溫度</tspan><tspan x="55" dy="25">負載功率、PWM、RPM</tspan><tspan x="55" dy="25">取樣時間、單位與缺值</tspan></text>
+
+          <rect class="box input" x="350" y="60" width="280" height="160" rx="18"></rect>
+          <text class="title" x="375" y="105">2. 狀態與特徵</text>
+          <text class="detail" x="375" y="140"><tspan x="375" dy="0">整理當前熱狀態與負載</tspan><tspan x="375" dy="25">固定 sample time</tspan><tspan x="375" dy="25">套用安全界限</tspan></text>
+
+          <rect class="box model" x="670" y="60" width="280" height="160" rx="18"></rect>
+          <text class="title" x="695" y="105">3. 熱模型辨識</text>
+          <text class="detail" x="695" y="140"><tspan x="695" dy="0">calibration 階躍回應</tspan><tspan x="695" dy="25">估計 C／G／k_f／τ_f／k_L</tspan><tspan x="695" dy="25">記錄 seed 與搜尋範圍</tspan></text>
+
+          <rect class="box control" x="670" y="330" width="280" height="160" rx="18"></rect>
+          <text class="title" x="695" y="375">4. 候選操作預測</text>
+          <text class="detail" x="695" y="410"><tspan x="695" dy="0">推演 PWM／RPM 候選</tspan><tspan x="695" dy="25">預測未來 CPU／GPU 溫度</tspan><tspan x="695" dy="25">計算超溫與功耗 proxy</tspan></text>
+
+          <rect class="box control" x="350" y="330" width="280" height="160" rx="18"></rect>
+          <text class="title" x="375" y="375">5. 動作選擇</text>
+          <text class="detail" x="375" y="410"><tspan x="375" dy="0">固定 penalty 與 tie margin</tspan><tspan x="375" dy="25">檢查飽和與安全限制</tspan><tspan x="375" dy="25">輸出模型推薦動作</tspan></text>
+
+          <rect class="box verify" x="30" y="330" width="280" height="160" rx="18"></rect>
+          <text class="title" x="55" y="375">6. 獨立驗證</text>
+          <text class="detail" x="55" y="410"><tspan x="55" dy="0">鎖定參數後讀 validation</tspan><tspan x="55" dy="25">再讀 holdout 與實測溫度</tspan><tspan x="55" dy="25">比較 fixed PI／原廠策略</tspan></text>
+        </svg>
+        <figcaption>圖 1．本週整理的機箱模型流程。箭頭表示資料與決策順序；目前第 1 與第 6 階段的機箱實體資料／介入仍待建立。</figcaption>
+      </figure>
+
+      <div class="flow" aria-label="機箱模型流程架構">
+        <div><strong>1. 資料契約</strong>同步入口溫度、CPU／GPU 溫度、負載功率、PWM、RPM 與取樣時間；先檢查單位、時間戳和缺值。</div>
+        <div><strong>2. 狀態與特徵</strong>把當前溫度、負載與風扇狀態整理成模型輸入；固定 sample time、初始狀態與安全界限。</div>
+        <div><strong>3. 熱模型辨識</strong>用 calibration 的階躍回應估計 <code>C/G/k_f/τ_f/k_L</code>，並記錄搜尋範圍、seed 與失敗原因。</div>
+        <div><strong>4. 候選操作預測</strong>對每個 PWM／RPM 候選推演未來 horizon 的 CPU／GPU 溫度，計算超溫、追蹤與功耗 proxy。</div>
+        <div><strong>5. 動作選擇</strong>在安全限制內依事前固定的 penalty、tie margin 與飽和規則選出操作；輸出的是模型推薦，不是已執行的介入。</div>
+        <div><strong>6. 獨立驗證</strong>鎖定參數後只讀取 validation／holdout，將預測溫度與操作後實測溫度比較，再和 fixed PI／原廠策略比較。</div>
+      </div>
+
+      <div class="table-wrap" style="margin-top:18px">
+        <table>
+          <thead><tr><th>流程區塊</th><th>本週狀態</th><th>目前能支持的結論</th><th>尚不能支持</th></tr></thead>
+          <tbody>
+            <tr><td>資料契約</td><td><span class="status-mixed">機箱版待建立</span></td><td>已定義必要欄位與同步要求</td><td>尚無實體機箱介入資料</td></tr>
+            <tr><td>TCLab 動態介面</td><td><span class="status-good">simulation pilot 通過</span></td><td>reset、輸入、推進與回應流程可重現</td><td>不代表機箱或硬體量測</td></tr>
+            <tr><td>BOPTEST locked／holdout</td><td><span class="status-good">已完成探索性驗證</span></td><td>同一 FMU、兩個日期可比較 locked PI 與 fixed PI</td><td>不代表跨設備或節能因果效果</td></tr>
+            <tr><td>操作後溫度預測</td><td><span class="status-mixed">需改善</span></td><td>200 個抽樣 MAE 1.6073°C、RMSE 1.6568°C</td><td>不能宣稱預測已足夠準確</td></tr>
+            <tr><td>真實控制介入</td><td><span class="status-no">NOT_EVALUATED</span></td><td>已定義下一個驗證 gate</td><td>不能宣稱溫度或功耗已改善</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="callout" style="margin-top:16px"><strong>流程的核心判準：</strong>只有在模型參數先鎖定、操作後的溫度與實測值完成獨立比較，而且介入可重設時，我才會把模型推薦提升為控制結果。現階段已完成的是流程與模擬證據，機箱實體介入仍是下一階段。</p>
     </section>
 
     <section id="limits">
