@@ -42,7 +42,7 @@ locked 的 saturation 比例較高，且能源分項仍需分開解讀；因此�
 
 ## 預測操作後結果的 trace replay
 
-為了直接檢查「模型提出操作後，溫度是否朝預期方向變化」，我以固定 seed `20260921` 從兩條既有 locked trace 各抽最多 100 個狀態。預期結果預先定義為：操作後一個時間步的溫度誤差小於 persistence（不變）的誤差。200 個抽樣中有 111 個符合，符合率為 55.5%。這是對既有 trace 的離線 replay，不是新 FMU 執行；目前結果不足以支持操作有效或因果改善，下一步仍需多 testcase／seed 與明確的 action-outcome 對照。完整抽樣與 hash 保存在 [`action_conditioned_replay.json`](artifacts/action_conditioned_replay.json)，程式為 [`evaluate_action_conditioned_replay.py`](../../scripts/evaluate_action_conditioned_replay.py)。
+為了直接檢查「在系統已選出的操作下，預測溫度與實際溫度差多少」，我以固定 seed `20260921` 從兩條既有 locked trace 各抽最多 100 個狀態。預測器使用既有 development calibration 固定的一階 RC 模型，輸入是當下狀態與已執行的 locked-controller command，目標是下一步 `next_T`。200 個抽樣的 MAE 為 1.6073°C、RMSE 為 1.6568°C，沒有樣本落在 0.5°C 內。這是對既有 trace 的離線 replay，不是新 FMU 執行；目前表示這個 frozen predictor 在這兩條 trace 上不夠準，不能支持操作後結果已被準確預測，更不能支持因果改善。完整抽樣與 hash 保存在 [`action_conditioned_replay.json`](artifacts/action_conditioned_replay.json)，程式為 [`evaluate_action_conditioned_replay.py`](../../scripts/evaluate_action_conditioned_replay.py)。
 
 ## Gate decision
 

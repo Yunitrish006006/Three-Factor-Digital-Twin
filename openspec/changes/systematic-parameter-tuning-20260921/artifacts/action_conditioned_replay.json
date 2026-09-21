@@ -1,1023 +1,934 @@
 {
-  "status": "PASS_ACTION_CONDITIONED_TRACE_REPLAY_NOT_CAUSAL_EVIDENCE",
+  "status": "PASS_ACTION_CONDITIONED_TEMPERATURE_PREDICTION_REPLAY_NOT_CAUSAL_EVIDENCE",
   "run_id": "action-conditioned-replay-20260921-01",
   "scope": "RANDOM_SAMPLED_EXISTING_BOPTEST_LOCKED_TRACES",
-  "target_C": 22.0,
-  "expected_result": "after operation, one-step temperature error is smaller than persistence error",
+  "prediction_target": "one_step_next_T_after_executed_locked_controller_action",
   "sampling": {
     "seed": 20260921,
-    "sample_per_trace": 100,
-    "minimum_error_C": 0.1
+    "sample_per_trace": 100
+  },
+  "predictor": {
+    "type": "frozen_first_order_RC",
+    "coefficients": [
+      0.09239478306626148,
+      0.0876338932542221,
+      0.0,
+      2.3341317241424564
+    ],
+    "source": "pilot-boptest-rapid-pi development fit 6h"
   },
   "evaluations": [
     {
       "trace": "holdout_day270_locked.csv",
       "trace_sha256": "592b8a40f8f515818933bff42ff264e6890c19040f11830139e7b9ccd185586a",
       "rows_total": 1440,
-      "rows_eligible": 421,
       "sample_count": 100,
-      "matches": 57,
-      "match_rate": 0.57,
+      "action_valid_count": 100,
+      "metrics": {
+        "mae_C": 1.281524408000498,
+        "rmse_C": 1.313738148786866,
+        "within_0_5_C_pct": 0.0
+      },
       "samples": [
         {
-          "time_s": 23375040.0,
-          "temperature_C": 23.477188558812657,
+          "time_s": 23357700.0,
+          "temperature_C": 22.07427543232359,
+          "command": 21.3794497076623,
+          "action_valid": true,
+          "predicted_next_temperature_C": 22.885023348019985,
+          "next_temperature_C": 22.06969836689484,
+          "prediction_error_C": 0.8153249811251442
+        },
+        {
+          "time_s": 23332500.0,
+          "temperature_C": 21.991562988659553,
+          "command": 22.263348553129504,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.050868839514667,
+          "next_temperature_C": 21.99157446188235,
+          "prediction_error_C": 1.059294377632316
+        },
+        {
+          "time_s": 23351400.0,
+          "temperature_C": 21.993880586716386,
+          "command": 24.406393020913413,
+          "action_valid": true,
+          "predicted_next_temperature_C": 22.87164895141617,
+          "next_temperature_C": 21.993946166439855,
+          "prediction_error_C": 0.8777027849763144
+        },
+        {
+          "time_s": 23337540.0,
+          "temperature_C": 21.985656749101963,
+          "command": 22.886937543294817,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.042732244350873,
+          "next_temperature_C": 21.985573929438885,
+          "prediction_error_C": 1.0571583149119874
+        },
+        {
+          "time_s": 23333580.0,
+          "temperature_C": 21.9920768178182,
+          "command": 22.375363236375428,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.07562382028269,
+          "next_temperature_C": 21.99205468707879,
+          "prediction_error_C": 1.0835691332038984
+        },
+        {
+          "time_s": 23347320.0,
+          "temperature_C": 21.994680850607438,
+          "command": 24.196745801251446,
+          "action_valid": true,
+          "predicted_next_temperature_C": 22.873340452389996,
+          "next_temperature_C": 21.9949705686592,
+          "prediction_error_C": 0.878369883730798
+        },
+        {
+          "time_s": 23374560.0,
+          "temperature_C": 23.39760202991664,
           "command": 12.0,
-          "next_temperature_C": 23.486517813059038,
-          "before_error_C": 1.4771885588126565,
-          "after_error_C": 1.486517813059038,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.87220485775426,
+          "next_temperature_C": 23.408360796845272,
+          "prediction_error_C": 1.4638440609089862
         },
         {
-          "time_s": 23357100.0,
-          "temperature_C": 22.21647774152052,
-          "command": 21.86699514421359,
-          "next_temperature_C": 22.195515330328135,
-          "before_error_C": 0.2164777415205208,
-          "after_error_C": 0.19551533032813495,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23373480.0,
-          "temperature_C": 23.189147925262944,
+          "time_s": 23370840.0,
+          "temperature_C": 22.555562692728643,
           "command": 12.0,
-          "next_temperature_C": 23.201554688782153,
-          "before_error_C": 1.1891479252629438,
-          "after_error_C": 1.2015546887821529,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.015088022995617,
+          "next_temperature_C": 22.571685415648005,
+          "prediction_error_C": 1.4434026073476112
         },
         {
-          "time_s": 23370000.0,
-          "temperature_C": 22.324825610786263,
+          "time_s": 23351100.0,
+          "temperature_C": 21.993710717970544,
+          "command": 24.38296607242184,
+          "action_valid": true,
+          "predicted_next_temperature_C": 22.8913604648525,
+          "next_temperature_C": 21.99372991378874,
+          "prediction_error_C": 0.8976305510637594
+        },
+        {
+          "time_s": 23368620.0,
+          "temperature_C": 22.063705543009632,
+          "command": 12.17578690818311,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.50269472140234,
+          "next_temperature_C": 22.063601727315984,
+          "prediction_error_C": 1.439092994086355
+        },
+        {
+          "time_s": 23368140.0,
+          "temperature_C": 22.064519758927077,
+          "command": 12.569226551039344,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.509470005930595,
+          "next_temperature_C": 22.064414080262623,
+          "prediction_error_C": 1.4450559256679725
+        },
+        {
+          "time_s": 23336640.0,
+          "temperature_C": 21.987955971334088,
+          "command": 22.7234266934085,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.082751774790772,
+          "next_temperature_C": 21.987736592548345,
+          "prediction_error_C": 1.0950151822424274
+        },
+        {
+          "time_s": 23371920.0,
+          "temperature_C": 22.834568502405546,
           "command": 12.0,
-          "next_temperature_C": 22.341505606401483,
-          "before_error_C": 0.32482561078626304,
-          "after_error_C": 0.3415056064014834,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.297486098423164,
+          "next_temperature_C": 22.849302794202174,
+          "prediction_error_C": 1.44818330422099
         },
         {
-          "time_s": 23357400.0,
-          "temperature_C": 22.120316307932228,
-          "command": 21.57490832925214,
-          "next_temperature_C": 22.107208248294,
-          "before_error_C": 0.12031630793222803,
-          "after_error_C": 0.10720824829400044,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
+          "time_s": 23363220.0,
+          "temperature_C": 22.069046002330197,
+          "command": 16.828520869721086,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.522085295720427,
+          "next_temperature_C": 22.069015892313757,
+          "prediction_error_C": 1.4530694034066691
         },
         {
-          "time_s": 23389680.0,
-          "temperature_C": 22.893229632092186,
-          "command": 12.0,
-          "next_temperature_C": 22.88131879101934,
-          "before_error_C": 0.8932296320921864,
-          "after_error_C": 0.8813187910193392,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
+          "time_s": 23414220.0,
+          "temperature_C": 21.980327738758547,
+          "command": 19.675475889391922,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.31435474095892,
+          "next_temperature_C": 21.980602985813107,
+          "prediction_error_C": 1.333751755145812
         },
         {
-          "time_s": 23372460.0,
-          "temperature_C": 22.964065434593465,
-          "command": 12.0,
-          "next_temperature_C": 22.978017642458155,
-          "before_error_C": 0.9640654345934649,
-          "after_error_C": 0.9780176424581555,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 23379300.0,
-          "temperature_C": 23.890420898639945,
-          "command": 12.0,
-          "next_temperature_C": 23.8923065963981,
-          "before_error_C": 1.8904208986399453,
-          "after_error_C": 1.8923065963981003,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 23378340.0,
-          "temperature_C": 23.84729565577595,
-          "command": 12.0,
-          "next_temperature_C": 23.85074527543219,
-          "before_error_C": 1.8472956557759517,
-          "after_error_C": 1.850745275432189,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 23373420.0,
-          "temperature_C": 23.176642521334088,
-          "command": 12.0,
-          "next_temperature_C": 23.189147925262944,
-          "before_error_C": 1.176642521334088,
-          "after_error_C": 1.1891479252629438,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 23389740.0,
-          "temperature_C": 22.88131879101934,
-          "command": 12.0,
-          "next_temperature_C": 22.869439280753966,
-          "before_error_C": 0.8813187910193392,
-          "after_error_C": 0.8694392807539657,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
+          "time_s": 23336520.0,
+          "temperature_C": 21.988414002124387,
+          "command": 22.703506694935903,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.087628191252247,
+          "next_temperature_C": 21.98818198020797,
+          "prediction_error_C": 1.0994462110442775
         },
         {
           "time_s": 23377800.0,
           "temperature_C": 23.811315810022677,
           "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 25.308214471551818,
           "next_temperature_C": 23.815766985879634,
-          "before_error_C": 1.811315810022677,
-          "after_error_C": 1.815766985879634,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
+          "prediction_error_C": 1.4924474856721837
         },
         {
-          "time_s": 23377680.0,
-          "temperature_C": 23.80205808929452,
+          "time_s": 23397420.0,
+          "temperature_C": 21.968377034008313,
+          "command": 15.0221891045608,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.56547250797845,
+          "next_temperature_C": 21.968598576751106,
+          "prediction_error_C": 1.5968739312273428
+        },
+        {
+          "time_s": 23352360.0,
+          "temperature_C": 21.998650910599338,
+          "command": 24.443456075069463,
+          "action_valid": true,
+          "predicted_next_temperature_C": 22.811511435366267,
+          "next_temperature_C": 21.999139786292574,
+          "prediction_error_C": 0.8123716490736932
+        },
+        {
+          "time_s": 23331420.0,
+          "temperature_C": 21.991238845553198,
+          "command": 22.14430312066887,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.02496175048913,
+          "next_temperature_C": 21.99124758507952,
+          "prediction_error_C": 1.0337141654096094
+        },
+        {
+          "time_s": 23395380.0,
+          "temperature_C": 21.957712028709977,
+          "command": 14.100439031936867,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.59094737813037,
+          "next_temperature_C": 21.958091054709314,
+          "prediction_error_C": 1.6328563234210556
+        },
+        {
+          "time_s": 23408100.0,
+          "temperature_C": 21.982684478218232,
+          "command": 18.147867544704354,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.471780366820628,
+          "next_temperature_C": 21.98267191236954,
+          "prediction_error_C": 1.4891084544510882
+        },
+        {
+          "time_s": 23389680.0,
+          "temperature_C": 22.893229632092186,
           "command": 12.0,
-          "next_temperature_C": 23.806746677899923,
-          "before_error_C": 1.802058089294519,
-          "after_error_C": 1.8067466778999233,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.505222504660427,
+          "next_temperature_C": 22.88131879101934,
+          "prediction_error_C": 1.6239037136410879
         },
         {
-          "time_s": 23369820.0,
-          "temperature_C": 22.27481073135982,
+          "time_s": 23352300.0,
+          "temperature_C": 21.998176739242126,
+          "command": 24.443943666402088,
+          "action_valid": true,
+          "predicted_next_temperature_C": 22.81489858260468,
+          "next_temperature_C": 21.998650910599338,
+          "prediction_error_C": 0.8162476720053427
+        },
+        {
+          "time_s": 23406720.0,
+          "temperature_C": 21.98299497271006,
+          "command": 17.84255056984584,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.474256441637706,
+          "next_temperature_C": 21.983016349439026,
+          "prediction_error_C": 1.4912400921986801
+        },
+        {
+          "time_s": 23380140.0,
+          "temperature_C": 23.9086920312389,
           "command": 12.0,
-          "next_temperature_C": 22.29146740084576,
-          "before_error_C": 0.27481073135982115,
-          "after_error_C": 0.29146740084576095,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
+          "action_valid": true,
+          "predicted_next_temperature_C": 25.433549880452055,
+          "next_temperature_C": 23.909338740751195,
+          "prediction_error_C": 1.52421113970086
         },
         {
-          "time_s": 23378640.0,
-          "temperature_C": 23.86349714871676,
+          "time_s": 23363100.0,
+          "temperature_C": 22.069107566763535,
+          "command": 16.935072256399735,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.5182693667164,
+          "next_temperature_C": 22.06907872408476,
+          "prediction_error_C": 1.4491906426316383
+        },
+        {
+          "time_s": 23385060.0,
+          "temperature_C": 23.66621310840526,
           "command": 12.0,
-          "next_temperature_C": 23.866428813385028,
-          "before_error_C": 1.8634971487167604,
-          "after_error_C": 1.8664288133850278,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
+          "action_valid": true,
+          "predicted_next_temperature_C": 25.26453145479931,
+          "next_temperature_C": 23.65948485223413,
+          "prediction_error_C": 1.6050466025651815
         },
         {
-          "time_s": 23376420.0,
-          "temperature_C": 23.67386038634214,
+          "time_s": 23393880.0,
+          "temperature_C": 21.941264658599493,
+          "command": 13.217199803761593,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.619503101544073,
+          "next_temperature_C": 21.942532274559767,
+          "prediction_error_C": 1.6769708269843058
+        },
+        {
+          "time_s": 23398980.0,
+          "temperature_C": 21.972615355041228,
+          "command": 15.594978338116192,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.555470993260382,
+          "next_temperature_C": 21.972720619685276,
+          "prediction_error_C": 1.5827503735751058
+        },
+        {
+          "time_s": 23390580.0,
+          "temperature_C": 22.71838253132171,
           "command": 12.0,
-          "next_temperature_C": 23.681275448636825,
-          "before_error_C": 1.6738603863421417,
-          "after_error_C": 1.6812754486368249,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.326547558581044,
+          "next_temperature_C": 22.706927488092333,
+          "prediction_error_C": 1.6196200704887111
         },
         {
-          "time_s": 23389200.0,
-          "temperature_C": 22.98886886213421,
-          "command": 12.0,
-          "next_temperature_C": 22.977048803768184,
-          "before_error_C": 0.9888688621342112,
-          "after_error_C": 0.9770488037681844,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
+          "time_s": 23408220.0,
+          "temperature_C": 21.98265958757912,
+          "command": 18.174741514958146,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.47113498634436,
+          "next_temperature_C": 21.982647423317985,
+          "prediction_error_C": 1.488487563026375
         },
         {
-          "time_s": 23369760.0,
-          "temperature_C": 22.25818969833341,
-          "command": 12.0,
-          "next_temperature_C": 22.27481073135982,
-          "before_error_C": 0.25818969833341043,
-          "after_error_C": 0.27481073135982115,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
+          "time_s": 23343360.0,
+          "temperature_C": 21.988131733024716,
+          "command": 23.54234217164105,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.033548099606474,
+          "next_temperature_C": 21.987673130054247,
+          "prediction_error_C": 1.0458749695522265
         },
         {
-          "time_s": 23380080.0,
-          "temperature_C": 23.90795885369829,
-          "command": 12.0,
-          "next_temperature_C": 23.9086920312389,
-          "before_error_C": 1.9079588536982897,
-          "after_error_C": 1.9086920312388997,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
+          "time_s": 23332260.0,
+          "temperature_C": 21.991446239464153,
+          "command": 22.2374984974941,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.04517568731382,
+          "next_temperature_C": 21.991462113862212,
+          "prediction_error_C": 1.0537135734516063
         },
         {
-          "time_s": 23385000.0,
-          "temperature_C": 23.672842982633085,
-          "command": 12.0,
-          "next_temperature_C": 23.66621310840526,
-          "before_error_C": 1.6728429826330853,
-          "after_error_C": 1.666213108405259,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23373720.0,
-          "temperature_C": 23.23816787389177,
-          "command": 12.0,
-          "next_temperature_C": 23.250167172035162,
-          "before_error_C": 1.2381678738917685,
-          "after_error_C": 1.2501671720351624,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 23356860.0,
-          "temperature_C": 22.16267880814047,
-          "command": 22.744351152436543,
-          "next_temperature_C": 22.221997249828746,
-          "before_error_C": 0.16267880814046976,
-          "after_error_C": 0.22199724982874613,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 23384460.0,
-          "temperature_C": 23.72817232834069,
-          "command": 12.0,
-          "next_temperature_C": 23.72240024711158,
-          "before_error_C": 1.7281723283406905,
-          "after_error_C": 1.7224002471115796,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23387640.0,
-          "temperature_C": 23.286334678535468,
-          "command": 12.0,
-          "next_temperature_C": 23.275850007713302,
-          "before_error_C": 1.286334678535468,
-          "after_error_C": 1.2758500077133021,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23383080.0,
-          "temperature_C": 23.83894270497069,
-          "command": 12.0,
-          "next_temperature_C": 23.834999382592343,
-          "before_error_C": 1.838942704970691,
-          "after_error_C": 1.8349993825923434,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23391660.0,
-          "temperature_C": 22.518024966978317,
-          "command": 12.0,
-          "next_temperature_C": 22.507195659172623,
-          "before_error_C": 0.5180249669783166,
-          "after_error_C": 0.5071956591726234,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23387340.0,
-          "temperature_C": 23.337263026826236,
-          "command": 12.0,
-          "next_temperature_C": 23.32717573420183,
-          "before_error_C": 1.3372630268262355,
-          "after_error_C": 1.3271757342018304,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23390820.0,
-          "temperature_C": 22.67284535821892,
-          "command": 12.0,
-          "next_temperature_C": 22.661584332829534,
-          "before_error_C": 0.6728453582189218,
-          "after_error_C": 0.6615843328295341,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23380680.0,
-          "temperature_C": 23.913263373714926,
-          "command": 12.0,
-          "next_temperature_C": 23.913480272693903,
-          "before_error_C": 1.9132633737149263,
-          "after_error_C": 1.9134802726939029,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 23391960.0,
-          "temperature_C": 22.463973904931493,
-          "command": 12.0,
-          "next_temperature_C": 22.453191957251818,
-          "before_error_C": 0.4639739049314926,
-          "after_error_C": 0.4531919572518177,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23381880.0,
-          "temperature_C": 23.896886284591517,
-          "command": 12.0,
-          "next_temperature_C": 23.89494423533148,
-          "before_error_C": 1.8968862845915169,
-          "after_error_C": 1.8949442353314794,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23384100.0,
-          "temperature_C": 23.760977942008253,
-          "command": 12.0,
-          "next_temperature_C": 23.75571862465955,
-          "before_error_C": 1.7609779420082532,
-          "after_error_C": 1.7557186246595506,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23389620.0,
-          "temperature_C": 22.905174428040425,
-          "command": 12.0,
-          "next_temperature_C": 22.893229632092186,
-          "before_error_C": 0.905174428040425,
-          "after_error_C": 0.8932296320921864,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23385360.0,
-          "temperature_C": 23.63158591288311,
-          "command": 12.0,
-          "next_temperature_C": 23.624365531450337,
-          "before_error_C": 1.6315859128831107,
-          "after_error_C": 1.6243655314503371,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23383260.0,
-          "temperature_C": 23.826827454647173,
-          "command": 12.0,
-          "next_temperature_C": 23.822611306394663,
-          "before_error_C": 1.826827454647173,
-          "after_error_C": 1.8226113063946627,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23387700.0,
-          "temperature_C": 23.275850007713302,
-          "command": 12.0,
-          "next_temperature_C": 23.265098493264418,
-          "before_error_C": 1.2758500077133021,
-          "after_error_C": 1.2650984932644178,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23371500.0,
-          "temperature_C": 22.72907626973057,
-          "command": 12.0,
-          "next_temperature_C": 22.7443939798207,
-          "before_error_C": 0.7290762697305695,
-          "after_error_C": 0.7443939798206998,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 23357040.0,
-          "temperature_C": 22.233180832587777,
-          "command": 21.980396583809707,
-          "next_temperature_C": 22.21647774152052,
-          "before_error_C": 0.23318083258777733,
-          "after_error_C": 0.2164777415205208,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23385900.0,
-          "temperature_C": 23.562466703358837,
-          "command": 12.0,
-          "next_temperature_C": 23.553926512168914,
-          "before_error_C": 1.5624667033588366,
-          "after_error_C": 1.553926512168914,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23380980.0,
-          "temperature_C": 23.9132780554624,
-          "command": 12.0,
-          "next_temperature_C": 23.912950270521264,
-          "before_error_C": 1.9132780554623992,
-          "after_error_C": 1.9129502705212644,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23369340.0,
-          "temperature_C": 22.14545864971069,
-          "command": 12.0,
-          "next_temperature_C": 22.160789645941463,
-          "before_error_C": 0.14545864971069022,
-          "after_error_C": 0.16078964594146328,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 23375820.0,
-          "temperature_C": 23.593636418454366,
-          "command": 12.0,
-          "next_temperature_C": 23.602092352401144,
-          "before_error_C": 1.5936364184543663,
-          "after_error_C": 1.6020923524011437,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 23392320.0,
-          "temperature_C": 22.399512562600023,
-          "command": 12.0,
-          "next_temperature_C": 22.38883873595171,
-          "before_error_C": 0.3995125626000231,
-          "after_error_C": 0.38883873595170826,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23385540.0,
-          "temperature_C": 23.609634133111797,
-          "command": 12.0,
-          "next_temperature_C": 23.60212492664442,
-          "before_error_C": 1.609634133111797,
-          "after_error_C": 1.6021249266444215,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23391180.0,
-          "temperature_C": 22.605694736378837,
-          "command": 12.0,
-          "next_temperature_C": 22.594607805489375,
-          "before_error_C": 0.6056947363788368,
-          "after_error_C": 0.5946078054893746,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23384820.0,
-          "temperature_C": 23.692145831262394,
-          "command": 12.0,
-          "next_temperature_C": 23.685808879842455,
-          "before_error_C": 1.692145831262394,
-          "after_error_C": 1.6858088798424546,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23385120.0,
-          "temperature_C": 23.65948485223413,
-          "command": 12.0,
-          "next_temperature_C": 23.652658022989726,
-          "before_error_C": 1.6594848522341294,
-          "after_error_C": 1.6526580229897263,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23385660.0,
-          "temperature_C": 23.594521205386116,
-          "command": 12.0,
-          "next_temperature_C": 23.586823653301167,
-          "before_error_C": 1.5945212053861155,
-          "after_error_C": 1.5868236533011668,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23382780.0,
-          "temperature_C": 23.85710602987581,
-          "command": 12.0,
-          "next_temperature_C": 23.853665784181885,
-          "before_error_C": 1.8571060298758084,
-          "after_error_C": 1.853665784181885,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23373900.0,
-          "temperature_C": 23.273859300732454,
-          "command": 12.0,
-          "next_temperature_C": 23.28555496802585,
-          "before_error_C": 1.273859300732454,
-          "after_error_C": 1.2855549680258491,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 23373240.0,
-          "temperature_C": 23.138551035955686,
-          "command": 12.0,
-          "next_temperature_C": 23.151345061688573,
-          "before_error_C": 1.138551035955686,
-          "after_error_C": 1.1513450616885734,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 23386740.0,
-          "temperature_C": 23.4352912524991,
-          "command": 12.0,
-          "next_temperature_C": 23.425734244516548,
-          "before_error_C": 1.4352912524990984,
-          "after_error_C": 1.4257342445165477,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23372880.0,
-          "temperature_C": 23.05987964841148,
-          "command": 12.0,
-          "next_temperature_C": 23.073214083144478,
-          "before_error_C": 1.0598796484114814,
-          "after_error_C": 1.073214083144478,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 23389440.0,
-          "temperature_C": 22.94114798321135,
-          "command": 12.0,
-          "next_temperature_C": 22.929143563254115,
-          "before_error_C": 0.9411479832113514,
-          "after_error_C": 0.9291435632541152,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23369520.0,
-          "temperature_C": 22.192523708737554,
-          "command": 12.0,
-          "next_temperature_C": 22.20875002896514,
-          "before_error_C": 0.19252370873755353,
-          "after_error_C": 0.2087500289651416,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 23388300.0,
-          "temperature_C": 23.16382036713827,
-          "command": 12.0,
-          "next_temperature_C": 23.152318988143293,
-          "before_error_C": 1.1638203671382712,
-          "after_error_C": 1.1523189881432927,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23371860.0,
-          "temperature_C": 22.81974902869115,
-          "command": 12.0,
-          "next_temperature_C": 22.834568502405546,
-          "before_error_C": 0.8197490286911489,
-          "after_error_C": 0.8345685024055456,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 23383920.0,
-          "temperature_C": 23.776292440875807,
-          "command": 12.0,
-          "next_temperature_C": 23.771262860427555,
-          "before_error_C": 1.7762924408758067,
-          "after_error_C": 1.771262860427555,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23392140.0,
-          "temperature_C": 22.431667237962927,
-          "command": 12.0,
-          "next_temperature_C": 22.420929044628167,
-          "before_error_C": 0.4316672379629267,
-          "after_error_C": 0.42092904462816705,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23379780.0,
-          "temperature_C": 23.9029856879269,
-          "command": 12.0,
-          "next_temperature_C": 23.904155607588336,
-          "before_error_C": 1.9029856879269005,
-          "after_error_C": 1.9041556075883364,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 23388900.0,
-          "temperature_C": 23.047576123133013,
-          "command": 12.0,
-          "next_temperature_C": 23.035845812883338,
-          "before_error_C": 1.0475761231330125,
-          "after_error_C": 1.0358458128833377,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23379360.0,
-          "temperature_C": 23.8923065963981,
-          "command": 12.0,
-          "next_temperature_C": 23.89410143978938,
-          "before_error_C": 1.8923065963981003,
-          "after_error_C": 1.894101439789381,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 23392620.0,
-          "temperature_C": 22.34642247747354,
-          "command": 12.0,
-          "next_temperature_C": 22.335899031093106,
-          "before_error_C": 0.3464224774735385,
-          "after_error_C": 0.33589903109310626,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23373540.0,
-          "temperature_C": 23.201554688782153,
-          "command": 12.0,
-          "next_temperature_C": 23.21386101911412,
-          "before_error_C": 1.2015546887821529,
-          "after_error_C": 1.2138610191141197,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 23373600.0,
-          "temperature_C": 23.21386101911412,
-          "command": 12.0,
-          "next_temperature_C": 23.226065700326387,
-          "before_error_C": 1.2138610191141197,
-          "after_error_C": 1.2260657003263873,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 23357220.0,
-          "temperature_C": 22.173993195974333,
-          "command": 21.71852497478005,
-          "next_temperature_C": 22.15381409304632,
-          "before_error_C": 0.17399319597433305,
-          "after_error_C": 0.15381409304632143,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
+          "time_s": 23401080.0,
+          "temperature_C": 21.97440702123481,
+          "command": 16.29590253572776,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.511692125539888,
+          "next_temperature_C": 21.974466106589375,
+          "prediction_error_C": 1.5372260189505127
         },
         {
           "time_s": 23381280.0,
           "temperature_C": 23.910524710452762,
           "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 25.45049300685421,
           "next_temperature_C": 23.90964263012137,
-          "before_error_C": 1.910524710452762,
-          "after_error_C": 1.9096426301213683,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
+          "prediction_error_C": 1.5408503767328412
         },
         {
-          "time_s": 23371440.0,
-          "temperature_C": 22.71367825912239,
+          "time_s": 23334900.0,
+          "temperature_C": 21.992447833012818,
+          "command": 22.505728692403025,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.103245468019622,
+          "next_temperature_C": 21.99246205489743,
+          "prediction_error_C": 1.110783413122192
+        },
+        {
+          "time_s": 23360640.0,
+          "temperature_C": 22.063563029478644,
+          "command": 19.093671994538678,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.364099270376137,
+          "next_temperature_C": 22.063577298101904,
+          "prediction_error_C": 1.3005219722742325
+        },
+        {
+          "time_s": 23399700.0,
+          "temperature_C": 21.973718144659017,
+          "command": 15.83943948559071,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.546638946843814,
+          "next_temperature_C": 21.973782488990366,
+          "prediction_error_C": 1.5728564578534474
+        },
+        {
+          "time_s": 23380080.0,
+          "temperature_C": 23.90795885369829,
           "command": 12.0,
-          "next_temperature_C": 22.72907626973057,
-          "before_error_C": 0.7136782591223891,
-          "after_error_C": 0.7290762697305695,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
+          "action_valid": true,
+          "predicted_next_temperature_C": 25.43203177926314,
+          "next_temperature_C": 23.9086920312389,
+          "prediction_error_C": 1.5233397480242417
         },
         {
-          "time_s": 23382600.0,
-          "temperature_C": 23.866850493695154,
+          "time_s": 23396700.0,
+          "temperature_C": 21.965245528343303,
+          "command": 14.726406339698663,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.56986770492092,
+          "next_temperature_C": 21.96554185594482,
+          "prediction_error_C": 1.6043258489760994
+        },
+        {
+          "time_s": 23397960.0,
+          "temperature_C": 21.970154782501993,
+          "command": 15.22924950291075,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.56260455559845,
+          "next_temperature_C": 21.970333269737694,
+          "prediction_error_C": 1.5922712858607575
+        },
+        {
+          "time_s": 23400060.0,
+          "temperature_C": 21.974063791581955,
+          "command": 15.959224229341302,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.540306352579822,
+          "next_temperature_C": 21.974109454323468,
+          "prediction_error_C": 1.5661968982563543
+        },
+        {
+          "time_s": 23388660.0,
+          "temperature_C": 23.09435662909749,
           "command": 12.0,
-          "next_temperature_C": 23.863699018882585,
-          "before_error_C": 1.8668504936951535,
-          "after_error_C": 1.8636990188825848,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.70697606659205,
+          "next_temperature_C": 23.08268825950671,
+          "prediction_error_C": 1.624287807085338
         },
         {
-          "time_s": 23387040.0,
-          "temperature_C": 23.38694737016465,
+          "time_s": 23353020.0,
+          "temperature_C": 22.005152778988702,
+          "command": 24.40552091881735,
+          "action_valid": true,
+          "predicted_next_temperature_C": 22.780748810993426,
+          "next_temperature_C": 22.005857290685924,
+          "prediction_error_C": 0.7748915203075022
+        },
+        {
+          "time_s": 23350440.0,
+          "temperature_C": 21.994195204937625,
+          "command": 24.328738050082645,
+          "action_valid": true,
+          "predicted_next_temperature_C": 22.930123785379898,
+          "next_temperature_C": 21.994085046488976,
+          "prediction_error_C": 0.9360387388909217
+        },
+        {
+          "time_s": 23404500.0,
+          "temperature_C": 21.979193053794006,
+          "command": 17.32682182325252,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.441972770256584,
+          "next_temperature_C": 21.979351236649393,
+          "prediction_error_C": 1.4626215336071908
+        },
+        {
+          "time_s": 23348880.0,
+          "temperature_C": 21.998191160336262,
+          "command": 24.243154553717357,
+          "action_valid": true,
+          "predicted_next_temperature_C": 22.953081822595433,
+          "next_temperature_C": 21.998167186107423,
+          "prediction_error_C": 0.9549146364880094
+        },
+        {
+          "time_s": 23335620.0,
+          "temperature_C": 21.991988064179054,
+          "command": 22.57775979705458,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.11116769038262,
+          "next_temperature_C": 21.991806698062703,
+          "prediction_error_C": 1.1193609923199155
+        },
+        {
+          "time_s": 23410620.0,
+          "temperature_C": 21.98200608127314,
+          "command": 18.7215789726293,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.44713680531288,
+          "next_temperature_C": 21.981982740701483,
+          "prediction_error_C": 1.4651540646113972
+        },
+        {
+          "time_s": 23344920.0,
+          "temperature_C": 21.983121819316693,
+          "command": 23.87164281551388,
+          "action_valid": true,
+          "predicted_next_temperature_C": 22.88642504903897,
+          "next_temperature_C": 21.983198031936922,
+          "prediction_error_C": 0.9032270171020471
+        },
+        {
+          "time_s": 23393160.0,
+          "temperature_C": 21.92409193807191,
+          "command": 12.638179571115245,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.605854035563482,
+          "next_temperature_C": 21.92201709379657,
+          "prediction_error_C": 1.6838369417669128
+        },
+        {
+          "time_s": 23376660.0,
+          "temperature_C": 23.70275910277826,
           "command": 12.0,
-          "next_temperature_C": 23.377114316239386,
-          "before_error_C": 1.3869473701646484,
-          "after_error_C": 1.3771143162393855,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
+          "action_valid": true,
+          "predicted_next_temperature_C": 25.190027667129645,
+          "next_temperature_C": 23.709660647559303,
+          "prediction_error_C": 1.4803670195703411
         },
         {
-          "time_s": 23389140.0,
-          "temperature_C": 23.00061840824543,
+          "time_s": 23413080.0,
+          "temperature_C": 21.97803869803147,
+          "command": 19.373242870562674,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.344518198265106,
+          "next_temperature_C": 21.978118481157765,
+          "prediction_error_C": 1.3663997171073419
+        },
+        {
+          "time_s": 23374980.0,
+          "temperature_C": 23.4677924668581,
           "command": 12.0,
-          "next_temperature_C": 22.98886886213421,
-          "before_error_C": 1.0006184082454297,
-          "after_error_C": 0.9888688621342112,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.944912239582326,
+          "next_temperature_C": 23.477188558812657,
+          "prediction_error_C": 1.4677236807696694
         },
         {
-          "time_s": 23386560.0,
-          "temperature_C": 23.46361869987959,
+          "time_s": 23351700.0,
+          "temperature_C": 21.994388295606882,
+          "command": 24.427376355053088,
+          "action_valid": true,
+          "predicted_next_temperature_C": 22.851778149601117,
+          "next_temperature_C": 21.994590602608127,
+          "prediction_error_C": 0.8571875469929893
+        },
+        {
+          "time_s": 23351820.0,
+          "temperature_C": 21.994870421439316,
+          "command": 24.433965521708238,
+          "action_valid": true,
+          "predicted_next_temperature_C": 22.844033235425595,
+          "next_temperature_C": 21.995224521212492,
+          "prediction_error_C": 0.8488087142131029
+        },
+        {
+          "time_s": 23332980.0,
+          "temperature_C": 21.991761159510077,
+          "command": 22.314183905982205,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.062054359621953,
+          "next_temperature_C": 21.991788002472276,
+          "prediction_error_C": 1.070266357149677
+        },
+        {
+          "time_s": 23382540.0,
+          "temperature_C": 23.869904519623788,
           "command": 12.0,
-          "next_temperature_C": 23.4542339161045,
-          "before_error_C": 1.4636186998795893,
-          "after_error_C": 1.4542339161044993,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
+          "action_valid": true,
+          "predicted_next_temperature_C": 25.430418713649875,
+          "next_temperature_C": 23.866850493695154,
+          "prediction_error_C": 1.5635682199547212
         },
         {
-          "time_s": 23382120.0,
-          "temperature_C": 23.888499855762348,
+          "time_s": 23343120.0,
+          "temperature_C": 21.989694466683716,
+          "command": 23.502348680143744,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.052373617206474,
+          "next_temperature_C": 21.989265992347327,
+          "prediction_error_C": 1.0631076248591462
+        },
+        {
+          "time_s": 23387880.0,
+          "temperature_C": 23.243113823649537,
           "command": 12.0,
-          "next_temperature_C": 23.88614635669063,
-          "before_error_C": 1.8884998557623476,
-          "after_error_C": 1.886146356690631,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.855401241660495,
+          "next_temperature_C": 23.231960844162018,
+          "prediction_error_C": 1.6234403974984772
         },
         {
-          "time_s": 23391120.0,
-          "temperature_C": 22.616820448847818,
+          "time_s": 23405580.0,
+          "temperature_C": 21.981586295003922,
+          "command": 17.589880153430165,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.458535165769906,
+          "next_temperature_C": 21.981765411218873,
+          "prediction_error_C": 1.4767697545510323
+        },
+        {
+          "time_s": 23403600.0,
+          "temperature_C": 21.976925889875588,
+          "command": 17.08028405139124,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.440582794521482,
+          "next_temperature_C": 21.97711152110952,
+          "prediction_error_C": 1.4634712734119617
+        },
+        {
+          "time_s": 23386020.0,
+          "temperature_C": 23.545255054643974,
           "command": 12.0,
-          "next_temperature_C": 22.605694736378837,
-          "before_error_C": 0.6168204488478182,
-          "after_error_C": 0.6056947363788368,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
+          "action_valid": true,
+          "predicted_next_temperature_C": 25.152215042690443,
+          "next_temperature_C": 23.536477905311074,
+          "prediction_error_C": 1.6157371373793694
         },
         {
-          "time_s": 23388240.0,
-          "temperature_C": 23.17528642265063,
+          "time_s": 23363160.0,
+          "temperature_C": 22.06907872408476,
+          "command": 16.881777659264714,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.52023392656666,
+          "next_temperature_C": 22.069046002330197,
+          "prediction_error_C": 1.4511879242364643
+        },
+        {
+          "time_s": 23410440.0,
+          "temperature_C": 21.982072371635923,
+          "command": 18.6796974980811,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.44974901024891,
+          "next_temperature_C": 21.982051059391836,
+          "prediction_error_C": 1.467697950857076
+        },
+        {
+          "time_s": 23378460.0,
+          "temperature_C": 23.854089314615123,
           "command": 12.0,
-          "next_temperature_C": 23.16382036713827,
-          "before_error_C": 1.175286422650629,
-          "after_error_C": 1.1638203671382712,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
+          "action_valid": true,
+          "predicted_next_temperature_C": 25.358212404144478,
+          "next_temperature_C": 23.857328629727874,
+          "prediction_error_C": 1.5008837744166037
         },
         {
-          "time_s": 23390340.0,
-          "temperature_C": 22.76451221208066,
+          "time_s": 23344380.0,
+          "temperature_C": 21.9834047479971,
+          "command": 23.753213998068546,
+          "action_valid": true,
+          "predicted_next_temperature_C": 22.93587747946341,
+          "next_temperature_C": 21.983280931914635,
+          "prediction_error_C": 0.9525965475487759
+        },
+        {
+          "time_s": 23332740.0,
+          "temperature_C": 21.991691341122134,
+          "command": 22.288841505267285,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.05651081335201,
+          "next_temperature_C": 21.9916995357097,
+          "prediction_error_C": 1.0648112776423098
+        },
+        {
+          "time_s": 23350680.0,
+          "temperature_C": 21.99382927353156,
+          "command": 24.34861899956014,
+          "action_valid": true,
+          "predicted_next_temperature_C": 22.917083035115695,
+          "next_temperature_C": 21.993768997077495,
+          "prediction_error_C": 0.9233140380381997
+        },
+        {
+          "time_s": 23367120.0,
+          "temperature_C": 22.067600053932097,
+          "command": 13.42287727349933,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.52520716434254,
+          "next_temperature_C": 22.06744881199853,
+          "prediction_error_C": 1.4577583523440083
+        },
+        {
+          "time_s": 23374920.0,
+          "temperature_C": 23.4583188063566,
           "command": 12.0,
-          "next_temperature_C": 22.752959051404787,
-          "before_error_C": 0.7645122120806604,
-          "after_error_C": 0.7529590514047868,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.935032739133987,
+          "next_temperature_C": 23.4677924668581,
+          "prediction_error_C": 1.4672402722758875
         },
         {
-          "time_s": 23380260.0,
-          "temperature_C": 23.909899188411373,
-          "command": 12.0,
-          "next_temperature_C": 23.91040192113951,
-          "before_error_C": 1.909899188411373,
-          "after_error_C": 1.9104019211395098,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
+          "time_s": 23328960.0,
+          "temperature_C": 21.924558588250022,
+          "command": 21.837675070756134,
+          "action_valid": true,
+          "predicted_next_temperature_C": 22.901285398543052,
+          "next_temperature_C": 21.935879587212526,
+          "prediction_error_C": 0.9654058113305268
         },
         {
-          "time_s": 23371740.0,
-          "temperature_C": 22.789856677352645,
-          "command": 12.0,
-          "next_temperature_C": 22.804844899522095,
-          "before_error_C": 0.7898566773526454,
-          "after_error_C": 0.8048448995220951,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
+          "time_s": 23328360.0,
+          "temperature_C": 21.614941308721484,
+          "command": 21.45803617284345,
+          "action_valid": true,
+          "predicted_next_temperature_C": 22.60658558317776,
+          "next_temperature_C": 21.666675942187567,
+          "prediction_error_C": 0.9399096409901944
         },
         {
-          "time_s": 23357160.0,
-          "temperature_C": 22.195515330328135,
-          "command": 21.783540174667575,
-          "next_temperature_C": 22.173993195974333,
-          "before_error_C": 0.19551533032813495,
-          "after_error_C": 0.17399319597433305,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23373300.0,
-          "temperature_C": 23.151345061688573,
-          "command": 12.0,
-          "next_temperature_C": 23.16404449390302,
-          "before_error_C": 1.1513450616885734,
-          "after_error_C": 1.1640444939030203,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 23377440.0,
-          "temperature_C": 23.78207778632941,
-          "command": 12.0,
-          "next_temperature_C": 23.787259676803615,
-          "before_error_C": 1.7820777863294097,
-          "after_error_C": 1.7872596768036146,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 23391900.0,
-          "temperature_C": 22.4747663587097,
-          "command": 12.0,
-          "next_temperature_C": 22.463973904931493,
-          "before_error_C": 0.47476635870970085,
-          "after_error_C": 0.4639739049314926,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23328300.0,
-          "temperature_C": 21.562337895841097,
-          "command": 21.330203473758022,
-          "next_temperature_C": 21.614941308721484,
-          "before_error_C": 0.4376621041589033,
-          "after_error_C": 0.3850586912785161,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23328120.0,
-          "temperature_C": 21.50634207659499,
-          "command": 20.402909628678163,
-          "next_temperature_C": 21.48836858306487,
-          "before_error_C": 0.49365792340501,
-          "after_error_C": 0.5116314169351313,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 23390700.0,
-          "temperature_C": 22.695518044562505,
-          "command": 12.0,
-          "next_temperature_C": 22.684156798902677,
-          "before_error_C": 0.6955180445625047,
-          "after_error_C": 0.6841567989026771,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23381580.0,
-          "temperature_C": 23.90503311424817,
-          "command": 12.0,
-          "next_temperature_C": 23.90361381867575,
-          "before_error_C": 1.9050331142481696,
-          "after_error_C": 1.9036138186757512,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23391000.0,
-          "temperature_C": 22.63916840923389,
-          "command": 12.0,
-          "next_temperature_C": 22.62798088064369,
-          "before_error_C": 0.6391684092338892,
-          "after_error_C": 0.6279808806436904,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23374740.0,
-          "temperature_C": 23.42910998342944,
-          "command": 12.0,
-          "next_temperature_C": 23.439018422974925,
-          "before_error_C": 1.4291099834294414,
-          "after_error_C": 1.4390184229749252,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 23392500.0,
-          "temperature_C": 22.367570328589863,
-          "command": 12.0,
-          "next_temperature_C": 22.356980187349222,
-          "before_error_C": 0.3675703285898635,
-          "after_error_C": 0.35698018734922243,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 23379540.0,
-          "temperature_C": 23.897420323431277,
-          "command": 12.0,
-          "next_temperature_C": 23.89894517442451,
-          "before_error_C": 1.8974203234312768,
-          "after_error_C": 1.8989451744245116,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 23371800.0,
-          "temperature_C": 22.804844899522095,
-          "command": 12.0,
-          "next_temperature_C": 22.81974902869115,
-          "before_error_C": 0.8048448995220951,
-          "after_error_C": 0.8197490286911489,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 23373180.0,
-          "temperature_C": 23.125664060796282,
-          "command": 12.0,
-          "next_temperature_C": 23.138551035955686,
-          "before_error_C": 1.1256640607962822,
-          "after_error_C": 1.138551035955686,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 23371320.0,
-          "temperature_C": 22.682645281564476,
-          "command": 12.0,
-          "next_temperature_C": 22.698200917595386,
-          "before_error_C": 0.6826452815644757,
-          "after_error_C": 0.6982009175953863,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 23378220.0,
-          "temperature_C": 23.840075737677807,
-          "command": 12.0,
-          "next_temperature_C": 23.84373950127241,
-          "before_error_C": 1.8400757376778074,
-          "after_error_C": 1.8437395012724096,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 23387580.0,
-          "temperature_C": 23.296624564724084,
-          "command": 12.0,
-          "next_temperature_C": 23.286334678535468,
-          "before_error_C": 1.296624564724084,
-          "after_error_C": 1.286334678535468,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
+          "time_s": 23343480.0,
+          "temperature_C": 21.987241992210556,
+          "command": 23.564600445138,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.023098353565118,
+          "next_temperature_C": 21.986867270353798,
+          "prediction_error_C": 1.0362310832113195
         },
         {
           "time_s": 23383680.0,
           "temperature_C": 23.795689595874364,
           "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 25.375423690158964,
           "next_temperature_C": 23.790947255121978,
-          "before_error_C": 1.7956895958743644,
-          "after_error_C": 1.7909472551219778,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
+          "prediction_error_C": 1.5844764350369864
         },
         {
-          "time_s": 23379420.0,
-          "temperature_C": 23.89410143978938,
-          "command": 12.0,
-          "next_temperature_C": 23.895805875364204,
-          "before_error_C": 1.894101439789381,
-          "after_error_C": 1.8958058753642035,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
+          "time_s": 23393940.0,
+          "temperature_C": 21.942532274559767,
+          "command": 13.25752305875837,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.619435449575207,
+          "next_temperature_C": 21.94369798986031,
+          "prediction_error_C": 1.6757374597148953
         },
         {
-          "time_s": 23385840.0,
-          "temperature_C": 23.57083840082373,
-          "command": 12.0,
-          "next_temperature_C": 23.562466703358837,
-          "before_error_C": 1.5708384008237317,
-          "after_error_C": 1.5624667033588366,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
+          "time_s": 23356500.0,
+          "temperature_C": 22.026295606111887,
+          "command": 23.416121836994808,
+          "action_valid": true,
+          "predicted_next_temperature_C": 22.81647895425737,
+          "next_temperature_C": 22.026551212463573,
+          "prediction_error_C": 0.7899277417937967
         },
         {
-          "time_s": 23375760.0,
-          "temperature_C": 23.585097480316733,
-          "command": 12.0,
-          "next_temperature_C": 23.593636418454366,
-          "before_error_C": 1.5850974803167333,
-          "after_error_C": 1.5936364184543663,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
+          "time_s": 23347380.0,
+          "temperature_C": 21.9949705686592,
+          "command": 24.199697837037192,
+          "action_valid": true,
+          "predicted_next_temperature_C": 22.87667096356372,
+          "next_temperature_C": 21.995244924289295,
+          "prediction_error_C": 0.8814260392744231
         },
         {
-          "time_s": 23387100.0,
-          "temperature_C": 23.377114316239386,
+          "time_s": 23375520.0,
+          "temperature_C": 23.550168721628722,
           "command": 12.0,
-          "next_temperature_C": 23.367228363236336,
-          "before_error_C": 1.3771143162393855,
-          "after_error_C": 1.367228363236336,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
+          "action_valid": true,
+          "predicted_next_temperature_C": 25.03068500960836,
+          "next_temperature_C": 23.559010391240008,
+          "prediction_error_C": 1.4716746183683505
+        },
+        {
+          "time_s": 23344620.0,
+          "temperature_C": 21.983097409401182,
+          "command": 23.80627234506516,
+          "action_valid": true,
+          "predicted_next_temperature_C": 22.912915245139974,
+          "next_temperature_C": 21.983053161022553,
+          "prediction_error_C": 0.9298620841174206
+        },
+        {
+          "time_s": 23350260.0,
+          "temperature_C": 21.994610846708724,
+          "command": 24.31423511217497,
+          "action_valid": true,
+          "predicted_next_temperature_C": 22.938817440168886,
+          "next_temperature_C": 21.99445637392023,
+          "prediction_error_C": 0.944361066248657
+        },
+        {
+          "time_s": 23342760.0,
+          "temperature_C": 21.992172400793038,
+          "command": 23.451474028902425,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.074271413418096,
+          "next_temperature_C": 21.991788617622944,
+          "prediction_error_C": 1.0824827957951513
+        },
+        {
+          "time_s": 23370420.0,
+          "temperature_C": 22.441154069710592,
+          "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.899046649364898,
+          "next_temperature_C": 22.45764446275001,
+          "prediction_error_C": 1.4414021866148872
+        },
+        {
+          "time_s": 23392140.0,
+          "temperature_C": 22.431667237962927,
+          "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.021240905155874,
+          "next_temperature_C": 22.420929044628167,
+          "prediction_error_C": 1.6003118605277074
+        },
+        {
+          "time_s": 23375160.0,
+          "temperature_C": 23.49578392611744,
+          "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.97409357426378,
+          "next_temperature_C": 23.504995060126134,
+          "prediction_error_C": 1.4690985141376451
+        },
+        {
+          "time_s": 23400840.0,
+          "temperature_C": 21.974369456744398,
+          "command": 16.216816347811687,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.519523424602372,
+          "next_temperature_C": 21.974386316436266,
+          "prediction_error_C": 1.5451371081661058
+        },
+        {
+          "time_s": 23360460.0,
+          "temperature_C": 22.063668095064713,
+          "command": 19.24075940326628,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.349792623892878,
+          "next_temperature_C": 22.063616290464722,
+          "prediction_error_C": 1.2861763334281555
+        },
+        {
+          "time_s": 23375100.0,
+          "temperature_C": 23.486517813059038,
+          "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.96443661381082,
+          "next_temperature_C": 23.49578392611744,
+          "prediction_error_C": 1.4686526876933783
+        },
+        {
+          "time_s": 23360700.0,
+          "temperature_C": 22.063577298101904,
+          "command": 19.044490061129963,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.36888831103889,
+          "next_temperature_C": 22.06361905085913,
+          "prediction_error_C": 1.3052692601797595
+        },
+        {
+          "time_s": 23346600.0,
+          "temperature_C": 21.990690565081877,
+          "command": 24.143858802589026,
+          "action_valid": true,
+          "predicted_next_temperature_C": 22.840883945346036,
+          "next_temperature_C": 21.991046636028784,
+          "prediction_error_C": 0.8498373093172518
+        },
+        {
+          "time_s": 23330460.0,
+          "temperature_C": 21.990712788779547,
+          "command": 22.03547723639609,
+          "action_valid": true,
+          "predicted_next_temperature_C": 22.998698463172985,
+          "next_temperature_C": 21.990795800158878,
+          "prediction_error_C": 1.0079026630141072
+        },
+        {
+          "time_s": 23350500.0,
+          "temperature_C": 21.994085046488976,
+          "command": 24.333664939517025,
+          "action_valid": true,
+          "predicted_next_temperature_C": 22.927007480057537,
+          "next_temperature_C": 21.993987428867342,
+          "prediction_error_C": 0.9330200511901943
+        },
+        {
+          "time_s": 23355540.0,
+          "temperature_C": 22.025080920739867,
+          "command": 23.745501663820114,
+          "action_valid": true,
+          "predicted_next_temperature_C": 22.761298396115613,
+          "next_temperature_C": 22.025192568877458,
+          "prediction_error_C": 0.7361058272381555
+        },
+        {
+          "time_s": 23329200.0,
+          "temperature_C": 21.95976602447263,
+          "command": 21.883124694709867,
+          "action_valid": true,
+          "predicted_next_temperature_C": 22.93779518092285,
+          "next_temperature_C": 21.965235507462808,
+          "prediction_error_C": 0.9725596734600437
+        },
+        {
+          "time_s": 23409240.0,
+          "temperature_C": 21.982403921045602,
+          "command": 18.40465884553019,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.463642493060856,
+          "next_temperature_C": 21.982492147998983,
+          "prediction_error_C": 1.4811503450618737
+        },
+        {
+          "time_s": 23399400.0,
+          "temperature_C": 21.97334259030174,
+          "command": 15.73854613858819,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.550875293510668,
+          "next_temperature_C": 21.973428290517916,
+          "prediction_error_C": 1.577447002992752
+        },
+        {
+          "time_s": 23406540.0,
+          "temperature_C": 21.982892323933243,
+          "command": 17.803385330308306,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.472737274635602,
+          "next_temperature_C": 21.982932995823603,
+          "prediction_error_C": 1.4898042788119987
+        },
+        {
+          "time_s": 23347020.0,
+          "temperature_C": 21.993104207247313,
+          "command": 24.17888651968416,
+          "action_valid": true,
+          "predicted_next_temperature_C": 22.857787992145962,
+          "next_temperature_C": 21.993430985797886,
+          "prediction_error_C": 0.8643570063480759
+        },
+        {
+          "time_s": 23370780.0,
+          "temperature_C": 22.53937926112286,
+          "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.99869303587615,
+          "next_temperature_C": 22.555562692728643,
+          "prediction_error_C": 1.4431303431475087
         }
       ]
     },
@@ -1025,1010 +936,913 @@
       "trace": "validation_day240_locked.csv",
       "trace_sha256": "c246f2ec3da690c8e7451a9d0f0655ae59fb63d2746f450a97c4181a26dcccec",
       "rows_total": 1440,
-      "rows_eligible": 424,
       "sample_count": 100,
-      "matches": 54,
-      "match_rate": 0.54,
+      "action_valid_count": 100,
+      "metrics": {
+        "mae_C": 1.9331014441041396,
+        "rmse_C": 1.9400976382064263,
+        "within_0_5_C_pct": 0.0
+      },
       "samples": [
         {
-          "time_s": 20783640.0,
-          "temperature_C": 23.272468745731544,
-          "command": 12.0,
-          "next_temperature_C": 23.278386798533973,
-          "before_error_C": 1.272468745731544,
-          "after_error_C": 1.2783867985339725,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20780100.0,
-          "temperature_C": 22.8088544620403,
-          "command": 12.0,
-          "next_temperature_C": 22.81938159509889,
-          "before_error_C": 0.8088544620403013,
-          "after_error_C": 0.8193815950988892,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20736600.0,
-          "temperature_C": 22.12450975779683,
-          "command": 19.403974495249425,
-          "next_temperature_C": 22.10260589004696,
-          "before_error_C": 0.12450975779682949,
-          "after_error_C": 0.1026058900469593,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20799120.0,
-          "temperature_C": 22.45338412305682,
-          "command": 12.0,
-          "next_temperature_C": 22.4467184636232,
-          "before_error_C": 0.4533841230568214,
-          "after_error_C": 0.4467184636231991,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20781060.0,
-          "temperature_C": 22.95800665305876,
-          "command": 12.0,
-          "next_temperature_C": 22.966668957598188,
-          "before_error_C": 0.9580066530587601,
-          "after_error_C": 0.9666689575981877,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20782320.0,
-          "temperature_C": 23.12580989520484,
-          "command": 12.0,
-          "next_temperature_C": 23.133084235912236,
-          "before_error_C": 1.1258098952048385,
-          "after_error_C": 1.1330842359122357,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20736300.0,
-          "temperature_C": 22.29256356668759,
-          "command": 19.57339904914654,
-          "next_temperature_C": 22.252115729249,
-          "before_error_C": 0.29256356668759054,
-          "after_error_C": 0.25211572924899883,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20800380.0,
-          "temperature_C": 22.312345837709813,
-          "command": 12.0,
-          "next_temperature_C": 22.30545477961533,
-          "before_error_C": 0.31234583770981317,
-          "after_error_C": 0.3054547796153315,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20798160.0,
-          "temperature_C": 22.562255729747335,
-          "command": 12.0,
-          "next_temperature_C": 22.555255979841036,
-          "before_error_C": 0.562255729747335,
-          "after_error_C": 0.5552559798410357,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20800140.0,
-          "temperature_C": 22.33975718807892,
-          "command": 12.0,
-          "next_temperature_C": 22.332928550082897,
-          "before_error_C": 0.3397571880789201,
-          "after_error_C": 0.33292855008289735,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20795760.0,
-          "temperature_C": 22.86970030806765,
-          "command": 12.0,
-          "next_temperature_C": 22.861582577317336,
-          "before_error_C": 0.8697003080676495,
-          "after_error_C": 0.8615825773173356,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20793300.0,
-          "temperature_C": 23.188417256691253,
-          "command": 12.0,
-          "next_temperature_C": 23.181243087227813,
-          "before_error_C": 1.1884172566912525,
-          "after_error_C": 1.1812430872278128,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20795100.0,
-          "temperature_C": 22.95889580128852,
-          "command": 12.0,
-          "next_temperature_C": 22.950842323245524,
-          "before_error_C": 0.95889580128852,
-          "after_error_C": 0.9508423232455243,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20780220.0,
-          "temperature_C": 22.829501461304687,
-          "command": 12.0,
-          "next_temperature_C": 22.83935285628189,
-          "before_error_C": 0.8295014613046874,
-          "after_error_C": 0.8393528562818915,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20786160.0,
-          "temperature_C": 23.455393379371685,
-          "command": 12.0,
-          "next_temperature_C": 23.45803139686882,
-          "before_error_C": 1.4553933793716851,
-          "after_error_C": 1.4580313968688188,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20778900.0,
-          "temperature_C": 22.567848475784217,
-          "command": 12.0,
-          "next_temperature_C": 22.580879869555986,
-          "before_error_C": 0.567848475784217,
-          "after_error_C": 0.5808798695559858,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20797560.0,
-          "temperature_C": 22.63398906014112,
-          "command": 12.0,
-          "next_temperature_C": 22.6267155221164,
-          "before_error_C": 0.6339890601411184,
-          "after_error_C": 0.6267155221163989,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20791800.0,
-          "temperature_C": 23.348383350617723,
-          "command": 12.0,
-          "next_temperature_C": 23.342817360243373,
-          "before_error_C": 1.3483833506177234,
-          "after_error_C": 1.342817360243373,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20785320.0,
-          "temperature_C": 23.409847919817082,
-          "command": 12.0,
-          "next_temperature_C": 23.413630698614043,
-          "before_error_C": 1.4098479198170821,
-          "after_error_C": 1.4136306986140426,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20783940.0,
-          "temperature_C": 23.30132944742769,
-          "command": 12.0,
-          "next_temperature_C": 23.306880982901305,
-          "before_error_C": 1.3013294474276904,
-          "after_error_C": 1.3068809829013048,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20789400.0,
-          "temperature_C": 23.49314449336225,
-          "command": 12.0,
-          "next_temperature_C": 23.49155110418758,
-          "before_error_C": 1.4931444933622515,
-          "after_error_C": 1.4915511041875789,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20789940.0,
-          "temperature_C": 23.47500823722737,
-          "command": 12.0,
-          "next_temperature_C": 23.472456878790013,
-          "before_error_C": 1.475008237227371,
-          "after_error_C": 1.4724568787900125,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20792760.0,
-          "temperature_C": 23.25035068113766,
-          "command": 12.0,
-          "next_temperature_C": 23.243670184093617,
-          "before_error_C": 1.250350681137661,
-          "after_error_C": 1.2436701840936166,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20792040.0,
-          "temperature_C": 23.325627736547062,
-          "command": 12.0,
-          "next_temperature_C": 23.319739716224717,
-          "before_error_C": 1.3256277365470623,
-          "after_error_C": 1.319739716224717,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20783580.0,
-          "temperature_C": 23.266478575595215,
-          "command": 12.0,
-          "next_temperature_C": 23.272468745731544,
-          "before_error_C": 1.2664785755952153,
-          "after_error_C": 1.272468745731544,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20794920.0,
-          "temperature_C": 22.98292861715794,
-          "command": 12.0,
-          "next_temperature_C": 22.974940714324305,
-          "before_error_C": 0.9829286171579383,
-          "after_error_C": 0.9749407143243047,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20777760.0,
-          "temperature_C": 22.307530584856522,
-          "command": 12.0,
-          "next_temperature_C": 22.321634320180067,
-          "before_error_C": 0.3075305848565222,
-          "after_error_C": 0.3216343201800669,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20781780.0,
-          "temperature_C": 23.057516194565494,
-          "command": 12.0,
-          "next_temperature_C": 23.065366084383186,
-          "before_error_C": 1.057516194565494,
-          "after_error_C": 1.0653660843831858,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20796360.0,
-          "temperature_C": 22.78780693551613,
-          "command": 12.0,
-          "next_temperature_C": 22.77967037380131,
-          "before_error_C": 0.7878069355161301,
-          "after_error_C": 0.7796703738013093,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20778780.0,
-          "temperature_C": 22.541528989494964,
-          "command": 12.0,
-          "next_temperature_C": 22.55473046035297,
-          "before_error_C": 0.5415289894949638,
-          "after_error_C": 0.554730460352971,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20789160.0,
-          "temperature_C": 23.498501430535555,
-          "command": 12.0,
-          "next_temperature_C": 23.497312620931552,
-          "before_error_C": 1.4985014305355548,
-          "after_error_C": 1.4973126209315524,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20796540.0,
-          "temperature_C": 22.763524243469533,
-          "command": 12.0,
-          "next_temperature_C": 22.75551913738002,
-          "before_error_C": 0.7635242434695328,
-          "after_error_C": 0.7555191373800199,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20793240.0,
-          "temperature_C": 23.195500049865302,
-          "command": 12.0,
-          "next_temperature_C": 23.188417256691253,
-          "before_error_C": 1.1955000498653021,
-          "after_error_C": 1.1884172566912525,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20787840.0,
-          "temperature_C": 23.501949039741362,
-          "command": 12.0,
-          "next_temperature_C": 23.5026347332103,
-          "before_error_C": 1.501949039741362,
-          "after_error_C": 1.5026347332103,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20790360.0,
-          "temperature_C": 23.454857296418993,
-          "command": 12.0,
-          "next_temperature_C": 23.45154569175787,
-          "before_error_C": 1.454857296418993,
-          "after_error_C": 1.4515456917578717,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20779500.0,
-          "temperature_C": 22.69376659684241,
-          "command": 12.0,
-          "next_temperature_C": 22.705778632938518,
-          "before_error_C": 0.6937665968424085,
-          "after_error_C": 0.7057786329385181,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20795940.0,
-          "temperature_C": 22.845361148353504,
-          "command": 12.0,
-          "next_temperature_C": 22.83717044845679,
-          "before_error_C": 0.8453611483535042,
-          "after_error_C": 0.8371704484567886,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20792580.0,
-          "temperature_C": 23.27004926501769,
-          "command": 12.0,
-          "next_temperature_C": 23.263542079744695,
-          "before_error_C": 1.2700492650176898,
-          "after_error_C": 1.2635420797446955,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20798520.0,
-          "temperature_C": 22.520739503975392,
-          "command": 12.0,
-          "next_temperature_C": 22.513929172321127,
-          "before_error_C": 0.5207395039753919,
-          "after_error_C": 0.5139291723211272,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20784120.0,
-          "temperature_C": 23.31776111455798,
-          "command": 12.0,
-          "next_temperature_C": 23.323089240506647,
-          "before_error_C": 1.3177611145579817,
-          "after_error_C": 1.323089240506647,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20792400.0,
-          "temperature_C": 23.289194629977942,
-          "command": 12.0,
-          "next_temperature_C": 23.2828773769661,
-          "before_error_C": 1.289194629977942,
-          "after_error_C": 1.2828773769660984,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20784180.0,
-          "temperature_C": 23.323089240506647,
-          "command": 12.0,
-          "next_temperature_C": 23.328342457773772,
-          "before_error_C": 1.323089240506647,
-          "after_error_C": 1.328342457773772,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20781360.0,
-          "temperature_C": 23.00065708369209,
-          "command": 12.0,
-          "next_temperature_C": 23.008985342328515,
-          "before_error_C": 1.00065708369209,
-          "after_error_C": 1.008985342328515,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20794860.0,
-          "temperature_C": 22.99089144445361,
-          "command": 12.0,
-          "next_temperature_C": 22.98292861715794,
-          "before_error_C": 0.9908914444536094,
-          "after_error_C": 0.9829286171579383,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20777460.0,
-          "temperature_C": 22.236893124437586,
-          "command": 12.0,
-          "next_temperature_C": 22.25101121803533,
-          "before_error_C": 0.2368931244375858,
-          "after_error_C": 0.25101121803533033,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20783460.0,
-          "temperature_C": 23.254283995866047,
-          "command": 12.0,
-          "next_temperature_C": 23.260416799486734,
-          "before_error_C": 1.2542839958660466,
-          "after_error_C": 1.260416799486734,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20796960.0,
-          "temperature_C": 22.708503035213653,
-          "command": 12.0,
-          "next_temperature_C": 22.700839418854514,
-          "before_error_C": 0.7085030352136528,
-          "after_error_C": 0.700839418854514,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20795400.0,
-          "temperature_C": 22.91846961769278,
-          "command": 12.0,
-          "next_temperature_C": 22.910348129139038,
-          "before_error_C": 0.9184696176927787,
-          "after_error_C": 0.9103481291390381,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20777100.0,
-          "temperature_C": 22.153390002896458,
-          "command": 12.0,
-          "next_temperature_C": 22.167039215896068,
-          "before_error_C": 0.1533900028964581,
-          "after_error_C": 0.16703921589606807,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20789040.0,
-          "temperature_C": 23.500584632165044,
-          "command": 12.0,
-          "next_temperature_C": 23.499591733145678,
-          "before_error_C": 1.5005846321650438,
-          "after_error_C": 1.499591733145678,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20780700.0,
-          "temperature_C": 22.904713959494813,
-          "command": 12.0,
-          "next_temperature_C": 22.91374965485676,
-          "before_error_C": 0.9047139594948135,
-          "after_error_C": 0.9137496548567583,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20791020.0,
-          "temperature_C": 23.412745472157837,
-          "command": 12.0,
-          "next_temperature_C": 23.40831846668368,
-          "before_error_C": 1.4127454721578374,
-          "after_error_C": 1.4083184666836814,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20798400.0,
-          "temperature_C": 22.534449625316654,
-          "command": 12.0,
-          "next_temperature_C": 22.527579081490387,
-          "before_error_C": 0.534449625316654,
-          "after_error_C": 0.5275790814903871,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20793540.0,
-          "temperature_C": 23.159346032650717,
-          "command": 12.0,
-          "next_temperature_C": 23.151965177719887,
-          "before_error_C": 1.159346032650717,
-          "after_error_C": 1.1519651777198874,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20790120.0,
-          "temperature_C": 23.467026362175602,
-          "command": 12.0,
-          "next_temperature_C": 23.4641470416135,
-          "before_error_C": 1.4670263621756021,
-          "after_error_C": 1.4641470416135007,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20795160.0,
-          "temperature_C": 22.950842323245524,
-          "command": 12.0,
-          "next_temperature_C": 22.942770784913193,
-          "before_error_C": 0.9508423232455243,
-          "after_error_C": 0.9427707849131934,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20785380.0,
-          "temperature_C": 23.413630698614043,
-          "command": 12.0,
-          "next_temperature_C": 23.41733273420448,
-          "before_error_C": 1.4136306986140426,
-          "after_error_C": 1.4173327342044786,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20778600.0,
-          "temperature_C": 22.501455717191902,
-          "command": 12.0,
-          "next_temperature_C": 22.51488841473673,
-          "before_error_C": 0.5014557171919023,
-          "after_error_C": 0.5148884147367312,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20796600.0,
-          "temperature_C": 22.75551913738002,
-          "command": 12.0,
-          "next_temperature_C": 22.747561240061486,
-          "before_error_C": 0.7555191373800199,
-          "after_error_C": 0.7475612400614864,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20793480.0,
-          "temperature_C": 23.166691585710964,
-          "command": 12.0,
-          "next_temperature_C": 23.159346032650717,
-          "before_error_C": 1.1666915857109643,
-          "after_error_C": 1.159346032650717,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20797980.0,
-          "temperature_C": 22.583447692771358,
-          "command": 12.0,
-          "next_temperature_C": 22.57635061648631,
-          "before_error_C": 0.5834476927713581,
-          "after_error_C": 0.5763506164863088,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20796240.0,
-          "temperature_C": 22.804189799130654,
-          "command": 12.0,
-          "next_temperature_C": 22.79598147034028,
-          "before_error_C": 0.8041897991306541,
-          "after_error_C": 0.7959814703402799,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20796120.0,
-          "temperature_C": 22.82067550349217,
-          "command": 12.0,
-          "next_temperature_C": 22.812424361722037,
-          "before_error_C": 0.8206755034921684,
-          "after_error_C": 0.8124243617220372,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20778960.0,
-          "temperature_C": 22.580879869555986,
-          "command": 12.0,
-          "next_temperature_C": 22.593821487413834,
-          "before_error_C": 0.5808798695559858,
-          "after_error_C": 0.5938214874138339,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20777040.0,
-          "temperature_C": 22.139944405917618,
-          "command": 12.0,
-          "next_temperature_C": 22.153390002896458,
-          "before_error_C": 0.1399444059176176,
-          "after_error_C": 0.1533900028964581,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20779680.0,
-          "temperature_C": 22.729471412211524,
-          "command": 12.0,
-          "next_temperature_C": 22.74115177776042,
-          "before_error_C": 0.7294714122115238,
-          "after_error_C": 0.7411517777604217,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20792280.0,
-          "temperature_C": 23.301626376966283,
-          "command": 12.0,
-          "next_temperature_C": 23.295444905847035,
-          "before_error_C": 1.3016263769662828,
-          "after_error_C": 1.2954449058470345,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20791980.0,
-          "temperature_C": 23.331437861428697,
-          "command": 12.0,
-          "next_temperature_C": 23.325627736547062,
-          "before_error_C": 1.3314378614286966,
-          "after_error_C": 1.3256277365470623,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20782740.0,
-          "temperature_C": 23.17553486390858,
-          "command": 12.0,
-          "next_temperature_C": 23.182422633075078,
-          "before_error_C": 1.175534863908581,
-          "after_error_C": 1.1824226330750776,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20781960.0,
-          "temperature_C": 23.080865039000912,
-          "command": 12.0,
-          "next_temperature_C": 23.088515414695053,
-          "before_error_C": 1.080865039000912,
-          "after_error_C": 1.0885154146950526,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20783700.0,
-          "temperature_C": 23.278386798533973,
-          "command": 12.0,
-          "next_temperature_C": 23.2842322798611,
-          "before_error_C": 1.2783867985339725,
-          "after_error_C": 1.2842322798611008,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20790000.0,
-          "temperature_C": 23.472456878790013,
-          "command": 12.0,
-          "next_temperature_C": 23.469796331522048,
-          "before_error_C": 1.4724568787900125,
-          "after_error_C": 1.4697963315220477,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20795280.0,
-          "temperature_C": 22.93468331644408,
-          "command": 12.0,
-          "next_temperature_C": 22.92658215361365,
-          "before_error_C": 0.9346833164440795,
-          "after_error_C": 0.9265821536136514,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20797260.0,
-          "temperature_C": 22.670673309448546,
-          "command": 12.0,
-          "next_temperature_C": 22.663250647998723,
-          "before_error_C": 0.6706733094485458,
-          "after_error_C": 0.6632506479987228,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20787120.0,
-          "temperature_C": 23.488420861582426,
-          "command": 12.0,
-          "next_temperature_C": 23.489905456310794,
-          "before_error_C": 1.4884208615824264,
-          "after_error_C": 1.4899054563107939,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20784540.0,
-          "temperature_C": 23.353478649441968,
-          "command": 12.0,
-          "next_temperature_C": 23.358278819371037,
-          "before_error_C": 1.3534786494419677,
-          "after_error_C": 1.3582788193710371,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20784960.0,
-          "temperature_C": 23.385472367654984,
-          "command": 12.0,
-          "next_temperature_C": 23.389733077518713,
-          "before_error_C": 1.3854723676549838,
-          "after_error_C": 1.389733077518713,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20793900.0,
-          "temperature_C": 23.11463746349864,
-          "command": 12.0,
-          "next_temperature_C": 23.10709300375737,
-          "before_error_C": 1.1146374634986387,
-          "after_error_C": 1.1070930037573703,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20789280.0,
-          "temperature_C": 23.496024227287535,
-          "command": 12.0,
-          "next_temperature_C": 23.494635195868113,
-          "before_error_C": 1.4960242272875348,
-          "after_error_C": 1.4946351958681134,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20798100.0,
-          "temperature_C": 22.569287066631716,
-          "command": 12.0,
-          "next_temperature_C": 22.562255729747335,
-          "before_error_C": 0.5692870666317162,
-          "after_error_C": 0.562255729747335,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20736000.0,
-          "temperature_C": 22.22412949178215,
-          "command": 21.10347357820485,
-          "next_temperature_C": 22.333611294519926,
-          "before_error_C": 0.22412949178215058,
-          "after_error_C": 0.3336112945199261,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20783100.0,
-          "temperature_C": 23.21603993015043,
-          "command": 12.0,
-          "next_temperature_C": 23.222581190570338,
-          "before_error_C": 1.2160399301504299,
-          "after_error_C": 1.222581190570338,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20764920.0,
-          "temperature_C": 22.21039003854827,
-          "command": 19.813435674310128,
-          "next_temperature_C": 22.224953937529676,
-          "before_error_C": 0.21039003854826888,
-          "after_error_C": 0.2249539375296763,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20787000.0,
-          "temperature_C": 23.485261837595317,
-          "command": 12.0,
-          "next_temperature_C": 23.486873036200905,
-          "before_error_C": 1.485261837595317,
-          "after_error_C": 1.4868730362009046,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20777340.0,
-          "temperature_C": 22.208747377772966,
-          "command": 12.0,
-          "next_temperature_C": 22.222800251789522,
-          "before_error_C": 0.2087473777729656,
-          "after_error_C": 0.222800251789522,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20798220.0,
-          "temperature_C": 22.555255979841036,
-          "command": 12.0,
-          "next_temperature_C": 22.548287998393732,
-          "before_error_C": 0.5552559798410357,
-          "after_error_C": 0.5482879983937323,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20796180.0,
-          "temperature_C": 22.812424361722037,
-          "command": 12.0,
-          "next_temperature_C": 22.804189799130654,
-          "before_error_C": 0.8124243617220372,
-          "after_error_C": 0.8041897991306541,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20781540.0,
-          "temperature_C": 23.025436435671224,
-          "command": 12.0,
-          "next_temperature_C": 23.033559022130078,
-          "before_error_C": 1.0254364356712244,
-          "after_error_C": 1.0335590221300777,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20783760.0,
-          "temperature_C": 23.2842322798611,
-          "command": 12.0,
-          "next_temperature_C": 23.290004784530254,
-          "before_error_C": 1.2842322798611008,
-          "after_error_C": 1.2900047845302538,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
-        },
-        {
-          "time_s": 20792820.0,
-          "temperature_C": 23.243670184093617,
-          "command": 12.0,
-          "next_temperature_C": 23.236935648996905,
-          "before_error_C": 1.2436701840936166,
-          "after_error_C": 1.236935648996905,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20788980.0,
-          "temperature_C": 23.501481260503567,
-          "command": 12.0,
-          "next_temperature_C": 23.500584632165044,
-          "before_error_C": 1.5014812605035672,
-          "after_error_C": 1.5005846321650438,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
-        },
-        {
-          "time_s": 20785020.0,
-          "temperature_C": 23.389733077518713,
-          "command": 12.0,
-          "next_temperature_C": 23.393915060071038,
-          "before_error_C": 1.389733077518713,
-          "after_error_C": 1.3939150600710377,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
+          "time_s": 20749680.0,
+          "temperature_C": 21.98974756162113,
+          "command": 20.932059052507945,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.709700134309788,
+          "next_temperature_C": 21.989752856366863,
+          "prediction_error_C": 1.719947277942925
+        },
+        {
+          "time_s": 20801400.0,
+          "temperature_C": 21.922819254321837,
+          "command": 12.900962647671674,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.041689573753544,
+          "next_temperature_C": 21.92734791335846,
+          "prediction_error_C": 2.114341660395084
+        },
+        {
+          "time_s": 20775480.0,
+          "temperature_C": 22.05218514903703,
+          "command": 12.648626417305442,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.927916191858397,
+          "next_temperature_C": 22.05214837862161,
+          "prediction_error_C": 1.8757678132367879
+        },
+        {
+          "time_s": 20769960.0,
+          "temperature_C": 22.050775623903803,
+          "command": 16.450784073191283,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.86920558753481,
+          "next_temperature_C": 22.050917433100494,
+          "prediction_error_C": 1.8182881544343168
+        },
+        {
+          "time_s": 20791680.0,
+          "temperature_C": 23.35926002686773,
+          "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 25.385155415551473,
+          "next_temperature_C": 23.35386472587004,
+          "prediction_error_C": 2.031290689681434
+        },
+        {
+          "time_s": 20793960.0,
+          "temperature_C": 23.10709300375737,
+          "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 25.113935918256097,
+          "next_temperature_C": 23.099523347621925,
+          "prediction_error_C": 2.014412570634171
+        },
+        {
+          "time_s": 20805300.0,
+          "temperature_C": 21.975934905819315,
+          "command": 14.505959432645843,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.13581008825823,
+          "next_temperature_C": 21.97608024609076,
+          "prediction_error_C": 2.1597298421674687
+        },
+        {
+          "time_s": 20802240.0,
+          "temperature_C": 21.957540242556718,
+          "command": 13.376431238413586,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.09242404771886,
+          "next_temperature_C": 21.958561939867877,
+          "prediction_error_C": 2.133862107850984
+        },
+        {
+          "time_s": 20768400.0,
+          "temperature_C": 22.044045194801072,
+          "command": 17.432261532577336,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.840606119265125,
+          "next_temperature_C": 22.044243600527523,
+          "prediction_error_C": 1.7963625187376024
+        },
+        {
+          "time_s": 20813880.0,
+          "temperature_C": 21.983505154263298,
+          "command": 16.55548951356611,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.101605736109516,
+          "next_temperature_C": 21.983524895846813,
+          "prediction_error_C": 2.118080840262703
+        },
+        {
+          "time_s": 20745120.0,
+          "temperature_C": 21.991301295036408,
+          "command": 20.389244880756234,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.755282604251878,
+          "next_temperature_C": 21.991303995968906,
+          "prediction_error_C": 1.7639786082829723
+        },
+        {
+          "time_s": 20761320.0,
+          "temperature_C": 22.012600610526363,
+          "command": 21.50525555926292,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.763054815079734,
+          "next_temperature_C": 22.012650284093183,
+          "prediction_error_C": 1.7504045309865504
+        },
+        {
+          "time_s": 20819520.0,
+          "temperature_C": 21.98564747219757,
+          "command": 17.662288230254767,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.010604632193747,
+          "next_temperature_C": 21.985661297524075,
+          "prediction_error_C": 2.024943334669672
+        },
+        {
+          "time_s": 20749320.0,
+          "temperature_C": 21.98978356511907,
+          "command": 20.88442699958665,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.7180102906618,
+          "next_temperature_C": 21.98976948423814,
+          "prediction_error_C": 1.7282408064236634
+        },
+        {
+          "time_s": 20790840.0,
+          "temperature_C": 23.425443818718918,
+          "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 25.45850586327115,
+          "next_temperature_C": 23.421309180463652,
+          "prediction_error_C": 2.0371966828074974
+        },
+        {
+          "time_s": 20820420.0,
+          "temperature_C": 21.9858223079832,
+          "command": 17.82677105151624,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.99513395802836,
+          "next_temperature_C": 21.985833280204986,
+          "prediction_error_C": 2.0093006778233757
+        },
+        {
+          "time_s": 20807040.0,
+          "temperature_C": 21.97922752956748,
+          "command": 14.993737616141267,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.14106411594174,
+          "next_temperature_C": 21.979305553012182,
+          "prediction_error_C": 2.1617585629295597
+        },
+        {
+          "time_s": 20785560.0,
+          "temperature_C": 23.424493643660867,
+          "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 25.384762891472327,
+          "next_temperature_C": 23.427952110433125,
+          "prediction_error_C": 1.9568107810392021
+        },
+        {
+          "time_s": 20795520.0,
+          "temperature_C": 22.902220246110687,
+          "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.9047841957379,
+          "next_temperature_C": 22.894088674302736,
+          "prediction_error_C": 2.0106955214351636
+        },
+        {
+          "time_s": 20752080.0,
+          "temperature_C": 21.990654872753737,
+          "command": 21.230166728405088,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.666446958972926,
+          "next_temperature_C": 21.990665903652825,
+          "prediction_error_C": 1.6757810553201011
+        },
+        {
+          "time_s": 20817840.0,
+          "temperature_C": 21.985122510527788,
+          "command": 17.348417758061956,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.038721322282896,
+          "next_temperature_C": 21.985143490769246,
+          "prediction_error_C": 2.0535778315136497
+        },
+        {
+          "time_s": 20804400.0,
+          "temperature_C": 21.973320716818534,
+          "command": 14.22212656360665,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.129581975085394,
+          "next_temperature_C": 21.973524516176667,
+          "prediction_error_C": 2.1560574589087267
+        },
+        {
+          "time_s": 20770620.0,
+          "temperature_C": 22.05217355356939,
+          "command": 16.007891047544227,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.880625733054416,
+          "next_temperature_C": 22.052284074124998,
+          "prediction_error_C": 1.8283416589294177
+        },
+        {
+          "time_s": 20803740.0,
+          "temperature_C": 21.970709337260303,
+          "command": 13.994189315611676,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.122710829478883,
+          "next_temperature_C": 21.97098377089185,
+          "prediction_error_C": 2.151727058587035
+        },
+        {
+          "time_s": 20770920.0,
+          "temperature_C": 22.052696283300918,
+          "command": 15.803356407101692,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.885464153542976,
+          "next_temperature_C": 22.052791515138836,
+          "prediction_error_C": 1.8326726384041407
+        },
+        {
+          "time_s": 20759520.0,
+          "temperature_C": 22.00712490889083,
+          "command": 21.769710308399137,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.643200622103024,
+          "next_temperature_C": 22.007464695246426,
+          "prediction_error_C": 1.6357359268565972
+        },
+        {
+          "time_s": 20813700.0,
+          "temperature_C": 21.983448755116058,
+          "command": 16.517382962724252,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.104523699092034,
+          "next_temperature_C": 21.98346709372106,
+          "prediction_error_C": 2.121056605370974
+        },
+        {
+          "time_s": 20743920.0,
+          "temperature_C": 21.99117755181169,
+          "command": 20.25444767301064,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.752607812548195,
+          "next_temperature_C": 21.99118857309014,
+          "prediction_error_C": 1.7614192394580535
+        },
+        {
+          "time_s": 20767980.0,
+          "temperature_C": 22.0427590000628,
+          "command": 17.671628799918967,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.83438544312751,
+          "next_temperature_C": 22.04293056286184,
+          "prediction_error_C": 1.7914548802656682
+        },
+        {
+          "time_s": 20822100.0,
+          "temperature_C": 21.986025083653203,
+          "command": 18.130393457620134,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.965855006728805,
+          "next_temperature_C": 21.986034847303074,
+          "prediction_error_C": 1.9798201594257314
+        },
+        {
+          "time_s": 20815680.0,
+          "temperature_C": 21.984301227299113,
+          "command": 16.926485422876233,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.07314025115628,
+          "next_temperature_C": 21.984328074579082,
+          "prediction_error_C": 2.0888121765771963
+        },
+        {
+          "time_s": 20742660.0,
+          "temperature_C": 21.990821426002526,
+          "command": 20.109867442809634,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.749347123358913,
+          "next_temperature_C": 21.990840693891414,
+          "prediction_error_C": 1.7585064294674986
+        },
+        {
+          "time_s": 20790240.0,
+          "temperature_C": 23.461158706309277,
+          "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 25.495478534429786,
+          "next_temperature_C": 23.458061896164338,
+          "prediction_error_C": 2.037416638265448
+        },
+        {
+          "time_s": 20756880.0,
+          "temperature_C": 21.99266233914699,
+          "command": 21.76720361293454,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.5796433083639,
+          "next_temperature_C": 21.99278735427106,
+          "prediction_error_C": 1.5868559540928402
+        },
+        {
+          "time_s": 20798340.0,
+          "temperature_C": 22.541352430218012,
+          "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.54059618528642,
+          "next_temperature_C": 22.534449625316654,
+          "prediction_error_C": 2.0061465599697677
+        },
+        {
+          "time_s": 20808300.0,
+          "temperature_C": 21.980728558966803,
+          "command": 15.312804861209326,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.141269297481482,
+          "next_temperature_C": 21.98079432225694,
+          "prediction_error_C": 2.160474975224542
         },
         {
           "time_s": 20794740.0,
           "temperature_C": 23.00673710034772,
           "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 25.01111446424258,
           "next_temperature_C": 22.998827940713113,
-          "before_error_C": 1.0067371003477206,
-          "after_error_C": 0.9988279407131131,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
+          "prediction_error_C": 2.0122865235294682
         },
         {
-          "time_s": 20787360.0,
-          "temperature_C": 23.493978480615283,
-          "command": 12.0,
-          "next_temperature_C": 23.495207995581495,
-          "before_error_C": 1.493978480615283,
-          "after_error_C": 1.4952079955814952,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
+          "time_s": 20814840.0,
+          "temperature_C": 21.983883674311755,
+          "command": 16.755892358048172,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.086040863387094,
+          "next_temperature_C": 21.983912081749736,
+          "prediction_error_C": 2.102128781637358
         },
         {
-          "time_s": 20781120.0,
-          "temperature_C": 22.966668957598188,
-          "command": 12.0,
-          "next_temperature_C": 22.975265985372175,
-          "before_error_C": 0.9666689575981877,
-          "after_error_C": 0.9752659853721752,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
+          "time_s": 20775720.0,
+          "temperature_C": 22.052054408125798,
+          "command": 12.48798671859608,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.930511702826895,
+          "next_temperature_C": 22.05203313218675,
+          "prediction_error_C": 1.8784785706401443
         },
         {
-          "time_s": 20790720.0,
-          "temperature_C": 23.433413619535656,
-          "command": 12.0,
-          "next_temperature_C": 23.42947896265929,
-          "before_error_C": 1.4334136195356564,
-          "after_error_C": 1.4294789626592888,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
+          "time_s": 20748480.0,
+          "temperature_C": 21.990260981439462,
+          "command": 20.774232435311422,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.737614585147394,
+          "next_temperature_C": 21.990167726585412,
+          "prediction_error_C": 1.7474468585619825
         },
         {
-          "time_s": 20787600.0,
-          "temperature_C": 23.49850347595566,
-          "command": 12.0,
-          "next_temperature_C": 23.49946830510737,
-          "before_error_C": 1.4985034759556584,
-          "after_error_C": 1.4994683051073707,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
+          "time_s": 20820540.0,
+          "temperature_C": 21.98584451517536,
+          "command": 17.84858827685202,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.99306032175242,
+          "next_temperature_C": 21.9858555870926,
+          "prediction_error_C": 2.007204734659819
         },
         {
-          "time_s": 20785980.0,
-          "temperature_C": 23.446985394980004,
-          "command": 12.0,
-          "next_temperature_C": 23.449870344682495,
-          "before_error_C": 1.446985394980004,
-          "after_error_C": 1.4498703446824948,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
+          "time_s": 20808060.0,
+          "temperature_C": 21.980466191571963,
+          "command": 15.253771990574347,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.141311985687526,
+          "next_temperature_C": 21.980531775911004,
+          "prediction_error_C": 2.1607802097765223
         },
         {
-          "time_s": 20787240.0,
-          "temperature_C": 23.491326766860027,
+          "time_s": 20742600.0,
+          "temperature_C": 21.990802040225162,
+          "command": 20.102836318687142,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.74917703671191,
+          "next_temperature_C": 21.990821426002526,
+          "prediction_error_C": 1.7583556107093834
+        },
+        {
+          "time_s": 20819100.0,
+          "temperature_C": 21.985548308950342,
+          "command": 17.58484979409716,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.017750298291695,
+          "next_temperature_C": 21.985606943230778,
+          "prediction_error_C": 2.032143355060917
+        },
+        {
+          "time_s": 20818680.0,
+          "temperature_C": 21.98540908832223,
+          "command": 17.506792183206226,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.024808857793534,
+          "next_temperature_C": 21.985429050548134,
+          "prediction_error_C": 2.0393798072453997
+        },
+        {
+          "time_s": 20749980.0,
+          "temperature_C": 21.989806419549552,
+          "command": 20.971375823585372,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.703247750547334,
+          "next_temperature_C": 21.989827951888117,
+          "prediction_error_C": 1.713419798659217
+        },
+        {
+          "time_s": 20742240.0,
+          "temperature_C": 21.990682932635764,
+          "command": 20.060340385089123,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.74812713128749,
+          "next_temperature_C": 21.990703116638144,
+          "prediction_error_C": 1.7574240146493452
+        },
+        {
+          "time_s": 20752800.0,
+          "temperature_C": 21.990780856406786,
+          "command": 21.315788744467525,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.65372680029693,
+          "next_temperature_C": 21.990791143942943,
+          "prediction_error_C": 1.6629356563539872
+        },
+        {
+          "time_s": 20803380.0,
+          "temperature_C": 21.968841263458103,
+          "command": 13.860933791399669,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.117816892622194,
+          "next_temperature_C": 21.969181821752898,
+          "prediction_error_C": 2.1486350708692967
+        },
+        {
+          "time_s": 20802180.0,
+          "temperature_C": 21.956420129031073,
+          "command": 13.347230914219814,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.090332570401173,
+          "next_temperature_C": 21.957540242556718,
+          "prediction_error_C": 2.132792327844456
+        },
+        {
+          "time_s": 20765220.0,
+          "temperature_C": 22.16225450263221,
+          "command": 19.203512370095915,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.913589780052064,
+          "next_temperature_C": 22.143505726966055,
+          "prediction_error_C": 1.7700840530860091
+        },
+        {
+          "time_s": 20762040.0,
+          "temperature_C": 22.013790352054798,
+          "command": 21.379415592887025,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.79552899458246,
+          "next_temperature_C": 22.013947167100582,
+          "prediction_error_C": 1.7815818274818795
+        },
+        {
+          "time_s": 20768940.0,
+          "temperature_C": 22.046219070676955,
+          "command": 17.111445182751076,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.850227534341048,
+          "next_temperature_C": 22.04670840065029,
+          "prediction_error_C": 1.8035191336907594
+        },
+        {
+          "time_s": 20794260.0,
+          "temperature_C": 23.06900278841931,
           "command": 12.0,
-          "next_temperature_C": 23.492684567896617,
-          "before_error_C": 1.491326766860027,
-          "after_error_C": 1.4926845678966174,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": false
+          "action_valid": true,
+          "predicted_next_temperature_C": 25.074855440794252,
+          "next_temperature_C": 23.061313120739044,
+          "prediction_error_C": 2.0135423200552083
+        },
+        {
+          "time_s": 20815260.0,
+          "temperature_C": 21.984095041634873,
+          "command": 16.841758378960638,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.07955943286705,
+          "next_temperature_C": 21.984126646166374,
+          "prediction_error_C": 2.095432786700677
+        },
+        {
+          "time_s": 20742480.0,
+          "temperature_C": 21.99076288554471,
+          "command": 20.08873026374702,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.748832710314552,
+          "next_temperature_C": 21.990782530152273,
+          "prediction_error_C": 1.7580501801622788
+        },
+        {
+          "time_s": 20782740.0,
+          "temperature_C": 23.17553486390858,
+          "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 25.122704448687664,
+          "next_temperature_C": 23.182422633075078,
+          "prediction_error_C": 1.940281815612586
+        },
+        {
+          "time_s": 20772420.0,
+          "temperature_C": 22.054033315337904,
+          "command": 14.764066066828029,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.90289659086355,
+          "next_temperature_C": 22.0540552028001,
+          "prediction_error_C": 1.8488413880634482
+        },
+        {
+          "time_s": 20773920.0,
+          "temperature_C": 22.05424795811075,
+          "command": 13.715885052941893,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.91514299202935,
+          "next_temperature_C": 22.05423728345886,
+          "prediction_error_C": 1.8609057085704883
+        },
+        {
+          "time_s": 20809740.0,
+          "temperature_C": 21.982116581774278,
+          "command": 15.651548160631812,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.14094346932466,
+          "next_temperature_C": 21.982161407983426,
+          "prediction_error_C": 2.1587820613412347
+        },
+        {
+          "time_s": 20791320.0,
+          "temperature_C": 23.389760252714495,
+          "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 25.41927014139963,
+          "next_temperature_C": 23.384903185505095,
+          "prediction_error_C": 2.0343669558945336
+        },
+        {
+          "time_s": 20752860.0,
+          "temperature_C": 21.990791143942943,
+          "command": 21.32287263386909,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.652662120233,
+          "next_temperature_C": 21.990801455722533,
+          "prediction_error_C": 1.661860664510467
+        },
+        {
+          "time_s": 20820360.0,
+          "temperature_C": 21.985812396907193,
+          "command": 17.815845768965737,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.996170293151884,
+          "next_temperature_C": 21.9858223079832,
+          "prediction_error_C": 2.0103479851686856
+        },
+        {
+          "time_s": 20736000.0,
+          "temperature_C": 22.22412949178215,
+          "command": 21.10347357820485,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.06976624718245,
+          "next_temperature_C": 22.333611294519926,
+          "prediction_error_C": 1.736154952662524
+        },
+        {
+          "time_s": 20766480.0,
+          "temperature_C": 22.042437632272367,
+          "command": 18.476195477774976,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.82019388363477,
+          "next_temperature_C": 22.042052353373663,
+          "prediction_error_C": 1.7781415302611059
+        },
+        {
+          "time_s": 20739240.0,
+          "temperature_C": 21.989584976667174,
+          "command": 19.68290164136768,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.737065998406873,
+          "next_temperature_C": 21.989604816870553,
+          "prediction_error_C": 1.7474611815363197
+        },
+        {
+          "time_s": 20782080.0,
+          "temperature_C": 23.096100744816226,
+          "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 25.047804620340084,
+          "next_temperature_C": 23.10362189472073,
+          "prediction_error_C": 1.9441827256193527
+        },
+        {
+          "time_s": 20743500.0,
+          "temperature_C": 21.991079368457292,
+          "command": 20.206824223159533,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.751587694099797,
+          "next_temperature_C": 21.991095652337492,
+          "prediction_error_C": 1.760492041762305
+        },
+        {
+          "time_s": 20821920.0,
+          "temperature_C": 21.986001151439723,
+          "command": 18.098049284031195,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.96900659804366,
+          "next_temperature_C": 21.98600833273042,
+          "prediction_error_C": 1.9829982653132383
+        },
+        {
+          "time_s": 20791200.0,
+          "temperature_C": 23.399206156292905,
+          "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 25.42977044610297,
+          "next_temperature_C": 23.394527306369184,
+          "prediction_error_C": 2.0352431397337867
+        },
+        {
+          "time_s": 20760240.0,
+          "temperature_C": 22.010366384333793,
+          "command": 21.675261325567195,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.69765343389054,
+          "next_temperature_C": 22.01049086897558,
+          "prediction_error_C": 1.68716256491496
+        },
+        {
+          "time_s": 20769300.0,
+          "temperature_C": 22.048655807166767,
+          "command": 16.882152508759546,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.857328165993046,
+          "next_temperature_C": 22.048931614283845,
+          "prediction_error_C": 1.808396551709201
+        },
+        {
+          "time_s": 20805480.0,
+          "temperature_C": 21.976361961868065,
+          "command": 14.55971286305784,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.136713119116596,
+          "next_temperature_C": 21.976498514840728,
+          "prediction_error_C": 2.1602146042758683
+        },
+        {
+          "time_s": 20790120.0,
+          "temperature_C": 23.467026362175602,
+          "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 25.50104470331617,
+          "next_temperature_C": 23.4641470416135,
+          "prediction_error_C": 2.0368976617026675
+        },
+        {
+          "time_s": 20774160.0,
+          "temperature_C": 22.054195923176962,
+          "command": 13.548444807639655,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.91702662256861,
+          "next_temperature_C": 22.054179065003666,
+          "prediction_error_C": 1.862847557564944
+        },
+        {
+          "time_s": 20813040.0,
+          "temperature_C": 21.98327328451154,
+          "command": 16.376532060923676,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.11484680960741,
+          "next_temperature_C": 21.983287591660428,
+          "prediction_error_C": 2.1315592179469824
+        },
+        {
+          "time_s": 20783700.0,
+          "temperature_C": 23.278386798533973,
+          "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 25.226679032222766,
+          "next_temperature_C": 23.2842322798611,
+          "prediction_error_C": 1.9424467523616649
+        },
+        {
+          "time_s": 20758740.0,
+          "temperature_C": 22.00159553324221,
+          "command": 21.835024625751508,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.591254030963377,
+          "next_temperature_C": 22.002078911168724,
+          "prediction_error_C": 1.5891751197946533
+        },
+        {
+          "time_s": 20797080.0,
+          "temperature_C": 22.693225021001012,
+          "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.694252484976268,
+          "next_temperature_C": 22.68565953685561,
+          "prediction_error_C": 2.0085929481206577
+        },
+        {
+          "time_s": 20817360.0,
+          "temperature_C": 21.98495383376968,
+          "command": 17.256522347329742,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.0465449552951,
+          "next_temperature_C": 21.984975129250756,
+          "prediction_error_C": 2.0615698260443445
+        },
+        {
+          "time_s": 20784660.0,
+          "temperature_C": 23.363002951832073,
+          "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 25.315825754331485,
+          "next_temperature_C": 23.367650829432023,
+          "prediction_error_C": 1.9481749248994618
+        },
+        {
+          "time_s": 20778060.0,
+          "temperature_C": 22.37778107345298,
+          "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.336903851446095,
+          "next_temperature_C": 22.391729002505883,
+          "prediction_error_C": 1.945174848940212
+        },
+        {
+          "time_s": 20783160.0,
+          "temperature_C": 23.222581190570338,
+          "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 25.169837116096055,
+          "next_temperature_C": 23.229057148199672,
+          "prediction_error_C": 1.9407799678963826
         },
         {
           "time_s": 20788620.0,
           "temperature_C": 23.504907254243847,
           "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 25.519336446009046,
           "next_temperature_C": 23.50456244116276,
-          "before_error_C": 1.5049072542438466,
-          "after_error_C": 1.5045624411627614,
-          "expected_result": "closer_to_target",
-          "result_matches_expectation": true
+          "prediction_error_C": 2.0147740048462843
+        },
+        {
+          "time_s": 20803980.0,
+          "temperature_C": 21.971749223768256,
+          "command": 14.079333829308647,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.125481364835814,
+          "next_temperature_C": 21.97198908850379,
+          "prediction_error_C": 2.153492276332024
+        },
+        {
+          "time_s": 20818980.0,
+          "temperature_C": 21.98550800343628,
+          "command": 17.56262585657315,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.019773452690185,
+          "next_temperature_C": 21.985527665633867,
+          "prediction_error_C": 2.0342457870563173
+        },
+        {
+          "time_s": 20746500.0,
+          "temperature_C": 21.99142267814119,
+          "command": 20.542646319675093,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.758199900187623,
+          "next_temperature_C": 21.991435400742148,
+          "prediction_error_C": 1.7667644994454754
+        },
+        {
+          "time_s": 20806140.0,
+          "temperature_C": 21.97771820054288,
+          "command": 14.749785951077826,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.139236901438117,
+          "next_temperature_C": 21.977813599913816,
+          "prediction_error_C": 2.1614233015243016
+        },
+        {
+          "time_s": 20756580.0,
+          "temperature_C": 21.992090904054635,
+          "command": 21.73978265706311,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.585241264636128,
+          "next_temperature_C": 21.992197884163147,
+          "prediction_error_C": 1.5930433804729809
+        },
+        {
+          "time_s": 20785680.0,
+          "temperature_C": 23.431329015022925,
+          "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 25.392830679730963,
+          "next_temperature_C": 23.43462420714809,
+          "prediction_error_C": 1.958206472582873
+        },
+        {
+          "time_s": 20783220.0,
+          "temperature_C": 23.229057148199672,
+          "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 25.17637657579031,
+          "next_temperature_C": 23.235466474431007,
+          "prediction_error_C": 1.9409101013593038
+        },
+        {
+          "time_s": 20798160.0,
+          "temperature_C": 22.562255729747335,
+          "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.561894056708727,
+          "next_temperature_C": 22.555255979841036,
+          "prediction_error_C": 2.0066380768676915
+        },
+        {
+          "time_s": 20744820.0,
+          "temperature_C": 21.991283163978267,
+          "command": 20.355665119787027,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.754634881692517,
+          "next_temperature_C": 21.991287585729253,
+          "prediction_error_C": 1.7633472959632641
+        },
+        {
+          "time_s": 20779620.0,
+          "temperature_C": 22.71768032341612,
+          "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.70006508080986,
+          "next_temperature_C": 22.729471412211524,
+          "prediction_error_C": 1.9705936685983367
+        },
+        {
+          "time_s": 20807340.0,
+          "temperature_C": 21.979616849851197,
+          "command": 15.071846472212691,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.14129872183532,
+          "next_temperature_C": 21.979692872940234,
+          "prediction_error_C": 2.1616058488950856
+        },
+        {
+          "time_s": 20750760.0,
+          "temperature_C": 21.990266387850852,
+          "command": 21.0699824533713,
+          "action_valid": true,
+          "predicted_next_temperature_C": 23.68935673667029,
+          "next_temperature_C": 21.990296860477827,
+          "prediction_error_C": 1.6990598761924645
+        },
+        {
+          "time_s": 20787780.0,
+          "temperature_C": 23.501192063216195,
+          "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 25.497601590338686,
+          "next_temperature_C": 23.501949039741362,
+          "prediction_error_C": 1.995652550597324
+        },
+        {
+          "time_s": 20817900.0,
+          "temperature_C": 21.985143490769246,
+          "command": 17.35983194407786,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.03773690807172,
+          "next_temperature_C": 21.98516439391699,
+          "prediction_error_C": 2.0525725141547326
+        },
+        {
+          "time_s": 20809680.0,
+          "temperature_C": 21.98207062121884,
+          "command": 15.637875235949245,
+          "action_valid": true,
+          "predicted_next_temperature_C": 24.141009396748334,
+          "next_temperature_C": 21.982116581774278,
+          "prediction_error_C": 2.158892814974056
+        },
+        {
+          "time_s": 20791920.0,
+          "temperature_C": 23.33716831257135,
+          "command": 12.0,
+          "action_valid": true,
+          "predicted_next_temperature_C": 25.360414990005474,
+          "next_temperature_C": 23.331437861428697,
+          "prediction_error_C": 2.028977128576777
         }
       ]
     }
@@ -2036,8 +1850,10 @@
   "summary": {
     "trace_count": 2,
     "sample_count": 200,
-    "matches": 111,
-    "match_rate": 0.555
+    "action_valid_count": 200,
+    "mae_C": 1.6073129260523193,
+    "rmse_C": 1.6567870667880191,
+    "within_0_5_C_pct": 0.0
   },
   "boundary": "Existing custom BOPTEST trace replay only; no new FMU execution, official REST/KPI equivalence, physical chassis, or causal intervention claim."
 }
