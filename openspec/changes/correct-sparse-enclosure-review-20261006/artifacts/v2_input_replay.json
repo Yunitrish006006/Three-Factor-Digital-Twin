@@ -1,0 +1,8 @@
+{
+  "controller_version": "raw-warning-v2",
+  "runs": 72,
+  "steps": 12960,
+  "command_or_warning_differences": [],
+  "maximum_prediction_difference": 0.0,
+  "scope": "Input-only regression under archived actions. Any changed action needs a separate future closed-loop protocol; no opened input relabeled unseen."
+}

@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "errors": [],
+  "verified_runs": 108,
+  "verified_steps": 19440,
+  "reference_commit": "ebb40f96731f8956880b8e1ad2921ded8ac8a4ea",
+  "numerical_tolerance_C": 0.01,
+  "maximum_reference_difference": {
+    "source_C": 0.0005739044748480637,
+    "observed_temperature_C": 0.0005128782559076228,
+    "fan": 2.220446049250313e-16
+  },
+  "scope": "Retrospective scorer integrity, not a new holdout evaluation or controller truth input."
+}

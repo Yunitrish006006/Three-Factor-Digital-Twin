@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "observations": [
+    {
+      "artifact": "docs/reports/professor_research_2026-10-06_zh.html",
+      "artifact_sha256": "99a42afb1f9bb005d9a9e9038f548712c329bd078376954b516ad880d37e962a",
+      "observed_utc": "2026-10-06T04:19:40.332Z",
+      "observer": "root",
+      "method": "Browser Chrome extension DOM, locator interaction, console and observed screenshots",
+      "scope": "updated HTML responsive layout, anchors, details and Q/R teaching interaction; print not evaluated",
+      "status": "PASS",
+      "checks": {
+        "desktop": "PASS",
+        "tablet": "PASS",
+        "mobile": "PASS",
+        "anchors": "PASS",
+        "interaction": "PASS",
+        "console": "PASS",
+        "local_links": "PASS",
+        "offline_assets": "PASS"
+      },
+      "evidence": [
+        {
+          "path": "openspec/changes/correct-sparse-enclosure-review-20261006/artifacts/browser_checks.json",
+          "sha256": "450d0b6a9b1d5d54cd34a502631989bd6c8bddb35a4218d0959b91324ea93087"
+        },
+        {
+          "path": "openspec/changes/correct-sparse-enclosure-review-20261006/artifacts/html-desktop.jpg",
+          "sha256": "2968e665fb00ecc714b5e7d35760fbfe7973a93f893790111a6be34f100db29c"
+        },
+        {
+          "path": "openspec/changes/correct-sparse-enclosure-review-20261006/artifacts/html-tablet.jpg",
+          "sha256": "0e4e8f5c55327045c3bb90f66af5ca2630d017c73e1d6dcdaae17d30fa6e03a5"
+        },
+        {
+          "path": "openspec/changes/correct-sparse-enclosure-review-20261006/artifacts/html-mobile.jpg",
+          "sha256": "f7f79a49e27cbac521c396ac48f8482080c7bfd98a2fc742f8f88ac8a71b41a1"
+        }
+      ]
+    },
+    {
+      "artifact": "docs/papers/thesis/thesis_draft_zh.pdf",
+      "artifact_sha256": "1b454ac8cbb15a6c3fd707a1ed8e000090c19e2593d75060bab0cbace3c4bbc5",
+      "observed_utc": "2026-10-06T04:20:06.104627+00:00",
+      "observer": "root",
+      "method": "pdftoppm rendering and view_image visual inspection",
+      "scope": "PDF file pages [89, 90] only; not complete Office QA",
+      "status": "PASS",
+      "checks": {
+        "inspected_pages": "PASS"
+      },
+      "evidence": [
+        {
+          "path": "openspec/changes/correct-sparse-enclosure-review-20261006/artifacts/pdf_checks.json",
+          "sha256": "eceaeff5f52b21310a76117ca103d3cb1f65a1ae0522ebb2c1a5fba613f4a8ba"
+        },
+        {
+          "path": "openspec/changes/correct-sparse-enclosure-review-20261006/artifacts/thesis_draft_zh-page-89.png",
+          "sha256": "e48bcfa6163994694809b8b604da054a8ab968a22797ff073552186d52c6e7e0"
+        },
+        {
+          "path": "openspec/changes/correct-sparse-enclosure-review-20261006/artifacts/thesis_draft_zh-page-90.png",
+          "sha256": "73c8a5f9b6bcb5124aa5b9a45bdde3fcebb7409c5d88a8b680df3145aaf4bbca"
+        }
+      ]
+    },
+    {
+      "artifact": "docs/papers/ieee/paper.pdf",
+      "artifact_sha256": "08d4adb1279686587a23c05d3095aa52313a9d358f7968642e1c584d52103cc8",
+      "observed_utc": "2026-10-06T04:20:06.104627+00:00",
+      "observer": "root",
+      "method": "pdftoppm rendering and view_image visual inspection",
+      "scope": "PDF file pages [7] only; not complete Office QA",
+      "status": "PASS",
+      "checks": {
+        "inspected_pages": "PASS"
+      },
+      "evidence": [
+        {
+          "path": "openspec/changes/correct-sparse-enclosure-review-20261006/artifacts/pdf_checks.json",
+          "sha256": "eceaeff5f52b21310a76117ca103d3cb1f65a1ae0522ebb2c1a5fba613f4a8ba"
+        },
+        {
+          "path": "openspec/changes/correct-sparse-enclosure-review-20261006/artifacts/paper-page-7.png",
+          "sha256": "7a03a13870b0f8c73f6921c199fb376fed565282e0f45c635d95897f06732080"
+        }
+      ]
+    }
+  ]
+}

@@ -9,6 +9,7 @@ os.environ.setdefault('MPLCONFIGDIR', tempfile.mkdtemp(prefix='sparse-enclosure-
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+matplotlib.rcParams['svg.hashsalt'] = 'sparse-enclosure-report-20261006'
 
 from sparse_enclosure_summary import ROOT, ARTIFACTS, summary
 
@@ -27,7 +28,7 @@ def chart(data):
     ax.set_title('Synthetic holdout: 3 assumed rigs x 2 seeds; equal episode weighting')
     ax.tick_params(axis='x',labelsize=9)
     ax.spines[['right','top']].set_visible(False)
-    out=io.StringIO(); fig.savefig(out,format='svg'); plt.close(fig)
+    out=io.StringIO(); fig.savefig(out,format='svg',metadata={'Date':None}); plt.close(fig)
     svg=out.getvalue(); svg=svg[svg.index('<svg'):]
     return svg.replace('<svg ','<svg role="img" aria-label="六種方法的合成holdout追蹤MAE比較" ',1)
 
@@ -92,6 +93,7 @@ C_a dT_a/dt = (G_p+k_p f)(T_p−T_a) − (G_a+k_a f)(T_a−T_in)
 <p>六步排序的風扇 proxy 比 PI 低，但追蹤較差；這是誤差與操作成本的權衡，不能只看其中一欄就宣稱全面較好。所有閉迴路命令都符合預先固定的 PWM 與每步變化限制。</p>
 <details><summary>如何避免把估測改善當成控制改善</summary><p>估測比較使用同一份開迴路命令，分別對照名義物理、辨識物理和稀疏校正；控制比較另看 PI、PID、H=1、H=6 與移除校正。改善約 49.06% 指的是熱源估測，不是實體散熱效果。</p></details></section>
 <section id="limits"><h2>我仍然遇到的限制</h2><p>{escape(data['boundary'])}</p>
+<h3>先區分散熱能力與控制誤差</h3><p>{escape(data['corrections'])}</p>
 <p>全部評估回合的最高熱源溫度是 {maxsource:.3f}°C。表中的超溫按每 5 秒末端取樣計算，不保證捕捉連續時間尖峰；感測噪聲或未建模熱量會讓估測警告晚於真實超溫。校正成功和命令合規都不能證明硬體安全。</p>
 <p>這輪兩個事前探索判準都通過，但只支持這組指定熱網路內的可行性。已開啟的測試不再作為未來改進的未見確認資料，我沒有用結果回頭改設定。</p></section>
 <section id="lqr"><h2>下週介紹：LQR 與 Kalman 1960</h2>

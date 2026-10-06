@@ -1,0 +1,7 @@
+{
+  "scope": "Actual verify_sync integration probe in isolated temporary root; no source artifact changed",
+  "baseline_html": "PASS",
+  "changed_content_checks": "PASS",
+  "changed_html_delivery": "NOT_ACCEPTED",
+  "changed_observed_qa": "STALE"
+}

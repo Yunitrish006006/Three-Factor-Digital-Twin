@@ -1,0 +1,378 @@
+{
+  "evidence_class": "retrospective_assumed_network_capacity_diagnostic",
+  "example": {
+    "rig": "contact_poor",
+    "inlet_C": 22.0,
+    "total_heat_W": 3.35,
+    "fan": 1.0,
+    "source_equilibrium_C": 32.39986167374765
+  },
+  "contact_poor_rank_h6": {
+    "n": 360,
+    "held_input_full_fan_equilibrium_above_limit_steps": 150,
+    "actual_sampled_overtemp_steps": 124
+  },
+  "episodes": [
+    {
+      "rig": "contact_poor",
+      "seed": 610621,
+      "method": "fixed",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 30,
+      "held_input_target_outside_steady_fan_range_steps": 120,
+      "max_full_fan_equilibrium_C": 30.897645539749576,
+      "actual_sampled_overtemp_steps": 0
+    },
+    {
+      "rig": "contact_poor",
+      "seed": 610621,
+      "method": "pi",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 30,
+      "held_input_target_outside_steady_fan_range_steps": 120,
+      "max_full_fan_equilibrium_C": 30.897645539749576,
+      "actual_sampled_overtemp_steps": 0
+    },
+    {
+      "rig": "contact_poor",
+      "seed": 610621,
+      "method": "pid",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 30,
+      "held_input_target_outside_steady_fan_range_steps": 120,
+      "max_full_fan_equilibrium_C": 30.897645539749576,
+      "actual_sampled_overtemp_steps": 0
+    },
+    {
+      "rig": "contact_poor",
+      "seed": 610621,
+      "method": "rank_h1",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 30,
+      "held_input_target_outside_steady_fan_range_steps": 120,
+      "max_full_fan_equilibrium_C": 30.897645539749576,
+      "actual_sampled_overtemp_steps": 16
+    },
+    {
+      "rig": "contact_poor",
+      "seed": 610621,
+      "method": "rank_h6",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 30,
+      "held_input_target_outside_steady_fan_range_steps": 120,
+      "max_full_fan_equilibrium_C": 30.897645539749576,
+      "actual_sampled_overtemp_steps": 12
+    },
+    {
+      "rig": "contact_poor",
+      "seed": 610621,
+      "method": "rank_h6_no_correction",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 30,
+      "held_input_target_outside_steady_fan_range_steps": 120,
+      "max_full_fan_equilibrium_C": 30.897645539749576,
+      "actual_sampled_overtemp_steps": 19
+    },
+    {
+      "rig": "contact_poor",
+      "seed": 610622,
+      "method": "fixed",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 120,
+      "held_input_target_outside_steady_fan_range_steps": 140,
+      "max_full_fan_equilibrium_C": 31.926561311990465,
+      "actual_sampled_overtemp_steps": 108
+    },
+    {
+      "rig": "contact_poor",
+      "seed": 610622,
+      "method": "pi",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 120,
+      "held_input_target_outside_steady_fan_range_steps": 140,
+      "max_full_fan_equilibrium_C": 31.926561311990465,
+      "actual_sampled_overtemp_steps": 112
+    },
+    {
+      "rig": "contact_poor",
+      "seed": 610622,
+      "method": "pid",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 120,
+      "held_input_target_outside_steady_fan_range_steps": 140,
+      "max_full_fan_equilibrium_C": 31.926561311990465,
+      "actual_sampled_overtemp_steps": 112
+    },
+    {
+      "rig": "contact_poor",
+      "seed": 610622,
+      "method": "rank_h1",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 120,
+      "held_input_target_outside_steady_fan_range_steps": 140,
+      "max_full_fan_equilibrium_C": 31.926561311990465,
+      "actual_sampled_overtemp_steps": 112
+    },
+    {
+      "rig": "contact_poor",
+      "seed": 610622,
+      "method": "rank_h6",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 120,
+      "held_input_target_outside_steady_fan_range_steps": 140,
+      "max_full_fan_equilibrium_C": 31.926561311990465,
+      "actual_sampled_overtemp_steps": 112
+    },
+    {
+      "rig": "contact_poor",
+      "seed": 610622,
+      "method": "rank_h6_no_correction",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 120,
+      "held_input_target_outside_steady_fan_range_steps": 140,
+      "max_full_fan_equilibrium_C": 31.926561311990465,
+      "actual_sampled_overtemp_steps": 112
+    },
+    {
+      "rig": "metal_path",
+      "seed": 610621,
+      "method": "fixed",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 0,
+      "held_input_target_outside_steady_fan_range_steps": 98,
+      "max_full_fan_equilibrium_C": 28.1497534927139,
+      "actual_sampled_overtemp_steps": 0
+    },
+    {
+      "rig": "metal_path",
+      "seed": 610621,
+      "method": "pi",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 0,
+      "held_input_target_outside_steady_fan_range_steps": 98,
+      "max_full_fan_equilibrium_C": 28.1497534927139,
+      "actual_sampled_overtemp_steps": 0
+    },
+    {
+      "rig": "metal_path",
+      "seed": 610621,
+      "method": "pid",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 0,
+      "held_input_target_outside_steady_fan_range_steps": 98,
+      "max_full_fan_equilibrium_C": 28.1497534927139,
+      "actual_sampled_overtemp_steps": 0
+    },
+    {
+      "rig": "metal_path",
+      "seed": 610621,
+      "method": "rank_h1",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 0,
+      "held_input_target_outside_steady_fan_range_steps": 98,
+      "max_full_fan_equilibrium_C": 28.1497534927139,
+      "actual_sampled_overtemp_steps": 0
+    },
+    {
+      "rig": "metal_path",
+      "seed": 610621,
+      "method": "rank_h6",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 0,
+      "held_input_target_outside_steady_fan_range_steps": 98,
+      "max_full_fan_equilibrium_C": 28.1497534927139,
+      "actual_sampled_overtemp_steps": 0
+    },
+    {
+      "rig": "metal_path",
+      "seed": 610621,
+      "method": "rank_h6_no_correction",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 0,
+      "held_input_target_outside_steady_fan_range_steps": 98,
+      "max_full_fan_equilibrium_C": 28.1497534927139,
+      "actual_sampled_overtemp_steps": 0
+    },
+    {
+      "rig": "metal_path",
+      "seed": 610622,
+      "method": "fixed",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 0,
+      "held_input_target_outside_steady_fan_range_steps": 60,
+      "max_full_fan_equilibrium_C": 28.70100629540548,
+      "actual_sampled_overtemp_steps": 0
+    },
+    {
+      "rig": "metal_path",
+      "seed": 610622,
+      "method": "pi",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 0,
+      "held_input_target_outside_steady_fan_range_steps": 60,
+      "max_full_fan_equilibrium_C": 28.70100629540548,
+      "actual_sampled_overtemp_steps": 0
+    },
+    {
+      "rig": "metal_path",
+      "seed": 610622,
+      "method": "pid",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 0,
+      "held_input_target_outside_steady_fan_range_steps": 60,
+      "max_full_fan_equilibrium_C": 28.70100629540548,
+      "actual_sampled_overtemp_steps": 0
+    },
+    {
+      "rig": "metal_path",
+      "seed": 610622,
+      "method": "rank_h1",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 0,
+      "held_input_target_outside_steady_fan_range_steps": 60,
+      "max_full_fan_equilibrium_C": 28.70100629540548,
+      "actual_sampled_overtemp_steps": 16
+    },
+    {
+      "rig": "metal_path",
+      "seed": 610622,
+      "method": "rank_h6",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 0,
+      "held_input_target_outside_steady_fan_range_steps": 60,
+      "max_full_fan_equilibrium_C": 28.70100629540548,
+      "actual_sampled_overtemp_steps": 0
+    },
+    {
+      "rig": "metal_path",
+      "seed": 610622,
+      "method": "rank_h6_no_correction",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 0,
+      "held_input_target_outside_steady_fan_range_steps": 60,
+      "max_full_fan_equilibrium_C": 28.70100629540548,
+      "actual_sampled_overtemp_steps": 0
+    },
+    {
+      "rig": "duct_assumption",
+      "seed": 610621,
+      "method": "fixed",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 0,
+      "held_input_target_outside_steady_fan_range_steps": 106,
+      "max_full_fan_equilibrium_C": 27.3323070935708,
+      "actual_sampled_overtemp_steps": 0
+    },
+    {
+      "rig": "duct_assumption",
+      "seed": 610621,
+      "method": "pi",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 0,
+      "held_input_target_outside_steady_fan_range_steps": 106,
+      "max_full_fan_equilibrium_C": 27.3323070935708,
+      "actual_sampled_overtemp_steps": 0
+    },
+    {
+      "rig": "duct_assumption",
+      "seed": 610621,
+      "method": "pid",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 0,
+      "held_input_target_outside_steady_fan_range_steps": 106,
+      "max_full_fan_equilibrium_C": 27.3323070935708,
+      "actual_sampled_overtemp_steps": 0
+    },
+    {
+      "rig": "duct_assumption",
+      "seed": 610621,
+      "method": "rank_h1",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 0,
+      "held_input_target_outside_steady_fan_range_steps": 106,
+      "max_full_fan_equilibrium_C": 27.3323070935708,
+      "actual_sampled_overtemp_steps": 0
+    },
+    {
+      "rig": "duct_assumption",
+      "seed": 610621,
+      "method": "rank_h6",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 0,
+      "held_input_target_outside_steady_fan_range_steps": 106,
+      "max_full_fan_equilibrium_C": 27.3323070935708,
+      "actual_sampled_overtemp_steps": 0
+    },
+    {
+      "rig": "duct_assumption",
+      "seed": 610621,
+      "method": "rank_h6_no_correction",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 0,
+      "held_input_target_outside_steady_fan_range_steps": 106,
+      "max_full_fan_equilibrium_C": 27.3323070935708,
+      "actual_sampled_overtemp_steps": 0
+    },
+    {
+      "rig": "duct_assumption",
+      "seed": 610622,
+      "method": "fixed",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 0,
+      "held_input_target_outside_steady_fan_range_steps": 0,
+      "max_full_fan_equilibrium_C": 27.74146411237478,
+      "actual_sampled_overtemp_steps": 0
+    },
+    {
+      "rig": "duct_assumption",
+      "seed": 610622,
+      "method": "pi",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 0,
+      "held_input_target_outside_steady_fan_range_steps": 0,
+      "max_full_fan_equilibrium_C": 27.74146411237478,
+      "actual_sampled_overtemp_steps": 0
+    },
+    {
+      "rig": "duct_assumption",
+      "seed": 610622,
+      "method": "pid",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 0,
+      "held_input_target_outside_steady_fan_range_steps": 0,
+      "max_full_fan_equilibrium_C": 27.74146411237478,
+      "actual_sampled_overtemp_steps": 0
+    },
+    {
+      "rig": "duct_assumption",
+      "seed": 610622,
+      "method": "rank_h1",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 0,
+      "held_input_target_outside_steady_fan_range_steps": 0,
+      "max_full_fan_equilibrium_C": 27.74146411237478,
+      "actual_sampled_overtemp_steps": 0
+    },
+    {
+      "rig": "duct_assumption",
+      "seed": 610622,
+      "method": "rank_h6",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 0,
+      "held_input_target_outside_steady_fan_range_steps": 0,
+      "max_full_fan_equilibrium_C": 27.74146411237478,
+      "actual_sampled_overtemp_steps": 0
+    },
+    {
+      "rig": "duct_assumption",
+      "seed": 610622,
+      "method": "rank_h6_no_correction",
+      "n": 180,
+      "held_input_full_fan_equilibrium_above_limit_steps": 0,
+      "held_input_target_outside_steady_fan_range_steps": 0,
+      "max_full_fan_equilibrium_C": 27.74146411237478,
+      "actual_sampled_overtemp_steps": 0
+    }
+  ],
+  "boundary": "Held-input steady equilibria are not actual overtemperature counts or finite-horizon infeasibility. No hypothesis criterion or existing result is changed."
+}

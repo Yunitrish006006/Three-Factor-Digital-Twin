@@ -74,3 +74,4 @@
 - [LQR 代表論文筆記](lqr_kalman1960_reading_2026-10-06_zh.md)
 - [下週口頭講稿](../reports/lqr_oral_script_2026-10-06_zh.md)
 - [離線報告：LQR 與代表論文](../reports/professor_research_2026-10-06_zh.html#lqr)
+- [獨立審查修正與新版研究入口](sparse_enclosure_corrections_2026-10-06_zh.md)

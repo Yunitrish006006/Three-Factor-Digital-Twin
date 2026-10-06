@@ -1,5 +1,11 @@
 # 論文現況整理與同步狀態
 
+## 2026-10-06 獨立審查後修正
+
+原始感測警告、scorer 時間／真值連續／独立動態與 visual QA 來源三项問題已修正，並補上穩態散熱能力診斷。新版與核對入口見 [修正說明](../research/sparse_enclosure_corrections_2026-10-06_zh.md)；目前同步核對來源改為 `openspec/changes/correct-sparse-enclosure-review-20261006/artifacts/artifact_sync_verification.json`，原同步檔保留為歷史紀錄。
+
+本次 18 項內容與副本核對通過；HTML 目前位元組與實際三種寬度／互動 QA 相符。中文 PDF 檔頁 89–90、IEEE 檔頁 7 已目視檢查，僅接受這些範圍。完整 Office 渲染、HTML 列印仍未評估；IEEE 仍 8 頁，不宣稱投稿完成。原凍結研究及 E15 不重跑、不覆寫；72 回合新版輸入回放不是新 holdout。
+
 ## 2026-09-08 GitHub 整理補記
 
 本次已補齊 E15 完成勾選，並成功重建中文 DOCX／PDF 及英文 IEEE PDF；中文 DOCX／PDF 的 outputs 副本一併同步。數值核對 110 PASS、0 FAIL、0 MISSING。依使用者網頁簡報偏好，新增 [本週 HTML 報告](../reports/weekly_progress_2026-09-08_zh.html)，歷史 PPTX 保留。

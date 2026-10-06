@@ -1,0 +1,68 @@
+{
+  "observed_utc": "2026-10-06T04:19:40.332Z",
+  "viewports": [
+    {
+      "bodyScrollWidth": 1425,
+      "bodyWidth": 1425,
+      "externalAssets": 0,
+      "localLinks": [
+        "../research/lqr_kalman1960_reading_2026-10-06_zh.md",
+        "lqr_oral_script_2026-10-06_zh.md",
+        "../research/enclosure_transfer_sources_2026-10-06_zh.md",
+        "../../openspec/changes/prototype-sparse-enclosure-transfer-20261006/protocol.md",
+        "../../openspec/changes/prototype-sparse-enclosure-transfer-20261006/artifacts/result.json",
+        "../../openspec/changes/prototype-sparse-enclosure-transfer-20261006/artifacts/input_replay_audit.json",
+        "professor_catchup_report_2026-10-05_zh.html"
+      ],
+      "missingAnchors": 0,
+      "width": 1440
+    },
+    {
+      "bodyScrollWidth": 805,
+      "bodyWidth": 805,
+      "externalAssets": 0,
+      "localLinks": [
+        "../research/lqr_kalman1960_reading_2026-10-06_zh.md",
+        "lqr_oral_script_2026-10-06_zh.md",
+        "../research/enclosure_transfer_sources_2026-10-06_zh.md",
+        "../../openspec/changes/prototype-sparse-enclosure-transfer-20261006/protocol.md",
+        "../../openspec/changes/prototype-sparse-enclosure-transfer-20261006/artifacts/result.json",
+        "../../openspec/changes/prototype-sparse-enclosure-transfer-20261006/artifacts/input_replay_audit.json",
+        "professor_catchup_report_2026-10-05_zh.html"
+      ],
+      "missingAnchors": 0,
+      "width": 820
+    },
+    {
+      "bodyScrollWidth": 375,
+      "bodyWidth": 375,
+      "externalAssets": 0,
+      "localLinks": [
+        "../research/lqr_kalman1960_reading_2026-10-06_zh.md",
+        "lqr_oral_script_2026-10-06_zh.md",
+        "../research/enclosure_transfer_sources_2026-10-06_zh.md",
+        "../../openspec/changes/prototype-sparse-enclosure-transfer-20261006/protocol.md",
+        "../../openspec/changes/prototype-sparse-enclosure-transfer-20261006/artifacts/result.json",
+        "../../openspec/changes/prototype-sparse-enclosure-transfer-20261006/artifacts/input_replay_audit.json",
+        "professor_catchup_report_2026-10-05_zh.html"
+      ],
+      "missingAnchors": 0,
+      "width": 390
+    }
+  ],
+  "details_expanded": true,
+  "console": [],
+  "scope": "updated HTML responsive layout, anchors, details and Q/R teaching interaction; print not evaluated",
+  "interaction_before": "K = -0.503；未限幅 PWM = 2.009；套用 0.2–1 示意限制後 = 1.000",
+  "interaction_after": "K = -0.608；未限幅 PWM = 2.323；套用 0.2–1 示意限制後 = 1.000",
+  "local_links_checked": [
+    "../research/lqr_kalman1960_reading_2026-10-06_zh.md",
+    "lqr_oral_script_2026-10-06_zh.md",
+    "../research/enclosure_transfer_sources_2026-10-06_zh.md",
+    "../../openspec/changes/prototype-sparse-enclosure-transfer-20261006/protocol.md",
+    "../../openspec/changes/prototype-sparse-enclosure-transfer-20261006/artifacts/result.json",
+    "../../openspec/changes/prototype-sparse-enclosure-transfer-20261006/artifacts/input_replay_audit.json",
+    "professor_catchup_report_2026-10-05_zh.html"
+  ],
+  "missing_local_files": []
+}
