@@ -1,0 +1,3 @@
+# Correct independent-review findings
+
+R1 misses raw plate/air warning, R2 omits scorer time/dynamics, R3 reissues stale visual QA. Add a versioned controller and archive regression entrypoint, independent scored-plant audit, hash-bound observation records and retrospective cooling-capacity analysis. Preserve all E-ENC-31 frozen sources/results and E15. Claim impact: stronger integrity checks, unchanged pilot outcomes; no new holdout or deployment claim. Synchronize Chinese thesis/builder/DOCX/PDF, IEEE tex/bib/PDF, existing presentation source/outlines/outputs and professor HTML. Full Office visual QA remains pending.
