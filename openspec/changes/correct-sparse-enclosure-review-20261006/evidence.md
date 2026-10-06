@@ -32,7 +32,9 @@ Current content checks, output hashes, page/slide counts and actual observation 
 
 ## Independent re-review
 
-A separate `correction_rereviewer` role is actively performing read-only adversarial checks after implementation. Final findings/resolution and publication checkpoint are recorded after the role returns; this section is not a claim that a planned review has passed.
+A separate `correction_rereviewer` role completed actual read-only adversarial checks of implementation checkpoint `0ba6d194410b55533ef94fcd34de1a37e78f0f8e`. It confirmed R1/R2/R3 resolved with no newly confirmed P1/P2 in the corrective scope. It independently ran 18 focused tests, raw-threshold boundary probes (two channels × six methods), timestamp/coordinated-truth/fan mutations, actual broken/missing-HTML-QA probes, 115 original Git-byte comparisons, replay and capacity recalculation. It did not rerun the full suite or perform fresh Browser/PDF observation. Full findings and retained limits are in `docs/reviews/independent_research_rereview_2026-10-06_zh.md`.
+
+The implementation checkpoint was pushed to origin/main; the following documentation checkpoint preserves the independent review and completion status. Git remote verification is performed after publishing that checkpoint; no CI or physical acceptance is inferred from successful push.
 
 ## Remaining scope
 

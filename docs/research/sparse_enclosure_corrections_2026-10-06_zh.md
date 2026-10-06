@@ -39,4 +39,4 @@ command, info = controller.step(
 
 重建 HTML／PDF 後必須重新檢查改動範圍並另寫 hash-bound 觀察，不能只更新舊紀錄的雜湊。當新版動作真的改變時，要先建立新的閉迴路 protocol，不能把舊回放結果當成完整控制評估。
 
-執行證據見 [corrective evidence](../../openspec/changes/correct-sparse-enclosure-review-20261006/evidence.md)；獨立複審另存於 `docs/reviews/`。
+執行證據見 [corrective evidence](../../openspec/changes/correct-sparse-enclosure-review-20261006/evidence.md)；[獨立複審](../reviews/independent_research_rereview_2026-10-06_zh.md) 已確認三項問題解決，本次修正範圍未發現新的 P1／P2 缺陷。
