@@ -1,0 +1,77 @@
+{
+  "contact_poor": {
+    "success": true,
+    "fallback": false,
+    "nfev": 6,
+    "cost": 1.081026934204122,
+    "jacobian_condition": 2.405103297244837,
+    "estimated_parameters": {
+      "capacities": [
+        20.0,
+        80.0,
+        30.0
+      ],
+      "contact": 0.47849924450139697,
+      "plate_base": 0.15,
+      "plate_fan": 0.8082840942293251,
+      "air_base": 1.0,
+      "air_fan": 1.5,
+      "bypass": 0.05,
+      "fan_tau": 15.0
+    },
+    "input_temperature_channels": [
+      "plate",
+      "air"
+    ]
+  },
+  "metal_path": {
+    "success": true,
+    "fallback": false,
+    "nfev": 7,
+    "cost": 1.0891609388484693,
+    "jacobian_condition": 8.07642303205155,
+    "estimated_parameters": {
+      "capacities": [
+        20.0,
+        80.0,
+        30.0
+      ],
+      "contact": 1.1885802281258064,
+      "plate_base": 0.15,
+      "plate_fan": 0.8004442736516559,
+      "air_base": 1.0,
+      "air_fan": 1.5,
+      "bypass": 0.05,
+      "fan_tau": 15.0
+    },
+    "input_temperature_channels": [
+      "plate",
+      "air"
+    ]
+  },
+  "duct_assumption": {
+    "success": true,
+    "fallback": false,
+    "nfev": 7,
+    "cost": 1.0903339829899865,
+    "jacobian_condition": 5.134032575788705,
+    "estimated_parameters": {
+      "capacities": [
+        20.0,
+        80.0,
+        30.0
+      ],
+      "contact": 1.1745912755313954,
+      "plate_base": 0.15,
+      "plate_fan": 1.2937381258445462,
+      "air_base": 1.0,
+      "air_fan": 1.5,
+      "bypass": 0.05,
+      "fan_tau": 15.0
+    },
+    "input_temperature_channels": [
+      "plate",
+      "air"
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "utc": "2026-10-06T03:36:09.647348+00:00",
+  "source_hashes": {
+    "digital_twin/control/sparse_enclosure.py": "39ff11667e891b58cae489ec2965a5df9258e865650e6cd8b2e4cdc69489a000",
+    "scripts/run_sparse_enclosure.py": "755b847e0af51e2dac03639da319a2c7589552ccc1ad6407a1d8b50d41258fe6",
+    "scripts/verify_sparse_enclosure.py": "cec5525820635386c2153b78a38a8226f94fccc8602b1be4d44d1d19628327df",
+    "tests/test_sparse_enclosure.py": "8d2962060be2d5bcb633eeacbbd3e256a64d7ad1e7af2103f30b0d6708d26c94",
+    "openspec/changes/prototype-sparse-enclosure-transfer-20261006/protocol.md": "26c1bfc464827171021d349c64b96f34443d6bc5d9041a7f09023aa3e163c3c2",
+    "openspec/changes/prototype-sparse-enclosure-transfer-20261006/research.md": "99e97d4792b872d663c5bec46464fd9b658a7dc36e3866cef244d3f7b33b1bcb"
+  },
+  "config_sha256": "db4d9d716c2f5c653a29d9a67360ac57334aaeb1c50bda7ea9ad2ef891b25b7d",
+  "calibration_sha256": "06f778db7c389e56895c97868d2424e287e7f9a30e6b182979cfc162cc6c3c9c",
+  "calibration_trace_hashes": {
+    "calibration_contact_poor.csv": "92fe5323a820c3c5090bf7d7c262087d47a8cbaa017b5833692bf0706f5a5385",
+    "calibration_metal_path.csv": "4088fc61c34b9a018bc9ae97b44793a6ea54fd5f50bb2aed932d749d89697ca5",
+    "calibration_duct_assumption.csv": "a476848d39f45546c1a4127d9ca673f7cce8f856e5f03aebc4313703f4d1ae10"
+  },
+  "preregistration_commit": "69eea268569dfb2d84099f1948bb58ca87b0a8ae",
+  "git_head": "69eea268569dfb2d84099f1948bb58ca87b0a8ae",
+  "environment": {
+    "python": "3.11.15",
+    "numpy": "1.26.4",
+    "scipy": "1.14.1"
+  }
+}

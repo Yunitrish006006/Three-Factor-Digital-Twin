@@ -1,0 +1,98 @@
+{
+  "settings": {
+    "dt": 5.0,
+    "target": 28.0,
+    "warning": 29.5,
+    "limit": 30.0,
+    "pwm_min": 0.2,
+    "pwm_max": 1.0,
+    "slew": 0.1,
+    "kp": 0.12,
+    "ki": 0.002,
+    "kd": 0.05,
+    "derivative_alpha": 0.25,
+    "backcalc": 0.2,
+    "input_cost": 0.15,
+    "slew_cost": 0.5,
+    "thermal_cost": 100.0
+  },
+  "rigs": {
+    "contact_poor": {
+      "capacities": [
+        20.0,
+        80.0,
+        30.0
+      ],
+      "contact": 0.45,
+      "plate_base": 0.15,
+      "plate_fan": 0.8,
+      "air_base": 1.0,
+      "air_fan": 1.5,
+      "bypass": 0.05,
+      "fan_tau": 15.0
+    },
+    "metal_path": {
+      "capacities": [
+        20.0,
+        80.0,
+        30.0
+      ],
+      "contact": 1.1,
+      "plate_base": 0.15,
+      "plate_fan": 0.8,
+      "air_base": 1.0,
+      "air_fan": 1.5,
+      "bypass": 0.05,
+      "fan_tau": 15.0
+    },
+    "duct_assumption": {
+      "capacities": [
+        20.0,
+        80.0,
+        30.0
+      ],
+      "contact": 1.1,
+      "plate_base": 0.15,
+      "plate_fan": 1.3,
+      "air_base": 1.0,
+      "air_fan": 1.5,
+      "bypass": 0.05,
+      "fan_tau": 15.0
+    }
+  },
+  "splits": {
+    "validation": [
+      610611,
+      610612
+    ],
+    "holdout": [
+      610621,
+      610622
+    ]
+  },
+  "methods": [
+    "fixed",
+    "pi",
+    "pid",
+    "rank_h1",
+    "rank_h6",
+    "rank_h6_no_correction"
+  ],
+  "open_methods": [
+    "nominal_physics",
+    "calibrated_physics",
+    "sparse_corrected"
+  ],
+  "calibration_seed": 610600,
+  "calibration_steps": 120,
+  "evaluation_steps": 180,
+  "extra_unobserved_heat_W": 0.15,
+  "information_contract": [
+    "plate",
+    "air",
+    "fan",
+    "inlet",
+    "power"
+  ],
+  "evidence_class": "temperature_only_assumed_network_simulation"
+}

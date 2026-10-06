@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "errors": [],
+  "verified_runs": 108,
+  "verified_steps": 19440,
+  "source_truth_is_validation_only": true,
+  "calibration_fallbacks": 0,
+  "input_only_replayed_runs": 108
+}

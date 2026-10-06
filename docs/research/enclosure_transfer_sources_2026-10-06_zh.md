@@ -21,7 +21,7 @@
 | LQR：[SciPy DARE](https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.solve_discrete_are.html) | DARE 定義、solver 條件與範例 | 溫度與動作二次代價有清楚權衡；代價相似不代表算法是 LQR。 | 借用成本分層思路；LQR 實作比較留在 10/5 v2，不將本輪排序稱為 LQR |
 | 擾動補償：[Pannocchia & Rawlings (2003)](https://aiche.onlinelibrary.wiley.com/doi/10.1002/aic.690490213) | 出版者摘要與書目，未查閱全文 | 摘要指出 integrating disturbances 可描述 mismatch，並有可控變數／條件限制；不能直接推論這裡可 offset-free。 | 僅列後續候選，不實作、不稱已完成閱讀全文 |
 
-「LQZ」仍保留會議原文，待使用者確認；本輪不把它解讀成已確認的 LQR。
+2026-10-06 使用者已確認會議原文「LQZ」指 LQR；本表採確認後名稱。此確認未改變已凍結的模擬算法或判準。
 
 ## 我自己的方法要如何遷移
 
