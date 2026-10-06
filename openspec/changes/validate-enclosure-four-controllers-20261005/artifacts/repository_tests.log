@@ -1,0 +1,52 @@
+................................................................................................................................................................................................................................................................................................................
+----------------------------------------------------------------------
+Ran 304 tests in 28.736s
+
+OK
+{
+  "study_id": "E15",
+  "started_at_utc": "2026-10-05T08:53:08.442349+00:00",
+  "status": "execution_failed",
+  "input_sha256": {
+    "scripts/run_bmc_confirmation_e15.py": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "digital_twin/enclosure/bmc_virtual_sensor.py": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "outputs/data/enclosure/bmc_confirmation_e15_manifest.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "outputs/data/enclosure/bmc_corrected_e14c_frozen_model.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+  },
+  "log": "outputs/data/enclosure/bmc_confirmation_e15_execution.log",
+  "execution_policy": "One attempt; evaluator, models, gates, and files unchanged.",
+  "exit_code": 1,
+  "finished_at_utc": "2026-10-05T08:53:08.442645+00:00"
+}
+{
+  "study_id": "E15",
+  "started_at_utc": "2026-10-05T08:53:08.444066+00:00",
+  "status": "completed",
+  "input_sha256": {
+    "scripts/run_bmc_confirmation_e15.py": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "digital_twin/enclosure/bmc_virtual_sensor.py": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "outputs/data/enclosure/bmc_confirmation_e15_manifest.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "outputs/data/enclosure/bmc_corrected_e14c_frozen_model.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+  },
+  "log": "outputs/data/enclosure/bmc_confirmation_e15_execution.log",
+  "execution_policy": "One attempt; evaluator, models, gates, and files unchanged.",
+  "exit_code": 0,
+  "result_sha256": "bb5b8ee44d7ad9a9a236ca5c08b22c7e9b711b884979a8afd220e9b282e0bf6a",
+  "finished_at_utc": "2026-10-05T08:53:08.444392+00:00"
+}
+{
+  "study_id": "E15",
+  "started_at_utc": "2026-10-05T08:53:08.445799+00:00",
+  "status": "execution_failed",
+  "input_sha256": {
+    "scripts/run_bmc_confirmation_e15.py": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "digital_twin/enclosure/bmc_virtual_sensor.py": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "outputs/data/enclosure/bmc_confirmation_e15_manifest.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "outputs/data/enclosure/bmc_corrected_e14c_frozen_model.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+  },
+  "log": "outputs/data/enclosure/bmc_confirmation_e15_execution.log",
+  "execution_policy": "One attempt; evaluator, models, gates, and files unchanged.",
+  "exit_code": 0,
+  "error": "Evaluator exited successfully without producing its result.",
+  "finished_at_utc": "2026-10-05T08:53:08.446049+00:00"
+}

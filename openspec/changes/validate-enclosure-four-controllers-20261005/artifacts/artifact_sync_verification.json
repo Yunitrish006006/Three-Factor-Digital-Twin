@@ -1,0 +1,38 @@
+{
+  "recorded_at": "2026-10-05T09:01:05.566789+00:00",
+  "status": "PASS_AVAILABLE_CHECKS_OFFICE_FULL_VISUAL_QA_PENDING",
+  "html_reports": [
+    "docs/reports/professor_catchup_report_2026-10-05_zh.html",
+    "docs/reports/enclosure_control_v2_2026-10-05_zh.html"
+  ],
+  "main_html_observed_widths": [
+    1440,
+    820,
+    390
+  ],
+  "anchors": "PASS",
+  "details_mouse_keyboard": "PASS",
+  "no_page_overflow": "PASS",
+  "local_links_static": "PASS",
+  "external_assets": 0,
+  "console_warn_error": [],
+  "new_pdf_pages_observed": {
+    "thesis": [
+      89
+    ],
+    "ieee": [
+      7
+    ]
+  },
+  "ieee_pages": 7,
+  "docx_pdf_copy_parity": "PASS",
+  "pptx_source_text_and_copy_parity": "PASS",
+  "office_render": "NOT_PERFORMED_MISSING_BUNDLED_RUNTIME",
+  "multi_role_initial_review": "COMPLETE",
+  "multi_role_post_review": "NOT_PERFORMED_SERVICE_USAGE_LIMIT",
+  "physical_intervention": "NOT_EVALUATED",
+  "mobile_background_expanded_overflow": "PASS_AFTER_LONG_STATUS_WRAP_FIX",
+  "detail_html_observed_widths": [
+    1920
+  ]
+}

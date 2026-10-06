@@ -1,0 +1,10 @@
+{
+  "status": "COMPLETED",
+  "started_at": "2026-10-05T08:43:56.979473+00:00",
+  "command": [
+    "scripts/run_enclosure_control_v2.py",
+    "--phase",
+    "evaluate"
+  ],
+  "finished_at": "2026-10-05T08:44:15.903718+00:00"
+}

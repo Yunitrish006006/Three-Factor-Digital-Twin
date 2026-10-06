@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "runs": 36,
+  "rows": 4320,
+  "source_freeze_trace_hashes": "PASS",
+  "independent_metrics": "PASS",
+  "baseline_disturbance_parity": "PASS",
+  "commands_and_fallback": "PASS",
+  "result_sha256": "0766ca39c999fd7a0825819388934375e64c9d194dd27e034d75e39aa6593ffe",
+  "scope": "ASSUMED_MODEL_ONLY",
+  "calibration_candidate_episodes": 75,
+  "selection_recalculated": "PASS",
+  "hypothesis_02_recalculated": "PASS",
+  "repeatability_checks": [
+    {
+      "split": "holdout",
+      "seed": 31,
+      "numerical_sha256": "6cd0cfd5a370ca2e9ce9c74a65aefc1d8d7adcbe9aab2c5fe9efd7ee4f49f003"
+    },
+    {
+      "split": "overload",
+      "seed": 41,
+      "numerical_sha256": "87acd2f4660c64bb9e19fc7f825bec03476dfce3f4b0a091d39b4487470d53ce"
+    }
+  ],
+  "repeatability_scope": "same synthetic fixtures; no new independent evidence"
+}

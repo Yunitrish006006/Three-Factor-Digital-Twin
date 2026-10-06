@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "checks": [
+    "byte-equal copies: thesis_draft_zh.docx",
+    "byte-equal copies: thesis_draft_zh.pdf",
+    "byte-equal copies: thesis_presentation_zh.pptx",
+    "byte-equal copies: thesis_presentation_zh_30min.pptx",
+    "evidence-derived supplement: docs/thesis/thesis_draft_zh.md",
+    "evidence-derived supplement: docs/thesis/presentation_outline_zh.md",
+    "evidence-derived supplement: docs/thesis/presentation_outline_zh_30min.md",
+    "evidence-derived supplement: docs/thesis/presentation_speaker_notes_zh_30min.md",
+    "DOCX supplement text",
+    "exactly one supplement slide: docs/papers/thesis/thesis_presentation_zh.pptx",
+    "slide notes preserve evidence/limits: docs/papers/thesis/thesis_presentation_zh.pptx",
+    "supplement shape bounds: docs/papers/thesis/thesis_presentation_zh.pptx",
+    "exactly one supplement slide: docs/papers/thesis/thesis_presentation_zh_30min.pptx",
+    "slide notes preserve evidence/limits: docs/papers/thesis/thesis_presentation_zh_30min.pptx",
+    "supplement shape bounds: docs/papers/thesis/thesis_presentation_zh_30min.pptx",
+    "IEEE text numbers and limits",
+    "PDF text numbers/limits: docs/papers/thesis/thesis_draft_zh.pdf",
+    "PDF text numbers/limits: docs/papers/ieee/paper.pdf"
+  ],
+  "sha256": {
+    "docs/papers/thesis/thesis_draft_zh.docx": "d674d7b0ba14499634c201696a32a78059790bf34d4c35cece7e66df1a24c9b6",
+    "docs/papers/thesis/thesis_draft_zh.pdf": "4b39e0592c3ee6a15f68e11643b7a488fe0a19246adff03f3647d6f409d3371a",
+    "docs/papers/thesis/thesis_presentation_zh.pptx": "1aa9b89ebf93b0ff0ee44118289462ee6b91fae3bf82344cb97d660f2a7fe27a",
+    "docs/papers/thesis/thesis_presentation_zh_30min.pptx": "9b32828bb273e51e1ebb121346028dec788f71a069d5086c02bfbe95c70b7ff1",
+    "docs/thesis/thesis_draft_zh.md": "50652a432d49f1592e3e4e4107c9b97dd3dbc5277458ed629223817183b7a928",
+    "docs/thesis/presentation_outline_zh.md": "b09a50b57931219edfade17486ed7289fd394f34fc66328d6d1978db320fb817",
+    "docs/thesis/presentation_outline_zh_30min.md": "8e8ad7ee5935c57313d9a6971496e48f46e516bc47cc02673ff7533d29ad2145",
+    "docs/thesis/presentation_speaker_notes_zh_30min.md": "e14d39d54dfd036077d5fe3ccb39470045f113c26ee4887f4b04b907aa062581",
+    "docs/papers/ieee/paper.pdf": "6b6686aac5f42a191daf9e711c8c5e0cdf5b936d47cd2493e89a31414ddf968a",
+    "docs/papers/ieee/paper.tex": "2db7168ca5c391d3a6efd4a1114234297c61e874bb5a176c32dd4f2197aeb492",
+    "docs/papers/ieee/references.bib": "5e33f8993ed27d4a14f9076cd109a2343ee331d5d4bf3c7ea6deb6c5fafce778",
+    "docs/reports/professor_research_2026-10-06_zh.html": "a65b7faa979f40a22dab55f6456fa6b235c3486c771f14b8670e69728b6bb5b1",
+    "docs/research/lqr_kalman1960_reading_2026-10-06_zh.md": "f205032418ae25ce3ddcf15ad175c54a8dcc8742bb870763527696fb121d9e9f",
+    "docs/reports/lqr_oral_script_2026-10-06_zh.md": "ea73eb7268499e3db4256e68144e821cd0f75cfc1c6b117287abda735667a4ee"
+  },
+  "slide_counts": {
+    "docs/papers/thesis/thesis_presentation_zh.pptx": 52,
+    "docs/papers/thesis/thesis_presentation_zh_30min.pptx": 64
+  },
+  "pdf_pages": {
+    "docs/papers/thesis/thesis_draft_zh.pdf": 90,
+    "docs/papers/ieee/paper.pdf": 8
+  },
+  "observed_qa": {
+    "html": "1440/820/390 px; anchors, details, Q/R keyboard, no horizontal body overflow or console errors; local links checked",
+    "pdf": "thesis page 89; IEEE pages 7-8 inspected",
+    "office_full_render": "PENDING: pdf2image missing from packaged renderer runtime",
+    "html_print": "NOT_EVALUATED"
+  },
+  "scope": "Content/copy/shape checks do not establish complete Office visual QA or hardware evidence."
+}

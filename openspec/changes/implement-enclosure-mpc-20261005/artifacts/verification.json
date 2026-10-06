@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "runs": 36,
+  "rows": 4320,
+  "source_freeze_trace_hashes": "PASS",
+  "independent_metrics": "PASS",
+  "baseline_disturbance_parity": "PASS",
+  "commands_and_fallback": "PASS",
+  "result_sha256": "0766ca39c999fd7a0825819388934375e64c9d194dd27e034d75e39aa6593ffe",
+  "scope": "ASSUMED_MODEL_ONLY"
+}

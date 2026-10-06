@@ -1,6 +1,7 @@
 __pycache__/
 *.pyc
 .venv/
+.venv-mpc/
 *.egg-info/
 .DS_Store
 outputs/

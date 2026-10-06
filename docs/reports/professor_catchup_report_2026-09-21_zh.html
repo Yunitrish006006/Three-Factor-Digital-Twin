@@ -271,6 +271,7 @@
     <a href="#tuning">系統性參數調教</a>
     <a href="#architecture">模型流程架構</a>
     <a href="#limits">限制</a>
+    <a href="#meeting-tasks">會議後待做</a>
     <a href="#applications">應用方向</a>
     <a href="#talk">我的報告講稿</a>
     <a href="#questions">想與教授討論</a>
@@ -751,6 +752,41 @@
       </div>
     </section>
 
+    <section id="meeting-tasks">
+      <h2>今天會議後，我新增的本週待做研究</h2>
+      <p class="lead">今天教授補充了 MPC，我也查到 LQR；這兩個方法目前列為機箱控制方向的待研究候選，不是本週已完成的實驗結果。</p>
+      <div class="grid">
+        <article class="card third">
+          <span class="tag warn">待查證 1</span>
+          <h3>整理 MPC 的機箱適用性</h3>
+          <p>確認 MPC 如何在預測 horizon 內同時考慮 CPU／GPU 溫度、PWM／RPM 上限、PWM 變化率與功耗。先釐清所需熱模型、運算成本與可重設的模擬環境。</p>
+        </article>
+        <article class="card third">
+          <span class="tag warn">待查證 2</span>
+          <h3>整理 LQR 的基準條件</h3>
+          <p>確認 LQR 所需的線性狀態空間模型、狀態量與成本矩陣 <code>Q/R</code>，再判斷它是否適合作為機箱風扇控制的可解釋 baseline，而不是直接假設它優於 PID。</p>
+        </article>
+        <article class="card third">
+          <span class="tag warn">待查證 3</span>
+          <h3>統一比較 protocol</h3>
+          <p>在同一個機箱熱模型、相同負載、相同安全限制與相同 holdout 下，比較 fixed fan、PID、LQR 與受限制 MPC；指標包含溫度 MAE、超溫、settling、PWM 抖動與功耗。</p>
+        </article>
+      </div>
+      <div class="table-wrap" style="margin-top:18px">
+        <table>
+          <thead><tr><th>待做順序</th><th>具體工作</th><th>完成條件</th><th>目前狀態</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>查 MPC／LQR 的原始文獻與官方／可重現實作，整理輸入、狀態、限制與成本函數。</td><td>形成機箱版方法比較表，標出哪些條件尚未具備。</td><td><span class="status-mixed">本週待開始</span></td></tr>
+            <tr><td>2</td><td>將既有 <code>C/G/k_f/τ_f/k_L</code> 熱模型轉成 LQR 所需的線性狀態空間形式。</td><td>固定狀態定義、線性化點與 <code>Q/R</code> 搜尋範圍。</td><td><span class="status-mixed">本週待開始</span></td></tr>
+            <tr><td>3</td><td>在同一個可重設模擬器中建立 PID、LQR、MPC 三組控制器的 dry run。</td><td>同一負載與安全限制下產出可重算的 trace 和指標。</td><td><span class="status-mixed">需先完成 1、2</span></td></tr>
+            <tr><td>4</td><td>檢查控制器是否真的改善操作後溫度預測與控制結果。</td><td>獨立 validation／holdout，不能只依 calibration 分數選方法。</td><td><span class="status-no">尚未評估</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="callout" style="margin-top:16px"><strong>目前的研究判斷：</strong>MPC 可能適合處理機箱的溫度上限、PWM 變化率與功耗等多重限制；LQR 可能適合作為線性模型下的可解釋控制 baseline。兩者都要在相同資料切分與安全條件下實作比較後，才能決定是否納入主論文。</p>
+      <p class="source">會議後待做清單詳列於：<a href="../research/weekly_research_tasks_2026-09-21_zh.md">weekly research tasks</a>。</p>
+    </section>
+
     <section id="applications">
       <h2>接下來，我聚焦機箱模型與控制驗證</h2>
       <p class="lead">本週我把後續應用方向收斂到桌機機箱；接下來優先補齊機箱熱模型、參數調適、操作後溫度預測，以及 PWM/RPM 與實際功率的量測協定。</p>
@@ -795,7 +831,8 @@
         </article>
       </div>
     </section>
-  </main>
+  <section id="mpc-update-20261005"><h2>2026-10-05 後續：MPC 實作與模擬</h2><p>我已完成受限制 MPC 的機箱假設模型探索，另跑36回合。holdout MAE：fixed 5.4378°C、PID 2.6034°C、MPC 1.4426°C。MPC 的功耗 proxy 和 PWM 變化增加，過載仍超溫與求解回退。實體介入仍 NOT_EVALUATED，LQR 仍 TODO。</p><p><a href="enclosure_mpc_2026-10-05_zh.html">MPC 完整報告與計劃執行結果</a></p></section>
+<section id="control-v2-update-20261005"><h2>10/05第二階段更新：四方法已完成</h2><p>固定風扇／PID＋前饋／LQR／MPC的新版holdout MAE為2.9051／1.7713／1.7304／1.8071°C，MPC改善假設不支持。7步殘差回退，過載0回退但仍超溫；實機與E8仍未評估。上方第一階段LQR TODO是當時狀態。</p><p><a href="professor_catchup_report_2026-10-05_zh.html">10/05完整累積報告與15分鐘講稿</a></p></section></main>
 
   <footer>
     我的研究進度與探索過程｜2026-09-21。內容可離線閱讀，來源連結需連網。

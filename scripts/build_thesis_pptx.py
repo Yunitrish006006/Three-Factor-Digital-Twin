@@ -1567,7 +1567,7 @@ def build_presentation() -> Presentation:
         [
             "擴大長期資料、dense ground truth 與 multi-zone 驗證",
             "GRU / LSTM：SML2010 簡易同資料比較完成；兩者 lowest MAE 皆 0/12，H-RNNGATE-01 不支持",
-            "PID：相同 plant / setpoint / disturbance 的閉環控制 baseline（尚未評估）",
+            "PID：相同 plant / setpoint / disturbance 的閉環控制 baseline（實體未評估；機箱假設模型已比較）",
             "機箱 E11A/E11B 假說不支持；E11C local IDW aggregate MAE 1.223 °C，但僅勝出 21/42，H-ENC-03 不支持",
             "執行推薦動作 before/after 介入驗證",
             "20–30 °C 動態植物生長環境：先補 PPFD/CO2/基質與生物 endpoint",
@@ -2360,7 +2360,7 @@ def build_presentation_30min() -> Presentation:
         [
             "擴大長期資料、dense ground truth 與 multi-zone 驗證",
             "GRU / LSTM：同資料簡易比較完成；GRU 2/12、LSTM 0/12 勝 vanilla，無候選通過",
-            "PID：同 plant / setpoint / disturbance 閉環 baseline（尚未評估）",
+            "PID：同 plant / setpoint / disturbance 閉環 baseline（實體未評估；機箱假設模型已比較）",
             "機箱 E11A/E11B 為負向；E11C aggregate 改善但 sensor wins 21/42，仍未達門檻",
             "補足 PPFD/CO2/基質與生物 endpoint 後再評估動態植物生長情境",
             "以獨立 reference 做實體 sensor filtering，再評估 EKF/UKF",
@@ -2445,7 +2445,7 @@ def build_outline() -> str:
         ("研究貢獻與資料策略", ["三因子、有限感測器、非連網裝置、服務化", "canonical synthetic benchmark + real-bedroom snapshots + task-aligned public datasets", "室內應用溫度限 20–30 °C；人體舒適採目標帶與 tolerance", "明確列出每種資料支援的驗證範圍"]),
         ("E11B：AAU 伺服器機房空間轉移", ["42 個高信心 PT100、1,641 個一分鐘快照；六個不明通道預先排除", "MAE：全域平均 2.293 °C、最近鄰 1.175 °C、3D IDW 1.687 °C", "感測器勝出：最近鄰 30/42、IDW 6/42，未達預註冊 60% 門檻", "H-ENC-02 不支持；不事後調參，可能原因須另行驗證"]),
         ("E11C：局部鄰域獨立確認", ["11 個 E11B-disjoint ranges、42 點、1,505 快照、11 個 day blocks", "MAE：最近鄰 1.301 °C、local IDW 1.223 °C、global IDW 1.844 °C", "paired improvement 0.0783 °C；bootstrap 95% CI [0.0546, 0.1063]", "local 與 nearest 各勝出 21/42；未達 26/42，H-ENC-03 不支持"]),
-        ("結論與未來工作", ["長期真實資料、dense real-room ground truth、更多因子、multi-zone 與推薦動作介入驗證", "GRU/LSTM 簡易同資料比較完成：lowest MAE 皆 0/12，GRU 2/12、LSTM 0/12 勝 vanilla；PID 尚未評估", "E11C aggregate 改善但 sensor coverage 不足；後續 sensor-role/topology model 須新資料與預註冊", "候選動態植物生長情境需補 PPFD/CO2/基質/生物 endpoint", "Kalman 受控比較為混合結果；下一步以獨立 reference 驗證實體 sensor filtering"]),
+        ("結論與未來工作", ["長期真實資料、dense real-room ground truth、更多因子、multi-zone 與推薦動作介入驗證", "GRU/LSTM 簡易同資料比較完成：lowest MAE 皆 0/12，GRU 2/12、LSTM 0/12 勝 vanilla；實體 PID 尚未評估", "E11C aggregate 改善但 sensor coverage 不足；後續 sensor-role/topology model 須新資料與預註冊", "候選動態植物生長情境需補 PPFD/CO2/基質/生物 endpoint", "Kalman 受控比較為混合結果；下一步以獨立 reference 驗證實體 sensor filtering"]),
     ]
     slides.extend(
         (
@@ -2496,7 +2496,7 @@ def build_outline_30min() -> str:
         ("公開資料任務拆解：CU-BEMS", ["C1：AC 溫濕度可補強 linear regression", "C2：商辦照度與單房間假設差距大", "C3：compound event 可勝 linear regression 但不勝 persistence"]),
         ("E11B：AAU 伺服器機房空間轉移", ["42 個高信心 PT100、1,641 個一分鐘快照；六個不明通道預先排除", "MAE：全域平均 2.293 °C、最近鄰 1.175 °C、3D IDW 1.687 °C", "最近鄰勝出 30/42、IDW 6/42；H-ENC-02 不支持", "不事後調參；拓撲與非等向性解釋須另行預註冊"]),
         ("E11C：局部鄰域獨立確認", ["11 個 E11B-disjoint ranges、42 點、1,505 快照、11 個 day blocks", "local IDW MAE/RMSE 1.223/1.886 °C，低於 nearest 1.301/2.218 °C", "bootstrap 95% CI [0.0546, 0.1063]，但 local 僅勝出 21/42", "H-ENC-03 不支持；分群差異只列 exploratory"]),
-        ("結論、限制與未來工作", ["目前完成度、真實快照限制、hybrid 泛化限制、推薦動作尚需介入驗證、task-aligned benchmark 與後續方向", "室內溫度限 20–30 °C；人體舒適採 tolerance，RNN 與機箱 E11A-E11C 負向或混合結果保留", "GRU/LSTM 簡易比較無候選通過；PID 仍待評估；後續改 history/容量/3-D 任務須重新預註冊", "候選植物生長情境需補 PPFD/CO2/基質/生物 endpoint；Kalman 受控結果不可外推為實體感測器驗證"]),
+        ("結論、限制與未來工作", ["目前完成度、真實快照限制、hybrid 泛化限制、推薦動作尚需介入驗證、task-aligned benchmark 與後續方向", "室內溫度限 20–30 °C；人體舒適採 tolerance，RNN 與機箱 E11A-E11C 負向或混合結果保留", "GRU/LSTM 簡易比較無候選通過；實體 PID 仍待評估；後續改 history/容量/3-D 任務須重新預註冊", "候選植物生長情境需補 PPFD/CO2/基質/生物 endpoint；Kalman 受控結果不可外推為實體感測器驗證"]),
         ("公式與指標整理", ["場模型：三因子場、總估計式、baseline、activation、envelope", "三因子公式：溫度、濕度、照度分別說明", "校正與評估：8 點三線性校正、影響學習、hybrid residual、metrics、IDW、推薦排序"]),
     ]
     slides.extend(
@@ -2934,7 +2934,7 @@ def build_speaker_notes_30min() -> str:
                 "教授提醒後，室內溫度適用範圍明確限制在 20–30 °C，人體舒適改以目標帶和容許範圍判定；現有低 MAE 不能直接證明一般人居空間需要極窄控制，也不能外推到超出溫度範圍的用途。",
                 "需要動態環境配方的小型封閉植物生長空間可作候選，但目前 lux 不是 PPFD/PAR，並缺 CO2、基質水分、氣流與生物 endpoint，所以不能宣稱已具培養成效。",
                 "Kalman 已完成第一個固定 state、observation 與 covariance 的受控同資料比較，但結果依變數分化，並非普遍改善。下一步應以獨立 validation reference 驗證實體 sensing node 的 noise、missingness 與 covariance drift，再決定是否需要 EKF、UKF 或 online parameter adaptation。",
-                "GRU 與 LSTM 已完成單一 seed、近似參數量的 SML2010 簡易比較。兩者 lowest MAE 都是 0/12；GRU 只在兩個 60 分鐘濕度案例勝過 vanilla RNN，中位相對改善為 -12.88%，LSTM 0/12 且為 -11.37%，所以沒有候選通過。PID 仍是尚未評估的閉環控制 baseline。",
+                "GRU 與 LSTM 已完成單一 seed、近似參數量的 SML2010 簡易比較。兩者 lowest MAE 都是 0/12；GRU 只在兩個 60 分鐘濕度案例勝過 vanilla RNN，中位相對改善為 -12.88%，LSTM 0/12 且為 -11.37%，所以沒有候選通過。實體 PID 仍未評估；機箱假設模型控制已完成四方法比較。",
                 "機箱 E11A 至 E11C 均已完成；E11C 雖有 aggregate 改善但 sensor coverage 未達門檻。後續 sensor-role、拓撲感知或非等向性模型必須用新資料另行預註冊，超過 30 °C 的 hotspot 仍不在目前範圍。",
                 "其他未來工作包括擴大 ESP32 長期資料、發展 multi-zone model，以及執行推薦動作介入驗證。",
             ],
@@ -3130,3 +3130,18 @@ if __name__ == "__main__":
     from sync_bmc_e14_generated_artifacts import sync_pptx_outputs as sync_bmc_e14_pptx_outputs
 
     sync_bmc_e14_pptx_outputs()
+
+
+# Synchronize the exploratory enclosure MPC supplement.
+if __name__ == "__main__":
+    from sync_enclosure_mpc_generated import sync_pptx_outputs as sync_enclosure_mpc_pptx_outputs
+
+    sync_enclosure_mpc_pptx_outputs()
+
+if __name__ == "__main__":
+    from sync_enclosure_control_v2_generated import sync_pptx_outputs as sync_enclosure_control_v2_pptx_outputs
+    sync_enclosure_control_v2_pptx_outputs()
+
+if __name__ == "__main__":
+    from sync_sparse_enclosure_generated import sync_pptx_outputs as sync_sparse_enclosure_pptx_outputs
+    sync_sparse_enclosure_pptx_outputs()

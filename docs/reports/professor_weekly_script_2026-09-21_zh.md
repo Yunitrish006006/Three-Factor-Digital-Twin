@@ -77,6 +77,10 @@ BOPTEST 公開服務在當時的連線測試沒有成功，所以我沒有把連
 
 我會先補多 testcase 和多 seed 的獨立確認，再考慮 E8 intervention。現在 E8 仍是 `NOT_EVALUATED`，我不會把觀測性的 BMC 資料當成已完成的控制實驗。
 
+今天會議後，老師補充了 MPC，我也查到 LQR，所以我把它們列入這週的待做研究，而不是直接當成已完成結果。MPC 的部分，我要先確認它能不能在預測 horizon 內同時處理溫度上限、PWM 變化率和功耗限制；LQR 的部分，我要先把機箱熱模型整理成線性狀態空間形式，定義狀態與 `Q/R` 成本矩陣，再判斷它能不能作為可解釋的 baseline。
+
+這兩個方法最後都要和 fixed fan、PID 放在同一個模型、同一個負載、同一個安全限制和同一個 holdout 下比較。比較指標會包括溫度 MAE／RMSE、超溫時間、settling、PWM 抖動和功耗。目前 MPC 和 LQR 都是 `TODO`，尚未證明比 PID 好，也還沒有實體機箱介入證據。
+
 ## 請教授確認的三件事（約 1 分鐘）
 
 第一，我想請老師確認：先以入口溫度、CPU／GPU 溫度、負載功率、PWM、RPM 和取樣時間建立機箱資料契約，是否足以支撐後續控制問題？
@@ -97,3 +101,12 @@ BOPTEST 公開服務在當時的連線測試沒有成功，所以我沒有把連
 - [系統性參數調教 protocol](../research/systematic_parameter_tuning_protocol_2026-09-21_zh.md)
 - [action-conditioned replay artifact](../../openspec/changes/systematic-parameter-tuning-20260921/artifacts/action_conditioned_replay.json)
 - [DigitalTwinModel 動作排序示範](../../openspec/changes/systematic-parameter-tuning-20260921/artifacts/model_action_tuning_demo.json)
+
+## 2026-10-05 後續進度
+
+我已完成機箱受限制 MPC 的假設模型探索與36回合模擬。holdout tracking MAE：固定風扇5.4378°C、PID 2.6034°C、MPC 1.4426°C。MPC 使用更多風扇能耗 proxy 並產生更多 PWM 變化；過載仍超溫及求解回退。實體機箱、NTC、整機功耗與 E8 尚未評估，LQR 是下一階段。完整內容見 [MPC 報告](enclosure_mpc_2026-10-05_zh.html)。
+
+
+## 2026-10-05續作：四方法比較已完成
+
+這是接續工作，不改9/21當時紀錄。新版fixed／PID＋FF／LQR／MPC holdout MAE為2.9051／1.7713／1.7304／1.8071°C，MPC改善假設不支持。48正式回合有7步殘差拒絕回退，過載0回退但仍超溫；實機與E8未評估。完整15分鐘講稿收於 [10/05教授HTML](professor_catchup_report_2026-10-05_zh.html#talk)。

@@ -1,0 +1,2648 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>我的研究進度與探索過程｜近期研究整理</title><style>
+    :root {
+      --ink: #172033;
+      --muted: #667085;
+      --paper: #f4f7fb;
+      --card: #ffffff;
+      --navy: #173b66;
+      --blue: #2f80ed;
+      --teal: #238c91;
+      --green: #1f8a62;
+      --orange: #c96d1a;
+      --red: #bd3f4c;
+      --line: #dce4ef;
+      --soft-blue: #edf5ff;
+      --soft-green: #eaf7f1;
+      --soft-orange: #fff4e5;
+      --soft-red: #fdecef;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    a { color: #155e91; text-underline-offset: .18em; }
+    a:focus-visible, summary:focus-visible { outline: 3px solid var(--teal); outline-offset: 4px; }
+    code { overflow-wrap: anywhere; font-size: .9em; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
+      line-height: 1.68;
+    }
+    header {
+      padding: 56px max(24px, calc((100vw - 1120px) / 2));
+      color: #fff;
+      background:
+        radial-gradient(circle at 82% 18%, rgba(97, 216, 208, .24), transparent 29%),
+        linear-gradient(120deg, #102d50, #19537e 60%, #267f83);
+    }
+    header .eyebrow {
+      margin: 0 0 8px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      opacity: .78;
+    }
+    header h1 {
+      max-width: 900px;
+      margin: 0 0 14px;
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1.14;
+    }
+    header h1 span { display: block; }
+    header p {
+      max-width: 900px;
+      margin: 0;
+      font-size: 18px;
+      opacity: .92;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      padding: 10px max(18px, calc((100vw - 1120px) / 2));
+      overflow-x: auto;
+      background: rgba(255, 255, 255, .96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+    nav a {
+      flex: 0 0 auto;
+      padding: 8px 14px;
+      color: var(--navy);
+      background: #edf3fa;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 750;
+      text-decoration: none;
+    }
+    main { max-width: 1120px; margin: auto; padding: 30px 20px 72px; }
+    section { margin: 0 0 34px; scroll-margin-top: 76px; }
+    h2 { margin: 0 0 14px; color: var(--navy); font-size: 29px; line-height: 1.25; }
+    h3 { margin: 0 0 8px; font-size: 19px; line-height: 1.35; }
+    p { margin: 8px 0 0; }
+    ul, ol { margin: 10px 0 0; padding-left: 23px; }
+    li + li { margin-top: 7px; }
+    .lead { max-width: 900px; color: #3d4a5f; font-size: 18px; }
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+    .card {
+      min-width: 0;
+      grid-column: span 6;
+      padding: 22px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(26, 50, 75, .055);
+    }
+    .third { grid-column: span 4; }
+    .wide { grid-column: 1 / -1; }
+    .metric { margin-top: 8px; color: var(--navy); font-size: clamp(26px, 2.8vw, 34px); font-weight: 850; line-height: 1.2; }
+    .metric span { display: inline-block; }
+    .label { margin-top: 5px; color: var(--muted); font-size: 14px; }
+    .tag {
+      display: inline-block;
+      margin: 2px 4px 2px 0;
+      padding: 4px 9px;
+      color: #1e5f9f;
+      background: #e8f3ff;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .tag.good { color: #157653; background: var(--soft-green); }
+    .tag.warn { color: #985814; background: var(--soft-orange); }
+    .tag.bad { color: #982d3a; background: var(--soft-red); }
+    .callout {
+      padding: 18px 20px;
+      background: #fff7e9;
+      border-left: 5px solid var(--orange);
+      border-radius: 10px;
+    }
+    .callout strong { color: #8b4a10; }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 15px; background: #fff; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th, td { padding: 12px 11px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+    th { color: #42526a; background: #f8fafc; }
+    tr:last-child td { border-bottom: 0; }
+    .status-good { color: var(--green); font-weight: 800; }
+    .status-mixed { color: var(--orange); font-weight: 800; }
+    .status-no { color: var(--red); font-weight: 800; }
+    .timeline { position: relative; margin-left: 7px; padding-left: 27px; border-left: 3px solid #cbd9e8; }
+    .timeline article { position: relative; margin: 0 0 20px; padding: 19px 21px; background: #fff; border: 1px solid var(--line); border-radius: 15px; }
+    .timeline article::before {
+      position: absolute;
+      top: 22px;
+      left: -36px;
+      width: 15px;
+      height: 15px;
+      content: "";
+      background: var(--teal);
+      border: 4px solid var(--paper);
+      border-radius: 50%;
+    }
+    .timeline time { color: var(--teal); font-size: 13px; font-weight: 850; letter-spacing: .04em; }
+    .talk-track { counter-reset: talk; list-style: none; padding: 0; }
+    .talk-track li { position: relative; margin: 12px 0; padding: 16px 18px 16px 58px; background: #fff; border: 1px solid var(--line); border-radius: 14px; }
+    .talk-track li::before {
+      position: absolute;
+      top: 15px;
+      left: 16px;
+      width: 29px;
+      height: 29px;
+      counter-increment: talk;
+      content: counter(talk);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: var(--navy);
+      border-radius: 50%;
+      font-weight: 800;
+    }
+    .quote {
+      margin: 12px 0 0;
+      padding: 16px 18px;
+      color: #24425d;
+      background: var(--soft-blue);
+      border-radius: 12px;
+      font-size: 17px;
+    }
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .flow div {
+      position: relative;
+      min-height: 124px;
+      padding: 16px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+    }
+    .flow div:not(:last-child)::after {
+      position: absolute;
+      top: 50%;
+      right: -11px;
+      z-index: 2;
+      width: 20px;
+      height: 20px;
+      content: "→";
+      display: grid;
+      place-items: center;
+      color: var(--teal);
+      background: var(--paper);
+      font-weight: 900;
+      transform: translateY(-50%);
+    }
+    .flow strong { display: block; margin-bottom: 5px; color: var(--navy); }
+    .architecture-figure {
+      margin: 18px 0 0;
+      padding: 12px;
+      overflow-x: auto;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+    }
+    .architecture-figure svg { display: block; width: 100%; min-width: 760px; height: auto; }
+    .architecture-figure .box { stroke: #b9cbe0; stroke-width: 2; }
+    .architecture-figure .box.input { fill: #edf5ff; }
+    .architecture-figure .box.model { fill: #eaf7f1; }
+    .architecture-figure .box.control { fill: #fff4e5; }
+    .architecture-figure .box.verify { fill: #fdecef; }
+    .architecture-figure .title { fill: var(--navy); font-size: 22px; font-weight: 800; }
+    .architecture-figure .detail { fill: #42526a; font-size: 15px; }
+    .architecture-figure .arrow { stroke: var(--teal); stroke-width: 3; fill: none; }
+    .architecture-figure figcaption { margin-top: 8px; color: var(--muted); font-size: 13px; }
+    details { margin-top: 15px; padding: 16px 20px; background: #fff; border: 1px solid var(--line); border-radius: 14px; }
+    summary { cursor: pointer; color: var(--navy); font-weight: 750; }
+    .source { margin-top: 13px; color: var(--muted); font-size: 13px; }
+    footer { padding: 24px; color: var(--muted); text-align: center; border-top: 1px solid var(--line); }
+
+    @media (max-width: 780px) {
+      .card, .third { grid-column: 1 / -1; }
+      .flow { grid-template-columns: 1fr; }
+      .flow div { min-height: auto; }
+      .flow div:not(:last-child)::after { top: auto; right: 50%; bottom: -16px; content: "↓"; transform: translateX(50%); }
+      header { padding-top: 42px; padding-bottom: 42px; }
+      main { padding-left: 15px; padding-right: 15px; }
+      th, td { min-width: 135px; }
+    }
+    @media print {
+      body { background: #fff; }
+      nav { display: none; }
+      header { padding: 30px 24px; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      main { max-width: none; padding: 24px 0; }
+      section { break-inside: auto; }
+      article, .callout, tr { break-inside: avoid; }
+      h2, h3 { break-after: avoid; }
+      .table-wrap { overflow: visible; }
+      th, td { min-width: 0; }
+      .card { box-shadow: none; }
+      a { color: inherit; text-decoration: none; }
+    }
+
+main{overflow-wrap:anywhere}figure{margin:20px 0}figure svg{width:100%;height:auto;display:block}figcaption{color:var(--muted);font-size:14px}details{background:white;border:1px solid var(--line);border-radius:15px;padding:18px 20px;margin:16px 0}summary{cursor:pointer;font-weight:800;color:var(--navy);font-size:17px}.formula{overflow-wrap:anywhere;background:#edf5ff;padding:14px 18px;border-radius:10px;font-family:ui-monospace,monospace}.status-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.status-grid article{padding:18px;background:white;border:1px solid var(--line);border-radius:15px}.status-grid .metric{font-size:28px}.table-wrap table{min-width:640px}#all-runs table{min-width:1040px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}.source{overflow-wrap:anywhere}@media(max-width:650px){.status-grid{grid-template-columns:1fr 1fr}}@media print{details{break-inside:auto}nav{display:none}.table-wrap{overflow:visible}.table-wrap table{min-width:0;font-size:8pt}}
+</style></head><body>
+<header><p class="eyebrow">PROFESSOR RESEARCH REPORT · RESEARCH PROGRESS</p><h1><span>從稀疏感測到機箱控制</span><span>我的驗證、修正與研究進度</span></h1><p>研究進度分段整理｜從8月中旬的估測驗證、9月上旬的平台探索，到9月中下旬的機箱方向整理，再接續 MPC／LQR 實作、四方法比較與獨立核對。前期成果與後續補充結果分開呈現。</p></header>
+<nav aria-label="報告章節"><a href="#overview">本次重點</a><a href="#tasks">教授要求與完成度</a><a href="#story">我如何推進</a><a href="#model">模型與方法</a><a href="#review">問題與改進</a><a href="#results">比較結果</a><a href="#limits">限制與下一步</a><a href="#next-week">下週計畫</a><a href="#reading">查閱論文</a><a href="#background">前期研究脈絡</a><a href="#talk">15分鐘講稿</a><a href="#questions">與教授討論</a><a href="#sources">來源</a></nav>
+<main>
+<section id="overview"><h2>這次，我完成了什麼</h2><p class="lead">我先建立機箱熱模型與MPC，作為自己的數位孿生方法遷移到機箱的前置研究，再檢查求解可靠性、目標是否可達，以及比較條件是否一致。之後我加入 LQR 與具負載前饋的 PID，重新固定比較條件。結果顯示：求解可靠性改善，但較複雜的 MPC 沒有在本輪保留測試中帶來更好的追蹤。</p>
+<div class="status-grid"><article><span class="tag good">方法完成</span><div class="metric">4 種</div><p>固定風扇、PID＋前饋、LQR、MPC</p></article><article><span class="tag good">校準後凍結</span><div class="metric">48 回合</div><p>正式比較／5,760 控制步</p></article><article><span class="tag warn">殘差檢查回退</span><div class="metric">7 步</div><p>validation 5步、參數變體2步；無命令違例或超時</p></article><article><span class="tag warn">比較結論</span><div class="metric">不支持</div><p>MPC 優於 PID＋前饋或 LQR 的預設假設</p></article></div>
+<p class="callout"><strong>我目前的判斷：</strong>MPC holdout MAE 為 1.8071°C，比 PID＋前饋高 2.02%，比 LQR 高 4.43%。同一測試下，MPC 風扇能耗 proxy 也較高。因此我先保留簡單方法作為基準，下一步需要改善模型與取得量測證據，不能只靠增加控制器複雜度。</p></section>
+<section id="tasks"><h2>兩週前的要求，我做到哪裡</h2><p>9/21 會議紀錄寫的是「教授提出 MPC」，LQR 是我另外查到的候選方法。我把兩者和既有 fixed fan／PID 納入相同條件比較；沒有把 LQR 改寫成教授原話。</p><div class="table-wrap"><table><thead><tr><th>工作</th><th>我完成的內容</th><th>目前狀態</th></tr></thead><tbody>
+<tr><td>MPC 方法與機箱適用性</td><td>有限 horizon、狀態／負載觀測、PWM／slew 硬限制、溫度軟限制、第一步執行與重新規劃</td><td class="status-good">方法整理與模擬完成</td></tr>
+<tr><td>LQR 狀態空間與 Q/R</td><td>可達平衡點分配、ZOH 離散模型、DARE 求增益、相同命令保護</td><td class="status-good">方法整理與模擬完成</td></tr>
+<tr><td>可重設模型與 dry run</td><td>雙熱節點＋風扇延遲、獨立連續模型／平衡點／失敗路徑測試</td><td class="status-good">完成，參數為假設</td></tr>
+<tr><td>四方法統一比較</td><td>每方法3候選×3校準回合；36回合後凍結，另48正式回合</td><td class="status-good">完成，全部結果保留</td></tr>
+<tr><td>操作後預測與控制結果</td><td>分開評估 prediction error、tracking MAE、取樣超溫、能耗proxy與動作變化</td><td class="status-mixed">僅假設模型，不代表實測準確度</td></tr>
+<tr><td>NTC、RPM、整機功耗、throttling、實機介入</td><td>沒有新增實體量測或可控制設備紀錄</td><td class="status-no">NOT_EVALUATED</td></tr></tbody></table></div><p class="source">依據：<a href="../research/weekly_research_tasks_2026-09-21_zh.md">9/21會議後清單</a>、<a href="../research/mpc_execution_plan_2026-10-05_zh.md">計劃與實際執行</a>。</p></section>
+<section id="story"><h2>我如何從方法探索走到這次比較</h2><div class="timeline">
+<article><time>8月中旬：估測與保留點驗證</time><h3>先釐清模擬和真實量測的證據範圍</h3><p>我整理模型 baseline、Kalman 去噪與臥室保留點結果，檢查稀疏感測能支持哪些估測主張。</p></article>
+<article><time>9月上旬：公開資料與平台探索</time><h3>從 AAU／BMC 延伸到可互動模型</h3><p>我比較時序模型與公開機櫃資料，接著查找 TCLab、BOPTEST 等平台，處理資料解析、單位與 API 連線問題。</p></article>
+<article><time>9月中下旬：機箱方向與會議要求</time><h3>觀測資料無法回答新控制動作的效果</h3><p>公開 BMC／AAU 可以支持估測研究，但不能直接驗證更改風扇後的反應。我因此延續可重設模擬與固定校準／驗證流程，聚焦機箱控制，並依9/21會議要求整理MPC。</p></article>
+<article><time>後續補充・第一階段：受限制 MPC</time><h3>我先跑 fixed／PID／MPC</h3><p>v1 的36回合中，holdout MPC MAE 是1.4426°C，PID是2.6034°C。但 MPC 能耗 proxy 比 PID 高40.20%，過載190/360步數值回退。這些結果保留為歷史版本。</p></article>
+<article><time>後續補充・問題確認與改進</time><h3>數值可靠性、單風扇目標與驗證獨立性</h3><p>我發現同一風扇通常不能同時讓兩節點穩於60°C；原求解器在可行的軟限制問題中仍失敗；驗證器也未完整重算判準。因此我修正求解流程與核對方式。</p></article>
+<article><time>後續補充・第二階段：新版四方法</time><h3>我先凍結，再看新的合成測試</h3><p>我加入可達參考點的 LQR，也讓 PID 使用同一模型的負載前饋；每方法三候選，僅看校準選參。新的48回合包含 nominal、三組假設參數變體及過載，不把新 seed 當成新設備。</p></article></div><p class="source">前期日期依既有報告分段；後續補充按實作順序呈現，實驗實際執行時間保留於來源紀錄。</p></section>
+<section id="model"><h2>我固定的模型與控制流程</h2><p>狀態是 CPU 溫度、GPU 溫度與有效風扇比例 f；輸入是 PWM u。入口溫度與當下 CPU／GPU 負載是擾動。所有方法只見當下觀測，不提供未來負載。</p><p class="formula">C<sub>i</sub> · dT<sub>i</sub>/dt = P<sub>i</sub> − (G<sub>i</sub> + k<sub>i</sub>f) · (T<sub>i</sub> − T<sub>in</sub>)<br>τ · df/dt = u − f；RPM = RPM<sub>max</sub> · f = 6000f</p><p>上式是我的數學化整理，參數是研究假設，沒有宣稱出自文獻的逐字公式或實機辨識。以下數值是名義模型設定；假設參數變體另列於完整設定。</p>
+<p class="callout"><strong>研究定位：模型遷移到機箱的前置研究。</strong>我先建立機箱的簡化熱模型，作為原有數位孿生方法遷移到機箱場景的候選物理主模型。目前參數採假設值，後續將以量測資料辨識參數，再接入自己的稀疏感測校正、設備影響學習與殘差修正流程。現階段只涵蓋溫度子問題，尚未完成原本三因子方法的整套遷移。</p>
+<p><strong>這組參數實際用在哪裡：</strong>C、G、k、τ與最大RPM描述「CPU、GPU雙熱節點＋風扇延遲」的特性；本輪固定為假設值，沒有從實機資料辨識。模擬plant依此產生反應，作為固定風扇／PID／LQR／MPC比較的測試環境。MPC／LQR使用其名義模型的局部離散形式，PID的負載前饋也使用名義散熱關係。PID增益、LQR的Q/R、MPC的預測步數與權重則是另外設定的控制器參數。</p>
+<h3>公式符號、單位與目前設定</h3><div class="table-wrap"><table><thead><tr><th>符號</th><th>意義</th><th>單位</th><th>目前設定／如何解讀</th></tr></thead><tbody>
+<tr><td>i</td><td>熱節點索引</td><td>無</td><td>分別代表 CPU、GPU；兩者共用同一風扇狀態 f 與入口溫度。</td></tr>
+<tr><td>t</td><td>連續時間</td><td>s</td><td>控制命令每 10 秒更新；MPC 預測 12 步（120 秒）。</td></tr>
+<tr><td>T<sub>i</sub></td><td>第 i 個節點的模型溫度</td><td>°C</td><td>CPU／GPU 狀態；本輪初始值依seed為CPU 58–60°C、GPU 59–61°C，目標為60／60°C。尚未以實體感測器驗證。</td></tr>
+<tr><td>dT<sub>i</sub>/dt</td><td>節點溫度隨時間的變化率</td><td>°C/s</td><td>正值表示升溫，負值表示降溫。</td></tr>
+<tr><td>C<sub>i</sub></td><td>節點的等效熱容量</td><td>J/K</td><td>CPU 1200、GPU 1800；升高1 K所需熱量。數值越大，相同淨熱功率下溫度變化越慢。</td></tr>
+<tr><td>P<sub>i</sub></td><td>節點的產熱功率／負載擾動</td><td>W（J/s）</td><td>由各回合的CPU／GPU功率情境給定，隨時間變動；不是CPU使用率，也不是整機實測功耗。</td></tr>
+<tr><td>G<sub>i</sub></td><td>不隨風扇比例改變的基礎等效熱導</td><td>W/K</td><td>CPU 1.5、GPU 2；與入口每差1 K所對應的基礎散熱功率。</td></tr>
+<tr><td>k<sub>i</sub></td><td>風扇增加的等效熱導係數</td><td>W/K（f為無因次）</td><td>CPU 6、GPU 8；風扇貢獻為 k<sub>i</sub>f，總熱導為 G<sub>i</sub>＋k<sub>i</sub>f。</td></tr>
+<tr><td>T<sub>in</sub></td><td>機箱入口空氣溫度</td><td>°C</td><td>兩節點共用的外部擾動，由情境給定，約30°C附近變動；與 T<sub>i</sub> 相減得到溫差，1°C溫差等於1 K。</td></tr>
+<tr><td>f</td><td>有效風扇比例／正規化轉速狀態</td><td>無因次，0–1</td><td>模擬初始 f=0.5；不是PWM命令本身，會因風扇延遲逐步接近 u。</td></tr>
+<tr><td>df/dt</td><td>有效風扇比例的變化率</td><td>s⁻¹</td><td>由 (u−f)/τ 決定；u大於f時加速，小於f時減速。</td></tr>
+<tr><td>τ</td><td>風扇一階響應時間常數</td><td>s</td><td>20秒；固定u時，經過一個τ約完成63.2%的剩餘變化，並非瞬間到達命令值。</td></tr>
+<tr><td>u</td><td>控制器送出的PWM占空比命令</td><td>無因次，0–1</td><td>本輪允許 0.2–1（20%–100%）；每步變化最多 0.1，即10個百分點。</td></tr>
+<tr><td>RPM<sub>max</sub></td><td>假設最大風扇轉速</td><td>rev/min（轉/分鐘）</td><td>6000；是模型換算係數，尚未以實際風扇校準。</td></tr>
+<tr><td>RPM</td><td>由 f 換算的模型風扇轉速</td><td>rev/min（轉/分鐘）</td><td>RPM=6000f；例如f=0.5對應3000 RPM。這是線性假設，不代表真實PWM與RPM必然成正比。</td></tr>
+</tbody></table></div><p class="callout"><strong>兩個方程式的意思：</strong>第一式表示「儲存熱量的速率＝產熱功率−散熱功率」，各項單位都是W；當產熱大於散熱時溫度上升。第二式描述風扇追隨PWM命令的延遲。此簡化模型未加入CPU與GPU之間的直接熱交換，也未加入感測誤差。</p>
+<div class="flow"><div><strong>1. 觀測當下</strong>兩節點溫度、風扇、入口與負載</div><div><strong>2. 形成模型</strong>名義參數與局部 ZOH 離散化</div><div><strong>3. 選擇控制動作</strong>固定／PID＋前饋／LQR／MPC</div><div><strong>4. 套用共同保護</strong>PWM、變化率、警告與失敗回退</div><div><strong>5. 記錄並核對</strong>plant反應、預測、控制代價與判準</div></div>
+<div class="table-wrap" style="margin-top:20px"><table><thead><tr><th>方法</th><th>我如何設定</th><th>主要限制</th></tr></thead><tbody><tr><td>固定風扇</td><td>校準選 PWM 0.6</td><td>沒有依負載調整，仍套同一警告保護</td></tr><tr><td>PID＋平衡點前饋</td><td>負載估計穩態PWM＋溫度誤差回授；Kp=.06、Ki=.0003、Kd=.05</td><td>只搜尋三組；是新版前饋PID，不能與v1 PID數字直接混算</td></tr><tr><td>經限制的 gain-scheduled LQR</td><td>先分配可達平衡點；Q=diag(.04,.04,0)，校準選R=1</td><td>套slew／飽和後不宣稱受限最優或全域穩定</td></tr><tr><td>受限制 MPC</td><td>每步QP、thermal slack、horizon12；校準選R=.1</td><td>horizon內固定當下負載；局部線性模型；軟溫度上限不是安全保證</td></tr></tbody></table></div>
+<p class="callout"><strong>相同的比較條件：</strong>目標60／60°C，上限80／85°C，警告75／80°C，PWM .2–1，每步變化不超過 .1；每方法3候選×相同3個校準seed。這是相同候選評估回合預算，CPU運算時間並不相等。</p></section>
+<section id="review"><h2>我找到的問題與改進方法</h2><p>我在前置研究中找到以下問題，分別調整求解方式、目標設定與比較流程；尚未完成的模型辨識另列為後續工作。</p><div class="table-wrap"><table><thead><tr><th>我找到的問題</th><th>改進方法</th><th>目前結果／待確認</th></tr></thead><tbody>
+<tr><td>第一階段超載有190步求解失敗，但軟溫度限制允許可行解，失敗原因需檢查數值求解。</td><td>已改用專用QP求解器OSQP、調整變數尺度、採ZOH離散預測，並檢查收斂與原約束殘差。</td><td>新版超載0回退；其他切分仍有7步未通過殘差檢查而回退。超載依然超溫。</td></tr>
+<tr><td>單一風扇通常無法讓CPU／GPU同時穩在60°C。</td><td>已先在允許的風扇範圍內分配可達平衡點，再讓LQR計算回授增益。</td><td>平衡點與增益計算測試通過；尚未驗證實機穩定性。</td></tr>
+<tr><td>部分指標與判準原先沒有獨立重算，實驗中斷也可能覆寫紀錄。</td><td>已從原始紀錄獨立重算指標、判準與熱模型步進，保留每次執行紀錄，並測試錯誤資料能否被拒絕。</td><td>84回合、10080步核對通過；6項篡改／失敗測試通過。</td></tr>
+<tr><td>第一階段各方法候選數不同，PID也未使用相同的負載前饋。</td><td>已統一為每方法3候選，PID共享名義模型前饋；校準後凍結，再開新的合成測試。</td><td>完成48個正式回合；新版結果不支持MPC優於PID＋前饋或LQR。</td></tr>
+<tr><td>熱模型參數仍是假設值，原有稀疏校正與學習流程尚未接入機箱。</td><td>後續先整理同步量測與熱參數辨識程序，再接入自己的校正、設備影響學習與殘差修正。</td><td>列入後續計畫；目前只支持假設模型比較，尚未完成整套方法遷移或實機驗證。</td></tr></tbody></table></div></section>
+<section id="results"><h2>我得到的結果：MPC 沒有勝過較簡單的基準</h2><p class="lead">以下是新版 nominal synthetic holdout 的三 seed 等權平均；每回合20分鐘。同一負載、初始條件與保護限制下比較。</p><figure><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="720pt" height="266.4pt" viewBox="0 0 720 266.4" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.9.4, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 266.4
+L 720 266.4
+L 720 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 39.58149 246.721635
+L 356.4 246.721635
+L 356.4 18.118365
+L 39.58149 18.118365
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="mb214c0be7e" d="M 0 0
+L 0 3.5
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mb214c0be7e" x="79.627665" y="246.721635" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <!-- Fixed -->
+      <g transform="translate(66.671415 261.320073) scale(0.1 -0.1)">
+       <defs>
+        <path id="DejaVuSans-46" d="M 628 4666
+L 3309 4666
+L 3309 4134
+L 1259 4134
+L 1259 2759
+L 3109 2759
+L 3109 2228
+L 1259 2228
+L 1259 0
+L 628 0
+L 628 4666
+z
+" transform="scale(0.015625)"/>
+        <path id="DejaVuSans-69" d="M 603 3500
+L 1178 3500
+L 1178 0
+L 603 0
+L 603 3500
+z
+M 603 4863
+L 1178 4863
+L 1178 4134
+L 603 4134
+L 603 4863
+z
+" transform="scale(0.015625)"/>
+        <path id="DejaVuSans-78" d="M 3513 3500
+L 2247 1797
+L 3578 0
+L 2900 0
+L 1881 1375
+L 863 0
+L 184 0
+L 1544 1831
+L 300 3500
+L 978 3500
+L 1906 2253
+L 2834 3500
+L 3513 3500
+z
+" transform="scale(0.015625)"/>
+        <path id="DejaVuSans-65" d="M 3597 1894
+L 3597 1613
+L 953 1613
+Q 991 1019 1311 708
+Q 1631 397 2203 397
+Q 2534 397 2845 478
+Q 3156 559 3463 722
+L 3463 178
+Q 3153 47 2828 -22
+Q 2503 -91 2169 -91
+Q 1331 -91 842 396
+Q 353 884 353 1716
+Q 353 2575 817 3079
+Q 1281 3584 2069 3584
+Q 2775 3584 3186 3129
+Q 3597 2675 3597 1894
+z
+M 3022 2063
+Q 3016 2534 2758 2815
+Q 2500 3097 2075 3097
+Q 1594 3097 1305 2825
+Q 1016 2553 972 2059
+L 3022 2063
+z
+" transform="scale(0.015625)"/>
+        <path id="DejaVuSans-64" d="M 2906 2969
+L 2906 4863
+L 3481 4863
+L 3481 0
+L 2906 0
+L 2906 525
+Q 2725 213 2448 61
+Q 2172 -91 1784 -91
+Q 1150 -91 751 415
+Q 353 922 353 1747
+Q 353 2572 751 3078
+Q 1150 3584 1784 3584
+Q 2172 3584 2448 3432
+Q 2725 3281 2906 2969
+z
+M 947 1747
+Q 947 1113 1208 752
+Q 1469 391 1925 391
+Q 2381 391 2643 752
+Q 2906 1113 2906 1747
+Q 2906 2381 2643 2742
+Q 2381 3103 1925 3103
+Q 1469 3103 1208 2742
+Q 947 2381 947 1747
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#DejaVuSans-46"/>
+       <use xlink:href="#DejaVuSans-69" x="50.269531"/>
+       <use xlink:href="#DejaVuSans-78" x="78.052734"/>
+       <use xlink:href="#DejaVuSans-65" x="134.107422"/>
+       <use xlink:href="#DejaVuSans-64" x="195.630859"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#mb214c0be7e" x="158.536385" y="246.721635" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <!-- PID + FF -->
+      <g transform="translate(137.07701 261.320073) scale(0.1 -0.1)">
+       <defs>
+        <path id="DejaVuSans-50" d="M 1259 4147
+L 1259 2394
+L 2053 2394
+Q 2494 2394 2734 2622
+Q 2975 2850 2975 3272
+Q 2975 3691 2734 3919
+Q 2494 4147 2053 4147
+L 1259 4147
+z
+M 628 4666
+L 2053 4666
+Q 2838 4666 3239 4311
+Q 3641 3956 3641 3272
+Q 3641 2581 3239 2228
+Q 2838 1875 2053 1875
+L 1259 1875
+L 1259 0
+L 628 0
+L 628 4666
+z
+" transform="scale(0.015625)"/>
+        <path id="DejaVuSans-49" d="M 628 4666
+L 1259 4666
+L 1259 0
+L 628 0
+L 628 4666
+z
+" transform="scale(0.015625)"/>
+        <path id="DejaVuSans-44" d="M 1259 4147
+L 1259 519
+L 2022 519
+Q 2988 519 3436 956
+Q 3884 1394 3884 2338
+Q 3884 3275 3436 3711
+Q 2988 4147 2022 4147
+L 1259 4147
+z
+M 628 4666
+L 1925 4666
+Q 3281 4666 3915 4102
+Q 4550 3538 4550 2338
+Q 4550 1131 3912 565
+Q 3275 0 1925 0
+L 628 0
+L 628 4666
+z
+" transform="scale(0.015625)"/>
+        <path id="DejaVuSans-20" transform="scale(0.015625)"/>
+        <path id="DejaVuSans-2b" d="M 2944 4013
+L 2944 2272
+L 4684 2272
+L 4684 1741
+L 2944 1741
+L 2944 0
+L 2419 0
+L 2419 1741
+L 678 1741
+L 678 2272
+L 2419 2272
+L 2419 4013
+L 2944 4013
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#DejaVuSans-50"/>
+       <use xlink:href="#DejaVuSans-49" x="60.302734"/>
+       <use xlink:href="#DejaVuSans-44" x="89.794922"/>
+       <use xlink:href="#DejaVuSans-20" x="166.796875"/>
+       <use xlink:href="#DejaVuSans-2b" x="198.583984"/>
+       <use xlink:href="#DejaVuSans-20" x="282.373047"/>
+       <use xlink:href="#DejaVuSans-46" x="314.160156"/>
+       <use xlink:href="#DejaVuSans-46" x="371.679688"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#mb214c0be7e" x="237.445105" y="246.721635" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <!-- LQR -->
+      <g transform="translate(227.249011 261.320073) scale(0.1 -0.1)">
+       <defs>
+        <path id="DejaVuSans-4c" d="M 628 4666
+L 1259 4666
+L 1259 531
+L 3531 531
+L 3531 0
+L 628 0
+L 628 4666
+z
+" transform="scale(0.015625)"/>
+        <path id="DejaVuSans-51" d="M 2522 4238
+Q 1834 4238 1429 3725
+Q 1025 3213 1025 2328
+Q 1025 1447 1429 934
+Q 1834 422 2522 422
+Q 3209 422 3611 934
+Q 4013 1447 4013 2328
+Q 4013 3213 3611 3725
+Q 3209 4238 2522 4238
+z
+M 3406 84
+L 4238 -825
+L 3475 -825
+L 2784 -78
+Q 2681 -84 2626 -87
+Q 2572 -91 2522 -91
+Q 1538 -91 948 567
+Q 359 1225 359 2328
+Q 359 3434 948 4092
+Q 1538 4750 2522 4750
+Q 3503 4750 4090 4092
+Q 4678 3434 4678 2328
+Q 4678 1516 4351 937
+Q 4025 359 3406 84
+z
+" transform="scale(0.015625)"/>
+        <path id="DejaVuSans-52" d="M 2841 2188
+Q 3044 2119 3236 1894
+Q 3428 1669 3622 1275
+L 4263 0
+L 3584 0
+L 2988 1197
+Q 2756 1666 2539 1819
+Q 2322 1972 1947 1972
+L 1259 1972
+L 1259 0
+L 628 0
+L 628 4666
+L 2053 4666
+Q 2853 4666 3247 4331
+Q 3641 3997 3641 3322
+Q 3641 2881 3436 2590
+Q 3231 2300 2841 2188
+z
+M 1259 4147
+L 1259 2491
+L 2053 2491
+Q 2509 2491 2742 2702
+Q 2975 2913 2975 3322
+Q 2975 3731 2742 3939
+Q 2509 4147 2053 4147
+L 1259 4147
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#DejaVuSans-4c"/>
+       <use xlink:href="#DejaVuSans-51" x="55.712891"/>
+       <use xlink:href="#DejaVuSans-52" x="134.423828"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#mb214c0be7e" x="316.353825" y="246.721635" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <!-- MPC -->
+      <g transform="translate(305.533512 261.320073) scale(0.1 -0.1)">
+       <defs>
+        <path id="DejaVuSans-4d" d="M 628 4666
+L 1569 4666
+L 2759 1491
+L 3956 4666
+L 4897 4666
+L 4897 0
+L 4281 0
+L 4281 4097
+L 3078 897
+L 2444 897
+L 1241 4097
+L 1241 0
+L 628 0
+L 628 4666
+z
+" transform="scale(0.015625)"/>
+        <path id="DejaVuSans-43" d="M 4122 4306
+L 4122 3641
+Q 3803 3938 3442 4084
+Q 3081 4231 2675 4231
+Q 1875 4231 1450 3742
+Q 1025 3253 1025 2328
+Q 1025 1406 1450 917
+Q 1875 428 2675 428
+Q 3081 428 3442 575
+Q 3803 722 4122 1019
+L 4122 359
+Q 3791 134 3420 21
+Q 3050 -91 2638 -91
+Q 1578 -91 968 557
+Q 359 1206 359 2328
+Q 359 3453 968 4101
+Q 1578 4750 2638 4750
+Q 3056 4750 3426 4639
+Q 3797 4528 4122 4306
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#DejaVuSans-4d"/>
+       <use xlink:href="#DejaVuSans-50" x="86.279297"/>
+       <use xlink:href="#DejaVuSans-43" x="146.582031"/>
+      </g>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_5">
+      <path d="M 39.58149 246.721635
+L 356.4 246.721635
+" clip-path="url(#p55abef4d9a)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.18; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6">
+      <defs>
+       <path id="m8e4d319f46" d="M 0 0
+L -3.5 0
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m8e4d319f46" x="39.58149" y="246.721635" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <!-- 0.0 -->
+      <g transform="translate(16.678365 250.520854) scale(0.1 -0.1)">
+       <defs>
+        <path id="DejaVuSans-30" d="M 2034 4250
+Q 1547 4250 1301 3770
+Q 1056 3291 1056 2328
+Q 1056 1369 1301 889
+Q 1547 409 2034 409
+Q 2525 409 2770 889
+Q 3016 1369 3016 2328
+Q 3016 3291 2770 3770
+Q 2525 4250 2034 4250
+z
+M 2034 4750
+Q 2819 4750 3233 4129
+Q 3647 3509 3647 2328
+Q 3647 1150 3233 529
+Q 2819 -91 2034 -91
+Q 1250 -91 836 529
+Q 422 1150 422 2328
+Q 422 3509 836 4129
+Q 1250 4750 2034 4750
+z
+" transform="scale(0.015625)"/>
+        <path id="DejaVuSans-2e" d="M 684 794
+L 1344 794
+L 1344 0
+L 684 0
+L 684 794
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#DejaVuSans-30"/>
+       <use xlink:href="#DejaVuSans-2e" x="63.623047"/>
+       <use xlink:href="#DejaVuSans-30" x="95.410156"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_7">
+      <path d="M 39.58149 215.244975
+L 356.4 215.244975
+" clip-path="url(#p55abef4d9a)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.18; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m8e4d319f46" x="39.58149" y="215.244975" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <!-- 0.5 -->
+      <g transform="translate(16.678365 219.044194) scale(0.1 -0.1)">
+       <defs>
+        <path id="DejaVuSans-35" d="M 691 4666
+L 3169 4666
+L 3169 4134
+L 1269 4134
+L 1269 2991
+Q 1406 3038 1543 3061
+Q 1681 3084 1819 3084
+Q 2600 3084 3056 2656
+Q 3513 2228 3513 1497
+Q 3513 744 3044 326
+Q 2575 -91 1722 -91
+Q 1428 -91 1123 -41
+Q 819 9 494 109
+L 494 744
+Q 775 591 1075 516
+Q 1375 441 1709 441
+Q 2250 441 2565 725
+Q 2881 1009 2881 1497
+Q 2881 1984 2565 2268
+Q 2250 2553 1709 2553
+Q 1456 2553 1204 2497
+Q 953 2441 691 2322
+L 691 4666
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#DejaVuSans-30"/>
+       <use xlink:href="#DejaVuSans-2e" x="63.623047"/>
+       <use xlink:href="#DejaVuSans-35" x="95.410156"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_9">
+      <path d="M 39.58149 183.768316
+L 356.4 183.768316
+" clip-path="url(#p55abef4d9a)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.18; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m8e4d319f46" x="39.58149" y="183.768316" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <!-- 1.0 -->
+      <g transform="translate(16.678365 187.567534) scale(0.1 -0.1)">
+       <defs>
+        <path id="DejaVuSans-31" d="M 794 531
+L 1825 531
+L 1825 4091
+L 703 3866
+L 703 4441
+L 1819 4666
+L 2450 4666
+L 2450 531
+L 3481 531
+L 3481 0
+L 794 0
+L 794 531
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#DejaVuSans-31"/>
+       <use xlink:href="#DejaVuSans-2e" x="63.623047"/>
+       <use xlink:href="#DejaVuSans-30" x="95.410156"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_11">
+      <path d="M 39.58149 152.291656
+L 356.4 152.291656
+" clip-path="url(#p55abef4d9a)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.18; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#m8e4d319f46" x="39.58149" y="152.291656" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <!-- 1.5 -->
+      <g transform="translate(16.678365 156.090875) scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-31"/>
+       <use xlink:href="#DejaVuSans-2e" x="63.623047"/>
+       <use xlink:href="#DejaVuSans-35" x="95.410156"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_13">
+      <path d="M 39.58149 120.814996
+L 356.4 120.814996
+" clip-path="url(#p55abef4d9a)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.18; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#m8e4d319f46" x="39.58149" y="120.814996" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <!-- 2.0 -->
+      <g transform="translate(16.678365 124.614215) scale(0.1 -0.1)">
+       <defs>
+        <path id="DejaVuSans-32" d="M 1228 531
+L 3431 531
+L 3431 0
+L 469 0
+L 469 531
+Q 828 903 1448 1529
+Q 2069 2156 2228 2338
+Q 2531 2678 2651 2914
+Q 2772 3150 2772 3378
+Q 2772 3750 2511 3984
+Q 2250 4219 1831 4219
+Q 1534 4219 1204 4116
+Q 875 4013 500 3803
+L 500 4441
+Q 881 4594 1212 4672
+Q 1544 4750 1819 4750
+Q 2544 4750 2975 4387
+Q 3406 4025 3406 3419
+Q 3406 3131 3298 2873
+Q 3191 2616 2906 2266
+Q 2828 2175 2409 1742
+Q 1991 1309 1228 531
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#DejaVuSans-32"/>
+       <use xlink:href="#DejaVuSans-2e" x="63.623047"/>
+       <use xlink:href="#DejaVuSans-30" x="95.410156"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_15">
+      <path d="M 39.58149 89.338336
+L 356.4 89.338336
+" clip-path="url(#p55abef4d9a)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.18; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#m8e4d319f46" x="39.58149" y="89.338336" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <!-- 2.5 -->
+      <g transform="translate(16.678365 93.137555) scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-32"/>
+       <use xlink:href="#DejaVuSans-2e" x="63.623047"/>
+       <use xlink:href="#DejaVuSans-35" x="95.410156"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_17">
+      <path d="M 39.58149 57.861677
+L 356.4 57.861677
+" clip-path="url(#p55abef4d9a)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.18; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_18">
+      <g>
+       <use xlink:href="#m8e4d319f46" x="39.58149" y="57.861677" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <!-- 3.0 -->
+      <g transform="translate(16.678365 61.660895) scale(0.1 -0.1)">
+       <defs>
+        <path id="DejaVuSans-33" d="M 2597 2516
+Q 3050 2419 3304 2112
+Q 3559 1806 3559 1356
+Q 3559 666 3084 287
+Q 2609 -91 1734 -91
+Q 1441 -91 1130 -33
+Q 819 25 488 141
+L 488 750
+Q 750 597 1062 519
+Q 1375 441 1716 441
+Q 2309 441 2620 675
+Q 2931 909 2931 1356
+Q 2931 1769 2642 2001
+Q 2353 2234 1838 2234
+L 1294 2234
+L 1294 2753
+L 1863 2753
+Q 2328 2753 2575 2939
+Q 2822 3125 2822 3475
+Q 2822 3834 2567 4026
+Q 2313 4219 1838 4219
+Q 1578 4219 1281 4162
+Q 984 4106 628 3988
+L 628 4550
+Q 988 4650 1302 4700
+Q 1616 4750 1894 4750
+Q 2613 4750 3031 4423
+Q 3450 4097 3450 3541
+Q 3450 3153 3228 2886
+Q 3006 2619 2597 2516
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#DejaVuSans-33"/>
+       <use xlink:href="#DejaVuSans-2e" x="63.623047"/>
+       <use xlink:href="#DejaVuSans-30" x="95.410156"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_19">
+      <path d="M 39.58149 26.385017
+L 356.4 26.385017
+" clip-path="url(#p55abef4d9a)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.18; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_20">
+      <g>
+       <use xlink:href="#m8e4d319f46" x="39.58149" y="26.385017" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <!-- 3.5 -->
+      <g transform="translate(16.678365 30.184236) scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-33"/>
+       <use xlink:href="#DejaVuSans-2e" x="63.623047"/>
+       <use xlink:href="#DejaVuSans-35" x="95.410156"/>
+      </g>
+     </g>
+    </g>
+    <g id="text_13">
+     <!-- MAE (degrees C) -->
+     <g transform="translate(10.598677 174.010625) rotate(-90) scale(0.1 -0.1)">
+      <defs>
+       <path id="DejaVuSans-41" d="M 2188 4044
+L 1331 1722
+L 3047 1722
+L 2188 4044
+z
+M 1831 4666
+L 2547 4666
+L 4325 0
+L 3669 0
+L 3244 1197
+L 1141 1197
+L 716 0
+L 50 0
+L 1831 4666
+z
+" transform="scale(0.015625)"/>
+       <path id="DejaVuSans-45" d="M 628 4666
+L 3578 4666
+L 3578 4134
+L 1259 4134
+L 1259 2753
+L 3481 2753
+L 3481 2222
+L 1259 2222
+L 1259 531
+L 3634 531
+L 3634 0
+L 628 0
+L 628 4666
+z
+" transform="scale(0.015625)"/>
+       <path id="DejaVuSans-28" d="M 1984 4856
+Q 1566 4138 1362 3434
+Q 1159 2731 1159 2009
+Q 1159 1288 1364 580
+Q 1569 -128 1984 -844
+L 1484 -844
+Q 1016 -109 783 600
+Q 550 1309 550 2009
+Q 550 2706 781 3412
+Q 1013 4119 1484 4856
+L 1984 4856
+z
+" transform="scale(0.015625)"/>
+       <path id="DejaVuSans-67" d="M 2906 1791
+Q 2906 2416 2648 2759
+Q 2391 3103 1925 3103
+Q 1463 3103 1205 2759
+Q 947 2416 947 1791
+Q 947 1169 1205 825
+Q 1463 481 1925 481
+Q 2391 481 2648 825
+Q 2906 1169 2906 1791
+z
+M 3481 434
+Q 3481 -459 3084 -895
+Q 2688 -1331 1869 -1331
+Q 1566 -1331 1297 -1286
+Q 1028 -1241 775 -1147
+L 775 -588
+Q 1028 -725 1275 -790
+Q 1522 -856 1778 -856
+Q 2344 -856 2625 -561
+Q 2906 -266 2906 331
+L 2906 616
+Q 2728 306 2450 153
+Q 2172 0 1784 0
+Q 1141 0 747 490
+Q 353 981 353 1791
+Q 353 2603 747 3093
+Q 1141 3584 1784 3584
+Q 2172 3584 2450 3431
+Q 2728 3278 2906 2969
+L 2906 3500
+L 3481 3500
+L 3481 434
+z
+" transform="scale(0.015625)"/>
+       <path id="DejaVuSans-72" d="M 2631 2963
+Q 2534 3019 2420 3045
+Q 2306 3072 2169 3072
+Q 1681 3072 1420 2755
+Q 1159 2438 1159 1844
+L 1159 0
+L 581 0
+L 581 3500
+L 1159 3500
+L 1159 2956
+Q 1341 3275 1631 3429
+Q 1922 3584 2338 3584
+Q 2397 3584 2469 3576
+Q 2541 3569 2628 3553
+L 2631 2963
+z
+" transform="scale(0.015625)"/>
+       <path id="DejaVuSans-73" d="M 2834 3397
+L 2834 2853
+Q 2591 2978 2328 3040
+Q 2066 3103 1784 3103
+Q 1356 3103 1142 2972
+Q 928 2841 928 2578
+Q 928 2378 1081 2264
+Q 1234 2150 1697 2047
+L 1894 2003
+Q 2506 1872 2764 1633
+Q 3022 1394 3022 966
+Q 3022 478 2636 193
+Q 2250 -91 1575 -91
+Q 1294 -91 989 -36
+Q 684 19 347 128
+L 347 722
+Q 666 556 975 473
+Q 1284 391 1588 391
+Q 1994 391 2212 530
+Q 2431 669 2431 922
+Q 2431 1156 2273 1281
+Q 2116 1406 1581 1522
+L 1381 1569
+Q 847 1681 609 1914
+Q 372 2147 372 2553
+Q 372 3047 722 3315
+Q 1072 3584 1716 3584
+Q 2034 3584 2315 3537
+Q 2597 3491 2834 3397
+z
+" transform="scale(0.015625)"/>
+       <path id="DejaVuSans-29" d="M 513 4856
+L 1013 4856
+Q 1481 4119 1714 3412
+Q 1947 2706 1947 2009
+Q 1947 1309 1714 600
+Q 1481 -109 1013 -844
+L 513 -844
+Q 928 -128 1133 580
+Q 1338 1288 1338 2009
+Q 1338 2731 1133 3434
+Q 928 4138 513 4856
+z
+" transform="scale(0.015625)"/>
+      </defs>
+      <use xlink:href="#DejaVuSans-4d"/>
+      <use xlink:href="#DejaVuSans-41" x="86.279297"/>
+      <use xlink:href="#DejaVuSans-45" x="154.6875"/>
+      <use xlink:href="#DejaVuSans-20" x="217.871094"/>
+      <use xlink:href="#DejaVuSans-28" x="249.658203"/>
+      <use xlink:href="#DejaVuSans-64" x="288.671875"/>
+      <use xlink:href="#DejaVuSans-65" x="352.148438"/>
+      <use xlink:href="#DejaVuSans-67" x="413.671875"/>
+      <use xlink:href="#DejaVuSans-72" x="477.148438"/>
+      <use xlink:href="#DejaVuSans-65" x="516.011719"/>
+      <use xlink:href="#DejaVuSans-65" x="577.535156"/>
+      <use xlink:href="#DejaVuSans-73" x="639.058594"/>
+      <use xlink:href="#DejaVuSans-20" x="691.158203"/>
+      <use xlink:href="#DejaVuSans-43" x="722.945312"/>
+      <use xlink:href="#DejaVuSans-29" x="792.769531"/>
+     </g>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 53.982331 246.721635
+L 105.272999 246.721635
+L 105.272999 63.839019
+L 53.982331 63.839019
+z
+" clip-path="url(#p55abef4d9a)" style="fill: #667085"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 132.891051 246.721635
+L 184.181719 246.721635
+L 184.181719 135.211037
+L 132.891051 135.211037
+z
+" clip-path="url(#p55abef4d9a)" style="fill: #207966"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 211.799771 246.721635
+L 263.090439 246.721635
+L 263.090439 137.786151
+L 211.799771 137.786151
+z
+" clip-path="url(#p55abef4d9a)" style="fill: #9d6418"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 290.708491 246.721635
+L 341.999159 246.721635
+L 341.999159 132.959253
+L 290.708491 132.959253
+z
+" clip-path="url(#p55abef4d9a)" style="fill: #295ac7"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 39.58149 246.721635
+L 39.58149 18.118365
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 39.58149 246.721635
+L 356.4 246.721635
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_14">
+    <!-- 2.905 -->
+    <g transform="translate(66.745009 58.9673) scale(0.09 -0.09)">
+     <defs>
+      <path id="DejaVuSans-39" d="M 703 97
+L 703 672
+Q 941 559 1184 500
+Q 1428 441 1663 441
+Q 2288 441 2617 861
+Q 2947 1281 2994 2138
+Q 2813 1869 2534 1725
+Q 2256 1581 1919 1581
+Q 1219 1581 811 2004
+Q 403 2428 403 3163
+Q 403 3881 828 4315
+Q 1253 4750 1959 4750
+Q 2769 4750 3195 4129
+Q 3622 3509 3622 2328
+Q 3622 1225 3098 567
+Q 2575 -91 1691 -91
+Q 1453 -91 1209 -44
+Q 966 3 703 97
+z
+M 1959 2075
+Q 2384 2075 2632 2365
+Q 2881 2656 2881 3163
+Q 2881 3666 2632 3958
+Q 2384 4250 1959 4250
+Q 1534 4250 1286 3958
+Q 1038 3666 1038 3163
+Q 1038 2656 1286 2365
+Q 1534 2075 1959 2075
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#DejaVuSans-32"/>
+     <use xlink:href="#DejaVuSans-2e" x="63.623047"/>
+     <use xlink:href="#DejaVuSans-39" x="95.410156"/>
+     <use xlink:href="#DejaVuSans-30" x="159.033203"/>
+     <use xlink:href="#DejaVuSans-35" x="222.65625"/>
+    </g>
+   </g>
+   <g id="text_15">
+    <!-- 1.771 -->
+    <g transform="translate(145.653729 130.339318) scale(0.09 -0.09)">
+     <defs>
+      <path id="DejaVuSans-37" d="M 525 4666
+L 3525 4666
+L 3525 4397
+L 1831 0
+L 1172 0
+L 2766 4134
+L 525 4134
+L 525 4666
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#DejaVuSans-31"/>
+     <use xlink:href="#DejaVuSans-2e" x="63.623047"/>
+     <use xlink:href="#DejaVuSans-37" x="95.410156"/>
+     <use xlink:href="#DejaVuSans-37" x="159.033203"/>
+     <use xlink:href="#DejaVuSans-31" x="222.65625"/>
+    </g>
+   </g>
+   <g id="text_16">
+    <!-- 1.730 -->
+    <g transform="translate(224.562449 132.914432) scale(0.09 -0.09)">
+     <use xlink:href="#DejaVuSans-31"/>
+     <use xlink:href="#DejaVuSans-2e" x="63.623047"/>
+     <use xlink:href="#DejaVuSans-37" x="95.410156"/>
+     <use xlink:href="#DejaVuSans-33" x="159.033203"/>
+     <use xlink:href="#DejaVuSans-30" x="222.65625"/>
+    </g>
+   </g>
+   <g id="text_17">
+    <!-- 1.807 -->
+    <g transform="translate(303.471168 128.087534) scale(0.09 -0.09)">
+     <defs>
+      <path id="DejaVuSans-38" d="M 2034 2216
+Q 1584 2216 1326 1975
+Q 1069 1734 1069 1313
+Q 1069 891 1326 650
+Q 1584 409 2034 409
+Q 2484 409 2743 651
+Q 3003 894 3003 1313
+Q 3003 1734 2745 1975
+Q 2488 2216 2034 2216
+z
+M 1403 2484
+Q 997 2584 770 2862
+Q 544 3141 544 3541
+Q 544 4100 942 4425
+Q 1341 4750 2034 4750
+Q 2731 4750 3128 4425
+Q 3525 4100 3525 3541
+Q 3525 3141 3298 2862
+Q 3072 2584 2669 2484
+Q 3125 2378 3379 2068
+Q 3634 1759 3634 1313
+Q 3634 634 3220 271
+Q 2806 -91 2034 -91
+Q 1263 -91 848 271
+Q 434 634 434 1313
+Q 434 1759 690 2068
+Q 947 2378 1403 2484
+z
+M 1172 3481
+Q 1172 3119 1398 2916
+Q 1625 2713 2034 2713
+Q 2441 2713 2670 2916
+Q 2900 3119 2900 3481
+Q 2900 3844 2670 4047
+Q 2441 4250 2034 4250
+Q 1625 4250 1398 4047
+Q 1172 3844 1172 3481
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#DejaVuSans-31"/>
+     <use xlink:href="#DejaVuSans-2e" x="63.623047"/>
+     <use xlink:href="#DejaVuSans-38" x="95.410156"/>
+     <use xlink:href="#DejaVuSans-30" x="159.033203"/>
+     <use xlink:href="#DejaVuSans-37" x="222.65625"/>
+    </g>
+   </g>
+   <g id="PathCollection_1">
+    <defs>
+     <path id="m14fd4f4b08" d="M 0 1.870829
+C 0.49615 1.870829 0.972045 1.673706 1.322876 1.322876
+C 1.673706 0.972045 1.870829 0.49615 1.870829 0
+C 1.870829 -0.49615 1.673706 -0.972045 1.322876 -1.322876
+C 0.972045 -1.673706 0.49615 -1.870829 0 -1.870829
+C -0.49615 -1.870829 -0.972045 -1.673706 -1.322876 -1.322876
+C -1.673706 -0.972045 -1.870829 -0.49615 -1.870829 0
+C -1.870829 0.49615 -1.673706 0.972045 -1.322876 1.322876
+C -0.972045 1.673706 -0.49615 1.870829 0 1.870829
+z
+" style="stroke: #000000"/>
+    </defs>
+    <g clip-path="url(#p55abef4d9a)">
+     <use xlink:href="#m14fd4f4b08" x="71.736793" y="80.940328" style="stroke: #000000"/>
+     <use xlink:href="#m14fd4f4b08" x="79.627665" y="41.752811" style="stroke: #000000"/>
+     <use xlink:href="#m14fd4f4b08" x="87.518537" y="68.823918" style="stroke: #000000"/>
+    </g>
+   </g>
+   <g id="PathCollection_2">
+    <g clip-path="url(#p55abef4d9a)">
+     <use xlink:href="#m14fd4f4b08" x="150.645513" y="136.095929" style="stroke: #000000"/>
+     <use xlink:href="#m14fd4f4b08" x="158.536385" y="132.897179" style="stroke: #000000"/>
+     <use xlink:href="#m14fd4f4b08" x="166.427257" y="136.640003" style="stroke: #000000"/>
+    </g>
+   </g>
+   <g id="PathCollection_3">
+    <g clip-path="url(#p55abef4d9a)">
+     <use xlink:href="#m14fd4f4b08" x="229.554233" y="143.410047" style="stroke: #000000"/>
+     <use xlink:href="#m14fd4f4b08" x="237.445105" y="126.631578" style="stroke: #000000"/>
+     <use xlink:href="#m14fd4f4b08" x="245.335977" y="143.316827" style="stroke: #000000"/>
+    </g>
+   </g>
+   <g id="PathCollection_4">
+    <g clip-path="url(#p55abef4d9a)">
+     <use xlink:href="#m14fd4f4b08" x="308.462953" y="134.715474" style="stroke: #000000"/>
+     <use xlink:href="#m14fd4f4b08" x="316.353825" y="129.63293" style="stroke: #000000"/>
+     <use xlink:href="#m14fd4f4b08" x="324.244697" y="134.529353" style="stroke: #000000"/>
+    </g>
+   </g>
+   <g id="text_18">
+    <!-- Synthetic holdout: tracking error -->
+    <g transform="translate(100.075432 12.118365) scale(0.12 -0.12)">
+     <defs>
+      <path id="DejaVuSans-53" d="M 3425 4513
+L 3425 3897
+Q 3066 4069 2747 4153
+Q 2428 4238 2131 4238
+Q 1616 4238 1336 4038
+Q 1056 3838 1056 3469
+Q 1056 3159 1242 3001
+Q 1428 2844 1947 2747
+L 2328 2669
+Q 3034 2534 3370 2195
+Q 3706 1856 3706 1288
+Q 3706 609 3251 259
+Q 2797 -91 1919 -91
+Q 1588 -91 1214 -16
+Q 841 59 441 206
+L 441 856
+Q 825 641 1194 531
+Q 1563 422 1919 422
+Q 2459 422 2753 634
+Q 3047 847 3047 1241
+Q 3047 1584 2836 1778
+Q 2625 1972 2144 2069
+L 1759 2144
+Q 1053 2284 737 2584
+Q 422 2884 422 3419
+Q 422 4038 858 4394
+Q 1294 4750 2059 4750
+Q 2388 4750 2728 4690
+Q 3069 4631 3425 4513
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSans-79" d="M 2059 -325
+Q 1816 -950 1584 -1140
+Q 1353 -1331 966 -1331
+L 506 -1331
+L 506 -850
+L 844 -850
+Q 1081 -850 1212 -737
+Q 1344 -625 1503 -206
+L 1606 56
+L 191 3500
+L 800 3500
+L 1894 763
+L 2988 3500
+L 3597 3500
+L 2059 -325
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSans-6e" d="M 3513 2113
+L 3513 0
+L 2938 0
+L 2938 2094
+Q 2938 2591 2744 2837
+Q 2550 3084 2163 3084
+Q 1697 3084 1428 2787
+Q 1159 2491 1159 1978
+L 1159 0
+L 581 0
+L 581 3500
+L 1159 3500
+L 1159 2956
+Q 1366 3272 1645 3428
+Q 1925 3584 2291 3584
+Q 2894 3584 3203 3211
+Q 3513 2838 3513 2113
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSans-74" d="M 1172 4494
+L 1172 3500
+L 2356 3500
+L 2356 3053
+L 1172 3053
+L 1172 1153
+Q 1172 725 1289 603
+Q 1406 481 1766 481
+L 2356 481
+L 2356 0
+L 1766 0
+Q 1100 0 847 248
+Q 594 497 594 1153
+L 594 3053
+L 172 3053
+L 172 3500
+L 594 3500
+L 594 4494
+L 1172 4494
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSans-68" d="M 3513 2113
+L 3513 0
+L 2938 0
+L 2938 2094
+Q 2938 2591 2744 2837
+Q 2550 3084 2163 3084
+Q 1697 3084 1428 2787
+Q 1159 2491 1159 1978
+L 1159 0
+L 581 0
+L 581 4863
+L 1159 4863
+L 1159 2956
+Q 1366 3272 1645 3428
+Q 1925 3584 2291 3584
+Q 2894 3584 3203 3211
+Q 3513 2838 3513 2113
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSans-63" d="M 3122 3366
+L 3122 2828
+Q 2878 2963 2633 3030
+Q 2388 3097 2138 3097
+Q 1578 3097 1268 2742
+Q 959 2388 959 1747
+Q 959 1106 1268 751
+Q 1578 397 2138 397
+Q 2388 397 2633 464
+Q 2878 531 3122 666
+L 3122 134
+Q 2881 22 2623 -34
+Q 2366 -91 2075 -91
+Q 1284 -91 818 406
+Q 353 903 353 1747
+Q 353 2603 823 3093
+Q 1294 3584 2113 3584
+Q 2378 3584 2631 3529
+Q 2884 3475 3122 3366
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSans-6f" d="M 1959 3097
+Q 1497 3097 1228 2736
+Q 959 2375 959 1747
+Q 959 1119 1226 758
+Q 1494 397 1959 397
+Q 2419 397 2687 759
+Q 2956 1122 2956 1747
+Q 2956 2369 2687 2733
+Q 2419 3097 1959 3097
+z
+M 1959 3584
+Q 2709 3584 3137 3096
+Q 3566 2609 3566 1747
+Q 3566 888 3137 398
+Q 2709 -91 1959 -91
+Q 1206 -91 779 398
+Q 353 888 353 1747
+Q 353 2609 779 3096
+Q 1206 3584 1959 3584
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSans-6c" d="M 603 4863
+L 1178 4863
+L 1178 0
+L 603 0
+L 603 4863
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSans-75" d="M 544 1381
+L 544 3500
+L 1119 3500
+L 1119 1403
+Q 1119 906 1312 657
+Q 1506 409 1894 409
+Q 2359 409 2629 706
+Q 2900 1003 2900 1516
+L 2900 3500
+L 3475 3500
+L 3475 0
+L 2900 0
+L 2900 538
+Q 2691 219 2414 64
+Q 2138 -91 1772 -91
+Q 1169 -91 856 284
+Q 544 659 544 1381
+z
+M 1991 3584
+L 1991 3584
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSans-3a" d="M 750 794
+L 1409 794
+L 1409 0
+L 750 0
+L 750 794
+z
+M 750 3309
+L 1409 3309
+L 1409 2516
+L 750 2516
+L 750 3309
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSans-61" d="M 2194 1759
+Q 1497 1759 1228 1600
+Q 959 1441 959 1056
+Q 959 750 1161 570
+Q 1363 391 1709 391
+Q 2188 391 2477 730
+Q 2766 1069 2766 1631
+L 2766 1759
+L 2194 1759
+z
+M 3341 1997
+L 3341 0
+L 2766 0
+L 2766 531
+Q 2569 213 2275 61
+Q 1981 -91 1556 -91
+Q 1019 -91 701 211
+Q 384 513 384 1019
+Q 384 1609 779 1909
+Q 1175 2209 1959 2209
+L 2766 2209
+L 2766 2266
+Q 2766 2663 2505 2880
+Q 2244 3097 1772 3097
+Q 1472 3097 1187 3025
+Q 903 2953 641 2809
+L 641 3341
+Q 956 3463 1253 3523
+Q 1550 3584 1831 3584
+Q 2591 3584 2966 3190
+Q 3341 2797 3341 1997
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSans-6b" d="M 581 4863
+L 1159 4863
+L 1159 1991
+L 2875 3500
+L 3609 3500
+L 1753 1863
+L 3688 0
+L 2938 0
+L 1159 1709
+L 1159 0
+L 581 0
+L 581 4863
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#DejaVuSans-53"/>
+     <use xlink:href="#DejaVuSans-79" x="63.476562"/>
+     <use xlink:href="#DejaVuSans-6e" x="122.65625"/>
+     <use xlink:href="#DejaVuSans-74" x="186.035156"/>
+     <use xlink:href="#DejaVuSans-68" x="225.244141"/>
+     <use xlink:href="#DejaVuSans-65" x="288.623047"/>
+     <use xlink:href="#DejaVuSans-74" x="350.146484"/>
+     <use xlink:href="#DejaVuSans-69" x="389.355469"/>
+     <use xlink:href="#DejaVuSans-63" x="417.138672"/>
+     <use xlink:href="#DejaVuSans-20" x="472.119141"/>
+     <use xlink:href="#DejaVuSans-68" x="503.90625"/>
+     <use xlink:href="#DejaVuSans-6f" x="567.285156"/>
+     <use xlink:href="#DejaVuSans-6c" x="628.466797"/>
+     <use xlink:href="#DejaVuSans-64" x="656.25"/>
+     <use xlink:href="#DejaVuSans-6f" x="719.726562"/>
+     <use xlink:href="#DejaVuSans-75" x="780.908203"/>
+     <use xlink:href="#DejaVuSans-74" x="844.287109"/>
+     <use xlink:href="#DejaVuSans-3a" x="883.496094"/>
+     <use xlink:href="#DejaVuSans-20" x="917.1875"/>
+     <use xlink:href="#DejaVuSans-74" x="948.974609"/>
+     <use xlink:href="#DejaVuSans-72" x="988.183594"/>
+     <use xlink:href="#DejaVuSans-61" x="1029.296875"/>
+     <use xlink:href="#DejaVuSans-63" x="1090.576172"/>
+     <use xlink:href="#DejaVuSans-6b" x="1145.556641"/>
+     <use xlink:href="#DejaVuSans-69" x="1203.466797"/>
+     <use xlink:href="#DejaVuSans-6e" x="1231.25"/>
+     <use xlink:href="#DejaVuSans-67" x="1294.628906"/>
+     <use xlink:href="#DejaVuSans-20" x="1358.105469"/>
+     <use xlink:href="#DejaVuSans-65" x="1389.892578"/>
+     <use xlink:href="#DejaVuSans-72" x="1451.416016"/>
+     <use xlink:href="#DejaVuSans-72" x="1490.779297"/>
+     <use xlink:href="#DejaVuSans-6f" x="1529.642578"/>
+     <use xlink:href="#DejaVuSans-72" x="1590.824219"/>
+    </g>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_9">
+    <path d="M 400.18125 246.721635
+L 716.99976 246.721635
+L 716.99976 18.118365
+L 400.18125 18.118365
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_5">
+     <g id="line2d_21">
+      <g>
+       <use xlink:href="#mb214c0be7e" x="440.227425" y="246.721635" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_19">
+      <!-- Fixed -->
+      <g transform="translate(427.271175 261.320073) scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-46"/>
+       <use xlink:href="#DejaVuSans-69" x="50.269531"/>
+       <use xlink:href="#DejaVuSans-78" x="78.052734"/>
+       <use xlink:href="#DejaVuSans-65" x="134.107422"/>
+       <use xlink:href="#DejaVuSans-64" x="195.630859"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_22">
+      <g>
+       <use xlink:href="#mb214c0be7e" x="519.136145" y="246.721635" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_20">
+      <!-- PID + FF -->
+      <g transform="translate(497.67677 261.320073) scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-50"/>
+       <use xlink:href="#DejaVuSans-49" x="60.302734"/>
+       <use xlink:href="#DejaVuSans-44" x="89.794922"/>
+       <use xlink:href="#DejaVuSans-20" x="166.796875"/>
+       <use xlink:href="#DejaVuSans-2b" x="198.583984"/>
+       <use xlink:href="#DejaVuSans-20" x="282.373047"/>
+       <use xlink:href="#DejaVuSans-46" x="314.160156"/>
+       <use xlink:href="#DejaVuSans-46" x="371.679688"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_23">
+      <g>
+       <use xlink:href="#mb214c0be7e" x="598.044865" y="246.721635" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_21">
+      <!-- LQR -->
+      <g transform="translate(587.848771 261.320073) scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-4c"/>
+       <use xlink:href="#DejaVuSans-51" x="55.712891"/>
+       <use xlink:href="#DejaVuSans-52" x="134.423828"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_24">
+      <g>
+       <use xlink:href="#mb214c0be7e" x="676.953585" y="246.721635" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_22">
+      <!-- MPC -->
+      <g transform="translate(666.133272 261.320073) scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-4d"/>
+       <use xlink:href="#DejaVuSans-50" x="86.279297"/>
+       <use xlink:href="#DejaVuSans-43" x="146.582031"/>
+      </g>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_9">
+     <g id="line2d_25">
+      <path d="M 400.18125 246.721635
+L 716.99976 246.721635
+" clip-path="url(#pf55d16ec06)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.18; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_26">
+      <g>
+       <use xlink:href="#m8e4d319f46" x="400.18125" y="246.721635" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_23">
+      <!-- 0.0 -->
+      <g transform="translate(377.278125 250.520854) scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-30"/>
+       <use xlink:href="#DejaVuSans-2e" x="63.623047"/>
+       <use xlink:href="#DejaVuSans-30" x="95.410156"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_10">
+     <g id="line2d_27">
+      <path d="M 400.18125 212.109267
+L 716.99976 212.109267
+" clip-path="url(#pf55d16ec06)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.18; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_28">
+      <g>
+       <use xlink:href="#m8e4d319f46" x="400.18125" y="212.109267" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_24">
+      <!-- 0.2 -->
+      <g transform="translate(377.278125 215.908485) scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-30"/>
+       <use xlink:href="#DejaVuSans-2e" x="63.623047"/>
+       <use xlink:href="#DejaVuSans-32" x="95.410156"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_11">
+     <g id="line2d_29">
+      <path d="M 400.18125 177.496898
+L 716.99976 177.496898
+" clip-path="url(#pf55d16ec06)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.18; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_30">
+      <g>
+       <use xlink:href="#m8e4d319f46" x="400.18125" y="177.496898" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_25">
+      <!-- 0.4 -->
+      <g transform="translate(377.278125 181.296117) scale(0.1 -0.1)">
+       <defs>
+        <path id="DejaVuSans-34" d="M 2419 4116
+L 825 1625
+L 2419 1625
+L 2419 4116
+z
+M 2253 4666
+L 3047 4666
+L 3047 1625
+L 3713 1625
+L 3713 1100
+L 3047 1100
+L 3047 0
+L 2419 0
+L 2419 1100
+L 313 1100
+L 313 1709
+L 2253 4666
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#DejaVuSans-30"/>
+       <use xlink:href="#DejaVuSans-2e" x="63.623047"/>
+       <use xlink:href="#DejaVuSans-34" x="95.410156"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_12">
+     <g id="line2d_31">
+      <path d="M 400.18125 142.88453
+L 716.99976 142.88453
+" clip-path="url(#pf55d16ec06)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.18; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_32">
+      <g>
+       <use xlink:href="#m8e4d319f46" x="400.18125" y="142.88453" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_26">
+      <!-- 0.6 -->
+      <g transform="translate(377.278125 146.683749) scale(0.1 -0.1)">
+       <defs>
+        <path id="DejaVuSans-36" d="M 2113 2584
+Q 1688 2584 1439 2293
+Q 1191 2003 1191 1497
+Q 1191 994 1439 701
+Q 1688 409 2113 409
+Q 2538 409 2786 701
+Q 3034 994 3034 1497
+Q 3034 2003 2786 2293
+Q 2538 2584 2113 2584
+z
+M 3366 4563
+L 3366 3988
+Q 3128 4100 2886 4159
+Q 2644 4219 2406 4219
+Q 1781 4219 1451 3797
+Q 1122 3375 1075 2522
+Q 1259 2794 1537 2939
+Q 1816 3084 2150 3084
+Q 2853 3084 3261 2657
+Q 3669 2231 3669 1497
+Q 3669 778 3244 343
+Q 2819 -91 2113 -91
+Q 1303 -91 875 529
+Q 447 1150 447 2328
+Q 447 3434 972 4092
+Q 1497 4750 2381 4750
+Q 2619 4750 2861 4703
+Q 3103 4656 3366 4563
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#DejaVuSans-30"/>
+       <use xlink:href="#DejaVuSans-2e" x="63.623047"/>
+       <use xlink:href="#DejaVuSans-36" x="95.410156"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_13">
+     <g id="line2d_33">
+      <path d="M 400.18125 108.272162
+L 716.99976 108.272162
+" clip-path="url(#pf55d16ec06)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.18; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_34">
+      <g>
+       <use xlink:href="#m8e4d319f46" x="400.18125" y="108.272162" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_27">
+      <!-- 0.8 -->
+      <g transform="translate(377.278125 112.07138) scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-30"/>
+       <use xlink:href="#DejaVuSans-2e" x="63.623047"/>
+       <use xlink:href="#DejaVuSans-38" x="95.410156"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_14">
+     <g id="line2d_35">
+      <path d="M 400.18125 73.659793
+L 716.99976 73.659793
+" clip-path="url(#pf55d16ec06)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.18; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_36">
+      <g>
+       <use xlink:href="#m8e4d319f46" x="400.18125" y="73.659793" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_28">
+      <!-- 1.0 -->
+      <g transform="translate(377.278125 77.459012) scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-31"/>
+       <use xlink:href="#DejaVuSans-2e" x="63.623047"/>
+       <use xlink:href="#DejaVuSans-30" x="95.410156"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_15">
+     <g id="line2d_37">
+      <path d="M 400.18125 39.047425
+L 716.99976 39.047425
+" clip-path="url(#pf55d16ec06)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.18; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_38">
+      <g>
+       <use xlink:href="#m8e4d319f46" x="400.18125" y="39.047425" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_29">
+      <!-- 1.2 -->
+      <g transform="translate(377.278125 42.846644) scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-31"/>
+       <use xlink:href="#DejaVuSans-2e" x="63.623047"/>
+       <use xlink:href="#DejaVuSans-32" x="95.410156"/>
+      </g>
+     </g>
+    </g>
+    <g id="text_30">
+     <!-- Assumed energy (Wh) -->
+     <g transform="translate(371.198438 187.955156) rotate(-90) scale(0.1 -0.1)">
+      <defs>
+       <path id="DejaVuSans-6d" d="M 3328 2828
+Q 3544 3216 3844 3400
+Q 4144 3584 4550 3584
+Q 5097 3584 5394 3201
+Q 5691 2819 5691 2113
+L 5691 0
+L 5113 0
+L 5113 2094
+Q 5113 2597 4934 2840
+Q 4756 3084 4391 3084
+Q 3944 3084 3684 2787
+Q 3425 2491 3425 1978
+L 3425 0
+L 2847 0
+L 2847 2094
+Q 2847 2600 2669 2842
+Q 2491 3084 2119 3084
+Q 1678 3084 1418 2786
+Q 1159 2488 1159 1978
+L 1159 0
+L 581 0
+L 581 3500
+L 1159 3500
+L 1159 2956
+Q 1356 3278 1631 3431
+Q 1906 3584 2284 3584
+Q 2666 3584 2933 3390
+Q 3200 3197 3328 2828
+z
+" transform="scale(0.015625)"/>
+       <path id="DejaVuSans-57" d="M 213 4666
+L 850 4666
+L 1831 722
+L 2809 4666
+L 3519 4666
+L 4500 722
+L 5478 4666
+L 6119 4666
+L 4947 0
+L 4153 0
+L 3169 4050
+L 2175 0
+L 1381 0
+L 213 4666
+z
+" transform="scale(0.015625)"/>
+      </defs>
+      <use xlink:href="#DejaVuSans-41"/>
+      <use xlink:href="#DejaVuSans-73" x="68.408203"/>
+      <use xlink:href="#DejaVuSans-73" x="120.507812"/>
+      <use xlink:href="#DejaVuSans-75" x="172.607422"/>
+      <use xlink:href="#DejaVuSans-6d" x="235.986328"/>
+      <use xlink:href="#DejaVuSans-65" x="333.398438"/>
+      <use xlink:href="#DejaVuSans-64" x="394.921875"/>
+      <use xlink:href="#DejaVuSans-20" x="458.398438"/>
+      <use xlink:href="#DejaVuSans-65" x="490.185547"/>
+      <use xlink:href="#DejaVuSans-6e" x="551.708984"/>
+      <use xlink:href="#DejaVuSans-65" x="615.087891"/>
+      <use xlink:href="#DejaVuSans-72" x="676.611328"/>
+      <use xlink:href="#DejaVuSans-67" x="715.974609"/>
+      <use xlink:href="#DejaVuSans-79" x="779.451172"/>
+      <use xlink:href="#DejaVuSans-20" x="838.630859"/>
+      <use xlink:href="#DejaVuSans-28" x="870.417969"/>
+      <use xlink:href="#DejaVuSans-57" x="909.431641"/>
+      <use xlink:href="#DejaVuSans-68" x="1008.308594"/>
+      <use xlink:href="#DejaVuSans-29" x="1071.6875"/>
+     </g>
+    </g>
+   </g>
+   <g id="patch_10">
+    <path d="M 414.582091 246.721635
+L 465.872759 246.721635
+L 465.872759 122.117109
+L 414.582091 122.117109
+z
+" clip-path="url(#pf55d16ec06)" style="fill: #667085"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 493.490811 246.721635
+L 544.781479 246.721635
+L 544.781479 76.573823
+L 493.490811 76.573823
+z
+" clip-path="url(#pf55d16ec06)" style="fill: #207966"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 572.399531 246.721635
+L 623.690199 246.721635
+L 623.690199 73.063726
+L 572.399531 73.063726
+z
+" clip-path="url(#pf55d16ec06)" style="fill: #9d6418"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 651.308251 246.721635
+L 702.598919 246.721635
+L 702.598919 63.839019
+L 651.308251 63.839019
+z
+" clip-path="url(#pf55d16ec06)" style="fill: #295ac7"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 400.18125 246.721635
+L 400.18125 18.118365
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 400.18125 246.721635
+L 716.99976 246.721635
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_31">
+    <!-- 0.720 -->
+    <g transform="translate(427.344769 117.24539) scale(0.09 -0.09)">
+     <use xlink:href="#DejaVuSans-30"/>
+     <use xlink:href="#DejaVuSans-2e" x="63.623047"/>
+     <use xlink:href="#DejaVuSans-37" x="95.410156"/>
+     <use xlink:href="#DejaVuSans-32" x="159.033203"/>
+     <use xlink:href="#DejaVuSans-30" x="222.65625"/>
+    </g>
+   </g>
+   <g id="text_32">
+    <!-- 0.983 -->
+    <g transform="translate(506.253489 71.702104) scale(0.09 -0.09)">
+     <use xlink:href="#DejaVuSans-30"/>
+     <use xlink:href="#DejaVuSans-2e" x="63.623047"/>
+     <use xlink:href="#DejaVuSans-39" x="95.410156"/>
+     <use xlink:href="#DejaVuSans-38" x="159.033203"/>
+     <use xlink:href="#DejaVuSans-33" x="222.65625"/>
+    </g>
+   </g>
+   <g id="text_33">
+    <!-- 1.003 -->
+    <g transform="translate(585.162209 68.192007) scale(0.09 -0.09)">
+     <use xlink:href="#DejaVuSans-31"/>
+     <use xlink:href="#DejaVuSans-2e" x="63.623047"/>
+     <use xlink:href="#DejaVuSans-30" x="95.410156"/>
+     <use xlink:href="#DejaVuSans-30" x="159.033203"/>
+     <use xlink:href="#DejaVuSans-33" x="222.65625"/>
+    </g>
+   </g>
+   <g id="text_34">
+    <!-- 1.057 -->
+    <g transform="translate(664.070928 58.9673) scale(0.09 -0.09)">
+     <use xlink:href="#DejaVuSans-31"/>
+     <use xlink:href="#DejaVuSans-2e" x="63.623047"/>
+     <use xlink:href="#DejaVuSans-30" x="95.410156"/>
+     <use xlink:href="#DejaVuSans-35" x="159.033203"/>
+     <use xlink:href="#DejaVuSans-37" x="222.65625"/>
+    </g>
+   </g>
+   <g id="PathCollection_5">
+    <g clip-path="url(#pf55d16ec06)">
+     <use xlink:href="#m14fd4f4b08" x="432.336553" y="122.117109" style="stroke: #000000"/>
+     <use xlink:href="#m14fd4f4b08" x="440.227425" y="122.117109" style="stroke: #000000"/>
+     <use xlink:href="#m14fd4f4b08" x="448.118297" y="122.117109" style="stroke: #000000"/>
+    </g>
+   </g>
+   <g id="PathCollection_6">
+    <g clip-path="url(#pf55d16ec06)">
+     <use xlink:href="#m14fd4f4b08" x="511.245273" y="51.250254" style="stroke: #000000"/>
+     <use xlink:href="#m14fd4f4b08" x="519.136145" y="99.48397" style="stroke: #000000"/>
+     <use xlink:href="#m14fd4f4b08" x="527.027017" y="78.987244" style="stroke: #000000"/>
+    </g>
+   </g>
+   <g id="PathCollection_7">
+    <g clip-path="url(#pf55d16ec06)">
+     <use xlink:href="#m14fd4f4b08" x="590.153993" y="48.506212" style="stroke: #000000"/>
+     <use xlink:href="#m14fd4f4b08" x="598.044865" y="93.89686" style="stroke: #000000"/>
+     <use xlink:href="#m14fd4f4b08" x="605.935737" y="76.788106" style="stroke: #000000"/>
+    </g>
+   </g>
+   <g id="PathCollection_8">
+    <g clip-path="url(#pf55d16ec06)">
+     <use xlink:href="#m14fd4f4b08" x="669.062713" y="39.71746" style="stroke: #000000"/>
+     <use xlink:href="#m14fd4f4b08" x="676.953585" y="85.660049" style="stroke: #000000"/>
+     <use xlink:href="#m14fd4f4b08" x="684.844457" y="66.139548" style="stroke: #000000"/>
+    </g>
+   </g>
+   <g id="text_35">
+    <!-- Synthetic holdout: fan-energy proxy -->
+    <g transform="translate(450.354255 12.118365) scale(0.12 -0.12)">
+     <defs>
+      <path id="DejaVuSans-66" d="M 2375 4863
+L 2375 4384
+L 1825 4384
+Q 1516 4384 1395 4259
+Q 1275 4134 1275 3809
+L 1275 3500
+L 2222 3500
+L 2222 3053
+L 1275 3053
+L 1275 0
+L 697 0
+L 697 3053
+L 147 3053
+L 147 3500
+L 697 3500
+L 697 3744
+Q 697 4328 969 4595
+Q 1241 4863 1831 4863
+L 2375 4863
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSans-2d" d="M 313 2009
+L 1997 2009
+L 1997 1497
+L 313 1497
+L 313 2009
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSans-70" d="M 1159 525
+L 1159 -1331
+L 581 -1331
+L 581 3500
+L 1159 3500
+L 1159 2969
+Q 1341 3281 1617 3432
+Q 1894 3584 2278 3584
+Q 2916 3584 3314 3078
+Q 3713 2572 3713 1747
+Q 3713 922 3314 415
+Q 2916 -91 2278 -91
+Q 1894 -91 1617 61
+Q 1341 213 1159 525
+z
+M 3116 1747
+Q 3116 2381 2855 2742
+Q 2594 3103 2138 3103
+Q 1681 3103 1420 2742
+Q 1159 2381 1159 1747
+Q 1159 1113 1420 752
+Q 1681 391 2138 391
+Q 2594 391 2855 752
+Q 3116 1113 3116 1747
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#DejaVuSans-53"/>
+     <use xlink:href="#DejaVuSans-79" x="63.476562"/>
+     <use xlink:href="#DejaVuSans-6e" x="122.65625"/>
+     <use xlink:href="#DejaVuSans-74" x="186.035156"/>
+     <use xlink:href="#DejaVuSans-68" x="225.244141"/>
+     <use xlink:href="#DejaVuSans-65" x="288.623047"/>
+     <use xlink:href="#DejaVuSans-74" x="350.146484"/>
+     <use xlink:href="#DejaVuSans-69" x="389.355469"/>
+     <use xlink:href="#DejaVuSans-63" x="417.138672"/>
+     <use xlink:href="#DejaVuSans-20" x="472.119141"/>
+     <use xlink:href="#DejaVuSans-68" x="503.90625"/>
+     <use xlink:href="#DejaVuSans-6f" x="567.285156"/>
+     <use xlink:href="#DejaVuSans-6c" x="628.466797"/>
+     <use xlink:href="#DejaVuSans-64" x="656.25"/>
+     <use xlink:href="#DejaVuSans-6f" x="719.726562"/>
+     <use xlink:href="#DejaVuSans-75" x="780.908203"/>
+     <use xlink:href="#DejaVuSans-74" x="844.287109"/>
+     <use xlink:href="#DejaVuSans-3a" x="883.496094"/>
+     <use xlink:href="#DejaVuSans-20" x="917.1875"/>
+     <use xlink:href="#DejaVuSans-66" x="948.974609"/>
+     <use xlink:href="#DejaVuSans-61" x="984.179688"/>
+     <use xlink:href="#DejaVuSans-6e" x="1045.458984"/>
+     <use xlink:href="#DejaVuSans-2d" x="1108.837891"/>
+     <use xlink:href="#DejaVuSans-65" x="1144.921875"/>
+     <use xlink:href="#DejaVuSans-6e" x="1206.445312"/>
+     <use xlink:href="#DejaVuSans-65" x="1269.824219"/>
+     <use xlink:href="#DejaVuSans-72" x="1331.347656"/>
+     <use xlink:href="#DejaVuSans-67" x="1370.710938"/>
+     <use xlink:href="#DejaVuSans-79" x="1434.1875"/>
+     <use xlink:href="#DejaVuSans-20" x="1493.367188"/>
+     <use xlink:href="#DejaVuSans-70" x="1525.154297"/>
+     <use xlink:href="#DejaVuSans-72" x="1588.630859"/>
+     <use xlink:href="#DejaVuSans-6f" x="1627.494141"/>
+     <use xlink:href="#DejaVuSans-78" x="1685.550781"/>
+     <use xlink:href="#DejaVuSans-79" x="1744.730469"/>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p55abef4d9a">
+   <rect x="39.58149" y="18.118365" width="316.81851" height="228.60327"/>
+  </clipPath>
+  <clipPath id="pf55d16ec06">
+   <rect x="400.18125" y="18.118365" width="316.81851" height="228.60327"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption>柱：三seed平均；黑點：逐seed結果。左圖追蹤誤差，右圖假設風扇能耗，不是整機耗電或實測節能。</figcaption></figure>
+<div class="table-wrap"><table><thead><tr><th>方法</th><th>MAE °C</th><th>RMSE °C</th><th>fan proxy Wh</th><th>PWM TV</th><th>control p95 s</th><th>取樣超溫 s</th></tr></thead><tbody><tr><td>固定風扇</td><td>2.9051</td><td>3.6981</td><td>0.7200</td><td>0.1000</td><td>0.0001</td><td>0</td></tr><tr><td>PID＋平衡點前饋</td><td>1.7713</td><td>2.2827</td><td>0.9832</td><td>3.3745</td><td>0.0004</td><td>0</td></tr><tr><td>經限制的 LQR</td><td>1.7304</td><td>2.2315</td><td>1.0034</td><td>3.9709</td><td>0.0008</td><td>0</td></tr><tr><td>受限制 MPC</td><td>1.8071</td><td>2.3390</td><td>1.0567</td><td>3.1798</td><td>0.0015</td><td>0</td></tr></tbody></table></div>
+<p>MPC holdout MAE 為 1.8071°C，比 PID＋前饋高 2.02%，比 LQR 高 4.43%。MPC的相對改善假設 H-CTRL-02／03 都是 <strong class="status-no">NOT_SUPPORTED</strong>；數值健康 H-CTRL-01 是 <strong class="status-good">SUPPORTED_SIMULATION_ONLY</strong>。三seed沒有做顯著性或設備泛化推論。</p>
+<h3 style="margin-top:24px">我把「求解正常」和「散熱能力不足」分開看</h3><div class="table-wrap"><table><thead><tr><th>測試</th><th>方法</th><th>MAE °C</th><th>取樣超溫 s/回合</th><th>數值回退步/回合</th><th>警告覆寫步/回合</th></tr></thead><tbody><tr><td>事先指定假設參數變體</td><td>固定風扇</td><td>4.2607</td><td>0.0</td><td>0.00</td><td>2.7</td></tr><tr><td>事先指定假設參數變體</td><td>PID＋平衡點前饋</td><td>3.1571</td><td>0.0</td><td>0.00</td><td>0.0</td></tr><tr><td>事先指定假設參數變體</td><td>經限制的 LQR</td><td>3.2902</td><td>0.0</td><td>0.00</td><td>0.0</td></tr><tr><td>事先指定假設參數變體</td><td>受限制 MPC</td><td>3.2818</td><td>0.0</td><td>0.67</td><td>0.0</td></tr><tr><td>超載</td><td>固定風扇</td><td>27.1846</td><td>1096.7</td><td>0.00</td><td>112.3</td></tr><tr><td>超載</td><td>PID＋平衡點前饋</td><td>26.3666</td><td>1040.0</td><td>0.00</td><td>110.0</td></tr><tr><td>超載</td><td>經限制的 LQR</td><td>28.6325</td><td>1126.7</td><td>0.00</td><td>113.3</td></tr><tr><td>超載</td><td>受限制 MPC</td><td>26.3666</td><td>1040.0</td><td>0.00</td><td>110.0</td></tr></tbody></table></div><p>過載假設450W／600W，入口約30°C；最大風扇下穩態溫度約90°C，已高於限制。新版超載雖每步正常求解，仍無法保證不超溫。這是模型散熱能力不足，不能由更換求解器消除。</p>
+<p>prediction MAE 與 tracking MAE 分開保存；名義 one-step prediction error 低，主要因模型參數已知，不能當成實測預測準確度。首次連續60秒進入±2°C只是進入誤差帶指標，不保證往後負載變動都能維持。固定風扇：3/3 回合達成；PID＋平衡點前饋：3/3 回合達成；經限制的 LQR：3/3 回合達成；受限制 MPC：3/3 回合達成。</p>
+<details id="all-runs"><summary>展開全部48個正式回合與負面結果</summary><div class="table-wrap"><table><thead><tr><th>切分</th><th>seed</th><th>方法</th><th>MAE °C</th><th>CPU/GPU MAE</th><th>CPU/GPU peak</th><th>超溫 s</th><th>proxy Wh</th><th>回退步</th><th>p95 s</th><th>首次60s誤差帶 s</th></tr></thead><tbody><tr><td>validation</td><td>121</td><td>固定風扇</td><td>4.1021</td><td>4.7992/3.4049</td><td>64.60/64.98</td><td>0</td><td>0.7200</td><td>0</td><td>0.000282</td><td>10</td></tr><tr><td>validation</td><td>121</td><td>PID＋平衡點前饋</td><td>1.6110</td><td>2.0951/1.1270</td><td>61.12/63.61</td><td>0</td><td>0.7693</td><td>0</td><td>0.000496</td><td>10</td></tr><tr><td>validation</td><td>121</td><td>經限制的 LQR</td><td>1.7950</td><td>2.1757/1.4143</td><td>59.97/62.31</td><td>0</td><td>0.8054</td><td>0</td><td>0.001176</td><td>10</td></tr><tr><td>validation</td><td>121</td><td>受限制 MPC</td><td>1.3688</td><td>1.7009/1.0366</td><td>60.84/63.71</td><td>0</td><td>0.8627</td><td>1</td><td>0.001393</td><td>10</td></tr><tr><td>validation</td><td>122</td><td>固定風扇</td><td>3.5574</td><td>4.1186/2.9962</td><td>65.78/65.86</td><td>0</td><td>0.7200</td><td>0</td><td>0.000098</td><td>10</td></tr><tr><td>validation</td><td>122</td><td>PID＋平衡點前饋</td><td>1.6201</td><td>2.0249/1.2152</td><td>61.46/63.92</td><td>0</td><td>0.8824</td><td>0</td><td>0.000379</td><td>10</td></tr><tr><td>validation</td><td>122</td><td>經限制的 LQR</td><td>1.4600</td><td>1.6949/1.2250</td><td>61.03/63.61</td><td>0</td><td>0.9262</td><td>0</td><td>0.000595</td><td>10</td></tr><tr><td>validation</td><td>122</td><td>受限制 MPC</td><td>1.3344</td><td>1.5621/1.1068</td><td>61.61/64.29</td><td>0</td><td>0.9228</td><td>1</td><td>0.001435</td><td>10</td></tr><tr><td>validation</td><td>123</td><td>固定風扇</td><td>4.7475</td><td>5.4749/4.0200</td><td>63.77/63.95</td><td>0</td><td>0.7200</td><td>0</td><td>0.000097</td><td>770</td></tr><tr><td>validation</td><td>123</td><td>PID＋平衡點前饋</td><td>1.5796</td><td>2.0427/1.1165</td><td>60.80/63.35</td><td>0</td><td>0.6697</td><td>0</td><td>0.000372</td><td>10</td></tr><tr><td>validation</td><td>123</td><td>經限制的 LQR</td><td>1.9401</td><td>2.3721/1.5081</td><td>59.97/62.12</td><td>0</td><td>0.7118</td><td>0</td><td>0.000626</td><td>10</td></tr><tr><td>validation</td><td>123</td><td>受限制 MPC</td><td>1.3539</td><td>1.7483/0.9595</td><td>60.39/63.28</td><td>0</td><td>0.7586</td><td>3</td><td>0.001398</td><td>10</td></tr><tr><td>holdout</td><td>131</td><td>固定風扇</td><td>2.6334</td><td>2.9068/2.3600</td><td>64.87/65.43</td><td>0</td><td>0.7200</td><td>0</td><td>0.000105</td><td>10</td></tr><tr><td>holdout</td><td>131</td><td>PID＋平衡點前饋</td><td>1.7573</td><td>2.0701/1.4444</td><td>60.57/62.41</td><td>0</td><td>1.1295</td><td>0</td><td>0.000370</td><td>10</td></tr><tr><td>holdout</td><td>131</td><td>經限制的 LQR</td><td>1.6411</td><td>1.6900/1.5922</td><td>61.83/63.91</td><td>0</td><td>1.1453</td><td>0</td><td>0.000592</td><td>10</td></tr><tr><td>holdout</td><td>131</td><td>受限制 MPC</td><td>1.7792</td><td>1.9350/1.6233</td><td>62.00/64.05</td><td>0</td><td>1.1961</td><td>0</td><td>0.001435</td><td>10</td></tr><tr><td>holdout</td><td>132</td><td>固定風扇</td><td>3.2559</td><td>4.0451/2.4666</td><td>63.00/63.50</td><td>0</td><td>0.7200</td><td>0</td><td>0.000099</td><td>10</td></tr><tr><td>holdout</td><td>132</td><td>PID＋平衡點前饋</td><td>1.8081</td><td>2.3727/1.2434</td><td>60.50/62.55</td><td>0</td><td>0.8508</td><td>0</td><td>0.000376</td><td>10</td></tr><tr><td>holdout</td><td>132</td><td>經限制的 LQR</td><td>1.9076</td><td>2.0901/1.7251</td><td>62.07/64.38</td><td>0</td><td>0.8831</td><td>0</td><td>0.001224</td><td>10</td></tr><tr><td>holdout</td><td>132</td><td>受限制 MPC</td><td>1.8599</td><td>2.1364/1.5834</td><td>61.88/64.24</td><td>0</td><td>0.9307</td><td>0</td><td>0.001461</td><td>10</td></tr><tr><td>holdout</td><td>133</td><td>固定風扇</td><td>2.8259</td><td>3.3088/2.3429</td><td>63.74/64.25</td><td>0</td><td>0.7200</td><td>0</td><td>0.000096</td><td>10</td></tr><tr><td>holdout</td><td>133</td><td>PID＋平衡點前饋</td><td>1.7486</td><td>2.1898/1.3074</td><td>60.39/62.35</td><td>0</td><td>0.9692</td><td>0</td><td>0.000372</td><td>10</td></tr><tr><td>holdout</td><td>133</td><td>經限制的 LQR</td><td>1.6426</td><td>1.7576/1.5275</td><td>61.59/63.91</td><td>0</td><td>0.9819</td><td>0</td><td>0.000601</td><td>10</td></tr><tr><td>holdout</td><td>133</td><td>受限制 MPC</td><td>1.7822</td><td>2.0069/1.5574</td><td>61.77/64.08</td><td>0</td><td>1.0435</td><td>0</td><td>0.001561</td><td>10</td></tr><tr><td>plant_holdout</td><td>141</td><td>固定風扇</td><td>2.8002</td><td>3.2307/2.3697</td><td>69.78/67.55</td><td>0</td><td>0.7200</td><td>0</td><td>0.000110</td><td>10</td></tr><tr><td>plant_holdout</td><td>141</td><td>PID＋平衡點前饋</td><td>2.0781</td><td>2.5006/1.6556</td><td>63.29/63.29</td><td>0</td><td>1.3073</td><td>0</td><td>0.000365</td><td>10</td></tr><tr><td>plant_holdout</td><td>141</td><td>經限制的 LQR</td><td>2.2616</td><td>2.4815/2.0417</td><td>65.02/64.77</td><td>0</td><td>1.4232</td><td>0</td><td>0.000599</td><td>10</td></tr><tr><td>plant_holdout</td><td>141</td><td>受限制 MPC</td><td>2.0214</td><td>2.1374/1.9053</td><td>64.87/64.68</td><td>0</td><td>1.4222</td><td>0</td><td>0.001939</td><td>10</td></tr><tr><td>plant_holdout</td><td>142</td><td>固定風扇</td><td>4.3758</td><td>4.9735/3.7780</td><td>60.02/70.89</td><td>0</td><td>0.7200</td><td>0</td><td>0.000099</td><td>未達</td></tr><tr><td>plant_holdout</td><td>142</td><td>PID＋平衡點前饋</td><td>4.3140</td><td>6.8065/1.8216</td><td>59.04/63.06</td><td>0</td><td>1.5206</td><td>0</td><td>0.000372</td><td>10</td></tr><tr><td>plant_holdout</td><td>142</td><td>經限制的 LQR</td><td>4.2324</td><td>4.5591/3.9058</td><td>59.05/68.00</td><td>0</td><td>1.0919</td><td>0</td><td>0.000609</td><td>未達</td></tr><tr><td>plant_holdout</td><td>142</td><td>受限制 MPC</td><td>4.2209</td><td>4.8982/3.5437</td><td>59.06/67.63</td><td>0</td><td>1.2158</td><td>0</td><td>0.001771</td><td>未達</td></tr><tr><td>plant_holdout</td><td>143</td><td>固定風扇</td><td>5.6062</td><td>6.3882/4.8243</td><td>76.79/69.74</td><td>0</td><td>0.8809</td><td>0</td><td>0.000104</td><td>未達</td></tr><tr><td>plant_holdout</td><td>143</td><td>PID＋平衡點前饋</td><td>3.0790</td><td>3.9228/2.2353</td><td>69.65/64.56</td><td>0</td><td>1.9509</td><td>0</td><td>0.000365</td><td>250</td></tr><tr><td>plant_holdout</td><td>143</td><td>經限制的 LQR</td><td>3.3765</td><td>4.2130/2.5399</td><td>70.82/65.98</td><td>0</td><td>2.0140</td><td>0</td><td>0.000611</td><td>250</td></tr><tr><td>plant_holdout</td><td>143</td><td>受限制 MPC</td><td>3.6032</td><td>4.2427/2.9636</td><td>70.87/66.04</td><td>0</td><td>1.9231</td><td>2</td><td>0.001943</td><td>250</td></tr><tr><td>overload</td><td>151</td><td>固定風扇</td><td>27.2109</td><td>27.4330/26.9887</td><td>90.94/90.87</td><td>1100</td><td>3.1198</td><td>0</td><td>0.000100</td><td>未達</td></tr><tr><td>overload</td><td>151</td><td>PID＋平衡點前饋</td><td>26.3474</td><td>26.5619/26.1329</td><td>90.93/90.86</td><td>1040</td><td>3.2722</td><td>0</td><td>0.000404</td><td>未達</td></tr><tr><td>overload</td><td>151</td><td>經限制的 LQR</td><td>28.7186</td><td>28.9623/28.4748</td><td>91.04/90.90</td><td>1130</td><td>3.0041</td><td>0</td><td>0.000634</td><td>未達</td></tr><tr><td>overload</td><td>151</td><td>受限制 MPC</td><td>26.3474</td><td>26.5619/26.1329</td><td>90.93/90.86</td><td>1040</td><td>3.2722</td><td>0</td><td>0.088728</td><td>未達</td></tr><tr><td>overload</td><td>152</td><td>固定風扇</td><td>28.1102</td><td>28.3105/27.9100</td><td>92.05/92.03</td><td>1100</td><td>3.1416</td><td>0</td><td>0.000093</td><td>未達</td></tr><tr><td>overload</td><td>152</td><td>PID＋平衡點前饋</td><td>27.3832</td><td>27.5764/27.1899</td><td>92.05/92.01</td><td>1060</td><td>3.2722</td><td>0</td><td>0.000357</td><td>未達</td></tr><tr><td>overload</td><td>152</td><td>經限制的 LQR</td><td>29.4379</td><td>29.6574/29.2185</td><td>92.06/92.05</td><td>1130</td><td>3.0316</td><td>0</td><td>0.000727</td><td>未達</td></tr><tr><td>overload</td><td>152</td><td>受限制 MPC</td><td>27.3832</td><td>27.5764/27.1899</td><td>92.05/92.01</td><td>1060</td><td>3.2722</td><td>0</td><td>0.086364</td><td>未達</td></tr><tr><td>overload</td><td>153</td><td>固定風扇</td><td>26.2329</td><td>26.4347/26.0311</td><td>89.97/89.94</td><td>1090</td><td>3.1198</td><td>0</td><td>0.000108</td><td>未達</td></tr><tr><td>overload</td><td>153</td><td>PID＋平衡點前饋</td><td>25.3692</td><td>25.5626/25.1757</td><td>89.96/89.93</td><td>1020</td><td>3.2722</td><td>0</td><td>0.000349</td><td>未達</td></tr><tr><td>overload</td><td>153</td><td>經限制的 LQR</td><td>27.7410</td><td>27.9658/27.5162</td><td>90.07/89.96</td><td>1120</td><td>3.0041</td><td>0</td><td>0.000695</td><td>未達</td></tr><tr><td>overload</td><td>153</td><td>受限制 MPC</td><td>25.3692</td><td>25.5626/25.1757</td><td>89.96/89.93</td><td>1020</td><td>3.2722</td><td>0</td><td>0.091642</td><td>未達</td></tr></tbody></table></div></details>
+<details><summary>第一階段歷史結果為何與本輪不同</summary><p>v1 fixed／PID／MPC holdout MAE=5.4378／2.6034／1.4426°C，MPC改善44.59%，但能耗proxy增加40.20%、超載求解回退190/360步。本輪加入前饋PID、不同負載、ZOH與重新固定的候選集合，所以不能把兩版差異解釋為單一演算法改版效應。舊結果和凍結證據完整保留。</p><p><a href="enclosure_mpc_2026-10-05_zh.html">第一階段完整報告</a></p></details></section>
+<section id="limits"><h2>我現在能支持什麼，還缺什麼</h2><div class="grid"><article class="card"><span class="tag good">完成</span><h3>假設模型內的可重現比較</h3><p>方法實作、有限校準、凍結、48回合新合成比較與獨立核對已完成。我能交代各方法的誤差、計算與風扇代價，並保留不支持的結果。</p></article><article class="card"><span class="tag warn">仍有限制</span><h3>模型與觀測條件理想</h3><p>完整溫度與fan狀態可見；PID＋FF、LQR、MPC知道名義假設參數。三個plant variants只是指定的合成壓力測試，不是獨立實體設備。</p></article><article class="card"><span class="tag bad">尚未量測</span><h3>實體辨識與介入</h3><p>尚未提供NTC／RPM／負載同步量測、可控制機箱或硬體介入紀錄；整機耗電、throttling與E8仍未評估。公開BMC結果也不能補作風扇介入證據。</p></article><article class="card"><span class="tag">下一步</span><h3>先改善模型證據，再判斷控制必要性</h3><p>先定義資料契約、同步時鐘與量測位置，再用有限校準辨識熱容量／散熱／風扇延遲，鎖定後做獨立負載比較；若簡單方法已足夠，就不強求MPC。</p></article></div></section>
+<section id="next-week"><h2>下週計畫：參考既有研究，改進自己的方法</h2><p class="lead">下週我會回到自己的方法，先找出需要改善的問題，再觀察PID／LQR／MPC如何處理回授、代價與多步決策，選擇一項適合的機制進行設計與驗證。</p><p>我的方法包含物理主模型、稀疏感測校正、可選的殘差學習，以及候選動作預測與排序。本輪簡化熱模型是遷移到機箱場景的前置研究，四方法比較尚未納入這套完整流程。下週會先整理機箱量測資料需求與熱參數辨識程序，再規劃原有校正與學習流程如何接入；模型參數辨識與控制器選參分開記錄。</p><div class="table-wrap"><table><thead><tr><th>順序</th><th>預計工作</th><th>交付／完成標準</th></tr></thead><tbody>
+<tr><td>第1天</td><td>整理自己的方法與具體問題</td><td>方法流程、輸入／輸出、可調參數與現有證據；選定一項需要改善的問題。</td></tr>
+<tr><td>第2天</td><td>查讀PID／LQR／MPC的研究做法</td><td>有來源的方法比較表：誤差回授、狀態／動作代價、多步預測與限制；評估適用條件。</td></tr>
+<tr><td>第3天</td><td>選擇一項機制，設計改進</td><td>說清楚借用與自行修改的部分；先固定假設、資料切分、調參預算與驗證判準。多步動作排序暫列候選。</td></tr>
+<tr><td>第4天</td><td>最小原型與公平比較</td><td>平台具備時比較原版、改進版及移除新增機制的版本；若加入控制baseline，先對齊任務、動作與觀測資訊。</td></tr>
+<tr><td>第5天</td><td>分析結果，整理下週報告</td><td>分開報告估測誤差與決策效果，保留退步與成本；未能執行時交代缺少條件。</td></tr>
+</tbody></table></div><p class="callout"><strong>預計工作，尚未執行：</strong>下週至少交付自己的方法流程、文獻借鑑與差異表，以及一項改進設計與事前驗證計畫。選參只看calibration，凍結後才看新的保留測試；不重用已開啟的結果或一次性E15作獨立確認。是否改善，要由比較結果判斷。</p><p class="source"><a href="../research/weekly_research_tasks_2026-09-21_zh.md">完整下週工作清單與比較條件</a> · <a href="../thesis/thesis_draft_zh.md">自己的方法與論文主線</a></p></section>
+<section id="reading"><h2>各階段查閱的論文與文獻清單</h2><p>我依既有閱讀筆記與引用盤點，列出各階段參考哪些論文、想借用哪些做法，以及查閱到哪裡。日期表示筆記所記錄的查閱階段；作者旁的年份是論文發表年。沒有逐篇閱讀日期的部分按研究階段整理。</p>
+<h3 style="margin-top:24px">前期・主模型與稀疏感測（閱讀日未留存）</h3><div class="table-wrap"><table><thead><tr><th>論文／作者／發表年</th><th>對我的研究用途</th><th>查閱紀錄</th></tr></thead><tbody><tr><td><a href="https://doi.org/10.1186/s42162-024-00313-7">A review of building digital twins to improve energy efficiency in the building operational stage</a><br><span class="source">Andres Sebastian Cespedes-Cubides, Muhyiddine Jradi · 2024</span></td><td>建築數位孿生研究背景與本研究定位。</td><td>已有閱讀筆記；逐篇全文覆蓋未記錄</td></tr><tr><td><a href="https://doi.org/10.1016/j.enbuild.2011.02.005">Identifying suitable models for the heat dynamics of buildings</a><br><span class="source">Per Bacher, Henrik Madsen · 2011</span></td><td>簡化熱動態與 grey-box 建模依據。</td><td>已有閱讀筆記；逐篇全文覆蓋未記錄</td></tr><tr><td><a href="https://doi.org/10.3390/en11061477">A Dynamic Model for Indoor Temperature Prediction in Buildings</a><br><span class="source">Petri Hietaharju, Mika Ruusunen, Kauko Leiviska · 2018</span></td><td>室內溫度動態預測與低參數模型依據。</td><td>已有閱讀筆記；逐篇全文覆蓋未記錄</td></tr><tr><td><a href="https://doi.org/10.1177/1420326X211060486">A new dynamic zOnal model with air-diffuser (DOMA) - Application to thermal comfort prediction</a><br><span class="source">Ahmed Megri, Yao Yu, Rui Miao, Xiaoou Hu · 2022</span></td><td>動態 zonal／送風模型的相似研究及差異定位。</td><td>已有閱讀筆記；逐篇全文覆蓋未記錄</td></tr><tr><td><a href="https://doi.org/10.1016/j.buildenv.2024.112495">Estimating indoor air temperature and humidity distributions by data assimilation with finite observations: Validation using an actual residential room</a><br><span class="source">Weixin Qian, Chenxi Li, Hu Gao, Lei Zhuang, Yanyu Lu, Site Hu, Jing Liu · 2025</span></td><td>有限觀測、資料同化與室內溫濕度場重建的相似研究。</td><td>已有閱讀筆記；逐篇全文覆蓋未記錄</td></tr><tr><td><a href="https://doi.org/10.3389/fbuil.2025.1690062">Hybrid models for simulating indoor temperature distribution in air-conditioned spaces</a><br><span class="source">Boris Huljak, Juan A. Acero, Zin H. Kyaw, Francisco Chinesta · 2025</span></td><td>hybrid 空間溫度模型的相似研究及差異定位。</td><td>已有閱讀筆記；逐篇全文覆蓋未記錄</td></tr><tr><td><a href="https://doi.org/10.1080/14733315.2004.11683908">Zonal Models for Indoor Air Flow - A Critical Review</a><br><span class="source">E. J. Teshome, F. Haghighat · 2004</span></td><td>zonal model 的方法背景與適用範圍。</td><td>已有閱讀筆記；逐篇全文覆蓋未記錄</td></tr><tr><td><a href="https://doi.org/10.1117/12.716356">Application of zonal model on indoor air sensor network design</a><br><span class="source">Y. Lisa Chen, Jin Wen · 2007</span></td><td>感測器配置與 zonal model 的方法背景。</td><td>已有閱讀筆記；逐篇全文覆蓋未記錄</td></tr><tr><td><a href="https://doi.org/10.1177/1420326X19852450">Fast prediction for indoor environment: Models assessment</a><br><span class="source">Zhuangbo Feng, Chuck Wah Yu, Shi-Jie Cao · 2019</span></td><td>快速室內模型與即時推估的選擇依據。</td><td>已有閱讀筆記；逐篇全文覆蓋未記錄</td></tr></tbody></table></div><p class="source">依據：<a href="../models/model_reading_notes_zh.md">主模型閱讀筆記</a>。</p>
+<h3 style="margin-top:24px">前期・殘差學習、RNN與濾波（逐次閱讀日未留存）</h3><div class="table-wrap"><table><thead><tr><th>論文／作者／發表年</th><th>對我的研究用途</th><th>查閱紀錄</th></tr></thead><tbody><tr><td><a href="https://doi.org/10.1016/j.enbuild.2024.114898">Hybrid modeling based on integrating simulation and operational data to improve indoor air temperature predictions, a controlled variable in digital twin models</a><br><span class="source">Ju-Hong Oh, Stefano Sfarra, Eui-Jong Kim · 2024</span></td><td>物理基線加 learned residual 的方法啟發，並有本地移植比較。</td><td>既有引用／相關方法工作；全文查閱程度未逐篇記錄</td></tr><tr><td><a href="https://doi.org/10.1207/s15516709cog1402_1">Finding Structure in Time</a><br><span class="source">Jeffrey L. Elman · 1990</span></td><td>Vanilla Elman RNN 的方法依據；本地同資料 RNN 比較。</td><td>既有引用／相關方法工作；全文查閱程度未逐篇記錄</td></tr><tr><td><a href="https://doi.org/10.1115/1.3662552">A New Approach to Linear Filtering and Prediction Problems</a><br><span class="source">R. E. Kalman · 1960</span></td><td>Kalman 狀態估測架構依據；本地受控濾波比較。</td><td>既有引用／相關方法工作；全文查閱程度未逐篇記錄</td></tr><tr><td><a href="https://doi.org/10.1016/j.biosystemseng.2019.03.001">Improving climate monitoring in greenhouse cultivation via model based filtering</a><br><span class="source">Simon van Mourik, Peter J. M. van Beveren, Irineo L. López-Cruz, Eldert J. van Henten · 2019</span></td><td>模型濾波的限制與負向結果背景，約束 Kalman 效益主張。</td><td>既有引用／相關方法工作；全文查閱程度未逐篇記錄</td></tr><tr><td><a href="https://doi.org/10.1016/j.compag.2009.01.012">Towards an adaptive model for greenhouse control</a><br><span class="source">S. L. Speetjens, J. D. Stigter, G. van Straten · 2009</span></td><td>溫室 EKF 線上參數調整的候選方法背景。</td><td>既有引用／相關方法工作；全文查閱程度未逐篇記錄</td></tr></tbody></table></div><p class="source">依據：<a href="../thesis/used_papers_inventory_zh.md">既有引用與用途盤點</a>。</p>
+<h3 style="margin-top:24px">前期・機箱／機房轉移的候選文獻（閱讀日未留存）</h3><div class="table-wrap"><table><thead><tr><th>論文／作者／發表年</th><th>對我的研究用途</th><th>查閱紀錄</th></tr></thead><tbody><tr><td><a href="https://doi.org/10.1016/j.enbuild.2021.111790">Model and data driven transient thermal system modelings for contained data centers</a><br><span class="source">Wang et al. · 2022</span></td><td>參考熱節點ODE與資料驅動模型的同場比較。</td><td>候選文獻盤點；全文查閱程度未記錄</td></tr><tr><td><a href="https://doi.org/10.1016/j.applthermaleng.2023.120737">A time-varying state-space model for real-time temperature predictions in rack-based cooling data centers</a><br><span class="source">Tong et al. · 2023</span></td><td>參考動態狀態空間、回流與旁通的建模。</td><td>候選文獻盤點；全文查閱程度未記錄</td></tr><tr><td><a href="https://doi.org/10.1038/s41598-025-11048-0">Energy efficiency enhancement in two European data centers through CFD modeling</a><br><span class="source">Melgaard et al. · 2025</span></td><td>參考入口／出口測點、airflow與量測不確定度。</td><td>候選文獻盤點；全文查閱程度未記錄</td></tr><tr><td><a href="https://doi.org/10.1109/TC.2025.3603698">Thermal Elasticity-Aware Host Resource Provision for Carbon Efficiency on Virtualized Servers</a><br><span class="source">Zhang et al. · 2025</span></td><td>參考BMC遙測、負載與風扇模式的資料需求。</td><td>候選文獻盤點；全文查閱程度未記錄</td></tr></tbody></table></div><p class="source">依據：<a href="../experiments/equipment_enclosure_literature_and_datasets_zh.md">機箱／設備櫃文獻筆記</a>。</p>
+<h3 style="margin-top:24px">9月上旬・環境調參與平台探索（9/8筆記）</h3><div class="table-wrap"><table><thead><tr><th>論文／作者／發表年</th><th>對我的研究用途</th><th>查閱紀錄</th></tr></thead><tbody><tr><td><a href="https://doi.org/10.1016/S0019-0578(98)00029-9">Auto-tuned variable structure control of cleanrooms</a><br><span class="source">K. K. Tan, Q. G. Wang, T. H. Lee, C. H. Gan · 1998</span></td><td>受控擾動、物理模型辨識與自動調適的既有先例。</td><td>當時查閱作者機構摘要</td></tr><tr><td><a href="https://doi.org/10.3390/electronics14163296">Multivariable Model Predictive Control of Cleanroom Pressure Cascades</a><br><span class="source">Branislav M. Jeremić, Aleksandar Ž. Rakić · 2025</span></td><td>系統辨識與MPC設計的參考；任務是壓差串級。</td><td>當時查閱出版社索引；全文存取受限</td></tr><tr><td><a href="https://arxiv.org/abs/1906.12086">Safe Contextual Bayesian Optimization for Sustainable Room Temperature PID Control Tuning</a><br><span class="source">Marcello Fiducioso et al. · 2019</span></td><td>參考外溫條件化PI調參與commissioning；調控制增益與辨識模型參數須分開。</td><td>筆記定位§4–5及§7.3；未宣稱全文逐頁核對</td></tr><tr><td><a href="https://doi.org/10.1016/j.ohx.2022.e00288">OpenHumidistat: Humidity-controlled experiments for everyone</a><br><span class="source">Lars B. Veldscholte, Sissi de Beer · 2022（2021預印本）</span></td><td>乾／濕氣流混合與濕度回授的可介入平台備案。</td><td>當時僅核對摘要</td></tr></tbody></table></div><p class="source">依據：<a href="../research/precision_environment_pid_data_review_2026-09-08_zh.md">精密環境與資料初查</a>。</p>
+<h3 style="margin-top:24px">9月上旬・機箱控制與模型遷移（9/8筆記）</h3><div class="table-wrap"><table><thead><tr><th>論文／作者／發表年</th><th>對我的研究用途</th><th>查閱紀錄</th></tr></thead><tbody><tr><td><a href="https://papers.neurips.cc/paper_files/paper/2018/hash/059fdcd96baeb75112f09fa1dcc740cc-Abstract.html">Data center cooling using model-predictive control</a><br><span class="source">Nevena Lazic et al. · 2018</span></td><td>ARX動態辨識、多步預測與滾動控制的機箱移植參考。</td><td>已取得PDF文字；筆記定位§4.1、Eq.(1)、Table 1、§4.2／§5.1</td></tr><tr><td><a href="https://personal.ntu.edu.sg/tanrui/pub/control-rtss14.pdf">PTEC: A System for Predictive Thermal and Energy Control in Data Centers</a><br><span class="source">Jinzhu Chen, Rui Tan, Guoliang Xing, Xiaorui Wang · 2014</span></td><td>入口溫度／負載前饋、預測誤差裕量與風扇功耗。</td><td>已取得PDF文字；筆記定位§IV-A、§V-A／Eq.(2)、§V-C</td></tr><tr><td><a href="https://doi.org/10.3390/s150511685">Optimal Self-Tuning PID Controller Based on Low Power Consumption for a Server Fan Cooling System</a><br><span class="source">Chengming Lee, Rongshun Chen · 2015</span></td><td>風扇功率曲線、PIDNN與公平的耗能／暫態比較。</td><td>已取得索引相關段落；當時直接全文端點受限</td></tr><tr><td><a href="https://doi.org/10.1016/j.apenergy.2024.124637">Adaptive physically consistent neural networks for data center thermal dynamics modeling</a><br><span class="source">Dong Chen, Chee-Kong Chui, Poh Seng Lee · 2025</span></td><td>固定物理骨架與自適應係數的候選建模方向。</td><td>查閱Abstract／Introduction索引；完整方程尚未核對</td></tr><tr><td><a href="https://doi.org/10.3390/s16101709">Self-Tuning Fully-Connected PID Neural Network System for Distributed Temperature Sensing and Control of Instrument with Multi-Modules</a><br><span class="source">Zhen Zhang, Cheng Ma, Rong Zhu · 2016</span></td><td>多測點、多風扇耦合控制的後續候選。</td><td>已取得索引相關段落；筆記定位§2.2、Figure 1</td></tr></tbody></table></div><p class="source">依據：<a href="../research/enclosure_temperature_control_method_selection_zh.md">五篇機箱候選論文</a>。</p>
+<p class="source">環境PID筆記也引用Lee與Chen（2015）的自調PID研究。另查到的EP3660323A1屬專利，TCLab／BOPTEST屬平台或官方文件，未混計為論文。</p>
+<h3 style="margin-top:24px">本輪方法實作・查閱的官方方法文件</h3><p>這輪方法紀錄列出的新增來源是官方範例與文件；未記錄新增原始PID／LQR論文的全文閱讀。既有論文保留在上方研究脈絡。</p><ul>
+<li><a href="https://osqp.org/docs/examples/mpc.html">OSQP：MPC官方範例</a>——有限預測、限制與每步重新求解。</li>
+<li><a href="https://osqp.org/docs/interfaces/solver_settings.html">OSQP：求解設定</a>——數值容差、迭代與求解設定。</li>
+<li><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.solve_discrete_are.html">SciPy：solve_discrete_are</a>——LQR使用的離散Riccati方程求解。</li>
+<li><a href="https://docs.scipy.org/doc/scipy/reference/optimize.minimize-slsqp.html">SciPy：SLSQP</a>——第一階段受限制最佳化實作來源。</li></ul><p class="source">依據：<a href="../research/enclosure_control_v2_method_2026-10-05_zh.md">本輪方法來源</a>、<a href="../research/enclosure_mpc_method_2026-10-05_zh.md">第一階段方法來源</a>。</p>
+<details id="reading-citations"><summary>展開既有引用盤點：36篇外部論文完整書目</summary><p>這是既有主稿的引用盤點，不代表本輪重新閱讀36篇，也不作為逐篇全文閱讀證明。未逐篇重新查證的書目沿用原清單。</p><ol><li><strong><a href="https://doi.org/10.1016/j.enbuild.2011.02.005">Identifying suitable models for the heat dynamics of buildings</a></strong><p>Per Bacher, Henrik Madsen, Identifying suitable models for the heat dynamics of buildings, Energy and Buildings, vol. 43, no. 7, pp. 1511-1522, 2011. DOI: 10.1016/j.enbuild.2011.02.005</p><p>用途：簡化熱動態與 grey-box 建模依據。</p></li><li><strong><a href="https://doi.org/10.3390/en11061477">A Dynamic Model for Indoor Temperature Prediction in Buildings</a></strong><p>Petri Hietaharju, Mika Ruusunen, Kauko Leiviska, A Dynamic Model for Indoor Temperature Prediction in Buildings, Energies, vol. 11, no. 6, 1477, 2018. DOI: 10.3390/en11061477</p><p>用途：室內溫度動態預測與低參數模型依據。</p></li><li><strong><a href="https://doi.org/10.1016/j.apenergy.2022.118852">Physics informed neural networks for control oriented thermal modeling of buildings</a></strong><p>Gargya Gokhale, Bert Claessens, Chris Develder, Physics informed neural networks for control oriented thermal modeling of buildings, Applied Energy, vol. 314, 118852, 2022. DOI: 10.1016/j.apenergy.2022.118852</p><p>用途：物理導向與神經網路結合的建模背景。</p></li><li><strong><a href="https://doi.org/10.1080/14733315.2004.11683908">Zonal Models for Indoor Air Flow - A Critical Review</a></strong><p>E. J. Teshome, F. Haghighat, Zonal Models for Indoor Air Flow - A Critical Review, International Journal of Ventilation, vol. 3, no. 2, pp. 119-129, 2004. DOI: 10.1080/14733315.2004.11683908</p><p>用途：zonal model 的方法背景與適用範圍。</p></li><li><strong><a href="https://doi.org/10.3389/fbuil.2025.1690062">Hybrid models for simulating indoor temperature distribution in air-conditioned spaces</a></strong><p>Boris Huljak, Juan A. Acero, Zin H. Kyaw, Francisco Chinesta, Hybrid models for simulating indoor temperature distribution in air-conditioned spaces, Frontiers in Built Environment, vol. 11, 1690062, 2025. DOI: 10.3389/fbuil.2025.1690062</p><p>用途：hybrid 空間溫度模型的相似研究及差異定位。</p></li><li><strong><a href="https://doi.org/10.1177/1420326X211060486">A new dynamic zOnal model with air-diffuser (DOMA) - Application to thermal comfort prediction</a></strong><p>Ahmed Megri, Yao Yu, Rui Miao, Xiaoou Hu, A new dynamic zOnal model with air-diffuser (DOMA) - Application to thermal comfort prediction, Indoor and Built Environment, vol. 31, no. 7, pp. 1738-1757, 2022. DOI: 10.1177/1420326X211060486</p><p>用途：動態 zonal／送風模型的相似研究及差異定位。</p></li><li><strong><a href="https://doi.org/10.1186/s42162-024-00313-7">A review of building digital twins to improve energy efficiency in the building operational stage</a></strong><p>Andres Sebastian Cespedes-Cubides, Muhyiddine Jradi, A review of building digital twins to improve energy efficiency in the building operational stage, Energy Informatics, vol. 7, article 11, 2024. DOI: 10.1186/s42162-024-00313-7</p><p>用途：建築數位孿生研究背景與本研究定位。</p></li><li><strong><a href="https://doi.org/10.1016/j.buildenv.2024.112495">Estimating indoor air temperature and humidity distributions by data assimilation with finite observations: Validation using an actual residential room</a></strong><p>Weixin Qian, Chenxi Li, Hu Gao, Lei Zhuang, Yanyu Lu, Site Hu, Jing Liu, Estimating indoor air temperature and humidity distributions by data assimilation with finite observations: Validation using an actual residential room, Building and Environment, vol. 269, 112495, 2025. DOI: 10.1016/j.buildenv.2024.112495</p><p>用途：有限觀測、資料同化與室內溫濕度場重建的相似研究。</p></li><li><strong><a href="https://doi.org/10.1117/12.716356">Application of zonal model on indoor air sensor network design</a></strong><p>Y. Lisa Chen, Jin Wen, Application of zonal model on indoor air sensor network design, Proceedings of SPIE, vol. 6529, 652911, 2007. DOI: 10.1117/12.716356</p><p>用途：感測器配置與 zonal model 的方法背景。</p></li><li><strong>A Two-Dimensional Interpolation Function for Irregularly-Spaced Data</strong><p>D. Shepard, A Two-Dimensional Interpolation Function for Irregularly-Spaced Data, Proceedings of the 1968 ACM National Conference, pp. 517-524, 1968.</p><p>用途：IDW baseline 的文獻依據；中文列入書目但未找到編號引用，英文有明確引用。</p></li><li><strong><a href="https://doi.org/10.1038/s41597-020-00582-3">CU-BEMS, smart building electricity consumption and indoor environmental sensor datasets</a></strong><p>Gopal Chitalia, Manisa Pipattanasomporn, CU-BEMS, smart building electricity consumption and indoor environmental sensor datasets, Scientific Data, vol. 7, article 290, 2020. DOI: 10.1038/s41597-020-00582-3</p><p>用途：CU-BEMS 資料集描述論文；公開 task-aligned benchmark 的資料來源。</p></li><li><strong><a href="https://doi.org/10.1016/j.buildenv.2018.06.022">Development of the ASHRAE Global Thermal Comfort Database II</a></strong><p>V. Foldvary Licina, T. Cheung, H. Zhang, R. de Dear, T. Parkinson, E. Arens, et al., Development of the ASHRAE Global Thermal Comfort Database II, Building and Environment, vol. 142, pp. 502-512, 2018. DOI: 10.1016/j.buildenv.2018.06.022</p><p>用途：熱舒適資料庫描述論文；主稿用於候選資料適用性與舒適目標參考。</p></li><li><strong><a href="https://doi.org/10.1177/1477153519859609">Influence of indoor temperature and daylight illuminance on visual perception</a></strong><p>G. Chinazzo, J. Wienold, M. Andersen, Influence of indoor temperature and daylight illuminance on visual perception, Lighting Research and Technology, vol. 52, no. 8, pp. 998-1020, 2020. DOI: 10.1177/1477153519859609</p><p>用途：室溫與日光照度聯合實驗的文獻背景。</p></li><li><strong><a href="https://doi.org/10.1038/s41598-019-48963-y">Daylight affects human thermal perception</a></strong><p>G. Chinazzo, J. Wienold, M. Andersen, Daylight affects human thermal perception, Scientific Reports, vol. 9, article 13695, 2019. DOI: 10.1038/s41598-019-48963-y</p><p>用途：日光與熱感知交互作用的文獻背景。</p></li><li><strong><a href="https://doi.org/10.1016/j.enbuild.2025.115774">Experimental study on the impact of indoor lighting and thermal environment on university students&#x27; learning performance in summer</a></strong><p>Lan et al., Experimental study on the impact of indoor lighting and thermal environment on university students&#x27; learning performance in summer, Energy and Buildings, vol. 331, 115774, 2025. DOI: 10.1016/j.enbuild.2025.115774</p><p>用途：熱環境、照明與學習表現的房間尺度實驗背景。</p></li><li><strong><a href="https://doi.org/10.3390/buildings12070953">Studying the Indoor Environment and Comfort of a University Laboratory: Air-Conditioning Operation and Natural Ventilation Used as a Countermeasure against COVID-19</a></strong><p>K. Kuwahara et al., Studying the Indoor Environment and Comfort of a University Laboratory: Air-Conditioning Operation and Natural Ventilation Used as a Countermeasure against COVID-19, Buildings, vol. 12, no. 7, 953, 2022. DOI: 10.3390/buildings12070953</p><p>用途：冷氣與自然通風操作的現地量測背景。</p></li><li><strong><a href="https://doi.org/10.1177/1744259120944604">Indoor environmental quality and energy use evaluation of a three-star green office building in China with field study</a></strong><p>Yan Zhou, Jianmin Cai, Yiwen Xu, Indoor environmental quality and energy use evaluation of a three-star green office building in China with field study, Journal of Building Physics, vol. 45, no. 2, pp. 163-190, 2021. DOI: 10.1177/1744259120944604</p><p>用途：綠建築辦公室 IEQ 與能源使用的現地研究背景。</p></li><li><strong><a href="https://doi.org/10.1016/j.buildenv.2018.03.012">Indoor environment quality in a low-energy residential building in winter in Harbin</a></strong><p>Z. Wang, Q. Xue, Y. Ji, Z. Yu, Indoor environment quality in a low-energy residential building in winter in Harbin, Building and Environment, vol. 135, pp. 194-201, 2018. DOI: 10.1016/j.buildenv.2018.03.012</p><p>用途：住宅冬季 IEQ 的現地量測背景。</p></li><li><strong><a href="https://doi.org/10.1016/j.buildenv.2019.106482">Comparative study on indoor environment quality of green office buildings with different levels of energy use intensity</a></strong><p>Y. Geng, B. Lin, Y. Zhu, Comparative study on indoor environment quality of green office buildings with different levels of energy use intensity, Building and Environment, vol. 168, 106482, 2020. DOI: 10.1016/j.buildenv.2019.106482</p><p>用途：辦公室能源使用與 IEQ 的比較背景。</p></li><li><strong><a href="https://doi.org/10.3390/ijerph192114332">A Comparative Field Study of Indoor Environment Quality and Work Productivity between Job Types in a Research Institute in Korea</a></strong><p>J. Lee et al., A Comparative Field Study of Indoor Environment Quality and Work Productivity between Job Types in a Research Institute in Korea, International Journal of Environmental Research and Public Health, vol. 19, no. 21, 14332, 2022. DOI: 10.3390/ijerph192114332</p><p>用途：工作型態、IEQ 與生產力的比較背景。</p></li><li><strong><a href="https://doi.org/10.1016/j.enbuild.2024.114898">Hybrid modeling based on integrating simulation and operational data to improve indoor air temperature predictions, a controlled variable in digital twin models</a></strong><p>Ju-Hong Oh, Stefano Sfarra, Eui-Jong Kim, Hybrid modeling based on integrating simulation and operational data to improve indoor air temperature predictions, a controlled variable in digital twin models, Energy and Buildings, vol. 324, 114898, 2024. DOI: 10.1016/j.enbuild.2024.114898</p><p>用途：物理基線加 learned residual 的方法啟發，並有本地移植比較。</p></li><li><strong><a href="https://doi.org/10.1207/s15516709cog1402_1">Finding Structure in Time</a></strong><p>Jeffrey L. Elman, Finding Structure in Time, Cognitive Science, vol. 14, no. 2, pp. 179-211, 1990. DOI: 10.1207/s15516709cog1402_1</p><p>用途：Vanilla Elman RNN 的方法依據；本地同資料 RNN 比較。</p></li><li><strong><a href="https://doi.org/10.1115/1.3662552">A New Approach to Linear Filtering and Prediction Problems</a></strong><p>R. E. Kalman, A New Approach to Linear Filtering and Prediction Problems, Journal of Basic Engineering, vol. 82, no. 1, pp. 35-45, 1960. DOI: 10.1115/1.3662552</p><p>用途：Kalman 狀態估測架構依據；本地受控濾波比較。</p></li><li><strong><a href="https://doi.org/10.3390/plants9101312">Reaching Natural Growth: The Significance of Light and Temperature Fluctuations in Plant Performance in Indoor Growth Facilities</a></strong><p>Camilo Chiang, Daniel Bånkestad, Günter Hoch, Reaching Natural Growth: The Significance of Light and Temperature Fluctuations in Plant Performance in Indoor Growth Facilities, Plants, vol. 9, no. 10, 1312, 2020. DOI: 10.3390/plants9101312</p><p>用途：植物生長環境的動態溫濕度／光照設定值候選應用。</p></li><li><strong><a href="https://doi.org/10.3390/plants12173164">Preventing Overgrowth of Cucumber and Tomato Seedlings Using Difference between Day and Night Temperature in a Plant Factory with Artificial Lighting</a></strong><p>Young Ho Kim et al., Preventing Overgrowth of Cucumber and Tomato Seedlings Using Difference between Day and Night Temperature in a Plant Factory with Artificial Lighting, Plants, vol. 12, no. 17, 3164, 2023. DOI: 10.3390/plants12173164</p><p>用途：植物工廠日夜溫差及光週期的候選應用。</p></li><li><strong><a href="https://doi.org/10.1016/j.biosystemseng.2019.03.001">Improving climate monitoring in greenhouse cultivation via model based filtering</a></strong><p>Simon van Mourik, Peter J. M. van Beveren, Irineo L. López-Cruz, Eldert J. van Henten, Improving climate monitoring in greenhouse cultivation via model based filtering, Biosystems Engineering, vol. 181, pp. 40-51, 2019. DOI: 10.1016/j.biosystemseng.2019.03.001</p><p>用途：模型濾波的限制與負向結果背景，約束 Kalman 效益主張。</p></li><li><strong><a href="https://doi.org/10.1016/j.compag.2009.01.012">Towards an adaptive model for greenhouse control</a></strong><p>S. L. Speetjens, J. D. Stigter, G. van Straten, Towards an adaptive model for greenhouse control, Computers and Electronics in Agriculture, vol. 67, no. 1-2, pp. 1-8, 2009. DOI: 10.1016/j.compag.2009.01.012</p><p>用途：溫室 EKF 線上參數調整的候選方法背景。</p></li><li><strong><a href="https://doi.org/10.1016/j.enbuild.2021.111790">Model and data driven transient thermal system modelings for contained data centers</a></strong><p>Yewan Wang, Yiru Zhang, David Nörtershäuser, Stéphane Le Masson, Jean-Marc Menaud, Model and data driven transient thermal system modelings for contained data centers, Energy and Buildings, vol. 258, 111790, 2022. DOI: 10.1016/j.enbuild.2021.111790</p><p>用途：E11A thermal-balance 與 data-driven 模型分工的設計參考。</p></li><li><strong><a href="https://doi.org/10.1109/TC.2025.3603698">Thermal Elasticity-Aware Host Resource Provision for Carbon Efficiency on Virtualized Servers</a></strong><p>Da Zhang, Haojun Xia, Xiaotong Wang, Yanchang Feng, Haohao Liu, Bibo Tu, Thermal Elasticity-Aware Host Resource Provision for Carbon Efficiency on Virtualized Servers, IEEE Transactions on Computers, vol. 74, no. 11, pp. 3682-3695, 2025. DOI: 10.1109/TC.2025.3603698</p><p>用途：BMC 公開資料所對應的伺服器研究背景。</p></li><li><strong><a href="https://doi.org/10.1038/s41598-025-11048-0">Energy efficiency enhancement in two European data centers through CFD modeling</a></strong><p>Onur Muhammed Sarikaya et al., Energy efficiency enhancement in two European data centers through CFD modeling, Scientific Reports, vol. 15, 24952, 2025. DOI: 10.1038/s41598-025-11048-0</p><p>用途：交叉確認 AAU 機房設備及量測背景。</p></li><li><strong><a href="https://doi.org/10.3390/ijerph110909101">Fast inverse distance weighting-based spatiotemporal interpolation: A web-based application of interpolating daily fine particulate matter PM2.5 in the contiguous U.S. using parallel programming and k-d tree</a></strong><p>L. Li, T. Losser, C. Yorke, R. Piltner, Fast inverse distance weighting-based spatiotemporal interpolation, International Journal of Environmental Research and Public Health, vol. 11, pp. 9101-9141, 2014. DOI: 10.3390/ijerph110909101</p><p>用途：E11C 局部 IDW／時空插值的方法依據。</p></li><li><strong><a href="https://doi.org/10.1175/2009JTECHA1234.1">Fast k-nearest-neighbors calculation for interpolation of radar reflectivity field</a></strong><p>F. Gao, Fast k-nearest-neighbors calculation for interpolation of radar reflectivity field, Journal of Atmospheric and Oceanic Technology, vol. 26, pp. 1410-1414, 2009. DOI: 10.1175/2009JTECHA1234.1</p><p>用途：E11C 最近鄰搜尋／局部插值的方法依據。</p></li><li><strong><a href="https://doi.org/10.1109/ICITISEE.2016.7803050">Inverse distance weighting and kriging spatial interpolation for data center thermal monitoring</a></strong><p>E. Oktavia, Widyawan, I. W. Mustika, Inverse distance weighting and kriging spatial interpolation for data center thermal monitoring, ICITISEE, pp. 69-74, 2016. DOI: 10.1109/ICITISEE.2016.7803050</p><p>用途：資料中心 IDW／kriging 的相關方法與研究邊界。</p></li><li><strong><a href="https://doi.org/10.1016/j.applthermaleng.2023.120737">A time-varying state-space model for real-time temperature predictions in rack-based cooling data centers</a></strong><p>X. Tong et al., A time-varying state-space model for real-time temperature predictions in rack-based cooling data centers, Applied Thermal Engineering, vol. 230, 120737, 2023. DOI: 10.1016/j.applthermaleng.2023.120737</p><p>用途：機架冷卻的動態 state-space 溫度預測方法參考。</p></li><li><strong>Digital Twin in Industry: State-of-the-Art</strong><p>F. Tao and H. Zhang and A. Liu and A. Y. C. Nee, Digital Twin in Industry: State-of-the-Art, IEEE Transactions on Industrial Informatics, 2019.</p><p>用途：英文稿 Related Work 的數位孿生定義、技術及研究挑戰背景。</p></li><li><strong>Digital Twin: Enabling Technologies, Challenges and Open Research</strong><p>A. Fuller and Z. Fan and C. Day and C. Barlow, Digital Twin: Enabling Technologies, Challenges and Open Research, IEEE Access, 2020.</p><p>用途：英文稿 Related Work 的數位孿生定義、技術及研究挑戰背景。</p></li></ol><p class="source"><a href="../thesis/used_papers_inventory_zh.md">原引用清單</a> · <a href="../thesis/used_papers_inventory_zh.json">原始盤點資料</a></p></details>
+<p class="callout"><strong>下週閱讀紀錄：</strong>新增查閱時逐篇記錄實際日期、題名、作者／年份、原文連結、讀到的章節／公式、可借鑑的機制與適用限制，再對應到自己模型的辨識、校正或決策改進。</p></section>
+<section id="background"><h2>我的前期研究脈絡（累積背景）</h2><p>以下延續兩週前的報告，涵蓋先前估測、公開資料、API尋找、TCLab與BOPTEST探索。這些不是本次新實驗；不因文件曾存在就假設已向教授口頭報告。E15一次性結果只讀取，沒有為本次報告重跑。</p><details><summary>展開前期研究問題、API探索、既有證據與模型架構</summary><p class="callout"><strong>日期說明：</strong>此區內容來自9/21累積報告；當時的「待做」依上方最新工作表更新。本區的估測資料與本次合成機箱控制不可合併成同一驗證層級。</p><section id="history-timeline">
+      <h2>我是怎麼一步步推進研究的</h2>
+      <div class="timeline">
+        <article>
+          <time>8/17 報告所彙整的研究（含較早成果）</time>
+          <h3>補齊公平 baseline 與真實保留點證據</h3>
+          <p>我先補齊 Pure RNN 的完整 3-D 場比較、SML2010 時序比較與 Kalman 受控去噪，也整理了真實臥室 7 天、28 筆 snapshots 的 pillow 保留點結果，檢查模擬與實際量測各能支持什麼。</p>
+        </article>
+        <article>
+          <time>9/7 整合與確認</time>
+          <h3>模型擴充與公開機櫃資料證據</h3>
+          <p>接著，我比較 GRU／LSTM，並把估測研究延伸到 AAU 與 BMC 公開資料。在 BMC 的過程中，我先處理解析與單位問題，再透過 E15 完成一次性確認。</p>
+        </article>
+        <article>
+          <time>2026-09-08 的延伸研究</time>
+          <h3>以 BOPTEST 檢查低資料 PI 與跨設備控制</h3>
+          <p>為了檢查控制效果，我開始使用 BOPTEST，從單一 air model 推進到五種已知 FMU，逐步比較命令平滑、動態模型、持續補償與啟動交接。過程中出現的改善、退步與回退結果，我都保留下來。</p>
+        </article>
+      </div>
+    </section>
+<section id="history-research-questions">
+      <h2>往下做時，我卡在幾個問題</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>估測準，是否就有控制上的價值？</h3>
+          <p>我原本能比較估測誤差，但當我想往控溫或節能延伸時，就發現還缺少動態響應與介入證據。即使溫度估得準，我仍需要驗證改變控制動作後，環境究竟會怎麼反應。</p>
+        </article>
+        <article class="card">
+          <h3>環境條件化 PID 是否已有先例？</h3>
+          <p>我查文獻後找到既有自動調參研究，例如 <a href="https://arxiv.org/abs/1906.12086">Fiducioso 等人（2019）的 contextual Bayesian optimization</a>。因此，我需要進一步釐清自己的方法差異，並比較相同控制品質下的資料與試調成本；目前還沒有建立新穎性主張。</p>
+        </article>
+        <article class="card">
+          <h3>只維持固定設定值，是否已經足夠？</h3>
+          <p>我也問自己：如果一般開關控制或 PI 就能維持固定目標，加入模型或神經網路的價值在哪裡？所以我需要先找出簡單策略的不足。目前這些 BOPTEST 實驗尚未驗證神經網路的效益。</p>
+        </article>
+        <article class="card">
+          <h3>資料與模擬能回答哪些應用問題？</h3>
+          <p>我當時沒有找到能直接量測半導體環境調參工時的公開資料，因此先用 BOPTEST 做控制模擬。若要延伸到桌機機箱，我仍需要入口溫度、負載、PWM/RPM、功率與實機介入證據，才能評估溫度、效能與耗電。</p>
+        </article>
+      </div>
+      <p class="source">依據：<a href="https://github.com/Yunitrish006006/Three-Factor-Digital-Twin/blob/d4fa57b756eab74452f3580f35e30a2e959dded4/docs/research/environment_pid_feasibility_zh.md">環境參數 PID 啟動條件</a>與 <a href="https://github.com/Yunitrish006006/Three-Factor-Digital-Twin/blob/d4fa57b756eab74452f3580f35e30a2e959dded4/docs/research/application_goals_2026-09-08_zh.md">候選應用及固定設定質疑</a>。</p>
+    </section>
+<section id="history-journey">
+      <h2>我如何找到可以模擬環境的 API</h2>
+      <p class="lead">當我發現 BMC／AAU 紀錄不足以驗證新控制動作時，我開始找能接收控制指令、回傳下一步環境狀態，而且可以重設、重複比較的模擬平台。</p>
+      <p>我的查找範圍從機箱溫控，擴展到精密環境的快速調適。我查了 APMonitor 的 TCLab 建模教材、IBPSA BOPTEST 官方介紹與案例頁、UCI SECOM，以及 OpenHumidistat 作者論文。當時我沒有取得可直接使用的 EUV／半導體環境調參資料，因此先選擇一般 HVAC 模擬來檢查方法。以下依我 9/8 留存的筆記整理；完整搜尋字串與逐次點閱時間沒有留存。</p>
+
+      <div class="callout" style="margin-top:16px"><strong>TCLab 是什麼？</strong>TCLab（Temperature Control Laboratory）是 APMonitor 教材提供的雙加熱器、雙溫度感測器熱系統模型／教學平台；它讓我可以輸入加熱功率，推進時間，再讀取 T1／T2 的溫度反應。9月中下旬我使用的是本地 <code>tclab==1.0.0</code> 的 <code>TCLabModel(synced=False)</code>，已通過 reset、Q1／Q2 輸入、時間推進與溫度回應測試。它適合用來檢查調參流程、資料切分與控制器介面是否能重現，但目前不是 TCLab 硬體量測，也不是桌機機箱或 BOPTEST 的實體控制證據。</div>
+
+      <div class="flow" aria-label="模擬環境尋找流程">
+        <div><strong>1. 我釐清需求</strong>我要觀察控制動作之後的環境反應，因此需要可互動的動態模型。</div>
+        <div><strong>2. 我比較候選</strong>我查了 TCLab、BOPTEST、SECOM 與 OpenHumidistat，確認資料和控制介面。</div>
+        <div><strong>3. 我選 BOPTEST</strong>它提供多種 HVAC 模型、天氣、控制點與 REST API，符合這輪比較需求。</div>
+        <div><strong>4. 我遇到連線問題</strong>HTTPS 連線失敗，HTTP testcases 端點回 404，當時沒有取得可用 session。</div>
+        <div><strong>5. 我轉向本地執行</strong>我固定官方 v0.9.0 FMU，以 FMPy 讀取量測、送入有限制的控制指令。</div>
+      </div>
+
+      <div class="table-wrap" style="margin-top:18px">
+        <table>
+          <thead>
+            <tr>
+              <th>候選來源</th>
+              <th>我為什麼查它</th>
+              <th>我最後怎麼選</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="https://apmonitor.com/do/index.php/Main/TCLabA">TCLab／TCLabModel</a></td>
+              <td>我在建模教材中找到加熱輸入與溫度反應，適合用來做初步熱動態辨識。</td>
+              <td><span class="status-good">我已完成 simulation smoke test</span>。本地 `tclab==1.0.0` 的 `TCLabModel(synced=False)` 已通過 reset、輸入、時間推進與溫度回應；但仍不是硬體證據。</td>
+            </tr>
+            <tr>
+              <td><a href="https://ibpsa.github.io/project1-boptest/">IBPSA BOPTEST</a>／<a href="https://ibpsa.github.io/project1-boptest/docs-userguide/getting_started.html">API 使用說明</a></td>
+              <td>我在官方介紹和 API 文件中確認，它有動態模型、天氣、量測／控制點、模擬步進與 KPI。</td>
+              <td><span class="status-good">我選為主要模擬平台</span>，因為我能重設案例，讓不同控制器在相同條件下比較。</td>
+            </tr>
+            <tr>
+              <td><a href="https://archive.ics.uci.edu/dataset/179/secom">UCI SECOM</a></td>
+              <td>它來自半導體製程，所以我查了是否能支援精密環境控制問題。</td>
+              <td><span class="status-no">我排除為控制主資料</span>，因為其中是製程特徵與 pass/fail，缺少我需要的具名設定值、PID 係數及連續控制動作。</td>
+            </tr>
+            <tr>
+              <td><a href="https://arxiv.org/abs/2112.08500">OpenHumidistat</a></td>
+              <td>我從作者論文找到開源濕度控制實驗腔，想確認它能否成為實測平台。</td>
+              <td><span class="status-mixed">我保留為硬體備案</span>；這次尚未建立該裝置，也沒有取得現成的完整溫濕度雙變數模擬 API。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout" style="margin-top:16px">
+        <strong>我選 BOPTEST 的關鍵理由：</strong>我可以讓控制器讀取量測、送出動作，再觀察環境往前演化的結果。這樣就能把固定 PI、自動辨識 PI、observer、smoothing 與 handover 放在相同模型、日期、warmup 與限制下比較。
+      </div>
+      <details>
+        <summary>我在 API 文件中確認了什麼？實驗最後怎麼執行？</summary>
+        <p>我確認官方 API 的基本循環是：選案例取得 <code>testid</code> → 初始化與 warmup → 讀取量測／致動器名稱及單位 → 設定步長 → 提交動作並前進一步 → 取得新量測，反覆執行後讀取結果。這些介面可在 <a href="https://ibpsa.github.io/project1-boptest/docs-userguide/api.html">BOPTEST 官方 API 文件</a>查到。</p>
+        <div class="table-wrap" style="margin-top:12px"><table>
+          <thead><tr><th>用途</th><th>官方介面摘要</th></tr></thead>
+          <tbody>
+            <tr><td>建立與重設案例</td><td><code>POST /testcases/{name}/select</code>；<code>PUT /initialize/{testid}</code></td></tr>
+            <tr><td>檢查可觀測與可控制的量</td><td><code>GET /measurements/{testid}</code>、<code>GET /inputs/{testid}</code></td></tr>
+            <tr><td>控制一步並取得環境反應</td><td><code>PUT /step/{testid}</code>；<code>POST /advance/{testid}</code>，送入指令及 override 啟用旗標</td></tr>
+            <tr><td>取回完整軌跡與官方指標</td><td><code>PUT /results/{testid}</code>、<code>GET /kpi/{testid}</code></td></tr>
+          </tbody>
+        </table></div>
+        <p>實際執行時，我採用固定的官方 v0.9.0 FMU（可執行的動態模型），透過 FMPy 直接呼叫 FMI 介面。我把起始 pilot 設為每步 60 秒、目標 22°C、每回合共用 24 小時 warmup，再用自訂程式計算 MAE 等指標。我尚未驗證這條路徑與官方 REST 服務或 KPI 完全等價；控制器也沒有沿用原空間估測網路的權重。</p>
+      </details>
+      <p class="source">過程依據：<a href="https://github.com/Yunitrish006006/Three-Factor-Digital-Twin/blob/d4fa57b756eab74452f3580f35e30a2e959dded4/docs/research/precision_environment_pid_data_review_2026-09-08_zh.md">9/8 文獻與平台初查</a>。該筆記的「尚未執行」描述查找當時；後續執行結果見本頁控制探索。</p>
+    </section>
+<section id="history-problems">
+      <h2>實際執行時，我遇到了什麼、怎麼處理</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>階段</th>
+              <th>我遇到的問題</th>
+              <th>我的處理方式</th>
+              <th>我從結果得到的判斷</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>BMC 資料品質</td>
+              <td>我在 E12 發現 6 個開發檔案未達每檔 30 筆門檻；後來 E13 雖算出結果，卻使用有問題的解析與單位流程。</td>
+              <td>我先讓 E12 在開啟最終測試前停止，並將 E13 標為解析失效。E14 修正後，我把結果保留為回溯比較，再用另 14 個未開啟檔案完成 E15。</td>
+              <td>我必須分別確認資料可用性、解析正確性與模型效果；修過的舊測試資料，不能再被我當成獨立確認。</td>
+            </tr>
+            <tr>
+              <td>API 連線</td>
+              <td>9/8 我嘗試連線 <code>api.boptest.net</code>，HTTPS 出現 SSL 錯誤，HTTP <code>/testcases</code> 回 404。</td>
+              <td>我改用固定版本的官方 FMU，在本地執行控制比較。</td>
+              <td>我只能確認當時的嘗試失敗，尚未確定服務整體狀態。我的結果實際來自 <strong>官方 FMU＋自訂本地執行程式</strong>。</td>
+            </tr>
+            <tr>
+              <td>本地相依套件</td>
+              <td>我第一次載入 FMU 時失敗，因為模型需要 <code>libgfortran.so.4</code>，當時執行環境只有較新版本。</td>
+              <td>我從 Ubuntu 官方套件取得相容 library，放在專案的本地 runtime 路徑，並保留來源與雜湊。</td>
+              <td>這讓我發現，重現模擬除了固定 Python 套件，也必須確認 FMU 所需的原生函式庫。</td>
+            </tr>
+            <tr>
+              <td>資料可辨識性</td>
+              <td>我第二次執行時，夜間日照值全部為 0，造成矩陣 condition number 為無限大，結果無法寫成 JSON。</td>
+              <td>我將該診斷值記為 null，另存 matrix rank 與 <code>solar_identifiable</code>。這次只修輸出，沒有改動擬合係數、控制器或協定。</td>
+              <td>我學到有這個資料欄位，並不代表這段資料足以辨識它的影響；還要檢查輸入是否真的有變化。</td>
+            </tr>
+            <tr>
+              <td>模型轉移</td>
+              <td>我把相同一階辨識流程套到 hydronic 的 2h／6h 資料，得到的係數都未通過預設模型條件，因此停止該設備的後續評估。</td>
+              <td>我保留原門檻，在下一輪改用所有設備共用、事先固定的 ARX 候選庫，再重新比較。</td>
+              <td>這提醒我，air model 的成功還不足以代表跨設備通用；我需要檢查不同儲熱、延遲與致動介面的適用條件。</td>
+            </tr>
+            <tr>
+              <td>跨設備結果</td>
+              <td>我新增三種 FMU 後，固定的控制器在 10 組有效比較中沒有一組改善；後續一致補償也只有部分組合通過。</td>
+              <td>我保留全部退步、拒絕與 fallback，並把五種已用於改進方法的 FMU 都列為開發設備。</td>
+              <td>我的跨設備改善假設在這一輪沒有得到支持，後續還需要未參與開發的設備來驗證。</td>
+            </tr>
+            <tr>
+              <td>雜訊與延遲</td>
+              <td>我加入 observer 後，有雜訊時的溫度追蹤改善，指令卻變得更頻繁；再加平滑，指令變動大降，但部分誤差指標略退步。</td>
+              <td>我同時比較 MAE、最大誤差，以及發出與實際施加的指令變動量。</td>
+              <td>這讓我開始用多個指標判斷取捨，因為平均誤差下降，未必代表整體控制品質都變好。</td>
+            </tr>
+            <tr>
+              <td>啟動輔助撤離</td>
+              <td>我嘗試預測式提早撤離輔助，在一個 hydronic 日期有改善，另一日期的達標時間卻延遲 5 分鐘。</td>
+              <td>我接著分開比較輔助時間與積分交接方式，最後選出 15 分鐘後把輔助量轉入積分的策略。</td>
+              <td>我從開發資料看到交接時的積分狀態值得進一步研究，但目前尚未確認真實設備上是否也有相同機制。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="quote">這些問題改變了我往下做的方式：我先固定可重現的模擬環境，辨識未通過時就停止該輪評估；遇到退步後，再用新的比較與消融實驗釐清原因。到目前為止，我對方法在哪些條件下有效，也有了更具體的認識。</p>
+      <p class="source">執行依據：<a href="https://github.com/Yunitrish006006/Three-Factor-Digital-Twin/blob/d4fa57b756eab74452f3580f35e30a2e959dded4/openspec/changes/pilot-boptest-rapid-pi/evidence.md">首次執行與失敗紀錄</a>、<a href="https://github.com/Yunitrish006006/Three-Factor-Digital-Twin/blob/d4fa57b756eab74452f3580f35e30a2e959dded4/openspec/changes/evaluate-boptest-cross-plant/evidence.md">跨設備辨識拒絕</a>、<a href="https://github.com/Yunitrish006006/Three-Factor-Digital-Twin/blob/d4fa57b756eab74452f3580f35e30a2e959dded4/openspec/changes/startup-handover-ablation/evidence.md">啟動交接比較</a>。</p>
+    </section>
+<section id="history-core">
+      <h2>目前，我的主論文有哪些證據</h2>
+      <p class="lead">我把受控模擬、真實保留點與公開資料分開驗證，因為它們回答的問題不同。以下是我目前完成的比較，以及我能從中得到的結論。</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>問題</th>
+              <th>完成結果</th>
+              <th>我的判讀</th>
+              <th>我還沒驗證的範圍</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>受控 3-D 場重建</td>
+              <td>LOO hybrid 平均 MAE：0.0017°C、0.0059%RH、0.1407 lux；Pure RNN lowest-MAE 0/24。</td>
+              <td>在這組<span class="status-good">受控真值下</span>，我使用的物理啟發結構加 residual 優於 standalone recurrent baseline。</td>
+              <td>不代表任意真實房間或所有 RNN 架構。</td>
+            </tr>
+            <tr>
+              <td>真實臥室保留點</td>
+              <td>7 天、28 筆；pillow 點校正後溫度／濕度／照度 MAE 分別下降 81.31%／90.46%／94.61%。</td>
+              <td>我的校正在這個<span class="status-good">單房間、單一保留點</span>上改善了估測誤差。</td>
+              <td>不是完整真實 3-D 場，也不是跨房間驗證。</td>
+            </tr>
+            <tr>
+              <td>時序模型公平比較</td>
+              <td><span class="status-mixed">前一輪（9/7）</span> Vanilla RNN、GRU、LSTM 的最低 MAE 次數皆為 0/12；Sequence LR 7/12、Persistence 5/12。</td>
+              <td>我保留這項<span class="status-mixed">負向結果</span>：在這組設定下，增加 recurrent complexity 沒有帶來優勢。</td>
+              <td>不同 history、容量、seed 或完整 3-D 任務需另做 protocol。</td>
+            </tr>
+            <tr>
+              <td>Kalman 受控去噪</td>
+              <td>12 個案例中，Kalman 與 causal MA(3) 各取得 6/12 最低 MAE；溫度由 MA(3) 勝出，濕度由 Kalman 勝出。</td>
+              <td>我觀察到<span class="status-mixed">方法依變數而異</span>，目前無法認定 Kalman 普遍最佳。</td>
+              <td>不是實體感測器去噪、forecast 或線上參數適應。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="source">結果來源：<a href="professor_two_week_report_2026-08-04_2026-08-17_zh.md">8/17 模型、臥室與 Kalman 彙整</a>及 <a href="professor_weekly_report_2026-09-01_2026-09-07_zh.md">9/7 GRU／LSTM 比較</a>。這些是累積成果，不全是9月中下旬新實驗。</p>
+    </section>
+<section id="history-enclosure">
+      <h2>我把估測方法延伸到公開機櫃與伺服器資料</h2>
+      <div class="grid">
+        <article class="card">
+          <span class="tag warn">AAU：混合結果</span>
+          <h3>我開始檢查距離以外的資訊</h3>
+          <ul>
+            <li>我先比較全域 3-D IDW 與最近鄰，MAE 分別為 1.687°C 與 1.175°C，IDW 反而較差。</li>
+            <li>改用 local IDW 後，aggregate MAE 從 1.301°C 降至 1.223°C，但只在 21/42 感測器勝出，還沒有通過預設廣度門檻。</li>
+            <li>我再加入角色條件，模型在 30/42 感測器勝出。這支持角色資訊具有預測價值，但我尚未驗證氣流因果。</li>
+            <li>我也完成 commissioning-assisted frozen map 的確認，MAE 約 0.40°C；證據仍限於同一 AAU campaign 中先前未讀取的資料片段。</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag good">BMC E15：支持 H-ENC-08</span>
+          <h3>我以 E15 檢查固定模型能否轉移</h3>
+          <p>我把目標定為同台伺服器兩個 CPU 溫度的最大值 <code>max(Cpu1_Temp, Cpu2_Temp)</code>，固定模型後再開啟這 14 檔做確認，沒有在確認資料上重訓。</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>指標</th><th>Baseline</th><th>Load-aware ridge</th></tr></thead>
+              <tbody>
+                <tr><td>MAE</td><td>1.6939°C</td><td><strong>0.9744°C</strong></td></tr>
+                <tr><td>RMSE</td><td>1.9672°C</td><td><strong>1.2056°C</strong></td></tr>
+                <tr><td>P95</td><td>3.5000°C</td><td><strong>2.3888°C</strong></td></tr>
+                <tr><td>逐 run 勝出</td><td>2/14</td><td><strong>12/14</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>逐 run 等權 MAE 改善為 0.6134°C，20,000 次 run-block bootstrap 95% CI 為 [0.2721, 0.9831]°C。</p>
+          <p class="label">兩個退步 run：202308051757（改善 −0.5537°C）、202310252230（改善 −0.3011°C）。逐 run 等權改善與表中合併全部列的 MAE 差值是不同統計量。</p>
+        </article>
+      </div>
+      <div class="callout" style="margin-top:16px">
+        <strong>我目前能確認的範圍：</strong>E15 支持同一台 Phytium S2500 伺服器的時間／工作負載轉移。我還沒有完成桌機機箱、NTC 硬體、跨伺服器、完整空間熱場與真實控制效益的驗證。
+      </div>
+      <p class="source">結果來源：<a href="../../openspec/changes/confirm-bmc-temporal-transfer-e15/artifacts/bmc_confirmation_e15_result.json">E15 封存數值</a>、<a href="professor_weekly_report_2026-09-01_2026-09-07_zh.md">9/7 AAU 與模型比較週報</a>。該週報尚保留 E15 執行前狀態，本頁以封存確認結果更新。</p>
+    </section>
+<section id="history-control">
+      <h2>有了模擬環境後，我怎麼嘗試改善控制</h2>
+      <p class="lead">我先從單一模型檢查快速辨識的可行性，再往多種設備推進。結果讓我逐步看到資料量、模型適配、雜訊與交接方式的影響。目前我把這些保留為探索性研究，還沒有納入主論文的已驗證控制主張。</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>我的嘗試</th>
+              <th>我得到的結果</th>
+              <th>我的判讀</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>單一 air model 快速 PI</td>
+              <td>2 小時辨識前綴的 v2 在兩個已看過的開發日期達到 0.0392／0.0412°C MAE；54 小時試驗網格為 0.0252／0.0338°C，誤差仍較低。</td>
+              <td>我確認了<span class="status-mixed">這組模擬下的可行性</span>，但仍未完成獨立確認或人工作業時間比較。</td>
+            </tr>
+            <tr>
+              <td>跨設備 frozen transfer</td>
+              <td>新增 heat-pump、apartment、commercial 後，已完成的 10 組 paired comparisons 全數未改善；一個 6 小時 bank 被拒絕。</td>
+              <td>我的<span class="status-no">跨設備改善假設未獲支持</span>。</td>
+            </tr>
+            <tr>
+              <td>動態模型與一致補償</td>
+              <td>ARX 候選庫讓 hydronic 通過辨識模型門檻；四個設備／資料預算組合中三個通過控制門檻。後續一致補償為 7 改善、5 退步、6 持平，9 個可評估組合中 4 個通過。</td>
+              <td>我對失敗型態有了更多認識，但<span class="status-no">仍未證明普遍優勢</span>。</td>
+            </tr>
+            <tr>
+              <td>命令平滑</td>
+              <td>在 noisy＋60 秒 delay 下，macro command variation 降低 70.15%，macro MAE 由 0.1073 降至 0.0966°C；乾淨案例 MAE 與所有案例最大誤差則略升。</td>
+              <td>我需要在追蹤誤差與指令活動之間做<span class="status-mixed">取捨</span>。</td>
+            </tr>
+            <tr>
+              <td>啟動交接 ablation</td>
+              <td>Hydronic 在兩個新日期的前段 MAE 約改善 22%；後段改善 18.4%／4.1%，達標時間提前 61／11 分鐘。其餘四設備回退純 PI。</td>
+              <td>我取得了<span class="status-good">hydronic 條件下的支持</span>，尚未得到跨設備通用結論。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>這裡我使用的「2 小時」是已收集 6 小時辨識軌跡的前綴，還要另外計入 warmup、候選試調與開發成本。我已使用這五種 FMU 開發方法，回退純 PI 後相同的結果只算持平。最新交接策略中，我只比較了 15／55 分鐘兩種時間，尚未找到通用最佳值；第 83 日後段最大誤差仍約 2.65°C。</p>
+      <p class="source">結果來源：<a href="https://github.com/Yunitrish006006/Three-Factor-Digital-Twin/blob/d4fa57b756eab74452f3580f35e30a2e959dded4/openspec/changes/evaluate-more-boptest-devices/evidence.md">新增三設備</a>、<a href="https://github.com/Yunitrish006006/Three-Factor-Digital-Twin/blob/d4fa57b756eab74452f3580f35e30a2e959dded4/openspec/changes/model-consistent-compensation/evidence.md">一致補償</a>、<a href="https://github.com/Yunitrish006006/Three-Factor-Digital-Twin/blob/d4fa57b756eab74452f3580f35e30a2e959dded4/openspec/changes/reduce-boptest-command-jitter/evidence.md">命令平滑</a>。本頁彙整既有結果，未重跑模擬。</p>
+    </section>
+<section id="history-tuning">
+      <h2>9月中下旬，我把參數調教標準化</h2>
+      <p class="lead">我9月中下旬把「調參」從找一組漂亮分數，改成任何人都能重做的流程：先分清楚哪些參數可以調，再固定資料切分與搜尋預算，鎖定參數後才讀取 validation／holdout，最後用同日期的 fixed PI 做比較。這樣才能知道改善來自方法，還是只是看過答案後再調整。</p>
+      <div class="grid">
+        <article class="card third"><span class="tag">第一層</span><h3>先分清楚哪些參數能調</h3><p>我把物理／量測常數、動態模型、控制器參數和實驗設計分開。sample time、單位與致動器界限先固定，不能為了分數事後修改。</p></article>
+        <article class="card third"><span class="tag">第二層</span><h3>先校正，再鎖定後驗證</h3><p>calibration 只用來辨識與搜尋；參數鎖定後，validation 和 holdout 各只讀取一次。沒有獨立資料就標記 <code>NO_INDEPENDENT_VALIDATION</code>。</p></article>
+        <article class="card third"><span class="tag">第三層</span><h3>用固定規則決定是否繼續</h3><p>我預先固定粗網格、搜尋預算、IAE／ITAE、tie margin 與飽和檢查；不無限試到滿意，也不把持平硬說成勝出。</p></article>
+      </div>
+      <p class="callout" style="margin-top:16px"><strong>一句話：</strong>我現在不是問「哪組參數分數最高」，而是問「在沒有看 holdout 答案的前提下，鎖定的參數能不能讓預測操作後的溫度仍然準確」。</p>
+      <div class="callout" style="margin-top:16px"><strong>具體示範（使用我的 DigitalTwinModel）：</strong>我先把 8 顆感測器觀測送進模型，讓模型校正 `ac_main` 的有效功率與空間 residual；接著固定目標為 25°C／58% RH／500 lux，只比較 AC activation 35%、60%、85% 三個候選。模型預測的 zone temperature 分別是 27.509°C、26.559°C、25.609°C，comfort penalty 分別是 3.898、2.907、2.308，因此這次 dry run 排名第一的是 85%。真正介入時，才把 85% 送到 actuator，再用介入後實測溫度和 25.609°C 比較 MAE；這一步目前尚未有實體證據。</div>
+      <div class="callout" style="margin-top:16px"><strong>機箱模型版示範（示範計算，不是實測）：</strong>我把狀態固定為入口 30°C、CPU 72°C、負載功率 180 W，並先用一組待 calibration 的參數 <code>C=12000 J/°C</code>、<code>G=8 W/°C</code>、<code>k_f=1.5 W/(°C·krpm)</code>、5 分鐘 horizon。假設 PWM 40%／60%／80% 分別對應 3000／4500／6000 RPM，模型計算出的 5 分鐘後 CPU 溫度示範值為 63.38／61.01／58.65°C。這個例子展示的是「候選風扇操作 → 預測後續溫度」的格式；真正研究時，這些係數要由 calibration 資料辨識，再用 validation／holdout 的實測溫度計算 MAE。</div>
+      <h3 style="margin-top:22px">機箱模型版本：每個參數能調什麼、代表什麼</h3>
+      <p>因為教授目前把機箱視為主軸，我把同一套調適方法改寫成機箱模型的參數表。9月中下旬先把內容分成三類：模型中的控制輸入、要用 calibration 辨識的熱模型參數，以及不能為了分數事後改動的安全／實驗參數；這不是在宣稱我已經有一台可介入的實體機箱。</p>
+      <div class="table-wrap"><table><thead><tr><th>參數</th><th>類型</th><th>改變後的效果</th><th>意義</th></tr></thead><tbody>
+        <tr><td><code>PWM</code></td><td>操作</td><td>改變風量、降溫速度與風扇功耗</td><td>真正送給風扇的控制動作</td></tr>
+        <tr><td><code>RPM</code></td><td>觀測回應</td><td>反映命令是否真的變成轉速</td><td>不能把 PWM 直接當成 RPM</td></tr>
+        <tr><td><code>Kp/Ki/Kd</code></td><td>控制器</td><td>改變反應快慢、overshoot、振盪與穩態誤差</td><td>比較 PID 與前饋＋PID</td></tr>
+        <tr><td><code>C/G</code></td><td>熱模型</td><td>描述儲熱能力與自然散熱速度</td><td>決定升溫／降溫暫態</td></tr>
+        <tr><td><code>k_f/τ_f</code></td><td>熱模型</td><td>描述風扇增益與命令到溫度反應的延遲</td><td>是「操作後溫度」預測的核心</td></tr>
+        <tr><td><code>k_L</code></td><td>負載前饋</td><td>負載上升前先提高風扇，減少溫度尖峰</td><td>分開負載發熱與風扇作用</td></tr>
+        <tr><td><code>T_limit/ΔPWM_max/H</code></td><td>安全／實驗設計</td><td>限制超溫、抖動與評估距離</td><td>預先固定，不能看結果後修改</td></tr>
+      </tbody></table></div>
+      <p class="source">完整機箱參數調適 protocol：<a href="../research/enclosure_parameter_adaptation_protocol_2026-09-21_zh.md">enclosure parameter adaptation protocol</a>。目前是9月中下旬完成的方法設計；BMC 資料尚無可重設 PWM 介入，不把它寫成已完成的機箱控制結果。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>階段</th><th>我會做什麼</th><th>通過條件</th><th>沒有通過時</th></tr></thead>
+          <tbody>
+            <tr><td>API smoke test</td><td>reset → input → advance → response，固定 seed 重跑 3 次</td><td>欄位、單位、時間戳與 trace hash 可重建</td><td><span class="status-no">PILOT_BLOCKED</span>，不進入調參</td></tr>
+            <tr><td>Calibration</td><td>用階躍回應估計最低階模型，固定候選數與搜尋範圍</td><td>參數 JSON、搜尋預算與失敗原因完整</td><td>只報辨識失敗，不挑選漂亮案例</td></tr>
+            <tr><td>Validation</td><td>鎖定一組參數後讀取一次，計算 IAE／ITAE、overshoot、settling、飽和比例</td><td>與 baseline 的比較可重算，tie margin 事前已登記</td><td>開新 run id，不覆寫原結果</td></tr>
+            <tr><td>Holdout</td><td>在不同初始狀態／日期的 trace 做 stress 檢查</td><td>結果與 calibration 分離且保留 hash</td><td>維持 <span class="status-mixed">NOT_EVALUATED</span>，不外推到真實設備</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>9月中下旬我先完成研究設計，再用 TCLab 和 Linux BOPTEST runner 執行受控 pilot；OpenHumidistat 是硬體備案，SECOM 沒有連續致動器與時間控制循環，所以不列入主控制 API。</p>
+      <p>我也回頭稽核了既有 BOPTEST development artifact：它已經有 calibration、固定 grid、baseline、trace hash 與 day 3／day 180 指標，但沒有獨立 sealed holdout。因此我把目前狀態記為 <span class="status-mixed">PARTIAL_PROTOCOL_CONFORMANCE</span>，不把原本的開發評估改稱泛化驗證。</p>
+      <p>我接著嘗試建立 holdout，已恢復 pinned FMU 與 FMPy 0.3.22；但實際執行 day 270 時發現 FMU 只有 Linux x86-64 的 shared library，沒有 macOS ARM 可載入的 library，所以在第一個 transition 前停止。我把這次記為 <span class="status-no">PILOT_BLOCKED</span>，沒有補造數字或重跑 E15。</p>
+      <p>為了確認 protocol 和 gate 本身沒有邏輯漏洞，我另外跑了一個 deterministic toy dynamic API。它完整通過 calibration／validation／holdout 與 hash 檢查，但我把它標成 <span class="status-mixed">PASS_CONTRACT_TEST_NOT_RESEARCH_EVIDENCE</span>，不把 toy 結果當成 BOPTEST 或實體設備結果。</p>
+      <p>在 BOPTEST binary 受平台限制後，我改用第二候選 TCLab。`tclab==1.0.0` 的 `TCLabModel(synced=False)` 已跑通 reset、輸入 Q1/Q2、時間推進與 T1/T2 回應；固定 seed 下 holdout 重跑 hash 一致。這是 <span class="status-good">simulation pilot 通過</span>，但不是 TCLab 硬體、BOPTEST 或真實介入證據。</p>
+      <p>後來我用 GitHub Ubuntu runner 恢復 BOPTEST 的 Linux x86-64 runtime，跑了預先鎖定參數的 day 240 validation 與 day 270 holdout，並在相同日期跑 fixed PI baseline。結果如下：</p>
+      <div class="table-wrap"><table><thead><tr><th>日期</th><th>locked PI MAE</th><th>fixed PI MAE</th><th>locked PI IAE</th><th>fixed PI IAE</th></tr></thead><tbody><tr><td>day 240 validation</td><td>0.2996°C</td><td>0.4150°C</td><td>7.1909°C·h</td><td>9.9596°C·h</td></tr><tr><td>day 270 holdout</td><td>0.3820°C</td><td>0.5366°C</td><td>9.1678°C·h</td><td>12.8795°C·h</td></tr></tbody></table></div>
+      <p>兩個日期的 locked PI tracking metrics 都較低，但飽和比例較高；我把這看成單一 FMU 的探索性支持，不把它寫成跨設備或節能因果結論。</p>
+      <p>我另外從兩條 locked trace 各隨機抽取最多 100 個狀態，在系統已選出的操作下，用既有 development calibration 固定的一階 RC predictor 預測下一步溫度，再和實際 `next_T` 比較。200 個抽樣的 MAE 為 1.6073°C、RMSE 為 1.6568°C，沒有樣本落在 0.5°C 內；這表示目前 frozen predictor 還不夠準，不能把操作後溫度結果寫成已被準確預測。</p>
+      <p>因此我的 gate decision 是：我先不進入真實裝置介入。這兩個日期支持我繼續做多 testcase／多 seed 的獨立確認，但還不足以把 E8 寫成已完成；E8 仍是 <span class="status-no">NOT_EVALUATED</span>。</p>
+      <p class="source">方法文件：<a href="../research/systematic_parameter_tuning_protocol_2026-09-21_zh.md">系統性參數調教 protocol</a>；候選比較：<a href="../research/api_candidate_comparison_2026-09-21_zh.md">API candidate comparison</a>；完整 trace 與 hash：<a href="../../openspec/changes/systematic-parameter-tuning-20260921/artifacts/boptest_linux_holdout.json">BOPTEST holdout artifact</a>；操作後溫度預測抽樣：<a href="../../openspec/changes/systematic-parameter-tuning-20260921/artifacts/action_conditioned_replay.json">action-conditioned replay</a>；模型動作排序示範：<a href="../../openspec/changes/systematic-parameter-tuning-20260921/artifacts/model_action_tuning_demo.json">DigitalTwinModel demo</a>。這些結果仍是 exploratory simulation evidence。</p>
+    </section>
+<section id="history-architecture">
+      <h2>我的模型流程架構：從資料到控制驗證</h2>
+      <p class="lead">我把模型流程拆成六個可檢查的階段。每一階段都有固定輸入、輸出與證據狀態，避免把「模型提出動作」直接寫成「實體控制已有效」。目前這張架構圖是以桌機機箱為應用主軸，TCLab／BOPTEST 只提供可重現的動態模擬環境。</p>
+
+      <figure class="architecture-figure">
+        <svg viewBox="0 0 1000 560" role="img" aria-labelledby="architecture-title architecture-desc">
+          <title id="history-architecture-title">桌機機箱模型流程架構</title>
+          <desc id="history-architecture-desc">流程由資料契約開始，經過狀態特徵、熱模型辨識、候選操作預測、動作選擇，最後進入 validation 與 holdout 的獨立驗證。</desc>
+          <defs>
+            <marker id="history-architecture-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#238c91"></path>
+            </marker>
+          </defs>
+          <path class="arrow" d="M 310 140 H 340" marker-end="url(#architecture-arrow)"></path>
+          <path class="arrow" d="M 630 140 H 660" marker-end="url(#architecture-arrow)"></path>
+          <path class="arrow" d="M 820 220 V 310" marker-end="url(#architecture-arrow)"></path>
+          <path class="arrow" d="M 660 410 H 630" marker-end="url(#architecture-arrow)"></path>
+          <path class="arrow" d="M 340 410 H 310" marker-end="url(#architecture-arrow)"></path>
+
+          <rect class="box input" x="30" y="60" width="280" height="160" rx="18"></rect>
+          <text class="title" x="55" y="105">1. 資料契約</text>
+          <text class="detail" x="55" y="140"><tspan x="55" dy="0">入口／CPU／GPU 溫度</tspan><tspan x="55" dy="25">負載功率、PWM、RPM</tspan><tspan x="55" dy="25">取樣時間、單位與缺值</tspan></text>
+
+          <rect class="box input" x="350" y="60" width="280" height="160" rx="18"></rect>
+          <text class="title" x="375" y="105">2. 狀態與特徵</text>
+          <text class="detail" x="375" y="140"><tspan x="375" dy="0">整理當前熱狀態與負載</tspan><tspan x="375" dy="25">固定 sample time</tspan><tspan x="375" dy="25">套用安全界限</tspan></text>
+
+          <rect class="box model" x="670" y="60" width="280" height="160" rx="18"></rect>
+          <text class="title" x="695" y="105">3. 熱模型辨識</text>
+          <text class="detail" x="695" y="140"><tspan x="695" dy="0">calibration 階躍回應</tspan><tspan x="695" dy="25">估計 C／G／k_f／τ_f／k_L</tspan><tspan x="695" dy="25">記錄 seed 與搜尋範圍</tspan></text>
+
+          <rect class="box control" x="670" y="330" width="280" height="160" rx="18"></rect>
+          <text class="title" x="695" y="375">4. 候選操作預測</text>
+          <text class="detail" x="695" y="410"><tspan x="695" dy="0">推演 PWM／RPM 候選</tspan><tspan x="695" dy="25">預測未來 CPU／GPU 溫度</tspan><tspan x="695" dy="25">計算超溫與功耗 proxy</tspan></text>
+
+          <rect class="box control" x="350" y="330" width="280" height="160" rx="18"></rect>
+          <text class="title" x="375" y="375">5. 動作選擇</text>
+          <text class="detail" x="375" y="410"><tspan x="375" dy="0">固定 penalty 與 tie margin</tspan><tspan x="375" dy="25">檢查飽和與安全限制</tspan><tspan x="375" dy="25">輸出模型推薦動作</tspan></text>
+
+          <rect class="box verify" x="30" y="330" width="280" height="160" rx="18"></rect>
+          <text class="title" x="55" y="375">6. 獨立驗證</text>
+          <text class="detail" x="55" y="410"><tspan x="55" dy="0">鎖定參數後讀 validation</tspan><tspan x="55" dy="25">再讀 holdout 與實測溫度</tspan><tspan x="55" dy="25">比較 fixed PI／原廠策略</tspan></text>
+        </svg>
+        <figcaption>圖 1．9月中下旬整理的機箱模型流程。箭頭表示資料與決策順序；目前第 1 與第 6 階段的機箱實體資料／介入仍待建立。</figcaption>
+      </figure>
+
+      <div class="flow" aria-label="機箱模型流程架構">
+        <div><strong>1. 資料契約</strong>同步入口溫度、CPU／GPU 溫度、負載功率、PWM、RPM 與取樣時間；先檢查單位、時間戳和缺值。</div>
+        <div><strong>2. 狀態與特徵</strong>把當前溫度、負載與風扇狀態整理成模型輸入；固定 sample time、初始狀態與安全界限。</div>
+        <div><strong>3. 熱模型辨識</strong>用 calibration 的階躍回應估計 <code>C/G/k_f/τ_f/k_L</code>，並記錄搜尋範圍、seed 與失敗原因。</div>
+        <div><strong>4. 候選操作預測</strong>對每個 PWM／RPM 候選推演未來 horizon 的 CPU／GPU 溫度，計算超溫、追蹤與功耗 proxy。</div>
+        <div><strong>5. 動作選擇</strong>在安全限制內依事前固定的 penalty、tie margin 與飽和規則選出操作；輸出的是模型推薦，不是已執行的介入。</div>
+        <div><strong>6. 獨立驗證</strong>鎖定參數後只讀取 validation／holdout，將預測溫度與操作後實測溫度比較，再和 fixed PI／原廠策略比較。</div>
+      </div>
+
+      <div class="table-wrap" style="margin-top:18px">
+        <table>
+          <thead><tr><th>流程區塊</th><th>9月中下旬狀態</th><th>目前能支持的結論</th><th>尚不能支持</th></tr></thead>
+          <tbody>
+            <tr><td>資料契約</td><td><span class="status-mixed">機箱版待建立</span></td><td>已定義必要欄位與同步要求</td><td>尚無實體機箱介入資料</td></tr>
+            <tr><td>TCLab 動態介面</td><td><span class="status-good">simulation pilot 通過</span></td><td>reset、輸入、推進與回應流程可重現</td><td>不代表機箱或硬體量測</td></tr>
+            <tr><td>BOPTEST locked／holdout</td><td><span class="status-good">已完成探索性驗證</span></td><td>同一 FMU、兩個日期可比較 locked PI 與 fixed PI</td><td>不代表跨設備或節能因果效果</td></tr>
+            <tr><td>操作後溫度預測</td><td><span class="status-mixed">需改善</span></td><td>200 個抽樣 MAE 1.6073°C、RMSE 1.6568°C</td><td>不能宣稱預測已足夠準確</td></tr>
+            <tr><td>真實控制介入</td><td><span class="status-no">NOT_EVALUATED</span></td><td>已定義下一個驗證 gate</td><td>不能宣稱溫度或功耗已改善</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="callout" style="margin-top:16px"><strong>流程的核心判準：</strong>只有在模型參數先鎖定、操作後的溫度與實測值完成獨立比較，而且介入可重設時，我才會把模型推薦提升為控制結果。現階段已完成的是流程與模擬證據，機箱實體介入仍是下一階段。</p>
+    </section></details></section>
+<section id="talk"><h2>我的報告講稿（約15分鐘）</h2><ol class="talk-track">
+<li><strong>1分鐘｜我這次要回答的問題：</strong>老師，兩週前您提到MPC，我也另外查了LQR。我這次先在可重設的機箱假設模型中，把固定風扇、PID＋前饋、LQR與MPC放在相同條件下比較。我想知道複雜控制器是否真的值得。</li>
+<li><strong>2分鐘｜我的研究脈絡：</strong>我的主線原本是少量感測下估計未量測位置；臥室保留點與公開AAU/BMC各有不同證據範圍。E15的同伺服器時間／負載確認是既有成果，MAE從1.6939到0.9744°C，不是本次新控制證據。當我想驗證風扇動作，就需要可互動動態模型，不能只拿觀測紀錄推論介入。</li>
+<li><strong>3分鐘｜我固定的方法：</strong>我先建立CPU、GPU與風扇延遲的簡化熱模型，作為原有數位孿生方法遷移到機箱場景的前置研究。模型參數目前是研究假設，後續需以量測辨識，再接入自己的稀疏校正、設備影響學習與殘差修正；這次還沒有完成整套方法的遷移。我先在此環境固定60°C目標、PWM範圍與變化率，讓LQR分配可達平衡點、MPC用12步QP與溫度softslack，PID使用同一模型的平衡點前饋。每方法三候選、相同三個校準seed，選完凍結再開新測試。</li>
+<li><strong>4分鐘｜我實際比較的結果：</strong>新版48回合中，holdout固定風扇MAE為2.9051°C、PID＋前饋1.7713°C、LQR1.7304°C、MPC1.8071°C。MPC比PID＋前饋高2.02%，比LQR高4.43%，而風扇能耗proxy也較高。因此這次不支持MPC比較好。我保留這個結果，因為它回答了是否有必要增加複雜度。</li>
+<li><strong>3分鐘｜我查到的問題與修正：</strong>第一階段過載有190次求解回退，但軟限制本來有可行解。我改用QP求解器與數值檢查，新版超載0回退，其他切分仍有7步未通過殘差檢查而回退。獨立核對也從CSV重算全部指標與熱模型步進，能拒絕被改過的結論或軌跡。不過過載仍超溫，因為假設風扇能力不夠；求解成功不能當成安全保證。</li>
+<li><strong>2分鐘｜我的下一步與想請教的事：</strong>目前四方法比較是在已知參數、完整狀態的假設模型上執行，屬於機箱遷移的前置研究，還沒有接入自己的稀疏感測方法。下週我會先整理量測與熱參數辨識需求，規劃原有校正與學習流程如何接入，同時參考PID的誤差回授、LQR的代價取捨，以及MPC的多步預測與限制，選一項機制設計改進，再比較原版、改進版與移除新增機制的版本。我會分開評估估測與決策效果；實體介入與E8仍未評估。</li></ol></section>
+<section id="questions"><h2>我想請教授討論的三件事</h2><div class="grid"><article class="card third"><h3>控制問題是否需要MPC？</h3><p>當PID＋前饋/LQR已達較低tracking MAE，我是否應優先研究模型失配、突變負載或真正的約束需求，再決定MPC的角色？</p></article><article class="card third"><h3>下一階段先補哪種量測？</h3><p>入口與熱節點溫度、負載功率、PWM/RPM和時鐘同步，哪些是建立小資料辨識與獨立驗證的最低條件？</p></article><article class="card third"><h3>論文怎麼收斂？</h3><p>機箱控制目前只作探索補充；是否先以稀疏估測與虛擬感測為主，等獨立量測支持後再增加實體控制結論？</p></article></div></section>
+<section id="sources"><h2>方法來源與可追溯證據</h2><p><a href="https://osqp.org/docs/examples/mpc.html">OSQP：MPC官方範例</a> · <a href="https://osqp.org/docs/interfaces/solver_settings.html">OSQP：求解設定</a> · <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.solve_discrete_are.html">SciPy：DARE</a></p><p><a href="../research/enclosure_control_v2_method_2026-10-05_zh.md">我的方法整理</a> · <a href="../../openspec/changes/validate-enclosure-four-controllers-20261005/protocol.md">事前固定protocol</a> · <a href="../../openspec/changes/validate-enclosure-four-controllers-20261005/config.json">完整設定</a> · <a href="../../openspec/changes/validate-enclosure-four-controllers-20261005/artifacts/freeze.json">來源與選參freeze</a> · <a href="../../openspec/changes/validate-enclosure-four-controllers-20261005/artifacts/result.json">全部結果</a> · <a href="../../openspec/changes/validate-enclosure-four-controllers-20261005/artifacts/verification.json">獨立驗證</a> · <a href="enclosure_control_v2_2026-10-05_zh.html">四方法詳細報告</a> · <a href="professor_catchup_report_2026-09-21_zh.html">兩週前原報告</a></p><details><summary>核對範圍與證據摘要</summary><pre>{
+  &quot;status&quot;: &quot;PASS&quot;,
+  &quot;calibration_episodes&quot;: 36,
+  &quot;evaluation_episodes&quot;: 48,
+  &quot;rows&quot;: 10080,
+  &quot;independent_metrics&quot;: &quot;PASS&quot;,
+  &quot;independent_dynamics&quot;: &quot;PASS&quot;,
+  &quot;candidate_selection&quot;: &quot;PASS&quot;,
+  &quot;decisions&quot;: &quot;PASS&quot;,
+  &quot;attempt_chronology&quot;: &quot;PASS&quot;,
+  &quot;source_snapshots&quot;: &quot;PASS&quot;,
+  &quot;current_sources_checked&quot;: true,
+  &quot;result_sha256&quot;: &quot;a8ec78210a901041db17a47c76a0e010bcf497ccad3610b57a6dbaea9c61f1d3&quot;,
+  &quot;scope&quot;: &quot;EXPLORATORY_ASSUMED_MODEL_SIMULATION_NOT_PHYSICAL_CONTROL&quot;
+}</pre><p>來源snapshot、候選trial、正式CSV、不支持的判準与過載結果都保留。這項驗證確認數值與記錄的一致性，沒有把假設模型轉成真實物理證據。</p></details></section>
+</main><footer>我的研究進度與探索過程｜近期研究整理。單檔可離線閱讀；引用與完整證據連結需原工作區或網路。</footer></body></html>

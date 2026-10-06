@@ -1,0 +1,32 @@
+warning: accessing absolute path `/System/Library/Fonts/Supplemental/Times New Roman.ttf`; build may not be reproducible in other environments
+warning: accessing absolute path `/System/Library/Fonts/Supplemental/Times New Roman Italic.ttf`; build may not be reproducible in other environments
+warning: accessing absolute path `/System/Library/Fonts/Supplemental/Times New Roman Bold.ttf`; build may not be reproducible in other environments
+warning: accessing absolute path `/System/Library/Fonts/Supplemental/Times New Roman Bold Italic.ttf`; build may not be reproducible in other environments
+warning: accessing absolute path `/System/Library/Fonts/Supplemental/Arial.ttf`; build may not be reproducible in other environments
+warning: accessing absolute path `/System/Library/Fonts/Supplemental/Arial Italic.ttf`; build may not be reproducible in other environments
+warning: accessing absolute path `/System/Library/Fonts/Supplemental/Arial Bold.ttf`; build may not be reproducible in other environments
+warning: accessing absolute path `/System/Library/Fonts/Supplemental/Arial Bold Italic.ttf`; build may not be reproducible in other environments
+warning: accessing absolute path `/System/Library/Fonts/Menlo.ttc`; build may not be reproducible in other environments
+warning: accessing absolute path `/System/Library/Fonts/Supplemental/Songti.ttc`; build may not be reproducible in other environments
+warning: accessing absolute path `/System/Library/Fonts/STHeiti Light.ttc`; build may not be reproducible in other environments
+warning: accessing absolute path `/System/Library/Fonts/STHeiti Medium.ttc`; build may not be reproducible in other environments
+warning: thesis_draft_zh.tex:132: Underfull \hbox (badness 1546) in paragraph at lines 131--132
+warning: thesis_draft_zh.tex:2811: Underfull \hbox (badness 1194) in paragraph at lines 2810--2811
+warning: thesis_draft_zh.tex:2811: Underfull \hbox (badness 1199) in paragraph at lines 2810--2811
+warning: thesis_draft_zh.tex:2813: Underfull \hbox (badness 1997) in paragraph at lines 2812--2813
+warning: thesis_draft_zh.tex:132: Underfull \hbox (badness 1546) in paragraph at lines 131--132
+warning: thesis_draft_zh.tex:2811: Underfull \hbox (badness 1194) in paragraph at lines 2810--2811
+warning: thesis_draft_zh.tex:2811: Underfull \hbox (badness 1199) in paragraph at lines 2810--2811
+warning: thesis_draft_zh.tex:2813: Underfull \hbox (badness 1997) in paragraph at lines 2812--2813
+warning: warnings were issued by the TeX engine; use --print and/or --keep-logs for details.
+warning: Creating ToUnicode CMap failed for "/System/Library/Fonts/STHeiti Light.ttc"
+warning: Failed to load ToUnicode CMap for font "/System/Library/Fonts/STHeiti Light.ttc"
+note: Running TeX ...
+note: Rerunning TeX because "thesis_draft_zh.aux" changed ...
+note: Running xdvipdfmx ...
+note: Writing `/Volumes/DataExtended/school workspace/school/docs/papers/thesis/thesis_draft_zh.pdf` (5.05 MiB)
+note: Writing `/Volumes/DataExtended/school workspace/school/docs/papers/thesis/thesis_draft_zh.log` (28.82 KiB)
+note: Skipped writing 2 intermediate files (use --keep-intermediates to keep them)
+Wrote /Volumes/DataExtended/school workspace/school/docs/papers/thesis/thesis_draft_zh.tex
+Wrote /Volumes/DataExtended/school workspace/school/docs/papers/thesis/thesis_draft_zh.pdf
+Wrote /Volumes/DataExtended/school workspace/school/outputs/papers/thesis_draft_zh.pdf

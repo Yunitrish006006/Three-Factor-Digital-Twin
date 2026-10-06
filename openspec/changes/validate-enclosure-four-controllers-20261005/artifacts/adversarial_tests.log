@@ -1,0 +1,11 @@
+test_attempt_is_consumed_after_failure_and_trace_preserved (tests.test_enclosure_control_v2_audit.ControlAuditTests.test_attempt_is_consumed_after_failure_and_trace_preserved) ... ok
+test_explicit_gate_is_not_assert (tests.test_enclosure_control_v2_audit.ControlAuditTests.test_explicit_gate_is_not_assert) ... ok
+test_rejects_changed_plant_and_disturbance_despite_updated_hash (tests.test_enclosure_control_v2_audit.ControlAuditTests.test_rejects_changed_plant_and_disturbance_despite_updated_hash) ... ok
+test_rejects_failed_attempt_and_incomplete_manifest (tests.test_enclosure_control_v2_audit.ControlAuditTests.test_rejects_failed_attempt_and_incomplete_manifest) ... ok
+test_rejects_missing_candidate_and_duplicate_evaluation (tests.test_enclosure_control_v2_audit.ControlAuditTests.test_rejects_missing_candidate_and_duplicate_evaluation) ... ok
+test_rejects_timing_and_claim_manipulation (tests.test_enclosure_control_v2_audit.ControlAuditTests.test_rejects_timing_and_claim_manipulation) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.441s
+
+OK

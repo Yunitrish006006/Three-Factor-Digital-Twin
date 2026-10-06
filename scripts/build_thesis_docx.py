@@ -121,6 +121,9 @@ def png_dimensions(path: Path) -> List[int]:
 
 
 def build_blocks() -> List[Block]:
+    from enclosure_mpc_summary import thesis_blocks as enclosure_mpc_blocks
+    from enclosure_control_v2_summary import thesis_blocks as enclosure_control_v2_blocks
+    from sparse_enclosure_summary import thesis_blocks as sparse_enclosure_blocks
     return [
         title("國立彰化師範大學\n資訊工程學系碩士班\n碩士論文完整版", 0),
         title("單房間非連網家電環境影響學習之稀疏感測空間數位孿生原型", 1),
@@ -1909,7 +1912,7 @@ def build_blocks() -> List[Block]:
                 "以全程位於 20–30 °C 的小型封閉植物生長環境作為候選情境，先驗證日夜或生長階段 setpoint 的溫濕度、光照追蹤與空間均勻性；在加入 PPFD/PAR、CO2、基質水分、氣流與生物 endpoint 前，不宣稱植物培養成效。",
                 "以獨立 validation reference 執行實體 sensing-node filtering，估計 real measurement noise、missingness 與 covariance drift；只有在 nonlinear transition/observation model 明確後才擴展 EKF/UKF 或 online parameter adaptation。",
                 "GRU 與 LSTM 已完成第一個單一 seed、同資料、近似參數量的 SML2010 簡易比較；兩者最低 MAE 皆為 0/12，GRU 僅 2/12 勝 vanilla 且中位相對改善 -12.880146%，LSTM 為 0/12 與 -11.368865%，沒有候選通過門檻。若改 history、容量、seed 或完整 3-D 任務，必須另立 protocol。",
-                "將 PID 納入未來閉環控制 baseline；在執行前固定 plant、動態 setpoint、disturbance、sampling、actuator limit 與安全 cutoff，並比較 tracking MAE、settling time、overshoot、control effort 與 constraint violations。PID 不屬於 3-D 場估測器，目前亦為 NOT_EVALUATED。",
+                "將 PID 納入未來閉環控制 baseline；在執行前固定 plant、動態 setpoint、disturbance、sampling、actuator limit 與安全 cutoff，並比較 tracking MAE、settling time、overshoot、control effort 與 constraint violations。PID 不屬於 3-D 場估測器；機箱假設模型控制模擬已評估，實體閉環控制仍為 NOT_EVALUATED。",
                 "機箱 E11A 至 E11F 已完成分層研究；E11D 支持角色語意的預測資訊，E11F 只支持同一 AAU campaign 的 commissioning-assisted unseen-byte transfer。BMC E15 已完成同伺服器 temporal/workload confirmation；後續個人電腦機箱實測、跨機箱、跨伺服器、NTC 硬體或氣流因果主張都必須另立 protocol。",
             ]
         ),
@@ -2015,7 +2018,7 @@ def build_blocks() -> List[Block]:
                 ["Recommendation Preconditions", "推薦動作的必要前置條件：sample scope 必須存在，且 temperature、humidity、illuminance 三因子的目標與容許範圍必須可定義；缺少時不產生推薦。"],
             ],
         ),
-    ]
+    ] + enclosure_mpc_blocks() + enclosure_control_v2_blocks() + sparse_enclosure_blocks()
 
 
 def heading(text: str, level: int) -> Block:
@@ -2618,3 +2621,10 @@ if __name__ == "__main__":
     from sync_e11hf_generated_artifacts import sync_docx_outputs as sync_e11hf_docx_outputs
 
     sync_e11hf_docx_outputs()
+
+
+# Copy the final rebuilt DOCX, including all appended evidence sections.
+if __name__ == "__main__":
+    from sync_enclosure_mpc_generated import sync_docx_copy
+
+    sync_docx_copy()

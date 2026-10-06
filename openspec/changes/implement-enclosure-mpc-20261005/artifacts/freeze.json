@@ -1,0 +1,102 @@
+{
+  "status": "FROZEN_BEFORE_EVALUATION",
+  "registered_at": "2026-10-05T03:17:33.743838+00:00",
+  "selected": {
+    "fixed": {
+      "pwm": 0.4
+    },
+    "pid": {
+      "kp": 0.06,
+      "ki": 0.0001,
+      "kd": 0.05
+    },
+    "mpc": {
+      "input_weight": 1.0
+    }
+  },
+  "parameters": {
+    "capacities": [
+      1200.0,
+      1800.0
+    ],
+    "conductances": [
+      1.5,
+      2.0
+    ],
+    "fan_gains": [
+      6.0,
+      8.0
+    ],
+    "fan_tau_s": 20.0,
+    "max_rpm": 6000.0
+  },
+  "settings": {
+    "dt_s": 10.0,
+    "horizon": 12,
+    "targets_C": [
+      60.0,
+      60.0
+    ],
+    "limits_C": [
+      80.0,
+      85.0
+    ],
+    "warnings_C": [
+      75.0,
+      80.0
+    ],
+    "pwm_min": 0.2,
+    "pwm_max": 1.0,
+    "max_delta": 0.1,
+    "margin_C": 2.0,
+    "input_weight": 1.0,
+    "delta_weight": 5.0,
+    "slack_weight": 10000.0,
+    "maxiter": 80
+  },
+  "seeds": {
+    "calibration": [
+      11,
+      12,
+      13
+    ],
+    "validation": [
+      21,
+      22,
+      23
+    ],
+    "holdout": [
+      31,
+      32,
+      33
+    ],
+    "mismatch": [
+      41,
+      42,
+      43
+    ],
+    "overload": [
+      41,
+      42,
+      43
+    ]
+  },
+  "steps": 120,
+  "sources": {
+    "digital_twin/control/enclosure_mpc.py": "d2364f28fff84c0dbe8c9e7c68352586b4094676a662d6c3ae3349bfc58b726b",
+    "scripts/run_enclosure_mpc.py": "5bf1f5ce185e45db1ea0312f622f23ef5cf280783813f6285bf64fa81803a0dc",
+    "scripts/verify_enclosure_mpc.py": "a854d78fc5633fe97438f737f842d2e0090b1cfc51cee785a3bb13dc477f65a2",
+    "scripts/enclosure_mpc_requirements.txt": "11afdfed9d1b76ffb01ad0b9bbec065b382c1828bb267d100a7dc0d782f356db",
+    "openspec/changes/implement-enclosure-mpc-20261005/protocol.md": "7942ddce53569a4917620ede3f17620a7dc5c10b69f8fcd45d0a04d19a59819c",
+    "openspec/changes/implement-enclosure-mpc-20261005/research.md": "3d505bbdfd40ed3689bf00409ea2cd74474b84f8b16e5ebc647230b322c12fc7"
+  },
+  "calibration_sha256": "7336fbc70abf0a9f0d94a7bb6ae32225c9e229db539cb8aa99437d94382f1bdc",
+  "environment": {
+    "python": "3.11.15",
+    "numpy": "1.26.4",
+    "scipy": "1.14.1"
+  },
+  "git_head": "f390845dc1cd3c53e33768b90b4d1e5e68334dd5",
+  "git_dirty": true,
+  "boundary": "ASSUMED_MODEL_SIMULATION_NOT_PHYSICAL_CONTROL"
+}

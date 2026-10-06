@@ -1,0 +1,281 @@
+{
+  "status": "FROZEN_BEFORE_EVALUATION",
+  "registered_at": "2026-10-05T08:43:27.418248+00:00",
+  "config": {
+    "version": 2,
+    "steps": 120,
+    "parameters": {
+      "capacities": [
+        1200.0,
+        1800.0
+      ],
+      "conductances": [
+        1.5,
+        2.0
+      ],
+      "fan_gains": [
+        6.0,
+        8.0
+      ],
+      "fan_tau_s": 20.0,
+      "max_rpm": 6000.0
+    },
+    "settings": {
+      "dt_s": 10.0,
+      "horizon": 12,
+      "targets_C": [
+        60.0,
+        60.0
+      ],
+      "limits_C": [
+        80.0,
+        85.0
+      ],
+      "warnings_C": [
+        75.0,
+        80.0
+      ],
+      "pwm_min": 0.2,
+      "pwm_max": 1.0,
+      "max_delta": 0.1,
+      "margin_C": 2.0,
+      "input_weight": 1.0,
+      "delta_weight": 5.0,
+      "slack_weight": 10000.0,
+      "maxiter": 80
+    },
+    "seeds": {
+      "calibration": [
+        111,
+        112,
+        113
+      ],
+      "validation": [
+        121,
+        122,
+        123
+      ],
+      "holdout": [
+        131,
+        132,
+        133
+      ],
+      "plant_holdout": [
+        141,
+        142,
+        143
+      ],
+      "overload": [
+        151,
+        152,
+        153
+      ]
+    },
+    "schedules": {
+      "calibration": [
+        [
+          80,
+          160,
+          110,
+          190
+        ],
+        [
+          120,
+          220,
+          170,
+          260
+        ]
+      ],
+      "validation": [
+        [
+          140,
+          60,
+          210,
+          100
+        ],
+        [
+          190,
+          110,
+          280,
+          150
+        ]
+      ],
+      "holdout": [
+        [
+          160,
+          90,
+          205,
+          65,
+          175
+        ],
+        [
+          230,
+          140,
+          275,
+          105,
+          245
+        ]
+      ],
+      "plant_holdout": [
+        [
+          160,
+          90,
+          205,
+          65,
+          175
+        ],
+        [
+          230,
+          140,
+          275,
+          105,
+          245
+        ]
+      ],
+      "overload": [
+        [
+          450
+        ],
+        [
+          600
+        ]
+      ]
+    },
+    "variants": [
+      {
+        "capacity_factors": [
+          0.8,
+          1.1
+        ],
+        "conductance_factors": [
+          0.9,
+          1.1
+        ],
+        "fan_gain_factors": [
+          0.8,
+          0.75
+        ],
+        "fan_tau_s": 30.0
+      },
+      {
+        "capacity_factors": [
+          1.25,
+          0.75
+        ],
+        "conductance_factors": [
+          1.15,
+          0.85
+        ],
+        "fan_gain_factors": [
+          1.1,
+          0.85
+        ],
+        "fan_tau_s": 15.0
+      },
+      {
+        "capacity_factors": [
+          0.65,
+          1.4
+        ],
+        "conductance_factors": [
+          1.0,
+          1.0
+        ],
+        "fan_gain_factors": [
+          0.6,
+          0.7
+        ],
+        "fan_tau_s": 40.0
+      }
+    ],
+    "candidates": {
+      "fixed": [
+        {
+          "pwm": 0.4
+        },
+        {
+          "pwm": 0.6
+        },
+        {
+          "pwm": 0.8
+        }
+      ],
+      "pid": [
+        {
+          "kp": 0.01,
+          "ki": 0.0,
+          "kd": 0.0
+        },
+        {
+          "kp": 0.03,
+          "ki": 0.0001,
+          "kd": 0.0
+        },
+        {
+          "kp": 0.06,
+          "ki": 0.0003,
+          "kd": 0.05
+        }
+      ],
+      "lqr": [
+        {
+          "input_weight": 0.1
+        },
+        {
+          "input_weight": 1.0
+        },
+        {
+          "input_weight": 10.0
+        }
+      ],
+      "mpc": [
+        {
+          "input_weight": 0.1
+        },
+        {
+          "input_weight": 1.0
+        },
+        {
+          "input_weight": 10.0
+        }
+      ]
+    },
+    "boundary": "EXPLORATORY_ASSUMED_MODEL_SIMULATION_NOT_PHYSICAL_CONTROL"
+  },
+  "selected": {
+    "fixed": {
+      "pwm": 0.6
+    },
+    "pid": {
+      "kp": 0.06,
+      "ki": 0.0003,
+      "kd": 0.05
+    },
+    "lqr": {
+      "input_weight": 1.0
+    },
+    "mpc": {
+      "input_weight": 0.1
+    }
+  },
+  "sources": {
+    "digital_twin/control/enclosure_mpc.py": "d2364f28fff84c0dbe8c9e7c68352586b4094676a662d6c3ae3349bfc58b726b",
+    "digital_twin/control/enclosure_control_v2.py": "037ead748c0c4dc15a5ab69d60dbf6110d4e9ef7ebbc0f63516815abbe48f973",
+    "scripts/run_enclosure_control_v2.py": "53c30a14403ad448ecce38cb54e9c8031e7ab71491bfcc016421375004e642eb",
+    "scripts/verify_enclosure_control_v2.py": "337babf7bc3ad42e08cb476879f5313e580430c4af2ed8d5b0864591a9821c12",
+    "scripts/enclosure_control_v2_requirements.txt": "589c37ffcd936a327e96a467b62848fd1bcea19d00903be318191e87e363ec73",
+    "openspec/changes/validate-enclosure-four-controllers-20261005/config.json": "a790ab9432a6beb8ff5b3039f60f403d8e997927cc0cef851c7f0b1e98eb7e46",
+    "openspec/changes/validate-enclosure-four-controllers-20261005/protocol.md": "f53daa6d8393b0d76960760ac04dc0316e7e11e5698d1efd2cf817078d2beec2",
+    "openspec/changes/validate-enclosure-four-controllers-20261005/research.md": "37bced499becbfc93631e4d57e85267d3ffe66eca447538ffbd914aead0d7654"
+  },
+  "calibration_sha256": "1440439f4a95680c1252d67fec167c8b04a4da992dca8f84a0ad0900ec844e5f",
+  "environment": {
+    "python": "3.11.15",
+    "numpy": "1.26.4",
+    "scipy": "1.14.1",
+    "osqp": "1.0.4"
+  },
+  "git_head": "f390845dc1cd3c53e33768b90b4d1e5e68334dd5",
+  "git_dirty": true,
+  "boundary": "EXPLORATORY_ASSUMED_MODEL_SIMULATION_NOT_PHYSICAL_CONTROL"
+}

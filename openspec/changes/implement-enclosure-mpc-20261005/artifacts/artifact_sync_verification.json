@@ -1,0 +1,15 @@
+{
+  "status": "PASS_AVAILABLE_CHECKS_OFFICE_VISUAL_QA_PENDING",
+  "html_links_and_anchors": "PASS",
+  "source_docx_pptx_content_parity": "PASS",
+  "output_copy_equality": "PASS",
+  "html_responsive_visual_QA": [
+    1440,
+    820,
+    390
+  ],
+  "html_keyboard_and_details": "PASS",
+  "html_console_errors": 0,
+  "pdf_visual_QA": "new MPC thesis page 88 and IEEE final page 7 inspected",
+  "office_visual_QA": "NOT_COMPLETED_BUNDLED_RENDERER_UNAVAILABLE"
+}

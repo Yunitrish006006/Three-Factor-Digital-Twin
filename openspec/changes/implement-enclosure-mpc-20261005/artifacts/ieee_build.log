@@ -1,0 +1,135 @@
+note: Running TeX ...
+warning: paper.tex:128: Underfull \hbox (badness 3428) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 2027) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 4001) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 1859) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:257: Underfull \hbox (badness 2689) in paragraph at lines 256--257
+warning: paper.tex:261: Underfull \hbox (badness 2165) in paragraph at lines 260--261
+warning: paper.tex:267: Underfull \hbox (badness 10000) in paragraph at lines 266--267
+warning: paper.tex:267: Underfull \hbox (badness 4726) in paragraph at lines 266--267
+warning: paper.tex:267: Underfull \hbox (badness 4242) in paragraph at lines 266--267
+warning: paper.bbl:97: Underfull \hbox (badness 4024) in paragraph at lines 95--97
+warning: paper.bbl:120: Underfull \hbox (badness 10000) in paragraph at lines 117--120
+note: Running BibTeX on paper.aux ...
+note: warnings were issued by BibTeX; use --print and/or --keep-logs for details.
+note: Rerunning TeX because bibtex was run ...
+warning: paper.tex:128: Underfull \hbox (badness 3428) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 2027) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 4001) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 1859) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:257: Underfull \hbox (badness 2689) in paragraph at lines 256--257
+warning: paper.tex:261: Underfull \hbox (badness 2165) in paragraph at lines 260--261
+warning: paper.tex:267: Underfull \hbox (badness 10000) in paragraph at lines 266--267
+warning: paper.tex:267: Underfull \hbox (badness 4726) in paragraph at lines 266--267
+warning: paper.tex:267: Underfull \hbox (badness 4242) in paragraph at lines 266--267
+warning: paper.bbl:97: Underfull \hbox (badness 4024) in paragraph at lines 95--97
+warning: paper.bbl:120: Underfull \hbox (badness 10000) in paragraph at lines 117--120
+warning: internal consistency problem when checking if paper.bbl changed
+note: Rerunning TeX because "paper.bbl" changed ...
+warning: paper.tex:128: Underfull \hbox (badness 3428) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 2027) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 4001) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 1859) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:257: Underfull \hbox (badness 2689) in paragraph at lines 256--257
+warning: paper.tex:261: Underfull \hbox (badness 2165) in paragraph at lines 260--261
+warning: paper.tex:267: Underfull \hbox (badness 10000) in paragraph at lines 266--267
+warning: paper.tex:267: Underfull \hbox (badness 4726) in paragraph at lines 266--267
+warning: paper.tex:267: Underfull \hbox (badness 4242) in paragraph at lines 266--267
+warning: paper.bbl:97: Underfull \hbox (badness 4024) in paragraph at lines 95--97
+warning: paper.bbl:120: Underfull \hbox (badness 10000) in paragraph at lines 117--120
+warning: internal consistency problem when checking if paper.bbl changed
+note: Rerunning TeX because "paper.bbl" changed ...
+warning: paper.tex:128: Underfull \hbox (badness 3428) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 2027) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 4001) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 1859) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:257: Underfull \hbox (badness 2689) in paragraph at lines 256--257
+warning: paper.tex:261: Underfull \hbox (badness 2165) in paragraph at lines 260--261
+warning: paper.tex:267: Underfull \hbox (badness 10000) in paragraph at lines 266--267
+warning: paper.tex:267: Underfull \hbox (badness 4726) in paragraph at lines 266--267
+warning: paper.tex:267: Underfull \hbox (badness 4242) in paragraph at lines 266--267
+warning: paper.bbl:97: Underfull \hbox (badness 4024) in paragraph at lines 95--97
+warning: paper.bbl:120: Underfull \hbox (badness 10000) in paragraph at lines 117--120
+warning: internal consistency problem when checking if paper.bbl changed
+note: Rerunning TeX because "paper.bbl" changed ...
+warning: paper.tex:128: Underfull \hbox (badness 3428) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 2027) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 4001) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 1859) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:257: Underfull \hbox (badness 2689) in paragraph at lines 256--257
+warning: paper.tex:261: Underfull \hbox (badness 2165) in paragraph at lines 260--261
+warning: paper.tex:267: Underfull \hbox (badness 10000) in paragraph at lines 266--267
+warning: paper.tex:267: Underfull \hbox (badness 4726) in paragraph at lines 266--267
+warning: paper.tex:267: Underfull \hbox (badness 4242) in paragraph at lines 266--267
+warning: paper.bbl:97: Underfull \hbox (badness 4024) in paragraph at lines 95--97
+warning: paper.bbl:120: Underfull \hbox (badness 10000) in paragraph at lines 117--120
+warning: internal consistency problem when checking if paper.bbl changed
+note: Rerunning TeX because "paper.bbl" changed ...
+warning: paper.tex:128: Underfull \hbox (badness 3428) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 2027) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 4001) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 1859) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:257: Underfull \hbox (badness 2689) in paragraph at lines 256--257
+warning: paper.tex:261: Underfull \hbox (badness 2165) in paragraph at lines 260--261
+warning: paper.tex:267: Underfull \hbox (badness 10000) in paragraph at lines 266--267
+warning: paper.tex:267: Underfull \hbox (badness 4726) in paragraph at lines 266--267
+warning: paper.tex:267: Underfull \hbox (badness 4242) in paragraph at lines 266--267
+warning: paper.bbl:97: Underfull \hbox (badness 4024) in paragraph at lines 95--97
+warning: paper.bbl:120: Underfull \hbox (badness 10000) in paragraph at lines 117--120
+warning: internal consistency problem when checking if paper.bbl changed
+note: Rerunning TeX because "paper.bbl" changed ...
+warning: paper.tex:128: Underfull \hbox (badness 3428) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 2027) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 4001) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 1859) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:128: Underfull \hbox (badness 10000) in paragraph at lines 127--128
+warning: paper.tex:257: Underfull \hbox (badness 2689) in paragraph at lines 256--257
+warning: paper.tex:261: Underfull \hbox (badness 2165) in paragraph at lines 260--261
+warning: paper.tex:267: Underfull \hbox (badness 10000) in paragraph at lines 266--267
+warning: paper.tex:267: Underfull \hbox (badness 4726) in paragraph at lines 266--267
+warning: paper.tex:267: Underfull \hbox (badness 4242) in paragraph at lines 266--267
+warning: paper.bbl:97: Underfull \hbox (badness 4024) in paragraph at lines 95--97
+warning: paper.bbl:120: Underfull \hbox (badness 10000) in paragraph at lines 117--120
+warning: internal consistency problem when checking if paper.bbl changed
+warning: TeX rerun seems needed, but stopping at 6 passes
+warning: warnings were issued by the TeX engine; use --print and/or --keep-logs for details.
+note: Running xdvipdfmx ...
+note: Writing `docs/papers/ieee/paper.bbl` (4.84 KiB)
+note: Writing `docs/papers/ieee/paper.pdf` (1.20 MiB)
+note: Writing `docs/papers/ieee/paper.blg` (503 B)
+note: Writing `docs/papers/ieee/paper.aux` (5.32 KiB)
+note: Writing `docs/papers/ieee/paper.log` (13.95 KiB)

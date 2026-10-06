@@ -67,3 +67,12 @@
 - 公開資料集應視為外部合理性檢查，而非完整 3D 場驗證
 - `bedroom_01` 只支援 sparse calibration 檢查，不是 dense truth
 - `outputs/data/` 是目前專案實際使用的結果存放位置，raw public dataset 也在這個工作資料夾下但通常不會 commit
+
+
+## 2026-10-05機箱控制模擬補充
+
+本階段不是新增實測dataset：v1三方法歷史36正式回合保留；v2每方法3候選/3seed，共36校準+48正式回合/10080步，讀取 openspec/changes/validate-enclosure-four-controllers-20261005/artifacts/result.json。假設名義參數已知，三組指定plant variants為合成壓力測試。MPC對PID＋FF/LQR的holdout改善假設不支持；來源snapshot/完整CSV/獨立核對/篡改測試保留。7步殘差拒絕回退，不是全程零回退。實體機箱、NTC、throttling、整機功耗與E8仍未評估。
+
+## 2026-10-06 稀疏機箱候選原型
+
+資料為三組指定熱網路參數的合成軌跡，未新增實測 dataset。共同有限辨識採金屬片／空氣／風扇觀測，每組 600 秒；熱源真值只用於評估。108 回合／19,440 步的設定、來源凍結、CSV、結果、獨立核對及輸入限定重播位於 `openspec/changes/prototype-sparse-enclosure-transfer-20261006/artifacts/`。校正估測 MAE 從 0.6580 降到 0.3352°C；六步排序較單步追蹤改善 9.03%，仍未優於 PI。容量與部分係數已知、單一方程家族、合成噪聲限制保留；未擴張原 20–30°C 室內適用域。這是獨立溫度候選流程，完整三因子與實體介入仍未評估。

@@ -22,6 +22,11 @@ All closed-loop commands satisfy shared limits; all 3 calibration fits converge 
 - Existing thesis DOCX/PDF and presentation builders, plus IEEE tectonic build, succeeded. Designated DOCX/PDF copies match byte-for-byte. Final synchronization manifest is recorded separately.
 - Offline HTML observed in Browser at widths 1440/820/390: source/model/results/LQR layouts, anchor navigation, details expansion and Q/R keyboard interaction checked. Mobile body overflow corrected; final 390 and820 widths have scrollWidth=clientWidth. Console error/warning list empty; no external runtime assets. Local source/evidence links checked from filesystem.
 - Thesis PDF page89 and IEEE PDF pages7–8 rendered and visually inspected. Kalman source printed pages112–113 visually checked; reading does not claim all proofs rederived.
+- `verify_sparse_enclosure_sync.py`: 18 synchronization checks PASS; DOCX/PDF/PPTX designated copies byte-equal, supplement text/slide notes match the evidence-derived summary, exactly one supplement slide per deck with shapes inside bounds. Hashes and counts recorded in `artifacts/artifact_sync_verification.json`. These structural checks do not replace Office rendering QA.
+
+## GitHub checkpoints
+
+Preregistration `69eea268569dfb2d84099f1948bb58ca87b0a8ae` and executed evidence/briefing checkpoint `f7fe825` were pushed to origin/main and remotely verified. The final synchronization checkpoint includes the already-verified 10/5 v1/v2 dependencies required by the coupled thesis builders; it preserves those prior studies and does not rerun them. Final commit identity is available in Git history rather than a self-referential file hash.
 
 ## Limits and remaining gates
 

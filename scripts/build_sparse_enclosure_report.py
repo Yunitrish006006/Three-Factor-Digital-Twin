@@ -119,7 +119,7 @@ document.getElementById('gain').textContent='K = '+K.toFixed(3)+'；未限幅 PW
 q.addEventListener('input',updateGain);r.addEventListener('input',updateGain);updateGain();
 </script></body></html>'''
     target=ROOT/'docs/reports/professor_research_2026-10-06_zh.html'
-    target.write_text(document)
+    target.write_text('\n'.join(line.rstrip() for line in document.splitlines())+'\n')
     return target
 
 

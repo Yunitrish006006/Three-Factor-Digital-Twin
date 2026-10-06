@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "calibration_episodes": 36,
+  "evaluation_episodes": 48,
+  "rows": 10080,
+  "independent_metrics": "PASS",
+  "independent_dynamics": "PASS",
+  "candidate_selection": "PASS",
+  "decisions": "PASS",
+  "attempt_chronology": "PASS",
+  "source_snapshots": "PASS",
+  "current_sources_checked": true,
+  "result_sha256": "a8ec78210a901041db17a47c76a0e010bcf497ccad3610b57a6dbaea9c61f1d3",
+  "scope": "EXPLORATORY_ASSUMED_MODEL_SIMULATION_NOT_PHYSICAL_CONTROL"
+}

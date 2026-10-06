@@ -2767,7 +2767,7 @@ BMC E12–E15 的主要研究成果是把資料可用性、parser 正確性、�
 \item 以全程位於 20–30 °C 的小型封閉植物生長環境作為候選情境，先驗證日夜或生長階段 setpoint 的溫濕度、光照追蹤與空間均勻性；在加入 PPFD/PAR、CO2、基質水分、氣流與生物 endpoint 前，不宣稱植物培養成效。
 \item 以獨立 validation reference 執行實體 sensing-node filtering，估計 real measurement noise、missingness 與 covariance drift；只有在 nonlinear transition/observation model 明確後才擴展 EKF/UKF 或 online parameter adaptation。
 \item GRU 與 LSTM 已完成第一個單一 seed、同資料、近似參數量的 SML2010 簡易比較；兩者最低 MAE 皆為 0/12，GRU 僅 2/12 勝 vanilla 且中位相對改善 -12.880146\%，LSTM 為 0/12 與 -11.368865\%，沒有候選通過門檻。若改 history、容量、seed 或完整 3-D 任務，必須另立 protocol。
-\item 將 PID 納入未來閉環控制 baseline；在執行前固定 plant、動態 setpoint、disturbance、sampling、actuator limit 與安全 cutoff，並比較 tracking MAE、settling time、overshoot、control effort 與 constraint violations。PID 不屬於 3-D 場估測器，目前亦為 NOT\_\allowbreak{}EVALUATED。
+\item 將 PID 納入未來閉環控制 baseline；在執行前固定 plant、動態 setpoint、disturbance、sampling、actuator limit 與安全 cutoff，並比較 tracking MAE、settling time、overshoot、control effort 與 constraint violations。PID 不屬於 3-D 場估測器；機箱假設模型控制模擬已評估，實體閉環控制仍為 NOT\_\allowbreak{}EVALUATED。
 \item 機箱 E11A 至 E11F 已完成分層研究；E11D 支持角色語意的預測資訊，E11F 只支持同一 AAU campaign 的 commissioning-assisted unseen-byte transfer。BMC E15 已完成同伺服器 temporal/workload confirmation；後續個人電腦機箱實測、跨機箱、跨伺服器、NTC 硬體或氣流因果主張都必須另立 protocol。
 \end{itemize}
 
@@ -2930,6 +2930,39 @@ Recommendation Preconditions & 推薦動作的必要前置條件：sample scope 
 \hline
 \end{longtable}
 }
+
+\section*{機箱受限制 MPC 探索性模擬}
+\addcontentsline{toc}{section}{機箱受限制 MPC 探索性模擬}
+
+2026-10-05 完成 CPU/GPU 雙熱節點與風扇延遲的受限制 MPC 探索性模擬。calibration 後鎖定控制器，另跑 36 回合、4,320 個控制步，涵蓋 validation、holdout、模型失配與過載。holdout 的三 seed macro tracking MAE 為固定風扇 5.4378°C、PID 2.6034°C、MPC 1.4426°C，MPC 相對 PID 降低 44.59\%。nominal 六個 MPC 回合均無 PWM／slew 違例、超溫或求解回退。
+
+
+代價是 holdout 風扇能耗 proxy 由 PID 0.5873 Wh 增至 MPC 0.8234 Wh，PWM total variation 亦增加。過載仍超溫，MPC 平均每回合 63.33 步求解回退；溫度為軟限制，不能視為安全保證。參數、負載與功耗曲線均為假設，plant 與 predictor 雖採不同數值積分，仍共享名義熱參數。本結果只支持假設模型內的探索性可行性與追蹤改善，不代表機箱辨識、NTC、實體控制、throttling、整機功耗或跨設備確認。E8 保持 NOT\_\allowbreak{}EVALUATED，LQR 保持 TODO。
+
+
+\section*{機箱四方法探索性模擬（v2）}
+\addcontentsline{toc}{section}{機箱四方法探索性模擬（v2）}
+
+2026-10-05 第二階段完成四方法假設模型探索性比較，共 48 回合、5,760 控制步。每方法依相同三個 calibration seeds 評估三個候選，選參後凍結，再開啟新的 validation、holdout、假設模型變體與過載。holdout 三 seed 等權 tracking MAE：固定風扇 2.9051°C、PID＋平衡點前饋 1.7713°C、經限制的 LQR 1.7304°C、受限制 MPC 1.8071°C。相同方法順序的風扇能耗 proxy 為 0.7200／0.9832／1.0034／1.0567 Wh。研究判準：H-CTRL-01=SUPPORTED\_\allowbreak{}SIMULATION\_\allowbreak{}ONLY；H-CTRL-02=NOT\_\allowbreak{}SUPPORTED；H-CTRL-03=NOT\_\allowbreak{}SUPPORTED。
+
+
+固定風扇：取樣超溫 1096.7 s、數值回退 0.00 步／回合；PID＋平衡點前饋：取樣超溫 1040.0 s、數值回退 0.00 步／回合；經限制的 LQR：取樣超溫 1126.7 s、數值回退 0.00 步／回合；受限制 MPC：取樣超溫 1040.0 s、數值回退 0.00 步／回合
+
+
+四方法使用相同候選評估回合預算，CPU 計算時間並不相等。PID＋前饋、LQR 與 MPC 知道名義假設參數，且完整狀態可見；數值積分方式不同不等於獨立物理驗證。plant\_\allowbreak{}holdout 是三組預先指定的假設參數變體，不能支持跨實體設備泛化。新合成 seeds 也不是實體設備樣本。超溫秒數按每 10 秒末端取樣估計；風扇能耗採 10u³ W 假設，不能代替整機功耗。溫度限制為軟限制，求解成功不代表熱能力足夠或硬體安全。實體機箱、NTC、throttling、整機功耗與 E8 仍為 NOT\_\allowbreak{}EVALUATED。舊 v1 報告中的 LQR TODO 是第一階段的歷史狀態。
+
+
+\section*{稀疏機箱溫度候選原型（2026-10-06）}
+\addcontentsline{toc}{section}{稀疏機箱溫度候選原型（2026-10-06）}
+
+2026-10-06 依教授交辦查證金屬傳熱與風管場景，建立熱源／金屬片／空氣熱網路候選原型，以金屬片、空氣與風扇觀測估測未提供的熱源溫度。三組假設平台採相同有限辨識程序，完成 108 回合、19,440 步。新的合成 holdout 上，名義物理／辨識物理／稀疏校正熱源估測 MAE 為 0.9610/0.6580/0.3352°C；稀疏校正相對辨識物理減少 49.06\%，6/6 組改善。固定／PI／PID／單步排序／六步排序／六步無校正的 tracking MAE 為 1.5458/1.2219/1.2221/1.3969/1.2708/1.3644°C。六步相對單步減少 9.03\%，仍未優於 PI；六步排序平均取樣超溫 103.33 秒／回合。H-ENC-31／H-ENC-32 只在此 exploratory simulation 的事前判準內 supported。
+
+
+本輪為溫度子問題與假設熱網路：已知熱容量和部分係數，單一方程家族、三組指定參數與合成噪聲。金屬片／風管增益是假設，未量測實際裝置；有限候選排序不是 LQR 或完整 MPC。20–30°C 外的樣本完整保留，但不擴張原室內模型適用域。濕度、光照、三維空間場、完整三因子遷移與實體辨識／介入均未評估。
+
+
+已為下週準備 LQR 與 Kalman (1960) Contributions to the Theory of Optimal Control 的介紹。重點查閱原文問題、狀態精確已知假設、可控／可觀測與 Riccati／穩定定理敘述；未重證全部證明，亦尚未口頭報告。
+
 
 \section*{E11G tail-safe 自適應開發與空間覆蓋限制}
 \addcontentsline{toc}{section}{E11G tail-safe 自適應開發與空間覆蓋限制}

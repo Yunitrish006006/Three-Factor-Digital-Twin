@@ -103,3 +103,14 @@ E15 的逐 run 等權 MAE 改善為 0.6134°C，95% bootstrap CI 為 [0.2721, 0.
 ## 使用注意
 
 目前 LaTeX 已是 OpenSpec-aligned draft，但屬於研究主張與章節架構同步，不代表所有實驗輸出與圖表已重新產生。後續應先完成 claim-to-evidence matrix，再同步 IEEE 稿與簡報。
+
+
+## 2026-10-05 機箱四方法同步
+
+v1歷史三方法結果保留；v2為36校準＋48正式回合、10080控制步。四方法fixed/PID＋FF/LQR/MPC holdout MAE=2.9051/1.7713/1.7304/1.8071°C，MPC比較假設不支持，數值健康支持。這是已知名義模型的探索性模擬，非NTC/實測/跨設備/E8。來源同步與outputs重建紀錄見 openspec/changes/validate-enclosure-four-controllers-20261005/evidence.md；Office逐頁視覺QA尚缺runtime，不能標示全交付完畢。
+
+## 2026-10-06 稀疏機箱與 LQR 備稿同步
+
+中文主稿／builder、IEEE／文獻與既有簡報來源已同步候選原型的 108 回合、19,440 步、負向比較及實測限制；相關 DOCX、PDF、PPTX 與 IEEE PDF 已建置。`scripts/verify_sparse_enclosure_sync.py` 的 18 項核對通過，雜湊／頁數／張數見 `openspec/changes/prototype-sparse-enclosure-transfer-20261006/artifacts/artifact_sync_verification.json`。所有指定副本一致，兩份簡報各一張新補充頁，並非下週新增 PPTX 報告。
+
+下週報告採離線 HTML：`docs/reports/professor_research_2026-10-06_zh.html#lqr`，搭配 Kalman (1960) 原文頁碼筆記與約五分鐘講稿。已備稿，尚未口頭報告。HTML 三種寬度、導覽、展開與 Q/R 互動經實際檢查；PDF 新增段落與 IEEE 最後兩頁已目視核對。完整 Office 渲染仍缺 pdf2image；結構核對不等於 Office 版面驗收。IEEE 稿為 8 頁，尚未達既定 6–7 頁交付目標。OpenSpec 保持 active，完整三因子遷移及實體驗證仍待完成。

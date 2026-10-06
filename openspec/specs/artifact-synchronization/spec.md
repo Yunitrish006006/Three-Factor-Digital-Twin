@@ -181,7 +181,7 @@ Professor reports, thesis, English paper, and presentations SHALL describe GRU, 
 
 - **WHEN** any synchronized artifact lists these directions
 - **THEN** GRU/LSTM SHALL be recurrent estimator comparators, PID SHALL be a controller baseline, and the enclosure SHALL be an application-transfer candidate
-- **AND** GRU/LSTM SHALL be labeled evaluated only on the completed SML2010 simple same-data task, while PID SHALL remain `NOT_EVALUATED`
+- **AND** GRU/LSTM SHALL be labeled evaluated only on the completed SML2010 simple same-data task, while physical PID SHALL remain `NOT_EVALUATED`, while assumed enclosure-model control is evaluated
 - **AND** GRU and LSTM SHALL retain 0/12 lowest-MAE counts, 2/12 and 0/12 wins over vanilla RNN, negative median relative reductions, and the unsupported H-RNNGATE-01 decision
 - **AND** E11A SHALL be labeled an evaluated public BMC temporal negative result with persistence lowest in 5/5 and thermal-balance wins 0/5
 - **AND** E11B SHALL be labeled an evaluated AAU spatial negative result with nearest-neighbor MAE 1.175 °C, IDW MAE 1.687 °C, and `H-ENC-02` not supported
@@ -196,7 +196,7 @@ The Chinese thesis, IEEE manuscript, presentation, and professor HTML report SHA
 
 - **WHEN** any synchronized artifact discusses GRU or LSTM status
 - **THEN** it reports zero lowest-MAE cases for both, GRU 2/12 and LSTM 0/12 wins over vanilla RNN, and median relative reductions of -12.880146% and -11.368865%
-- **AND** PID remains `NOT_EVALUATED`
+- **AND** physical PID remains `NOT_EVALUATED`; assumed enclosure-model control is evaluated
 - **AND** the existing vanilla RNN 0/12 and pure RNN 0/24 adverse results remain visible
 
 ## E11D synchronization note
