@@ -8,7 +8,7 @@
 - [x] ENC-503 Independently verify metrics, warnings, plant evolution and mutation rejection.
 - [x] SYN-501 Synchronize thesis/IEEE/existing presentation sources and rebuilt outputs.
 - [x] SYN-501 Complete professor HTML, LQR talk and responsive/print/link/console visual QA.
-- [ ] SYN-501 Run required checks, review final claims and push remotely verified checkpoint.
+- [x] SYN-501 Run required checks, review final claims and push remotely verified checkpoint (`79611bb`; live origin/main SHA matched).
 - [ ] ENC-504 Acquire physical rig/reference data, perform identification and intervention.
 - [ ] SYN-502 Complete full Office visual rendering if runtime supports it; retain explicit pending status otherwise.
 - [ ] ENC-504 Record actual professor oral presentation after it occurs.
