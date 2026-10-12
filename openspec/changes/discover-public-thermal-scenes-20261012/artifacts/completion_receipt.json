@@ -1,0 +1,22 @@
+{
+  "recorded_utc": "2026-10-12T08:55:26.928324+00:00",
+  "verified_preparation_report_checkpoint": "90aa21481ee566101167097d4f00efaed6b31bdd",
+  "fresh_origin_main": "90aa21481ee566101167097d4f00efaed6b31bdd",
+  "status": "COMPLETE_PUBLIC_SCENE_DISCOVERY_AND_LQR_PREPARATION",
+  "sha256": {
+    "docs/reports/professor_research_2026-10-12_zh.html": "54e684da0babdcc53b88d3a9acbb7bd98640d548ab9790ee54747672dd2b279e",
+    "docs/reports/professor_research_2026-10-12_zh.pdf": "85e2f296093c73e048a8af781622c529b0f0299e6b2c97ef300ce27cb51040c7",
+    "docs/research/lqr_practical_guide_2026-10-12_zh.md": "bdc121c64cac62c66f87a75d1bb0a739a60b96801659fe06f54ae53f10d33ad6",
+    "docs/research/public_thermal_simulation_scenes_2026-10-12_zh.md": "04605d3dee88473bd1e68d64388be520ca3877ee708f2c2b9112bf068585b10a"
+  },
+  "tests": 353,
+  "thesis_checks": 110,
+  "delivery_checks": 35,
+  "historical_artifact_files_unchanged": 668,
+  "hotspot": "BUNDLED_BLOCK_EXAMPLE_ONLY",
+  "tclab": "OFFLINE_FIXED_INPUT_INTERFACE_ONLY",
+  "simscale": "DOCUMENTATION_CHECKED_NOT_RUN",
+  "boptest": "DNS_FAILED_IN_THIS_ENVIRONMENT",
+  "controller_efficacy": "NOT_EVALUATED_IN_THIS_STAGE",
+  "office_operation": "NONE"
+}

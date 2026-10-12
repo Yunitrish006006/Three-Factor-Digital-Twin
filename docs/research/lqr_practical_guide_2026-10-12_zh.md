@@ -26,7 +26,7 @@ LQR（Linear Quadratic Regulator，線性二次調節器）用線性狀態模型
 
 ```text
 e[k+1] = A_d e[k] + B_d v[k]
-y[k]   = C e[k] + 量測噪聲
+y[k] − y_eq = C e[k] + 量測噪聲
 J      = Σ (e[k]ᵀ Q e[k] + v[k]ᵀ R v[k])
 P      = A_dᵀ P A_d − A_dᵀ P B_d (R+B_dᵀ P B_d)⁻¹ B_dᵀ P A_d + Q
 K      = (R+B_dᵀ P B_d)⁻¹ B_dᵀ P A_d

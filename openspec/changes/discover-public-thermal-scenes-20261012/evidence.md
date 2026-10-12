@@ -36,4 +36,4 @@ C-ENC-SIM-01: **partially supported for documented public candidates and two loc
 
 Artifacts are docs/reports/professor_research_2026-10-12_zh.html, its print PDF and updated first-person talk; detailed scene and LQR Markdown notes are linked from the same HTML. No replacement report, deployment, physical actuation or oral-presentation completion is claimed.
 
-Push and fresh remote-SHA verification are recorded after the actual validated checkpoint is synchronized.
+Validated preparation/report checkpoint `90aa21481ee566101167097d4f00efaed6b31bdd` was pushed. Fresh fetch and full local/origin SHA comparison confirmed equality, with a clean worktree. A post-verification completion receipt records the exact checkpoint and final document hashes; all preparation tasks are checked. Future cloud execution and algorithm comparisons remain outside this completed discovery/preparation stage.
