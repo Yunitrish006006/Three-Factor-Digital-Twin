@@ -18,3 +18,13 @@ __all__ = [
     "load_bmc_observations",
     "write_bmc_summary",
 ]
+
+# Optional scientific dependencies are loaded only when the temperature-session
+# API is requested; public BMC parsing remains usable without SciPy.
+def __getattr__(name):
+    if name in ('EnclosureSession', 'Observation', 'fit_observations'):
+        from digital_twin.enclosure import session
+        return getattr(session, name)
+    raise AttributeError(name)
+
+__all__ += ['EnclosureSession', 'Observation', 'fit_observations']

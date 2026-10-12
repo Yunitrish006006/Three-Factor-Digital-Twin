@@ -3145,3 +3145,7 @@ if __name__ == "__main__":
 if __name__ == "__main__":
     from sync_sparse_enclosure_generated import sync_pptx_outputs as sync_sparse_enclosure_pptx_outputs
     sync_sparse_enclosure_pptx_outputs()
+
+if __name__ == "__main__":
+    from enclosure_session_summary import sync_pptx_outputs as sync_enclosure_session_pptx_outputs
+    sync_enclosure_session_pptx_outputs()

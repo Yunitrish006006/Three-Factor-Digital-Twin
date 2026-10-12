@@ -1,0 +1,154 @@
+{
+  "capacity_variant": {
+    "success": true,
+    "fallback": false,
+    "nfev": 7,
+    "residual_calls": 35,
+    "wall_time_s": 0.36352958300017235,
+    "cost": 274.72205894217313,
+    "jacobian_condition": 12.557882888280387,
+    "parameters": {
+      "capacities": [
+        22.772137726608207,
+        91.08855090643283,
+        34.15820658991231
+      ],
+      "contact": 0.5631336847862854,
+      "plate_base": 0.15,
+      "plate_fan": 0.9747106125011837,
+      "air_base": 1.0,
+      "air_fan": 1.5,
+      "bypass": 0.05,
+      "fan_tau": 22.057341553041994
+    },
+    "input_channels": [
+      "time_s",
+      "plate_C",
+      "air_C",
+      "fan_fraction",
+      "inlet_C",
+      "power_W"
+    ],
+    "known_initial_state": "all temperatures equal measured inlet; fan .4",
+    "fitted_parameters": [
+      "contact",
+      "plate_fan",
+      "common_capacity_scale",
+      "fan_tau"
+    ]
+  },
+  "duct_variant": {
+    "success": true,
+    "fallback": false,
+    "nfev": 9,
+    "residual_calls": 45,
+    "wall_time_s": 0.47846004199982417,
+    "cost": 274.46564476245175,
+    "jacobian_condition": 18.231665470540705,
+    "parameters": {
+      "capacities": [
+        17.457791135859523,
+        69.83116454343809,
+        26.186686703789285
+      ],
+      "contact": 1.3259953240647897,
+      "plate_base": 0.15,
+      "plate_fan": 1.3791045216139737,
+      "air_base": 1.0,
+      "air_fan": 1.5,
+      "bypass": 0.05,
+      "fan_tau": 9.00096234530453
+    },
+    "input_channels": [
+      "time_s",
+      "plate_C",
+      "air_C",
+      "fan_fraction",
+      "inlet_C",
+      "power_W"
+    ],
+    "known_initial_state": "all temperatures equal measured inlet; fan .4",
+    "fitted_parameters": [
+      "contact",
+      "plate_fan",
+      "common_capacity_scale",
+      "fan_tau"
+    ]
+  },
+  "contact_capacity": {
+    "success": true,
+    "fallback": false,
+    "nfev": 9,
+    "residual_calls": 45,
+    "wall_time_s": 0.5470520839999153,
+    "cost": 273.94388688319566,
+    "jacobian_condition": 21.908419241193908,
+    "parameters": {
+      "capacities": [
+        22.51533741889864,
+        90.06134967559456,
+        33.77300612834796
+      ],
+      "contact": 0.41218912175031863,
+      "plate_base": 0.15,
+      "plate_fan": 0.8589860029527564,
+      "air_base": 1.0,
+      "air_fan": 1.5,
+      "bypass": 0.05,
+      "fan_tau": 30.101087763355835
+    },
+    "input_channels": [
+      "time_s",
+      "plate_C",
+      "air_C",
+      "fan_fraction",
+      "inlet_C",
+      "power_W"
+    ],
+    "known_initial_state": "all temperatures equal measured inlet; fan .4",
+    "fitted_parameters": [
+      "contact",
+      "plate_fan",
+      "common_capacity_scale",
+      "fan_tau"
+    ]
+  },
+  "extra_path": {
+    "success": true,
+    "fallback": false,
+    "nfev": 13,
+    "residual_calls": 65,
+    "wall_time_s": 0.6753571250001187,
+    "cost": 307.77140888125825,
+    "jacobian_condition": 17.640388737595202,
+    "parameters": {
+      "capacities": [
+        24.792539551828547,
+        99.17015820731419,
+        37.18880932774282
+      ],
+      "contact": 1.4999999999999998,
+      "plate_base": 0.15,
+      "plate_fan": 1.6258967306789454,
+      "air_base": 1.0,
+      "air_fan": 1.5,
+      "bypass": 0.05,
+      "fan_tau": 12.013862431921043
+    },
+    "input_channels": [
+      "time_s",
+      "plate_C",
+      "air_C",
+      "fan_fraction",
+      "inlet_C",
+      "power_W"
+    ],
+    "known_initial_state": "all temperatures equal measured inlet; fan .4",
+    "fitted_parameters": [
+      "contact",
+      "plate_fan",
+      "common_capacity_scale",
+      "fan_tau"
+    ]
+  }
+}

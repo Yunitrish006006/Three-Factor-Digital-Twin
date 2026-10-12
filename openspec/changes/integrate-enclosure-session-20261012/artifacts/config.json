@@ -1,0 +1,123 @@
+{
+  "rigs": {
+    "capacity_variant": {
+      "split": "validation",
+      "parameters": {
+        "capacities": [
+          23.0,
+          92.0,
+          34.5
+        ],
+        "contact": 0.6,
+        "plate_base": 0.15,
+        "plate_fan": 1.0,
+        "air_base": 1.0,
+        "air_fan": 1.5,
+        "bypass": 0.05,
+        "fan_tau": 22.0
+      },
+      "extra_source_air_conductance": 0.0
+    },
+    "duct_variant": {
+      "split": "validation",
+      "parameters": {
+        "capacities": [
+          17.0,
+          68.0,
+          25.5
+        ],
+        "contact": 1.2,
+        "plate_base": 0.15,
+        "plate_fan": 1.4,
+        "air_base": 1.0,
+        "air_fan": 1.5,
+        "bypass": 0.05,
+        "fan_tau": 9.0
+      },
+      "extra_source_air_conductance": 0.0
+    },
+    "contact_capacity": {
+      "split": "holdout",
+      "parameters": {
+        "capacities": [
+          27.0,
+          88.0,
+          36.0
+        ],
+        "contact": 0.5,
+        "plate_base": 0.15,
+        "plate_fan": 0.9,
+        "air_base": 1.0,
+        "air_fan": 1.5,
+        "bypass": 0.05,
+        "fan_tau": 30.0
+      },
+      "extra_source_air_conductance": 0.0
+    },
+    "extra_path": {
+      "split": "holdout",
+      "parameters": {
+        "capacities": [
+          18.0,
+          100.0,
+          24.0
+        ],
+        "contact": 1.0,
+        "plate_base": 0.15,
+        "plate_fan": 1.2,
+        "air_base": 1.0,
+        "air_fan": 1.5,
+        "bypass": 0.05,
+        "fan_tau": 12.0
+      },
+      "extra_source_air_conductance": 0.12
+    }
+  },
+  "settings": {
+    "dt": 5.0,
+    "target": 28.0,
+    "warning": 29.5,
+    "limit": 30.0,
+    "pwm_min": 0.2,
+    "pwm_max": 1.0,
+    "slew": 0.1,
+    "kp": 0.12,
+    "ki": 0.002,
+    "kd": 0.05,
+    "derivative_alpha": 0.25,
+    "backcalc": 0.2,
+    "input_cost": 0.15,
+    "slew_cost": 0.5,
+    "thermal_cost": 100.0
+  },
+  "seeds": {
+    "validation": [
+      612111,
+      612112
+    ],
+    "holdout": [
+      612121,
+      612122
+    ]
+  },
+  "methods": [
+    "fixed",
+    "pi",
+    "pid",
+    "lqr",
+    "linear_mpc",
+    "rank_h1",
+    "rank_h6",
+    "rank_h6_no_correction"
+  ],
+  "open_methods": [
+    "nominal_physics",
+    "calibrated_physics",
+    "sparse_corrected"
+  ],
+  "steps": 120,
+  "calibration_steps": 180,
+  "calibration_seed": 612100,
+  "hidden_extra_heat_W": 0.15,
+  "evidence_class": "commissioning_assisted_assumed_model_temperature_simulation"
+}

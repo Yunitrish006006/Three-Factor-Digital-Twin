@@ -1,0 +1,30 @@
+{
+  "utc": "2026-10-12T04:29:06.028181+00:00",
+  "git_head": "2a12362c2e58d7e6ffc9819132f7f6833025c143",
+  "source_hashes": {
+    "digital_twin/enclosure/session.py": "670e258aad07584e0218ed61d625231686355136ead72ce5c3f68cf550af1eed",
+    "digital_twin/enclosure/__init__.py": "bb69309895ce62bb4b251e47ab96357a656948e1e6aa6322b1ad6bb405368074",
+    "scripts/run_enclosure_session.py": "017b1e8f91f92e47b4f3871a2ad8ce1558aa2b67d713c7b1a4e0595e7889b6e5",
+    "scripts/run_enclosure_session_study.py": "bdc4beeb0ba7f2d2558ff04783138479a4d3160b84659bbb5184dd73cbb3b141",
+    "scripts/verify_enclosure_session_study.py": "08704ac3ca77fe1c4a1b2507e0e906e6ce7b14a6b56d988c8bcdde0172f531e4",
+    "tests/test_enclosure_session.py": "74c903bb0dc9efd3b06381403a44c8652b48276c705c3dfc73bdd6396faee877",
+    "openspec/changes/integrate-enclosure-session-20261012/protocol.md": "a382caed3b54bc95d7d522b41eeef481136ad331e8f5d214c85fb64ee820cb81",
+    "openspec/changes/integrate-enclosure-session-20261012/research.md": "934c3d667d367941f72a53eba969506afcb92da97c7e7160e3b8a8bffdd5ce7c",
+    "digital_twin/control/sparse_enclosure.py": "39ff11667e891b58cae489ec2965a5df9258e865650e6cd8b2e4cdc69489a000",
+    "digital_twin/control/sparse_enclosure_v2.py": "2e6d13eb7825ea915bbfb4891b19e908f5edb6ab4db82b517b1f1d6b7b581b0b"
+  },
+  "input_hashes": {
+    "config.json": "4237f0c415d160947ee289b857a32af8c6fff33fbe357d2f0985e4fd482d7558",
+    "calibration.json": "fd1816c5d3469122e09c63f4e5a1652e46cbd6730c602393b755ea0c01627623",
+    "historical_manifest.json": "5ce019415b814fab7e51658e432aa873bf8a934a1933ddd5edbf94d9a9ba4b31",
+    "calibration_capacity_variant.csv": "794a9e7eee882229624f416f33e741ddf1fb0bfd3c7535de097f9b2e7b31e765",
+    "calibration_contact_capacity.csv": "5d398a62e711fdfa3f49bb1af1004c55245d4e0eeda2fb92cad0d0ce5fd94bd3",
+    "calibration_duct_variant.csv": "3247fd5d9cc76a114bd84e796194db13882155011a32b4a57df40018e8814e35",
+    "calibration_extra_path.csv": "c72195fa517e1a69e41f0737ec28e6a93b4c1726814f410e77a55fa2faf54dd0"
+  },
+  "environment": {
+    "python": "3.11.15",
+    "numpy": "1.26.4",
+    "scipy": "1.14.1"
+  }
+}

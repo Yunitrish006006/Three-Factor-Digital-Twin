@@ -1,0 +1,139 @@
+{
+  "status": "PASS",
+  "checks": [
+    "byte-equal copies: thesis_draft_zh.docx",
+    "byte-equal copies: thesis_draft_zh.pdf",
+    "byte-equal copies: thesis_presentation_zh.pptx",
+    "byte-equal copies: thesis_presentation_zh_30min.pptx",
+    "Evidence/limits in docs/thesis/thesis_draft_zh.md",
+    "Evidence/limits in docs/thesis/presentation_outline_zh.md",
+    "Evidence/limits in docs/thesis/presentation_outline_zh_30min.md",
+    "Evidence/limits in docs/thesis/presentation_speaker_notes_zh_30min.md",
+    "DOCX source synchronization",
+    "One session slide ",
+    "Evidence/limits in slide notes ",
+    "Slide bounds ",
+    "One session slide _30min",
+    "Evidence/limits in slide notes _30min",
+    "Slide bounds _30min",
+    "IEEE evidence-derived section",
+    "PDF metrics/decisions docs/papers/thesis/thesis_draft_zh.pdf",
+    "PDF metrics/decisions docs/papers/ieee/paper.pdf",
+    "HTML evidence synchronization",
+    "LQR/source/scope in HTML",
+    "Oral script delivered",
+    "Hardware execution preparation",
+    "Observed HTML and print QA must match final bytes",
+    "Observed PDF scope docs/papers/thesis/thesis_draft_zh.pdf",
+    "Observed PDF scope docs/papers/ieee/paper.pdf",
+    "Observed PDF scope docs/reports/professor_research_2026-10-12_zh.pdf"
+  ],
+  "sha256": {
+    "docs/papers/thesis/thesis_draft_zh.docx": "9faae6059a30a8896ef094cabc66b0683bc03820ec02312915105be437e2acaf",
+    "docs/papers/thesis/thesis_draft_zh.pdf": "9e68147f17d21d05cf6ef192e20439fafc6ffeb5c2c8eafb001cb02f0e263ad5",
+    "docs/papers/thesis/thesis_presentation_zh.pptx": "44660974067945cc70e88ff3a914c6b27ed0355f0d3795bb51e1e8bae15a1392",
+    "docs/papers/thesis/thesis_presentation_zh_30min.pptx": "01b2f4ec323892de745bb6b21ee78b415bf4a09993610ea986bb22f480720272",
+    "docs/thesis/thesis_draft_zh.md": "8a876db40073ac928335144a73c288803d3392749717b4203ca969cbb27773ee",
+    "docs/thesis/presentation_outline_zh.md": "4867fa1478d2bc4369cd0b5a9cd805be0737d1d7c51ad24679f7db27ec8fafc8",
+    "docs/thesis/presentation_outline_zh_30min.md": "97daa15d2438920c4775b006945d1c60657e05032902f10d3d514cefb6525ecd",
+    "docs/thesis/presentation_speaker_notes_zh_30min.md": "0d880d837b04230f37da296573c915c97ebfe0f8bf927c70e7b681f56686f141",
+    "docs/papers/ieee/paper.pdf": "f957d935cb33d5dc5aa5f5a8f89ef9fb4e924ca6cbe8113feddd6dc580be5b09",
+    "docs/reports/professor_research_2026-10-12_zh.html": "f3da16c3038b41b3b989dc2059ab303508401be15f6d96206b34d114481fc9f2",
+    "docs/reports/professor_research_2026-10-12_zh.pdf": "7ebee444a33226be31f6aba59f76d7b0165a747156571bf1545dce3915964147",
+    "docs/papers/ieee/paper.tex": "02ca7db923a6d622912a9b6412b1a8f7b2231904f8e53d614361b3bb8e521fcf",
+    "docs/papers/ieee/references.bib": "5e33f8993ed27d4a14f9076cd109a2343ee331d5d4bf3c7ea6deb6c5fafce778",
+    "scripts/build_thesis_docx.py": "959497b10eaaa173682d893090fe89078a70dd050f559d05fef3e296a3c960bc",
+    "scripts/build_thesis_pptx.py": "4c807077dc2f2f0d425453d71397d84dfcb124162d5a457cc25fa5d0d128e750"
+  },
+  "pdf_pages": {
+    "docs/papers/thesis/thesis_draft_zh.pdf": 91,
+    "docs/papers/ieee/paper.pdf": 8
+  },
+  "slide_counts": {
+    "docs/papers/thesis/thesis_presentation_zh.pptx": 53,
+    "docs/papers/thesis/thesis_presentation_zh_30min.pptx": 65
+  },
+  "html_observed_qa": {
+    "status": "PASS",
+    "observation": {
+      "artifact": "docs/reports/professor_research_2026-10-12_zh.html",
+      "artifact_sha256": "f3da16c3038b41b3b989dc2059ab303508401be15f6d96206b34d114481fc9f2",
+      "observed_utc": "2026-10-12T05:35:18.533642+00:00",
+      "observer": "primary_agent",
+      "method": "isolated headless Chrome checks and actual screenshot/PDF image inspection",
+      "scope": "Final HTML at 1440/820/390 px, all 10 anchors, keyboard details and Q/R, local sources, no external assets/console errors; full eight-page print visually inspected.",
+      "status": "PASS",
+      "checks": {
+        "desktop": "PASS",
+        "tablet": "PASS",
+        "mobile": "PASS",
+        "anchors": "PASS",
+        "interaction": "PASS",
+        "console": "PASS",
+        "local_links": "PASS",
+        "offline_assets": "PASS",
+        "print": "PASS"
+      },
+      "evidence": [
+        {
+          "path": "openspec/changes/integrate-enclosure-session-20261012/artifacts/qa/browser_checks.json",
+          "sha256": "a19a1f39d1a34eb5f1ca356c7d86e21ba3c5772be234d661dabe66703c6ed298"
+        },
+        {
+          "path": "openspec/changes/integrate-enclosure-session-20261012/artifacts/qa/desktop-results.png",
+          "sha256": "1f73af7aec358daa94be95b8c1d057b1758b0b018ddcc7b5dd27c3bb1b54f18b"
+        },
+        {
+          "path": "openspec/changes/integrate-enclosure-session-20261012/artifacts/qa/tablet-lqr.png",
+          "sha256": "2a33b8f51e979d721b9afb726e895728e980c4f14a19e62bb2a676a47749614b"
+        },
+        {
+          "path": "openspec/changes/integrate-enclosure-session-20261012/artifacts/qa/mobile-results.png",
+          "sha256": "439e364e0ff58c3c93d58d3ed9ef8b2ee14f40ca15e33aec32c8f2ba06d8ebae"
+        },
+        {
+          "path": "openspec/changes/integrate-enclosure-session-20261012/artifacts/qa/mobile-lqr.png",
+          "sha256": "5524486a86668f85bf3ee11e7f5d6c90fd9d3f0ef81cd28b7ac4e8948ee692fd"
+        },
+        {
+          "path": "openspec/changes/integrate-enclosure-session-20261012/artifacts/qa/report-print-1.png",
+          "sha256": "1e1e09577b83a2b4e021d71fd44e73f0e9b7e33f9e03af03241dd347b8912948"
+        },
+        {
+          "path": "openspec/changes/integrate-enclosure-session-20261012/artifacts/qa/report-print-2.png",
+          "sha256": "9e124baf7f0fde22ea23123ee66d50cd396c2ebb16f18987c5ef27026215d2ef"
+        },
+        {
+          "path": "openspec/changes/integrate-enclosure-session-20261012/artifacts/qa/report-print-3.png",
+          "sha256": "6363283f1469dd64a13fa292377b3d8cc9d87726c633c1a93803c7674f1842fb"
+        },
+        {
+          "path": "openspec/changes/integrate-enclosure-session-20261012/artifacts/qa/report-print-4.png",
+          "sha256": "e3f09d89ffb8e43cdcb78c82a42863662fa04245ed193289cd24774a3fdf4c27"
+        },
+        {
+          "path": "openspec/changes/integrate-enclosure-session-20261012/artifacts/qa/report-print-5.png",
+          "sha256": "4da0b278cdd69c95498443a4c188c5018a64430548068c6cbfb3a53e32ebab9e"
+        },
+        {
+          "path": "openspec/changes/integrate-enclosure-session-20261012/artifacts/qa/report-print-6.png",
+          "sha256": "7d4e11966aabad9eccaa675d39fa7160ba18852f0fef71b7744a9b4413d2b0fc"
+        },
+        {
+          "path": "openspec/changes/integrate-enclosure-session-20261012/artifacts/qa/report-print-7.png",
+          "sha256": "f146e3533be5155b96a44b2683fbfd558b46133b2891d52d09feb10ecaa7ac07"
+        },
+        {
+          "path": "openspec/changes/integrate-enclosure-session-20261012/artifacts/qa/report-print-8.png",
+          "sha256": "cf37e78fee24f303adb24a6be9f46f587d5c68dc6f43300c05c0eed59b0774fd"
+        }
+      ]
+    },
+    "reason": "Same artifact bytes and evidence; only recorded scope accepted"
+  },
+  "software_and_experimental_preparation": "COMPLETE",
+  "physical_measurements": "DEFERRED_NO_EQUIPMENT",
+  "oral_presentation": "NOT_RECORDED",
+  "office_full_visual_render": "NOT_EVALUATED",
+  "scope": "Content/copy integrity, final responsive HTML and full report print; thesis/IEEE only inspected changed PDF pages. Office rendering runtime unavailable."
+}

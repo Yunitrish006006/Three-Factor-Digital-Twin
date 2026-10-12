@@ -124,6 +124,7 @@ def build_blocks() -> List[Block]:
     from enclosure_mpc_summary import thesis_blocks as enclosure_mpc_blocks
     from enclosure_control_v2_summary import thesis_blocks as enclosure_control_v2_blocks
     from sparse_enclosure_summary import thesis_blocks as sparse_enclosure_blocks
+    from enclosure_session_summary import thesis_blocks as enclosure_session_blocks
     return [
         title("國立彰化師範大學\n資訊工程學系碩士班\n碩士論文完整版", 0),
         title("單房間非連網家電環境影響學習之稀疏感測空間數位孿生原型", 1),
@@ -2018,7 +2019,7 @@ def build_blocks() -> List[Block]:
                 ["Recommendation Preconditions", "推薦動作的必要前置條件：sample scope 必須存在，且 temperature、humidity、illuminance 三因子的目標與容許範圍必須可定義；缺少時不產生推薦。"],
             ],
         ),
-    ] + enclosure_mpc_blocks() + enclosure_control_v2_blocks() + sparse_enclosure_blocks()
+    ] + enclosure_mpc_blocks() + enclosure_control_v2_blocks() + sparse_enclosure_blocks() + enclosure_session_blocks()
 
 
 def heading(text: str, level: int) -> Block:

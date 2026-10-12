@@ -101,3 +101,10 @@ MPC、LQR、PID＋前饋與固定風扇已完成相同候選回合預算的假�
 [教授HTML：下週計畫](../reports/professor_catchup_report_2026-10-05_zh.html#next-week)
 
 [教授HTML：各階段查閱論文](../reports/professor_catchup_report_2026-10-05_zh.html#reading)已依既有筆記列出前期主模型、殘差／濾波、機箱轉移與9/8環境／控制探索的文獻，另外列出本輪官方方法文件與36篇既有引用盤點。未留存的閱讀日期與全文覆蓋程度明確標註，不由引用紀錄推定已全文閱讀。
+
+
+## 2026-10-12 軟體與實驗準備完成
+
+使用者確認尚無設備或資料，本輪先完成軟體與實驗準備。機箱流程已整合、88 回合／10,560 步逐筆核對、稀疏觀測 LQR／線性 MPC 比較與本週 HTML 已備妥。新估測平均改善 21.19%，僅 2/4 組，H-ENC-51 不支持；六步改善 0.069%，H-ENC-52 不支持，負面結果保留。實機、完整三因子遷移及口頭報告仍待執行。
+
+[本週 HTML](../reports/professor_research_2026-10-12_zh.html) · [實機程序](enclosure_hardware_execution_2026-10-12_zh.md)

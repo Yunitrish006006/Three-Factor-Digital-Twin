@@ -1,0 +1,15 @@
+{
+  "current_estimate": {
+    "n": 120,
+    "mae_C": 0.38991810204563976,
+    "rmse_C": 0.4512044412481946
+  },
+  "next_sample_forecast": {
+    "n": 120,
+    "mae_C": 0.3838109420895627,
+    "rmse_C": 0.43696858101118663
+  },
+  "missing_next_reference_count": 0,
+  "source_reference_used_for_control": false,
+  "evidence_class": "supplied_reference_comparison_requires_provenance"
+}

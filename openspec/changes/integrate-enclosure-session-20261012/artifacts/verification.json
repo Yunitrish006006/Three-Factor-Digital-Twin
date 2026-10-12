@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "episodes": 88,
+  "rows": 10560,
+  "historical_files_unchanged": 372,
+  "max_independent_state_difference": 6.472592772865937e-08,
+  "mutation_rejections": [
+    "timestamp",
+    "coordinated_truth",
+    "fan_endpoint",
+    "raw_observation",
+    "metrics"
+  ],
+  "scope": "Full metrics, split completeness, time/noise/plant provenance and input-only replay. No hardware evidence."
+}
