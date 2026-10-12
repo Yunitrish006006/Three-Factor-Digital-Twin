@@ -1,0 +1,19 @@
+{
+  "recorded_utc": "2026-10-12T07:44:25.923064+00:00",
+  "implementation_report_checkpoint": "76d8a527f41b69472027383107e9d6eb76fc3741",
+  "fresh_fetched_origin_main": "76d8a527f41b69472027383107e9d6eb76fc3741",
+  "software_experiment_preparation_html": "COMPLETE",
+  "html_sha256": "b1cb9766eb737e3c3acfacbe0455177adb682605438a618f3da880389b303e00",
+  "full_unit_tests": 353,
+  "thesis_checks": 110,
+  "delivery_checks": 32,
+  "episodes": 96,
+  "evaluation_rows": 11520,
+  "historical_files_unchanged": 514,
+  "H-ENC-71": "not_supported",
+  "H-ENC-72": "not_supported",
+  "physical_measurements": "DEFERRED_NO_EQUIPMENT",
+  "oral_presentation": "NOT_RECORDED",
+  "office_render": "OUTSIDE_HTML_SCOPE",
+  "push_verification": "Successful git push; fresh git fetch origin; equal full SHA."
+}

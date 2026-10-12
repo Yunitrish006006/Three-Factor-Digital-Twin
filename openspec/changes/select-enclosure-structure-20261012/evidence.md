@@ -49,4 +49,4 @@ Physical identification, NTC accuracy, hardware actuation, real metal/duct effic
 
 Run the read-only study verifier and content/QA verifier on stored data. Do not rerun the study runner: the exclusive receipt intentionally refuses another execution. Use the same native builders if reporting sources change, then perform fresh HTML/PDF QA and record new hashes. `scripts/qa_enclosure_session_html.mjs` now targets this stage's QA folder, preserving earlier frozen QA files; it requires a Playwright installation path via ENCLOSURE_QA_DEPENDENCIES and a compatible Chrome executable.
 
-The validated implementation/report checkpoint will be pushed and live remote SHA verified; the exact completion receipt is recorded after that verification rather than predicted here.
+The validated implementation/report checkpoint `76d8a52` was pushed to origin/main. A fresh `git fetch origin` followed by exact local/remote SHA comparison confirmed synchronization. The post-verification receipt is stored in `artifacts/completion_receipt.json`; all applicable software/preparation/HTML tasks are checked. Hardware/three-factor/oral boundaries remain explicit.

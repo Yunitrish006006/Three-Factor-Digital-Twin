@@ -7,7 +7,7 @@
 - [x] ENC-703 Independently audit selection, complete traces/metrics/dynamics and mutation rejection.
 - [x] SYN-701 Update existing HTML/talk and coupled scientific sources/outputs with identical scope.
 - [x] SYN-701 Observe final HTML responsive/interaction/offline/print and record exact hashes.
-- [ ] SYN-701 Run required checks, review conclusions, push and verify live remote SHA.
+- [x] SYN-701 Run required checks, review conclusions, push and verify live remote SHA.
 
 Physical measurements, complete enclosure three-factor transfer and oral report
 remain outside completed evidence. Office rendering is not part of this workstream.
