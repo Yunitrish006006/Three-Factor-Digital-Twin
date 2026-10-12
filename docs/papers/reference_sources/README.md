@@ -4,6 +4,7 @@
 
 - `2345-5634-1-PB.pdf/.txt`：Predictive AC Control Using Deep Learning（CU-BEMS/LSTM）原文與文字轉錄。
 - `s13660-022-02841-w.pdf/.zh.md`：Lagrange interpolation error-constant 論文與中文整理。
+- `kalman_1960_optimal_control_original.pdf`：Kalman (1960), *Contributions to the Theory of Optimal Control*，出版來源原始 18 頁 PDF，紙本 pp.102–119；未改寫或加註。`.source.json` 保存來源、下載時間與 SHA-256；教授報告的詳細閱讀索引見 `../../research/lqr_practical_guide_2026-10-12_zh.md`。
 - 其餘 Lagrange 檔案：課程簡報、講稿產生輔助資料。
 
 引用研究結果時，仍需回到正式出版來源核對；外部數值不能和本研究結果合併成同資料 head-to-head evidence。

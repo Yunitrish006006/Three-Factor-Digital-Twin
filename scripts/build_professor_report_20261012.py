@@ -15,6 +15,7 @@ matplotlib.rcParams['svg.hashsalt']='enclosure-session-20261012'
 from enclosure_session_summary import ROOT,ARTIFACTS,summary,LABELS,METHODS
 from enclosure_structure_summary import summary as structure_summary, ARTIFACTS as STRUCTURE_ARTIFACTS
 from public_thermal_report_content import scene_section, lqr_details
+from professor_report_math import thermal_model, extra_path, continuous_lqr
 
 
 def structure_section(data):
@@ -46,9 +47,8 @@ def structure_section(data):
 <p>新實驗的所有回合最高熱源為 {maximum:.3f}°C；每 5 秒端點的超溫不包含連續尖峰保證。S／選擇模型的 PI 追蹤為 {c['S_pi']['tracking_mae_C']:.4f}／{c['selected_pi']['tracking_mae_C']:.4f}°C。此處只比較 PI 與六步排序下的模型差異，LQR／MPC 仍使用前一階段的完整比較。</p>
 <div class="table-wrap numbers"><table><thead><tr><th>平台／模型</th><th>nfev／完整呼叫</th><th>秒</th><th>局部条件數</th><th>碰界索引</th></tr></thead><tbody>{costs}</tbody></table></div>
 <p>每個模型 max_nfev=40、單一起點，完整呼叫包含數值 Jacobian。F 的參數索引為接觸熱導、片對流增益、源容量倍率、片容量倍率、氣容量倍率、風扇延遲、源—氣熱導。對流失配平台的索引 2 與 4 碰界；局部條件數只作數值診斷。</p>
-<pre>F 額外加入：G_ha(T_h−T_a)
-熱源方程扣除此熱流，空氣方程加回此熱流；內部交換保持總能量平衡。
-三個容量倍率分別辨識；其他對流／旁路係數仍是假設。</pre></details>
+<p>F 額外加入以下源—氣熱流：</p>{extra_path()}
+<p>熱源方程扣除此熱流，空氣方程加回此熱流；內部交換保持總能量平衡。三個容量倍率分別辨識；其他對流／旁路係數仍是假設。</p></details>
 <p>{escape(data['boundary'])}</p><p>因此我保留這次改進的實作與反例，但不把 F 說成已驗證較佳的熱源模型。下一階段應先用新的功率激励與獨立參考檢查容量／熱導的區分能力，再制定新的驗證規則。</p>
 <p>{escape(data['integrity'])}</p><p><a href="../../openspec/changes/select-enclosure-structure-20261012/protocol.md">第二階段事前規則</a> · <a href="../../openspec/changes/select-enclosure-structure-20261012/artifacts/result.json">完整結果</a> · <a href="../../openspec/changes/select-enclosure-structure-20261012/artifacts/calibration.json">模型選擇與成本</a> · <a href="../../openspec/changes/select-enclosure-structure-20261012/artifacts/verification.json">逐筆核對</a></p></section>'''
 
@@ -89,6 +89,7 @@ def build():
     devices=devices.replace('三組模擬係數','前次三組及本輪四組模擬係數')
     lqr=re.search(r'<section id="lqr">.*?</section>',old,re.S).group()
     lqr=lqr.replace('下週介紹：','本週介紹：').replace('備稿完成，尚未向教授報告。','備稿完成；口頭報告是否完成尚無紀錄。')
+    lqr=re.sub(r'<pre>.*?</pre>',lambda _:continuous_lqr(),lqr,count=1,flags=re.S)
     lqr=lqr.replace('</section>','<p>本輪實作採離散模型與離散代數 Riccati 方程；上面的連續時間公式只用來介紹主線。實際 Q=diag(1,0.25,0.1,0.02)、R=0.15，狀態為熱源、金屬片、空氣與風扇比例相對平衡點的偏差；共同的 PWM／變化率限制另套用。</p></section>')
     lqr=lqr.replace('</section>',lqr_details()+'</section>')
     script=re.search(r'<script>(.*?)</script>',old,re.S).group(1)
@@ -108,7 +109,7 @@ def build():
     cpu_max=max(r['metrics']['compute_max_ms'] for r in result['runs'] if r['task']=='closed_loop')
     reading='''<div class="table-wrap"><table><thead><tr><th>來源與查閱日期</th><th>實際範圍</th><th>如何用於研究</th></tr></thead><tbody>
 <tr><th>TI 熱設計指南／Noctua 風管，10/6</th><td>前次閱讀筆記的指定 PDF 頁與產品說明。</td><td>區分接觸導熱與入口／對流；實際裝置效果待量測。</td></tr>
-<tr><th>Kalman 1960，10/6</th><td>18 頁原文重點問題與定理、p.112–113 公式核對，未逐行重證全部證明。</td><td>LQR 代表論文，原文頁碼見閱讀筆記。</td></tr>
+<tr><th>Kalman 1960，10/6 與 10/12</th><td>歷史 p.112–113 公式核對；10/12 下載完整 18 頁，核對文字與首尾、目視 p.104／114。未逐行重證全部證明。</td><td><a href="../papers/reference_sources/kalman_1960_optimal_control_original.pdf">完整論文本體</a>；詳細版區分原文與現代推導。</td></tr>
 <tr><th><a href="https://docs.scipy.org/doc/scipy-1.14.1/reference/generated/scipy.linalg.solve_discrete_are.html">SciPy DARE</a>，10/12</th><td>離散 Riccati 定義、解存在與數值條件；本輪官方來源已核對。</td><td>求離散 LQR 增益；失敗使用相同六步排序回退。</td></tr>
 <tr><th><a href="https://docs.scipy.org/doc/scipy-1.14.1/reference/optimize.minimize-slsqp.html">SciPy SLSQP</a>，10/12</th><td>bounds、constraints、ftol 和 maxiter；本輪官方來源已核對。</td><td>六步線性 MPC 的命令／變化率限制；溫度代價為軟限制。</td></tr>
 <tr><th><a href="https://docs.scipy.org/doc/scipy-1.14.1/reference/generated/scipy.optimize.least_squares.html">SciPy least_squares</a>，10/12</th><td>有限參數、單一起點與 nfev 的計數範圍；本輪官方來源已核對。</td><td>S／F 各一次有限辨識，另記錄數值 Jacobian 的完整殘差呼叫。</td></tr>
@@ -118,7 +119,7 @@ def build():
 <h3>第三到第五分鐘 我改進了什麼</h3><p>我把物理主模型、有限辨識、稀疏校正和動作選擇接成一個流程。熱源參考只交給評分，不給模型或控制器。第一階段辨識共同容量與風扇延遲，第二階段再測試獨立容量與新增熱導。新模型只用前 120 筆辨識、後 60 筆選擇，規則固定後才開啟新的測試。</p>
 <h3>第六到第八分鐘 我遇到的反例</h3><p>第一階段平均估測有下降，但四組只有兩組改善，六步排序也未達門檻。第二階段的可見擬合較好，卻讓熱源誤差由 1.0764 增至 1.3468°C，六步追蹤誤差增加約 2.95%。退步主要在對流係數失配平台，熱容量還碰到搜尋邊界。我因此保留兩階段的不支持判定：增加模型自由度不能保證熱源估測或控制更好。</p>
 <h3>第九到第十分鐘 我如何準備實機驗證</h3><p>我已準備輸入、校正與獨立參考三種資料模板，以及離線分析和獨立評分。下一步要先確認感測精度、初始條件、功率與 RPM 尺度，再凍結設備的實驗程序。軟體目前產生操作提案，沒有直接控制硬體。</p>
-<h3>最後五分鐘 LQR 與 Kalman 1960</h3><p>我介紹的 LQR 用線性模型與二次成本求回授。先確認可達平衡點，再用 Q／R 表達偏差與操作權衡；固定取樣下使用離散 Riccati，檢查殘差和閉迴路特徵值。Kalman1960控制部分假設狀態精確已知，穩定定理有條件，而我需要稀疏估測。限幅、風扇延遲與擾動仍要另外驗證，不能把求解成功當成真實機箱安全或最優。完整五分鐘稿與九項注意事項已另整理。</p>'''
+<h3>最後五分鐘 LQR 與 Kalman 1960</h3><p>我介紹的 LQR 用線性模型與二次成本求回授。先確認可達平衡點，再用 Q／R 表達偏差與操作權衡；固定取樣下使用離散 Riccati，檢查殘差和閉迴路特徵值。Kalman1960控制部分假設狀態精確已知，穩定定理有條件，而我需要稀疏估測。限幅、風扇延遲與擾動仍要另外驗證，不能把求解成功當成真實機箱安全或最優。詳細十五主題、十二題問答與完整原始 PDF 已附上。</p>'''
     document=f'''<!doctype html>
 <html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>教授交辦進度與 LQR 論文報告 2026-10-12</title><style>
@@ -130,9 +131,10 @@ h1{{font-size:clamp(28px,4vw,42px);line-height:1.35}}h2{{font-size:25px;line-hei
 .table-wrap{{max-width:100%;overflow-x:auto;margin:20px 0}}table{{border-collapse:collapse;width:100%;font-size:14px}}th,td{{padding:11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}}thead th{{background:#edf3f8}}.numbers th,.numbers td{{white-space:nowrap}}.scenes{{min-width:700px}}.scenes th:first-child{{min-width:120px}}
 .flow{{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}}.flow div{{padding:16px;background:#edf3f8;border-radius:8px}}.flow strong{{display:block}}figure{{margin:25px 0;max-width:100%;overflow-x:auto}}figure svg{{display:block;width:100%;min-width:720px;height:auto}}
 details{{padding:13px 0;border-top:1px solid var(--line)}}summary{{cursor:pointer;font-weight:600}}pre{{white-space:pre-wrap;overflow-wrap:anywhere;background:#f2f5f7;padding:16px;font:14px/1.8 ui-monospace,monospace}}
+.math-block{{max-width:100%;overflow-x:auto;padding:14px 18px;margin:18px 0;background:#f2f5f7;border-radius:8px;overflow-wrap:normal}}.math-block math{{display:block;width:max-content;margin:12px 0;font-family:math;font-size:1.12em;line-height:normal}}.math-block math:first-child{{margin-top:4px}}.math-block math:last-child{{margin-bottom:4px}}
 .controls{{display:grid;grid-template-columns:1fr 1fr;gap:20px}}label,input{{display:block;width:100%}}output{{display:block;padding:16px;background:#edf3f8;margin-top:14px}}:focus-visible{{outline:3px solid #bf8b35;outline-offset:3px}}
 @media(max-width:650px){{main{{padding:12px 10px 40px}}header,section{{padding:20px 16px}}.flow,.controls{{grid-template-columns:1fr}}th,td{{padding:9px}}}}
-@media print{{html{{scroll-behavior:auto}}body{{background:white;font-size:10.5pt;line-height:1.65}}main{{max-width:none;padding:0}}header,section{{padding:12px 0;margin:12px 0;border:0;border-radius:0}}nav,.controls{{display:none}}h2,h3,summary{{break-after:avoid}}figure,tr,pre{{break-inside:avoid}}figure{{overflow:visible}}figure svg{{min-width:0}}.table-wrap{{overflow:visible}}table{{font-size:8pt}}.scenes{{min-width:0}}th,td{{padding:5px}}.numbers th,.numbers td{{white-space:normal}}a{{color:inherit}}.flow{{grid-template-columns:repeat(2,1fr)}}details{{break-inside:auto}}@page{{size:A4;margin:16mm}}}}
+@media print{{html{{scroll-behavior:auto}}body{{background:white;font-size:10.5pt;line-height:1.65}}main{{max-width:none;padding:0}}header,section{{padding:12px 0;margin:12px 0;border:0;border-radius:0}}nav,.controls{{display:none}}h2,h3,summary{{break-after:avoid}}figure,tr,pre,.math-block{{break-inside:avoid}}figure{{overflow:visible}}figure svg{{min-width:0}}.table-wrap,.math-block{{overflow:visible}}.math-block{{padding:12px}}.math-block math{{font-size:1em}}table{{font-size:8pt}}.scenes{{min-width:0}}th,td{{padding:5px}}.numbers th,.numbers td{{white-space:normal}}a{{color:inherit}}.flow{{grid-template-columns:repeat(2,1fr)}}details{{break-inside:auto}}@page{{size:A4;margin:16mm}}}}
 </style></head><body><main><header>
 <p class="meta">報告整理 2026-10-12｜涵蓋 10/5–10/12｜前次文獻／原型 10/6；本輪新模擬 10/12｜口頭報告尚無完成紀錄</p>
 <h1>我把機箱溫度模型接成可驗證流程<br>並準備 LQR 代表論文報告</h1>
@@ -142,15 +144,12 @@ details{{padding:13px 0;border-top:1px solid var(--line)}}summary{{cursor:pointe
 <section id="assignment"><h2>教授交代我的三件事</h2><div class="table-wrap"><table><thead><tr><th>交辦</th><th>這次交付</th><th>完成範圍</th></tr></thead><tbody>
 <tr><th>找金屬片與風管場景</th><td>場景比較、传熱路徑、量測配置。</td><td>資料整理完成；實體效果未量測。</td></tr>
 <tr><th>借用控制方法，改進自己的模型</th><td>量測 CSV → 有限辨識 → 稀疏估測 → 可限制的動作；新模擬比較。</td><td>溫度軟體整合完成；跨情境反例保留，完整機箱三因子尚未遷移。</td></tr>
-<tr><th>介紹 LQR 與代表論文</th><td>Kalman 1960 原文頁碼、LQR 解說與本週講稿。</td><td>材料完成；實際口頭報告尚無紀錄。</td></tr>
+<tr><th>介紹 LQR 與代表論文</th><td>LQR 十五主題、推導／機箱矩陣／算例、十二題問答，附 Kalman 1960 完整原始 PDF。</td><td>材料完成；實際口頭報告尚無紀錄。</td></tr>
 </tbody></table></div><p>10/12 已確認目前沒有設備或資料，本次先完成軟體與實驗準備。<a href="../research/professor_meeting_actions_2026-10-06_zh.md">原交辦紀錄</a></p></section>
 {devices}
 <section id="model"><h2>我改进的是同一條研究流程</h2><div class="flow" aria-label="機箱溫度流程"><div><strong>① 物理主模型</strong>熱源、金屬片、空氣与風扇；分開接觸熱導、對流與容量。</div><div><strong>② 有限辨識</strong>相同 900 秒校正，辨識四個參數，固定其他假設。</div><div><strong>③ 稀疏估測</strong>金屬片、空氣、風扇、入口、功率；熱源參考僅作驗證。</div><div><strong>④ 操作選擇</strong>PI／PID、LQR、線性 MPC、單步／六步排序；共用限制與警告。</div></div>
 <p>我將原本分開的候選元件接進正式套件中的機箱介面。輸入必須每 5 秒一筆，缺資料、非有限值、重複或亂序時間會被拒絕，沒有默默補值。CSV 分析只輸出 PWM 提案，沒有硬體連線。</p>
-<details><summary>模型方程、狀態與方法邊界</summary><pre>C_h dT_h/dt = P − G_hp(T_h−T_p) − G_b(T_h−T_in)
-C_p dT_p/dt = G_hp(T_h−T_p) − (G_p+k_p f)(T_p−T_a)
-C_a dT_a/dt = (G_p+k_p f)(T_p−T_a) − (G_a+k_a f)(T_a−T_in)
-τ_f df/dt = u−f</pre><p>這是我的模型整理；多步排序只評估有限候選 constant request，與最佳化整段控制序列的線性 MPC 分開。MPC 以目前估測做四狀態線性化，預測六步，命令與每步變化是硬限制，溫度是軟代價。原室內濕度、照度、八角點與空間殘差方法保留於原場景，這次沒有把它們改稱已在機箱驗證。</p></details></section>
+<details><summary>模型方程、狀態與方法邊界</summary>{thermal_model()}<p class="caption">手機可左右捲動長公式。</p><p>這是我的模型整理；多步排序只評估有限候選 constant request，與最佳化整段控制序列的線性 MPC 分開。MPC 以目前估測做四狀態線性化，預測六步，命令與每步變化是硬限制，溫度是軟代價。原室內濕度、照度、八角點與空間殘差方法保留於原場景，這次沒有把它們改稱已在機箱驗證。</p></details></section>
 <section id="experiment"><h2>我用新的資料檢查熱容量與方程失配</h2><p>{escape(data['text'])}</p>
 <p>validation 為兩個容量／風扇變體；holdout 為不同容量比例與額外熱源—空氣直接傳熱的平台。每個平台先用相同校正程序，測試是有限調適後的遷移，不能稱零樣本。所有控制器共用同一負載、初始條件與噪聲抽樣；操作不同時，閉迴路溫度也會不同。</p>
 <details><summary>固定校正預算與實際成本</summary><div class="table-wrap numbers"><table><thead><tr><th>平台</th><th>接觸 G W/K</th><th>對流增益 W/K</th><th>容量倍率</th><th>τ 秒</th><th>nfev／完整殘差呼叫</th><th>秒</th></tr></thead><tbody>{calrows}</tbody></table></div><p>max_nfev=40，單一起點；完整呼叫含數值 Jacobian。容量只辨識共同倍率，不保證三個獨立容量可辨識。額外路徑平台的接觸熱導落在上界 1.5，不能因 fit.success=True 就認定物理參數正確。</p></details>

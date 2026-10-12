@@ -1,0 +1,229 @@
+{
+  "status": "PASS",
+  "checks": [
+    "byte-equal copies: thesis_draft_zh.docx",
+    "byte-equal copies: thesis_draft_zh.pdf",
+    "byte-equal copies: thesis_presentation_zh.pptx",
+    "byte-equal copies: thesis_presentation_zh_30min.pptx",
+    "Both stages synchronized: docs/thesis/thesis_draft_zh.md",
+    "Both stages synchronized: docs/thesis/presentation_outline_zh.md",
+    "Both stages synchronized: docs/thesis/presentation_outline_zh_30min.md",
+    "Both stages synchronized: docs/thesis/presentation_speaker_notes_zh_30min.md",
+    "DOCX content includes both stages",
+    "One synchronized slide: 有限熱結構選擇與隱藏熱源反例 2026-10-12",
+    "Slide evidence and limits: 有限熱結構選擇與隱藏熱源反例 2026-10-12",
+    "Slide bounds: 有限熱結構選擇與隱藏熱源反例 2026-10-12",
+    "One synchronized slide: 機箱溫度流程整合與跨模型探索 2026-10-12",
+    "Slide evidence and limits: 機箱溫度流程整合與跨模型探索 2026-10-12",
+    "Slide bounds: 機箱溫度流程整合與跨模型探索 2026-10-12",
+    "One synchronized slide: 有限熱結構選擇與隱藏熱源反例 2026-10-12_30min",
+    "Slide evidence and limits: 有限熱結構選擇與隱藏熱源反例 2026-10-12_30min",
+    "Slide bounds: 有限熱結構選擇與隱藏熱源反例 2026-10-12_30min",
+    "One synchronized slide: 機箱溫度流程整合與跨模型探索 2026-10-12_30min",
+    "Slide evidence and limits: 機箱溫度流程整合與跨模型探索 2026-10-12_30min",
+    "Slide bounds: 機箱溫度流程整合與跨模型探索 2026-10-12_30min",
+    "IEEE evidence-derived supplement",
+    "Both stages PDF metrics and decisions: docs/papers/thesis/thesis_draft_zh.pdf",
+    "Both stages PDF metrics and decisions: docs/papers/ieee/paper.pdf",
+    "HTML includes both stages and evidence limits",
+    "HTML LQR and adverse outcome coverage",
+    "Preparation delivered: docs/reports/professor_oral_script_2026-10-12_zh.md",
+    "Preparation delivered: docs/research/enclosure_hardware_execution_2026-10-12_zh.md",
+    "Public scenes and practical LQR in HTML",
+    "Source-linked preparation delivered: docs/research/public_thermal_simulation_scenes_2026-10-12_zh.md",
+    "Source-linked preparation delivered: docs/research/lqr_practical_guide_2026-10-12_zh.md",
+    "Original paper attachment matches publisher download hash",
+    "Original paper title and complete18-page attachment",
+    "Detailed LQR and native offline math delivered",
+    "Final HTML observed QA matches current bytes",
+    "Observed changed PDF pages: docs/papers/thesis/thesis_draft_zh.pdf",
+    "Observed changed PDF pages: docs/papers/ieee/paper.pdf",
+    "Observed changed PDF pages: docs/reports/professor_research_2026-10-12_zh.pdf"
+  ],
+  "sha256": {
+    "docs/papers/thesis/thesis_draft_zh.docx": "090b770a5097b61560119a157bcf8f1b912d7783a8c4d99ae54edcb8aa6b5f37",
+    "docs/papers/thesis/thesis_draft_zh.pdf": "ab9671934ccb8f9df28fe90964df60cf32648b84660591b855695ca47eb26726",
+    "docs/papers/thesis/thesis_presentation_zh.pptx": "6600dd2c1b457f275015f2f3b7b6e860342fb000f9ce11200b210753fa79db9c",
+    "docs/papers/thesis/thesis_presentation_zh_30min.pptx": "a036ab404b199a64c6bbac5d95cd54d452403587973bf87e9b4b399bce1abfdb",
+    "docs/thesis/thesis_draft_zh.md": "9dc1a5682d69097584d366874dcbc57f403792a047bbed1b25aefa9f11735d9d",
+    "docs/thesis/presentation_outline_zh.md": "256fb9b8c4d8efe805c6f6647e4272a5ab0ee9589edf4b352cd9aa3434be8751",
+    "docs/thesis/presentation_outline_zh_30min.md": "cedfefa07cb267ba49661d368ece08680b8691f28910120af0b68752ff7325ea",
+    "docs/thesis/presentation_speaker_notes_zh_30min.md": "fb23676b748c141832306e010796da203fbe456dbae9f19bcfa7afc04445c45e",
+    "docs/papers/ieee/paper.pdf": "68dbdc21f906a48ce6fe7a3c23e38d3c8af1298905dd5a9907413cd20133a512",
+    "docs/research/public_thermal_simulation_scenes_2026-10-12_zh.md": "04605d3dee88473bd1e68d64388be520ca3877ee708f2c2b9112bf068585b10a",
+    "docs/research/lqr_practical_guide_2026-10-12_zh.md": "0e91563784d470125406a98c0f3e6fa3f7665d7700c70a681c2c8603fe53f81c",
+    "docs/papers/reference_sources/kalman_1960_optimal_control_original.pdf": "37cfadc5c8d2f80a0992ebf81d0bec66ecb7f78d4e0173b164e2f8cdeb4e2927",
+    "docs/reports/professor_research_2026-10-12_zh.html": "59ae606534bd9ddd61c4d96e4ed8ddc8a5fe5650748b3ec5bf001cae6dfb6068",
+    "docs/reports/professor_research_2026-10-12_zh.pdf": "244de1a38e695b1f3d613085bee1fee19bc17f53a17db7b32549fa3bce8f0e5f",
+    "docs/papers/ieee/paper.tex": "1ecdec35db3d51f78b013305745d13a52b677dbc6d06dcf83ec755957398b4b7",
+    "docs/papers/ieee/references.bib": "5fcdb699f5dcbfeba15a0fc62b6d937a65ad96e4982f97a0a138a03c46ea7290"
+  },
+  "pdf_pages": {
+    "docs/papers/thesis/thesis_draft_zh.pdf": 92,
+    "docs/papers/ieee/paper.pdf": 8
+  },
+  "slide_counts": {
+    "docs/papers/thesis/thesis_presentation_zh.pptx": 54,
+    "docs/papers/thesis/thesis_presentation_zh_30min.pptx": 66
+  },
+  "html_observed_qa": {
+    "status": "PASS",
+    "observation": {
+      "artifact": "docs/reports/professor_research_2026-10-12_zh.html",
+      "artifact_sha256": "59ae606534bd9ddd61c4d96e4ed8ddc8a5fe5650748b3ec5bf001cae6dfb6068",
+      "observed_utc": "2026-10-12T09:46:22.166763+00:00",
+      "observer": "primary_agent",
+      "method": "Isolated local Chrome, native MathML geometry checks, and actual screenshot/PDF image inspection",
+      "scope": "Final1440/820/390px layout, expanded model and detailed LQR math.42 native MathML equations checked for fractions and script positions. Mobile long formulas keyboard-scroll with both edges inspected.12 anchors, local attachment links, details and Q/R keyboard interactions pass. No body overflow, external runtime requests or console errors. Full20-page print inspected.",
+      "status": "PASS",
+      "checks": {
+        "desktop": "PASS",
+        "tablet": "PASS",
+        "mobile": "PASS",
+        "anchors": "PASS",
+        "interaction": "PASS",
+        "console": "PASS",
+        "local_links": "PASS",
+        "offline_assets": "PASS",
+        "print": "PASS",
+        "math_typesetting": "PASS"
+      },
+      "evidence": [
+        {
+          "path": "docs/reports/qa/professor_lqr_2026-10-12/browser_checks.json",
+          "sha256": "d74c29322f4cb1f3985a2bc86b6fdffcc1d84bf89bf4eeb4f4fcbba9aa35e670"
+        },
+        {
+          "path": "docs/reports/qa/professor_lqr_2026-10-12/desktop-model-expanded.png",
+          "sha256": "2d5672585e49deeb3d32625087a0b279c789bb4e16ca765c88c6f4d6b663d803"
+        },
+        {
+          "path": "docs/reports/qa/professor_lqr_2026-10-12/tablet-model-expanded.png",
+          "sha256": "19a2fa2414589714c5eeaaafe733b9fa50e1c9cfbdeaa2fce05d2b92fe96a50e"
+        },
+        {
+          "path": "docs/reports/qa/professor_lqr_2026-10-12/mobile-model-expanded.png",
+          "sha256": "fe97f7c2544de8f637323d987f3402aa129cf118f2f02730539c5bf4e5ebcc76"
+        },
+        {
+          "path": "docs/reports/qa/professor_lqr_2026-10-12/desktop-thermal-jacobian.png",
+          "sha256": "d0256a0874897d4667dc25fb2b805d4b1cd83c39541e175f9682b361fc3ec0fe"
+        },
+        {
+          "path": "docs/reports/qa/professor_lqr_2026-10-12/desktop-hjb.png",
+          "sha256": "e160f93689df68b7183017934cca4edf0a82a9c42161aa20906b212c6afd8ba2"
+        },
+        {
+          "path": "docs/reports/qa/professor_lqr_2026-10-12/desktop-discrete-lqr.png",
+          "sha256": "c90a1723e7cfb65e4ca7c4dfa37b179fb967cfc0adfdcbd95ef7eff86a11c108"
+        },
+        {
+          "path": "docs/reports/qa/professor_lqr_2026-10-12/desktop-normalization.png",
+          "sha256": "43ca590ad0fd35b5c0d288eec9f51bb212fdf01448010ba0704fcf481ffe6fa5"
+        },
+        {
+          "path": "docs/reports/qa/professor_lqr_2026-10-12/tablet-normalization.png",
+          "sha256": "1a1f6bc495e9bc5ad5713ecab08d6d67bd013be0954471bcb5d8ed12bf46d420"
+        },
+        {
+          "path": "docs/reports/qa/professor_lqr_2026-10-12/mobile-discrete-lqr-right.png",
+          "sha256": "b731c305560945e026c86c2f5e156cb8ad4127b14322a359ac2194daebedc112"
+        },
+        {
+          "path": "docs/reports/qa/professor_lqr_2026-10-12/mobile-thermal-right.png",
+          "sha256": "870769e3dc61ae863e907fb76651e9d270304a01b2fea40b911898c1a3672159"
+        },
+        {
+          "path": "docs/reports/qa/professor_lqr_2026-10-12/mobile-thermal-jacobian-right.png",
+          "sha256": "19a7f0ae4365c36a7ac4ea16d44798f185b6a482d52a7969d5d587559f9cc2fa"
+        },
+        {
+          "path": "docs/reports/qa/professor_lqr_2026-10-12/report-print-01.png",
+          "sha256": "2f0a7e23f16ab70c2f7584fe4cbdd1ed0507d1fe0aad48ed27b377852acce43a"
+        },
+        {
+          "path": "docs/reports/qa/professor_lqr_2026-10-12/report-print-02.png",
+          "sha256": "d3c0cde7d7b90838f0d7fa72b958009257a50d649eed78a1d8536435eae32f35"
+        },
+        {
+          "path": "docs/reports/qa/professor_lqr_2026-10-12/report-print-03.png",
+          "sha256": "70d155ba725ce99a7817c9eb7beb6e46464773e8da2384354632ccfa6cb61c43"
+        },
+        {
+          "path": "docs/reports/qa/professor_lqr_2026-10-12/report-print-04.png",
+          "sha256": "9af2c57374c499cfb92802f73bb89e13e7590d25894cc6a5e67397456c848787"
+        },
+        {
+          "path": "docs/reports/qa/professor_lqr_2026-10-12/report-print-05.png",
+          "sha256": "f32156e7121b9f8dde3c929f4fb118ca8db6e5c82847815fb25dd7f160a36f72"
+        },
+        {
+          "path": "docs/reports/qa/professor_lqr_2026-10-12/report-print-06.png",
+          "sha256": "a3d1566d06a9753ce9612a4dc06be8e3fcd7cf497ec2d8b541d9cb0c44b73eed"
+        },
+        {
+          "path": "docs/reports/qa/professor_lqr_2026-10-12/report-print-07.png",
+          "sha256": "ed151978c30f4454fee34a3581a1adc1d12c106a34bf9eca44297c8f0def955c"
+        },
+        {
+          "path": "docs/reports/qa/professor_lqr_2026-10-12/report-print-08.png",
+          "sha256": "6d5e98a0da68c5adde9385bbe17dca9e2f725f42f15210fdfc457b38510f8701"
+        },
+        {
+          "path": "docs/reports/qa/professor_lqr_2026-10-12/report-print-09.png",
+          "sha256": "aaf8ad117eb81fb3e2a4992f82ba7e048e4cbc2a5097c749e08a75364ac38a80"
+        },
+        {
+          "path": "docs/reports/qa/professor_lqr_2026-10-12/report-print-10.png",
+          "sha256": "6e716eed711c173789c0c569ffe667b4971ad9092013bd2c79c7217549145982"
+        },
+        {
+          "path": "docs/reports/qa/professor_lqr_2026-10-12/report-print-11.png",
+          "sha256": "a02cb48ac648bf9766f443411393dc57a01e6ecae7e4b465c8138475dc1608c2"
+        },
+        {
+          "path": "docs/reports/qa/professor_lqr_2026-10-12/report-print-12.png",
+          "sha256": "59ec4da4ed21e82c459988cd81ed0fefe6897b14527d1f6495bccfd618beec90"
+        },
+        {
+          "path": "docs/reports/qa/professor_lqr_2026-10-12/report-print-13.png",
+          "sha256": "112200f5bbb4f8f03d71b76fb29fb7ad022f6f0a70f0217f1dca41a5eba5c499"
+        },
+        {
+          "path": "docs/reports/qa/professor_lqr_2026-10-12/report-print-14.png",
+          "sha256": "43d0a451d501c5b9fcbaff3962bf62dc3264eb8a0c4eda4724e8bd898cc7d009"
+        },
+        {
+          "path": "docs/reports/qa/professor_lqr_2026-10-12/report-print-15.png",
+          "sha256": "06bc0b5ca63ca92dcc7cf3139810bb4e4f64934063f6cc0e6d8af02787f77822"
+        },
+        {
+          "path": "docs/reports/qa/professor_lqr_2026-10-12/report-print-16.png",
+          "sha256": "56f9cc81e2652a7e4bb185ac8da55dfeca5a0f11224f96fb46b1436b052d3dd2"
+        },
+        {
+          "path": "docs/reports/qa/professor_lqr_2026-10-12/report-print-17.png",
+          "sha256": "0b4cc0a1eb6662f198994f022e7848e82c8c98d8a4eb6f21cc26f6156e80aae7"
+        },
+        {
+          "path": "docs/reports/qa/professor_lqr_2026-10-12/report-print-18.png",
+          "sha256": "d5bb30b1d624cca18e60ecaedac805086bcb7949dd2e16ec69e0da2014eb253f"
+        },
+        {
+          "path": "docs/reports/qa/professor_lqr_2026-10-12/report-print-19.png",
+          "sha256": "c663c1a3bb4430f2574c88ae7fff68ceee08e3683cfbd0d6f597f475a525796d"
+        },
+        {
+          "path": "docs/reports/qa/professor_lqr_2026-10-12/report-print-20.png",
+          "sha256": "8e706b7a1af2145bcb200469ebb22bad4b43b215b25f80da52ae9230cb4a38d7"
+        }
+      ]
+    },
+    "reason": "Same artifact bytes and evidence; only recorded scope accepted"
+  },
+  "software_and_experimental_preparation": "COMPLETE",
+  "physical_measurements": "DEFERRED_NO_EQUIPMENT",
+  "oral_presentation": "NOT_RECORDED",
+  "office_visual_render": "OUTSIDE_HTML_REPORT_SCOPE",
+  "scope": "Coupled source/copy content checks; current observed responsive HTML and full print. Unchanged native PDF visual scope reused only while exact bytes/evidence match prior observations."
+}

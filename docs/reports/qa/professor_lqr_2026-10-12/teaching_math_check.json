@@ -1,0 +1,32 @@
+{
+  "scope": "Teaching Jacobian checked against existing thermal_rhs by independent central differences; no controller study or parameter fit.",
+  "state": [
+    29.0,
+    26.0,
+    23.0,
+    0.6
+  ],
+  "inlet_C": 22.0,
+  "power_W": 2.0,
+  "finite_difference_step": 1e-05,
+  "max_abs_A_error": 2.9430069492519806e-12,
+  "max_abs_B_error": 3.7761460625063137e-14,
+  "status": "PASS",
+  "scalar_example": {
+    "scope": "Self-chosen one-state mathematical example; not enclosure identification or physical validation. PWM in percentage points.",
+    "a": 0.98,
+    "b": -0.02,
+    "Q": 1.0,
+    "R": 0.1,
+    "P": 11.975665892133588,
+    "quadratic_roots": [
+      -20.87566589213358,
+      11.97566589213356
+    ],
+    "K": -2.23993181472114,
+    "closed_loop_eigenvalue": 0.9352013637055772,
+    "DARE_residual": -3.3306690738754696e-15,
+    "command_percent_at_e2_and_ueq40": 44.47986362944228,
+    "status": "PASS"
+  }
+}

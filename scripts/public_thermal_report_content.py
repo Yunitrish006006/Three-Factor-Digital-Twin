@@ -1,6 +1,7 @@
 """Public-scenario and LQR teaching content; no new algorithm-efficacy claims."""
 import json
 from pathlib import Path
+from lqr_guide_html import render_guide
 
 ROOT=Path(__file__).resolve().parents[1]
 ARTIFACTS=ROOT/'openspec/changes/discover-public-thermal-scenes-20261012/artifacts'
@@ -26,7 +27,7 @@ def scene_section():
 
 
 def lqr_details():
-    return '''<h3>我需要理解與注意的六個重點</h3>
+    content='''<h3>我需要理解與注意的六個重點</h3>
 <div class="table-wrap"><table><thead><tr><th>重點</th><th>我在機箱研究中要確認什麼</th></tr></thead><tbody>
 <tr><th>平衡點與模型</th><td>先確認功率／入口下，目標有可行 PWM。LQR 在工作點附近使用線性模型；更換風道與接觸後，不能直接沿用同一 K 的保證。</td></tr>
 <tr><th>狀態與量測</th><td>x 是熱源、金屬片、空氣與風扇狀態；y 是可量測的部分。熱源參考只作評分。LQR 不會自動辨識或補出狀態；稀疏感測需要估測器。</td></tr>
@@ -35,13 +36,7 @@ def lqr_details():
 <tr><th>限幅、延遲與擾動</th><td>PWM／slew 限制套用後，不能沿用原無限制最優結論。風扇延遲、功率失配與估測偏差仍要測；非零設定值與持續擾動需要前饋或另設計追蹤／積分。</td></tr>
 <tr><th>公平比較與原文邊界</th><td>各方法取得相同稀疏資訊、負載、預算與限制。Kalman 原文 p.104 假設狀態精確已知，p.114 穩定定理有條件；不能說任何受限機箱都最優、安全或已驗證。</td></tr>
 </tbody></table></div>
-<details><summary>離散教學公式、可穩定性與老師可能追問的問題</summary><pre>e = x − x_eq；v = u − u_eq
-e[k+1] = A_d e[k] + B_d v[k]
-J = Σ (e[k]ᵀ Q e[k] + v[k]ᵀ R v[k])
-P = A_dᵀ P A_d − A_dᵀ P B_d (R+B_dᵀ P B_d)⁻¹ B_dᵀ P A_d + Q
-K = (R+B_dᵀ P B_d)⁻¹ B_dᵀ P A_d
-u[k] = u_eq − K e_hat[k]</pre>
-<p>上式是現代定常、無限時域的離散教學整理，不是 Kalman1960 原式逐字轉錄。理想 LQR 使用真實狀態 e；這裡實務上用估測 e_hat，需要另外驗證估測誤差。可穩定不要求所有穩定模態都可控；常用條件是 (A_d,B_d) 可穩定、(Q^(1/2),A_d) 可偵測、Q 半正定與 R 正定。感測器能否估測則另外看 (A_d,C)，不要混成同一個可觀測條件。</p>
-<p>我需要回答：為什麼選這些狀態？平衡 PWM 怎麼得到？風扇能影響所有重要模態嗎？只有兩個溫度點時，狀態估測可靠嗎？Q／R 如何決定？限幅後是否仍能穩定？和 PI／MPC 比較時給了相同資訊嗎？</p>
-<p><a href="https://underactuated.mit.edu/lqr.html">MIT LQR 課程原始筆記</a> · <a href="https://docs.scipy.org/doc/scipy-1.14.1/reference/generated/scipy.linalg.solve_discrete_are.html">SciPy DARE</a> · <a href="https://python-control.readthedocs.io/en/stable/generated/control.dlqr.html">dlqr 與積分選項</a></p>
-</details><p><a href="../research/lqr_practical_guide_2026-10-12_zh.md">完整 LQR 整理：九項注意事項、程式檢查與五分鐘講稿</a></p>'''
+<h3>詳細版：推導、機箱對應、算例與原始論文</h3>
+<p>以下十五個主題可各自展開；長公式可左右捲動，離線也能閱讀。列印版會展開全部內容。</p><!-- DETAILED LQR GUIDE -->
+<p><a href="../research/lqr_practical_guide_2026-10-12_zh.md">完整 LQR 詳細筆記</a> · <a href="../papers/reference_sources/kalman_1960_optimal_control_original.pdf">下載 Kalman 1960 完整原始論文（18 頁）</a></p>'''
+    return content.replace('<!-- DETAILED LQR GUIDE -->',render_guide())

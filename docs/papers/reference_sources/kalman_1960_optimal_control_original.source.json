@@ -1,0 +1,17 @@
+{
+  "title": "Contributions to the Theory of Optimal Control",
+  "author": "R. E. Kalman",
+  "year": 1960,
+  "journal": "Boletín de la Sociedad Matemática Mexicana",
+  "series": 2,
+  "volume": 5,
+  "printed_pages": "102–119",
+  "pdf_pages": 18,
+  "publisher_url": "https://boletin.math.org.mx/pdf/2/5/BSMM%282%29.5.102-119.pdf",
+  "retrieved_utc": "2026-10-12T09:20:34.653002+00:00",
+  "sha256": "37cfadc5c8d2f80a0992ebf81d0bec66ecb7f78d4e0173b164e2f8cdeb4e2927",
+  "bytes": 539986,
+  "preservation": "Publisher PDF bytes copied unchanged; no annotations, OCR replacement, or excerpt reconstruction.",
+  "verified": "PDF title/author and printed endpoints102/119 via extracted text; actual p104 and p114 page images inspected.",
+  "reading_scope": "Key-page review, not a line-by-line proof audit of all18 pages."
+}

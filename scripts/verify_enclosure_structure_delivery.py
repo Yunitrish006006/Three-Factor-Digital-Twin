@@ -10,6 +10,7 @@ from enclosure_session_summary import summary as previous_summary, TITLE as PREV
 from verify_enclosure_session_delivery import sha
 
 PUBLIC_ARTIFACTS=ROOT/'openspec/changes/discover-public-thermal-scenes-20261012/artifacts'
+LQR_QA=ROOT/'docs/reports/qa/professor_lqr_2026-10-12'
 
 
 def verify():
@@ -52,7 +53,8 @@ def verify():
     require(all(term in text for term in ('Kalman','p.104','p.114','1.8376','2.7155','口頭報告尚無完成紀錄')),'HTML LQR and adverse outcome coverage')
     for relative in ('docs/reports/professor_oral_script_2026-10-12_zh.md','docs/research/enclosure_hardware_execution_2026-10-12_zh.md'):
         require((ROOT/relative).is_file(),'Preparation delivered: '+relative)
-    observations=(PUBLIC_ARTIFACTS if (PUBLIC_ARTIFACTS/'visual_qa_observations.json').exists() else ARTIFACTS)/'visual_qa_observations.json'
+    observations=next(path/'visual_qa_observations.json' for path in (LQR_QA,PUBLIC_ARTIFACTS,ARTIFACTS)
+                      if (path/'visual_qa_observations.json').exists())
     if (PUBLIC_ARTIFACTS/'readiness.json').exists():
         require(all(term in text for term in ('id="online"','SimScale','HotSpot','TCLab','DARE 殘差','可穩定')),
                 'Public scenes and practical LQR in HTML')
@@ -60,6 +62,18 @@ def verify():
                          'docs/research/lqr_practical_guide_2026-10-12_zh.md'):
             require((ROOT/relative).is_file(),'Source-linked preparation delivered: '+relative)
             hashes[relative]=sha(ROOT/relative)
+    if (ROOT/'scripts/lqr_guide_html.py').exists():
+        paper='docs/papers/reference_sources/kalman_1960_optimal_control_original.pdf'
+        source=json.loads((ROOT/paper).with_suffix('.source.json').read_text())
+        require(sha(ROOT/paper)==source['sha256'],'Original paper attachment matches publisher download hash')
+        paper_text=subprocess.check_output(['pdftotext',str(ROOT/paper),'-'],text=True)
+        require(paper_text.count('\f')==18 and all(term in paper_text for term in
+                ('CONTRIBUTIONS TO THE THEORY OF OPTIMAL CONTROL','102','119')),'Original paper title and complete18-page attachment')
+        require(all(term in text for term in ('data-equation-group="thermal"','data-equation-group="thermal-jacobian"',
+                'data-equation-group="hjb"','data-equation-group="discrete-lqr"','data-equation-group="scalar-example"',
+                'http://www.w3.org/1998/Math/MathML','教授可能追問的十二題','kalman_1960_optimal_control_original.pdf')),
+                'Detailed LQR and native offline math delivered')
+        hashes[paper]=sha(ROOT/paper)
     qa=visual_qa_status(ROOT,observations,html,('desktop','tablet','mobile','anchors','interaction','console','local_links','offline_assets','print'))
     require(qa['status']=='PASS','Final HTML observed QA matches current bytes')
     for relative in (*pages,'docs/reports/professor_research_2026-10-12_zh.pdf'):
@@ -75,6 +89,6 @@ def verify():
 
 if __name__=='__main__':
     report=verify()
-    output=PUBLIC_ARTIFACTS if (PUBLIC_ARTIFACTS/'readiness.json').exists() else ARTIFACTS
+    output=LQR_QA if LQR_QA.exists() else PUBLIC_ARTIFACTS if (PUBLIC_ARTIFACTS/'readiness.json').exists() else ARTIFACTS
     (output/'delivery_verification.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
     print(f'PASS: {len(report["checks"])} delivery checks; HTML and software/preparation complete')

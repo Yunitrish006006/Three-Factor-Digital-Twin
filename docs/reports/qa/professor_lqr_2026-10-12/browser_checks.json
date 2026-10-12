@@ -1,0 +1,819 @@
+{
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "expandedSizes": {
+        "width": 1440,
+        "scroll": 1440
+      },
+      "math": {
+        "count": 42,
+        "boxes": [
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 358.53125,
+            "height": 38.171875
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 394.390625,
+            "height": 41.09375
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 462.046875,
+            "height": 38.25
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 105.125,
+            "height": 38.09375
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 113.21875,
+            "height": 22.5625
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 188.921875,
+            "height": 16.140625
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 108.703125,
+            "height": 37.96875
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 212.4375,
+            "height": 49.3125
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 172.390625,
+            "height": 19.375
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 251.875,
+            "height": 20.25
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 158.1875,
+            "height": 27.125
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 163.046875,
+            "height": 37.96875
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 303.671875,
+            "height": 38.09375
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 372.8125,
+            "height": 177.125
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 167.8125,
+            "height": 49.765625
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 157.71875,
+            "height": 45.390625
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 128.921875,
+            "height": 17.953125
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 187.59375,
+            "height": 52.265625
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 188.921875,
+            "height": 16.140625
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 108.703125,
+            "height": 37.96875
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 212.4375,
+            "height": 49.3125
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 172.390625,
+            "height": 19.375
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 251.875,
+            "height": 20.25
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 104.40625,
+            "height": 19.546875
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 338.328125,
+            "height": 27.171875
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 135.15625,
+            "height": 17.625
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 115.34375,
+            "height": 17.0625
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 224.84375,
+            "height": 38.46875
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 475.6875,
+            "height": 31.75
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 249.484375,
+            "height": 27.125
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 188.921875,
+            "height": 16.140625
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 241.40625,
+            "height": 17.84375
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 323.15625,
+            "height": 49.65625
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 407,
+            "height": 31.25
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 229.625,
+            "height": 31.25
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 168.421875,
+            "height": 27.125
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 243.5625,
+            "height": 17.4375
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 244.09375,
+            "height": 15
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 149.984375,
+            "height": 13.671875
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 264.1875,
+            "height": 13.421875
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 147.703125,
+            "height": 19.359375
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 309,
+            "height": 31.5
+          }
+        ],
+        "fraction": {
+          "base": -13112.8359375,
+          "script": -13090.1875
+        },
+        "subscript": {
+          "base": -13102,
+          "script": -13096.4453125
+        },
+        "superscript": {
+          "base": -6698.2578125,
+          "script": -6704.953125
+        }
+      }
+    },
+    {
+      "name": "tablet",
+      "width": 820,
+      "scroll": 820,
+      "expandedSizes": {
+        "width": 820,
+        "scroll": 820
+      },
+      "math": {
+        "count": 42,
+        "boxes": [
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 358.53125,
+            "height": 38.171875
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 394.390625,
+            "height": 41.09375
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 462.046875,
+            "height": 38.25
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 105.125,
+            "height": 38.09375
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 113.21875,
+            "height": 22.5625
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 188.921875,
+            "height": 16.140625
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 108.703125,
+            "height": 37.96875
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 212.4375,
+            "height": 49.3125
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 172.390625,
+            "height": 19.375
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 251.875,
+            "height": 20.25
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 158.1875,
+            "height": 27.125
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 163.046875,
+            "height": 37.96875
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 303.671875,
+            "height": 38.09375
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 372.8125,
+            "height": 177.125
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 167.8125,
+            "height": 49.765625
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 157.71875,
+            "height": 45.390625
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 128.921875,
+            "height": 17.953125
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 187.59375,
+            "height": 52.265625
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 188.921875,
+            "height": 16.140625
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 108.703125,
+            "height": 37.96875
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 212.4375,
+            "height": 49.3125
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 172.390625,
+            "height": 19.375
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 251.875,
+            "height": 20.25
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 104.40625,
+            "height": 19.546875
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 338.328125,
+            "height": 27.171875
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 135.15625,
+            "height": 17.625
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 115.34375,
+            "height": 17.0625
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 224.84375,
+            "height": 38.46875
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 475.6875,
+            "height": 31.75
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 249.484375,
+            "height": 27.125
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 188.921875,
+            "height": 16.140625
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 241.40625,
+            "height": 17.84375
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 323.15625,
+            "height": 49.65625
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 407,
+            "height": 31.25
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 229.625,
+            "height": 31.25
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 168.421875,
+            "height": 27.125
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 243.5625,
+            "height": 17.4375
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 244.09375,
+            "height": 15
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 149.984375,
+            "height": 13.671875
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 264.1875,
+            "height": 13.421875
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 147.703125,
+            "height": 19.359375
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 309,
+            "height": 31.5
+          }
+        ],
+        "fraction": {
+          "base": -14457.7734375,
+          "script": -14435.125
+        },
+        "subscript": {
+          "base": -14446.9375,
+          "script": -14441.3828125
+        },
+        "superscript": {
+          "base": -7429.8359375,
+          "script": -7436.53125
+        }
+      }
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "expandedSizes": {
+        "width": 390,
+        "scroll": 390
+      },
+      "math": {
+        "count": 42,
+        "boxes": [
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 358.53125,
+            "height": 38.171875
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 394.390625,
+            "height": 41.09375
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 462.046875,
+            "height": 38.25
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 105.125,
+            "height": 38.09375
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 113.21875,
+            "height": 22.5625
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 188.921875,
+            "height": 16.140625
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 108.703125,
+            "height": 37.96875
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 212.4375,
+            "height": 49.3125
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 172.390625,
+            "height": 19.375
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 251.875,
+            "height": 20.25
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 158.1875,
+            "height": 27.125
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 163.046875,
+            "height": 37.96875
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 303.671875,
+            "height": 38.09375
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 372.8125,
+            "height": 177.125
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 167.8125,
+            "height": 49.765625
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 157.71875,
+            "height": 45.390625
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 128.921875,
+            "height": 17.953125
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 187.59375,
+            "height": 52.265625
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 188.921875,
+            "height": 16.140625
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 108.703125,
+            "height": 37.96875
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 212.4375,
+            "height": 49.3125
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 172.390625,
+            "height": 19.375
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 251.875,
+            "height": 20.25
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 104.40625,
+            "height": 19.546875
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 338.328125,
+            "height": 27.171875
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 135.15625,
+            "height": 17.625
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 115.34375,
+            "height": 17.0625
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 224.84375,
+            "height": 38.46875
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 475.6875,
+            "height": 31.75
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 249.484375,
+            "height": 27.125
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 188.921875,
+            "height": 16.140625
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 241.40625,
+            "height": 17.84375
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 323.15625,
+            "height": 49.65625
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 407,
+            "height": 31.25
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 229.625,
+            "height": 31.25
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 168.421875,
+            "height": 27.125
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 243.5625,
+            "height": 17.4375
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 244.09375,
+            "height": 15
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 149.984375,
+            "height": 13.671875
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 264.1875,
+            "height": 13.421875
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 147.703125,
+            "height": 19.359375
+          },
+          {
+            "namespace": "http://www.w3.org/1998/Math/MathML",
+            "width": 309,
+            "height": 31.5
+          }
+        ],
+        "fraction": {
+          "base": -20884.9921875,
+          "script": -20862.34375
+        },
+        "subscript": {
+          "base": -20874.15625,
+          "script": -20868.6015625
+        },
+        "superscript": {
+          "base": -11075.8671875,
+          "script": -11082.5625
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "externalRequests": [],
+  "sceneTableKeyboardScroll": true,
+  "mathKeyboardScroll": true,
+  "structure": {
+    "duplicateIds": [],
+    "links": [
+      "#assignment",
+      "#devices",
+      "#model",
+      "#experiment",
+      "#results",
+      "#problems",
+      "#structure",
+      "#online",
+      "#lqr",
+      "#hardware",
+      "#talk",
+      "#sources",
+      "../research/professor_meeting_actions_2026-10-06_zh.md",
+      "https://www.ti.com/lit/an/sprabi3b/sprabi3b.pdf",
+      "https://www.noctua.at/en/products/na-fd1",
+      "https://www.ti.com/lit/an/sprabi3b/sprabi3b.pdf",
+      "../../openspec/changes/integrate-enclosure-session-20261012/protocol.md",
+      "professor_research_2026-10-06_zh.html",
+      "../../openspec/changes/select-enclosure-structure-20261012/protocol.md",
+      "../../openspec/changes/select-enclosure-structure-20261012/artifacts/result.json",
+      "../../openspec/changes/select-enclosure-structure-20261012/artifacts/calibration.json",
+      "../../openspec/changes/select-enclosure-structure-20261012/artifacts/verification.json",
+      "https://www.simscale.com/docs/tutorials/thermal-management-cht-analysis-electronics-box/",
+      "https://github.com/uvahotspot/HotSpot",
+      "https://tclab.readthedocs.io/en/latest/notebooks/04_Emulation_of_TCLab_for_Offline_Use.html",
+      "https://ibpsa.github.io/project1-boptest/docs-userguide/getting_started.html",
+      "https://www.simscale.com/product/pricing/",
+      "../research/public_thermal_simulation_scenes_2026-10-12_zh.md",
+      "../../openspec/changes/discover-public-thermal-scenes-20261012/artifacts/readiness.json",
+      "https://boletin.math.org.mx/pdf/2/5/BSMM%282%29.5.102-119.pdf",
+      "../research/lqr_kalman1960_reading_2026-10-06_zh.md",
+      "lqr_oral_script_2026-10-06_zh.md",
+      "professor_research_2026-10-12_zh.html#lqr",
+      "../papers/reference_sources/kalman_1960_optimal_control_original.pdf",
+      "https://boletin.math.org.mx/pdf/2/5/BSMM%282%29.5.102-119.pdf",
+      "../papers/reference_sources/kalman_1960_optimal_control_original.source.json",
+      "https://underactuated.mit.edu/lqr.html",
+      "https://underactuated.mit.edu/lqr.html#local-stabilization-of-nonlinear-systems",
+      "https://docs.scipy.org/doc/scipy-1.14.1/reference/generated/scipy.signal.cont2discrete.html",
+      "https://underactuated.mit.edu/lqr.html",
+      "https://ee363.stanford.edu/archive/lectures/dlqr-ss.pdf",
+      "https://docs.scipy.org/doc/scipy-1.14.1/reference/generated/scipy.linalg.solve_discrete_are.html",
+      "https://python-control.readthedocs.io/en/0.10.2/generated/control.dlqr.html",
+      "https://ee363.stanford.edu/archive/lectures/dlqr.pdf",
+      "https://www.cds.caltech.edu/~murray/books/AM05/wiki/OBC%3AMain_Page.html",
+      "https://docs.scipy.org/doc/scipy-1.14.1/reference/generated/scipy.linalg.solve_discrete_are.html",
+      "https://ee363.stanford.edu/archive/lectures/lqg.pdf",
+      "https://python-control.readthedocs.io/en/0.10.2/generated/control.dlqr.html",
+      "../papers/reference_sources/kalman_1960_optimal_control_original.pdf#page=1",
+      "../papers/reference_sources/kalman_1960_optimal_control_original.pdf#page=2",
+      "../papers/reference_sources/kalman_1960_optimal_control_original.pdf#page=3",
+      "../papers/reference_sources/kalman_1960_optimal_control_original.pdf#page=7",
+      "../papers/reference_sources/kalman_1960_optimal_control_original.pdf#page=10",
+      "../papers/reference_sources/kalman_1960_optimal_control_original.pdf#page=11",
+      "../papers/reference_sources/kalman_1960_optimal_control_original.pdf#page=12",
+      "../papers/reference_sources/kalman_1960_optimal_control_original.pdf#page=13",
+      "../papers/reference_sources/kalman_1960_optimal_control_original.pdf#page=16",
+      "../research/lqr_kalman1960_reading_2026-10-06_zh.md",
+      "../research/lqr_practical_guide_2026-10-12_zh.md",
+      "../papers/reference_sources/kalman_1960_optimal_control_original.pdf",
+      "../research/enclosure_hardware_execution_2026-10-12_zh.md",
+      "../templates/enclosure_observations.csv",
+      "../templates/enclosure_commissioning.csv",
+      "../templates/enclosure_reference.csv",
+      "professor_oral_script_2026-10-12_zh.md",
+      "../papers/reference_sources/kalman_1960_optimal_control_original.pdf",
+      "https://docs.scipy.org/doc/scipy-1.14.1/reference/generated/scipy.linalg.solve_discrete_are.html",
+      "https://docs.scipy.org/doc/scipy-1.14.1/reference/optimize.minimize-slsqp.html",
+      "https://docs.scipy.org/doc/scipy-1.14.1/reference/generated/scipy.optimize.least_squares.html",
+      "../../openspec/changes/integrate-enclosure-session-20261012/artifacts/result.json",
+      "../../openspec/changes/integrate-enclosure-session-20261012/artifacts/verification.json",
+      "../../openspec/changes/integrate-enclosure-session-20261012/artifacts/calibration.json",
+      "../../openspec/changes/integrate-enclosure-session-20261012/artifacts/freeze.json",
+      "../research/enclosure_transfer_sources_2026-10-06_zh.md",
+      "professor_catchup_report_2026-10-05_zh.html"
+    ],
+    "anchors": [
+      "#assignment",
+      "#devices",
+      "#model",
+      "#experiment",
+      "#results",
+      "#problems",
+      "#structure",
+      "#online",
+      "#lqr",
+      "#hardware",
+      "#talk",
+      "#sources"
+    ]
+  },
+  "missingLocalLinks": [],
+  "keyboardDetails": true,
+  "qrKeyboardInteraction": true,
+  "printExpandedDetails": true,
+  "printWidth": {
+    "width": 673,
+    "scroll": 673
+  },
+  "observed_utc": "2026-10-12T09:44:16.334Z"
+}

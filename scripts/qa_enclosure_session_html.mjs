@@ -7,7 +7,7 @@ const root=fileURLToPath(new URL('../',import.meta.url));
 const dependencies=createRequire(path.join(process.env.ENCLOSURE_QA_DEPENDENCIES || process.cwd(),'package.json'));
 const { chromium }=dependencies('playwright');
 const html=path.join(root,'docs/reports/professor_research_2026-10-12_zh.html');
-const output=path.join(root,'openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa');
+const output=path.join(root,'docs/reports/qa/professor_lqr_2026-10-12');
 await fs.mkdir(output,{recursive:true});
 const browser=await chromium.launch({executablePath:process.env.ENCLOSURE_CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true});
 try {
@@ -29,6 +29,25 @@ try {
     await page.locator('#lqr').screenshot({path:path.join(output,name+'-lqr.png')});
     await page.locator('#structure').screenshot({path:path.join(output,name+'-structure.png')});
     await page.locator('#online').screenshot({path:path.join(output,name+'-online.png')});
+    await page.locator('#model details summary').click();
+    await page.locator('#model').screenshot({path:path.join(output,name+'-model-expanded.png')});
+    await page.evaluate(()=>document.querySelectorAll('#lqr details').forEach(e=>e.open=true));
+    for(const group of ['thermal-jacobian','continuous-lqr','hjb','discrete-lqr','scalar-example','normalization']) {
+      await page.locator('[data-equation-group="'+group+'"]').last().screenshot({path:path.join(output,name+'-'+group+'.png')});
+    }
+    const math=await page.evaluate(()=>{
+      const boxes=[...document.querySelectorAll('math')].filter(e=>e.getClientRects().length).map(e=>({namespace:e.namespaceURI,width:e.getBoundingClientRect().width,height:e.getBoundingClientRect().height}));
+      const centers=tag=>{
+        const e=document.querySelector('#model '+tag) || document.querySelector('#lqr '+tag);
+        const a=e.children[0].getBoundingClientRect(),b=e.children[1].getBoundingClientRect();
+        return {base:a.y+a.height/2,script:b.y+b.height/2};
+      };
+      return {count:boxes.length,boxes,fraction:centers('mfrac'),subscript:centers('msub'),superscript:centers('msup')};
+    });
+    if(math.count<40 || math.boxes.some(b=>b.namespace!=='http://www.w3.org/1998/Math/MathML' || b.height<=0))throw new Error('Native math did not render');
+    if(!(math.fraction.base<math.fraction.script && math.subscript.base<math.subscript.script && math.superscript.script<math.superscript.base))throw new Error('Fractions or scripts were not typeset');
+    const expandedSizes=await page.evaluate(()=>({width:document.documentElement.clientWidth,scroll:document.documentElement.scrollWidth}));
+    if(expandedSizes.scroll>expandedSizes.width)throw new Error('Expanded formula body overflow at '+width);
     if(name==='mobile') {
       const region=page.locator('#online .table-wrap').first();
       await region.focus();await page.keyboard.press('ArrowRight');await page.waitForTimeout(250);
@@ -37,8 +56,21 @@ try {
       await page.locator('#online').screenshot({path:path.join(output,'mobile-online-right.png')});
       await region.evaluate(e=>e.scrollLeft=0);
       checks.sceneTableKeyboardScroll=true;
+      const formula=page.locator('[data-equation-group="discrete-lqr"]').last();
+      await formula.focus();await page.keyboard.press('ArrowRight');await page.waitForTimeout(250);
+      if(!await formula.evaluate(e=>e.scrollLeft>0 && e.scrollWidth>e.clientWidth))throw new Error('Long formula keyboard scroll failed');
+      await formula.evaluate(e=>e.scrollLeft=e.scrollWidth);
+      await formula.screenshot({path:path.join(output,'mobile-discrete-lqr-right.png')});
+      checks.mathKeyboardScroll=true;
+      for(const group of ['thermal','thermal-jacobian']) {
+        const region=page.locator('[data-equation-group="'+group+'"]').last();
+        await region.focus();await page.keyboard.press('ArrowRight');await page.waitForTimeout(250);
+        if(!await region.evaluate(e=>e.scrollLeft>0 && e.scrollWidth>e.clientWidth))throw new Error('Formula keyboard scroll failed: '+group);
+        await region.evaluate(e=>e.scrollLeft=e.scrollWidth);
+        await region.screenshot({path:path.join(output,'mobile-'+group+'-right.png')});
+      }
     }
-    checks.viewports.push({name,width,...sizes});
+    checks.viewports.push({name,width,...sizes,expandedSizes,math});
   }
   const structure=await page.evaluate(()=>{
     const ids=[...document.querySelectorAll('[id]')].map(e=>e.id);
@@ -60,6 +92,7 @@ try {
     try {await fs.access(fileURLToPath(local));}catch{missing.push(href);}
   }
   if(missing.length)throw new Error('Missing local sources '+missing.join(', '));
+  await page.evaluate(()=>document.querySelectorAll('details').forEach(e=>e.open=false));
   await page.locator('summary').first().focus();
   await page.keyboard.press('Enter');
   if(!await page.locator('details').first().getAttribute('open').then(v=>v!==null))throw new Error('Keyboard details failed');
@@ -71,7 +104,7 @@ try {
   await page.locator('#r').focus();await page.keyboard.press('ArrowRight');
   if(before===await page.locator('#gain').textContent())throw new Error('R slider failed');
   await page.keyboard.press('ArrowLeft');
-  await page.setViewportSize({width:1440,height:1000});
+  await page.setViewportSize({width:673,height:1000});
   await page.evaluate(()=>document.querySelectorAll('details').forEach(e=>e.open=true));
   await page.emulateMedia({media:'print'});
   const printWidth=await page.evaluate(()=>({width:document.documentElement.clientWidth,scroll:document.documentElement.scrollWidth}));
@@ -84,6 +117,6 @@ try {
   checks.printExpandedDetails=true;checks.printWidth=printWidth;
   checks.observed_utc=new Date().toISOString();
   await fs.writeFile(path.join(output,'browser_checks.json'),JSON.stringify(checks,null,2)+'\n');
-  console.log(JSON.stringify({viewports:checks.viewports,anchors:structure.anchors.length,localLinksChecked:structure.links.length,
+  console.log(JSON.stringify({viewports:checks.viewports.map(v=>({name:v.name,width:v.width,scroll:v.scroll,mathCount:v.math.count})),anchors:structure.anchors.length,linksChecked:structure.links.length,
     qrKeyboardInteraction:true,errors,externalRequests,print:'PDF generated; visual inspection still required'},null,2));
 } finally {await browser.close();}
