@@ -1,0 +1,19 @@
+{
+  "observed_at_utc": "2026-10-12T16:13:16.418328+00:00",
+  "status": "PASS",
+  "scope": "Actual inspection of listed screenshots; readable method tables, explanations, conclusions and conference recommendation; horizontal tables scroll locally on mobile. Automated browser checks separately cover three viewports, keyboard actions, local links and offline runtime. Print CSS geometry checked only; no new paginated PDF created.",
+  "artifacts": {
+    "docs/reports/professor_comparison_2026-10-12_zh.html": "237526da74c5e16759561fa5ed51e29a9177cd01d89aa2d547855a0d8870ae12",
+    "docs/reports/conference_shortlist_2026-10-12_zh.html": "6e914adcb88e24c7cc30debcf409e66c763b4e62c831e844c49d8245d126e523"
+  },
+  "observed_screenshots": {
+    "desktop-numbers.png": "6a9d8aa2db2465881b19a1c792d673d95dfff650a291deb168aa13061bc84d4c",
+    "mobile-numbers.png": "1493230ecf2340f4a7a0317d5ae9207b59cca779429b4d02b21c9cae64fcca68",
+    "tablet-reasons.png": "3509d6505cd4db9ecf47527e5e76cd1a7e51c25ed593ff0943fa9332ee8f0758",
+    "conference_shortlist_2026-10-12_zh-desktop-top.png": "44d402e7ce41e3bf19da86983c4e1bc30b20029b33a4554f2c2a708434a84147",
+    "conference-mobile-csme.png": "b17dcfd0dd8019e42dde0f72c39ac6e5def32e230a7d2ca63a6b947e225fd915",
+    "desktop-models.png": "0d2b1419cf871ace0f2684e7561e59b5c28060d094a02f51f5357c3aa54f0ed9",
+    "mobile-conclusion.png": "e9e9c9de1c245e5bc55e3dc6c1fd620dc32ad1855165b86c76ae78d92a167257"
+  },
+  "research_boundary": "All previously tracked files unchanged before staging. No experiments rerun, no controller or thesis conclusion changed. New derivative HTML and candidate submission note only."
+}

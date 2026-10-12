@@ -1,0 +1,85 @@
+{
+  "scope": "descriptive reporting of frozen evidence; no experiment or new adopted conclusion",
+  "episode_aggregation_checks": 48,
+  "episodes_per_method": 4,
+  "source_sha256": {
+    "openspec/changes/integrate-enclosure-session-20261012/artifacts/result.json": "0623f2957326f3022fe8ef2d99db0071908a7dc746184f89b9861af6b62acd78",
+    "openspec/changes/select-enclosure-structure-20261012/artifacts/result.json": "983398d221fe00f2fe05026d05333093dd5b53f28e7c4b5e1d8d3094654cb308"
+  },
+  "first_stage_rows": [
+    [
+      "固定風扇",
+      "1.7310",
+      "0.3704",
+      "0.0767",
+      "0.0000",
+      "0.5000",
+      "0.1045"
+    ],
+    [
+      "PI",
+      "1.3471",
+      "0.3328",
+      "0.0353",
+      "0.0000",
+      "0.9412",
+      "0.1056"
+    ],
+    [
+      "PID",
+      "1.3472",
+      "0.3328",
+      "0.0351",
+      "0.0000",
+      "0.9431",
+      "0.1076"
+    ],
+    [
+      "LQR",
+      "1.4872",
+      "0.3457",
+      "0.0590",
+      "0.0000",
+      "2.7227",
+      "1.0678"
+    ],
+    [
+      "線性 MPC",
+      "1.3695",
+      "0.3310",
+      "0.0188",
+      "0.0000",
+      "1.0049",
+      "1.0363"
+    ],
+    [
+      "單步排序",
+      "1.3764",
+      "0.3307",
+      "0.0159",
+      "6.2500",
+      "0.9500",
+      "0.2280"
+    ],
+    [
+      "六步排序",
+      "1.3755",
+      "0.3307",
+      "0.0169",
+      "3.7500",
+      "0.9500",
+      "0.7363"
+    ],
+    [
+      "六步無校正",
+      "1.3943",
+      "0.4445",
+      "0.0102",
+      "12.5000",
+      "0.8000",
+      "0.7139"
+    ]
+  ],
+  "mpc_vs_pi_proxy_reduction_percent": 46.87708963490453,
+  "mpc_vs_pi_tracking_increase_percent": 1.6618495429389757
+}

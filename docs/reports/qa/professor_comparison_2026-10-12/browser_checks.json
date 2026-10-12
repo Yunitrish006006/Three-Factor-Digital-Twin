@@ -1,0 +1,62 @@
+{
+  "status": "PASS",
+  "scope": "local isolated Chrome; print CSS only, no paginated PDF export",
+  "results": [
+    {
+      "artifact": "docs/reports/professor_comparison_2026-10-12_zh.html",
+      "sha256": "237526da74c5e16759561fa5ed51e29a9177cd01d89aa2d547855a0d8870ae12",
+      "viewports": [
+        {
+          "name": "desktop",
+          "width": 1440,
+          "scroll": 1440
+        },
+        {
+          "name": "tablet",
+          "width": 820,
+          "scroll": 820
+        },
+        {
+          "name": "mobile",
+          "width": 390,
+          "scroll": 390
+        }
+      ],
+      "errors": [],
+      "external": [],
+      "localLinksChecked": 12,
+      "printCss": {
+        "width": 794,
+        "scroll": 794
+      }
+    },
+    {
+      "artifact": "docs/reports/conference_shortlist_2026-10-12_zh.html",
+      "sha256": "6e914adcb88e24c7cc30debcf409e66c763b4e62c831e844c49d8245d126e523",
+      "viewports": [
+        {
+          "name": "desktop",
+          "width": 1440,
+          "scroll": 1440
+        },
+        {
+          "name": "tablet",
+          "width": 820,
+          "scroll": 820
+        },
+        {
+          "name": "mobile",
+          "width": 390,
+          "scroll": 390
+        }
+      ],
+      "errors": [],
+      "external": [],
+      "localLinksChecked": 5,
+      "printCss": {
+        "width": 794,
+        "scroll": 794
+      }
+    }
+  ]
+}
