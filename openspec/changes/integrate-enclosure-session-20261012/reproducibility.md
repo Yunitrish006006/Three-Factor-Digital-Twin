@@ -1,0 +1,5 @@
+# Reproducibility
+
+Canonical school checkout. Existing .venv-mpc Python with numpy/scipy for experiments; existing .venv for repository document builders. Record exact versions in freeze. Register/commit this plan first, implement/test without opening evaluated seeds, then run scripts/run_enclosure_session_study.py once. It exclusively creates artifacts/receipt.json and refuses overwrites. Verify with scripts/verify_enclosure_session_study.py; process measured CSV with scripts/run_enclosure_session.py. Seeds/budgets/settings in protocol.md.
+
+Generate professor HTML and synchronized text from scripts/enclosure_session_summary.py and build_professor_report_20261012.py; run canonical DOCX/PDF/PPTX and IEEE builders and appropriate verifiers. Do not run run_all_thesis_experiments.py or E15. Archive original Git bytes to ensure historical artifacts/sources unchanged. Fresh browser and print rendering are required for final HTML acceptance. Tool availability and observed rendering scope must be recorded honestly.
