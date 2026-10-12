@@ -272,6 +272,12 @@ A separate offline temperature session integrates bounded four-parameter commiss
 
 % END ENCLOSURE SESSION 20261012
 
+% BEGIN ENCLOSURE STRUCTURE 20261012
+\subsection{Chronological Thermal Structure Selection}
+A separate exploratory extension compares a four-parameter common-capacity model S with a seven-parameter model F using independent capacities and direct source--air exchange. Per rig, only the first 120 commissioning observations are fitted with bounded nonlinear least squares~\cite{scipyleastsquares}; the last 60 plate/air/fan observations select F only after a 5\% weighted-error improvement. No refit or hidden-source selection occurs. Six assumed rigs yield 96 fresh episodes (11,520 samples). Three select F. Corrected S/selected holdout source MAE is 1.0764/\allowbreak{}1.3468~$^\circ$C: error increases 25.12\%, with only 2/6 pair wins (H-ENC-71 not supported). S/selected six-step tracking MAE is 1.4661/\allowbreak{}1.5093~$^\circ$C, a 2.95\% increase (H-ENC-72 not supported); both average 20~s sampled overtemperature. Improved visible calibration fit does not ensure accurate hidden-source reconstruction. Capacity bounds under convection mismatch and local Jacobian conditioning are diagnostics, not global identifiability proofs. All traces and selection decisions pass independent audits; earlier study bytes remain frozen. F remains an exploratory candidate, with no hardware or three-factor transfer claim.
+
+% END ENCLOSURE STRUCTURE 20261012
+
 \section{Discussion and Conclusion}
 The appliance-aware model outperforms IDW and the registered pure RNN under controlled truth, while residual calibration improves the sparse real-room point. In a fixed-budget, single-seed SML2010 check, GRU and LSTM are lowest-MAE in 0/12 cases; GRU beats vanilla RNN in 2/12 with median relative MAE reduction $-12.88\%$, and LSTM in 0/12 with $-11.37\%$, so the gated-recurrence hypothesis is unsupported. Public evidence remains task-bounded; dense measurement and interventions are future work, and physical PID control remains unevaluated. The separate four-controller comparison is exploratory assumed-model simulation; MPC does not outperform feedforward PID or LQR in its registered holdout.
 

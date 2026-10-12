@@ -13,6 +13,43 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 matplotlib.rcParams['svg.hashsalt']='enclosure-session-20261012'
 from enclosure_session_summary import ROOT,ARTIFACTS,summary,LABELS,METHODS
+from enclosure_structure_summary import summary as structure_summary, ARTIFACTS as STRUCTURE_ARTIFACTS
+
+
+def structure_section(data):
+    r=data['result']; calibration=data['calibration']
+    names={'proportional':'同比例容量','independent_caps':'獨立容量', 'path_variant':'新增傳熱路徑',
+           'contact_variant':'接觸／容量變體','path_capacity':'傳熱路徑／容量', 'convection_mismatch':'對流係數失配'}
+    selection=''; costs=''; per_rig=''
+    for rig,fit in calibration.items():
+        s,f=fit['candidates']['S'],fit['candidates']['F']
+        selection+=f'<tr><th scope="row">{names[rig]}</th><td>{s["selection_score"]:.4f}</td><td>{f["selection_score"]:.4f}</td><td>{fit["selected_structure"]}</td></tr>'
+        for key,v in fit['candidates'].items():
+            costs+=f'<tr><th scope="row">{names[rig]}／{key}</th><td>{v["nfev"]}／{v["residual_calls"]}</td><td>{v["wall_time_s"]:.3f}</td><td>{v["jacobian_condition"]:.2f}</td><td>{v["parameter_bound_indices"] or "無"}</td></tr>'
+    for rig in ('contact_variant','path_capacity','convection_mismatch'):
+        a=rig_metrics(r,rig,'S_corrected'); b=rig_metrics(r,rig,'selected_corrected')
+        verdict='相同（保留 S）' if a==b else ('改善' if b<a else '退步')
+        per_rig+=f'<tr><th scope="row">{names[rig]}</th><td>{a:.4f}</td><td>{b:.4f}</td><td>{verdict}</td></tr>'
+    c=r['aggregates']['closed_loop']['holdout']
+    methods={'S_pi':'S＋PI','selected_pi':'選擇模型＋PI','S_rank_h6':'S＋六步','selected_rank_h6':'選擇模型＋六步'}
+    closed=''.join(f'<tr><th scope="row">{label}</th>'+''.join(f'<td>{c[m][k]:.4f}</td>' for k in
+                      ('tracking_mae_C','source_mae_C','fan_energy_proxy_Wh','overtemp_s','compute_mean_ms'))+'</tr>' for m,label in methods.items())
+    maximum=max(e['metrics']['max_source_C'] for e in r['runs'])
+    return f'''<section id="structure"><h2>第二階段：可見擬合較好，隱藏熱源仍可能更差</h2>
+<p>{escape(data['text'])}</p><p>我把前一階段的容量比例與缺少路徑問題，改成一個事前固定的有限模型選擇。S 是四參數模型，F 是七參數模型；判準只看金屬片、空氣與風扇，不看熱源參考。新增測試與前一階段分開，沒有拿同一批 holdout 調參。</p>
+<h3>我如何選擇模型</h3><div class="table-wrap"><table><thead><tr><th>平台</th><th>S 留出分數</th><th>F 留出分數</th><th>選擇</th></tr></thead><tbody>{selection}</tbody></table></div>
+<p class="caption">分數為可見三通道誤差除以噪聲標準差後的均方值，無單位，越低越好。只有 F 比 S 低至少 5% 才更換。選擇用的後 60 筆仍是校正資料；下表的熱源結果來自另兩個新 seed。</p>
+<h3>新 holdout 的結果</h3><p>{escape(data['decisions'])}</p><div class="table-wrap"><table><thead><tr><th>holdout 平台</th><th>S 校正 MAE °C</th><th>選擇模型校正 MAE °C</th><th>結果</th></tr></thead><tbody>{per_rig}</tbody></table></div>
+<p>平均退步主要來自對流係數失配：1.8376→2.7155°C；新增路徑／容量平台則由 0.2711→0.2045°C。接觸／容量平台保留 S，因此兩者相同。這些結果顯示模型選擇有情境差異，不能把三個可見留出改善當成熱源普遍改善。</p>
+<details><summary>同一控制器下的模型比較與完整成本</summary><div class="table-wrap numbers"><table><thead><tr><th>方法</th><th>追蹤 MAE °C</th><th>估測 MAE °C</th><th>proxy Wh</th><th>超溫秒／回合</th><th>ms／步</th></tr></thead><tbody>{closed}</tbody></table></div>
+<p>新實驗的所有回合最高熱源為 {maximum:.3f}°C；每 5 秒端點的超溫不包含連續尖峰保證。S／選擇模型的 PI 追蹤為 {c['S_pi']['tracking_mae_C']:.4f}／{c['selected_pi']['tracking_mae_C']:.4f}°C。此處只比較 PI 與六步排序下的模型差異，LQR／MPC 仍使用前一階段的完整比較。</p>
+<div class="table-wrap numbers"><table><thead><tr><th>平台／模型</th><th>nfev／完整呼叫</th><th>秒</th><th>局部条件數</th><th>碰界索引</th></tr></thead><tbody>{costs}</tbody></table></div>
+<p>每個模型 max_nfev=40、單一起點，完整呼叫包含數值 Jacobian。F 的參數索引為接觸熱導、片對流增益、源容量倍率、片容量倍率、氣容量倍率、風扇延遲、源—氣熱導。對流失配平台的索引 2 與 4 碰界；局部條件數只作數值診斷。</p>
+<pre>F 額外加入：G_ha(T_h−T_a)
+熱源方程扣除此熱流，空氣方程加回此熱流；內部交換保持總能量平衡。
+三個容量倍率分別辨識；其他對流／旁路係數仍是假設。</pre></details>
+<p>{escape(data['boundary'])}</p><p>因此我保留這次改進的實作與反例，但不把 F 說成已驗證較佳的熱源模型。下一階段應先用新的功率激励與獨立參考檢查容量／熱導的區分能力，再制定新的驗證規則。</p>
+<p>{escape(data['integrity'])}</p><p><a href="../../openspec/changes/select-enclosure-structure-20261012/protocol.md">第二階段事前規則</a> · <a href="../../openspec/changes/select-enclosure-structure-20261012/artifacts/result.json">完整結果</a> · <a href="../../openspec/changes/select-enclosure-structure-20261012/artifacts/calibration.json">模型選擇與成本</a> · <a href="../../openspec/changes/select-enclosure-structure-20261012/artifacts/verification.json">逐筆核對</a></p></section>'''
 
 
 def rig_metrics(result,rig,method,task='open_loop',key='source_mae_C'):
@@ -44,6 +81,7 @@ def figure(result):
 
 def build():
     data=summary(); result=data['result']; closed=result['aggregates']['closed_loop']['holdout']
+    second=structure_summary()
     old=(ROOT/'docs/reports/professor_research_2026-10-06_zh.html').read_text()
     # Preserve source-checked historical device and LQR explanations.
     devices=re.search(r'<section id="devices">.*?</section>',old,re.S).group()
@@ -71,11 +109,12 @@ def build():
 <tr><th>Kalman 1960，10/6</th><td>18 頁原文重點問題與定理、p.112–113 公式核對，未逐行重證全部證明。</td><td>LQR 代表論文，原文頁碼見閱讀筆記。</td></tr>
 <tr><th><a href="https://docs.scipy.org/doc/scipy-1.14.1/reference/generated/scipy.linalg.solve_discrete_are.html">SciPy DARE</a>，10/12</th><td>離散 Riccati 定義、解存在與數值條件；本輪官方來源已核對。</td><td>求離散 LQR 增益；失敗使用相同六步排序回退。</td></tr>
 <tr><th><a href="https://docs.scipy.org/doc/scipy-1.14.1/reference/optimize.minimize-slsqp.html">SciPy SLSQP</a>，10/12</th><td>bounds、constraints、ftol 和 maxiter；本輪官方來源已核對。</td><td>六步線性 MPC 的命令／變化率限制；溫度代價為軟限制。</td></tr>
+<tr><th><a href="https://docs.scipy.org/doc/scipy-1.14.1/reference/generated/scipy.optimize.least_squares.html">SciPy least_squares</a>，10/12</th><td>有限參數、單一起點與 nfev 的計數範圍；本輪官方來源已核對。</td><td>S／F 各一次有限辨識，另記錄數值 Jacobian 的完整殘差呼叫。</td></tr>
 </tbody></table></div>'''
     talk='''<p><strong>研究進度約十分鐘，LQR 與代表論文約五分鐘，共十五分鐘。</strong>正文可依下列主線朗讀，技術細節另行展開。</p>
 <h3>前兩分鐘 我如何回應傳熱場景的交辦</h3><p>我先整理金屬片、接觸介面與風管的作用。金屬片主要改變固體導熱與接觸熱阻，風管主要改變入口和對流。我選擇可控熱源、金屬片與風扇作候選平台，但目前沒有设备或資料，所以先把軟體和量測程序完成。</p>
-<h3>第三到第五分鐘 我改進了什麼</h3><p>我把物理主模型、有限辨識、稀疏校正和動作選擇接成一個流程。热源參考溫度只交給評分，不給模型或控制器。我增加共同熱容量倍率與風扇延遲的辨識，再用新的負載和不同傳熱路徑檢查模型。</p>
-<h3>第六到第八分鐘 我遇到的反例</h3><p>平均估測誤差有下降，但四組只有兩組改善。接觸與熱容量變體的校正反而退步；額外傳熱路徑的接觸參數碰到搜尋上界，提醒我校正成功不表示模型正確。六步排序改善也只有約 0.069%，未達原先門檻。我因此保留兩個不支持的判定，不把原本的正向結果延伸成泛化結論。</p>
+<h3>第三到第五分鐘 我改進了什麼</h3><p>我把物理主模型、有限辨識、稀疏校正和動作選擇接成一個流程。熱源參考只交給評分，不給模型或控制器。第一階段辨識共同容量與風扇延遲，第二階段再測試獨立容量與新增熱導。新模型只用前 120 筆辨識、後 60 筆選擇，規則固定後才開啟新的測試。</p>
+<h3>第六到第八分鐘 我遇到的反例</h3><p>第一階段平均估測有下降，但四組只有兩組改善，六步排序也未達門檻。第二階段的可見擬合較好，卻讓熱源誤差由 1.0764 增至 1.3468°C，六步追蹤誤差增加約 2.95%。退步主要在對流係數失配平台，熱容量還碰到搜尋邊界。我因此保留兩階段的不支持判定：增加模型自由度不能保證熱源估測或控制更好。</p>
 <h3>第九到第十分鐘 我如何準備實機驗證</h3><p>我已準備輸入、校正與獨立參考三種資料模板，以及離線分析和獨立評分。下一步要先確認感測精度、初始條件、功率與 RPM 尺度，再凍結設備的實驗程序。軟體目前產生操作提案，沒有直接控制硬體。</p>
 <h3>最後五分鐘 LQR 與 Kalman 1960</h3><p>我介紹的 LQR 是線性二次調節器：用線性狀態模型描述變化，用 Q 與 R 表達狀態偏差和操作代價，再透過 Riccati 方程求回授增益。Kalman 1960 提供理論基礎，但原文控制部分假設狀態精確已知，穩定定理也有條件。我現在把它接在稀疏估測後，另處理限幅；不能因此說真實機箱已經安全或最優。原文問題、核心式與限制可配合上面的頁碼筆記說明。</p>'''
     document=f'''<!doctype html>
@@ -95,8 +134,8 @@ details{{padding:13px 0;border-top:1px solid var(--line)}}summary{{cursor:pointe
 </style></head><body><main><header>
 <p class="meta">報告整理 2026-10-12｜涵蓋 10/5–10/12｜前次文獻／原型 10/6；本輪新模擬 10/12｜口頭報告尚無完成紀錄</p>
 <h1>我把機箱溫度模型接成可驗證流程<br>並準備 LQR 代表論文報告</h1>
-<p class="lead">我完成了場景查證、量測資料介面、稀疏估測與控制比較。新測試的平均估測有改善，但跨情境覆蓋與多步排序未達事前判準；實機仍待設備到位。</p>
-<nav aria-label="報告目錄"><a href="#assignment">交辦進度</a><a href="#devices">傳熱場景</a><a href="#model">模型流程</a><a href="#experiment">新驗證</a><a href="#results">結果</a><a href="#problems">問題</a><a href="#lqr">LQR 論文</a><a href="#hardware">實機準備</a><a href="#talk">十五分鐘講稿</a><a href="#sources">來源</a></nav>
+<p class="lead">我完成了場景查證、量測資料介面、稀疏估測、控制比較與第二階段模型選擇。兩階段都保留未達判準的結果；可見感測擬合較好仍不保證熱源更準，實機待設備到位。</p>
+<nav aria-label="報告目錄"><a href="#assignment">交辦進度</a><a href="#devices">傳熱場景</a><a href="#model">模型流程</a><a href="#experiment">第一階段</a><a href="#results">結果</a><a href="#problems">問題</a><a href="#structure">第二階段</a><a href="#lqr">LQR 論文</a><a href="#hardware">實機準備</a><a href="#talk">十五分鐘講稿</a><a href="#sources">來源</a></nav>
 </header>
 <section id="assignment"><h2>教授交代我的三件事</h2><div class="table-wrap"><table><thead><tr><th>交辦</th><th>這次交付</th><th>完成範圍</th></tr></thead><tbody>
 <tr><th>找金屬片與風管場景</th><td>場景比較、传熱路徑、量測配置。</td><td>資料整理完成；實體效果未量測。</td></tr>
@@ -123,6 +162,7 @@ C_a dT_a/dt = (G_p+k_p f)(T_p−T_a) − (G_a+k_a f)(T_a−T_in)
 <section id="problems"><h2>我遇到的問題如何影響下一步</h2><p>我原先只有同方程、部分係數已知的模擬，難以回答換設備是否仍有效。這次把容量倍率與風扇延遲納入有限辨識，並加入模型沒有的傳熱路徑；結果顯示平均與覆蓋判準會給不同結論。</p>
 <p>接觸／容量平台在稀疏校正後退步，說明固定噪聲與模型設定不能保證每個情境改善。額外路徑的辨識參數碰到上界，則提醒我搜尋成功不等於方程正確；模型可能用錯誤係數補償缺少的路徑。我保留結果，沒有針對 holdout 加平台例外。</p>
 <p>控制方面，PI 的追蹤略好，MPC 或排序的能耗 proxy 較低。下一步需要先決定重視追蹤、超溫還是操作成本，再用新的資料檢查共同程序；不能只因某個方法較複雜就預期它勝出。</p><p>{escape(data['boundary'])}</p></section>
+{structure_section(second)}
 {lqr}
 <section id="hardware"><h2>設備到位後我可以如何開始</h2><p>我已備妥獨立輸入、校正與參考溫度模板，以及離線提案和獨立評分程序。先做感測共址校正、確認熱平衡初始條件、量測功率與 RPM 尺度，再以新的事前規則固定平台可操作範圍、資料切分及停止條件。</p>
 <p><a href="../research/enclosure_hardware_execution_2026-10-12_zh.md">完整實機程序</a> · <a href="../templates/enclosure_observations.csv">觀測模板</a> · <a href="../templates/enclosure_commissioning.csv">校正模板</a> · <a href="../templates/enclosure_reference.csv">獨立參考模板</a></p>
@@ -134,7 +174,7 @@ C_a dT_a/dt = (G_p+k_p f)(T_p−T_a) − (G_a+k_a f)(T_a−T_in)
 <details><summary>展開研究證據與歷史資料</summary><p><a href="../../openspec/changes/integrate-enclosure-session-20261012/artifacts/result.json">本輪完整结果</a> · <a href="../../openspec/changes/integrate-enclosure-session-20261012/artifacts/verification.json">逐筆核對</a> · <a href="../../openspec/changes/integrate-enclosure-session-20261012/artifacts/calibration.json">校正與成本</a> · <a href="../../openspec/changes/integrate-enclosure-session-20261012/artifacts/freeze.json">評估前凍結</a> · <a href="../research/enclosure_transfer_sources_2026-10-06_zh.md">前次來源筆記</a> · <a href="professor_catchup_report_2026-10-05_zh.html">10/5 歷史報告</a></p></details></section>
 </main><script>{script}</script></body></html>'''
     # Normalize traditional Chinese in newly authored prose only.
-    for simplified,traditional in [('改进','改進'),('传熱','傳熱'),('对流','對流'),('与','與'),('热源','熱源'),('设备','設備'),('结果','結果')]:
+    for simplified,traditional in [('改进','改進'),('传熱','傳熱'),('对流','對流'),('与','與'),('热源','熱源'),('设备','設備'),('结果','結果'),('条件','條件'),('激励','激勵')]:
         document=document.replace(simplified,traditional)
     target=ROOT/'docs/reports/professor_research_2026-10-12_zh.html'
     target.write_text('\n'.join(line.rstrip() for line in document.splitlines())+'\n')

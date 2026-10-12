@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "episodes": 96,
+  "rows": 11520,
+  "calibration_rows": 1080,
+  "historical_files_unchanged": 514,
+  "max_independent_state_difference": 6.18372482108498e-08,
+  "mutation_rejections": [
+    "timestamp",
+    "coordinated_truth",
+    "fan_endpoint",
+    "raw_observation",
+    "metrics",
+    "selection"
+  ],
+  "scope": "Full metric/selection/commissioning/dynamics audit and input-only replay. No refitting or study rerun."
+}

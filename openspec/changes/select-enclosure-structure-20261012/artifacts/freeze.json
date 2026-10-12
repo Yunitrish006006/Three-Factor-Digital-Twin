@@ -1,0 +1,34 @@
+{
+  "utc": "2026-10-12T07:29:12.442388+00:00",
+  "git_head": "dafc9f591d4a7ac34edf2946c9f476bccd145f98",
+  "source_hashes": {
+    "digital_twin/enclosure/calibrated_session.py": "a8a7649cdc2a2611b2e202e1fb210a366407b09bc5036d19ac3a8abfdbae3007",
+    "scripts/run_calibrated_enclosure.py": "6815bbf6669e3f4f6b67f751cfdf55880fdb4a07dc50268fa68df844aa6c4bdd",
+    "scripts/run_enclosure_structure_study.py": "00a5bbb63ec3909ef182ba812ba0d4ae4c931ecc6d36ea699bb986d43ae2b267",
+    "scripts/verify_enclosure_structure_study.py": "3def601855e3b812a79a44cb4db1ddbe5d90b74e2760f86bfadd61d5dd176334",
+    "tests/test_enclosure_structure.py": "e554d823086f39cc6118095428f4ad9b94833894c3f5fb4c01fc241333dbff98",
+    "digital_twin/enclosure/session.py": "670e258aad07584e0218ed61d625231686355136ead72ce5c3f68cf550af1eed",
+    "digital_twin/control/sparse_enclosure.py": "39ff11667e891b58cae489ec2965a5df9258e865650e6cd8b2e4cdc69489a000",
+    "digital_twin/control/sparse_enclosure_v2.py": "2e6d13eb7825ea915bbfb4891b19e908f5edb6ab4db82b517b1f1d6b7b581b0b",
+    "scripts/run_enclosure_session_study.py": "bdc4beeb0ba7f2d2558ff04783138479a4d3160b84659bbb5184dd73cbb3b141",
+    "scripts/verify_enclosure_session_study.py": "08704ac3ca77fe1c4a1b2507e0e906e6ce7b14a6b56d988c8bcdde0172f531e4",
+    "openspec/changes/select-enclosure-structure-20261012/protocol.md": "8d32cc3b00c4bae8bcf54cdb223f23fc60468f0e82502308a1a3187cd9a2979d",
+    "openspec/changes/select-enclosure-structure-20261012/research.md": "3a380599b2e8449b4829fac5adbef770e2b622935807dcb077a1cc931e424ba1"
+  },
+  "input_hashes": {
+    "config.json": "b1d06f7ea3046651570f61499399f46814f2472e2e22a834974d70aab20a0e2a",
+    "calibration.json": "6a1726fb3f959a4a4f530fa4c77e50baee550eee365f9627f310d93cfc0699c5",
+    "historical_manifest.json": "5a9235ac80b97bf6ea9f66a7ac95cc01cf464f2a5e8ed8f528b1096c2d723dc2",
+    "calibration_contact_variant.csv": "bfd38ef44b60e383ed261f05b69de637ab776905f8a5a5bd1c5edbadbf476430",
+    "calibration_convection_mismatch.csv": "633254605758d38118fca3749cbbea5bdde9b67332c8e1d9de37fe78f7f75679",
+    "calibration_independent_caps.csv": "ef8cd01b632262b10492bd95be60994c2fd0f4ebdd0839482863e6974d30bac9",
+    "calibration_path_capacity.csv": "5c3191656f88aca12d9193a9c8cf765ed2af76a6f0df0e055a5b9340ba938a74",
+    "calibration_path_variant.csv": "54522f52e17a1d1ee77bc67885283e455deffa5278997b84311d9f6a4ef1fe49",
+    "calibration_proportional.csv": "4afd80edd90ac54ab2d7ecc7758f79b57ad5e8c831ba7fca8822287247d61a90"
+  },
+  "environment": {
+    "python": "3.11.15",
+    "numpy": "1.26.4",
+    "scipy": "1.14.1"
+  }
+}

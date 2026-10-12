@@ -1,0 +1,505 @@
+{
+  "proportional": {
+    "selected_structure": "S",
+    "candidates": {
+      "S": {
+        "success": true,
+        "fallback": false,
+        "nfev": 10,
+        "residual_calls": 50,
+        "wall_time_s": 0.3670641249991604,
+        "training_score": 0.9505954013604098,
+        "selection_score": 1.075914112006103,
+        "parameters": {
+          "capacities": [
+            19.980237705321784,
+            79.92095082128714,
+            29.970356557982676
+          ],
+          "contact": 0.46888727149780396,
+          "plate_base": 0.15,
+          "plate_fan": 1.0570405139809322,
+          "air_base": 1.0,
+          "air_fan": 1.5,
+          "bypass": 0.05,
+          "fan_tau": 20.040194567177142,
+          "source_air": 0.0
+        },
+        "fitted_values": [
+          0.46888727149780396,
+          1.0570405139809322,
+          0.9990118852660892,
+          20.040194567177142
+        ],
+        "parameter_bound_indices": [],
+        "jacobian_condition": 12.871502174329459
+      },
+      "F": {
+        "success": true,
+        "fallback": false,
+        "nfev": 16,
+        "residual_calls": 128,
+        "wall_time_s": 0.9286162090011203,
+        "training_score": 0.9487078017871504,
+        "selection_score": 1.0771111371962994,
+        "parameters": {
+          "capacities": [
+            23.41736889779711,
+            76.1017250547896,
+            32.69475631554966
+          ],
+          "contact": 0.5178216642015756,
+          "plate_base": 0.15,
+          "plate_fan": 1.06125209491211,
+          "air_base": 1.0,
+          "air_fan": 1.5,
+          "bypass": 0.05,
+          "fan_tau": 20.04056437300749,
+          "source_air": 0.0025199520577249687
+        },
+        "fitted_values": [
+          0.5178216642015756,
+          1.06125209491211,
+          1.1708684448898556,
+          0.95127156318487,
+          1.089825210518322,
+          20.04056437300749,
+          0.0025199520577249687
+        ],
+        "parameter_bound_indices": [],
+        "jacobian_condition": 130.47625991152836
+      }
+    },
+    "training_rows": 120,
+    "selection_rows": 60,
+    "trial_count": 2,
+    "refit_after_selection": false,
+    "selection_channels": [
+      "plate_C",
+      "air_C",
+      "fan_fraction"
+    ],
+    "known_initial_state": "all temperatures=inlet and fan=.4",
+    "source_reference_input": false
+  },
+  "independent_caps": {
+    "selected_structure": "S",
+    "candidates": {
+      "S": {
+        "success": true,
+        "fallback": false,
+        "nfev": 8,
+        "residual_calls": 40,
+        "wall_time_s": 0.2933962919996702,
+        "training_score": 0.9701087541965487,
+        "selection_score": 1.0716573133175107,
+        "parameters": {
+          "capacities": [
+            16.81504475092033,
+            67.26017900368132,
+            25.222567126380493
+          ],
+          "contact": 0.48484838462585916,
+          "plate_base": 0.15,
+          "plate_fan": 0.963723155432314,
+          "air_base": 1.0,
+          "air_fan": 1.5,
+          "bypass": 0.05,
+          "fan_tau": 25.070352198466058,
+          "source_air": 0.0
+        },
+        "fitted_values": [
+          0.48484838462585916,
+          0.963723155432314,
+          0.8407522375460165,
+          25.070352198466058
+        ],
+        "parameter_bound_indices": [],
+        "jacobian_condition": 18.195760962048304
+      },
+      "F": {
+        "success": true,
+        "fallback": false,
+        "nfev": 14,
+        "residual_calls": 112,
+        "wall_time_s": 0.8040818339995894,
+        "training_score": 0.9474213131967708,
+        "selection_score": 1.0585687362746181,
+        "parameters": {
+          "capacities": [
+            25.89788035186464,
+            55.0650468907099,
+            40.22050396477455
+          ],
+          "contact": 0.6023965305159658,
+          "plate_base": 0.15,
+          "plate_fan": 0.9620599992833745,
+          "air_base": 1.0,
+          "air_fan": 1.5,
+          "bypass": 0.05,
+          "fan_tau": 25.072995630272178,
+          "source_air": 0.009287292717774754
+        },
+        "fitted_values": [
+          0.6023965305159658,
+          0.9620599992833745,
+          1.294894017593232,
+          0.6883130861338738,
+          1.340683465492485,
+          25.072995630272178,
+          0.009287292717774754
+        ],
+        "parameter_bound_indices": [],
+        "jacobian_condition": 133.56371532199006
+      }
+    },
+    "training_rows": 120,
+    "selection_rows": 60,
+    "trial_count": 2,
+    "refit_after_selection": false,
+    "selection_channels": [
+      "plate_C",
+      "air_C",
+      "fan_fraction"
+    ],
+    "known_initial_state": "all temperatures=inlet and fan=.4",
+    "source_reference_input": false
+  },
+  "path_variant": {
+    "selected_structure": "F",
+    "candidates": {
+      "S": {
+        "success": true,
+        "fallback": false,
+        "nfev": 11,
+        "residual_calls": 55,
+        "wall_time_s": 0.4166017089992238,
+        "training_score": 1.0834411806178457,
+        "selection_score": 1.1974622943790176,
+        "parameters": {
+          "capacities": [
+            23.62965637904102,
+            94.51862551616408,
+            35.44448456856153
+          ],
+          "contact": 1.0861173656461605,
+          "plate_base": 0.15,
+          "plate_fan": 1.8926509991340401,
+          "air_base": 1.0,
+          "air_fan": 1.5,
+          "bypass": 0.05,
+          "fan_tau": 10.997904720519283,
+          "source_air": 0.0
+        },
+        "fitted_values": [
+          1.0861173656461605,
+          1.8926509991340401,
+          1.181482818952051,
+          10.997904720519283
+        ],
+        "parameter_bound_indices": [],
+        "jacobian_condition": 13.60286481751869
+      },
+      "F": {
+        "success": true,
+        "fallback": false,
+        "nfev": 13,
+        "residual_calls": 97,
+        "wall_time_s": 0.7020325419998699,
+        "training_score": 0.9389555243923168,
+        "selection_score": 1.0649132825882943,
+        "parameters": {
+          "capacities": [
+            27.976606281766895,
+            86.41335733447612,
+            25.470591082039213
+          ],
+          "contact": 0.993107415929918,
+          "plate_base": 0.15,
+          "plate_fan": 1.3034374346668578,
+          "air_base": 1.0,
+          "air_fan": 1.5,
+          "bypass": 0.05,
+          "fan_tau": 10.995596563887634,
+          "source_air": 0.151682366095468
+        },
+        "fitted_values": [
+          0.993107415929918,
+          1.3034374346668578,
+          1.3988303140883447,
+          1.0801669666809515,
+          0.8490197027346404,
+          10.995596563887634,
+          0.151682366095468
+        ],
+        "parameter_bound_indices": [],
+        "jacobian_condition": 132.45801462486725
+      }
+    },
+    "training_rows": 120,
+    "selection_rows": 60,
+    "trial_count": 2,
+    "refit_after_selection": false,
+    "selection_channels": [
+      "plate_C",
+      "air_C",
+      "fan_fraction"
+    ],
+    "known_initial_state": "all temperatures=inlet and fan=.4",
+    "source_reference_input": false
+  },
+  "contact_variant": {
+    "selected_structure": "S",
+    "candidates": {
+      "S": {
+        "success": true,
+        "fallback": false,
+        "nfev": 12,
+        "residual_calls": 60,
+        "wall_time_s": 0.4407015409997257,
+        "training_score": 0.9610412341538419,
+        "selection_score": 1.106853796196939,
+        "parameters": {
+          "capacities": [
+            21.331382658730078,
+            85.32553063492031,
+            31.997073988095117
+          ],
+          "contact": 0.3306455997417858,
+          "plate_base": 0.15,
+          "plate_fan": 0.9510575543118747,
+          "air_base": 1.0,
+          "air_fan": 1.5,
+          "bypass": 0.05,
+          "fan_tau": 32.12433029133076,
+          "source_air": 0.0
+        },
+        "fitted_values": [
+          0.3306455997417858,
+          0.9510575543118747,
+          1.066569132936504,
+          32.12433029133076
+        ],
+        "parameter_bound_indices": [],
+        "jacobian_condition": 27.048053905393893
+      },
+      "F": {
+        "success": true,
+        "fallback": false,
+        "nfev": 14,
+        "residual_calls": 112,
+        "wall_time_s": 0.8193891669998266,
+        "training_score": 0.9549839804082424,
+        "selection_score": 1.1047440730179132,
+        "parameters": {
+          "capacities": [
+            28.088385779874642,
+            75.93885751024914,
+            35.88904159115097
+          ],
+          "contact": 0.37696983077583507,
+          "plate_base": 0.15,
+          "plate_fan": 0.9651328983257057,
+          "air_base": 1.0,
+          "air_fan": 1.5,
+          "bypass": 0.05,
+          "fan_tau": 32.1255904435186,
+          "source_air": 0.0027061004923756315
+        },
+        "fitted_values": [
+          0.37696983077583507,
+          0.9651328983257057,
+          1.4044192889937321,
+          0.9492357188781142,
+          1.1963013863716991,
+          32.1255904435186,
+          0.0027061004923756315
+        ],
+        "parameter_bound_indices": [],
+        "jacobian_condition": 195.5816400418466
+      }
+    },
+    "training_rows": 120,
+    "selection_rows": 60,
+    "trial_count": 2,
+    "refit_after_selection": false,
+    "selection_channels": [
+      "plate_C",
+      "air_C",
+      "fan_fraction"
+    ],
+    "known_initial_state": "all temperatures=inlet and fan=.4",
+    "source_reference_input": false
+  },
+  "path_capacity": {
+    "selected_structure": "F",
+    "candidates": {
+      "S": {
+        "success": true,
+        "fallback": false,
+        "nfev": 11,
+        "residual_calls": 55,
+        "wall_time_s": 0.4042290420002246,
+        "training_score": 1.169330538037926,
+        "selection_score": 1.251016597161296,
+        "parameters": {
+          "capacities": [
+            24.754756116751444,
+            99.01902446700578,
+            37.13213417512717
+          ],
+          "contact": 1.0098661633376886,
+          "plate_base": 0.15,
+          "plate_fan": 1.999999999999932,
+          "air_base": 1.0,
+          "air_fan": 1.5,
+          "bypass": 0.05,
+          "fan_tau": 13.006375338706366,
+          "source_air": 0.0
+        },
+        "fitted_values": [
+          1.0098661633376886,
+          1.999999999999932,
+          1.2377378058375723,
+          13.006375338706366
+        ],
+        "parameter_bound_indices": [
+          1
+        ],
+        "jacobian_condition": 12.473599419599232
+      },
+      "F": {
+        "success": true,
+        "fallback": false,
+        "nfev": 15,
+        "residual_calls": 120,
+        "wall_time_s": 0.8623218749999069,
+        "training_score": 0.9376813529024376,
+        "selection_score": 1.074268621041128,
+        "parameters": {
+          "capacities": [
+            30.235395553136527,
+            88.6486987882075,
+            23.0133899586801
+          ],
+          "contact": 0.9167455407086856,
+          "plate_base": 0.15,
+          "plate_fan": 1.2527499086874798,
+          "air_base": 1.0,
+          "air_fan": 1.5,
+          "bypass": 0.05,
+          "fan_tau": 13.002683074441235,
+          "source_air": 0.19725317608451176
+        },
+        "fitted_values": [
+          0.9167455407086856,
+          1.2527499086874798,
+          1.5117697776568264,
+          1.1081087348525938,
+          0.76711299862267,
+          13.002683074441235,
+          0.19725317608451176
+        ],
+        "parameter_bound_indices": [],
+        "jacobian_condition": 134.58636139572874
+      }
+    },
+    "training_rows": 120,
+    "selection_rows": 60,
+    "trial_count": 2,
+    "refit_after_selection": false,
+    "selection_channels": [
+      "plate_C",
+      "air_C",
+      "fan_fraction"
+    ],
+    "known_initial_state": "all temperatures=inlet and fan=.4",
+    "source_reference_input": false
+  },
+  "convection_mismatch": {
+    "selected_structure": "F",
+    "candidates": {
+      "S": {
+        "success": true,
+        "fallback": false,
+        "nfev": 12,
+        "residual_calls": 60,
+        "wall_time_s": 0.441062249999959,
+        "training_score": 1.001286097711268,
+        "selection_score": 1.345003164536608,
+        "parameters": {
+          "capacities": [
+            17.67836078515326,
+            70.71344314061304,
+            26.517541177729886
+          ],
+          "contact": 0.4659481569815217,
+          "plate_base": 0.15,
+          "plate_fan": 1.3720474836715717,
+          "air_base": 1.0,
+          "air_fan": 1.5,
+          "bypass": 0.05,
+          "fan_tau": 18.030376370272307,
+          "source_air": 0.0
+        },
+        "fitted_values": [
+          0.4659481569815217,
+          1.3720474836715717,
+          0.8839180392576629,
+          18.030376370272307
+        ],
+        "parameter_bound_indices": [],
+        "jacobian_condition": 11.09420224576211
+      },
+      "F": {
+        "success": true,
+        "fallback": false,
+        "nfev": 13,
+        "residual_calls": 104,
+        "wall_time_s": 0.7584154169999238,
+        "training_score": 0.9452705456898741,
+        "selection_score": 1.1460677979882123,
+        "parameters": {
+          "capacities": [
+            12.000000000001732,
+            68.69270139553686,
+            47.99999999999993
+          ],
+          "contact": 0.3178777211211163,
+          "plate_base": 0.15,
+          "plate_fan": 1.063482009516891,
+          "air_base": 1.0,
+          "air_fan": 1.5,
+          "bypass": 0.05,
+          "fan_tau": 18.0266827460237,
+          "source_air": 0.03976254037382737
+        },
+        "fitted_values": [
+          0.3178777211211163,
+          1.063482009516891,
+          0.6000000000000866,
+          0.8586587674442108,
+          1.5999999999999976,
+          18.0266827460237,
+          0.03976254037382737
+        ],
+        "parameter_bound_indices": [
+          2,
+          4
+        ],
+        "jacobian_condition": 192.62814571328803
+      }
+    },
+    "training_rows": 120,
+    "selection_rows": 60,
+    "trial_count": 2,
+    "refit_after_selection": false,
+    "selection_channels": [
+      "plate_C",
+      "air_C",
+      "fan_fraction"
+    ],
+    "known_initial_state": "all temperatures=inlet and fan=.4",
+    "source_reference_input": false
+  }
+}

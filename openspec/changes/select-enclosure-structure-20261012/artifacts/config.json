@@ -1,0 +1,159 @@
+{
+  "rigs": {
+    "proportional": {
+      "split": "validation",
+      "parameters": {
+        "capacities": [
+          22.0,
+          88.0,
+          33.0
+        ],
+        "contact": 0.65,
+        "plate_base": 0.15,
+        "plate_fan": 1.05,
+        "air_base": 1.0,
+        "air_fan": 1.5,
+        "bypass": 0.05,
+        "fan_tau": 20.0,
+        "source_air": 0.0
+      }
+    },
+    "independent_caps": {
+      "split": "validation",
+      "parameters": {
+        "capacities": [
+          29.0,
+          60.0,
+          40.0
+        ],
+        "contact": 0.85,
+        "plate_base": 0.15,
+        "plate_fan": 1.0,
+        "air_base": 1.0,
+        "air_fan": 1.5,
+        "bypass": 0.05,
+        "fan_tau": 25.0,
+        "source_air": 0.0
+      }
+    },
+    "path_variant": {
+      "split": "validation",
+      "parameters": {
+        "capacities": [
+          18.0,
+          104.0,
+          25.0
+        ],
+        "contact": 1.05,
+        "plate_base": 0.15,
+        "plate_fan": 1.3,
+        "air_base": 1.0,
+        "air_fan": 1.5,
+        "bypass": 0.05,
+        "fan_tau": 11.0,
+        "source_air": 0.14
+      }
+    },
+    "contact_variant": {
+      "split": "holdout",
+      "parameters": {
+        "capacities": [
+          28.0,
+          90.0,
+          35.0
+        ],
+        "contact": 0.48,
+        "plate_base": 0.15,
+        "plate_fan": 0.95,
+        "air_base": 1.0,
+        "air_fan": 1.5,
+        "bypass": 0.05,
+        "fan_tau": 32.0,
+        "source_air": 0.0
+      }
+    },
+    "path_capacity": {
+      "split": "holdout",
+      "parameters": {
+        "capacities": [
+          19.0,
+          108.0,
+          23.0
+        ],
+        "contact": 0.95,
+        "plate_base": 0.15,
+        "plate_fan": 1.25,
+        "air_base": 1.0,
+        "air_fan": 1.5,
+        "bypass": 0.05,
+        "fan_tau": 13.0,
+        "source_air": 0.18
+      }
+    },
+    "convection_mismatch": {
+      "split": "holdout",
+      "parameters": {
+        "capacities": [
+          25.0,
+          72.0,
+          38.0
+        ],
+        "contact": 0.9,
+        "plate_base": 0.15,
+        "plate_fan": 1.1,
+        "air_base": 1.0,
+        "air_fan": 1.9,
+        "bypass": 0.05,
+        "fan_tau": 18.0,
+        "source_air": 0.08
+      }
+    }
+  },
+  "settings": {
+    "dt": 5.0,
+    "target": 28.0,
+    "warning": 29.5,
+    "limit": 30.0,
+    "pwm_min": 0.2,
+    "pwm_max": 1.0,
+    "slew": 0.1,
+    "kp": 0.12,
+    "ki": 0.002,
+    "kd": 0.05,
+    "derivative_alpha": 0.25,
+    "backcalc": 0.2,
+    "input_cost": 0.15,
+    "slew_cost": 0.5,
+    "thermal_cost": 100.0
+  },
+  "seeds": {
+    "validation": [
+      612711,
+      612712
+    ],
+    "holdout": [
+      612721,
+      612722
+    ]
+  },
+  "open_methods": [
+    "S_physics",
+    "S_corrected",
+    "selected_physics",
+    "selected_corrected"
+  ],
+  "closed_methods": [
+    "S_pi",
+    "selected_pi",
+    "S_rank_h6",
+    "selected_rank_h6"
+  ],
+  "steps": 120,
+  "calibration_steps": 180,
+  "training_rows": 120,
+  "selection_rows": 60,
+  "calibration_seed": 612700,
+  "hidden_extra_heat_W": 0.15,
+  "selection_min_improvement_fraction": 0.05,
+  "evidence_class": "commissioning_selected_assumed_model_temperature_simulation"
+}

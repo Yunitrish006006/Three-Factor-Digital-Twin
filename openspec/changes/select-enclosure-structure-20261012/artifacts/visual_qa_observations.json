@@ -1,0 +1,197 @@
+{
+  "schema_version": 1,
+  "observations": [
+    {
+      "artifact": "docs/reports/professor_research_2026-10-12_zh.html",
+      "artifact_sha256": "b1cb9766eb737e3c3acfacbe0455177adb682605438a618f3da880389b303e00",
+      "observed_utc": "2026-10-12T07:38:23.782648+00:00",
+      "observer": "primary_agent",
+      "method": "isolated headless Chrome checks and actual screenshot/PDF image inspection",
+      "scope": "Final HTML at 1440/820/390 px: new structure section, existing results and LQR inspected; all 11 anchors and 38 links checked; keyboard details and Q/R, no runtime external assets or console errors. All ten print pages inspected.",
+      "status": "PASS",
+      "checks": {
+        "desktop": "PASS",
+        "tablet": "PASS",
+        "mobile": "PASS",
+        "anchors": "PASS",
+        "interaction": "PASS",
+        "console": "PASS",
+        "local_links": "PASS",
+        "offline_assets": "PASS",
+        "print": "PASS"
+      },
+      "evidence": [
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/browser_checks.json",
+          "sha256": "ebb47abbd65bb6d7b514985209e37e3831a75d35fcc577c0586bace3753d0482"
+        },
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/desktop-structure.png",
+          "sha256": "0c1fe1e2a5da66357bb3bd24d5841428efd85d50cf02343c2f53c8599ad68d0b"
+        },
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/tablet-structure.png",
+          "sha256": "d98b3a302f58d64b7613498f48089e3d276ce7a964f7817a153718365bbc5b85"
+        },
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/mobile-structure.png",
+          "sha256": "3a8354d731f06c5bc982ae0aca2d0234385e1d69a8fd5abc51f1d4a98034b22d"
+        },
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/desktop-results.png",
+          "sha256": "7ca722539878395ff09982282d3a966e2e574c4ef66c4e706398ca9ee339fc6a"
+        },
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/tablet-lqr.png",
+          "sha256": "463e54b69c7e660cc75882bed3f29c7e8c73cc7a0f04604eb98e09592fcef5e8"
+        },
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/mobile-lqr.png",
+          "sha256": "60cf95c5815b1bdfad76482e963f2bd8e38ba9dd01cff854c68b62741229d5bc"
+        },
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/report-print-01.png",
+          "sha256": "9f3fa52a5530bd1f3e02ae4b0779f34a14ce41b517119ff70725546aa9711fa7"
+        },
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/report-print-02.png",
+          "sha256": "c63ab428c9d3d648a99561645884676d69354b51097a0977fcb897c6d69ffa0c"
+        },
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/report-print-03.png",
+          "sha256": "71c2766f4006abceb8c5ce04dbec15e51f0ba85298e11274c9ecadb3786d507a"
+        },
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/report-print-04.png",
+          "sha256": "14f3d6f0f0a88a05438a4519ead4c9cf473139e640702e599bffcc7024e64710"
+        },
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/report-print-05.png",
+          "sha256": "8298539d0d119747a98c6ed63e3bd6f260ca52331c380b25f8161a1c0fc6697e"
+        },
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/report-print-06.png",
+          "sha256": "c417225d58f00a5575b6556095a2f511cd8e0ab8b4c1f8228e2890567de28365"
+        },
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/report-print-07.png",
+          "sha256": "615da41bcee170b2231552b39987cf8861fe3fd2f59a8fe5c1f6b76db33b5264"
+        },
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/report-print-08.png",
+          "sha256": "242697d2e23f60a8c50bc7db7fe3cee4cfe29233c3c91035988919e9f79b16a6"
+        },
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/report-print-09.png",
+          "sha256": "3aa4ad27bc4b9745cb5e7dd3122ea42b7055ad83c145d72493fc31d256078178"
+        },
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/report-print-10.png",
+          "sha256": "86b5e89ab41e7fe1f44e2c5ac16ea396e0bd1549f2ec398101984fcd0bd38572"
+        }
+      ]
+    },
+    {
+      "artifact": "docs/reports/professor_research_2026-10-12_zh.pdf",
+      "artifact_sha256": "ff078da548a41f5cceaa2f22ed9c6dfe30e8dfff726d34fbe54ffe40c3897a2a",
+      "observed_utc": "2026-10-12T07:38:23.785243+00:00",
+      "observer": "primary_agent",
+      "method": "isolated headless Chrome checks and actual screenshot/PDF image inspection",
+      "scope": "All actual PDF pages 1-10 visually inspected: text, chart, tables, expanded details and page continuation readable, no clipped content.",
+      "status": "PASS",
+      "checks": {
+        "inspected_pages": "PASS"
+      },
+      "evidence": [
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/report-print-01.png",
+          "sha256": "9f3fa52a5530bd1f3e02ae4b0779f34a14ce41b517119ff70725546aa9711fa7"
+        },
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/report-print-02.png",
+          "sha256": "c63ab428c9d3d648a99561645884676d69354b51097a0977fcb897c6d69ffa0c"
+        },
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/report-print-03.png",
+          "sha256": "71c2766f4006abceb8c5ce04dbec15e51f0ba85298e11274c9ecadb3786d507a"
+        },
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/report-print-04.png",
+          "sha256": "14f3d6f0f0a88a05438a4519ead4c9cf473139e640702e599bffcc7024e64710"
+        },
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/report-print-05.png",
+          "sha256": "8298539d0d119747a98c6ed63e3bd6f260ca52331c380b25f8161a1c0fc6697e"
+        },
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/report-print-06.png",
+          "sha256": "c417225d58f00a5575b6556095a2f511cd8e0ab8b4c1f8228e2890567de28365"
+        },
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/report-print-07.png",
+          "sha256": "615da41bcee170b2231552b39987cf8861fe3fd2f59a8fe5c1f6b76db33b5264"
+        },
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/report-print-08.png",
+          "sha256": "242697d2e23f60a8c50bc7db7fe3cee4cfe29233c3c91035988919e9f79b16a6"
+        },
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/report-print-09.png",
+          "sha256": "3aa4ad27bc4b9745cb5e7dd3122ea42b7055ad83c145d72493fc31d256078178"
+        },
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/report-print-10.png",
+          "sha256": "86b5e89ab41e7fe1f44e2c5ac16ea396e0bd1549f2ec398101984fcd0bd38572"
+        }
+      ]
+    },
+    {
+      "artifact": "docs/papers/thesis/thesis_draft_zh.pdf",
+      "artifact_sha256": "ab9671934ccb8f9df28fe90964df60cf32648b84660591b855695ca47eb26726",
+      "observed_utc": "2026-10-12T07:38:23.788331+00:00",
+      "observer": "primary_agent",
+      "method": "isolated headless Chrome checks and actual screenshot/PDF image inspection",
+      "scope": "Actual PDF file pages90,91,92 inspected for readable changed/adjacent content. Page92 contains a single adjacent continuation line; overall thesis pagination was not accepted as a complete visual review. No Office rendering claim.",
+      "status": "PASS",
+      "checks": {
+        "inspected_pages": "PASS"
+      },
+      "evidence": [
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/thesis-90.png",
+          "sha256": "46e127190f2cc367edf874dc5d90ca7fe46e1b0c993173771b0108969c5880c1"
+        },
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/thesis-91.png",
+          "sha256": "e294669d8f156889d298eda0d1deeb698d81cdafc7575544d92d2ab336f4788f"
+        },
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/thesis-92.png",
+          "sha256": "3500ce1e92105af5777d4ed2c89891f5f6bf8be347bdc31423aabd03293739af"
+        }
+      ]
+    },
+    {
+      "artifact": "docs/papers/ieee/paper.pdf",
+      "artifact_sha256": "68dbdc21f906a48ce6fe7a3c23e38d3c8af1298905dd5a9907413cd20133a512",
+      "observed_utc": "2026-10-12T07:38:23.789330+00:00",
+      "observer": "primary_agent",
+      "method": "isolated headless Chrome checks and actual screenshot/PDF image inspection",
+      "scope": "Actual PDF file pages 7,8 inspected. New subsection, earlier limitations and bibliography readable; no complete manuscript visual claim.",
+      "status": "PASS",
+      "checks": {
+        "inspected_pages": "PASS"
+      },
+      "evidence": [
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/ieee-7.png",
+          "sha256": "8806a497da62d9386fba3ee457efc21d8caee0bff3531dec3b1c7a9c4ca4df72"
+        },
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/ieee-8.png",
+          "sha256": "2092fb2a62760592391d5bad2dfaaef646315f1aed4b3735960be267e0121a1a"
+        }
+      ]
+    }
+  ]
+}

@@ -38,3 +38,16 @@
 ```
 
 第一個命令只有輸入感測；第二個命令才載入參考溫度。實驗程式不得把參考檔合入控制輸入。示範檔與本次所有數字屬合成資料；沒有收到實測資料就維持 `NOT_EVALUATED`。
+
+## 第二階段探索候選與校正切分
+
+另備妥 S／F 有限模型選擇的離線介面：
+
+```sh
+.venv-mpc/bin/python scripts/run_calibrated_enclosure.py --input observations.csv --commissioning commissioning.csv --method pi --output structure_proposals.json
+.venv-mpc/bin/python scripts/score_enclosure_reference.py --proposals structure_proposals.json --reference reference.csv --output structure_scores.json
+```
+
+此版本要求恰好 180 筆、間隔 5 秒的校正記錄；前 120 筆辨識、後 60 筆選擇，沒有選擇後重新擬合。S 辨識共同容量，F 分別辨識三個容量與源—氣熱導；初始平衡、固定其餘係數等假設仍須成立。每個模型單一起點、max_nfev=40，成本包含數值 Jacobian 的殘差呼叫。
+
+第二階段的可見擬合較好，但新合成 holdout 隱藏熱源誤差反而增加；此介面是探索候選，不表示已驗證較佳，不直接取代既有流程。尚無實測平台，禁止以合成係數推定真實容量、熱導或對流。實機若不能滿足此初始條件或取樣程序，需先登錄新的量測／模型規則。

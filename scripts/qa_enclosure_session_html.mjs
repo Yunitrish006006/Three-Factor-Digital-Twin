@@ -7,7 +7,7 @@ const root=fileURLToPath(new URL('../',import.meta.url));
 const dependencies=createRequire(path.join(process.env.ENCLOSURE_QA_DEPENDENCIES || process.cwd(),'package.json'));
 const { chromium }=dependencies('playwright');
 const html=path.join(root,'docs/reports/professor_research_2026-10-12_zh.html');
-const output=path.join(root,'openspec/changes/integrate-enclosure-session-20261012/artifacts/qa');
+const output=path.join(root,'openspec/changes/select-enclosure-structure-20261012/artifacts/qa');
 await fs.mkdir(output,{recursive:true});
 const browser=await chromium.launch({executablePath:process.env.ENCLOSURE_CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true});
 try {
@@ -27,6 +27,7 @@ try {
     await page.screenshot({path:path.join(output,name+'.png'),fullPage:true});
     await page.locator('#results').screenshot({path:path.join(output,name+'-results.png')});
     await page.locator('#lqr').screenshot({path:path.join(output,name+'-lqr.png')});
+    await page.locator('#structure').screenshot({path:path.join(output,name+'-structure.png')});
     checks.viewports.push({name,width,...sizes});
   }
   const structure=await page.evaluate(()=>{

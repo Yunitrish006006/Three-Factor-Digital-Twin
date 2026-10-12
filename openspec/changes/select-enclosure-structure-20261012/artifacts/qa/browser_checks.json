@@ -1,0 +1,86 @@
+{
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "scroll": 1440
+    },
+    {
+      "name": "tablet",
+      "width": 820,
+      "scroll": 820
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "scroll": 390
+    }
+  ],
+  "errors": [],
+  "externalRequests": [],
+  "structure": {
+    "duplicateIds": [],
+    "links": [
+      "#assignment",
+      "#devices",
+      "#model",
+      "#experiment",
+      "#results",
+      "#problems",
+      "#structure",
+      "#lqr",
+      "#hardware",
+      "#talk",
+      "#sources",
+      "../research/professor_meeting_actions_2026-10-06_zh.md",
+      "https://www.ti.com/lit/an/sprabi3b/sprabi3b.pdf",
+      "https://www.noctua.at/en/products/na-fd1",
+      "https://www.ti.com/lit/an/sprabi3b/sprabi3b.pdf",
+      "../../openspec/changes/integrate-enclosure-session-20261012/protocol.md",
+      "professor_research_2026-10-06_zh.html",
+      "../../openspec/changes/select-enclosure-structure-20261012/protocol.md",
+      "../../openspec/changes/select-enclosure-structure-20261012/artifacts/result.json",
+      "../../openspec/changes/select-enclosure-structure-20261012/artifacts/calibration.json",
+      "../../openspec/changes/select-enclosure-structure-20261012/artifacts/verification.json",
+      "https://boletin.math.org.mx/pdf/2/5/BSMM%282%29.5.102-119.pdf",
+      "../research/lqr_kalman1960_reading_2026-10-06_zh.md",
+      "lqr_oral_script_2026-10-06_zh.md",
+      "../research/enclosure_hardware_execution_2026-10-12_zh.md",
+      "../templates/enclosure_observations.csv",
+      "../templates/enclosure_commissioning.csv",
+      "../templates/enclosure_reference.csv",
+      "professor_oral_script_2026-10-12_zh.md",
+      "https://docs.scipy.org/doc/scipy-1.14.1/reference/generated/scipy.linalg.solve_discrete_are.html",
+      "https://docs.scipy.org/doc/scipy-1.14.1/reference/optimize.minimize-slsqp.html",
+      "https://docs.scipy.org/doc/scipy-1.14.1/reference/generated/scipy.optimize.least_squares.html",
+      "../../openspec/changes/integrate-enclosure-session-20261012/artifacts/result.json",
+      "../../openspec/changes/integrate-enclosure-session-20261012/artifacts/verification.json",
+      "../../openspec/changes/integrate-enclosure-session-20261012/artifacts/calibration.json",
+      "../../openspec/changes/integrate-enclosure-session-20261012/artifacts/freeze.json",
+      "../research/enclosure_transfer_sources_2026-10-06_zh.md",
+      "professor_catchup_report_2026-10-05_zh.html"
+    ],
+    "anchors": [
+      "#assignment",
+      "#devices",
+      "#model",
+      "#experiment",
+      "#results",
+      "#problems",
+      "#structure",
+      "#lqr",
+      "#hardware",
+      "#talk",
+      "#sources"
+    ]
+  },
+  "missingLocalLinks": [],
+  "keyboardDetails": true,
+  "qrKeyboardInteraction": true,
+  "printExpandedDetails": true,
+  "printWidth": {
+    "width": 1440,
+    "scroll": 1440
+  },
+  "observed_utc": "2026-10-12T07:34:00.793Z"
+}

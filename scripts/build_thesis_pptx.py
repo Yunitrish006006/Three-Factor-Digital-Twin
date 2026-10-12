@@ -3149,3 +3149,5 @@ if __name__ == "__main__":
 if __name__ == "__main__":
     from enclosure_session_summary import sync_pptx_outputs as sync_enclosure_session_pptx_outputs
     sync_enclosure_session_pptx_outputs()
+    from enclosure_structure_summary import sync_pptx_outputs as sync_enclosure_structure_pptx_outputs
+    sync_enclosure_structure_pptx_outputs()
