@@ -25,6 +25,14 @@
 
 [第二階段規則](../../openspec/changes/select-enclosure-structure-20261012/protocol.md) · [新結果與逐筆核對](../../openspec/changes/select-enclosure-structure-20261012/artifacts/verification.json)
 
+### 10/12 補充：先找公開模擬場景，整理 LQR 注意事項
+
+已查到 SimScale 電子盒的雲端 CHT 教學、UVA HotSpot、TCLab 無設備模型與 BOPTEST REST。HotSpot 原版 block example及TCLab固定輸入介面已跑通；SimScale尚未登入／匯入／求解，BOPTEST本次DNS解析失敗。SimScale教學是穩態迭代，不直接當作LQR的物理時間序列；HotSpot範例45°C也超過既有20–30°C方法驗證域。
+
+LQR實用稿已整理平衡點、狀態與量測、權重量尺、連續／離散Riccati、可穩定／可偵測、估測、飽和／延遲、追蹤與公平比較，以及原文p.104／114的假設。完整指南與新場景區納入同一份HTML；這是文獻／執行準備，沒有新增控制器效益結果或改動先前研究結論。
+
+[公開場景整理](public_thermal_simulation_scenes_2026-10-12_zh.md) · [LQR實用整理](lqr_practical_guide_2026-10-12_zh.md) · [readiness紀錄](../../openspec/changes/discover-public-thermal-scenes-20261012/artifacts/readiness.json)
+
 ## 教授交辦原意
 
 1. 找到金屬片、導熱風管等裝置的場景，用來加強導熱。

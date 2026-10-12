@@ -14,6 +14,7 @@ import matplotlib.pyplot as plt
 matplotlib.rcParams['svg.hashsalt']='enclosure-session-20261012'
 from enclosure_session_summary import ROOT,ARTIFACTS,summary,LABELS,METHODS
 from enclosure_structure_summary import summary as structure_summary, ARTIFACTS as STRUCTURE_ARTIFACTS
+from public_thermal_report_content import scene_section, lqr_details
 
 
 def structure_section(data):
@@ -89,6 +90,7 @@ def build():
     lqr=re.search(r'<section id="lqr">.*?</section>',old,re.S).group()
     lqr=lqr.replace('下週介紹：','本週介紹：').replace('備稿完成，尚未向教授報告。','備稿完成；口頭報告是否完成尚無紀錄。')
     lqr=lqr.replace('</section>','<p>本輪實作採離散模型與離散代數 Riccati 方程；上面的連續時間公式只用來介紹主線。實際 Q=diag(1,0.25,0.1,0.02)、R=0.15，狀態為熱源、金屬片、空氣與風扇比例相對平衡點的偏差；共同的 PWM／變化率限制另套用。</p></section>')
+    lqr=lqr.replace('</section>',lqr_details()+'</section>')
     script=re.search(r'<script>(.*?)</script>',old,re.S).group(1)
     table=''.join('<tr><th scope="row">'+LABELS[m]+'</th>'+''.join(f'<td>{closed[m][key]:.4f}</td>' for key in
                   ('tracking_mae_C','source_mae_C','fan_energy_proxy_Wh','overtemp_s','command_variation','compute_mean_ms'))+'</tr>' for m in METHODS)
@@ -112,11 +114,11 @@ def build():
 <tr><th><a href="https://docs.scipy.org/doc/scipy-1.14.1/reference/generated/scipy.optimize.least_squares.html">SciPy least_squares</a>，10/12</th><td>有限參數、單一起點與 nfev 的計數範圍；本輪官方來源已核對。</td><td>S／F 各一次有限辨識，另記錄數值 Jacobian 的完整殘差呼叫。</td></tr>
 </tbody></table></div>'''
     talk='''<p><strong>研究進度約十分鐘，LQR 與代表論文約五分鐘，共十五分鐘。</strong>正文可依下列主線朗讀，技術細節另行展開。</p>
-<h3>前兩分鐘 我如何回應傳熱場景的交辦</h3><p>我先整理金屬片、接觸介面與風管的作用。金屬片主要改變固體導熱與接觸熱阻，風管主要改變入口和對流。我選擇可控熱源、金屬片與風扇作候選平台，但目前沒有设备或資料，所以先把軟體和量測程序完成。</p>
+<h3>前兩分鐘 我如何回應傳熱場景的交辦</h3><p>我先整理金屬片、接觸介面與風管，再找不用設備的公開場景。SimScale 電子盒包含接觸與風扇，但教學是穩態分析；我另跑通 HotSpot 的公開晶片熱 trace 與 TCLab 無硬體介面。幾何散熱和逐步控制回答不同問題，我需要先選場景用途，再建立新的驗證規則。</p>
 <h3>第三到第五分鐘 我改進了什麼</h3><p>我把物理主模型、有限辨識、稀疏校正和動作選擇接成一個流程。熱源參考只交給評分，不給模型或控制器。第一階段辨識共同容量與風扇延遲，第二階段再測試獨立容量與新增熱導。新模型只用前 120 筆辨識、後 60 筆選擇，規則固定後才開啟新的測試。</p>
 <h3>第六到第八分鐘 我遇到的反例</h3><p>第一階段平均估測有下降，但四組只有兩組改善，六步排序也未達門檻。第二階段的可見擬合較好，卻讓熱源誤差由 1.0764 增至 1.3468°C，六步追蹤誤差增加約 2.95%。退步主要在對流係數失配平台，熱容量還碰到搜尋邊界。我因此保留兩階段的不支持判定：增加模型自由度不能保證熱源估測或控制更好。</p>
 <h3>第九到第十分鐘 我如何準備實機驗證</h3><p>我已準備輸入、校正與獨立參考三種資料模板，以及離線分析和獨立評分。下一步要先確認感測精度、初始條件、功率與 RPM 尺度，再凍結設備的實驗程序。軟體目前產生操作提案，沒有直接控制硬體。</p>
-<h3>最後五分鐘 LQR 與 Kalman 1960</h3><p>我介紹的 LQR 是線性二次調節器：用線性狀態模型描述變化，用 Q 與 R 表達狀態偏差和操作代價，再透過 Riccati 方程求回授增益。Kalman 1960 提供理論基礎，但原文控制部分假設狀態精確已知，穩定定理也有條件。我現在把它接在稀疏估測後，另處理限幅；不能因此說真實機箱已經安全或最優。原文問題、核心式與限制可配合上面的頁碼筆記說明。</p>'''
+<h3>最後五分鐘 LQR 與 Kalman 1960</h3><p>我介紹的 LQR 用線性模型與二次成本求回授。先確認可達平衡點，再用 Q／R 表達偏差與操作權衡；固定取樣下使用離散 Riccati，檢查殘差和閉迴路特徵值。Kalman1960控制部分假設狀態精確已知，穩定定理有條件，而我需要稀疏估測。限幅、風扇延遲與擾動仍要另外驗證，不能把求解成功當成真實機箱安全或最優。完整五分鐘稿與九項注意事項已另整理。</p>'''
     document=f'''<!doctype html>
 <html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>教授交辦進度與 LQR 論文報告 2026-10-12</title><style>
@@ -125,17 +127,17 @@ def build():
 main{{max-width:1100px;margin:auto;padding:36px 24px 70px}}header,section{{background:white;padding:30px;margin:20px 0;border:1px solid var(--line);border-radius:14px;scroll-margin-top:20px}}
 h1{{font-size:clamp(28px,4vw,42px);line-height:1.35}}h2{{font-size:25px;line-height:1.5}}h3{{font-size:19px}}p{{margin:15px 0}}a{{color:var(--accent)}}
 .meta,.caption{{font-size:14px;color:var(--muted)}}.lead{{font-size:20px}}nav{{display:flex;flex-wrap:wrap;gap:8px}}nav a{{text-decoration:none;padding:4px 11px;background:#eaf0f5;border-radius:7px}}
-.table-wrap{{max-width:100%;overflow-x:auto;margin:20px 0}}table{{border-collapse:collapse;width:100%;font-size:14px}}th,td{{padding:11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}}thead th{{background:#edf3f8}}.numbers th,.numbers td{{white-space:nowrap}}
+.table-wrap{{max-width:100%;overflow-x:auto;margin:20px 0}}table{{border-collapse:collapse;width:100%;font-size:14px}}th,td{{padding:11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}}thead th{{background:#edf3f8}}.numbers th,.numbers td{{white-space:nowrap}}.scenes{{min-width:700px}}.scenes th:first-child{{min-width:120px}}
 .flow{{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}}.flow div{{padding:16px;background:#edf3f8;border-radius:8px}}.flow strong{{display:block}}figure{{margin:25px 0;max-width:100%;overflow-x:auto}}figure svg{{display:block;width:100%;min-width:720px;height:auto}}
 details{{padding:13px 0;border-top:1px solid var(--line)}}summary{{cursor:pointer;font-weight:600}}pre{{white-space:pre-wrap;overflow-wrap:anywhere;background:#f2f5f7;padding:16px;font:14px/1.8 ui-monospace,monospace}}
 .controls{{display:grid;grid-template-columns:1fr 1fr;gap:20px}}label,input{{display:block;width:100%}}output{{display:block;padding:16px;background:#edf3f8;margin-top:14px}}:focus-visible{{outline:3px solid #bf8b35;outline-offset:3px}}
 @media(max-width:650px){{main{{padding:12px 10px 40px}}header,section{{padding:20px 16px}}.flow,.controls{{grid-template-columns:1fr}}th,td{{padding:9px}}}}
-@media print{{html{{scroll-behavior:auto}}body{{background:white;font-size:10.5pt;line-height:1.65}}main{{max-width:none;padding:0}}header,section{{padding:12px 0;margin:12px 0;border:0;border-radius:0}}nav,.controls{{display:none}}h2,h3,summary{{break-after:avoid}}figure,tr,pre{{break-inside:avoid}}figure{{overflow:visible}}figure svg{{min-width:0}}.table-wrap{{overflow:visible}}table{{font-size:8pt}}th,td{{padding:5px}}.numbers th,.numbers td{{white-space:normal}}a{{color:inherit}}.flow{{grid-template-columns:repeat(2,1fr)}}details{{break-inside:auto}}@page{{size:A4;margin:16mm}}}}
+@media print{{html{{scroll-behavior:auto}}body{{background:white;font-size:10.5pt;line-height:1.65}}main{{max-width:none;padding:0}}header,section{{padding:12px 0;margin:12px 0;border:0;border-radius:0}}nav,.controls{{display:none}}h2,h3,summary{{break-after:avoid}}figure,tr,pre{{break-inside:avoid}}figure{{overflow:visible}}figure svg{{min-width:0}}.table-wrap{{overflow:visible}}table{{font-size:8pt}}.scenes{{min-width:0}}th,td{{padding:5px}}.numbers th,.numbers td{{white-space:normal}}a{{color:inherit}}.flow{{grid-template-columns:repeat(2,1fr)}}details{{break-inside:auto}}@page{{size:A4;margin:16mm}}}}
 </style></head><body><main><header>
 <p class="meta">報告整理 2026-10-12｜涵蓋 10/5–10/12｜前次文獻／原型 10/6；本輪新模擬 10/12｜口頭報告尚無完成紀錄</p>
 <h1>我把機箱溫度模型接成可驗證流程<br>並準備 LQR 代表論文報告</h1>
 <p class="lead">我完成了場景查證、量測資料介面、稀疏估測、控制比較與第二階段模型選擇。兩階段都保留未達判準的結果；可見感測擬合較好仍不保證熱源更準，實機待設備到位。</p>
-<nav aria-label="報告目錄"><a href="#assignment">交辦進度</a><a href="#devices">傳熱場景</a><a href="#model">模型流程</a><a href="#experiment">第一階段</a><a href="#results">結果</a><a href="#problems">問題</a><a href="#structure">第二階段</a><a href="#lqr">LQR 論文</a><a href="#hardware">實機準備</a><a href="#talk">十五分鐘講稿</a><a href="#sources">來源</a></nav>
+<nav aria-label="報告目錄"><a href="#assignment">交辦進度</a><a href="#devices">傳熱場景</a><a href="#model">模型流程</a><a href="#experiment">第一階段</a><a href="#results">結果</a><a href="#problems">問題</a><a href="#structure">第二階段</a><a href="#online">公開模擬場景</a><a href="#lqr">LQR 與注意事項</a><a href="#hardware">實機準備</a><a href="#talk">十五分鐘講稿</a><a href="#sources">來源</a></nav>
 </header>
 <section id="assignment"><h2>教授交代我的三件事</h2><div class="table-wrap"><table><thead><tr><th>交辦</th><th>這次交付</th><th>完成範圍</th></tr></thead><tbody>
 <tr><th>找金屬片與風管場景</th><td>場景比較、传熱路徑、量測配置。</td><td>資料整理完成；實體效果未量測。</td></tr>
@@ -163,6 +165,7 @@ C_a dT_a/dt = (G_p+k_p f)(T_p−T_a) − (G_a+k_a f)(T_a−T_in)
 <p>接觸／容量平台在稀疏校正後退步，說明固定噪聲與模型設定不能保證每個情境改善。額外路徑的辨識參數碰到上界，則提醒我搜尋成功不等於方程正確；模型可能用錯誤係數補償缺少的路徑。我保留結果，沒有針對 holdout 加平台例外。</p>
 <p>控制方面，PI 的追蹤略好，MPC 或排序的能耗 proxy 較低。下一步需要先決定重視追蹤、超溫還是操作成本，再用新的資料檢查共同程序；不能只因某個方法較複雜就預期它勝出。</p><p>{escape(data['boundary'])}</p></section>
 {structure_section(second)}
+{scene_section()}
 {lqr}
 <section id="hardware"><h2>設備到位後我可以如何開始</h2><p>我已備妥獨立輸入、校正與參考溫度模板，以及離線提案和獨立評分程序。先做感測共址校正、確認熱平衡初始條件、量測功率與 RPM 尺度，再以新的事前規則固定平台可操作範圍、資料切分及停止條件。</p>
 <p><a href="../research/enclosure_hardware_execution_2026-10-12_zh.md">完整實機程序</a> · <a href="../templates/enclosure_observations.csv">觀測模板</a> · <a href="../templates/enclosure_commissioning.csv">校正模板</a> · <a href="../templates/enclosure_reference.csv">獨立參考模板</a></p>

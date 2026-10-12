@@ -6,17 +6,17 @@
 main{max-width:1100px;margin:auto;padding:36px 24px 70px}header,section{background:white;padding:30px;margin:20px 0;border:1px solid var(--line);border-radius:14px;scroll-margin-top:20px}
 h1{font-size:clamp(28px,4vw,42px);line-height:1.35}h2{font-size:25px;line-height:1.5}h3{font-size:19px}p{margin:15px 0}a{color:var(--accent)}
 .meta,.caption{font-size:14px;color:var(--muted)}.lead{font-size:20px}nav{display:flex;flex-wrap:wrap;gap:8px}nav a{text-decoration:none;padding:4px 11px;background:#eaf0f5;border-radius:7px}
-.table-wrap{max-width:100%;overflow-x:auto;margin:20px 0}table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}thead th{background:#edf3f8}.numbers th,.numbers td{white-space:nowrap}
+.table-wrap{max-width:100%;overflow-x:auto;margin:20px 0}table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}thead th{background:#edf3f8}.numbers th,.numbers td{white-space:nowrap}.scenes{min-width:700px}.scenes th:first-child{min-width:120px}
 .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.flow div{padding:16px;background:#edf3f8;border-radius:8px}.flow strong{display:block}figure{margin:25px 0;max-width:100%;overflow-x:auto}figure svg{display:block;width:100%;min-width:720px;height:auto}
 details{padding:13px 0;border-top:1px solid var(--line)}summary{cursor:pointer;font-weight:600}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f2f5f7;padding:16px;font:14px/1.8 ui-monospace,monospace}
 .controls{display:grid;grid-template-columns:1fr 1fr;gap:20px}label,input{display:block;width:100%}output{display:block;padding:16px;background:#edf3f8;margin-top:14px}:focus-visible{outline:3px solid #bf8b35;outline-offset:3px}
 @media(max-width:650px){main{padding:12px 10px 40px}header,section{padding:20px 16px}.flow,.controls{grid-template-columns:1fr}th,td{padding:9px}}
-@media print{html{scroll-behavior:auto}body{background:white;font-size:10.5pt;line-height:1.65}main{max-width:none;padding:0}header,section{padding:12px 0;margin:12px 0;border:0;border-radius:0}nav,.controls{display:none}h2,h3,summary{break-after:avoid}figure,tr,pre{break-inside:avoid}figure{overflow:visible}figure svg{min-width:0}.table-wrap{overflow:visible}table{font-size:8pt}th,td{padding:5px}.numbers th,.numbers td{white-space:normal}a{color:inherit}.flow{grid-template-columns:repeat(2,1fr)}details{break-inside:auto}@page{size:A4;margin:16mm}}
+@media print{html{scroll-behavior:auto}body{background:white;font-size:10.5pt;line-height:1.65}main{max-width:none;padding:0}header,section{padding:12px 0;margin:12px 0;border:0;border-radius:0}nav,.controls{display:none}h2,h3,summary{break-after:avoid}figure,tr,pre{break-inside:avoid}figure{overflow:visible}figure svg{min-width:0}.table-wrap{overflow:visible}table{font-size:8pt}.scenes{min-width:0}th,td{padding:5px}.numbers th,.numbers td{white-space:normal}a{color:inherit}.flow{grid-template-columns:repeat(2,1fr)}details{break-inside:auto}@page{size:A4;margin:16mm}}
 </style></head><body><main><header>
 <p class="meta">報告整理 2026-10-12｜涵蓋 10/5–10/12｜前次文獻／原型 10/6；本輪新模擬 10/12｜口頭報告尚無完成紀錄</p>
 <h1>我把機箱溫度模型接成可驗證流程<br>並準備 LQR 代表論文報告</h1>
 <p class="lead">我完成了場景查證、量測資料介面、稀疏估測、控制比較與第二階段模型選擇。兩階段都保留未達判準的結果；可見感測擬合較好仍不保證熱源更準，實機待設備到位。</p>
-<nav aria-label="報告目錄"><a href="#assignment">交辦進度</a><a href="#devices">傳熱場景</a><a href="#model">模型流程</a><a href="#experiment">第一階段</a><a href="#results">結果</a><a href="#problems">問題</a><a href="#structure">第二階段</a><a href="#lqr">LQR 論文</a><a href="#hardware">實機準備</a><a href="#talk">十五分鐘講稿</a><a href="#sources">來源</a></nav>
+<nav aria-label="報告目錄"><a href="#assignment">交辦進度</a><a href="#devices">傳熱場景</a><a href="#model">模型流程</a><a href="#experiment">第一階段</a><a href="#results">結果</a><a href="#problems">問題</a><a href="#structure">第二階段</a><a href="#online">公開模擬場景</a><a href="#lqr">LQR 與注意事項</a><a href="#hardware">實機準備</a><a href="#talk">十五分鐘講稿</a><a href="#sources">來源</a></nav>
 </header>
 <section id="assignment"><h2>教授交代我的三件事</h2><div class="table-wrap"><table><thead><tr><th>交辦</th><th>這次交付</th><th>完成範圍</th></tr></thead><tbody>
 <tr><th>找金屬片與風管場景</th><td>場景比較、傳熱路徑、量測配置。</td><td>資料整理完成；實體效果未量測。</td></tr>
@@ -1727,6 +1727,20 @@ z
 三個容量倍率分別辨識；其他對流／旁路係數仍是假設。</pre></details>
 <p>可見金屬片／空氣／風扇擬合較好，仍不足以保證隱藏熱源更準。對流失配平台的 F 熱源容量達下界、空氣容量達上界，提醒我模型係數可能互相補償；局部 Jacobian 條件數不是全域可辨識性證明。這次只隔離模型結構與 PI／六步排序，沒有重做全部控制器排名；前一階段 LQR／MPC 比較與負面結果仍保留。F 保留為探索候選，未因校正擬合較好就升格為較佳方法。這是有限校正後的合成溫度實驗，沒有設備量測、實體控制或完整三因子遷移證據。</p><p>因此我保留這次改進的實作與反例，但不把 F 說成已驗證較佳的熱源模型。下一階段應先用新的功率激勵與獨立參考檢查容量／熱導的區分能力，再制定新的驗證規則。</p>
 <p>我已重算全部 96 回合、11,520 筆指標，核對另 1,080 筆校正來源，檢查時序切分、選擇規則、獨立熱動態與只讀觀測回放；六種破壞案例均被拒絕。514 個歷史證據檔案位元組未變，一次性 E15 與先前機箱實驗沒有重跑。</p><p><a href="../../openspec/changes/select-enclosure-structure-20261012/protocol.md">第二階段事前規則</a> · <a href="../../openspec/changes/select-enclosure-structure-20261012/artifacts/result.json">完整結果</a> · <a href="../../openspec/changes/select-enclosure-structure-20261012/artifacts/calibration.json">模型選擇與成本</a> · <a href="../../openspec/changes/select-enclosure-structure-20261012/artifacts/verification.json">逐筆核對</a></p></section>
+<section id="online"><h2>我先找外部公開場景，不必等設備到位</h2>
+<p>我需要能改變熱輸入或散熱操作、再取得溫度的外部場景。只有已記錄的資料不能回答另一個風扇命令的反事實；公開模型、雲端 CFD 與逐步 REST 模擬也不能混為一談。本次查閱與功能檢查日期為 2026-10-12。</p>
+<p class="caption">手機可左右捲動下表，查看完整候選、執行狀態與用途。</p><div class="table-wrap" tabindex="0" role="region" aria-label="公開模擬場景比較，可左右捲動"><table class="scenes"><thead><tr><th>公開候選</th><th>能模擬什麼</th><th>實際確認到哪裡</th><th>我如何使用</th></tr></thead><tbody>
+<tr><th><a href="https://www.simscale.com/docs/tutorials/thermal-management-cht-analysis-electronics-box/">SimScale 電子盒</a></th><td>發熱元件、散熱器、接觸熱阻、空氣與風扇曲線。</td><td>官方雲端教學與專案匯入入口已查；尚未登入、匯入或求解。</td><td>幾何／傳熱路徑優先候選。此教學是穩態，迭代不是物理時間，不能直接作 LQR 的每步控制。</td></tr>
+<tr><th><a href="https://github.com/uvahotspot/HotSpot">UVA HotSpot</a></th><td>晶片 floorplan、功率 trace、封裝與散熱參數 → 瞬態／穩態溫度。</td><td>已編譯並執行原版 example1 一個 block-model 命令，產生 100 筆 × 30 欄有限值。</td><td>公開電子熱模型候選。本次固定對流熱阻，詳細風扇／閉迴路未做；不是機箱 CFD。</td></tr>
+<tr><th><a href="https://tclab.readthedocs.io/en/latest/notebooks/04_Emulation_of_TCLab_for_Offline_Use.html">TCLab 無設備模擬</a></th><td>雙加熱器、雙溫度感測、熱耦合與感測延遲／量化。</td><td>官方模型固定輸入介面已跑通，沒有連接硬體或比較控制器。</td><td>較快的估測／控制流程練習平台。操作是加熱功率，沒有風扇、風管與機箱幾何。</td></tr>
+<tr><th><a href="https://ibpsa.github.io/project1-boptest/docs-userguide/getting_started.html">BOPTEST REST</a></th><td>室內／建築空調模型，可初始化、送控制、推進與取量測。</td><td>本次 /testcases 與核准網路重試皆無法解析主機，未建立實例。</td><td>不同場景的方法驗證候選；目前未接通，不能由一次 DNS 失敗推論永久不可用。</td></tr>
+</tbody></table></div>
+<p>我先把 SimScale 用於理解機箱的接觸／氣流路徑，把 HotSpot 用於公開電子熱模型，把 TCLab 用於控制介面準備。選擇下一階段前，要先確認要回答的是幾何散熱，還是時序控制；公開範例跑通不代表我的方法已在它上面有效。</p>
+<details><summary>使用條件、溫度域與下一階段如何安排</summary>
+<p><a href="https://www.simscale.com/product/pricing/">SimScale 官方方案</a>列有免費 Community 與有限定量模擬額度。帳號、特定教學功能與剩餘額度仍未確認；本次沒有啟動雲端計算。文字工具未開啟教學的專案匯入／完成連結，所以不能稱實際匯入已驗證。</p>
+<p>HotSpot 原版例子的入口／初始溫度是 318.15 K＝45°C，超過目前方法 20–30°C 的既有驗證範圍；本次僅一秒 trace，也不代表充分暖機。風扇 RPM 與對流的映射、可重設的逐步 adapter 和新溫度域都需另固定。TCLab 的雙加熱輸入則不能直接換名為風扇 PWM。</p>
+<p>若選雲端電子盒，先確認瞬態資料與控制接口，再定義感測位置；若先選 HotSpot／TCLab，先固定外部模型版本、初始條件與擾動，再用相同觀測／校正／限制比較。這些是下一階段計畫，本次沒有新增 LQR／MPC 優越性實驗，也沒有重跑 E15 或舊機箱研究。</p>
+</details><p><a href="../research/public_thermal_simulation_scenes_2026-10-12_zh.md">完整場景與執行條件</a> · <a href="../../openspec/changes/discover-public-thermal-scenes-20261012/artifacts/readiness.json">本次來源與功能紀錄</a></p></section>
 <section id="lqr"><h2>本週介紹：LQR 與 Kalman 1960</h2>
 <p>LQR 是 Linear Quadratic Regulator，線性二次調節器。我先用線性狀態模型描述變化，再用 Q 指定狀態偏差代價、R 指定操作代價，求出狀態回授增益 K。它需要模型與狀態，不會自動完成熱參數辨識或稀疏感測。</p>
 <p>我選的代表論文是 <strong>R. E. Kalman (1960), Contributions to the Theory of Optimal Control</strong>，刊於 Boletín de la Sociedad Matemática Mexicana，5，102–119 頁。它建立最優線性調節問題的理論，將可控性、可觀測性、Riccati 方程與存在／穩定條件連在一起。<a href="https://boletin.math.org.mx/pdf/2/5/BSMM%282%29.5.102-119.pdf">期刊原文</a></p>
@@ -1740,18 +1754,36 @@ AᵀP+PA−PBR⁻¹BᵀP+Q = 0</pre><p>以上為定常無限時域、無硬限�
 <div class="controls"><label for="q">狀態代價 Q：<span id="qvalue">1</span><input id="q" type="range" min="-1" max="1" step=".1" value="0" aria-label="Q 的十次方權重"></label>
 <label for="r">操作代價 R：<span id="rvalue">1</span><input id="r" type="range" min="-1" max="1" step=".1" value="0" aria-label="R 的十次方權重"></label></div>
 <output id="gain" aria-live="polite"></output><p class="caption">限幅後只能稱限制過的控制命令，不能沿用無限制 LQR 的最優保證。</p>
-<p><a href="../research/lqr_kalman1960_reading_2026-10-06_zh.md">完整頁碼筆記</a> · <a href="lqr_oral_script_2026-10-06_zh.md">約五分鐘講稿</a>。備稿完成；口頭報告是否完成尚無紀錄。</p><p>本輪實作採離散模型與離散代數 Riccati 方程；上面的連續時間公式只用來介紹主線。實際 Q=diag(1,0.25,0.1,0.02)、R=0.15，狀態為熱源、金屬片、空氣與風扇比例相對平衡點的偏差；共同的 PWM／變化率限制另套用。</p></section>
+<p><a href="../research/lqr_kalman1960_reading_2026-10-06_zh.md">完整頁碼筆記</a> · <a href="lqr_oral_script_2026-10-06_zh.md">約五分鐘講稿</a>。備稿完成；口頭報告是否完成尚無紀錄。</p><p>本輪實作採離散模型與離散代數 Riccati 方程；上面的連續時間公式只用來介紹主線。實際 Q=diag(1,0.25,0.1,0.02)、R=0.15，狀態為熱源、金屬片、空氣與風扇比例相對平衡點的偏差；共同的 PWM／變化率限制另套用。</p><h3>我需要理解與注意的六個重點</h3>
+<div class="table-wrap"><table><thead><tr><th>重點</th><th>我在機箱研究中要確認什麼</th></tr></thead><tbody>
+<tr><th>平衡點與模型</th><td>先確認功率／入口下，目標有可行 PWM。LQR 在工作點附近使用線性模型；更換風道與接觸後，不能直接沿用同一 K 的保證。</td></tr>
+<tr><th>狀態與量測</th><td>x 是熱源、金屬片、空氣與風扇狀態；y 是可量測的部分。熱源參考只作評分。LQR 不會自動辨識或補出狀態；稀疏感測需要估測器。</td></tr>
+<tr><th>Q／R 與量尺</th><td>Q 重視哪些偏差，R 重視操作代價；先處理 °C 與 PWM 的尺度。二次操作成本不是量測能耗，較大權重也不是更強的風扇。</td></tr>
+<tr><th>離散化與穩定條件</th><td>每 5 秒操作要用對應 A_d／B_d 與離散 Riccati。檢查可穩定／成本可偵測、P 與 DARE 殘差，理想離散閉迴路特徵值模長需小於 1。</td></tr>
+<tr><th>限幅、延遲與擾動</th><td>PWM／slew 限制套用後，不能沿用原無限制最優結論。風扇延遲、功率失配與估測偏差仍要測；非零設定值與持續擾動需要前饋或另設計追蹤／積分。</td></tr>
+<tr><th>公平比較與原文邊界</th><td>各方法取得相同稀疏資訊、負載、預算與限制。Kalman 原文 p.104 假設狀態精確已知，p.114 穩定定理有條件；不能說任何受限機箱都最優、安全或已驗證。</td></tr>
+</tbody></table></div>
+<details><summary>離散教學公式、可穩定性與老師可能追問的問題</summary><pre>e = x − x_eq；v = u − u_eq
+e[k+1] = A_d e[k] + B_d v[k]
+J = Σ (e[k]ᵀ Q e[k] + v[k]ᵀ R v[k])
+P = A_dᵀ P A_d − A_dᵀ P B_d (R+B_dᵀ P B_d)⁻¹ B_dᵀ P A_d + Q
+K = (R+B_dᵀ P B_d)⁻¹ B_dᵀ P A_d
+u[k] = u_eq − K e_hat[k]</pre>
+<p>上式是現代定常、無限時域的離散教學整理，不是 Kalman1960 原式逐字轉錄。理想 LQR 使用真實狀態 e；這裡實務上用估測 e_hat，需要另外驗證估測誤差。可穩定不要求所有穩定模態都可控；常用條件是 (A_d,B_d) 可穩定、(Q^(1/2),A_d) 可偵測、Q 半正定與 R 正定。感測器能否估測則另外看 (A_d,C)，不要混成同一個可觀測條件。</p>
+<p>我需要回答：為什麼選這些狀態？平衡 PWM 怎麼得到？風扇能影響所有重要模態嗎？只有兩個溫度點時，狀態估測可靠嗎？Q／R 如何決定？限幅後是否仍能穩定？和 PI／MPC 比較時給了相同資訊嗎？</p>
+<p><a href="https://underactuated.mit.edu/lqr.html">MIT LQR 課程原始筆記</a> · <a href="https://docs.scipy.org/doc/scipy-1.14.1/reference/generated/scipy.linalg.solve_discrete_are.html">SciPy DARE</a> · <a href="https://python-control.readthedocs.io/en/stable/generated/control.dlqr.html">dlqr 與積分選項</a></p>
+</details><p><a href="../research/lqr_practical_guide_2026-10-12_zh.md">完整 LQR 整理：九項注意事項、程式檢查與五分鐘講稿</a></p></section>
 <section id="hardware"><h2>設備到位後我可以如何開始</h2><p>我已備妥獨立輸入、校正與參考溫度模板，以及離線提案和獨立評分程序。先做感測共址校正、確認熱平衡初始條件、量測功率與 RPM 尺度，再以新的事前規則固定平台可操作範圍、資料切分及停止條件。</p>
 <p><a href="../research/enclosure_hardware_execution_2026-10-12_zh.md">完整實機程序</a> · <a href="../templates/enclosure_observations.csv">觀測模板</a> · <a href="../templates/enclosure_commissioning.csv">校正模板</a> · <a href="../templates/enclosure_reference.csv">獨立參考模板</a></p>
 <details><summary>離線流程與缺資料處理</summary><pre>觀測／校正 CSV → 已知初始條件檢查 → 有限辨識 → PWM 提案 JSON
 獨立參考 CSV + 提案 JSON → 當下估測與下一步預測的獨立評分</pre><p>目前沒有實測資料，所以空白模板不填預期數字。缺感測或時間錯誤不產生新提案；硬體失效保護需要實際設備設計，不能由這個軟體錯誤處理推論已完成。</p></details>
 <h3>我想請教授討論</h3><ol><li>先以低功率金屬片平台量測接觸／對流，還是直接研究桌機機箱？兩者的熱路徑與資料可得性不同。</li><li>控制目標要以追蹤為主，還是以超溫與能耗為主？目前 PI 與模型方法呈現不同權衡。</li><li>共同容量倍率是否足以作下一階段，或應先增加容量比例與額外傳熱路徑的辨識證據？</li></ol></section>
 <section id="talk"><h2>我向教授報告的十五分鐘主線</h2><p><strong>研究進度約十分鐘，LQR 與代表論文約五分鐘，共十五分鐘。</strong>正文可依下列主線朗讀，技術細節另行展開。</p>
-<h3>前兩分鐘 我如何回應傳熱場景的交辦</h3><p>我先整理金屬片、接觸介面與風管的作用。金屬片主要改變固體導熱與接觸熱阻，風管主要改變入口和對流。我選擇可控熱源、金屬片與風扇作候選平台，但目前沒有設備或資料，所以先把軟體和量測程序完成。</p>
+<h3>前兩分鐘 我如何回應傳熱場景的交辦</h3><p>我先整理金屬片、接觸介面與風管，再找不用設備的公開場景。SimScale 電子盒包含接觸與風扇，但教學是穩態分析；我另跑通 HotSpot 的公開晶片熱 trace 與 TCLab 無硬體介面。幾何散熱和逐步控制回答不同問題，我需要先選場景用途，再建立新的驗證規則。</p>
 <h3>第三到第五分鐘 我改進了什麼</h3><p>我把物理主模型、有限辨識、稀疏校正和動作選擇接成一個流程。熱源參考只交給評分，不給模型或控制器。第一階段辨識共同容量與風扇延遲，第二階段再測試獨立容量與新增熱導。新模型只用前 120 筆辨識、後 60 筆選擇，規則固定後才開啟新的測試。</p>
 <h3>第六到第八分鐘 我遇到的反例</h3><p>第一階段平均估測有下降，但四組只有兩組改善，六步排序也未達門檻。第二階段的可見擬合較好，卻讓熱源誤差由 1.0764 增至 1.3468°C，六步追蹤誤差增加約 2.95%。退步主要在對流係數失配平台，熱容量還碰到搜尋邊界。我因此保留兩階段的不支持判定：增加模型自由度不能保證熱源估測或控制更好。</p>
 <h3>第九到第十分鐘 我如何準備實機驗證</h3><p>我已準備輸入、校正與獨立參考三種資料模板，以及離線分析和獨立評分。下一步要先確認感測精度、初始條件、功率與 RPM 尺度，再凍結設備的實驗程序。軟體目前產生操作提案，沒有直接控制硬體。</p>
-<h3>最後五分鐘 LQR 與 Kalman 1960</h3><p>我介紹的 LQR 是線性二次調節器：用線性狀態模型描述變化，用 Q 與 R 表達狀態偏差和操作代價，再透過 Riccati 方程求回授增益。Kalman 1960 提供理論基礎，但原文控制部分假設狀態精確已知，穩定定理也有條件。我現在把它接在稀疏估測後，另處理限幅；不能因此說真實機箱已經安全或最優。原文問題、核心式與限制可配合上面的頁碼筆記說明。</p><p><a href="professor_oral_script_2026-10-12_zh.md">完整講稿</a></p></section>
+<h3>最後五分鐘 LQR 與 Kalman 1960</h3><p>我介紹的 LQR 用線性模型與二次成本求回授。先確認可達平衡點，再用 Q／R 表達偏差與操作權衡；固定取樣下使用離散 Riccati，檢查殘差和閉迴路特徵值。Kalman1960控制部分假設狀態精確已知，穩定定理有條件，而我需要稀疏估測。限幅、風扇延遲與擾動仍要另外驗證，不能把求解成功當成真實機箱安全或最優。完整五分鐘稿與九項注意事項已另整理。</p><p><a href="professor_oral_script_2026-10-12_zh.md">完整講稿</a></p></section>
 <section id="sources"><h2>實際閱讀來源與可核對結果</h2><div class="table-wrap"><table><thead><tr><th>來源與查閱日期</th><th>實際範圍</th><th>如何用於研究</th></tr></thead><tbody>
 <tr><th>TI 熱設計指南／Noctua 風管，10/6</th><td>前次閱讀筆記的指定 PDF 頁與產品說明。</td><td>區分接觸導熱與入口／對流；實際裝置效果待量測。</td></tr>
 <tr><th>Kalman 1960，10/6</th><td>18 頁原文重點問題與定理、p.112–113 公式核對，未逐行重證全部證明。</td><td>LQR 代表論文，原文頁碼見閱讀筆記。</td></tr>

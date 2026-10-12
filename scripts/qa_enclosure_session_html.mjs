@@ -7,7 +7,7 @@ const root=fileURLToPath(new URL('../',import.meta.url));
 const dependencies=createRequire(path.join(process.env.ENCLOSURE_QA_DEPENDENCIES || process.cwd(),'package.json'));
 const { chromium }=dependencies('playwright');
 const html=path.join(root,'docs/reports/professor_research_2026-10-12_zh.html');
-const output=path.join(root,'openspec/changes/select-enclosure-structure-20261012/artifacts/qa');
+const output=path.join(root,'openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa');
 await fs.mkdir(output,{recursive:true});
 const browser=await chromium.launch({executablePath:process.env.ENCLOSURE_CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true});
 try {
@@ -28,6 +28,16 @@ try {
     await page.locator('#results').screenshot({path:path.join(output,name+'-results.png')});
     await page.locator('#lqr').screenshot({path:path.join(output,name+'-lqr.png')});
     await page.locator('#structure').screenshot({path:path.join(output,name+'-structure.png')});
+    await page.locator('#online').screenshot({path:path.join(output,name+'-online.png')});
+    if(name==='mobile') {
+      const region=page.locator('#online .table-wrap').first();
+      await region.focus();await page.keyboard.press('ArrowRight');await page.waitForTimeout(250);
+      if(!await region.evaluate(e=>e.scrollLeft>0 && e.scrollWidth>e.clientWidth))throw new Error('Scene table keyboard scroll failed');
+      await region.evaluate(e=>e.scrollLeft=e.scrollWidth);
+      await page.locator('#online').screenshot({path:path.join(output,'mobile-online-right.png')});
+      await region.evaluate(e=>e.scrollLeft=0);
+      checks.sceneTableKeyboardScroll=true;
+    }
     checks.viewports.push({name,width,...sizes});
   }
   const structure=await page.evaluate(()=>{

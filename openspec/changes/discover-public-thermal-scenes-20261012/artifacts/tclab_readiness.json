@@ -1,0 +1,89 @@
+{
+  "status": "PASS_OFFLINE_INTERFACE_ONLY",
+  "source": "https://github.com/jckantor/TCLab",
+  "commit": "a975c36d68ccbc3c0f6dade4ae99c0abc3271f81",
+  "version": "0.4.10dev",
+  "random_seed": 612810,
+  "readouts": [
+    {
+      "time_s": 0,
+      "T1_C": 20.949499999999997,
+      "T2_C": 20.949499999999997,
+      "Q1_percent": 40,
+      "Q2_percent": 20
+    },
+    {
+      "time_s": 30,
+      "T1_C": 23.205599999999997,
+      "T2_C": 21.594099999999997,
+      "Q1_percent": 40,
+      "Q2_percent": 20
+    },
+    {
+      "time_s": 60,
+      "T1_C": 27.3955,
+      "T2_C": 23.205599999999997,
+      "Q1_percent": 40,
+      "Q2_percent": 20
+    },
+    {
+      "time_s": 90,
+      "T1_C": 30.940799999999996,
+      "T2_C": 24.494799999999998,
+      "Q1_percent": 40,
+      "Q2_percent": 20
+    },
+    {
+      "time_s": 120,
+      "T1_C": 33.5192,
+      "T2_C": 25.784,
+      "Q1_percent": 40,
+      "Q2_percent": 20
+    },
+    {
+      "time_s": 150,
+      "T1_C": 36.0976,
+      "T2_C": 26.750899999999998,
+      "Q1_percent": 40,
+      "Q2_percent": 20
+    },
+    {
+      "time_s": 180,
+      "T1_C": 37.7091,
+      "T2_C": 27.3955,
+      "Q1_percent": 40,
+      "Q2_percent": 20
+    },
+    {
+      "time_s": 210,
+      "T1_C": 39.3206,
+      "T2_C": 28.0401,
+      "Q1_percent": 40,
+      "Q2_percent": 20
+    },
+    {
+      "time_s": 240,
+      "T1_C": 40.6098,
+      "T2_C": 28.6847,
+      "Q1_percent": 40,
+      "Q2_percent": 20
+    },
+    {
+      "time_s": 270,
+      "T1_C": 41.576699999999995,
+      "T2_C": 29.006999999999998,
+      "Q1_percent": 40,
+      "Q2_percent": 20
+    },
+    {
+      "time_s": 300,
+      "T1_C": 42.5436,
+      "T2_C": 29.329299999999996,
+      "Q1_percent": 40,
+      "Q2_percent": 20
+    }
+  ],
+  "hardware_connection": false,
+  "controller_comparison": "NOT_EVALUATED",
+  "scope": "One fixed-input official model sequence; no LQR/estimator ranking or physical result."
+}

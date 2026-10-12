@@ -1,0 +1,28 @@
+{
+  "recorded_utc": "2026-10-12T08:33:16.966610+00:00",
+  "source": "https://github.com/uvahotspot/HotSpot",
+  "commit": "f18831e48cef5d62580585cca0d7fab6c71bc3cc",
+  "build": "make hotspot; executable present, Apple clang21.0.0 ARM64, default no math acceleration",
+  "run_command": "../../hotspot -c example.config -f ev6.flp -p gcc.ptrace -materials_file example.materials -model_type block -steady_file readiness_outputs/gcc.steady -o readiness_outputs/gcc.ttrace",
+  "working_directory": "HotSpot/examples/example1",
+  "status": "PASS_BUNDLED_BLOCK_MODEL_ONLY",
+  "rows": 100,
+  "columns": 30,
+  "temperature_units": "K",
+  "sampling_interval_s": 0.01,
+  "ambient_K": 318.15,
+  "initial_temperature_K": 318.15,
+  "detailed_package_model_used": false,
+  "controller_comparison": "NOT_EVALUATED",
+  "input_sha256": {
+    "examples/example1/example.config": "6fb68dc9ed6344470f8a311624b85c62cd119d6ba8b84d80025f680999e0e0c1",
+    "examples/example1/ev6.flp": "68b345d2bde8c7f8276fdea9e1db97353c8c2daba06b6b64ad0f55558ed49ab5",
+    "examples/example1/gcc.ptrace": "90dad388d2012ada13e3a3361909e19e67bd9dbf97cd769a09a527a04697bdd4",
+    "examples/example1/example.materials": "af6c96d95734b2139a77f185c4a23811fd29dc30faf275dc352bee7baaa6811c",
+    "examples/example1/package.config": "fa4aca84449c1bfd5af85815306a04560a2170d72dbb6017119184e37760f024",
+    "examples/example1/run.sh": "1dba2a96f7a5598e54b4bc8a5e736e281c68c1bddef2a9366e764790f0966b0c",
+    "LICENSE": "1e5c182eb7b2de00b47a286644451dd4c7aa1912f41e785deda14f68768ed2ac",
+    "Makefile": "4c76203d64b6803ec9e5ca1430f9e28b0c728539abb14d1cb6d91ec5b533c367"
+  },
+  "scope": "Single unchanged bundled block trace with fixed r_convec. No fan closed-loop, enclosure CFD, project transfer or hardware efficacy."
+}

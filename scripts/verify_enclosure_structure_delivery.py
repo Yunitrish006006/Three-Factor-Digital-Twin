@@ -9,6 +9,8 @@ from enclosure_structure_summary import ROOT,ARTIFACTS,TITLE,summary,ieee_text,K
 from enclosure_session_summary import summary as previous_summary, TITLE as PREVIOUS_TITLE
 from verify_enclosure_session_delivery import sha
 
+PUBLIC_ARTIFACTS=ROOT/'openspec/changes/discover-public-thermal-scenes-20261012/artifacts'
+
 
 def verify():
     data=summary(); previous=previous_summary(); checks=[]; hashes={}
@@ -50,7 +52,14 @@ def verify():
     require(all(term in text for term in ('Kalman','p.104','p.114','1.8376','2.7155','口頭報告尚無完成紀錄')),'HTML LQR and adverse outcome coverage')
     for relative in ('docs/reports/professor_oral_script_2026-10-12_zh.md','docs/research/enclosure_hardware_execution_2026-10-12_zh.md'):
         require((ROOT/relative).is_file(),'Preparation delivered: '+relative)
-    observations=ARTIFACTS/'visual_qa_observations.json'
+    observations=(PUBLIC_ARTIFACTS if (PUBLIC_ARTIFACTS/'visual_qa_observations.json').exists() else ARTIFACTS)/'visual_qa_observations.json'
+    if (PUBLIC_ARTIFACTS/'readiness.json').exists():
+        require(all(term in text for term in ('id="online"','SimScale','HotSpot','TCLab','DARE 殘差','可穩定')),
+                'Public scenes and practical LQR in HTML')
+        for relative in ('docs/research/public_thermal_simulation_scenes_2026-10-12_zh.md',
+                         'docs/research/lqr_practical_guide_2026-10-12_zh.md'):
+            require((ROOT/relative).is_file(),'Source-linked preparation delivered: '+relative)
+            hashes[relative]=sha(ROOT/relative)
     qa=visual_qa_status(ROOT,observations,html,('desktop','tablet','mobile','anchors','interaction','console','local_links','offline_assets','print'))
     require(qa['status']=='PASS','Final HTML observed QA matches current bytes')
     for relative in (*pages,'docs/reports/professor_research_2026-10-12_zh.pdf'):
@@ -61,10 +70,11 @@ def verify():
             'html_observed_qa':qa,'software_and_experimental_preparation':'COMPLETE',
             'physical_measurements':'DEFERRED_NO_EQUIPMENT','oral_presentation':'NOT_RECORDED',
             'office_visual_render':'OUTSIDE_HTML_REPORT_SCOPE',
-            'scope':'Coupled source/copy content checks; observed responsive HTML and full report print. Thesis/IEEE visual scope restricted to changed PDF pages.'}
+            'scope':'Coupled source/copy content checks; current observed responsive HTML and full print. Unchanged native PDF visual scope reused only while exact bytes/evidence match prior observations.'}
 
 
 if __name__=='__main__':
     report=verify()
-    (ARTIFACTS/'delivery_verification.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+    output=PUBLIC_ARTIFACTS if (PUBLIC_ARTIFACTS/'readiness.json').exists() else ARTIFACTS
+    (output/'delivery_verification.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
     print(f'PASS: {len(report["checks"])} delivery checks; HTML and software/preparation complete')

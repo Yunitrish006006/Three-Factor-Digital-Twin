@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "scope": "Readiness/recorded output integrity only; no controller efficacy or hardware validation.",
+  "historical_files_unchanged": 668,
+  "hotspot_rows": 100,
+  "hotspot_columns": 30,
+  "tclab_readouts": 11,
+  "boptest": "DNS_FAILED_FROM_THIS_ENVIRONMENT",
+  "simscale": "DOCUMENTATION_CHECKED_NOT_RUN"
+}

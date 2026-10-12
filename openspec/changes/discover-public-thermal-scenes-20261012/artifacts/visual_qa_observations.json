@@ -1,0 +1,217 @@
+{
+  "schema_version": 1,
+  "observations": [
+    {
+      "artifact": "docs/reports/professor_research_2026-10-12_zh.html",
+      "artifact_sha256": "54e684da0babdcc53b88d3a9acbb7bd98640d548ab9790ee54747672dd2b279e",
+      "observed_utc": "2026-10-12T08:50:04.573817+00:00",
+      "observer": "primary_agent",
+      "method": "isolated headless Chrome checks and actual screenshot/PDF image inspection",
+      "scope": "Final1440/820/390px HTML: public scenes and practical LQR screenshots inspected; all12 anchors/50 links, details and Q/R keyboard interactions, mobile scene-table keyboard scroll and right-edge screenshot. No body overflow, external runtime requests or console errors. All12 print pages inspected.",
+      "status": "PASS",
+      "checks": {
+        "desktop": "PASS",
+        "tablet": "PASS",
+        "mobile": "PASS",
+        "anchors": "PASS",
+        "interaction": "PASS",
+        "console": "PASS",
+        "local_links": "PASS",
+        "offline_assets": "PASS",
+        "print": "PASS"
+      },
+      "evidence": [
+        {
+          "path": "openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa/browser_checks.json",
+          "sha256": "fa502f3cc3daba45f804d9cd8404ac44414713be0600ec51f2e83cdb94637f16"
+        },
+        {
+          "path": "openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa/desktop-online.png",
+          "sha256": "4a5dfa74bfe6c46f4ea95f5cb6387380a548565f411155c4d3fe273dd98b46a1"
+        },
+        {
+          "path": "openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa/tablet-online.png",
+          "sha256": "3d568f5f01e52ae02c8c83d8d2d40fe39cedc46b6105c2b3fa7f10b691dad843"
+        },
+        {
+          "path": "openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa/mobile-online.png",
+          "sha256": "6bc99370815e130e57f1711372285a40ae2ec2415386dc9bfd64c21a95404bff"
+        },
+        {
+          "path": "openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa/mobile-online-right.png",
+          "sha256": "aae511eadcda35ae49a012c0530a34a3f78c942062b1785be7272cc97bd92c8e"
+        },
+        {
+          "path": "openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa/desktop-lqr.png",
+          "sha256": "1919e3a626ed2bd7f7da210d5004d270e16e3b91b74ccd44d1ee8bd8c7618205"
+        },
+        {
+          "path": "openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa/tablet-lqr.png",
+          "sha256": "26dc8bda1ddf82799fc3594e51fdad745eab362e081bc1fe3c0e73d39a99bc16"
+        },
+        {
+          "path": "openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa/mobile-lqr.png",
+          "sha256": "1d7e3fa6e62bf48b81f66e98f4e1a8825ccc733a611b0251b416fbfe16579652"
+        },
+        {
+          "path": "openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa/report-print-01.png",
+          "sha256": "35263eaed3edcfed1f2060bbe822cde68ead7536a850fdeb57d3db479a475e4a"
+        },
+        {
+          "path": "openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa/report-print-02.png",
+          "sha256": "f70a5b19c2981a7015570f70d7766c36862dd21f0fcf2c7c4897f0f07a751817"
+        },
+        {
+          "path": "openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa/report-print-03.png",
+          "sha256": "9ff5a9691d09d6dc4da770f4c1701f18e82ed65401eb83c29079045a2e63570d"
+        },
+        {
+          "path": "openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa/report-print-04.png",
+          "sha256": "04ab3db5a0ac96f0e707bf773e6004664641aed7bd1a677b4cd6342308b228a5"
+        },
+        {
+          "path": "openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa/report-print-05.png",
+          "sha256": "5058ffca3a8f78b539d7a8d4a8075a0d0767aaef748ed583b042cdc93651d7b3"
+        },
+        {
+          "path": "openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa/report-print-06.png",
+          "sha256": "108b5b881e38f76a572a8cbf30745a329531867e076b996004d785c16a4aae08"
+        },
+        {
+          "path": "openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa/report-print-07.png",
+          "sha256": "9e6bd123906f8f1d883cbd855db98940b289f68cb47f3eb6f33217601ef99f5b"
+        },
+        {
+          "path": "openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa/report-print-08.png",
+          "sha256": "c1b719804014e8d136c669fc2653f2761cf5db2f0bff368f1238f59f1ffeda06"
+        },
+        {
+          "path": "openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa/report-print-09.png",
+          "sha256": "2cb88e7bfd80167cb0423603ad3b800a4725fe1f65586b5faf1bdbf5747900a5"
+        },
+        {
+          "path": "openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa/report-print-10.png",
+          "sha256": "434c45afaa43cc2c1f794285dae2dd31763913c3953d73350249ec3c5131ceb8"
+        },
+        {
+          "path": "openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa/report-print-11.png",
+          "sha256": "4a909eb13f377c5e9a3c293f657a7793bbebae8374f3d73fca07b1405abba7c9"
+        },
+        {
+          "path": "openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa/report-print-12.png",
+          "sha256": "92c84912f0c204c8db73f41a325b26e7dd573601356c86ec8a75e03b92c2a609"
+        }
+      ]
+    },
+    {
+      "artifact": "docs/reports/professor_research_2026-10-12_zh.pdf",
+      "artifact_sha256": "85e2f296093c73e048a8af781622c529b0f0299e6b2c97ef300ce27cb51040c7",
+      "observed_utc": "2026-10-12T08:50:04.576681+00:00",
+      "observer": "primary_agent",
+      "method": "isolated headless Chrome checks and actual screenshot/PDF image inspection",
+      "scope": "All actual PDF pages1-12 inspected: text/chart/tables/expanded details/formula readable, full content retained through page continuations. No Office rendering claim.",
+      "status": "PASS",
+      "checks": {
+        "inspected_pages": "PASS"
+      },
+      "evidence": [
+        {
+          "path": "openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa/report-print-01.png",
+          "sha256": "35263eaed3edcfed1f2060bbe822cde68ead7536a850fdeb57d3db479a475e4a"
+        },
+        {
+          "path": "openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa/report-print-02.png",
+          "sha256": "f70a5b19c2981a7015570f70d7766c36862dd21f0fcf2c7c4897f0f07a751817"
+        },
+        {
+          "path": "openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa/report-print-03.png",
+          "sha256": "9ff5a9691d09d6dc4da770f4c1701f18e82ed65401eb83c29079045a2e63570d"
+        },
+        {
+          "path": "openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa/report-print-04.png",
+          "sha256": "04ab3db5a0ac96f0e707bf773e6004664641aed7bd1a677b4cd6342308b228a5"
+        },
+        {
+          "path": "openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa/report-print-05.png",
+          "sha256": "5058ffca3a8f78b539d7a8d4a8075a0d0767aaef748ed583b042cdc93651d7b3"
+        },
+        {
+          "path": "openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa/report-print-06.png",
+          "sha256": "108b5b881e38f76a572a8cbf30745a329531867e076b996004d785c16a4aae08"
+        },
+        {
+          "path": "openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa/report-print-07.png",
+          "sha256": "9e6bd123906f8f1d883cbd855db98940b289f68cb47f3eb6f33217601ef99f5b"
+        },
+        {
+          "path": "openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa/report-print-08.png",
+          "sha256": "c1b719804014e8d136c669fc2653f2761cf5db2f0bff368f1238f59f1ffeda06"
+        },
+        {
+          "path": "openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa/report-print-09.png",
+          "sha256": "2cb88e7bfd80167cb0423603ad3b800a4725fe1f65586b5faf1bdbf5747900a5"
+        },
+        {
+          "path": "openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa/report-print-10.png",
+          "sha256": "434c45afaa43cc2c1f794285dae2dd31763913c3953d73350249ec3c5131ceb8"
+        },
+        {
+          "path": "openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa/report-print-11.png",
+          "sha256": "4a909eb13f377c5e9a3c293f657a7793bbebae8374f3d73fca07b1405abba7c9"
+        },
+        {
+          "path": "openspec/changes/discover-public-thermal-scenes-20261012/artifacts/qa/report-print-12.png",
+          "sha256": "92c84912f0c204c8db73f41a325b26e7dd573601356c86ec8a75e03b92c2a609"
+        }
+      ]
+    },
+    {
+      "artifact": "docs/papers/thesis/thesis_draft_zh.pdf",
+      "artifact_sha256": "ab9671934ccb8f9df28fe90964df60cf32648b84660591b855695ca47eb26726",
+      "observed_utc": "2026-10-12T07:38:23.788331+00:00",
+      "observer": "primary_agent",
+      "method": "isolated headless Chrome checks and actual screenshot/PDF image inspection",
+      "scope": "Actual PDF file pages90,91,92 inspected for readable changed/adjacent content. Page92 contains a single adjacent continuation line; overall thesis pagination was not accepted as a complete visual review. No Office rendering claim.",
+      "status": "PASS",
+      "checks": {
+        "inspected_pages": "PASS"
+      },
+      "evidence": [
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/thesis-90.png",
+          "sha256": "46e127190f2cc367edf874dc5d90ca7fe46e1b0c993173771b0108969c5880c1"
+        },
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/thesis-91.png",
+          "sha256": "e294669d8f156889d298eda0d1deeb698d81cdafc7575544d92d2ab336f4788f"
+        },
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/thesis-92.png",
+          "sha256": "3500ce1e92105af5777d4ed2c89891f5f6bf8be347bdc31423aabd03293739af"
+        }
+      ]
+    },
+    {
+      "artifact": "docs/papers/ieee/paper.pdf",
+      "artifact_sha256": "68dbdc21f906a48ce6fe7a3c23e38d3c8af1298905dd5a9907413cd20133a512",
+      "observed_utc": "2026-10-12T07:38:23.789330+00:00",
+      "observer": "primary_agent",
+      "method": "isolated headless Chrome checks and actual screenshot/PDF image inspection",
+      "scope": "Actual PDF file pages 7,8 inspected. New subsection, earlier limitations and bibliography readable; no complete manuscript visual claim.",
+      "status": "PASS",
+      "checks": {
+        "inspected_pages": "PASS"
+      },
+      "evidence": [
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/ieee-7.png",
+          "sha256": "8806a497da62d9386fba3ee457efc21d8caee0bff3531dec3b1c7a9c4ca4df72"
+        },
+        {
+          "path": "openspec/changes/select-enclosure-structure-20261012/artifacts/qa/ieee-8.png",
+          "sha256": "2092fb2a62760592391d5bad2dfaaef646315f1aed4b3735960be267e0121a1a"
+        }
+      ]
+    }
+  ]
+}

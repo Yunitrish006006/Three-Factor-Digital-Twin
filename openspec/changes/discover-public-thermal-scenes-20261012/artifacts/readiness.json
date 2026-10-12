@@ -1,0 +1,153 @@
+{
+  "recorded_utc": "2026-10-12T08:37:20.762515+00:00",
+  "preregistration_commit": "0f537ae",
+  "SimScale": {
+    "status": "DOCUMENTATION_CHECKED_NOT_RUN",
+    "source": "https://www.simscale.com/docs/tutorials/thermal-management-cht-analysis-electronics-box/",
+    "scene": "Electronics Box CHT, components/contact resistance/fan curve",
+    "solver_type": "steady state; iterations are not physical time",
+    "account_access": "NOT_VERIFIED",
+    "project_import_destination": "web reader could not open the linked import/finished project; actual import not verified",
+    "plan": "official pricing lists free Community with limited quantitative simulations; exact scene entitlement/account quota unverified"
+  },
+  "BOPTEST": {
+    "status": "DNS_FAILED_FROM_THIS_ENVIRONMENT",
+    "url": "https://api.boptest.net/testcases",
+    "command": "curl -sS --max-time20 -D headers -o body https://api.boptest.net/testcases",
+    "default_exit_code": 6,
+    "approved_network_retry_exit_code": 6,
+    "error": "curl: (6) Could not resolve host: api.boptest.net",
+    "tls_verification_disabled": false,
+    "public_test_instance_created": false,
+    "scope": "Single request plus permission retry; does not establish permanent outage."
+  },
+  "Kalman1960": {
+    "status": "ORIGINAL_WEB_TEXT_RECHECKED",
+    "source": "https://boletin.math.org.mx/pdf/2/5/BSMM(2).5.102-119.pdf",
+    "pages": {
+      "state_assumption": 104,
+      "stability_theorem": 114
+    },
+    "local_pdf_download": "curl connection timeout after25s; no new local PDF visual acceptance",
+    "prior_visual_notes": "docs/research/lqr_kalman1960_reading_2026-10-06_zh.md"
+  },
+  "TCLab": {
+    "status": "PASS_OFFLINE_INTERFACE_ONLY",
+    "source": "https://github.com/jckantor/TCLab",
+    "commit": "a975c36d68ccbc3c0f6dade4ae99c0abc3271f81",
+    "version": "0.4.10dev",
+    "random_seed": 612810,
+    "readouts": [
+      {
+        "time_s": 0,
+        "T1_C": 20.949499999999997,
+        "T2_C": 20.949499999999997,
+        "Q1_percent": 40,
+        "Q2_percent": 20
+      },
+      {
+        "time_s": 30,
+        "T1_C": 23.205599999999997,
+        "T2_C": 21.594099999999997,
+        "Q1_percent": 40,
+        "Q2_percent": 20
+      },
+      {
+        "time_s": 60,
+        "T1_C": 27.3955,
+        "T2_C": 23.205599999999997,
+        "Q1_percent": 40,
+        "Q2_percent": 20
+      },
+      {
+        "time_s": 90,
+        "T1_C": 30.940799999999996,
+        "T2_C": 24.494799999999998,
+        "Q1_percent": 40,
+        "Q2_percent": 20
+      },
+      {
+        "time_s": 120,
+        "T1_C": 33.5192,
+        "T2_C": 25.784,
+        "Q1_percent": 40,
+        "Q2_percent": 20
+      },
+      {
+        "time_s": 150,
+        "T1_C": 36.0976,
+        "T2_C": 26.750899999999998,
+        "Q1_percent": 40,
+        "Q2_percent": 20
+      },
+      {
+        "time_s": 180,
+        "T1_C": 37.7091,
+        "T2_C": 27.3955,
+        "Q1_percent": 40,
+        "Q2_percent": 20
+      },
+      {
+        "time_s": 210,
+        "T1_C": 39.3206,
+        "T2_C": 28.0401,
+        "Q1_percent": 40,
+        "Q2_percent": 20
+      },
+      {
+        "time_s": 240,
+        "T1_C": 40.6098,
+        "T2_C": 28.6847,
+        "Q1_percent": 40,
+        "Q2_percent": 20
+      },
+      {
+        "time_s": 270,
+        "T1_C": 41.576699999999995,
+        "T2_C": 29.006999999999998,
+        "Q1_percent": 40,
+        "Q2_percent": 20
+      },
+      {
+        "time_s": 300,
+        "T1_C": 42.5436,
+        "T2_C": 29.329299999999996,
+        "Q1_percent": 40,
+        "Q2_percent": 20
+      }
+    ],
+    "hardware_connection": false,
+    "controller_comparison": "NOT_EVALUATED",
+    "scope": "One fixed-input official model sequence; no LQR/estimator ranking or physical result."
+  },
+  "HotSpot": {
+    "recorded_utc": "2026-10-12T08:33:16.966610+00:00",
+    "source": "https://github.com/uvahotspot/HotSpot",
+    "commit": "f18831e48cef5d62580585cca0d7fab6c71bc3cc",
+    "build": "make hotspot; executable present, Apple clang21.0.0 ARM64, default no math acceleration",
+    "run_command": "../../hotspot -c example.config -f ev6.flp -p gcc.ptrace -materials_file example.materials -model_type block -steady_file readiness_outputs/gcc.steady -o readiness_outputs/gcc.ttrace",
+    "working_directory": "HotSpot/examples/example1",
+    "status": "PASS_BUNDLED_BLOCK_MODEL_ONLY",
+    "rows": 100,
+    "columns": 30,
+    "temperature_units": "K",
+    "sampling_interval_s": 0.01,
+    "ambient_K": 318.15,
+    "initial_temperature_K": 318.15,
+    "detailed_package_model_used": false,
+    "controller_comparison": "NOT_EVALUATED",
+    "input_sha256": {
+      "examples/example1/example.config": "6fb68dc9ed6344470f8a311624b85c62cd119d6ba8b84d80025f680999e0e0c1",
+      "examples/example1/ev6.flp": "68b345d2bde8c7f8276fdea9e1db97353c8c2daba06b6b64ad0f55558ed49ab5",
+      "examples/example1/gcc.ptrace": "90dad388d2012ada13e3a3361909e19e67bd9dbf97cd769a09a527a04697bdd4",
+      "examples/example1/example.materials": "af6c96d95734b2139a77f185c4a23811fd29dc30faf275dc352bee7baaa6811c",
+      "examples/example1/package.config": "fa4aca84449c1bfd5af85815306a04560a2170d72dbb6017119184e37760f024",
+      "examples/example1/run.sh": "1dba2a96f7a5598e54b4bc8a5e736e281c68c1bddef2a9366e764790f0966b0c",
+      "LICENSE": "1e5c182eb7b2de00b47a286644451dd4c7aa1912f41e785deda14f68768ed2ac",
+      "Makefile": "4c76203d64b6803ec9e5ca1430f9e28b0c728539abb14d1cb6d91ec5b533c367"
+    },
+    "scope": "Single unchanged bundled block trace with fixed r_convec. No fan closed-loop, enclosure CFD, project transfer or hardware efficacy."
+  },
+  "historical_artifact_files": 668,
+  "evidence_class": "public_scene_availability_and_interface_readiness_not_controller_efficacy"
+}
