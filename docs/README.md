@@ -10,6 +10,7 @@
 
 ## 獨立文獻導讀（非本研究的實驗成果）
 
+- [Kalman 1960｜28 題問答、補考與一分鐘講稿筆記](research/lqr_kalman1960_qa_learning_notes_2026-10-19_zh.md)。
 - [Kalman 1960 原始論文簡報 HTML](reports/lqr_kalman1960_paper_only_2026-10-19_zh.html)／[逐頁完整講稿](reports/lqr_kalman1960_paper_only_2026-10-19_zh.md)：原文分頁導讀、Riccati、LQR 推導和自製教學算例；不混入機箱研究。
 
 ## 仍保留的其他研究資產（非目前投稿主線）

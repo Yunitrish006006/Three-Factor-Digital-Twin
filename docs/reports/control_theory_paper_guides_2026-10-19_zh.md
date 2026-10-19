@@ -8,6 +8,10 @@
 | 2. PI／PID 整定（Ziegler–Nichols，1942） | [原文 PDF](https://files.engineering.com/files/70fa8133-77a7-449c-9f6b-6981918a352e/Optimum_Settings_for_Automatic_Controllers_-_Zeigler-Nichols.pdf) | [PID 12 頁講稿](pid_ziegler_nichols1942_paper_only_2026-10-19_zh.md) | [12 頁簡報](pid_ziegler_nichols1942_paper_only_2026-10-19_zh.html) |
 | 3. DMC／MPC（Cutler–Ramaker，1980） | [原文 PDF](https://skoge.folk.ntnu.no/puublications_others/1980_Cutler-Ramaker_Dynamic-matrix-control_JACC1980.pdf) | [DMC 12 頁講稿](dmc_cutler_ramaker1980_paper_only_2026-10-19_zh.md) | [12 頁簡報](dmc_cutler_ramaker1980_paper_only_2026-10-19_zh.html) |
 
+## 已完成的 Kalman 1960 問答筆記
+
+- [28 題完整學習整理與補考重點](../research/lqr_kalman1960_qa_learning_notes_2026-10-19_zh.md)：觀念解釋、數學推導、教授追問及修正後一分鐘講稿。
+
 ## 下次怎麼報告
 
 建議先完成 PID（可控作用和整定法），再讀 DMC（響應矩陣、最小平方、滾動修正）。PID 整定與 DMC 最小平方均為代表性原始方法，性質上和 Kalman 1960 以最優控制理論為中心的論文不同；各篇的歷史定位和現代教學式應分開說明。
