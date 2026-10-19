@@ -3,7 +3,7 @@
   "files": [
     {
       "path": "docs/reports/professor_weekly_2026-10-19_zh.html",
-      "sha256": "e148201d48832f7cf9c23ad9e3499b6e44a2d74657c2afa7e78c740ff6c9071a"
+      "sha256": "a4e50c3012142a955c29359c39e8f69191c34e4a07e32eb707dc57ff4879c659"
     },
     {
       "path": "docs/reports/professor_weekly_script_2026-10-19_zh.md",
@@ -51,7 +51,8 @@
     "HTML: desktop expanded four-contrast pairing table, tablet complete diagnostic, phone diagnostic and pairing table, phone MathML formulas, and print top viewed. Charts intentionally scroll horizontally on phones; interaction receipts verify keyboard scrolling. No body overflow or missing offline assets.",
     "Native thesis PDF pages 91 and 92 viewed; diagnostic readable on page 91, following historical appendix retained. Not a new visual audit of every page.",
     "IEEE PDF pages 8 and 9 viewed; new diagnostic and reference flow readable. Existing compiler underfull/rerun-limit warnings retained; nine-page draft not asserted submission compliant.",
-    "First DOCX preview rejected: bundled font discovery omitted CJK glyphs. Rerender with task-local fontconfig found CJK fallback fonts; 116-page preview pages 115 and 116 viewed and readable. Preview PDF remains temporary and does not replace the canonical 92-page thesis PDF. DOCX is unchanged by this environment fix; no whole-document visual QA claim."
+    "First DOCX preview rejected: bundled font discovery omitted CJK glyphs. Rerender with task-local fontconfig found CJK fallback fonts; 116-page preview pages 115 and 116 viewed and readable. Preview PDF remains temporary and does not replace the canonical 92-page thesis PDF. DOCX is unchanged by this environment fix; no whole-document visual QA claim.",
+    "After stripping SVG trailing whitespace, offline QA reran. Diagnostic desktop was freshly viewed; other diagnostic, formulas, phone and review screenshots are byte-identical to inspected versions. Only full weekly print screenshot differs; print top is identical, and full-print visual pagination is not claimed."
   ],
   "screenshots": [
     {
@@ -164,7 +165,7 @@
     },
     {
       "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/html_qa/weekly-print.png",
-      "sha256": "cc9fa6df097d42f56c54cb4ee2dfa3567f10f0f0a439c5b5ca9c69882dfe6111"
+      "sha256": "4747ec8238db98e4254df20d75a5ed1805551819b66421ff9b79cc7a537c8f4e"
     },
     {
       "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/native_pages/docx-115.png",

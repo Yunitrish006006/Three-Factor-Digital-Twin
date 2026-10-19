@@ -32,6 +32,8 @@ def main():
     axes[1].set_ylabel('PWM request / applied');axes[1].set_xlabel('Time (s)');axes[1].legend(ncol=3,fontsize=9)
     fig.suptitle(f"Highest practical-LQR tracking MAE: {worst['panel']}, seed {worst['seed']}",fontsize=13)
     fig.savefig(out/'worst_case.svg');plt.close(fig)
+    for svg in out.glob("*.svg"):
+        svg.write_text("\n".join(line.rstrip() for line in svg.read_text().splitlines())+"\n")
     print(out)
 
 if __name__=='__main__':main()
