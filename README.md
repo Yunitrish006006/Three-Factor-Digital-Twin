@@ -16,6 +16,10 @@
 - 研究中的新算法仍為條件式目標，不可先宣稱優於全部 baseline。
 - 單房間三因子空間數位孿生、pillow reference、家具與 Google Home、MCP 展示等舊主題支援筆記已移到 [歷史封存區](docs/archive/room-spatial-digital-twin/README.md)。主稿、原始程式與凍結 evidence 仍保留原路徑以免破壞重現性。
 
+## 本日獨立文獻報告（與控制研究分開）
+
+- [Kalman 1960 原始論文導讀（離線 HTML，含 Riccati 推導與逐頁講稿）](docs/reports/lqr_kalman1960_paper_only_2026-10-19_zh.html)／[純文字講稿](docs/reports/lqr_kalman1960_paper_only_2026-10-19_zh.md)。只介紹論文本身，不連結到機箱實驗的推論。
+
 ## 入口與保留的研究資產
 
 | 用途 | 位置 |

@@ -8,6 +8,10 @@
 - [教授 2026-10-19 講稿](reports/professor_weekly_script_2026-10-19_zh.md)／[HTML 教授報告](reports/professor_weekly_2026-10-19_zh.html)。
 - [2026-10-19 LQR 機制診斷](../openspec/changes/diagnose-enclosure-lqr-20261019/evidence.md)／[2026-10-06 控制比較](../openspec/changes/prototype-sparse-enclosure-transfer-20261006/evidence.md)。
 
+## 獨立文獻導讀（非本研究的實驗成果）
+
+- [Kalman 1960 原始論文簡報 HTML](reports/lqr_kalman1960_paper_only_2026-10-19_zh.html)／[逐頁完整講稿](reports/lqr_kalman1960_paper_only_2026-10-19_zh.md)：原文分頁導讀、Riccati、LQR 推導和自製教學算例；不混入機箱研究。
+
 ## 仍保留的其他研究資產（非目前投稿主線）
 
 - [房間三因子研究封存](archive/room-spatial-digital-twin/README.md)：已搬移房間風扇、家電紀錄、MCP 與室內因子支援資料；歷史正式來源與證據仍保留原位。
