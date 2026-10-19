@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-19",
+  "observer": "assistant direct image inspection",
+  "status": "ACCEPTED_AS_REVIEW_ARTIFACT",
+  "artifacts": [
+    {
+      "path": "docs/reports/professor_weekly_2026-10-19_zh.html",
+      "sha256": "ae47ccd43b5ad0b08869fd4bd732c3e2e66d1c332691227deaa8d2ea99fce5f5"
+    },
+    {
+      "path": "docs/papers/conference_review_2026-10-19/manuscript_zh.html",
+      "sha256": "169e78b063f3691b61fd2278e4739e7716735f2b7e770e2f40cf235de42b8690"
+    },
+    {
+      "path": "docs/papers/conference_review_2026-10-19/manuscript_zh.pdf",
+      "sha256": "e748fe17aa6fc77732ca05b27965838096ed44208d4b83909f8531b034862a09"
+    }
+  ],
+  "observed": [
+    "All five final PDF pages viewed at 1600px; title/headings bold, author affiliation superscripts, accented Latin references and all equations readable; six tables within columns; no blank pages or clipped text",
+    "Weekly HTML desktop/mobile/tablet and manuscript tablet/mobile inspected; desktop/mobile MathML closeups inspected; phone table horizontal scrolling verified by keyboard",
+    "Print media viewport screenshots observed; no browser pagination claim"
+  ],
+  "scope_limits": [
+    "Review artifact only; not conference acceptance, author consent, formal submission or physical evidence",
+    "HTML print styles checked, not browser-generated paginated print PDF; separate five-page typeset PDF was fully inspected"
+  ],
+  "screenshots": {
+    "html_qa/comparison-1440.png": "336b1760032cdd07a9c1dad55585376fc19bcce2e72d501c891a0f38b4276f92",
+    "html_qa/comparison-390.png": "0c6092efc4a09ef4ed1917dae7f9980f2344f14e95058bcc120595c553d0f85d",
+    "html_qa/comparison-820.png": "b481a72fb925f0a0b129811af9d02c232c0ff34c5b5828e0d8a8481fd61d3af0",
+    "html_qa/formulas-1440.png": "48590499d327f45526488022c5b74d92b84c7e056f45410dbec0bb079d76a574",
+    "html_qa/formulas-390.png": "08811055034bbddb967ce160488119790ed6727e8616685aae78b14b362cded1",
+    "html_qa/formulas-820.png": "8ffed74e250352d36518addbba2b4591ae9f367e1a917591c0454aa7109651f5",
+    "html_qa/paper-1440-top.png": "265f8dd040b4d515a3dab213b66a351d24ae9fe3f553e3c4945d19da558bcfc4",
+    "html_qa/paper-1440.png": "d3ce79f487837996d601634e70aff9c13fb712aa5fa8abccae05843a81127a4e",
+    "html_qa/paper-390-top.png": "449bc9e3fe86da6fc217f64c18c63e9febd470783b979541b5bb8c79d615362c",
+    "html_qa/paper-390.png": "5491cbca207c89374546690f7a157e07cd3d95fcd8e06cf624ebc63a9520d9d7",
+    "html_qa/paper-820-top.png": "4010baf927e1b3ddcb9e8963fa1c9d29558cd482f6751a2d6205081447eb7b0d",
+    "html_qa/paper-820.png": "646d0582ae8f9d9c5c14f2c1df8655bed6068b959092f5d3da23fb7c830e8064",
+    "html_qa/paper-print-top.png": "9736a30565b9a02c31fe5fa1d1ddc69b05550c2148e0714b432b1b256c7cac1f",
+    "html_qa/paper-print.png": "5b4154f1dad43263ca7ba06ebfe9a75f2208cca5a6a756fbcbe452357e10440a",
+    "html_qa/weekly-1440-top.png": "b7e03791b13266686df144695988cfcad33907a3239495f1393ffc8dd9f493bf",
+    "html_qa/weekly-1440.png": "410397054fb7675b7bb00b04fedb3f58cd03cb54015980037e39db81779f6664",
+    "html_qa/weekly-390-top.png": "60db7511b3601b5de724e6ec9306daa1c63b16a7e56ae7262fcce78f940a075c",
+    "html_qa/weekly-390.png": "c2fed9598080941c2c87d1f4c16019fd18bec833120fddd6efd3bac5d87a90a6",
+    "html_qa/weekly-820-top.png": "4ae2337d8bce99f212ea07619a9ff2af4dae07110f13d3a7235ac3a1962d54fb",
+    "html_qa/weekly-820.png": "13bcd9e31aee5340659bbbe32b84f7cf16248c2398c41ed040880e8a5e8b513e",
+    "html_qa/weekly-print-top.png": "0a324957085bbd61331559cc9242301083978ede1a64457eb8deb2eddebaa371",
+    "html_qa/weekly-print.png": "4806ab6721840bda4fce758219efcbfcf594df000c4c909db74ea37eb2efa370",
+    "pdf_pages/page-1.png": "529290499c354cfd812669b0af3fa473e7cd02807417dc4a4df5663a684bed3d",
+    "pdf_pages/page-2.png": "075cc1cb7d1eeb223d0551e4225185a14d8550a4212b2e0105339378a8d7243d",
+    "pdf_pages/page-3.png": "daa45471d54a2ca4c92fb6f98e8182248dfefa924e7d2af456aa8065c945ba87",
+    "pdf_pages/page-4.png": "ba0584e6c113773cbb679f4e3f9c01f956d2467b979a32f71ebfa0d378a04ac4",
+    "pdf_pages/page-5.png": "4b83dfe131dce7134158f7d7255adec4da9350a6313fb370a68aef08f0b6fdb9"
+  }
+}

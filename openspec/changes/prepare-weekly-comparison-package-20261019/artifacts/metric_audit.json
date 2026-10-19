@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "scope": "stored CSV arithmetic only; no simulation/fitting/controller execution",
+  "historical_files_unchanged": 852,
+  "studies": {
+    "integrate-enclosure-session-20261012": {
+      "result_sha256": "0623f2957326f3022fe8ef2d99db0071908a7dc746184f89b9861af6b62acd78",
+      "episodes": 88,
+      "rows": 10560,
+      "metric_cells_checked": 1496,
+      "decisions": {
+        "H-ENC-51": "not_supported",
+        "H-ENC-52": "not_supported",
+        "source_mae_reduction_fraction": 0.21190459234890258,
+        "source_wins_of_4": 2,
+        "horizon_tracking_reduction_fraction": 0.000685587475533822
+      }
+    },
+    "select-enclosure-structure-20261012": {
+      "result_sha256": "983398d221fe00f2fe05026d05333093dd5b53f28e7c4b5e1d8d3094654cb308",
+      "episodes": 96,
+      "rows": 11520,
+      "metric_cells_checked": 1632,
+      "decisions": {
+        "H-ENC-71": "not_supported",
+        "H-ENC-72": "not_supported",
+        "source_mae_reduction_fraction": -0.25122351086530315,
+        "source_wins_of_6": 2,
+        "tracking_reduction_fraction": -0.029489327888490457
+      }
+    }
+  }
+}

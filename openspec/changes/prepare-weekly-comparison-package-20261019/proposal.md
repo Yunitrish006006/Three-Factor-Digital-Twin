@@ -1,0 +1,7 @@
+# Weekly comparison and candidate submission package
+
+User asks to complete the professor's comparison, explanation, conclusions and Taiwan-conference preparation. On 2026-10-19 the user confirms no venue selected and no existing submission. Prepare a neutral derivative of the two frozen enclosure studies, a first-person weekly HTML/talk, and a 4-6 page Chinese review manuscript using the CSME template as a candidate format. Do not submit or pay.
+
+Claim impact is neutral: no new method, dataset, hypothesis decision, scientific metric definition or adopted thesis conclusion. Recompute the already declared metrics from stored traces; use existing per-episode results and calibration diagnostics to explain limits. Mechanistic explanations remain hypotheses unless directly observable in the implementation. No new experiment, optimization, replay-based controller tuning or consumed study rerun.
+
+Affected artifacts: new weekly report, candidate-paper source/HTML/PDF, reporting-only builders, provenance/QA and weekly action record. Existing Chinese thesis/build source/native outputs, English IEEE manuscript, historical HTML/PDF/PPTX and their figures are preserved byte-for-byte because their scientific content is unchanged. This candidate paper is a bounded extract, not a replacement thesis or a selected venue migration. Any new scientific conclusion would require a separate research change and full synchronization.

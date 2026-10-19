@@ -1,0 +1,14 @@
+{
+  "pages": 5,
+  "bytes": 337499,
+  "page_size_points": [
+    0,
+    0,
+    595.2756,
+    841.8898
+  ],
+  "chinese_font": "/System/Library/AssetsV2/PreinstalledAssetsV2/InstallWithOs/com_apple_MobileAsset_Font7/66746e61b4dbfa104b24e08fd5cdadcea3816e57.asset/AssetData/BiauKai.ttf",
+  "latin_font": "/System/Library/Fonts/Supplemental/Times New Roman.ttf",
+  "format": "A4; body margins top/bottom 3cm left/right 2cm; two columns; 10pt body, 11pt headings, 14pt title, 12pt authors; no page numbers",
+  "submission_status": "NOT_SUBMITTED; venue undecided; review copy uses existing author metadata"
+}

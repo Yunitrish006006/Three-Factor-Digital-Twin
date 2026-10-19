@@ -1,0 +1,15 @@
+{
+  "checked_date": "2026-10-19",
+  "template": {
+    "url": "https://csme2026.conf.tw/site/userdata/1683/%E8%AB%96%E6%96%87%E6%A0%BC%E5%BC%8F/paper_template_ch.pdf",
+    "local_file": "source_template_ch.pdf",
+    "sha256": "3373b137af7799d436a233f3d5f70c1e6006d97955dc1823fddc4c1d423f3472",
+    "role": "format reference only; not author metadata or submission proof"
+  },
+  "official_submission_pages": [
+    "https://csme2026.conf.tw/site/page.aspx?lang=cht&pid=16&sid=1683",
+    "https://www.icce-tw.org/sguideline.html"
+  ],
+  "user_status": "venue not selected; not submitted",
+  "existing_results_commit": "a3a71650d059ebf6ea828660b014edce26683b9f"
+}
