@@ -1,106 +1,40 @@
-# Single-Room Sparse-Sensing Spatial Digital Twin
+# Enclosure Thermal Control — 電腦機箱閉環控溫演算法比較
 
-本專案是單房間空間數位孿生的 Python 研究原型。核心問題是在只有少量角落感測器、設備本身沒有遙測介面的條件下，估計房內的溫度、相對濕度與照度，並學習冷氣、窗戶及照明對環境的影響。
+> **研究方向更新：2026-10-19。** 目前依指導教授要求，優先比較不同控制演算法在機箱熱環境下的閉環控溫效果、研究性能差異原因，並嘗試提出可公平驗證的改善方法。短期交付目標為 **CSME 2026 中文論文候選投稿**與 **2027 年 1 月碩士口試／畢業**。CSME 是否投稿及是否受校方認列，仍需教授與系辦確認。
 
-目前研究邊界如下：
+## 先看這四份
 
-- 單一房間、8 顆角落感測器、三因子空間場。
-- 物理啟發的 reduced-order model 是主模型；稀疏校正與 hybrid residual 是後續修正層。
-- 目前溫度研究範圍限定在 `20–30 °C`。
-- Web 與 MCP 是展示／服務層，不是主要科學貢獻。
-- E8 真實介入尚未完成，不把反事實推薦寫成已證實的控制效益。
+1. **[2027/01 畢業與 2026/10/25 CSME 投稿時程](docs/planning/2027-01-graduation-csme2026-zh.md)**：期限、待辦、接受證明與口試關卡。
+2. **[目前機箱控制研究主軸與證據界線](docs/research/current_enclosure_control_scope_2026-10-19_zh.md)**：評比問題、控制器、實機條件及暫停方向。
+3. **[CSME 2026 中文稿／投稿準備](docs/papers/conference_review_2026-10-19/readiness_zh.md)**、[完整五頁中文稿](docs/papers/conference_review_2026-10-19/manuscript_zh.md)：**投稿前審閱稿；並非已投稿或已被接受**。
+4. **[2026-10-19 LQR 診斷原始證據](openspec/changes/diagnose-enclosure-lqr-20261019/evidence.md)**：四個同族模擬 plant、40 回合與負面結果。
 
-## 從哪裡開始
+## 研究狀態
 
-目前接續研究的應用方向是**電腦機箱稀疏測溫與虛擬感測**，先以公開伺服器資料驗證方法，再銜接桌機機箱 NTC 多點量測。2026-09-07 的 E15 已完成一次性凍結確認：14 檔、3,112 rows，MAE 1.6939→0.9744°C，12/14 runs 勝出，10 個閘門全部通過。這只支持同一伺服器的時間／工作負載轉移；桌機機箱、NTC、完整空間場及跨伺服器仍未驗證。完整紀錄見 [`E15 evidence`](openspec/changes/confirm-bmc-temporal-transfer-e15/evidence.md)。
+- 主要成果是 **模擬機箱／控制環境的閉環演算法比較**。機箱實測、風扇實際電功率與硬體上的公平對照尚未完成，不能稱為真實機箱控溫已驗證。
+- 目前已有 PI、PID、LQR、MPC 與控制候選排序的比較資料；不同實驗批次的排名可能不同，不能忽略控制代價及模型失配。
+- 研究中的新算法仍為條件式目標，不可先宣稱優於全部 baseline。
+- 單房間三因子空間數位孿生、pillow reference、家具與 Google Home、MCP 展示等舊主題支援筆記已移到 [歷史封存區](docs/archive/room-spatial-digital-twin/README.md)。主稿、原始程式與凍結 evidence 仍保留原路徑以免破壞重現性。
 
-| 需求 | 入口 |
+## 入口與保留的研究資產
+
+| 用途 | 位置 |
 | --- | --- |
-| 查看教授版進度與完整實驗 | [`docs/reports/`](docs/reports/) |
-| 開啟兩週教授成果與 Demo 指南 | [`docs/reports/professor_two_week_report_2026-08-04_2026-08-17_zh.md`](docs/reports/professor_two_week_report_2026-08-04_2026-08-17_zh.md)／[`docs/demos/professor_demo_guide_2026-08-17_zh.md`](docs/demos/professor_demo_guide_2026-08-17_zh.md) |
-| 閱讀中文論文主線 | [`docs/thesis/README.md`](docs/thesis/README.md) |
-| 找研究、模型或實驗文件 | [`docs/README.md`](docs/README.md) |
-| 查看感測節點與驗證級硬體 | [`docs/hardware/README.md`](docs/hardware/README.md) |
-| 理解程式模組 | [`digital_twin/README.md`](digital_twin/README.md) |
-| 找可執行腳本 | [`scripts/README.md`](scripts/README.md) |
-| 查看研究規格與變更流程 | [`openspec/README.md`](openspec/README.md) |
+| 活動與期程 | [docs/planning/](docs/planning/README.md) |
+| 活躍研究及證據邊界 | [docs/research/current_enclosure_control_scope_2026-10-19_zh.md](docs/research/current_enclosure_control_scope_2026-10-19_zh.md) |
+| CSME 中文會議論文 | [docs/papers/conference_review_2026-10-19/](docs/papers/conference_review_2026-10-19/readiness_zh.md) |
+| 教授本週說明與離線頁 | [docs/reports/professor_weekly_script_2026-10-19_zh.md](docs/reports/professor_weekly_script_2026-10-19_zh.md) |
+| 中文碩論歷史正式來源（**尚待改編為機箱研究**） | [docs/thesis/README.md](docs/thesis/README.md) |
+| 模型、程式、測試與研究規格 | [digital_twin/](digital_twin/README.md)、[scripts/](scripts/README.md)、[openspec/](openspec/README.md) |
+| 房間三因子舊文件 | [docs/archive/room-spatial-digital-twin/](docs/archive/room-spatial-digital-twin/README.md) |
+| 轉向前原始 README | [歷史快照](docs/archive/room-spatial-digital-twin/legacy_root_readme_2026-10-19.md) |
 
-## 快速驗證
-
-```bash
-python3 -m venv .venv
-.venv/bin/python -m pip install -e ".[research,artifacts]"
-.venv/bin/python scripts/validate_research_openspec.py
-.venv/bin/python scripts/verify_thesis_results.py
-.venv/bin/python -m unittest discover -s tests
-```
-
-`verify_thesis_results.py` 在任何 `FAIL` 或 `MISSING` 時會以非零狀態結束；乾淨 clone 必須先依報告中的 `suggested_script` 重建被忽略的 `outputs/data/` 證據。
-
-執行完整研究實驗：
+## 檢查／重現
 
 ```bash
-python3 scripts/run_all_thesis_experiments.py
+python3 scripts/validate_research_openspec.py
+python3 scripts/verify_thesis_results.py
+python3 -m unittest discover -s tests
 ```
 
-執行 input／validation 角色分離的受控 holdout 檢查：
-
-```bash
-python3 scripts/run_target_holdout_validation.py
-python3 scripts/run_kalman_filter_comparison.py
-```
-
-執行本地展示：
-
-```bash
-python3 scripts/run_demo.py
-python3 scripts/build_professor_demo.py
-python3 scripts/run_web_demo.py
-```
-
-## 專案結構
-
-```text
-digital_twin/   可重用的模型、評估與服務程式碼
-scripts/        實驗、驗證、建置與展示入口
-tests/          單元測試與研究行為檢查
-docs/           論文、實驗、模型、報告與規格說明
-openspec/       研究能力契約、變更與證據治理
-outputs/        可重建輸出、公開資料中介檔與本地原始資料
-```
-
-`outputs/` 預設不納入版本控制；大型公開資料與正規化中介檔維持本地保存。正式論文成品依 [`AGENTS.md`](AGENTS.md) 的同步規則重建。
-
-## 常用工作流程
-
-研究變更依序進行：
-
-```text
-OpenSpec proposal/protocol
-  -> 實作與實驗
-  -> actual evidence
-  -> 論文／IEEE／簡報同步
-  -> 重建與驗證
-  -> archive
-```
-
-重建正式文件：
-
-```bash
-python3 scripts/build_architecture_diagrams.py
-python3 scripts/build_thesis_docx.py
-python3 scripts/build_thesis_pdf.py
-python3 scripts/build_thesis_pptx.py
-cd docs/papers/ieee && tectonic --keep-logs --keep-intermediates paper.tex
-```
-
-房間設計必須符合 [`docs/requirements/room_design_format_requirements_zh.md`](docs/requirements/room_design_format_requirements_zh.md)，並以 [`docs/templates/room_design_template.json`](docs/templates/room_design_template.json) 建立。
-
-## 維護原則
-
-- 正式來源只維護一份；產生檔由指定 builder 重建。
-- 模擬、真實房間快照、公開 task-aligned benchmark 與真實介入證據分開陳述。
-- 不新增 `final_v2`、`new_updated`、`agent_version` 等平行版本；需要保留的歷史材料移至 `docs/archive/`。
-- 任何研究方法、數字或結論變更，都要遵守 [`AGENTS.md`](AGENTS.md) 的同步範圍。
-
-- [本週研究進度與報告入口（2026-09-08）](docs/reports/weekly_progress_2026-09-08_zh.html)
+此輪僅整理研究方向、時程及歷史文件，**不改動控制實作、模擬結果、凍結 protocol 或論文數據**。後續科學方法或正式碩論章節改動，仍需遵守 [AGENTS.md](AGENTS.md) 的 OpenSpec、同步與建置規則。

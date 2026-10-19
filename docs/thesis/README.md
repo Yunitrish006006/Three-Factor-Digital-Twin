@@ -1,54 +1,25 @@
-# Thesis Markdown 導覽
+# 碩論來源與歷史房間研究導覽
 
-這個資料夾的 Markdown 已整理成「先看主線、再看支援、最後看參考」三層。
-整個專案的跨資料夾入口請見 [`../README.md`](../README.md)。
+> 2026-10-19：研究主軸已轉向**電腦機箱閉環控溫演算法比較與原因分析**。此資料夾內的 `thesis_draft_zh.md`、論文產生器、簡報與 IEEE 稿仍是先前房間研究的正式／歷史來源，**尚未完成整篇機箱研究論文的重編與同步**。不可把此整理當作主稿已更新。
 
-## 1. 主線文件（每天主要維護）
+## 現在優先使用
 
-- 主論文草稿：[thesis_draft_zh.md](thesis_draft_zh.md)
-- 目前成果、證據邊界與同步待辦：[thesis_sync_status_zh.md](thesis_sync_status_zh.md)（2026-09-08 盤點）
-- 論文對應與寫作說明：[thesis_guide_zh.md](thesis_guide_zh.md)
-- 學術架構總覽（方法與流程）：[project_academic_architecture_zh.md](project_academic_architecture_zh.md)
-- 系統架構圖（Mermaid）：[system_architecture_diagrams_zh.md](system_architecture_diagrams_zh.md)
+- [研究方向、控制指標與證據限制](../research/current_enclosure_control_scope_2026-10-19_zh.md)。
+- [2027 年 1 月口試及 CSME 中文投稿時程](../planning/2027-01-graduation-csme2026-zh.md)。
+- [CSME 投稿前審閱與五頁中文稿](../papers/conference_review_2026-10-19/readiness_zh.md)。
+- [2026-10-19 LQR 診斷原始 evidence](../../openspec/changes/diagnose-enclosure-lqr-20261019/evidence.md)。
 
-## 2. 口試與簡報文件（簡報線）
+## 尚需重編的主稿／產生器（先維持原位）
 
-- 一般版大綱：[presentation_outline_zh.md](presentation_outline_zh.md)
-- 30 分鐘版大綱：[presentation_outline_zh_30min.md](presentation_outline_zh_30min.md)
-- 30 分鐘逐頁講稿：[presentation_speaker_notes_zh_30min.md](presentation_speaker_notes_zh_30min.md)
+- [舊中文碩論](thesis_draft_zh.md)／[舊論文寫作說明](thesis_guide_zh.md)。
+- [同步狀態](thesis_sync_status_zh.md)及[方法狀態](method_status_inventory_zh.md)仍描述房間研究的舊範圍，請勿直接當成 2026-10-19 機箱控溫研究進度。
+- [架構](project_academic_architecture_zh.md)／[架構圖](system_architecture_diagrams_zh.md)／[簡報大綱](presentation_outline_zh.md)／[30 分鐘大綱](presentation_outline_zh_30min.md)／[講稿](presentation_speaker_notes_zh_30min.md)：待依教授認可的最新碩論方向同步。
+- [舊研究問題](problem_statement_zh.md)／[舊研究計畫](research_proposal_zh.md)／[引用清單](used_papers_inventory_zh.md)／[檔案來源分類](project_file_classification_zh.md)：歷史支援，不是目前投稿的控制性能主線。
 
-## 3. 研究定位與支援筆記（文獻/定位線）
+## 已搬入封存區的房間研究筆記
 
-- 主稿實際使用論文清單：[used_papers_inventory_zh.md](used_papers_inventory_zh.md)（中英文合併；逐篇用途與引用位置）
-- 研究問題定義：[problem_statement_zh.md](problem_statement_zh.md)
-- 研究計畫草案：[research_proposal_zh.md](research_proposal_zh.md)
-- 相似研究與資料集比對：[similar_work_and_datasets_zh.md](similar_work_and_datasets_zh.md)
-- 室內因子實驗論文清單：[room_indoor_factor_experimental_papers_zh.md](room_indoor_factor_experimental_papers_zh.md)
-- MCP 在論文中的定位：[mcp_thesis_positioning_zh.md](mcp_thesis_positioning_zh.md)
-- 專案資料來源與使用摘要：[chatgpt_project_data_summary.md](chatgpt_project_data_summary.md)
-- 方法完成狀態盤點：[method_status_inventory_zh.md](method_status_inventory_zh.md)
-- 電風扇條件設計：[fan_effect_design_zh.md](fan_effect_design_zh.md)
-- Google Home 操作紀錄邊界：[google_home_operation_logging_zh.md](google_home_operation_logging_zh.md)
-- 論文同步狀態：[thesis_sync_status_zh.md](thesis_sync_status_zh.md)
+- [房間三因子專屬文件目錄](../archive/room-spatial-digital-twin/README.md)：fan-effect、Google Home、MCP、室內因子文獻、資料集與房間原型資料摘要；原同名路徑留下導引頁供舊連結使用。
 
-上述四份文件支援目前進行中的 evidence stabilization；尚未同步完成的內容不得直接寫成論文既成成果。
+## 安全維護規則
 
-## 4. 專案管理與檔案盤點
-
-- 專案檔案分類總覽：[project_file_classification_zh.md](project_file_classification_zh.md)
-
-## 5. 歷史與非主線文件
-
-課程／外部論文報告已移至 [`../archive/`](../archive/)，避免和目前論文主線混在一起。
-
-## 建議使用順序
-
-1. 平日修改：先開 [thesis_draft_zh.md](thesis_draft_zh.md) + [project_academic_architecture_zh.md](project_academic_architecture_zh.md)。
-2. 口試準備：再開 [presentation_outline_zh_30min.md](presentation_outline_zh_30min.md) + [presentation_speaker_notes_zh_30min.md](presentation_speaker_notes_zh_30min.md)。
-3. 補文獻與定位：最後查 [similar_work_and_datasets_zh.md](similar_work_and_datasets_zh.md) 與 [mcp_thesis_positioning_zh.md](mcp_thesis_positioning_zh.md)。
-
-## 命名與維護規則（後續新增檔案）
-
-- 主線文件維持 `*_zh.md` 命名，避免同主題多版本散落。
-- 同主題若有不同用途，後綴統一用 `outline`、`speaker_notes`、`draft`。
-- 新檔建立後，請同步補上本導覽的連結，避免再次變得難找。
+既有主稿、腳本、圖片與實驗資料暫不刪除，因可能仍被建置器或 OpenSpec 交互引用。今後正式將碩論改寫成機箱控溫，必須另立 research-first 變更，維持數字、圖表、章節、生成檔及引用的一致性；任何前後階段跨實驗結果不得誤當同一個測試集。

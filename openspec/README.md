@@ -1,5 +1,7 @@
 # Research OpenSpec
 
+> **2026-10-19 優先順序更新：** 現行控溫比較、中文會議及畢業時程詳見 [`docs/research/current_enclosure_control_scope_2026-10-19_zh.md`](../docs/research/current_enclosure_control_scope_2026-10-19_zh.md) 與 [`docs/planning/2027-01-graduation-csme2026-zh.md`](../docs/planning/2027-01-graduation-csme2026-zh.md)。下列房間 free-space 規格與 `stabilize-thesis-evidence` 描述為歷史研究能力／仍可讀的 active-change 紀錄，不代表目前優先投入，也不得自行改寫凍結證據。
+
 此目錄是論文專案的 OpenSpec source of truth。根目錄的 [`OPEN_SPEC.md`](../OPEN_SPEC.md) 只保留快速入口；正式能力、證據邊界與研究變更都在這裡。
 
 ## 結構

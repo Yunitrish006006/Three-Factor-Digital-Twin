@@ -10,19 +10,18 @@ proposals visibly separate from adopted thesis methods and completed evidence.
 
 This repository contains one research project expressed in multiple synchronized artifacts. Any AI assistant editing this repository must treat the following outputs as one coupled deliverable, not as independent documents.
 
-## Current Submission Target
+## Current research and submission focus (confirmed 2026-10-19)
 
-As of 2026-08-03, the active submission target for the English IEEE-style manuscript is IoTaIS 2026, the 2026 IEEE International Conference on Internet of Things and Intelligence Systems.
+- **Active:** compare actual closed-loop thermal control performance of algorithms in an enclosure model (PI/PID/LQR/MPC etc.), diagnose the causes of performance differences, and optionally devise/test a stronger controller. Distinguish *simulated closed loop* from physical PC-enclosure evidence.
+- **Near-term submission:** Chinese conference review manuscript at `docs/papers/conference_review_2026-10-19/manuscript_zh.md`; **CSME 2026 is a candidate, not yet professor-approved, submitted, or accepted**. Student prefers Chinese per advisor. See `docs/planning/2027-01-graduation-csme2026-zh.md` and `docs/research/current_enclosure_control_scope_2026-10-19_zh.md`.
+- **Graduation objective:** January 2027, conditional on advisor/department confirmation of applicable program rules, Chinese acceptance and oral-defense requirements.
+- **Historical topics:** room humidity/illuminance/3D reconstruction, Google Home and MCP service exploration are not current headline contributions. Consult `docs/archive/room-spatial-digital-twin/README.md`. Preserve research code and frozen evidence at their original paths.
+- Updating an organizational index or calendar alone does not change scientific claims; any scientific thesis refocus/rewrite **does** require the full research-first/OpenSpec and document synchronization workflow below. Do not imply that the old canonical thesis and IEEE draft have already been rewritten.
 
-- Active target: IoTaIS 2026.
-- Submission system: EDAS, `https://edas.info/N34817`.
-- Extended full paper deadline: August 10, 2026.
-- Current format target: IEEE A4 conference paper, 6-7 pages for full papers.
-- Former targets no longer active: IEEE Digital Twin 2026 and IEEE DTPI 2026.
+## Historical IEEE venue note (2026-08-03; inactive)
 
-Future edits to the IEEE manuscript should optimize for IoTaIS 2026's Internet of Things and intelligence systems scope. Frame the work around sparse IoT sensing, indoor spatial intelligence, non-networked appliance impact learning, and decision-support services. Keep the MCP interface as a secondary service layer rather than the paper's headline novelty.
+The former English-paper exploration targeted IoTaIS 2026 (EDAS `https://edas.info/N34817`; then-announced extended full-paper deadline August 10, 2026). This is preserved for provenance only and **is not** the active 2026-10-19 submission target. Previous IEEE Digital Twin 2026 and IEEE DTPI 2026 were also explored. Do not silently restore these as current venues.
 
-This venue note records the current submission strategy only. It does not relax the synchronization rules below, and it does not imply that the IEEE manuscript is already submission-ready.
 
 ## Room Design Data Requirement
 
