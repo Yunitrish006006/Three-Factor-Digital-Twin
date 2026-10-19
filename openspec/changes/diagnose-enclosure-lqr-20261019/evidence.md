@@ -27,3 +27,7 @@ The HTML receipt covers 1440 / 820 / 390-pixel screens plus print media, offline
 ## Remaining research and submission boundaries
 
 Weight and constraint interventions, independent physical measurements and real fan power calibration remain unexecuted. Equipment/data are unavailable as confirmed by the user. The venue is undecided and the manuscript is not submitted. There was no email, registration, submission or payment. The main professor deliverable is the HTML, with the complete review manuscript and original Kalman paper linked from it.
+
+## Delivery checkpoint
+
+All research and reporting commits through `fd6a3dc7c3defb624db8464d0624e31ab0c0e251` were pushed to origin/main. A live `git ls-remote origin refs/heads/main` returned exactly that SHA, and the working tree was clean before this completion record. OpenSpec validation passed: 14 spec files, 130 requirements, 251 scenarios and 41 active changes. The complete diff against the preceding delivery passed whitespace checks after normalization of generated SVGs.
