@@ -36,4 +36,4 @@ Fresh observations and screenshots are SHA-bound in `artifacts/visual_observatio
 
 `python3 scripts/validate_research_openspec.py` passed: 14 spec files, 130 requirements, 251 scenarios, 40 active changes. Physical experiments, new causal ablations, venue choice and formal submission remain outside the completion claim. No old test-suite result is presented as newly executed.
 
-Git delivery is verified after committing this package; see the task completion record and repository history.
+Package commit `8e8fad747248079caa73e85b8dbe1d0bdee83b36` was pushed to `origin/main`. An independent `git ls-remote origin refs/heads/main` returned the identical SHA on 2026-10-19. The subsequent completion-record commit changes only this evidence and the task checklist; report and manuscript bytes remain those observed above. Both unstaged and staged `git diff --check` passed before the package commit.
