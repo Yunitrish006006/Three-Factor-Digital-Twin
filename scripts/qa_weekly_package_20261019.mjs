@@ -8,7 +8,7 @@ const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const deps=process.env.ENCLOSURE_QA_DEPENDENCIES;
 if(!deps) throw Error('Set ENCLOSURE_QA_DEPENDENCIES to the installed Node dependency root.');
 const {chromium}=createRequire(resolve(deps,'package.json'))('playwright');
-const out=resolve(root,'openspec/changes/prepare-weekly-comparison-package-20261019/artifacts/html_qa');
+const out=resolve(root,'openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/html_qa');
 await mkdir(out,{recursive:true});
 const files=['docs/reports/professor_weekly_2026-10-19_zh.html','docs/papers/conference_review_2026-10-19/manuscript_zh.html'];
 const receipt={status:'PASS',mode:'isolated Chrome; offline file URLs',files:[],checks:[],errors:[]};
@@ -32,9 +32,10 @@ try {
         math:[...document.querySelectorAll('math')].map(m=>({width:m.getBoundingClientRect().width,height:m.getBoundingClientRect().height})),
         links:[...document.querySelectorAll('a[href]')].map(a=>a.href),
         brokenFragments:[...document.querySelectorAll('a[href^="#"]')].map(a=>a.hash.slice(1)).filter(id=>!document.getElementById(id)),
+        brokenImages:[...document.images].filter(im=>!im.complete||!im.naturalWidth).length,
         rawTex:/\\\(|\\\[|\$\$/.test(document.body.innerText),
       }));
-      if(state.overflow||state.brokenFragments.length||state.rawTex)throw Error(JSON.stringify({file,width,state}));
+      if(state.overflow||state.brokenFragments.length||state.rawTex||state.brokenImages)throw Error(JSON.stringify({file,width,state}));
       if(i===1 && (state.math.length!==3||state.math.some(m=>m.height<10)))throw Error('Missing MathML');
       const wrapper=page.locator('.table-wrap').first();await wrapper.focus();
       const before=await wrapper.evaluate(e=>e.scrollLeft);
@@ -47,8 +48,23 @@ try {
       await page.screenshot({path:resolve(out,shot),fullPage:true});
       await page.screenshot({path:resolve(out,shot.replace('.png','-top.png'))});
       if(i===1)await page.locator('.math').screenshot({path:resolve(out,`formulas-${width}.png`)});
-      else await page.locator('#results').screenshot({path:resolve(out,`comparison-${width}.png`)});
-      receipt.checks.push({file,width,...state,keyboardScroll:after>before,screenshot:shot});
+      else {await page.locator('#results').screenshot({path:resolve(out,`comparison-${width}.png`)});await page.locator('#diagnostic').screenshot({path:resolve(out,`diagnostic-${width}.png`)});}
+      let diagnosticInteractions=null;
+      if(i===0) {
+        const detail=page.locator('#diagnostic details');
+        await detail.locator('summary').click();
+        if(!await detail.evaluate(e=>e.open))throw Error('Diagnostic details failed to open');
+        await detail.screenshot({path:resolve(out,`diagnostic-pairs-${width}.png`)});
+        const chart=page.locator('.figure-wrap').first();await chart.focus();
+        const chartBefore=await chart.evaluate(e=>e.scrollLeft);
+        await page.keyboard.press('ArrowRight');await page.waitForTimeout(150);
+        const chartAfter=await chart.evaluate(e=>e.scrollLeft);
+        if(width===390&&chartAfter<=chartBefore)throw Error('Chart keyboard scrolling failed');
+        diagnosticInteractions={detailsOpened:true,chartKeyboardScroll:chartAfter>chartBefore};
+        await chart.evaluate(e=>e.scrollLeft=0);
+        await detail.locator('summary').click();
+      }
+      receipt.checks.push({file,width,...state,keyboardScroll:after>before,diagnosticInteractions,screenshot:shot});
       if(width===1440) {
         for(const link of state.links.filter(x=>x.startsWith('file:'))) {
           const u=new URL(link),fragment=decodeURIComponent(u.hash.slice(1));u.hash='';

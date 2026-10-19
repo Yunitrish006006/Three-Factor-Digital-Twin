@@ -20,7 +20,7 @@ from pypdf import PdfReader
 
 ROOT=Path(__file__).resolve().parents[1]
 PAPER=ROOT/'docs/papers/conference_review_2026-10-19'
-OUT=ROOT/'openspec/changes/prepare-weekly-comparison-package-20261019/artifacts'
+OUT=ROOT/'openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting'
 REPORT=ROOT/'docs/reports/professor_weekly_2026-10-19_zh.html'
 LABELS={'fixed':'固定風扇','pi':'PI','pid':'PID','lqr':'LQR','linear_mpc':'線性 MPC','rank_h1':'單步排序','rank_h6':'六步排序','rank_h6_no_correction':'六步無校正'}
 
@@ -39,6 +39,8 @@ def tables():
       'observer_table':('表 4　同軌跡開迴路估測比較',['配置','熱源 MAE °C'],[[name,f'{o[m]["source_mae_C"]:.4f}'] for m,name in [('nominal_physics','名義物理'),('calibrated_physics','辨識後物理'),('sparse_corrected','稀疏校正')]]),
       'structure_table':('表 5　第二階段控制結果（六回合平均）',['配置','追蹤 °C','proxy Wh','超溫 s'],[[name]+[f'{s[m][k]:.4f}' for k in ('tracking_mae_C','fan_energy_proxy_Wh','overtemp_s')] for m,name in [('S_pi','S＋PI'),('selected_pi','選擇＋PI'),('S_rank_h6','S＋六步'),('selected_rank_h6','選擇＋六步')]]),
       'failure_table':('表 6　逐平台校正後熱源 MAE',['平台','S °C','選擇模型 °C'],[[name]+[f'{mean(x["metrics"]["source_mae_C"] for x in second["runs"] if x["task"]=="open_loop" and x["split"]=="holdout" and x["rig"]==rig and x["method"]==m):.4f}' for m in ('S_corrected','selected_corrected')] for rig,name in [('contact_variant','接觸/容量'),('path_capacity','路徑/容量'),('convection_mismatch','對流失配')]])}
+    from enclosure_lqr_diagnostic_summary import comparison_table
+    data['diagnostic_table']=comparison_table()
     return data
 
 
@@ -47,7 +49,7 @@ def html_table(item):
     return '<div class="table-wrap" tabindex="0" role="region" aria-label="資料表，可左右捲動"><table><caption>'+escape(caption)+'</caption><thead><tr>'+''.join('<th>'+escape(x)+'</th>' for x in headers)+'</tr></thead><tbody>'+''.join('<tr>'+''.join('<td>'+escape(x)+'</td>' for x in row)+'</tr>' for row in rows)+'</tbody></table></div>'
 
 
-CSS='''*{box-sizing:border-box}body{margin:0;color:#203647;background:#eef3f6;font:17px/1.85 system-ui,sans-serif}main{max-width:1120px;margin:auto;padding:24px}header,section{background:white;padding:28px;margin:0 0 22px;border-radius:12px;border:1px solid #d7e1e8}h1{font-size:30px;line-height:1.5}h2{font-size:24px;margin-top:26px}h3{font-size:19px}p,li{overflow-wrap:anywhere}a{color:#176a91}nav{display:flex;gap:12px;flex-wrap:wrap}.meta,.caption{font-size:14px;color:#526979}.status{padding:14px 18px;background:#edf5f7;border-left:4px solid #2c7382}table{width:100%;border-collapse:collapse;font-size:15px}th,td{padding:10px;border-bottom:1px solid #d7e1e8;text-align:left}th{background:#edf3f8}caption{text-align:left;font-weight:600;margin-bottom:10px}.table-wrap{overflow-x:auto;margin:20px 0}.table-wrap table{min-width:520px}details{border-top:1px solid #d7e1e8;padding:15px 0}summary{cursor:pointer;font-weight:600}.math{overflow-x:auto;background:#f6f8fa;padding:15px}.math math{display:block;margin:14px 0;width:max-content}:focus-visible{outline:3px solid #bf8b35}@media(max-width:650px){main{padding:12px}header,section{padding:18px}h1{font-size:25px}}@media print{body{background:white;font-size:10pt}main{padding:0}header,section{border:0;padding:0}nav{display:none}.table-wrap table{min-width:0}table{font-size:9pt}tr{break-inside:avoid}}'''
+CSS='''figure{margin:24px 0}.figure-wrap{overflow-x:auto}.figure-wrap img{min-width:640px}#diagnostic details table{min-width:850px}*{box-sizing:border-box}body{margin:0;color:#203647;background:#eef3f6;font:17px/1.85 system-ui,sans-serif}main{max-width:1120px;margin:auto;padding:24px}header,section{background:white;padding:28px;margin:0 0 22px;border-radius:12px;border:1px solid #d7e1e8}h1{font-size:30px;line-height:1.5}h2{font-size:24px;margin-top:26px}h3{font-size:19px}p,li{overflow-wrap:anywhere}a{color:#176a91}nav{display:flex;gap:12px;flex-wrap:wrap}.meta,.caption{font-size:14px;color:#526979}.status{padding:14px 18px;background:#edf5f7;border-left:4px solid #2c7382}table{width:100%;border-collapse:collapse;font-size:15px}th,td{padding:10px;border-bottom:1px solid #d7e1e8;text-align:left}th{background:#edf3f8}caption{text-align:left;font-weight:600;margin-bottom:10px}.table-wrap{overflow-x:auto;margin:20px 0}.table-wrap table{min-width:520px}details{border-top:1px solid #d7e1e8;padding:15px 0}summary{cursor:pointer;font-weight:600}.math{overflow-x:auto;background:#f6f8fa;padding:15px}.math math{display:block;margin:14px 0;width:max-content}:focus-visible{outline:3px solid #bf8b35}@media(max-width:650px){main{padding:12px}header,section{padding:18px}h1{font-size:25px}}@media print{.figure-wrap img{min-width:0}#diagnostic details table{min-width:0}body{background:white;font-size:10pt}main{padding:0}header,section{border:0;padding:0}nav{display:none}.table-wrap table{min-width:0}table{font-size:9pt}tr{break-inside:avoid}}'''
 
 
 def html_page(title,content):
@@ -194,6 +196,31 @@ LQR 的原始論文、推導、機箱狀態與方法限制已備妥。我將本�
 
 我想請老師先確認稿件主軸是否聚焦控制取捨，或以可見擬合與隱藏熱源的落差作為核心。若要驗證原因，我會先訂新實驗與共同選參預算，再使用新資料。現階段沒有實機資料，硬體節能與安全仍不能宣稱已完成。
 '''
+    from enclosure_lqr_diagnostic_summary import paragraphs as diagnostic_paragraphs, html_section
+    dp=diagnostic_paragraphs()
+    talk='''# 本週教授報告講稿
+
+整理與新診斷日期：2026-10-19。約十分鐘。10/12 的 184 回合為既有研究，本次另新增 40 回合資訊診斷；口頭報告未確認。
+
+## 0–2 分鐘：比較研究的進度
+
+我完成八種控制配置與模型結構的比較，並保留負面結果。先前 PI 在固定測試中追蹤最低，MPC 的風扇 proxy 較低；LQR 沒有勝過 PI。六步排序改善未達門檻，可見量測擬合變好也沒有保證隱藏熱源更準。
+
+## 2–4 分鐘：我如何檢驗 LQR 的可能原因
+
+'''+dp[0]+'''
+
+## 4–6 分鐘：新實驗結果
+
+'''+dp[1]+'''
+
+## 6–8 分鐘：限制與反例
+
+'''+dp[2]+'''
+
+## 8–10 分鐘：我能下的結論與下一步
+
+'''+dp[3]+'\n\n我把新實驗補進完整論文審閱稿與 HTML。LQR 原始論文與詳解仍可一起查閱。下一步想請老師確認應優先隔離控制限制與權重，或準備實機辨識；目前沒有設備資料，尚不能宣稱硬體節能或安全。\n'
     (ROOT/'docs/reports/professor_weekly_script_2026-10-19_zh.md').write_text(talk)
     body='<header><p class="meta">2026-10-19 本週整理｜實驗證據 2026-10-12｜口頭報告未確認</p><h1>方法比較、原因與結論：本週完成進度</h1><p class="status">我完成既有結果覆核、逐方法結論、完整中文論文審閱稿與本週講稿。實機驗證仍待設備；會議尚未選定，尚未投稿。</p><nav><a href="#tasks">交辦對照</a><a href="#results">比較與結論</a><a href="#reasons">原因與邊界</a><a href="#paper">稿件</a><a href="#talk">十分鐘講稿</a><a href="professor_research_2026-10-12_zh.html#lqr">LQR 與原文</a></nav></header>'
     body+='<section id="tasks"><h2>交辦與完成範圍</h2>'+html_table(('本週進度',['教授要求','這次完成','狀態'],[['比較每個方法','八種配置、逐平台與估測／控制分開比較','完成'],['解釋原因','逐方法機制、數據現象、可能原因及驗證缺口','說明完成；因果驗證未做'],['實驗結論','兩階段負面結果與適用條件均保留','完成'],['找臺灣研討會','10/19 重查 CSME 與 ICCE-TW，備妥候選格式全文','準備完成；待選會議'],['LQR 與論文本體','沿用完整詳解、原始 18 頁論文與引用','材料完成'],['實機與投稿','無設備資料；使用者確認未選會議、未投稿','待條件／決定']]))+'<p>這週新增的是完整稿件、覆核與報告整合。10/12 已完成的合成實驗沒有重新命名成新研究成果。</p></section>'
@@ -205,7 +232,16 @@ LQR 的原始論文、推導、機箱狀態與方法限制已備妥。我將本�
         if block.startswith('## '):body+='<h3>'+escape(block[3:])+'</h3>'
         elif not block.startswith('# '):body+='<p>'+escape(block)+'</p>'
     body+='</section><section><h2>可核對的研究來源</h2><p><a href="../../openspec/changes/integrate-enclosure-session-20261012/artifacts/result.json">第一階段結果</a> · <a href="../../openspec/changes/select-enclosure-structure-20261012/artifacts/result.json">第二階段結果</a> · <a href="professor_research_2026-10-12_zh.html#online">公開模擬場景與執行範圍</a></p><p>本週覆核涵蓋全部 184 回合、22,080 筆與 3,128 個原有回合指標；前次實驗、主要論文內容及假設判定保持一致。</p></section>'
-    REPORT.write_text(html_page('本週教授報告：方法比較與完整審閱稿',body))
+    body=body.replace('<a href="#paper">稿件</a>','<a href="#diagnostic">新 LQR 診斷</a><a href="#paper">稿件</a>')
+    body=body.replace('<section id="paper">',html_section(html_table)+'<section id="paper">',1)
+    body=body.replace('我完成既有結果覆核、逐方法結論、完整中文論文審閱稿與本週講稿。','我完成既有結果覆核，另新增 40 回合 LQR 狀態／模型診斷，並更新完整論文與本週講稿。')
+    body=body.replace('實驗證據 2026-10-12','既有證據 2026-10-12；新診斷 2026-10-19')
+    body=body.replace('說明完成；因果驗證未做','已完成新模擬資訊介入；權重與限制尚待隔離')
+    body=body.replace('這週新增的是完整稿件、覆核與報告整合。','這週先完成稿件與覆核，接著新增 40 回合資訊診斷。')
+    body=body.replace('我已完成可由現有證據支持的解釋。若要將可能原因提升為因果結論，需先固定新實驗規則，再做新資料消融；目前不把候選驗證寫成已完成成果。','以上保留原比較提出的問題。新增資訊診斷已隔離狀態與控制器模型的替換效果，結果見下一節；權重、飽和與模型結構的作用仍未被分別隔離。')
+    body=body.replace('六筆參考文獻；六張資料表','七筆參考文獻；七張資料表')
+    body=body.replace('兩階段評估、逐方法討論','兩階段比較與新資訊診斷、逐方法討論')
+    REPORT.write_text(html_page('本週教授報告：方法比較與 LQR 資訊診斷',body))
     (OUT/'tables.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
     print(REPORT)
 

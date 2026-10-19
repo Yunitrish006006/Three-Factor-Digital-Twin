@@ -1,0 +1,218 @@
+{
+  "status": "PASS_WITH_BOUNDED_NATIVE_VISUAL_SCOPE",
+  "files": [
+    {
+      "path": "docs/reports/professor_weekly_2026-10-19_zh.html",
+      "sha256": "e148201d48832f7cf9c23ad9e3499b6e44a2d74657c2afa7e78c740ff6c9071a"
+    },
+    {
+      "path": "docs/reports/professor_weekly_script_2026-10-19_zh.md",
+      "sha256": "3f11746d692835b6000c8e441dc6289da76598c9a127223b07b752517b1beaf4"
+    },
+    {
+      "path": "docs/papers/conference_review_2026-10-19/manuscript_zh.html",
+      "sha256": "c6d133b53546cb42d0dc0e736a8894403a86cdb07c05fcee785b829f4674ed92"
+    },
+    {
+      "path": "docs/papers/conference_review_2026-10-19/manuscript_zh.pdf",
+      "sha256": "aae19edda95484049d4daabbdda8703b507ec0b428f25c35c7603931b604fc56"
+    },
+    {
+      "path": "docs/papers/thesis/thesis_draft_zh.docx",
+      "sha256": "f2d2cead7b90a8c59177af83ba88ea47e346cdfcadcc7fd746066dcff10a7ad0"
+    },
+    {
+      "path": "docs/papers/thesis/thesis_draft_zh.pdf",
+      "sha256": "4e985d59ff319b7888021a25d68cbee2f674775d6385a206737ec99d0cd412fc"
+    },
+    {
+      "path": "docs/papers/ieee/paper.pdf",
+      "sha256": "2dda08bc146849721e1d8c72f7639c9f342eab322e86cf732f93bd6926a1eea3"
+    }
+  ],
+  "checks": {
+    "thesis_pdf_copy_equal": true,
+    "thesis_docx_copy_equal": true,
+    "docs/papers/thesis/thesis_draft_zh.pdf": {
+      "pages": 92,
+      "diagnostic_text_present": true
+    },
+    "docs/papers/ieee/paper.pdf": {
+      "pages": 9,
+      "diagnostic_text_present": true
+    },
+    "docs/papers/conference_review_2026-10-19/manuscript_zh.pdf": {
+      "pages": 5,
+      "diagnostic_text_present": true
+    }
+  },
+  "visual_observations": [
+    "Final Chinese review PDF: all five pages viewed at 1500 px; formulas, seven tables, author marks and seven references readable, no overlap or clipped body.",
+    "HTML: desktop expanded four-contrast pairing table, tablet complete diagnostic, phone diagnostic and pairing table, phone MathML formulas, and print top viewed. Charts intentionally scroll horizontally on phones; interaction receipts verify keyboard scrolling. No body overflow or missing offline assets.",
+    "Native thesis PDF pages 91 and 92 viewed; diagnostic readable on page 91, following historical appendix retained. Not a new visual audit of every page.",
+    "IEEE PDF pages 8 and 9 viewed; new diagnostic and reference flow readable. Existing compiler underfull/rerun-limit warnings retained; nine-page draft not asserted submission compliant.",
+    "First DOCX preview rejected: bundled font discovery omitted CJK glyphs. Rerender with task-local fontconfig found CJK fallback fonts; 116-page preview pages 115 and 116 viewed and readable. Preview PDF remains temporary and does not replace the canonical 92-page thesis PDF. DOCX is unchanged by this environment fix; no whole-document visual QA claim."
+  ],
+  "screenshots": [
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/html_qa/comparison-1440.png",
+      "sha256": "2689adebd16ecbcc30094b7cd524130212c844290ef2031d2fa30b14190c01c9"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/html_qa/comparison-390.png",
+      "sha256": "9ea5f4ad2de7233026b017e6e70a00b1354516926f43bf21203d9c23199be4ce"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/html_qa/comparison-820.png",
+      "sha256": "51d35cd1f896f6f552347e238b5083e6ab710bf8bf0db80e7478964def68596a"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/html_qa/diagnostic-1440.png",
+      "sha256": "d1aa492e7be1eaf17e648e77c7425de185047eca009979107a679196a3631cab"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/html_qa/diagnostic-390.png",
+      "sha256": "95103cf24fe565828985615bd9d21e5d537df3ada14540c08cfdbf0c10a13f27"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/html_qa/diagnostic-820.png",
+      "sha256": "e15d2b656884eb1a56ada8d6a814b587ea115a6bbc56a6885a7b42a4f8eaae25"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/html_qa/diagnostic-pairs-1440.png",
+      "sha256": "db7c024309f283362d55738fc3a63cbd8239f23325631165592f6a92201cc243"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/html_qa/diagnostic-pairs-390.png",
+      "sha256": "8f7afc3a10e661a9fc439a19e9b2d45a011295a7dbb63a11cc5feac852ee5487"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/html_qa/diagnostic-pairs-820.png",
+      "sha256": "a99d790140abd028d10da15727e61f6015e500e9a6a16d793e99dd829493c8b8"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/html_qa/formulas-1440.png",
+      "sha256": "1fc6797d1ab5a535c697f9d33a17a437aaeba8f6770d40db87140d5eba1a4088"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/html_qa/formulas-390.png",
+      "sha256": "ca66bdb1b35ea4c6a2b599351c173b7a7fc9de5e4c59f75dc3c3372cb29bf969"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/html_qa/formulas-820.png",
+      "sha256": "84d4444cfcdd14277637ff36df786167d9de4f70b485d9c9d3208b8bddb6d56f"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/html_qa/paper-1440-top.png",
+      "sha256": "6f400690eb38581898c8e9cb7b1498c95be03a258e11fb8c1432cd2f34980e2f"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/html_qa/paper-1440.png",
+      "sha256": "364dfa13cde4f9fcda89f8ff24662e66ed55e079a42f8ee170cfe59a1872b8e5"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/html_qa/paper-390-top.png",
+      "sha256": "7e0697f3c3e1f32150533b33f580aed8e4245afbcafe5f865eea6628cb31b414"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/html_qa/paper-390.png",
+      "sha256": "44a19977af95c41f767f610dbdf96cd036d92be674ad7410a89114a019688dfc"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/html_qa/paper-820-top.png",
+      "sha256": "dad1d7fb953891c119a5cb46bd0fcaa6b19f77037bb36b03e2ec764b8b02b5e2"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/html_qa/paper-820.png",
+      "sha256": "346515180d5e9f98a08ab647b068158d28945ca579de5573a75a5a77bdc905ab"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/html_qa/paper-print-top.png",
+      "sha256": "217a95f484366d4b95a1a10fc07ca1b67f5ff413feb5ca1b55f791d535b61474"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/html_qa/paper-print.png",
+      "sha256": "b69bc43c2d6bcb292df05f761d64304b4fdff23154abc3a19a978677f17c0aa3"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/html_qa/weekly-1440-top.png",
+      "sha256": "b884f06d952aa9b1a6e44ad497f75722d509f669d567778c9546eb06e9255d3c"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/html_qa/weekly-1440.png",
+      "sha256": "9258e167760a5d73c939c73603568e7905b7c273b2d1162c9977b4c05f7cf1b4"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/html_qa/weekly-390-top.png",
+      "sha256": "b7e2f096d564564382f10409de17cf9300efb20b0f8fe3bee91a56df9b0d09a6"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/html_qa/weekly-390.png",
+      "sha256": "337852a5bbbda34fafb183dadb4fbc4580aa1b1909fc8de6a70a1abf28a9d46a"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/html_qa/weekly-820-top.png",
+      "sha256": "01a5e071d22b2c2747093526efe0d35879ff5c67aa819dffc8ab1082ac3e039f"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/html_qa/weekly-820.png",
+      "sha256": "8c17182425b3eccd397b3985542661c38cfa455fb34b0c86ba1f8ee6fc7f3b74"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/html_qa/weekly-print-top.png",
+      "sha256": "d3f78e99a95d788818cf67201499364792daae90b30d435c2e0288a76398014b"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/html_qa/weekly-print.png",
+      "sha256": "cc9fa6df097d42f56c54cb4ee2dfa3567f10f0f0a439c5b5ca9c69882dfe6111"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/native_pages/docx-115.png",
+      "sha256": "8f086cc8282b0d10952a0578f2d2d61517db0797213133f300a6bb70579f963d"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/native_pages/docx-116.png",
+      "sha256": "a980195cb57212423a3bb1ac6240edfe55cab593eeb6c29f8e6d6efcaaecf3d4"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/native_pages/ieee-8.png",
+      "sha256": "5123ba86d199918d515b051341aaba8c2e7b67efcbbecc0e1055f922fd9f2043"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/native_pages/ieee-9.png",
+      "sha256": "5591456ea2b5cefd73fe95f002b99a25e05258a210affc56b6989205a6a12a96"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/native_pages/thesis-90.png",
+      "sha256": "46e127190f2cc367edf874dc5d90ca7fe46e1b0c993173771b0108969c5880c1"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/native_pages/thesis-91.png",
+      "sha256": "1540d695911dec58f4f78b72ab78c4c5a69d44d01b4a3c94e10c148934bba492"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/native_pages/thesis-92.png",
+      "sha256": "024dc0c310dfdcaf63cd063c219cdc774ea644557425d853ffdbfdb94651a03f"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/pdf_pages/page-1.png",
+      "sha256": "27224a55769a62479b2ab9d9e1a3b99877cc4c213a0545f0855412b5ce822cfd"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/pdf_pages/page-2.png",
+      "sha256": "7436b72f30d1ac1acdd01e6a75bdbc8db6435ed012b69ff0a72bd5749c170d4f"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/pdf_pages/page-3.png",
+      "sha256": "29f9a9cfd57085aeca74c759d558505b965f9c208938694b451145a72cb2f83e"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/pdf_pages/page-4.png",
+      "sha256": "ddc640dc58866ef960799295452d55d3269b543094316ef26bf44e338833d5f8"
+    },
+    {
+      "path": "openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/reporting/pdf_pages/page-5.png",
+      "sha256": "d4186872695edecff1c046d751f917326d6af80cf702668ed133b3294195c2a4"
+    }
+  ]
+}

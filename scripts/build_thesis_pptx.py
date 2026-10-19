@@ -3151,3 +3151,9 @@ if __name__ == "__main__":
     sync_enclosure_session_pptx_outputs()
     from enclosure_structure_summary import sync_pptx_outputs as sync_enclosure_structure_pptx_outputs
     sync_enclosure_structure_pptx_outputs()
+
+
+# Current professor delivery is offline HTML; keep diagnostic outline evidence synchronized.
+if __name__ == "__main__":
+    from enclosure_lqr_diagnostic_summary import sync_text as sync_lqr_diagnostic_outlines
+    sync_lqr_diagnostic_outlines()

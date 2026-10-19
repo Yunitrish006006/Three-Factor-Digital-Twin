@@ -278,6 +278,12 @@ A separate exploratory extension compares a four-parameter common-capacity model
 
 % END ENCLOSURE STRUCTURE 20261012
 
+% BEGIN LQR DIAGNOSTIC 20261019
+\subsection{State and Controller-Model Diagnostics}
+A separate preregistered exploratory factorial diagnostic uses four fresh same-family plants, two disturbance seeds, 40 episodes and 4,800 samples, plus 720 measured commissioning observations. Only the controller state and parameters are replaced independently; every sparse observer retains its fitted model. True states and exact plant parameters are simulation-only diagnostic information. Tracking MAE for estimated/fitted, true/fitted, estimated/exact, true/exact LQR and measured-input PI is 1.4057/\allowbreak{}1.4208/\allowbreak{}1.3936/\allowbreak{}1.4110/\allowbreak{}1.4945~$^\circ$C. With true state, exact controller parameters improve MAE by 0.69\% (6/8 wins), below the fixed 5\% gate. With the fitted model, true state increases MAE by 1.08\% (4/8 wins). Both H-ENC-91 and H-ENC-92 are not supported. The practical LQR raw request exceeds the amplitude range in 80.52\% of samples; 20.10\% also require slew limiting before warning overrides. These counts do not identify the causal loss due to saturation. All arms have zero sampled overtemperature and no controller fallback. LQR lowers tracking error by 5.94\% relative to PI but increases the fan-energy proxy by 70.44\%. This panel removes hidden heat bias and unmodeled paths; it neither identifies the sole cause of the earlier ranking nor supports physical efficacy.
+
+% END LQR DIAGNOSTIC 20261019
+
 \section{Discussion and Conclusion}
 The appliance-aware model outperforms IDW and the registered pure RNN under controlled truth, while residual calibration improves the sparse real-room point. In a fixed-budget, single-seed SML2010 check, GRU and LSTM are lowest-MAE in 0/12 cases; GRU beats vanilla RNN in 2/12 with median relative MAE reduction $-12.88\%$, and LSTM in 0/12 with $-11.37\%$, so the gated-recurrence hypothesis is unsupported. Public evidence remains task-bounded; dense measurement and interventions are future work, and physical PID control remains unevaluated. The separate four-controller comparison is exploratory assumed-model simulation; MPC does not outperform feedforward PID or LQR in its registered holdout.
 

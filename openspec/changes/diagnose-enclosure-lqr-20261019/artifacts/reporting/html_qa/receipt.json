@@ -1,0 +1,258 @@
+{
+  "status": "PASS",
+  "mode": "isolated Chrome; offline file URLs",
+  "files": [
+    {
+      "path": "docs/reports/professor_weekly_2026-10-19_zh.html",
+      "sha256": "e148201d48832f7cf9c23ad9e3499b6e44a2d74657c2afa7e78c740ff6c9071a"
+    },
+    {
+      "path": "docs/papers/conference_review_2026-10-19/manuscript_zh.html",
+      "sha256": "c6d133b53546cb42d0dc0e736a8894403a86cdb07c05fcee785b829f4674ed92"
+    }
+  ],
+  "checks": [
+    {
+      "file": "docs/reports/professor_weekly_2026-10-19_zh.html",
+      "width": 1440,
+      "title": "本週教授報告：方法比較與 LQR 資訊診斷",
+      "overflow": false,
+      "tables": 7,
+      "math": [],
+      "links": [
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/reports/professor_weekly_2026-10-19_zh.html#tasks",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/reports/professor_weekly_2026-10-19_zh.html#results",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/reports/professor_weekly_2026-10-19_zh.html#reasons",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/reports/professor_weekly_2026-10-19_zh.html#diagnostic",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/reports/professor_weekly_2026-10-19_zh.html#paper",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/reports/professor_weekly_2026-10-19_zh.html#talk",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/reports/professor_research_2026-10-12_zh.html#lqr",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/reports/professor_comparison_2026-10-12_zh.html",
+        "file:///Volumes/DataExtended/school%20workspace/school/openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/result.json",
+        "file:///Volumes/DataExtended/school%20workspace/school/openspec/changes/diagnose-enclosure-lqr-20261019/protocol.md",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/papers/conference_review_2026-10-19/manuscript_zh.html",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/papers/conference_review_2026-10-19/manuscript_zh.pdf",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/papers/conference_review_2026-10-19/readiness_zh.md",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/papers/reference_sources/kalman_1960_optimal_control_original.pdf",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/research/lqr_practical_guide_2026-10-12_zh.md",
+        "file:///Volumes/DataExtended/school%20workspace/school/openspec/changes/integrate-enclosure-session-20261012/artifacts/result.json",
+        "file:///Volumes/DataExtended/school%20workspace/school/openspec/changes/select-enclosure-structure-20261012/artifacts/result.json",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/reports/professor_research_2026-10-12_zh.html#online"
+      ],
+      "brokenFragments": [],
+      "brokenImages": 0,
+      "rawTex": false,
+      "keyboardScroll": false,
+      "diagnosticInteractions": {
+        "detailsOpened": true,
+        "chartKeyboardScroll": false
+      },
+      "screenshot": "weekly-1440.png"
+    },
+    {
+      "file": "docs/reports/professor_weekly_2026-10-19_zh.html",
+      "width": 820,
+      "title": "本週教授報告：方法比較與 LQR 資訊診斷",
+      "overflow": false,
+      "tables": 7,
+      "math": [],
+      "links": [
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/reports/professor_weekly_2026-10-19_zh.html#tasks",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/reports/professor_weekly_2026-10-19_zh.html#results",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/reports/professor_weekly_2026-10-19_zh.html#reasons",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/reports/professor_weekly_2026-10-19_zh.html#diagnostic",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/reports/professor_weekly_2026-10-19_zh.html#paper",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/reports/professor_weekly_2026-10-19_zh.html#talk",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/reports/professor_research_2026-10-12_zh.html#lqr",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/reports/professor_comparison_2026-10-12_zh.html",
+        "file:///Volumes/DataExtended/school%20workspace/school/openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/result.json",
+        "file:///Volumes/DataExtended/school%20workspace/school/openspec/changes/diagnose-enclosure-lqr-20261019/protocol.md",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/papers/conference_review_2026-10-19/manuscript_zh.html",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/papers/conference_review_2026-10-19/manuscript_zh.pdf",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/papers/conference_review_2026-10-19/readiness_zh.md",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/papers/reference_sources/kalman_1960_optimal_control_original.pdf",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/research/lqr_practical_guide_2026-10-12_zh.md",
+        "file:///Volumes/DataExtended/school%20workspace/school/openspec/changes/integrate-enclosure-session-20261012/artifacts/result.json",
+        "file:///Volumes/DataExtended/school%20workspace/school/openspec/changes/select-enclosure-structure-20261012/artifacts/result.json",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/reports/professor_research_2026-10-12_zh.html#online"
+      ],
+      "brokenFragments": [],
+      "brokenImages": 0,
+      "rawTex": false,
+      "keyboardScroll": false,
+      "diagnosticInteractions": {
+        "detailsOpened": true,
+        "chartKeyboardScroll": false
+      },
+      "screenshot": "weekly-820.png"
+    },
+    {
+      "file": "docs/reports/professor_weekly_2026-10-19_zh.html",
+      "width": 390,
+      "title": "本週教授報告：方法比較與 LQR 資訊診斷",
+      "overflow": false,
+      "tables": 7,
+      "math": [],
+      "links": [
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/reports/professor_weekly_2026-10-19_zh.html#tasks",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/reports/professor_weekly_2026-10-19_zh.html#results",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/reports/professor_weekly_2026-10-19_zh.html#reasons",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/reports/professor_weekly_2026-10-19_zh.html#diagnostic",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/reports/professor_weekly_2026-10-19_zh.html#paper",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/reports/professor_weekly_2026-10-19_zh.html#talk",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/reports/professor_research_2026-10-12_zh.html#lqr",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/reports/professor_comparison_2026-10-12_zh.html",
+        "file:///Volumes/DataExtended/school%20workspace/school/openspec/changes/diagnose-enclosure-lqr-20261019/artifacts/result.json",
+        "file:///Volumes/DataExtended/school%20workspace/school/openspec/changes/diagnose-enclosure-lqr-20261019/protocol.md",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/papers/conference_review_2026-10-19/manuscript_zh.html",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/papers/conference_review_2026-10-19/manuscript_zh.pdf",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/papers/conference_review_2026-10-19/readiness_zh.md",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/papers/reference_sources/kalman_1960_optimal_control_original.pdf",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/research/lqr_practical_guide_2026-10-12_zh.md",
+        "file:///Volumes/DataExtended/school%20workspace/school/openspec/changes/integrate-enclosure-session-20261012/artifacts/result.json",
+        "file:///Volumes/DataExtended/school%20workspace/school/openspec/changes/select-enclosure-structure-20261012/artifacts/result.json",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/reports/professor_research_2026-10-12_zh.html#online"
+      ],
+      "brokenFragments": [],
+      "brokenImages": 0,
+      "rawTex": false,
+      "keyboardScroll": true,
+      "diagnosticInteractions": {
+        "detailsOpened": true,
+        "chartKeyboardScroll": true
+      },
+      "screenshot": "weekly-390.png"
+    },
+    {
+      "file": "docs/reports/professor_weekly_2026-10-19_zh.html",
+      "media": "print",
+      "overflow": false
+    },
+    {
+      "file": "docs/papers/conference_review_2026-10-19/manuscript_zh.html",
+      "width": 1440,
+      "title": "機箱熱控制比較：論文審閱稿",
+      "overflow": false,
+      "tables": 7,
+      "math": [
+        {
+          "width": 190.609375,
+          "height": 20.140625
+        },
+        {
+          "width": 194.859375,
+          "height": 24.21875
+        },
+        {
+          "width": 279.21875,
+          "height": 28.3125
+        }
+      ],
+      "links": [
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/reports/professor_weekly_2026-10-19_zh.html",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/papers/conference_review_2026-10-19/manuscript_zh.pdf",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/papers/conference_review_2026-10-19/manuscript_zh.md",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/papers/conference_review_2026-10-19/readiness_zh.md",
+        "https://boletin.math.org.mx/pdf/2/5/BSMM%282%29.5.102-119.pdf",
+        "https://www.cds.caltech.edu/~murray/FBS/Second_Edition.html",
+        "https://github.com/Yunitrish006006/Three-Factor-Digital-Twin/tree/a3a71650d059ebf6ea828660b014edce26683b9f/openspec/changes",
+        "https://docs.scipy.org/doc/scipy-1.14.1/reference/generated/scipy.optimize.least_squares.html",
+        "https://docs.scipy.org/doc/scipy-1.14.1/reference/generated/scipy.linalg.solve_discrete_are.html",
+        "https://docs.scipy.org/doc/scipy-1.14.1/reference/optimize.minimize-slsqp.html",
+        "https://github.com/Yunitrish006006/Three-Factor-Digital-Twin/tree/189b5c2dd10daea72300a6e9385bf42a4df69b5d/openspec/changes/diagnose-enclosure-lqr-20261019"
+      ],
+      "brokenFragments": [],
+      "brokenImages": 0,
+      "rawTex": false,
+      "keyboardScroll": false,
+      "diagnosticInteractions": null,
+      "screenshot": "paper-1440.png"
+    },
+    {
+      "file": "docs/papers/conference_review_2026-10-19/manuscript_zh.html",
+      "width": 820,
+      "title": "機箱熱控制比較：論文審閱稿",
+      "overflow": false,
+      "tables": 7,
+      "math": [
+        {
+          "width": 190.609375,
+          "height": 20.140625
+        },
+        {
+          "width": 194.859375,
+          "height": 24.21875
+        },
+        {
+          "width": 279.21875,
+          "height": 28.3125
+        }
+      ],
+      "links": [
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/reports/professor_weekly_2026-10-19_zh.html",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/papers/conference_review_2026-10-19/manuscript_zh.pdf",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/papers/conference_review_2026-10-19/manuscript_zh.md",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/papers/conference_review_2026-10-19/readiness_zh.md",
+        "https://boletin.math.org.mx/pdf/2/5/BSMM%282%29.5.102-119.pdf",
+        "https://www.cds.caltech.edu/~murray/FBS/Second_Edition.html",
+        "https://github.com/Yunitrish006006/Three-Factor-Digital-Twin/tree/a3a71650d059ebf6ea828660b014edce26683b9f/openspec/changes",
+        "https://docs.scipy.org/doc/scipy-1.14.1/reference/generated/scipy.optimize.least_squares.html",
+        "https://docs.scipy.org/doc/scipy-1.14.1/reference/generated/scipy.linalg.solve_discrete_are.html",
+        "https://docs.scipy.org/doc/scipy-1.14.1/reference/optimize.minimize-slsqp.html",
+        "https://github.com/Yunitrish006006/Three-Factor-Digital-Twin/tree/189b5c2dd10daea72300a6e9385bf42a4df69b5d/openspec/changes/diagnose-enclosure-lqr-20261019"
+      ],
+      "brokenFragments": [],
+      "brokenImages": 0,
+      "rawTex": false,
+      "keyboardScroll": false,
+      "diagnosticInteractions": null,
+      "screenshot": "paper-820.png"
+    },
+    {
+      "file": "docs/papers/conference_review_2026-10-19/manuscript_zh.html",
+      "width": 390,
+      "title": "機箱熱控制比較：論文審閱稿",
+      "overflow": false,
+      "tables": 7,
+      "math": [
+        {
+          "width": 190.609375,
+          "height": 20.140625
+        },
+        {
+          "width": 194.859375,
+          "height": 24.21875
+        },
+        {
+          "width": 279.21875,
+          "height": 28.3125
+        }
+      ],
+      "links": [
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/reports/professor_weekly_2026-10-19_zh.html",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/papers/conference_review_2026-10-19/manuscript_zh.pdf",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/papers/conference_review_2026-10-19/manuscript_zh.md",
+        "file:///Volumes/DataExtended/school%20workspace/school/docs/papers/conference_review_2026-10-19/readiness_zh.md",
+        "https://boletin.math.org.mx/pdf/2/5/BSMM%282%29.5.102-119.pdf",
+        "https://www.cds.caltech.edu/~murray/FBS/Second_Edition.html",
+        "https://github.com/Yunitrish006006/Three-Factor-Digital-Twin/tree/a3a71650d059ebf6ea828660b014edce26683b9f/openspec/changes",
+        "https://docs.scipy.org/doc/scipy-1.14.1/reference/generated/scipy.optimize.least_squares.html",
+        "https://docs.scipy.org/doc/scipy-1.14.1/reference/generated/scipy.linalg.solve_discrete_are.html",
+        "https://docs.scipy.org/doc/scipy-1.14.1/reference/optimize.minimize-slsqp.html",
+        "https://github.com/Yunitrish006006/Three-Factor-Digital-Twin/tree/189b5c2dd10daea72300a6e9385bf42a4df69b5d/openspec/changes/diagnose-enclosure-lqr-20261019"
+      ],
+      "brokenFragments": [],
+      "brokenImages": 0,
+      "rawTex": false,
+      "keyboardScroll": true,
+      "diagnosticInteractions": null,
+      "screenshot": "paper-390.png"
+    },
+    {
+      "file": "docs/papers/conference_review_2026-10-19/manuscript_zh.html",
+      "media": "print",
+      "overflow": false
+    }
+  ],
+  "errors": []
+}
