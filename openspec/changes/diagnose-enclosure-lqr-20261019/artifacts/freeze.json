@@ -1,0 +1,25 @@
+{
+  "utc": "2026-10-19T06:01:00.850562+00:00",
+  "git_head": "a9cc576a143853328553e9fdda95962bc1b4f237",
+  "source_hashes": {
+    "scripts/run_enclosure_lqr_diagnostic.py": "21116f27b740cad879738eef41f298dfb3c85e7197402ee60f6e9f8386a9be0f",
+    "scripts/verify_enclosure_lqr_diagnostic.py": "bf6c6a4999dfd38d164ea141e13a7b2ad8f20a55bd67d2f28315e6afd2d5dbfd",
+    "tests/test_enclosure_lqr_diagnostic.py": "0c185ce157e0e7f7e1f2b572e591c8d29dd60b0ef400fcc8bc70c02c7aa05c47",
+    "digital_twin/enclosure/session.py": "670e258aad07584e0218ed61d625231686355136ead72ce5c3f68cf550af1eed",
+    "digital_twin/control/sparse_enclosure.py": "39ff11667e891b58cae489ec2965a5df9258e865650e6cd8b2e4cdc69489a000",
+    "digital_twin/control/sparse_enclosure_v2.py": "2e6d13eb7825ea915bbfb4891b19e908f5edb6ab4db82b517b1f1d6b7b581b0b",
+    "scripts/run_enclosure_session_study.py": "bdc4beeb0ba7f2d2558ff04783138479a4d3160b84659bbb5184dd73cbb3b141",
+    "scripts/verify_enclosure_session_study.py": "08704ac3ca77fe1c4a1b2507e0e906e6ce7b14a6b56d988c8bcdde0172f531e4",
+    "openspec/changes/diagnose-enclosure-lqr-20261019/protocol.md": "297d3a57804d5e5b876f5ce1d005f59ee59d9e5563c0bc3ad67402d5e9f8af46",
+    "openspec/changes/diagnose-enclosure-lqr-20261019/research.md": "8f42c0d9cf17f31fbc8fd30f1e6a435fe84eb02fa0b8eb223cece069251d12d7",
+    "openspec/changes/diagnose-enclosure-lqr-20261019/design.md": "26770a745ce953dfa465e8527be27373791762558fc9d3b89fcfba6437dc4ead",
+    "openspec/changes/diagnose-enclosure-lqr-20261019/proposal.md": "8a71df7ef7db4cc3a0ba2cf8c8721f9cce318e42cc858504ca1e15f31db50ddc"
+  },
+  "config_sha256": "dabb6fac2beebd533b518b8cee6f310033d31471a30f5c6c5249ef1e060035cb",
+  "historical_manifest_sha256": "2045224bc8320e215e4806146b562b0cdfaca1c5cca0281a9d0569c780ef60b2",
+  "environment": {
+    "python": "3.11.15",
+    "numpy": "1.26.4",
+    "scipy": "1.14.1"
+  }
+}

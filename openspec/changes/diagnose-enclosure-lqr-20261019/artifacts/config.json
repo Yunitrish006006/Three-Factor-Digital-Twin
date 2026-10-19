@@ -1,0 +1,118 @@
+{
+  "panels": {
+    "contact_shift": {
+      "capacities": [
+        24.0,
+        76.0,
+        33.0
+      ],
+      "contact": 0.58,
+      "plate_base": 0.15,
+      "plate_fan": 1.05,
+      "air_base": 1.0,
+      "air_fan": 1.5,
+      "bypass": 0.05,
+      "fan_tau": 24.0
+    },
+    "slow_fan": {
+      "capacities": [
+        21.0,
+        92.0,
+        27.0
+      ],
+      "contact": 0.9,
+      "plate_base": 0.15,
+      "plate_fan": 1.3,
+      "air_base": 1.0,
+      "air_fan": 1.5,
+      "bypass": 0.05,
+      "fan_tau": 35.0
+    },
+    "low_capacity": {
+      "capacities": [
+        15.0,
+        64.0,
+        23.0
+      ],
+      "contact": 1.15,
+      "plate_base": 0.15,
+      "plate_fan": 0.65,
+      "air_base": 1.0,
+      "air_fan": 1.5,
+      "bypass": 0.05,
+      "fan_tau": 10.0
+    },
+    "air_path": {
+      "capacities": [
+        25.0,
+        84.0,
+        38.0
+      ],
+      "contact": 0.8,
+      "plate_base": 0.15,
+      "plate_fan": 1.1,
+      "air_base": 0.8,
+      "air_fan": 1.9,
+      "bypass": 0.05,
+      "fan_tau": 18.0
+    }
+  },
+  "arms": {
+    "estimated_fitted": [
+      "lqr",
+      false,
+      false
+    ],
+    "truth_fitted": [
+      "lqr",
+      true,
+      false
+    ],
+    "estimated_exact": [
+      "lqr",
+      false,
+      true
+    ],
+    "truth_exact": [
+      "lqr",
+      true,
+      true
+    ],
+    "pi": [
+      "pi",
+      false,
+      false
+    ]
+  },
+  "seeds": [
+    619201,
+    619202
+  ],
+  "calibration_seeds": {
+    "contact_shift": 619100,
+    "slow_fan": 619101,
+    "low_capacity": 619102,
+    "air_path": 619103
+  },
+  "settings": {
+    "dt": 5.0,
+    "target": 28.0,
+    "warning": 29.5,
+    "limit": 30.0,
+    "pwm_min": 0.2,
+    "pwm_max": 1.0,
+    "slew": 0.1,
+    "kp": 0.12,
+    "ki": 0.002,
+    "kd": 0.05,
+    "derivative_alpha": 0.25,
+    "backcalc": 0.2,
+    "input_cost": 0.15,
+    "slew_cost": 0.5,
+    "thermal_cost": 100.0
+  },
+  "steps": 120,
+  "no_hidden_heat_bias": true,
+  "observer": "fitted model in every arm",
+  "evidence_class": "same_family_simulation_information_intervention"
+}

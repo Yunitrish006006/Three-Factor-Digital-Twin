@@ -1,0 +1,158 @@
+{
+  "contact_shift": {
+    "success": true,
+    "fallback": false,
+    "nfev": 8,
+    "residual_calls": 40,
+    "wall_time_s": 0.4353447920002509,
+    "cost": 280.5559963330503,
+    "jacobian_condition": 14.52690796190667,
+    "parameters": {
+      "capacities": [
+        19.75135735445138,
+        79.00542941780552,
+        29.62703603167707
+      ],
+      "contact": 0.5002951256789894,
+      "plate_base": 0.15,
+      "plate_fan": 1.0212649691317488,
+      "air_base": 1.0,
+      "air_fan": 1.5,
+      "bypass": 0.05,
+      "fan_tau": 24.050518771905367
+    },
+    "input_channels": [
+      "time_s",
+      "plate_C",
+      "air_C",
+      "fan_fraction",
+      "inlet_C",
+      "power_W"
+    ],
+    "known_initial_state": "all temperatures equal measured inlet; fan .4",
+    "fitted_parameters": [
+      "contact",
+      "plate_fan",
+      "common_capacity_scale",
+      "fan_tau"
+    ],
+    "csv_sha256": "8f0930b219735d0bdb10256a7155ac038419036a1ab1b475ae1f11a4bfd81219"
+  },
+  "slow_fan": {
+    "success": true,
+    "fallback": false,
+    "nfev": 9,
+    "residual_calls": 45,
+    "wall_time_s": 0.6368093330020201,
+    "cost": 265.73824243925986,
+    "jacobian_condition": 15.301689782714488,
+    "parameters": {
+      "capacities": [
+        22.286480556921134,
+        89.14592222768454,
+        33.4297208353817
+      ],
+      "contact": 0.9606891948377607,
+      "plate_base": 0.15,
+      "plate_fan": 1.3070915151442166,
+      "air_base": 1.0,
+      "air_fan": 1.5,
+      "bypass": 0.05,
+      "fan_tau": 34.956085807071936
+    },
+    "input_channels": [
+      "time_s",
+      "plate_C",
+      "air_C",
+      "fan_fraction",
+      "inlet_C",
+      "power_W"
+    ],
+    "known_initial_state": "all temperatures equal measured inlet; fan .4",
+    "fitted_parameters": [
+      "contact",
+      "plate_fan",
+      "common_capacity_scale",
+      "fan_tau"
+    ],
+    "csv_sha256": "739fec7a766c4603c43b12c2250641eb5afee1ea2f57ef4aa17f88811ce50ca4"
+  },
+  "low_capacity": {
+    "success": true,
+    "fallback": false,
+    "nfev": 7,
+    "residual_calls": 35,
+    "wall_time_s": 0.43445449999853736,
+    "cost": 270.41781117631575,
+    "jacobian_condition": 27.53520659792937,
+    "parameters": {
+      "capacities": [
+        15.801612113181086,
+        63.206448452724345,
+        23.70241816977163
+      ],
+      "contact": 1.0821186985782094,
+      "plate_base": 0.15,
+      "plate_fan": 0.6406126944302839,
+      "air_base": 1.0,
+      "air_fan": 1.5,
+      "bypass": 0.05,
+      "fan_tau": 10.031801857238491
+    },
+    "input_channels": [
+      "time_s",
+      "plate_C",
+      "air_C",
+      "fan_fraction",
+      "inlet_C",
+      "power_W"
+    ],
+    "known_initial_state": "all temperatures equal measured inlet; fan .4",
+    "fitted_parameters": [
+      "contact",
+      "plate_fan",
+      "common_capacity_scale",
+      "fan_tau"
+    ],
+    "csv_sha256": "c5aca7056bb3d38c64059aecbde9fd5a548d3eb792a64cb66ac8444a3c278ca6"
+  },
+  "air_path": {
+    "success": true,
+    "fallback": false,
+    "nfev": 7,
+    "residual_calls": 35,
+    "wall_time_s": 0.48435158299980685,
+    "cost": 262.6128203429108,
+    "jacobian_condition": 11.912448176800103,
+    "parameters": {
+      "capacities": [
+        22.283450954648934,
+        89.13380381859574,
+        33.4251764319734
+      ],
+      "contact": 0.7672685557794715,
+      "plate_base": 0.15,
+      "plate_fan": 1.090047001912243,
+      "air_base": 1.0,
+      "air_fan": 1.5,
+      "bypass": 0.05,
+      "fan_tau": 18.02045753093131
+    },
+    "input_channels": [
+      "time_s",
+      "plate_C",
+      "air_C",
+      "fan_fraction",
+      "inlet_C",
+      "power_W"
+    ],
+    "known_initial_state": "all temperatures equal measured inlet; fan .4",
+    "fitted_parameters": [
+      "contact",
+      "plate_fan",
+      "common_capacity_scale",
+      "fan_tau"
+    ],
+    "csv_sha256": "88c57535bba4132e799d07b340da985bf94bc2135780ecb763e395409b52e345"
+  }
+}

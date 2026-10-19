@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "episodes": 40,
+  "rows": 4800,
+  "calibration_rows": 720,
+  "historical_files_unchanged": 877,
+  "max_independent_state_difference": 6.764840776440906e-08,
+  "source_hashes_verified": true,
+  "oracle_access_and_input_replay": "PASS",
+  "result_sha256": "6f1f213c01ee8d326be61d8db7f104b8ffa7719c9b6b3a6c66ab794034dc039f"
+}
