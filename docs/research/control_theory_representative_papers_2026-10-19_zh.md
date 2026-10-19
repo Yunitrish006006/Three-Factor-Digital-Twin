@@ -104,3 +104,7 @@
 3. 做至少一個可以手算的簡化範例，但註明是**教學例題**。
 4. 把主要貢獻與適用限制分開報告；不要把「經典」等同於任何條件都最優。
 5. 若做 PI/PID/MPC 等不同方法的論文報告，**每一份保持單篇獨立**，不要插入其他研究專案的實驗資料或宣稱具備未驗證的效果。
+
+## 六、已完成的獨立論文導讀與簡報
+
+可由 [論文導讀索引](../reports/control_theory_paper_guides_2026-10-19_zh.md) 進入 Kalman 1960 LQR、Ziegler–Nichols 1942 PID、Cutler–Ramaker 1980 DMC 的獨立 Markdown 講稿和 HTML 簡報。
