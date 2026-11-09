@@ -1,0 +1,265 @@
+{
+  "version": "unified-five-20261026",
+  "steps": 120,
+  "parameters": {
+    "capacities": [
+      1200.0,
+      1800.0
+    ],
+    "conductances": [
+      1.5,
+      2.0
+    ],
+    "fan_gains": [
+      6.0,
+      8.0
+    ],
+    "fan_tau_s": 20.0,
+    "max_rpm": 6000.0
+  },
+  "settings": {
+    "dt_s": 10.0,
+    "horizon": 12,
+    "targets_C": [
+      60.0,
+      60.0
+    ],
+    "limits_C": [
+      80.0,
+      85.0
+    ],
+    "warnings_C": [
+      75.0,
+      80.0
+    ],
+    "pwm_min": 0.2,
+    "pwm_max": 1.0,
+    "max_delta": 0.1,
+    "margin_C": 2.0,
+    "input_weight": 1.0,
+    "delta_weight": 5.0,
+    "slack_weight": 10000.0,
+    "maxiter": 80
+  },
+  "seeds": {
+    "calibration": [
+      102601,
+      102602,
+      102603
+    ],
+    "validation": [
+      102611,
+      102612,
+      102613
+    ],
+    "holdout": [
+      102621,
+      102622,
+      102623
+    ],
+    "plant_holdout": [
+      102631,
+      102632,
+      102633
+    ],
+    "overload": [
+      102641,
+      102642,
+      102643
+    ]
+  },
+  "schedules": {
+    "calibration": [
+      [
+        90,
+        170,
+        120,
+        185
+      ],
+      [
+        130,
+        235,
+        165,
+        255
+      ]
+    ],
+    "validation": [
+      [
+        125,
+        205,
+        75,
+        160
+      ],
+      [
+        180,
+        285,
+        115,
+        225
+      ]
+    ],
+    "holdout": [
+      [
+        175,
+        85,
+        215,
+        110,
+        155
+      ],
+      [
+        245,
+        135,
+        295,
+        160,
+        220
+      ]
+    ],
+    "plant_holdout": [
+      [
+        175,
+        85,
+        215,
+        110,
+        155
+      ],
+      [
+        245,
+        135,
+        295,
+        160,
+        220
+      ]
+    ],
+    "overload": [
+      [
+        440
+      ],
+      [
+        580
+      ]
+    ]
+  },
+  "variants": [
+    {
+      "capacity_factors": [
+        0.9,
+        1.15
+      ],
+      "conductance_factors": [
+        0.95,
+        1.05
+      ],
+      "fan_gain_factors": [
+        0.85,
+        0.8
+      ],
+      "fan_tau_s": 28.0
+    },
+    {
+      "capacity_factors": [
+        1.15,
+        0.85
+      ],
+      "conductance_factors": [
+        1.1,
+        0.9
+      ],
+      "fan_gain_factors": [
+        1.05,
+        0.9
+      ],
+      "fan_tau_s": 16.0
+    },
+    {
+      "capacity_factors": [
+        0.75,
+        1.25
+      ],
+      "conductance_factors": [
+        1.0,
+        1.0
+      ],
+      "fan_gain_factors": [
+        0.7,
+        0.65
+      ],
+      "fan_tau_s": 36.0
+    }
+  ],
+  "candidates": {
+    "fixed": [
+      {
+        "pwm": 0.4
+      },
+      {
+        "pwm": 0.6
+      },
+      {
+        "pwm": 0.8
+      }
+    ],
+    "pi": [
+      {
+        "kp": 0.01,
+        "ki": 5e-05,
+        "kd": 0.0
+      },
+      {
+        "kp": 0.03,
+        "ki": 0.0001,
+        "kd": 0.0
+      },
+      {
+        "kp": 0.06,
+        "ki": 0.0003,
+        "kd": 0.0
+      }
+    ],
+    "pid": [
+      {
+        "kp": 0.01,
+        "ki": 5e-05,
+        "kd": 0.01
+      },
+      {
+        "kp": 0.03,
+        "ki": 0.0001,
+        "kd": 0.03
+      },
+      {
+        "kp": 0.06,
+        "ki": 0.0003,
+        "kd": 0.05
+      }
+    ],
+    "lqr": [
+      {
+        "input_weight": 0.1
+      },
+      {
+        "input_weight": 1.0
+      },
+      {
+        "input_weight": 10.0
+      }
+    ],
+    "mpc": [
+      {
+        "input_weight": 0.1
+      },
+      {
+        "input_weight": 1.0
+      },
+      {
+        "input_weight": 10.0
+      }
+    ]
+  },
+  "boundary": "EXPLORATORY_FULL_STATE_ASSUMED_PC_ENCLOSURE_SIMULATION_NOT_HARDWARE",
+  "feedback": {
+    "bias": 0.6,
+    "derivative_alpha": 0.25,
+    "backcalc": 0.2,
+    "error": "max(CPU-target,GPU-target)",
+    "feedforward": false
+  }
+}

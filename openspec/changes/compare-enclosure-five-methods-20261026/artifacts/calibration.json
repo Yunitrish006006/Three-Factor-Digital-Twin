@@ -1,0 +1,1733 @@
+{
+  "candidates": {
+    "fixed": [
+      {
+        "parameters": {
+          "pwm": 0.4
+        },
+        "score": 1.5153769500351764,
+        "runs": [
+          {
+            "id": "calibration_102601_fixed_candidate_0",
+            "split": "calibration",
+            "method": "fixed",
+            "seed": 102601,
+            "candidate_index": 0,
+            "parameters": {
+              "pwm": 0.4
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102601_fixed_candidate_0.csv",
+            "trace_sha256": "9a8c5388d87a907bf2cd7a8fa849638c0c05c1da00a871cebe07afe84517c678",
+            "metrics": {
+              "tracking_mae_C": 5.250109608937753,
+              "tracking_rmse_C": 6.118372951257468,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.21333333333333349,
+              "pwm_total_variation": 0.09999999999999998,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 1.4602702140109613e-05,
+              "control_max_s": 3.879099676851183e-05,
+              "selection_score": 1.4980195028271606,
+              "cpu_mae_C": 5.171943916843309,
+              "cpu_rmse_C": 5.917669998731446,
+              "max_cpu_C": 72.75019235237463,
+              "gpu_mae_C": 5.328275301032196,
+              "gpu_rmse_C": 6.312698070355638,
+              "max_gpu_C": 73.62921014574623
+            }
+          },
+          {
+            "id": "calibration_102602_fixed_candidate_0",
+            "split": "calibration",
+            "method": "fixed",
+            "seed": 102602,
+            "candidate_index": 0,
+            "parameters": {
+              "pwm": 0.4
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102602_fixed_candidate_0.csv",
+            "trace_sha256": "df2951b187d1e107afb90a041bd34b9ec6f91fd4c8ce975866dd696210119d69",
+            "metrics": {
+              "tracking_mae_C": 5.623000573130187,
+              "tracking_rmse_C": 6.703003232437774,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.21333333333333349,
+              "pwm_total_variation": 0.09999999999999998,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 9.710103768156841e-06,
+              "control_max_s": 1.654100196901709e-05,
+              "selection_score": 1.7978500933628498,
+              "cpu_mae_C": 5.505284844559232,
+              "cpu_rmse_C": 6.430466492129399,
+              "max_cpu_C": 73.59522546709917,
+              "gpu_mae_C": 5.740716301701142,
+              "gpu_rmse_C": 6.964883729233642,
+              "max_gpu_C": 74.47203389346724
+            }
+          },
+          {
+            "id": "calibration_102603_fixed_candidate_0",
+            "split": "calibration",
+            "method": "fixed",
+            "seed": 102603,
+            "candidate_index": 0,
+            "parameters": {
+              "pwm": 0.4
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102603_fixed_candidate_0.csv",
+            "trace_sha256": "fd1c3f067c1e273e0ebd41fd9a3315dd3c8985c527f202bea834cca5ac43f45d",
+            "metrics": {
+              "tracking_mae_C": 4.862464845921493,
+              "tracking_rmse_C": 5.589322977596479,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.21333333333333349,
+              "pwm_total_variation": 0.09999999999999998,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 9.460102592129261e-06,
+              "control_max_s": 1.6582998796366155e-05,
+              "selection_score": 1.2502612539155185,
+              "cpu_mae_C": 4.833531284197489,
+              "cpu_rmse_C": 5.507704331061253,
+              "max_cpu_C": 71.9826984503882,
+              "gpu_mae_C": 4.891398407645496,
+              "gpu_rmse_C": 5.669766811552751,
+              "max_gpu_C": 72.53002650561015
+            }
+          }
+        ]
+      },
+      {
+        "parameters": {
+          "pwm": 0.6
+        },
+        "score": 0.725015238526484,
+        "runs": [
+          {
+            "id": "calibration_102601_fixed_candidate_1",
+            "split": "calibration",
+            "method": "fixed",
+            "seed": 102601,
+            "candidate_index": 1,
+            "parameters": {
+              "pwm": 0.6
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102601_fixed_candidate_1.csv",
+            "trace_sha256": "f179e79a30cfffa1666fe8e5634722b47850da064b23e8193e7caed87f08b629",
+            "metrics": {
+              "tracking_mae_C": 3.42665192768972,
+              "tracking_rmse_C": 4.202785865416481,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.7199999999999992,
+              "pwm_total_variation": 0.09999999999999998,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 1.0878848115680736e-05,
+              "control_max_s": 0.0001094170002033934,
+              "selection_score": 0.7086963612217826,
+              "cpu_mae_C": 3.833146110575641,
+              "cpu_rmse_C": 4.631689924606438,
+              "max_cpu_C": 64.05652854527615,
+              "gpu_mae_C": 3.0201577448037993,
+              "gpu_rmse_C": 3.7248176469980816,
+              "max_gpu_C": 64.85308984390201
+            }
+          },
+          {
+            "id": "calibration_102602_fixed_candidate_1",
+            "split": "calibration",
+            "method": "fixed",
+            "seed": 102602,
+            "candidate_index": 1,
+            "parameters": {
+              "pwm": 0.6
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102602_fixed_candidate_1.csv",
+            "trace_sha256": "f365fc8c695b8d447eb6ce20c774ec1386f7533823c01fd7bc17c83dfb41c3e9",
+            "metrics": {
+              "tracking_mae_C": 2.8872591930293887,
+              "tracking_rmse_C": 3.6379120203330464,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.7199999999999992,
+              "pwm_total_variation": 0.09999999999999998,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 9.463157039135694e-06,
+              "control_max_s": 1.358399458695203e-05,
+              "selection_score": 0.5315361547073468,
+              "cpu_mae_C": 3.194634171050459,
+              "cpu_rmse_C": 3.9923233165866603,
+              "max_cpu_C": 64.91547052346672,
+              "gpu_mae_C": 2.5798842150083185,
+              "gpu_rmse_C": 3.245021151118406,
+              "max_gpu_C": 65.69857961444339
+            }
+          },
+          {
+            "id": "calibration_102603_fixed_candidate_1",
+            "split": "calibration",
+            "method": "fixed",
+            "seed": 102603,
+            "candidate_index": 1,
+            "parameters": {
+              "pwm": 0.6
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102603_fixed_candidate_1.csv",
+            "trace_sha256": "302159202ded83e53bf11f65e67f0d462d7d915d3cad8a5c8af02e7acff55748",
+            "metrics": {
+              "tracking_mae_C": 4.072564739375476,
+              "tracking_rmse_C": 4.828698581528781,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.7199999999999992,
+              "pwm_total_variation": 0.09999999999999998,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 1.2359799438854675e-05,
+              "control_max_s": 6.42079976387322e-05,
+              "selection_score": 0.9348131996503225,
+              "cpu_mae_C": 4.528004838807341,
+              "cpu_rmse_C": 5.31574095790933,
+              "max_cpu_C": 63.27357106074588,
+              "gpu_mae_C": 3.6171246399436123,
+              "gpu_rmse_C": 4.286672141757673,
+              "max_gpu_C": 63.76757677541088
+            }
+          }
+        ]
+      },
+      {
+        "parameters": {
+          "pwm": 0.8
+        },
+        "score": 2.0980872220708475,
+        "runs": [
+          {
+            "id": "calibration_102601_fixed_candidate_2",
+            "split": "calibration",
+            "method": "fixed",
+            "seed": 102601,
+            "candidate_index": 2,
+            "parameters": {
+              "pwm": 0.8
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102601_fixed_candidate_2.csv",
+            "trace_sha256": "f5cdbb4c38ae7c5f2289ff3a47551fbf5229a35f1ea08cd42f60eaec39d883bc",
+            "metrics": {
+              "tracking_mae_C": 6.5993434014502625,
+              "tracking_rmse_C": 7.204578374333495,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 1.6937500000000012,
+              "pwm_total_variation": 0.30000000000000004,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 9.208050323650241e-06,
+              "control_max_s": 1.2083997717127204e-05,
+              "selection_score": 2.081319232076554,
+              "cpu_mae_C": 7.107697178811716,
+              "cpu_rmse_C": 7.702771051351407,
+              "max_cpu_C": 58.58043553357866,
+              "gpu_mae_C": 6.090989624088809,
+              "gpu_rmse_C": 6.669274115995717,
+              "max_gpu_C": 59.65847212494194
+            }
+          },
+          {
+            "id": "calibration_102602_fixed_candidate_2",
+            "split": "calibration",
+            "method": "fixed",
+            "seed": 102602,
+            "candidate_index": 2,
+            "parameters": {
+              "pwm": 0.8
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102602_fixed_candidate_2.csv",
+            "trace_sha256": "066c6d30a67d71a1e6f711e2ffdb1d1c292929696cb8f8f11a56131c667d1a8d",
+            "metrics": {
+              "tracking_mae_C": 5.596986098312617,
+              "tracking_rmse_C": 6.266185235612446,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 1.6937500000000012,
+              "pwm_total_variation": 0.30000000000000004,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 1.1390192958060648e-05,
+              "control_max_s": 3.745799767784774e-05,
+              "selection_score": 1.575684346280296,
+              "cpu_mae_C": 6.10059364987109,
+              "cpu_rmse_C": 6.761380961591923,
+              "max_cpu_C": 59.569148915909345,
+              "gpu_mae_C": 5.093378546754144,
+              "gpu_rmse_C": 5.728340275004365,
+              "max_gpu_C": 60.6763870987945
+            }
+          },
+          {
+            "id": "calibration_102603_fixed_candidate_2",
+            "split": "calibration",
+            "method": "fixed",
+            "seed": 102603,
+            "candidate_index": 2,
+            "parameters": {
+              "pwm": 0.8
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102603_fixed_candidate_2.csv",
+            "trace_sha256": "57cf898371f994c61bce63fac8b5a6e23ccf15efb22eec655d6c17d9491f0051",
+            "metrics": {
+              "tracking_mae_C": 7.587493910705175,
+              "tracking_rmse_C": 8.111992415331287,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 1.6937500000000012,
+              "pwm_total_variation": 0.30000000000000004,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 9.208000847138464e-06,
+              "control_max_s": 1.3666998711414635e-05,
+              "selection_score": 2.6372580878556926,
+              "cpu_mae_C": 8.078876213451448,
+              "cpu_rmse_C": 8.609493268071994,
+              "max_cpu_C": 57.63260163805654,
+              "gpu_mae_C": 7.0961116079589015,
+              "gpu_rmse_C": 7.581917142768554,
+              "max_gpu_C": 58.692175383427156
+            }
+          }
+        ]
+      }
+    ],
+    "pi": [
+      {
+        "parameters": {
+          "kp": 0.01,
+          "ki": 5e-05,
+          "kd": 0.0
+        },
+        "score": 0.5658106167250636,
+        "runs": [
+          {
+            "id": "calibration_102601_pi_candidate_0",
+            "split": "calibration",
+            "method": "pi",
+            "seed": 102601,
+            "candidate_index": 0,
+            "parameters": {
+              "kp": 0.01,
+              "ki": 5e-05,
+              "kd": 0.0
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102601_pi_candidate_0.csv",
+            "trace_sha256": "0ba9447546997e342660ba0e9dccce985c60ea77a3e90517a4e54619c06f1315",
+            "metrics": {
+              "tracking_mae_C": 3.020014256509263,
+              "tracking_rmse_C": 3.7656727745525296,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.5403438411455455,
+              "pwm_total_variation": 0.4764681349914145,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 1.700175125733949e-05,
+              "control_max_s": 3.791700873989612e-05,
+              "selection_score": 0.5688326893236825,
+              "cpu_mae_C": 3.189366613233971,
+              "cpu_rmse_C": 4.020690231757593,
+              "max_cpu_C": 64.92228563587614,
+              "gpu_mae_C": 2.850661899784555,
+              "gpu_rmse_C": 3.4920814638638333,
+              "max_gpu_C": 65.85614033485143
+            }
+          },
+          {
+            "id": "calibration_102602_pi_candidate_0",
+            "split": "calibration",
+            "method": "pi",
+            "seed": 102602,
+            "candidate_index": 0,
+            "parameters": {
+              "kp": 0.01,
+              "ki": 5e-05,
+              "kd": 0.0
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102602_pi_candidate_0.csv",
+            "trace_sha256": "f777670868791e21fa16d42fe84328c15be70667465a181c7b5fdc9c9f2211a7",
+            "metrics": {
+              "tracking_mae_C": 2.767254825474786,
+              "tracking_rmse_C": 3.4197107532822195,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.6078323721739326,
+              "pwm_total_variation": 0.46567506246791845,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 1.2592301209224388e-05,
+              "control_max_s": 5.4333009757101536e-05,
+              "selection_score": 0.46960036256108356,
+              "cpu_mae_C": 2.9100211923942583,
+              "cpu_rmse_C": 3.6241473469931242,
+              "max_cpu_C": 64.86192846897451,
+              "gpu_mae_C": 2.6244884585553137,
+              "gpu_rmse_C": 3.2022490970426998,
+              "max_gpu_C": 65.77062952127781
+            }
+          },
+          {
+            "id": "calibration_102603_pi_candidate_0",
+            "split": "calibration",
+            "method": "pi",
+            "seed": 102603,
+            "candidate_index": 0,
+            "parameters": {
+              "kp": 0.01,
+              "ki": 5e-05,
+              "kd": 0.0
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102603_pi_candidate_0.csv",
+            "trace_sha256": "1b58834878c494117aed81e5395fcb43f7ebf795ff1be357ef1ebe2b35b60371",
+            "metrics": {
+              "tracking_mae_C": 3.2377355978761764,
+              "tracking_rmse_C": 4.054512011381097,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.47869742436039814,
+              "pwm_total_variation": 0.46540120946443286,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 1.3991060404805463e-05,
+              "control_max_s": 7.841699698474258e-05,
+              "selection_score": 0.6589987982904247,
+              "cpu_mae_C": 3.4595297462536974,
+              "cpu_rmse_C": 4.372487095284857,
+              "max_cpu_C": 65.12413430252586,
+              "gpu_mae_C": 3.015941449498656,
+              "gpu_rmse_C": 3.7093789106041157,
+              "max_gpu_C": 65.76244615878382
+            }
+          }
+        ]
+      },
+      {
+        "parameters": {
+          "kp": 0.03,
+          "ki": 0.0001,
+          "kd": 0.0
+        },
+        "score": 0.386119326387513,
+        "runs": [
+          {
+            "id": "calibration_102601_pi_candidate_1",
+            "split": "calibration",
+            "method": "pi",
+            "seed": 102601,
+            "candidate_index": 1,
+            "parameters": {
+              "kp": 0.03,
+              "ki": 0.0001,
+              "kd": 0.0
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102601_pi_candidate_1.csv",
+            "trace_sha256": "1e4c226c98b197a428e47c7fdd3369a43645bb6ed50d1e8d9323ecdacaf4c0f5",
+            "metrics": {
+              "tracking_mae_C": 2.6233688352131805,
+              "tracking_rmse_C": 3.123909228279789,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.5795438713825256,
+              "pwm_total_variation": 1.0158685993002667,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 1.3541353837354104e-05,
+              "control_max_s": 7.616699440404773e-05,
+              "selection_score": 0.39209098627541267,
+              "cpu_mae_C": 2.745091347277048,
+              "cpu_rmse_C": 3.3168509047119947,
+              "max_cpu_C": 63.243153740922466,
+              "gpu_mae_C": 2.501646323149313,
+              "gpu_rmse_C": 2.9182388197292006,
+              "max_gpu_C": 64.15996268531423
+            }
+          },
+          {
+            "id": "calibration_102602_pi_candidate_1",
+            "split": "calibration",
+            "method": "pi",
+            "seed": 102602,
+            "candidate_index": 1,
+            "parameters": {
+              "kp": 0.03,
+              "ki": 0.0001,
+              "kd": 0.0
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102602_pi_candidate_1.csv",
+            "trace_sha256": "2c4d8d1e927d14c805875e281a2027d24c6b70b74c6ffd3cd68fce1a8ba37117",
+            "metrics": {
+              "tracking_mae_C": 2.429514599075092,
+              "tracking_rmse_C": 2.881583299811448,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.6636861614592833,
+              "pwm_total_variation": 1.0036558756917762,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 1.1673261906253173e-05,
+              "control_max_s": 1.5666999388486147e-05,
+              "selection_score": 0.33413195103446724,
+              "cpu_mae_C": 2.5411962659428684,
+              "cpu_rmse_C": 3.0404816462187174,
+              "max_cpu_C": 63.215580519053546,
+              "gpu_mae_C": 2.317832932207316,
+              "gpu_rmse_C": 2.7133956560943315,
+              "max_gpu_C": 64.1146941108493
+            }
+          },
+          {
+            "id": "calibration_102603_pi_candidate_1",
+            "split": "calibration",
+            "method": "pi",
+            "seed": 102603,
+            "candidate_index": 1,
+            "parameters": {
+              "kp": 0.03,
+              "ki": 0.0001,
+              "kd": 0.0
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102603_pi_candidate_1.csv",
+            "trace_sha256": "768c4d7de57d2cbae6abd4f2d9c4364868b9c009405f4f06082b3fcb8d5e7dbb",
+            "metrics": {
+              "tracking_mae_C": 2.743943056070403,
+              "tracking_rmse_C": 3.2811278916459408,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.501010733060551,
+              "pwm_total_variation": 0.9655725041647989,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 1.3065204257145517e-05,
+              "control_max_s": 0.00010783399920910597,
+              "selection_score": 0.43213504185265905,
+              "cpu_mae_C": 2.886507718839475,
+              "cpu_rmse_C": 3.5161822605735957,
+              "max_cpu_C": 63.35820909312329,
+              "gpu_mae_C": 2.6013783933013306,
+              "gpu_rmse_C": 3.0278809080116464,
+              "max_gpu_C": 64.05857621489913
+            }
+          }
+        ]
+      },
+      {
+        "parameters": {
+          "kp": 0.06,
+          "ki": 0.0003,
+          "kd": 0.0
+        },
+        "score": 0.23778004800964517,
+        "runs": [
+          {
+            "id": "calibration_102601_pi_candidate_2",
+            "split": "calibration",
+            "method": "pi",
+            "seed": 102601,
+            "candidate_index": 2,
+            "parameters": {
+              "kp": 0.06,
+              "ki": 0.0003,
+              "kd": 0.0
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102601_pi_candidate_2.csv",
+            "trace_sha256": "774d79d117ec765628e4095d32c9644c1a8e1d732a1ef24e6707bf63a0348f34",
+            "metrics": {
+              "tracking_mae_C": 2.197938883400146,
+              "tracking_rmse_C": 2.461278395534288,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.7242796550544724,
+              "pwm_total_variation": 1.6494031239337064,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 1.1825298861367626e-05,
+              "control_max_s": 4.816699947696179e-05,
+              "selection_score": 0.244488492578117,
+              "cpu_mae_C": 2.292642479278576,
+              "cpu_rmse_C": 2.6033060523424356,
+              "max_cpu_C": 62.30185295653774,
+              "gpu_mae_C": 2.103235287521716,
+              "gpu_rmse_C": 2.310536794445162,
+              "max_gpu_C": 63.454915623379954
+            }
+          },
+          {
+            "id": "calibration_102602_pi_candidate_2",
+            "split": "calibration",
+            "method": "pi",
+            "seed": 102602,
+            "candidate_index": 2,
+            "parameters": {
+              "kp": 0.06,
+              "ki": 0.0003,
+              "kd": 0.0
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102602_pi_candidate_2.csv",
+            "trace_sha256": "5c4437dcc4c91896c72b72272501dc0aad6ab0d49d3a327c7fed558a68492c4f",
+            "metrics": {
+              "tracking_mae_C": 2.068112137472121,
+              "tracking_rmse_C": 2.320784023902222,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.8238004138563079,
+              "pwm_total_variation": 1.67245016634569,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 1.4235095295589416e-05,
+              "control_max_s": 8.079200051724911e-05,
+              "selection_score": 0.21791294066556052,
+              "cpu_mae_C": 2.1589579479362713,
+              "cpu_rmse_C": 2.4477761208519255,
+              "max_cpu_C": 62.20441018350362,
+              "gpu_mae_C": 1.9772663270079707,
+              "gpu_rmse_C": 2.186428373715151,
+              "max_gpu_C": 63.374804157866876
+            }
+          },
+          {
+            "id": "calibration_102603_pi_candidate_2",
+            "split": "calibration",
+            "method": "pi",
+            "seed": 102603,
+            "candidate_index": 2,
+            "parameters": {
+              "kp": 0.06,
+              "ki": 0.0003,
+              "kd": 0.0
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102603_pi_candidate_2.csv",
+            "trace_sha256": "1df61e13e5ae2cd19dbe05407eaca44a5c9419becdce578fdff16886a92e082b",
+            "metrics": {
+              "tracking_mae_C": 2.2354943225804242,
+              "tracking_rmse_C": 2.4952982571994067,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.6260583633207035,
+              "pwm_total_variation": 1.5088362265986301,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 1.218686156789772e-05,
+              "control_max_s": 1.8959006411023438e-05,
+              "selection_score": 0.250938710785258,
+              "cpu_mae_C": 2.3270377559078277,
+              "cpu_rmse_C": 2.646940931719653,
+              "max_cpu_C": 62.14882107214763,
+              "gpu_mae_C": 2.143950889253021,
+              "gpu_rmse_C": 2.333823148559438,
+              "max_gpu_C": 63.38451360414986
+            }
+          }
+        ]
+      }
+    ],
+    "pid": [
+      {
+        "parameters": {
+          "kp": 0.01,
+          "ki": 5e-05,
+          "kd": 0.01
+        },
+        "score": 0.565114372508539,
+        "runs": [
+          {
+            "id": "calibration_102601_pid_candidate_0",
+            "split": "calibration",
+            "method": "pid",
+            "seed": 102601,
+            "candidate_index": 0,
+            "parameters": {
+              "kp": 0.01,
+              "ki": 5e-05,
+              "kd": 0.01
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102601_pid_candidate_0.csv",
+            "trace_sha256": "71434498ac352455de4245a04aad51266336ddd106b34700d4264c141a4992ce",
+            "metrics": {
+              "tracking_mae_C": 3.017739340937707,
+              "tracking_rmse_C": 3.763297893395628,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.5404395575530606,
+              "pwm_total_variation": 0.47690271364445325,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 1.1541997082531452e-05,
+              "control_max_s": 1.575000351294875e-05,
+              "selection_score": 0.568117760050098,
+              "cpu_mae_C": 3.187283105223063,
+              "cpu_rmse_C": 4.018468691557239,
+              "max_cpu_C": 64.91869764989075,
+              "gpu_mae_C": 2.848195576652351,
+              "gpu_rmse_C": 3.489517365459898,
+              "max_gpu_C": 65.8526494651948
+            }
+          },
+          {
+            "id": "calibration_102602_pid_candidate_0",
+            "split": "calibration",
+            "method": "pid",
+            "seed": 102602,
+            "candidate_index": 0,
+            "parameters": {
+              "kp": 0.01,
+              "ki": 5e-05,
+              "kd": 0.01
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102602_pid_candidate_0.csv",
+            "trace_sha256": "a4af2fa33214df1a0c8fa12200f51b370358d8eee6414c29c6887aae74cceb1b",
+            "metrics": {
+              "tracking_mae_C": 2.7649168079237394,
+              "tracking_rmse_C": 3.41722585909937,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.6079334945302699,
+              "pwm_total_variation": 0.466026432884593,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 1.2613137369044123e-05,
+              "control_max_s": 1.8459002603776753e-05,
+              "selection_score": 0.4689211033674879,
+              "cpu_mae_C": 2.907729053623076,
+              "cpu_rmse_C": 3.6217654844877667,
+              "max_cpu_C": 64.85854545467033,
+              "gpu_mae_C": 2.622104562224403,
+              "gpu_rmse_C": 3.199637466896515,
+              "max_gpu_C": 65.7673288897869
+            }
+          },
+          {
+            "id": "calibration_102603_pid_candidate_0",
+            "split": "calibration",
+            "method": "pid",
+            "seed": 102603,
+            "candidate_index": 0,
+            "parameters": {
+              "kp": 0.01,
+              "ki": 5e-05,
+              "kd": 0.01
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102603_pid_candidate_0.csv",
+            "trace_sha256": "c6091c86f39f4103f09bd18cc60378b010358bbe9b8ad78982b2c27a648af3a4",
+            "metrics": {
+              "tracking_mae_C": 3.2356745412337666,
+              "tracking_rmse_C": 4.0523693691834,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.47878464539883264,
+              "pwm_total_variation": 0.465805955171418,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 1.1595503747230395e-05,
+              "control_max_s": 1.550000160932541e-05,
+              "selection_score": 0.6583042541080311,
+              "cpu_mae_C": 3.4577084004518057,
+              "cpu_rmse_C": 4.3705061577939865,
+              "max_cpu_C": 65.1205796527959,
+              "gpu_mae_C": 3.0136406820157275,
+              "gpu_rmse_C": 3.707029934229905,
+              "max_gpu_C": 65.7589863912729
+            }
+          }
+        ]
+      },
+      {
+        "parameters": {
+          "kp": 0.03,
+          "ki": 0.0001,
+          "kd": 0.03
+        },
+        "score": 0.3846788205403013,
+        "runs": [
+          {
+            "id": "calibration_102601_pid_candidate_1",
+            "split": "calibration",
+            "method": "pid",
+            "seed": 102601,
+            "candidate_index": 1,
+            "parameters": {
+              "kp": 0.03,
+              "ki": 0.0001,
+              "kd": 0.03
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102601_pid_candidate_1.csv",
+            "trace_sha256": "eec8cb13f1753dd466e742df595dee520e09d1f29d80218ed49c5a0663dd62b7",
+            "metrics": {
+              "tracking_mae_C": 2.617008350650641,
+              "tracking_rmse_C": 3.1179444372516167,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.5795728908845454,
+              "pwm_total_variation": 1.0143155684608005,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 1.2512507964856923e-05,
+              "control_max_s": 3.0333001632243395e-05,
+              "selection_score": 0.3906018192241857,
+              "cpu_mae_C": 2.738619159707678,
+              "cpu_rmse_C": 3.311179175498906,
+              "max_cpu_C": 63.236075048559485,
+              "gpu_mae_C": 2.4953975415936047,
+              "gpu_rmse_C": 2.9119147472614966,
+              "max_gpu_C": 64.153653514334
+            }
+          },
+          {
+            "id": "calibration_102602_pid_candidate_1",
+            "split": "calibration",
+            "method": "pid",
+            "seed": 102602,
+            "candidate_index": 1,
+            "parameters": {
+              "kp": 0.03,
+              "ki": 0.0001,
+              "kd": 0.03
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102602_pid_candidate_1.csv",
+            "trace_sha256": "5546e85d7b92f62405b66b9e52b05abc974a63739160295f43ce62a65deb3827",
+            "metrics": {
+              "tracking_mae_C": 2.423331080175214,
+              "tracking_rmse_C": 2.875418445262216,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.6637421784609228,
+              "pwm_total_variation": 1.002042052029894,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 1.1543106666067615e-05,
+              "control_max_s": 1.4833000022917986e-05,
+              "selection_score": 0.33271247594954984,
+              "cpu_mae_C": 2.5349320372916773,
+              "cpu_rmse_C": 3.034512412910686,
+              "max_cpu_C": 63.20865637428306,
+              "gpu_mae_C": 2.311730123058751,
+              "gpu_rmse_C": 2.7069903743085826,
+              "max_gpu_C": 64.10987898446237
+            }
+          },
+          {
+            "id": "calibration_102603_pid_candidate_1",
+            "split": "calibration",
+            "method": "pid",
+            "seed": 102603,
+            "candidate_index": 1,
+            "parameters": {
+              "kp": 0.03,
+              "ki": 0.0001,
+              "kd": 0.03
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102603_pid_candidate_1.csv",
+            "trace_sha256": "71c6f822c3d195cd6e5fda66601c137c2d55f4171a32e60d470749c7bc697721",
+            "metrics": {
+              "tracking_mae_C": 2.73786170326975,
+              "tracking_rmse_C": 3.2757408515556112,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.5010137950523305,
+              "pwm_total_variation": 0.9639068072933668,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 1.535029587103053e-05,
+              "control_max_s": 0.00011508401075843722,
+              "selection_score": 0.43072216644716826,
+              "cpu_mae_C": 2.8803508851762434,
+              "cpu_rmse_C": 3.5111396323926685,
+              "max_cpu_C": 63.3518668702005,
+              "gpu_mae_C": 2.595372521363257,
+              "gpu_rmse_C": 3.0220613387127067,
+              "max_gpu_C": 64.05467155632891
+            }
+          }
+        ]
+      },
+      {
+        "parameters": {
+          "kp": 0.06,
+          "ki": 0.0003,
+          "kd": 0.05
+        },
+        "score": 0.23636268959682227,
+        "runs": [
+          {
+            "id": "calibration_102601_pid_candidate_2",
+            "split": "calibration",
+            "method": "pid",
+            "seed": 102601,
+            "candidate_index": 2,
+            "parameters": {
+              "kp": 0.06,
+              "ki": 0.0003,
+              "kd": 0.05
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102601_pid_candidate_2.csv",
+            "trace_sha256": "2fdeda962f1c769184c4cc5aa5edb7ca434c67f2154a5ffa6cbedd0147e28b33",
+            "metrics": {
+              "tracking_mae_C": 2.1900628523720314,
+              "tracking_rmse_C": 2.4537419414717223,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.7233208437581998,
+              "pwm_total_variation": 1.6445838941016317,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 1.1673248081933707e-05,
+              "control_max_s": 9.308299922849983e-05,
+              "selection_score": 0.2430039431447713,
+              "cpu_mae_C": 2.284543688202126,
+              "cpu_rmse_C": 2.5960510915431962,
+              "max_cpu_C": 62.28225813042084,
+              "gpu_mae_C": 2.0955820165419365,
+              "gpu_rmse_C": 2.3026545031272527,
+              "max_gpu_C": 63.43599117817802
+            }
+          },
+          {
+            "id": "calibration_102602_pid_candidate_2",
+            "split": "calibration",
+            "method": "pid",
+            "seed": 102602,
+            "candidate_index": 2,
+            "parameters": {
+              "kp": 0.06,
+              "ki": 0.0003,
+              "kd": 0.05
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102602_pid_candidate_2.csv",
+            "trace_sha256": "4de1e09e0d309c0eba403912e2b017d0e320980f0867673d90e7aa9b04f01d04",
+            "metrics": {
+              "tracking_mae_C": 2.060260417717053,
+              "tracking_rmse_C": 2.31303191358812,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.8228669467698446,
+              "pwm_total_variation": 1.6672387981899675,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 1.179404862341471e-05,
+              "control_max_s": 3.312499029561877e-05,
+              "selection_score": 0.2164732661713943,
+              "cpu_mae_C": 2.150986845447511,
+              "cpu_rmse_C": 2.4403586013275667,
+              "max_cpu_C": 62.18837566009777,
+              "gpu_mae_C": 1.969533989986595,
+              "gpu_rmse_C": 2.1782752726597256,
+              "max_gpu_C": 63.35904915262483
+            }
+          },
+          {
+            "id": "calibration_102603_pid_candidate_2",
+            "split": "calibration",
+            "method": "pid",
+            "seed": 102603,
+            "candidate_index": 2,
+            "parameters": {
+              "kp": 0.06,
+              "ki": 0.0003,
+              "kd": 0.05
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102603_pid_candidate_2.csv",
+            "trace_sha256": "e6842fdb7eeeaf33e01cc920ef014cdcd6d85492e3586628cd1bc806f7e28d09",
+            "metrics": {
+              "tracking_mae_C": 2.2282319448054695,
+              "tracking_rmse_C": 2.4886513241289636,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.6251476502491403,
+              "pwm_total_variation": 1.5042287436109714,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 1.5333053306676446e-05,
+              "control_max_s": 3.370900230947882e-05,
+              "selection_score": 0.2496108594743012,
+              "cpu_mae_C": 2.319562730396846,
+              "cpu_rmse_C": 2.6406401276385947,
+              "max_cpu_C": 62.13288673853704,
+              "gpu_mae_C": 2.136901159214093,
+              "gpu_rmse_C": 2.3267553679926296,
+              "max_gpu_C": 63.367629591516035
+            }
+          }
+        ]
+      }
+    ],
+    "lqr": [
+      {
+        "parameters": {
+          "input_weight": 0.1
+        },
+        "score": 0.03906594797661396,
+        "runs": [
+          {
+            "id": "calibration_102601_lqr_candidate_0",
+            "split": "calibration",
+            "method": "lqr",
+            "seed": 102601,
+            "candidate_index": 0,
+            "parameters": {
+              "input_weight": 0.1
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102601_lqr_candidate_0.csv",
+            "trace_sha256": "c2d54eb9e34de8a3cebc34c76a8ef6fb2a4e429f64f1bcb2f327360611d216cd",
+            "metrics": {
+              "tracking_mae_C": 0.7590772802198911,
+              "tracking_rmse_C": 0.902365788544636,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.923452326565202,
+              "pwm_total_variation": 5.801193451006618,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 0.0008740103985473979,
+              "control_max_s": 0.001198583995574154,
+              "selection_score": 0.03534091763312691,
+              "cpu_mae_C": 0.6344666827934684,
+              "cpu_rmse_C": 0.772513834073662,
+              "max_cpu_C": 61.346232294131376,
+              "gpu_mae_C": 0.8836878776463136,
+              "gpu_rmse_C": 1.015751154976639,
+              "max_gpu_C": 62.38353082359444
+            }
+          },
+          {
+            "id": "calibration_102602_lqr_candidate_0",
+            "split": "calibration",
+            "method": "lqr",
+            "seed": 102602,
+            "candidate_index": 0,
+            "parameters": {
+              "input_weight": 0.1
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102602_lqr_candidate_0.csv",
+            "trace_sha256": "65a81326b7ccc81984ac26ca5a96996a09c94184b60fe1d2eb721f6c6b6e1c84",
+            "metrics": {
+              "tracking_mae_C": 0.7160951496339104,
+              "tracking_rmse_C": 0.8682404374259357,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 1.0406541516886225,
+              "pwm_total_variation": 5.681705903550612,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 0.0007916996975836809,
+              "control_max_s": 0.0012172919959994033,
+              "selection_score": 0.03327562074232907,
+              "cpu_mae_C": 0.4926492932656917,
+              "cpu_rmse_C": 0.5824767139756121,
+              "max_cpu_C": 61.28253594253175,
+              "gpu_mae_C": 0.9395410060021292,
+              "gpu_rmse_C": 1.0809272834188863,
+              "max_gpu_C": 62.84472929309804
+            }
+          },
+          {
+            "id": "calibration_102603_lqr_candidate_0",
+            "split": "calibration",
+            "method": "lqr",
+            "seed": 102603,
+            "candidate_index": 0,
+            "parameters": {
+              "input_weight": 0.1
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102603_lqr_candidate_0.csv",
+            "trace_sha256": "563f0450513ad3c60991bfdbe7c31b82c287b95db7ccb8822f8cf739295f91ad",
+            "metrics": {
+              "tracking_mae_C": 0.8569613925383504,
+              "tracking_rmse_C": 1.0736321627636842,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.824621572520281,
+              "pwm_total_variation": 5.243573686081449,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 0.0004649562601116485,
+              "control_max_s": 0.0009952500113286078,
+              "selection_score": 0.0485813055543859,
+              "cpu_mae_C": 0.8108750820293923,
+              "cpu_rmse_C": 1.099129462799955,
+              "max_cpu_C": 61.204462665553365,
+              "gpu_mae_C": 0.9030477030473083,
+              "gpu_rmse_C": 1.0475144227390547,
+              "max_gpu_C": 62.683402598800356
+            }
+          }
+        ]
+      },
+      {
+        "parameters": {
+          "input_weight": 1.0
+        },
+        "score": 0.03919634070209726,
+        "runs": [
+          {
+            "id": "calibration_102601_lqr_candidate_1",
+            "split": "calibration",
+            "method": "lqr",
+            "seed": 102601,
+            "candidate_index": 1,
+            "parameters": {
+              "input_weight": 1.0
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102601_lqr_candidate_1.csv",
+            "trace_sha256": "68b3996ed71aedfc91d115caf7cf16e73900bce83e1737bad44cefc2f3087644",
+            "metrics": {
+              "tracking_mae_C": 0.759960429931783,
+              "tracking_rmse_C": 0.9093424001642555,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.9042623293998209,
+              "pwm_total_variation": 4.310585736661643,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 0.0008472646048176098,
+              "control_max_s": 0.018666166011826135,
+              "selection_score": 0.035788931017659016,
+              "cpu_mae_C": 0.6321594645548643,
+              "cpu_rmse_C": 0.7744876958388575,
+              "max_cpu_C": 61.25523365679426,
+              "gpu_mae_C": 0.8877613953087019,
+              "gpu_rmse_C": 1.0266333378900157,
+              "max_gpu_C": 62.42667223127779
+            }
+          },
+          {
+            "id": "calibration_102602_lqr_candidate_1",
+            "split": "calibration",
+            "method": "lqr",
+            "seed": 102602,
+            "candidate_index": 1,
+            "parameters": {
+              "input_weight": 1.0
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102602_lqr_candidate_1.csv",
+            "trace_sha256": "894401fffcd21a6debfb17328e97ba25c4de5ede3ae2acaed358ba7ee9efaecb",
+            "metrics": {
+              "tracking_mae_C": 0.7213121141443384,
+              "tracking_rmse_C": 0.8752329121253727,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 1.0202223300192137,
+              "pwm_total_variation": 4.402796670708126,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 0.0008288329903734848,
+              "control_max_s": 0.001167667011031881,
+              "selection_score": 0.033701973008756055,
+              "cpu_mae_C": 0.49762195135888665,
+              "cpu_rmse_C": 0.5900364352387182,
+              "max_cpu_C": 61.1779108892126,
+              "gpu_mae_C": 0.94500227692979,
+              "gpu_rmse_C": 1.0880819390219225,
+              "max_gpu_C": 62.723075395626324
+            }
+          },
+          {
+            "id": "calibration_102603_lqr_candidate_1",
+            "split": "calibration",
+            "method": "lqr",
+            "seed": 102603,
+            "candidate_index": 1,
+            "parameters": {
+              "input_weight": 1.0
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102603_lqr_candidate_1.csv",
+            "trace_sha256": "7b75b750e99504e755b22b6bc77664cff6e65bd090ee3576496de4382264dc09",
+            "metrics": {
+              "tracking_mae_C": 0.8527952448991115,
+              "tracking_rmse_C": 1.0691335009175735,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.7920867895020056,
+              "pwm_total_variation": 3.762849897454799,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 0.00037876935602980665,
+              "control_max_s": 0.001037624999298714,
+              "selection_score": 0.04809811807987671,
+              "cpu_mae_C": 0.7953522228977999,
+              "cpu_rmse_C": 1.09245286480225,
+              "max_cpu_C": 60.98855329597301,
+              "gpu_mae_C": 0.910238266900423,
+              "gpu_rmse_C": 1.0452940369838009,
+              "max_gpu_C": 62.4804799640142
+            }
+          }
+        ]
+      },
+      {
+        "parameters": {
+          "input_weight": 10.0
+        },
+        "score": 0.04472286290023688,
+        "runs": [
+          {
+            "id": "calibration_102601_lqr_candidate_2",
+            "split": "calibration",
+            "method": "lqr",
+            "seed": 102601,
+            "candidate_index": 2,
+            "parameters": {
+              "input_weight": 10.0
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102601_lqr_candidate_2.csv",
+            "trace_sha256": "dc7bd36637a9beb3ffde6ca598ff90b8284343b0f1b1fbd54d935a9c5983825d",
+            "metrics": {
+              "tracking_mae_C": 0.8146692097378763,
+              "tracking_rmse_C": 0.9880776127202372,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.8666162454869836,
+              "pwm_total_variation": 3.3607334855543973,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 0.00035351666156202555,
+              "control_max_s": 0.0004240409907652065,
+              "selection_score": 0.04165174348681787,
+              "cpu_mae_C": 0.6804703028596893,
+              "cpu_rmse_C": 0.8228420517650272,
+              "max_cpu_C": 61.2156924599033,
+              "gpu_mae_C": 0.9488681166160632,
+              "gpu_rmse_C": 1.1293917368942303,
+              "max_gpu_C": 62.42450471000574
+            }
+          },
+          {
+            "id": "calibration_102602_lqr_candidate_2",
+            "split": "calibration",
+            "method": "lqr",
+            "seed": 102602,
+            "candidate_index": 2,
+            "parameters": {
+              "input_weight": 10.0
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102602_lqr_candidate_2.csv",
+            "trace_sha256": "f9858a456b8f4cbda205082d2c116f6f17770512998c3d20c2a434c5f0e13314",
+            "metrics": {
+              "tracking_mae_C": 0.7807028094074807,
+              "tracking_rmse_C": 0.9602176287443047,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.9784656721929509,
+              "pwm_total_variation": 3.368343813482374,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 0.0003814348005107604,
+              "control_max_s": 0.0011932500055991113,
+              "selection_score": 0.039816112798632265,
+              "cpu_mae_C": 0.5592875942740643,
+              "cpu_rmse_C": 0.6580075552627479,
+              "max_cpu_C": 61.1309361814057,
+              "gpu_mae_C": 1.0021180245408972,
+              "gpu_rmse_C": 1.1878812425153504,
+              "max_gpu_C": 62.683401541153415
+            }
+          },
+          {
+            "id": "calibration_102603_lqr_candidate_2",
+            "split": "calibration",
+            "method": "lqr",
+            "seed": 102603,
+            "candidate_index": 2,
+            "parameters": {
+              "input_weight": 10.0
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102603_lqr_candidate_2.csv",
+            "trace_sha256": "c15f82875552e487d56f2530d1a00aee99c53832738c27427582c281de93d9da",
+            "metrics": {
+              "tracking_mae_C": 0.8948470594190686,
+              "tracking_rmse_C": 1.122766180866897,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.758858846440999,
+              "pwm_total_variation": 2.9493135894672355,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 0.0003668014549475629,
+              "control_max_s": 0.0008333330042660236,
+              "selection_score": 0.05270073241526051,
+              "cpu_mae_C": 0.8220768711509124,
+              "cpu_rmse_C": 1.1151952915757866,
+              "max_cpu_C": 60.99576994369887,
+              "gpu_mae_C": 0.9676172476872249,
+              "gpu_rmse_C": 1.130286359930116,
+              "max_gpu_C": 62.34676577689615
+            }
+          }
+        ]
+      }
+    ],
+    "mpc": [
+      {
+        "parameters": {
+          "input_weight": 0.1
+        },
+        "score": 0.03769883011724006,
+        "runs": [
+          {
+            "id": "calibration_102601_mpc_candidate_0",
+            "split": "calibration",
+            "method": "mpc",
+            "seed": 102601,
+            "candidate_index": 0,
+            "parameters": {
+              "input_weight": 0.1
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102601_mpc_candidate_0.csv",
+            "trace_sha256": "19b5e3b42c677b545b653dca0affbe41a9fb1ae2952c12179d7a6af85f0863f3",
+            "metrics": {
+              "tracking_mae_C": 0.7469932337291976,
+              "tracking_rmse_C": 0.8786891907227208,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.9600667506455522,
+              "pwm_total_variation": 2.9098664574404642,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 0.0015484670031582935,
+              "control_max_s": 0.0034975410089828074,
+              "selection_score": 0.03376398800765465,
+              "cpu_mae_C": 0.7696998379194959,
+              "cpu_rmse_C": 0.8628739242426798,
+              "max_cpu_C": 61.01528602784092,
+              "gpu_mae_C": 0.7242866295388992,
+              "gpu_rmse_C": 0.8942247920114594,
+              "max_gpu_C": 62.47340793498231
+            }
+          },
+          {
+            "id": "calibration_102602_mpc_candidate_0",
+            "split": "calibration",
+            "method": "mpc",
+            "seed": 102602,
+            "candidate_index": 0,
+            "parameters": {
+              "input_weight": 0.1
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102602_mpc_candidate_0.csv",
+            "trace_sha256": "67d3889e0976eb70ead88737fa0368d194c17e657b025355333993fc28c8db8d",
+            "metrics": {
+              "tracking_mae_C": 0.7135160338605281,
+              "tracking_rmse_C": 0.8367555500173557,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 1.0879006172803662,
+              "pwm_total_variation": 2.993416958391595,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 0.0011115961475297803,
+              "control_max_s": 0.0021888329938519746,
+              "selection_score": 0.031270095871235,
+              "cpu_mae_C": 0.6536782787229243,
+              "cpu_rmse_C": 0.7098870085354403,
+              "max_cpu_C": 61.12749688476947,
+              "gpu_mae_C": 0.7733537889981318,
+              "gpu_rmse_C": 0.9467735400201565,
+              "max_gpu_C": 62.672838783877324
+            }
+          },
+          {
+            "id": "calibration_102603_mpc_candidate_0",
+            "split": "calibration",
+            "method": "mpc",
+            "seed": 102603,
+            "candidate_index": 0,
+            "parameters": {
+              "input_weight": 0.1
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102603_mpc_candidate_0.csv",
+            "trace_sha256": "59d3a73b06e81ca5b77dca8695cfbd77a50d5c357a5e8d64ac320727f3c6a03d",
+            "metrics": {
+              "tracking_mae_C": 0.8564188367107645,
+              "tracking_rmse_C": 1.0670950984327368,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.8382428362878871,
+              "pwm_total_variation": 2.8006360430357233,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 0.001246210747922305,
+              "control_max_s": 0.004346000001532957,
+              "selection_score": 0.04806240647283054,
+              "cpu_mae_C": 0.938746584450327,
+              "cpu_rmse_C": 1.161081555996527,
+              "max_cpu_C": 61.115171318421034,
+              "gpu_mae_C": 0.7740910889712018,
+              "gpu_rmse_C": 0.9639883394123746,
+              "max_gpu_C": 62.5995000089115
+            }
+          }
+        ]
+      },
+      {
+        "parameters": {
+          "input_weight": 1.0
+        },
+        "score": 0.041970771769363514,
+        "runs": [
+          {
+            "id": "calibration_102601_mpc_candidate_1",
+            "split": "calibration",
+            "method": "mpc",
+            "seed": 102601,
+            "candidate_index": 1,
+            "parameters": {
+              "input_weight": 1.0
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102601_mpc_candidate_1.csv",
+            "trace_sha256": "ff9bd930846c597aef4f47ce389793736616b8d9bb1424677bdbbdc1eb4e43b5",
+            "metrics": {
+              "tracking_mae_C": 0.77783018039246,
+              "tracking_rmse_C": 0.9435182852288119,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.892801140843224,
+              "pwm_total_variation": 2.7470729733504653,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 0.0012325149094976951,
+              "control_max_s": 0.0021408329921541736,
+              "selection_score": 0.03828747360497438,
+              "cpu_mae_C": 0.6185796250736221,
+              "cpu_rmse_C": 0.7727107860513507,
+              "max_cpu_C": 61.20647812097533,
+              "gpu_mae_C": 0.9370807357112979,
+              "gpu_rmse_C": 1.0878288239618121,
+              "max_gpu_C": 62.58703426667369
+            }
+          },
+          {
+            "id": "calibration_102602_mpc_candidate_1",
+            "split": "calibration",
+            "method": "mpc",
+            "seed": 102602,
+            "candidate_index": 1,
+            "parameters": {
+              "input_weight": 1.0
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102602_mpc_candidate_1.csv",
+            "trace_sha256": "a1319f9d9d8b777270f402c6a7595de9be748e26039971fd5bbf48fdc2e29599",
+            "metrics": {
+              "tracking_mae_C": 0.7419442669683394,
+              "tracking_rmse_C": 0.9155100815624948,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 1.0034160221203448,
+              "pwm_total_variation": 2.820883661939391,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 0.0011285812382993753,
+              "control_max_s": 0.002203583004302345,
+              "selection_score": 0.03653659644406367,
+              "cpu_mae_C": 0.46512486098362704,
+              "cpu_rmse_C": 0.5723240251217124,
+              "max_cpu_C": 61.24501467226419,
+              "gpu_mae_C": 1.0187636729530518,
+              "gpu_rmse_C": 1.1613624021611915,
+              "max_gpu_C": 62.78921632228753
+            }
+          },
+          {
+            "id": "calibration_102603_mpc_candidate_1",
+            "split": "calibration",
+            "method": "mpc",
+            "seed": 102603,
+            "candidate_index": 1,
+            "parameters": {
+              "input_weight": 1.0
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102603_mpc_candidate_1.csv",
+            "trace_sha256": "d8556937317f00c6c30c0e12fdd97e346ba3465b433ade531d8da9f964ac21d4",
+            "metrics": {
+              "tracking_mae_C": 0.8779258619502622,
+              "tracking_rmse_C": 1.1038268937769284,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.7836309340145263,
+              "pwm_total_variation": 2.5118561557126897,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 0.0012046583047776948,
+              "control_max_s": 0.0025302499998360872,
+              "selection_score": 0.051088245259052485,
+              "cpu_mae_C": 0.8062425308169149,
+              "cpu_rmse_C": 1.1057061594339854,
+              "max_cpu_C": 61.14335981073115,
+              "gpu_mae_C": 0.9496091930836096,
+              "gpu_rmse_C": 1.1019444232084443,
+              "max_gpu_C": 62.625990049151916
+            }
+          }
+        ]
+      },
+      {
+        "parameters": {
+          "input_weight": 10.0
+        },
+        "score": 0.5690272632055573,
+        "runs": [
+          {
+            "id": "calibration_102601_mpc_candidate_2",
+            "split": "calibration",
+            "method": "mpc",
+            "seed": 102601,
+            "candidate_index": 2,
+            "parameters": {
+              "input_weight": 10.0
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102601_mpc_candidate_2.csv",
+            "trace_sha256": "ad419e44d0e9b7ae777c918fd93165d7cb9e1d75f69f03c518105258dea4397c",
+            "metrics": {
+              "tracking_mae_C": 3.3057859492783837,
+              "tracking_rmse_C": 3.7373464054919303,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.4230240328989465,
+              "pwm_total_variation": 1.47577923280046,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 0.0011576794553548098,
+              "control_max_s": 0.00141050000092946,
+              "selection_score": 0.559979398284435,
+              "cpu_mae_C": 2.9116548426022644,
+              "cpu_rmse_C": 3.2326757933159165,
+              "max_cpu_C": 64.85256643349581,
+              "gpu_mae_C": 3.699917055954503,
+              "gpu_rmse_C": 4.181545590400303,
+              "max_gpu_C": 66.00425027084805
+            }
+          },
+          {
+            "id": "calibration_102602_mpc_candidate_2",
+            "split": "calibration",
+            "method": "mpc",
+            "seed": 102602,
+            "candidate_index": 2,
+            "parameters": {
+              "input_weight": 10.0
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102602_mpc_candidate_2.csv",
+            "trace_sha256": "c2a452d94f49fc3713d52b038e3c543508a6c2813766f976e743846097f56ab2",
+            "metrics": {
+              "tracking_mae_C": 3.5942163001289393,
+              "tracking_rmse_C": 4.028939651633971,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.4651222934450081,
+              "pwm_total_variation": 1.4910267856177484,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 0.0011490541524835861,
+              "control_max_s": 0.001504041996668093,
+              "selection_score": 0.6506895555406734,
+              "cpu_mae_C": 3.047242684972634,
+              "cpu_rmse_C": 3.4683476893044265,
+              "max_cpu_C": 65.16908035523947,
+              "gpu_mae_C": 4.141189915285246,
+              "gpu_rmse_C": 4.520539098283916,
+              "max_gpu_C": 66.27973256886874
+            }
+          },
+          {
+            "id": "calibration_102603_mpc_candidate_2",
+            "split": "calibration",
+            "method": "mpc",
+            "seed": 102603,
+            "candidate_index": 2,
+            "parameters": {
+              "input_weight": 10.0
+            },
+            "n": 120,
+            "trace_path": "traces/calibration_102603_mpc_candidate_2.csv",
+            "trace_sha256": "d8e96f21045c62d90194eee4ea610dcd1fea4c236f4e276f420fd6235fad2f8f",
+            "metrics": {
+              "tracking_mae_C": 3.1817323339012478,
+              "tracking_rmse_C": 3.5187600711599143,
+              "overtemp_s": 0.0,
+              "fan_energy_proxy_Wh": 0.3819794186635179,
+              "pwm_total_variation": 1.4376618080724985,
+              "fallback_n": 0,
+              "warning_n": 0,
+              "deadline_n": 0,
+              "bounds_violations": 0,
+              "slew_violations": 0,
+              "control_p95_s": 0.001217254199582385,
+              "control_max_s": 0.001439250001567416,
+              "selection_score": 0.49641283579156353,
+              "cpu_mae_C": 2.900589826360906,
+              "cpu_rmse_C": 3.1049139097916725,
+              "max_cpu_C": 64.66810573564248,
+              "gpu_mae_C": 3.4628748414415895,
+              "gpu_rmse_C": 3.8888114494740984,
+              "max_gpu_C": 65.59285791687573
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "selected": {
+    "fixed": {
+      "pwm": 0.6
+    },
+    "pi": {
+      "kp": 0.06,
+      "ki": 0.0003,
+      "kd": 0.0
+    },
+    "pid": {
+      "kp": 0.06,
+      "ki": 0.0003,
+      "kd": 0.05
+    },
+    "lqr": {
+      "input_weight": 0.1
+    },
+    "mpc": {
+      "input_weight": 0.1
+    }
+  }
+}

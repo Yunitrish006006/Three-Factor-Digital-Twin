@@ -284,6 +284,12 @@ A separate preregistered exploratory factorial diagnostic uses four fresh same-f
 
 % END LQR DIAGNOSTIC 20261019
 
+% BEGIN UNIFIED ENCLOSURE 20261026
+\subsection{Five Controllers in One Assumed Enclosure Environment}
+A separate exploratory comparison fixes one two-node CPU/GPU plant, present full-state observations, inlet/load schedules and actuator constraints for fixed PWM, plain PI, plain PID, gain-scheduled LQR and MPC. Each method receives three candidates and three calibration seeds (45 episodes); selected parameters are frozen before 60 evaluation episodes across four splits, totaling 12,600 calibration/evaluation steps. PI/PID use a fixed 0.6 bias without model feedforward, whereas LQR/MPC use the nominal plant model; equal input availability and trial counts do not imply equal model use or search quality. Targets are 60/60 C, control interval 10 s, episode duration 1200 s, PWM range [0.2,1] and slew 0.1 per step. Holdout tracking MAE for fixed PWM, PI, PID, LQR and MPC is 2.3462/\allowbreak{}2.2964/\allowbreak{}2.2879/\allowbreak{}1.4104/\allowbreak{}1.4428~$^\circ$C; corresponding fan-energy proxies are 0.7200/\allowbreak{}0.9550/\allowbreak{}0.9538/\allowbreak{}1.1048/\allowbreak{}1.1064~Wh. LQR has the lowest nominal holdout MAE, while MPC has the lowest mean MAE under the specified parameter mismatch. Every method overheats under the 440/580 W overload; one MPC step is rejected by the residual gate and falls back. All command bounds and slew checks pass. Energy is the assumed 10 PWM cubed power proxy, not measured fan or system energy. Independent stored-data/scalar-dynamics verification covers 105 episodes and preserves adverse outcomes; it does not independently re-optimize LQR/MPC. No hardware efficacy or universal ranking is established.
+
+% END UNIFIED ENCLOSURE 20261026
+
 \section{Discussion and Conclusion}
 The appliance-aware model outperforms IDW and the registered pure RNN under controlled truth, while residual calibration improves the sparse real-room point. In a fixed-budget, single-seed SML2010 check, GRU and LSTM are lowest-MAE in 0/12 cases; GRU beats vanilla RNN in 2/12 with median relative MAE reduction $-12.88\%$, and LSTM in 0/12 with $-11.37\%$, so the gated-recurrence hypothesis is unsupported. Public evidence remains task-bounded; dense measurement and interventions are future work, and physical PID control remains unevaluated. The separate four-controller comparison is exploratory assumed-model simulation; MPC does not outperform feedforward PID or LQR in its registered holdout.
 

@@ -1,0 +1,10 @@
+{
+  "started_at": "2026-10-26T09:32:59.729435+00:00",
+  "status": "COMPLETED",
+  "command": [
+    "scripts/run_enclosure_unified.py",
+    "--phase",
+    "calibrate"
+  ],
+  "finished_at": "2026-10-26T09:33:01.636668+00:00"
+}

@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "calibration_episodes": 45,
+  "evaluation_episodes": 60,
+  "rows": 12600,
+  "metric_checks": 1995,
+  "max_independent_state_error": 0,
+  "historical_files_unchanged": 371,
+  "paired_schedule_groups": 15,
+  "result_sha256": "e9953311d4528786b17b558cca6757db9dd1f1194a3f96c3c52748d689cb7552",
+  "scope": "stored-data metrics/scalar dynamics/feedback replay/solver-gate/source freeze; not independent re-optimization of LQR/MPC",
+  "negative_checks": "two corruption fixtures rejected"
+}

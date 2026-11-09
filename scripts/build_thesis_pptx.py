@@ -3157,3 +3157,9 @@ if __name__ == "__main__":
 if __name__ == "__main__":
     from enclosure_lqr_diagnostic_summary import sync_text as sync_lqr_diagnostic_outlines
     sync_lqr_diagnostic_outlines()
+
+
+# The new professor deliverable is offline HTML; preserve historical PPTX binaries.
+if __name__ == "__main__":
+    from enclosure_unified_summary import sync_text as sync_unified_outlines
+    sync_unified_outlines()

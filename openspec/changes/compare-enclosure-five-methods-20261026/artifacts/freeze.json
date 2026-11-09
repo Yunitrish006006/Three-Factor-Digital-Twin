@@ -1,0 +1,316 @@
+{
+  "utc": "2026-10-26T09:33:01.599894+00:00",
+  "sources": {
+    "digital_twin/control/enclosure_mpc.py": "d2364f28fff84c0dbe8c9e7c68352586b4094676a662d6c3ae3349bfc58b726b",
+    "digital_twin/control/enclosure_control_v2.py": "037ead748c0c4dc15a5ab69d60dbf6110d4e9ef7ebbc0f63516815abbe48f973",
+    "digital_twin/control/enclosure_unified.py": "8da0c487d31b9cf54074ee480c0f40e84d4f5cd79e58828b13264303da76ec86",
+    "scripts/run_enclosure_unified.py": "36d3ec433153ebb674dfb9d355e9752b7652dad2f3754051354853a20d988b51",
+    "scripts/verify_enclosure_unified.py": "65cfb2a7be2295b5778491ed4104ffd34e177e5893e79fc250aedb4ebd5db33b",
+    "tests/test_enclosure_unified.py": "be40ae87b29361e04679703963757965c4cbc54b2e25e85d69686e807bc47b47",
+    "openspec/changes/compare-enclosure-five-methods-20261026/config.json": "2481eb7938d3b66bf8fcb24fc756a6dc6f769b64a0f3a8230ddb6dd0b53d876d",
+    "openspec/changes/compare-enclosure-five-methods-20261026/protocol.md": "86844b138e93c4e48de9c0e4bf3e509ef4635cf3593ec5d842fc80a5dac1fee5",
+    "openspec/changes/compare-enclosure-five-methods-20261026/research.md": "cc89f2758d61c3c6db071c04970059eebe4d295d918ff68740429beff0a32d8a",
+    "openspec/changes/compare-enclosure-five-methods-20261026/design.md": "c3dcba0104a98b0b710e01bc54385bc35043c5d1d2981d7db5ebf51f2cc33e41",
+    "openspec/changes/compare-enclosure-five-methods-20261026/specs.md": "10d88b4c8c945540637af7311e4339f5c970ce1c9859a29a14d6d3950f26e8f6",
+    "openspec/changes/compare-enclosure-five-methods-20261026/reproducibility.md": "1b6455633162694a976b06e179a08c03c3ebc12cd3b12ba19574b0ca21382540",
+    "openspec/changes/compare-enclosure-five-methods-20261026/proposal.md": "0bd949a73f1d3678963a999dd8abf68596a6c097e0de03c022a1518e88ff716d",
+    "openspec/changes/compare-enclosure-five-methods-20261026/.openspec.yaml": "c7e06e61b9825df0b87d8f200a814a81e26c9cc5564c6317cfa8046a1f34ebe4",
+    "openspec/changes/compare-enclosure-five-methods-20261026/specs/enclosure-control/spec.md": "10d88b4c8c945540637af7311e4339f5c970ce1c9859a29a14d6d3950f26e8f6"
+  },
+  "config": {
+    "version": "unified-five-20261026",
+    "steps": 120,
+    "parameters": {
+      "capacities": [
+        1200.0,
+        1800.0
+      ],
+      "conductances": [
+        1.5,
+        2.0
+      ],
+      "fan_gains": [
+        6.0,
+        8.0
+      ],
+      "fan_tau_s": 20.0,
+      "max_rpm": 6000.0
+    },
+    "settings": {
+      "dt_s": 10.0,
+      "horizon": 12,
+      "targets_C": [
+        60.0,
+        60.0
+      ],
+      "limits_C": [
+        80.0,
+        85.0
+      ],
+      "warnings_C": [
+        75.0,
+        80.0
+      ],
+      "pwm_min": 0.2,
+      "pwm_max": 1.0,
+      "max_delta": 0.1,
+      "margin_C": 2.0,
+      "input_weight": 1.0,
+      "delta_weight": 5.0,
+      "slack_weight": 10000.0,
+      "maxiter": 80
+    },
+    "seeds": {
+      "calibration": [
+        102601,
+        102602,
+        102603
+      ],
+      "validation": [
+        102611,
+        102612,
+        102613
+      ],
+      "holdout": [
+        102621,
+        102622,
+        102623
+      ],
+      "plant_holdout": [
+        102631,
+        102632,
+        102633
+      ],
+      "overload": [
+        102641,
+        102642,
+        102643
+      ]
+    },
+    "schedules": {
+      "calibration": [
+        [
+          90,
+          170,
+          120,
+          185
+        ],
+        [
+          130,
+          235,
+          165,
+          255
+        ]
+      ],
+      "validation": [
+        [
+          125,
+          205,
+          75,
+          160
+        ],
+        [
+          180,
+          285,
+          115,
+          225
+        ]
+      ],
+      "holdout": [
+        [
+          175,
+          85,
+          215,
+          110,
+          155
+        ],
+        [
+          245,
+          135,
+          295,
+          160,
+          220
+        ]
+      ],
+      "plant_holdout": [
+        [
+          175,
+          85,
+          215,
+          110,
+          155
+        ],
+        [
+          245,
+          135,
+          295,
+          160,
+          220
+        ]
+      ],
+      "overload": [
+        [
+          440
+        ],
+        [
+          580
+        ]
+      ]
+    },
+    "variants": [
+      {
+        "capacity_factors": [
+          0.9,
+          1.15
+        ],
+        "conductance_factors": [
+          0.95,
+          1.05
+        ],
+        "fan_gain_factors": [
+          0.85,
+          0.8
+        ],
+        "fan_tau_s": 28.0
+      },
+      {
+        "capacity_factors": [
+          1.15,
+          0.85
+        ],
+        "conductance_factors": [
+          1.1,
+          0.9
+        ],
+        "fan_gain_factors": [
+          1.05,
+          0.9
+        ],
+        "fan_tau_s": 16.0
+      },
+      {
+        "capacity_factors": [
+          0.75,
+          1.25
+        ],
+        "conductance_factors": [
+          1.0,
+          1.0
+        ],
+        "fan_gain_factors": [
+          0.7,
+          0.65
+        ],
+        "fan_tau_s": 36.0
+      }
+    ],
+    "candidates": {
+      "fixed": [
+        {
+          "pwm": 0.4
+        },
+        {
+          "pwm": 0.6
+        },
+        {
+          "pwm": 0.8
+        }
+      ],
+      "pi": [
+        {
+          "kp": 0.01,
+          "ki": 5e-05,
+          "kd": 0.0
+        },
+        {
+          "kp": 0.03,
+          "ki": 0.0001,
+          "kd": 0.0
+        },
+        {
+          "kp": 0.06,
+          "ki": 0.0003,
+          "kd": 0.0
+        }
+      ],
+      "pid": [
+        {
+          "kp": 0.01,
+          "ki": 5e-05,
+          "kd": 0.01
+        },
+        {
+          "kp": 0.03,
+          "ki": 0.0001,
+          "kd": 0.03
+        },
+        {
+          "kp": 0.06,
+          "ki": 0.0003,
+          "kd": 0.05
+        }
+      ],
+      "lqr": [
+        {
+          "input_weight": 0.1
+        },
+        {
+          "input_weight": 1.0
+        },
+        {
+          "input_weight": 10.0
+        }
+      ],
+      "mpc": [
+        {
+          "input_weight": 0.1
+        },
+        {
+          "input_weight": 1.0
+        },
+        {
+          "input_weight": 10.0
+        }
+      ]
+    },
+    "boundary": "EXPLORATORY_FULL_STATE_ASSUMED_PC_ENCLOSURE_SIMULATION_NOT_HARDWARE",
+    "feedback": {
+      "bias": 0.6,
+      "derivative_alpha": 0.25,
+      "backcalc": 0.2,
+      "error": "max(CPU-target,GPU-target)",
+      "feedforward": false
+    }
+  },
+  "selected": {
+    "fixed": {
+      "pwm": 0.6
+    },
+    "pi": {
+      "kp": 0.06,
+      "ki": 0.0003,
+      "kd": 0.0
+    },
+    "pid": {
+      "kp": 0.06,
+      "ki": 0.0003,
+      "kd": 0.05
+    },
+    "lqr": {
+      "input_weight": 0.1
+    },
+    "mpc": {
+      "input_weight": 0.1
+    }
+  },
+  "calibration_sha256": "730145ea6ae96c73b6068d3fede36923aaf5ac95838bdeae9d201387f2aa6601",
+  "preregistration_sha256": "184d39fc0904c04de511f3ac276d4101b6b1615a10de9c1d8e3abf227ab1165d",
+  "environment": {
+    "python": "3.11.15",
+    "numpy": "1.26.4",
+    "scipy": "1.14.1",
+    "osqp": "1.0.4"
+  },
+  "git_head": "3a3173c77e130dc7ccbe1145f0fbaea7d51ee5c8",
+  "git_dirty": true
+}

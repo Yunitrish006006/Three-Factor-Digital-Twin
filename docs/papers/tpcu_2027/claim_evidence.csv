@@ -1,0 +1,83 @@
+﻿claim,value,unit,source_file,source_field,scope
+表三 驗證 固定PWM MAE,3.2484,°C,artifacts/result.json,aggregates.validation.fixed.tracking_mae_C,三正式回合等權平均
+表三 驗證 固定PWM 風扇代價代理,0.7200,Wh/回合,artifacts/result.json,aggregates.validation.fixed.fan_energy_proxy_Wh,三正式回合等權平均
+表三 驗證 固定PWM 取樣超溫,0.0,秒/回合,artifacts/result.json,aggregates.validation.fixed.overtemp_s,三正式回合等權平均
+表三 驗證 PI MAE,2.6463,°C,artifacts/result.json,aggregates.validation.pi.tracking_mae_C,三正式回合等權平均
+表三 驗證 PI 風扇代價代理,0.8606,Wh/回合,artifacts/result.json,aggregates.validation.pi.fan_energy_proxy_Wh,三正式回合等權平均
+表三 驗證 PI 取樣超溫,0.0,秒/回合,artifacts/result.json,aggregates.validation.pi.overtemp_s,三正式回合等權平均
+表三 驗證 PID MAE,2.6389,°C,artifacts/result.json,aggregates.validation.pid.tracking_mae_C,三正式回合等權平均
+表三 驗證 PID 風扇代價代理,0.8591,Wh/回合,artifacts/result.json,aggregates.validation.pid.fan_energy_proxy_Wh,三正式回合等權平均
+表三 驗證 PID 取樣超溫,0.0,秒/回合,artifacts/result.json,aggregates.validation.pid.overtemp_s,三正式回合等權平均
+表三 驗證 LQR MAE,1.5090,°C,artifacts/result.json,aggregates.validation.lqr.tracking_mae_C,三正式回合等權平均
+表三 驗證 LQR 風扇代價代理,1.0544,Wh/回合,artifacts/result.json,aggregates.validation.lqr.fan_energy_proxy_Wh,三正式回合等權平均
+表三 驗證 LQR 取樣超溫,0.0,秒/回合,artifacts/result.json,aggregates.validation.lqr.overtemp_s,三正式回合等權平均
+表三 驗證 MPC MAE,1.5504,°C,artifacts/result.json,aggregates.validation.mpc.tracking_mae_C,三正式回合等權平均
+表三 驗證 MPC 風扇代價代理,1.0774,Wh/回合,artifacts/result.json,aggregates.validation.mpc.fan_energy_proxy_Wh,三正式回合等權平均
+表三 驗證 MPC 取樣超溫,0.0,秒/回合,artifacts/result.json,aggregates.validation.mpc.overtemp_s,三正式回合等權平均
+表三 保留 固定PWM MAE,2.3462,°C,artifacts/result.json,aggregates.holdout.fixed.tracking_mae_C,三正式回合等權平均
+表三 保留 固定PWM 風扇代價代理,0.7200,Wh/回合,artifacts/result.json,aggregates.holdout.fixed.fan_energy_proxy_Wh,三正式回合等權平均
+表三 保留 固定PWM 取樣超溫,0.0,秒/回合,artifacts/result.json,aggregates.holdout.fixed.overtemp_s,三正式回合等權平均
+表三 保留 PI MAE,2.2964,°C,artifacts/result.json,aggregates.holdout.pi.tracking_mae_C,三正式回合等權平均
+表三 保留 PI 風扇代價代理,0.9550,Wh/回合,artifacts/result.json,aggregates.holdout.pi.fan_energy_proxy_Wh,三正式回合等權平均
+表三 保留 PI 取樣超溫,0.0,秒/回合,artifacts/result.json,aggregates.holdout.pi.overtemp_s,三正式回合等權平均
+表三 保留 PID MAE,2.2879,°C,artifacts/result.json,aggregates.holdout.pid.tracking_mae_C,三正式回合等權平均
+表三 保留 PID 風扇代價代理,0.9538,Wh/回合,artifacts/result.json,aggregates.holdout.pid.fan_energy_proxy_Wh,三正式回合等權平均
+表三 保留 PID 取樣超溫,0.0,秒/回合,artifacts/result.json,aggregates.holdout.pid.overtemp_s,三正式回合等權平均
+表三 保留 LQR MAE,1.4104,°C,artifacts/result.json,aggregates.holdout.lqr.tracking_mae_C,三正式回合等權平均
+表三 保留 LQR 風扇代價代理,1.1048,Wh/回合,artifacts/result.json,aggregates.holdout.lqr.fan_energy_proxy_Wh,三正式回合等權平均
+表三 保留 LQR 取樣超溫,0.0,秒/回合,artifacts/result.json,aggregates.holdout.lqr.overtemp_s,三正式回合等權平均
+表三 保留 MPC MAE,1.4428,°C,artifacts/result.json,aggregates.holdout.mpc.tracking_mae_C,三正式回合等權平均
+表三 保留 MPC 風扇代價代理,1.1064,Wh/回合,artifacts/result.json,aggregates.holdout.mpc.fan_energy_proxy_Wh,三正式回合等權平均
+表三 保留 MPC 取樣超溫,0.0,秒/回合,artifacts/result.json,aggregates.holdout.mpc.overtemp_s,三正式回合等權平均
+表三 失配 固定PWM MAE,4.4514,°C,artifacts/result.json,aggregates.plant_holdout.fixed.tracking_mae_C,三正式回合等權平均
+表三 失配 固定PWM 風扇代價代理,0.7200,Wh/回合,artifacts/result.json,aggregates.plant_holdout.fixed.fan_energy_proxy_Wh,三正式回合等權平均
+表三 失配 固定PWM 取樣超溫,0.0,秒/回合,artifacts/result.json,aggregates.plant_holdout.fixed.overtemp_s,三正式回合等權平均
+表三 失配 PI MAE,3.0302,°C,artifacts/result.json,aggregates.plant_holdout.pi.tracking_mae_C,三正式回合等權平均
+表三 失配 PI 風扇代價代理,1.7525,Wh/回合,artifacts/result.json,aggregates.plant_holdout.pi.fan_energy_proxy_Wh,三正式回合等權平均
+表三 失配 PI 取樣超溫,0.0,秒/回合,artifacts/result.json,aggregates.plant_holdout.pi.overtemp_s,三正式回合等權平均
+表三 失配 PID MAE,3.0246,°C,artifacts/result.json,aggregates.plant_holdout.pid.tracking_mae_C,三正式回合等權平均
+表三 失配 PID 風扇代價代理,1.7528,Wh/回合,artifacts/result.json,aggregates.plant_holdout.pid.fan_energy_proxy_Wh,三正式回合等權平均
+表三 失配 PID 取樣超溫,0.0,秒/回合,artifacts/result.json,aggregates.plant_holdout.pid.overtemp_s,三正式回合等權平均
+表三 失配 LQR MAE,2.7866,°C,artifacts/result.json,aggregates.plant_holdout.lqr.tracking_mae_C,三正式回合等權平均
+表三 失配 LQR 風扇代價代理,1.6261,Wh/回合,artifacts/result.json,aggregates.plant_holdout.lqr.fan_energy_proxy_Wh,三正式回合等權平均
+表三 失配 LQR 取樣超溫,0.0,秒/回合,artifacts/result.json,aggregates.plant_holdout.lqr.overtemp_s,三正式回合等權平均
+表三 失配 MPC MAE,2.7605,°C,artifacts/result.json,aggregates.plant_holdout.mpc.tracking_mae_C,三正式回合等權平均
+表三 失配 MPC 風扇代價代理,1.5389,Wh/回合,artifacts/result.json,aggregates.plant_holdout.mpc.fan_energy_proxy_Wh,三正式回合等權平均
+表三 失配 MPC 取樣超溫,0.0,秒/回合,artifacts/result.json,aggregates.plant_holdout.mpc.overtemp_s,三正式回合等權平均
+表三 過載 固定PWM MAE,25.7896,°C,artifacts/result.json,aggregates.overload.fixed.tracking_mae_C,三正式回合等權平均
+表三 過載 固定PWM 風扇代價代理,3.1125,Wh/回合,artifacts/result.json,aggregates.overload.fixed.fan_energy_proxy_Wh,三正式回合等權平均
+表三 過載 固定PWM 取樣超溫,1093.3,秒/回合,artifacts/result.json,aggregates.overload.fixed.overtemp_s,三正式回合等權平均
+表三 過載 PI MAE,24.9207,°C,artifacts/result.json,aggregates.overload.pi.tracking_mae_C,三正式回合等權平均
+表三 過載 PI 風扇代價代理,3.2669,Wh/回合,artifacts/result.json,aggregates.overload.pi.fan_energy_proxy_Wh,三正式回合等權平均
+表三 過載 PI 取樣超溫,1020.0,秒/回合,artifacts/result.json,aggregates.overload.pi.overtemp_s,三正式回合等權平均
+表三 過載 PID MAE,24.9207,°C,artifacts/result.json,aggregates.overload.pid.tracking_mae_C,三正式回合等權平均
+表三 過載 PID 風扇代價代理,3.2669,Wh/回合,artifacts/result.json,aggregates.overload.pid.fan_energy_proxy_Wh,三正式回合等權平均
+表三 過載 PID 取樣超溫,1020.0,秒/回合,artifacts/result.json,aggregates.overload.pid.overtemp_s,三正式回合等權平均
+表三 過載 LQR MAE,27.1265,°C,artifacts/result.json,aggregates.overload.lqr.tracking_mae_C,三正式回合等權平均
+表三 過載 LQR 風扇代價代理,3.0133,Wh/回合,artifacts/result.json,aggregates.overload.lqr.fan_energy_proxy_Wh,三正式回合等權平均
+表三 過載 LQR 取樣超溫,1123.3,秒/回合,artifacts/result.json,aggregates.overload.lqr.overtemp_s,三正式回合等權平均
+表三 過載 MPC MAE,24.8929,°C,artifacts/result.json,aggregates.overload.mpc.tracking_mae_C,三正式回合等權平均
+表三 過載 MPC 風扇代價代理,3.2722,Wh/回合,artifacts/result.json,aggregates.overload.mpc.fan_energy_proxy_Wh,三正式回合等權平均
+表三 過載 MPC 取樣超溫,1020.0,秒/回合,artifacts/result.json,aggregates.overload.mpc.overtemp_s,三正式回合等權平均
+表四 驗證 PID MAE範圍,2.566–2.703,°C,artifacts/result.json,"runs[split=validation,method=pid].metrics.tracking_mae_C",三正式回合之最小至最大值；非信賴區間
+表四 驗證 LQR MAE範圍,1.500–1.514,°C,artifacts/result.json,"runs[split=validation,method=lqr].metrics.tracking_mae_C",三正式回合之最小至最大值；非信賴區間
+表四 驗證 MPC MAE範圍,1.517–1.589,°C,artifacts/result.json,"runs[split=validation,method=mpc].metrics.tracking_mae_C",三正式回合之最小至最大值；非信賴區間
+表四 保留 PID MAE範圍,2.271–2.317,°C,artifacts/result.json,"runs[split=holdout,method=pid].metrics.tracking_mae_C",三正式回合之最小至最大值；非信賴區間
+表四 保留 LQR MAE範圍,1.373–1.440,°C,artifacts/result.json,"runs[split=holdout,method=lqr].metrics.tracking_mae_C",三正式回合之最小至最大值；非信賴區間
+表四 保留 MPC MAE範圍,1.427–1.454,°C,artifacts/result.json,"runs[split=holdout,method=mpc].metrics.tracking_mae_C",三正式回合之最小至最大值；非信賴區間
+表四 失配 PID MAE範圍,2.617–3.481,°C,artifacts/result.json,"runs[split=plant_holdout,method=pid].metrics.tracking_mae_C",三正式回合之最小至最大值；非信賴區間
+表四 失配 LQR MAE範圍,2.030–3.379,°C,artifacts/result.json,"runs[split=plant_holdout,method=lqr].metrics.tracking_mae_C",三正式回合之最小至最大值；非信賴區間
+表四 失配 MPC MAE範圍,2.105–3.237,°C,artifacts/result.json,"runs[split=plant_holdout,method=mpc].metrics.tracking_mae_C",三正式回合之最小至最大值；非信賴區間
+表四 過載 PID MAE範圍,23.982–25.918,°C,artifacts/result.json,"runs[split=overload,method=pid].metrics.tracking_mae_C",三正式回合之最小至最大值；非信賴區間
+表四 過載 LQR MAE範圍,26.232–27.947,°C,artifacts/result.json,"runs[split=overload,method=lqr].metrics.tracking_mae_C",三正式回合之最小至最大值；非信賴區間
+表四 過載 MPC MAE範圍,23.899–25.918,°C,artifacts/result.json,"runs[split=overload,method=mpc].metrics.tracking_mae_C",三正式回合之最小至最大值；非信賴區間
+校準回合,45,,artifacts/verification.json,calibration_episodes,三候選×三種子×五方法
+正式回合,60,,artifacts/verification.json,evaluation_episodes,四分組×三種子×五方法
+軌跡列數,12600,,artifacts/verification.json,rows,105回合×120步
+保留組LQR相對PID MAE降低,38.35,%,artifacts/result.json,"aggregates.holdout.{lqr,pid}.tracking_mae_C",未四捨五入值計算百分比
+保留組LQR相對PID代價提高,15.83,%,artifacts/result.json,"aggregates.holdout.{lqr,pid}.fan_energy_proxy_Wh",未四捨五入值計算百分比
+執行環境版本,Python 3.11.15; NumPy 1.26.4; SciPy 1.14.1; OSQP 1.0.4,,artifacts/freeze.json,environment,凍結軟體環境
+失配設定,三組參數倍率與tau,,config.json,variants[0:3],正文第二節逐seed列示
+求解器設定,eps_abs=eps_rel=1e-7; max_iter=100000; residual_tol=1e-5,,artifacts/source_snapshots/digital_twin/control/enclosure_control_v2.py,OSQP_OPTIONS; RESIDUAL_TOL,凍結來源碼
+MPC固定權重與軟性溫度上限,delta_weight=5; slack_weight=10000; margin_C=2; caps=78/83°C,,config.json,settings.delta_weight; settings.slack_weight; settings.margin_C; settings.limits_C,MPC候選僅改input_weight
+LQR工作點與回授,"equilibrium objective=sum(((T_eq-60)/5)^2)+u^2; ZOH; DARE; Q=diag(.04,.04,0)",,artifacts/source_snapshots/digital_twin/control/enclosure_control_v2.py,equilibrium_allocation; _lqr,名義模型與當下入口/功率

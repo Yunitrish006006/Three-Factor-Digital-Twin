@@ -1,0 +1,7 @@
+# Research status
+
+**Simulation:** complete and frozen; 45 calibration + 60 evaluation episodes, 12,600 rows. **Stored-data verification:** PASS and historical evidence unchanged. **Professor report:** generated; static HTML checks pass; 7-page PDF and figures visually inspected. **New delivery package:** staged, hash checked and archived separately from historical report ZIP. **Synchronized thesis/review outputs:** updated and rebuilt; binary thesis DOCX/PDF copies match. Whole-document QA is incomplete for the 74-page DOCX render, 93-page thesis PDF, 9-page IEEE PDF and 6-page review PDF. Historical PPTX remains preserved; HTML is the new professor briefing format.
+
+This study compares fixed PWM, plain PI, plain PID, LQR and MPC in one assumed two-node CPU/GPU thermal model with full current state. It does not establish sparse sensing efficacy, physical enclosure performance, measured energy savings, hardware safety, statistical significance, or universal controller superiority. Overload is unsafe for all five methods in the model; one MPC step triggers a retained solver residual-gate fallback. LQR/MPC were not independently re-optimized by the verifier.
+
+Improvement causes and remedies are bounded interpretations and future experiments, not isolated causal results. No calibration/evaluation was rerun during report completion. The OpenSpec change remains active pending full synchronized-manuscript QA and any later hardware validation. No commit/push, sending, submission or publication was performed.

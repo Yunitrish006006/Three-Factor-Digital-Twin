@@ -1,0 +1,10 @@
+{
+  "started_at": "2026-10-26T09:33:14.830186+00:00",
+  "status": "COMPLETED",
+  "command": [
+    "scripts/run_enclosure_unified.py",
+    "--phase",
+    "evaluate"
+  ],
+  "finished_at": "2026-10-26T09:33:31.897677+00:00"
+}

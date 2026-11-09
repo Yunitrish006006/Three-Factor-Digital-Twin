@@ -1,0 +1,11 @@
+# Tasks
+- [x] UFC-001 Define common plant/config/information contract.
+- [x] UFC-002 Implement five-method controller and five fixture tests.
+- [x] UFC-003 Freeze/calibrate/evaluate with complete attempts and CSV.
+- [x] UFC-003 Independently verify metrics/dynamics/selection and two corruption fixtures.
+- [x] UFC-004 Generate professor HTML/PDF/Markdown summary, figures, and synchronized text/native draft outputs.
+- [x] UFC-004 Review professor content, repair pagination, inspect all seven PDF pages and all report figures; record HTML browser-visual limitation.
+- [x] UFC-004 Confirm thesis DOCX/PDF source-copy hashes and document broader QA scope.
+- [x] UFC-004 Final stored-data/OpenSpec audit and separate professor data/ZIP delivery.
+- [x] UFC-004 Record limitations, adverse overload and solver fallback; preserve active change.
+- [ ] UFC-005 Complete full-page visual QA for synchronized thesis/IEEE/review manuscripts and any future hardware validation.
