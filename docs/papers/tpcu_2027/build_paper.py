@@ -21,6 +21,7 @@ def font(run, size=12, bold=False, italic=False):
     run.font.size = Pt(size)
     run.font.bold = bold
     run.font.italic = italic
+    run.font.cs_italic = italic
     rpr = run._element.get_or_add_rPr()
     rf = rpr.rFonts
     if rf is None:
@@ -36,24 +37,39 @@ def font(run, size=12, bold=False, italic=False):
     lang.set(qn("w:eastAsia"), "zh-TW")
 
 
+def inline_runs(p, text, size=12, bold=False, italic=False):
+    for part in re.split(r'(<(?:sub|sup)>.*?</(?:sub|sup)>)', text):
+        match = re.fullmatch(r'<(sub|sup)>(.*?)</\1>', part)
+        run = p.add_run(match.group(2) if match else part)
+        font(run, size, bold, italic)
+        if match:
+            if match.group(1) == 'sub':
+                run.font.subscript = True
+            else:
+                run.font.superscript = True
+
+
 def para(doc, text, size=12, bold=False, italic=False, align=None,
-         before=0, after=3, first_indent=0, keep_next=False):
+         before=0, after=0.5, first_indent=0, keep_next=False):
     p = doc.add_paragraph()
     p.alignment = align or WD_ALIGN_PARAGRAPH.JUSTIFY
     pf = p.paragraph_format
     pf.space_before = Pt(before)
     pf.space_after = Pt(after)
-    pf.line_spacing = 1.0
+    pf.line_spacing = Pt(12.6 if size == 12 else size * 1.10)
+    grid = OxmlElement("w:snapToGrid")
+    grid.set(qn("w:val"), "0")
+    p._p.get_or_add_pPr().append(grid)
     pf.first_line_indent = Pt(first_indent)
     pf.keep_with_next = keep_next
     pf.widow_control = True
-    font(p.add_run(text), size, bold, italic)
+    inline_runs(p, text, size, bold, italic)
     return p
 
 
 def heading(doc, text):
     para(doc, text, 14, True, align=WD_ALIGN_PARAGRAPH.LEFT,
-         before=7, after=3, keep_next=True)
+         before=6, after=3, keep_next=True)
 
 
 def caption(doc, text, before=3, after=3):
@@ -66,8 +82,8 @@ def set_cell_text(cell, text, is_header=False):
     p = cell.paragraphs[0]
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER if is_header else WD_ALIGN_PARAGRAPH.LEFT
     p.paragraph_format.space_after = Pt(0)
-    p.paragraph_format.line_spacing = 1.0
-    font(p.add_run(text), 10, is_header)
+    p.paragraph_format.line_spacing = Pt(11)
+    inline_runs(p, text, 10, False)
     cell.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
     tcpr = cell._tc.get_or_add_tcPr()
     mar = OxmlElement("w:tcMar")
@@ -87,7 +103,7 @@ def add_table(doc, rows):
     widths = {2: [1.15, 6.38],
               3: [1.35, 1.35, 4.83],
               4: [1.05, 2.16, 2.16, 2.16],
-              5: [1.12, 1.12, 1.25, 2.05, 1.99]}[n]
+              5: [1.0, 1.1, 1.55, 2.10, 1.78]}[n]
     for i, width in enumerate(widths):
         table.columns[i].width = Cm(width)
     tblw = table._tbl.tblPr.xpath("./w:tblW")[0]
@@ -100,6 +116,10 @@ def add_table(doc, rows):
             if n == 4 and row_index > 0 and i > 0:
                 value = value.replace("–", "–\n")
             set_cell_text(cells[i], value, row_index == 0)
+            if n in (2, 3, 4, 5) and row_index < len(rows) - 1:
+                cells[i].paragraphs[0].paragraph_format.keep_with_next = True
+        trpr = table.rows[-1]._tr.get_or_add_trPr()
+        trpr.append(OxmlElement("w:cantSplit"))
         if row_index == 0:
             trpr = table.rows[-1]._tr.get_or_add_trPr()
             trpr.append(OxmlElement("w:tblHeader"))
@@ -114,7 +134,10 @@ for section in doc.sections:
     section.header_distance = section.footer_distance = Cm(1.0)
 normal = doc.styles["Normal"]
 normal.paragraph_format.space_after = Pt(3)
-normal.paragraph_format.line_spacing = 1.0
+normal.paragraph_format.line_spacing = Pt(13.2)
+normal_grid = OxmlElement("w:snapToGrid")
+normal_grid.set(qn("w:val"), "0")
+normal.element.get_or_add_pPr().append(normal_grid)
 normal.font.name = "Times New Roman"
 normal.font.size = Pt(12)
 
@@ -151,15 +174,28 @@ while i < len(LINES):
         i += 1
         continue
     if line == "$$":
+        if doc.paragraphs:
+            doc.paragraphs[-1].paragraph_format.keep_with_next = True
         i += 1
+        equation = []
         while i < len(LINES) and LINES[i].strip() != "$$":
+            equation.append(LINES[i])
             i += 1
         assert i < len(LINES), "Unclosed display equation"
         p = doc.add_paragraph()
+        p.paragraph_format.line_spacing = 1.0
+        p.paragraph_format.keep_together = True
         p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        p.paragraph_format.space_before = Pt(3)
-        p.paragraph_format.space_after = Pt(4)
-        p.add_run().add_picture(str(HERE / "figures/model_equation.png"), width=Cm(7.4))
+        p.paragraph_format.space_before = Pt(2)
+        p.paragraph_format.space_after = Pt(2)
+        number = int(re.search(r"\\tag\{(\d+)\}", "\n".join(equation)).group(1))
+        name = "model_equation" if number == 1 else f"control_equation_{number}"
+        p.add_run().add_picture(str(HERE / f"figures/{name}.png"), width=Cm(7.54))
+        i += 1
+        continue
+    if line.startswith("### "):
+        para(doc, line[4:], 12, True, align=WD_ALIGN_PARAGRAPH.LEFT,
+             before=6, after=3, keep_next=True)
         i += 1
         continue
     if line.startswith("## "):
@@ -168,6 +204,11 @@ while i < len(LINES):
         continue
     if line.startswith("**表"):
         caption(doc, line.strip("*"))
+        i += 1
+        continue
+    if line.startswith("**") and line.endswith("**"):
+        para(doc, line[2:-2], 12, True, align=WD_ALIGN_PARAGRAPH.LEFT,
+             before=6, after=3, keep_next=True)
         i += 1
         continue
     if line.startswith("| "):
@@ -182,14 +223,17 @@ while i < len(LINES):
     if line.startswith("!["):
         m = re.match(r"!\[(.*)\]\((.*)\)", line)
         p = doc.add_paragraph()
+        p.paragraph_format.line_spacing = 1.0
+        p.paragraph_format.keep_together = True
         p.alignment = WD_ALIGN_PARAGRAPH.CENTER
         p.paragraph_format.space_after = Pt(2)
-        p.add_run().add_picture(str(HERE / m.group(2)), width=Cm(7.45))
+        p.paragraph_format.keep_with_next = True
+        p.add_run().add_picture(str(HERE / m.group(2)), width=Cm(7.54))
         caption(doc, m.group(1), before=0, after=4)
         i += 1
         continue
     if line.startswith("[") and re.match(r"\[\d+\]", line):
-        para(doc, line, 10, after=3)
+        para(doc, line, 10, after=2).paragraph_format.keep_together = True
         i += 1
         continue
     if line.startswith("C_i dT_i/dt"):
@@ -198,6 +242,8 @@ while i < len(LINES):
         continue
     para(doc, line, 12, first_indent=24)
     i += 1
+
+doc.add_section(WD_SECTION_START.CONTINUOUS)
 
 doc.core_properties.title = LINES[0][2:]
 doc.core_properties.subject = "2027 工程科技應用研討會審閱稿；共同假設模型之模擬比較"

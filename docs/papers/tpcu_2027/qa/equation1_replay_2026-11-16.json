@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "check": "Equation (1) one-step replay using recorded state, PWM, disturbances, and registered plant parameters; no controller reoptimization",
+  "trace_files": 105,
+  "rows_by_split": {
+    "calibration": 5400,
+    "holdout": 1800,
+    "overload": 1800,
+    "plant_holdout": 1800,
+    "validation": 1800
+  },
+  "max_abs_error_cpu_C_gpu_C_fan": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "result_sha256": "e9953311d4528786b17b558cca6757db9dd1f1194a3f96c3c52748d689cb7552"
+}

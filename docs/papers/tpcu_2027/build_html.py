@@ -4,6 +4,9 @@ from pathlib import Path
 from html import escape
 import re
 
+def inline_html(text):
+    return re.sub(r'&lt;(/?(?:sub|sup))&gt;', r'<\1>', escape(text))
+
 HERE = Path(__file__).resolve().parent
 lines = (HERE / "manuscript_zh.md").read_text().splitlines()
 title = lines[0][2:]
@@ -21,10 +24,18 @@ while i < len(lines):
         continue
     if line == "$$":
         i += 1
+        equation = []
         while i < len(lines) and lines[i].strip() != "$$":
+            equation.append(lines[i])
             i += 1
         assert i < len(lines), "Unclosed display equation"
-        parts.append("<div class='display-equation'><img src='figures/model_equation.svg' alt='式一：雙節點熱平衡與風扇一階動態'></div>")
+        number = int(re.search(r"\\tag\{(\d+)\}", "\n".join(equation)).group(1))
+        name = "model_equation" if number == 1 else f"control_equation_{number}"
+        parts.append(f"<div class='display-equation'><img src='figures/{name}.svg' alt='公式（{number}）'></div>")
+        i += 1
+        continue
+    if line.startswith("### "):
+        parts.append(f"<h3>{escape(line[4:])}</h3>")
         i += 1
         continue
     if line.startswith("## "):
@@ -33,6 +44,10 @@ while i < len(lines):
         continue
     if line.startswith("**表"):
         parts.append(f"<div class='table-caption'>{escape(line.strip('*'))}</div>")
+        i += 1
+        continue
+    if line.startswith("**") and line.endswith("**"):
+        parts.append(f"<h3>{escape(line[2:-2])}</h3>")
         i += 1
         continue
     if line.startswith("| "):
@@ -45,10 +60,10 @@ while i < len(lines):
         n = len(rows[0])
         css = f"t{n}"
         table = [f"<table class='{css}'><thead><tr>"]
-        table += [f"<th>{escape(v)}</th>" for v in rows[0]]
+        table += [f"<th>{inline_html(v)}</th>" for v in rows[0]]
         table.append("</tr></thead><tbody>")
         for row in rows[1:]:
-            values = [escape(v).replace("–", "–<br>") if n == 4 and index > 0 else escape(v)
+            values = [inline_html(v).replace("–", "–<br>") if n == 4 and index > 0 else inline_html(v)
                       for index, v in enumerate(row)]
             table.append("<tr>" + "".join(f"<td>{v}</td>" for v in values) + "</tr>")
         table.append("</tbody></table>")
@@ -60,14 +75,14 @@ while i < len(lines):
         i += 1
         continue
     klass = "ref" if re.match(r"\[\d+\]", line) else "equation" if line.startswith("C_i dT_i/dt") else ""
-    parts.append(f"<p class='{klass}'>{escape(line)}</p>")
+    parts.append(f"<p class='{klass}'>{inline_html(line)}</p>")
     i += 1
 
 style = """
 @page { size: A4; margin: 2.54cm; }
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
-body { color:#111; font-family:'Times New Roman','BiauKaiTC',serif; font-size:12pt; line-height:1.18; }
+body { color:#111; font-family:'Times New Roman','BiauKaiTC',serif; font-size:12pt; line-height:1.10; }
 .top { text-align:center; }
 h1 {font-size:16pt;line-height:1.2;margin:0 0 8pt;font-weight:bold;}
 .authors {font-size:12pt;font-weight:bold;margin:0 0 3pt;}
@@ -76,9 +91,11 @@ h1 {font-size:16pt;line-height:1.2;margin:0 0 8pt;font-weight:bold;}
 .abstract {font-size:12pt;font-style:italic;text-align:justify;text-indent:2em;margin:0 0 5pt;}
 .keywords {font-size:12pt;margin:0 0 8pt;}
 .article { column-count:2; column-gap:.84cm; column-fill:balance; }
-h2 {font-size:14pt;line-height:1.15;margin:7pt 0 3pt;font-weight:bold;break-after:avoid;}
-p {margin:0 0 3pt;text-indent:2em;text-align:justify;orphans:2;widows:2;}
-p.ref {font-family:'Times New Roman',serif;font-size:10pt;text-indent:0;text-align:left;overflow-wrap:anywhere;}
+h2 {font-size:14pt;line-height:1.15;margin:6pt 0 3pt;font-weight:bold;break-after:avoid;}
+h3 {font-size:12pt;line-height:1.15;margin:6pt 0 3pt;font-weight:bold;break-after:avoid;}
+p {margin:0 0 2pt;text-indent:2em;text-align:justify;orphans:2;widows:2;}
+p:has(+ .display-equation) {break-inside:avoid;break-after:avoid;}
+p.ref {font-family:'Times New Roman',serif;font-size:10pt;text-indent:0;text-align:justify;overflow-wrap:anywhere;}
 .display-equation {break-inside:avoid;margin:4pt 0 5pt;text-align:center;}
 .display-equation img {display:block;width:100%;height:auto;}
 figure {margin:4pt 0;break-inside:avoid;}
@@ -88,7 +105,7 @@ figcaption,.table-caption {font-size:10pt;font-weight:bold;text-align:center;lin
 table {border-collapse:collapse;width:100%;font-size:10pt;line-height:1.05;table-layout:fixed;break-inside:auto;margin:0 0 4pt;}
 tr {break-inside:avoid;}
 th,td {border:0.4pt solid #333;padding:1.4pt 1.5pt;vertical-align:top;overflow-wrap:normal;word-break:normal;}
-th {font-weight:bold;}
+th {font-weight:normal;}
 .t4 th:nth-child(1),.t4 td:nth-child(1){width:14%;}
 .t4 {break-inside:avoid;}
 .t4 th:nth-child(2),.t4 td:nth-child(2){width:28%;}
@@ -98,6 +115,7 @@ th {font-weight:bold;}
 .t3 th:nth-child(2),.t3 td:nth-child(2){width:18%;}
 .t3 th:nth-child(3),.t3 td:nth-child(3){width:64%;}
 .t2 th:nth-child(1),.t2 td:nth-child(1){width:18%;}
+.t2 {break-inside:avoid;}
 .t2 th:nth-child(2),.t2 td:nth-child(2){width:82%;}
 .t5 th:nth-child(1),.t5 td:nth-child(1){width:15%;}
 .t5 th:nth-child(2),.t5 td:nth-child(2){width:15%;}
